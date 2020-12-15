@@ -6,17 +6,13 @@
     "ng": "ng",
     "start": "npm run serve:ssr",
     "build": "npm run build:ssr",
-    "build:dev": "ng build --environment=dev",
-    "build:sit": "ng build --environment=sit",
-    "build:uat": "ng build --environment=uat",
-    "build:preprod": "ng build --environment=preprod",
-    "build:prod": "ng build --environment=prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run my-test:serve-ssr",
     "serve:ssr": "node dist/server/main.js",
-    "build:ssr": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build --prod && node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng run my-test:server:production"
+    "build:ssr": "ng build --prod && ng run my-test:server:production",
+    "prerender": "ng run my-test:prerender"
   },
   "private": true,
   "dependencies": {
