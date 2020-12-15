@@ -1,7 +1,5 @@
 
 import * as environment from '../../environment.json';
-import * as redisController from '../controller/redisController';
-import * as dynamicRedis from '../controller/redisController_DynamicData';
 import * as oAuthController from './oAuthController';
 import { proxiedRequest as request } from "./proxyRequest";
 const _ = require('lodash');
@@ -37,9 +35,9 @@ export let getApi = (req, res) => {
     }
     console.log("" + options.url + ":" + (Date.now() - req.start));
     // to write data into redis database
-    if ((<any>environment).isRedisCacheEnabled) {
-      redisController.writeToCache(body, req, response);
-    }
+    // if ((<any>environment).isRedisCacheEnabled) {
+    //   redisController.writeToCache(body, req, response);
+    // }
     return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
   });
 };
@@ -95,17 +93,17 @@ export let reserveNumber = (req, res, type?) => {
   console.log("URL : " + req.url);
   console.log("Start Time : " + Date.now());
   req.start = Date.now();
-  dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
-    if (isWSO2 === 'true') {
-      req.isNewApiGW = true;
-      return getAccessTokenAndPostReserveNumber(req, res);
-    } else {
-      return postReserveNumber(req, res);
-    }
-  }, (error) => {
-    logger.error(JSON.stringify(error));
-    return postReserveNumber(req, res);
-  });
+  // dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
+  //   if (isWSO2 === 'true') {
+  //     req.isNewApiGW = true;
+  //     return getAccessTokenAndPostReserveNumber(req, res);
+  //   } else {
+  //     return postReserveNumber(req, res);
+  //   }
+  // }, (error) => {
+  //   logger.error(JSON.stringify(error));
+  //   return postReserveNumber(req, res);
+  // });
 };
 
 export let getAccessTokenAndPostReserveNumber = (req, res) => {
@@ -128,17 +126,17 @@ export let retrieveNumber = (req, res, type?) => {
   console.log("URL : " + req.url);
   console.log("Start Time : " + Date.now());
   req.start = Date.now();
-  dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
-    if (isWSO2 === 'true') {
-      req.isNewApiGW = true;
-      return getAccessTokenAndPostRetrieveNumber(req, res, false);
-    } else {
-      return postRetrieveNumber(req, res);
-    }
-  }, (error) => {
-    logger.error(JSON.stringify(error));
-    return postRetrieveNumber(req, res);
-  });
+  // dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
+  //   if (isWSO2 === 'true') {
+  //     req.isNewApiGW = true;
+  //     return getAccessTokenAndPostRetrieveNumber(req, res, false);
+  //   } else {
+  //     return postRetrieveNumber(req, res);
+  //   }
+  // }, (error) => {
+  //   logger.error(JSON.stringify(error));
+  //   return postRetrieveNumber(req, res);
+  // });
 };
 
 export let getAccessTokenAndPostRetrieveNumber = (req, res, isNewToken?) => {
@@ -281,15 +279,15 @@ export let postDataForblackListInfo = (req, res, type?) => {
       return res.status(401).json({ success: false, error: "You don't have permissions to access." });
     }
     const token = tokenStore.generateUniqueJwtToken(customerId);
-    dynamicRedis.storeJWTToken(customerId, token, (tokenStorageErr, tokenStorageResult) => {
-      if (tokenStorageErr) {
-        responseBody.token = undefined;
-        return utils.sendResponseByEliminatingXSS(req, res, error, response, responseBody);
-      } else {
-        responseBody.token = token;
-        return utils.sendResponseByEliminatingXSS(req, res, error, response, responseBody);
-      }
-    });
+    // dynamicRedis.storeJWTToken(customerId, token, (tokenStorageErr, tokenStorageResult) => {
+    //   if (tokenStorageErr) {
+    //     responseBody.token = undefined;
+    //     return utils.sendResponseByEliminatingXSS(req, res, error, response, responseBody);
+    //   } else {
+    //     responseBody.token = token;
+    //     return utils.sendResponseByEliminatingXSS(req, res, error, response, responseBody);
+    //   }
+    // });
   });
 };
 /**
@@ -419,10 +417,10 @@ export let getMobileConnCustData = (req, res) => {
     }
     console.log("" + options.url + ":" + (Date.now() - req.start));
     // to write data into redis database
-    if ((<any>environment).isRedisCacheEnabled) {
-      logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line +*/ " File Name: " + __filename + "URL : " + options.url);
-      redisController.writeToCache(body, req, response);
-    }
+    // if ((<any>environment).isRedisCacheEnabled) {
+    //   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line +*/ " File Name: " + __filename + "URL : " + options.url);
+    //   redisController.writeToCache(body, req, response);
+    // }
     // return res.status(response.statusCode).send(body);
     return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
   });
@@ -478,10 +476,10 @@ export let getEstoreApi = (req, res) => {
     }
     console.log("" + options.url + ":" + (Date.now() - req.start));
     // to write data into redis database
-    if ((<any>environment).isRedisCacheEnabled) {
-      console.log(`caching this url : ${req.url}`);
-      redisController.writeToCache(body, req, response);
-    }
+    // if ((<any>environment).isRedisCacheEnabled) {
+    //   console.log(`caching this url : ${req.url}`);
+    //   redisController.writeToCache(body, req, response);
+    // }
     return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
   });
 };
@@ -502,20 +500,20 @@ export let getEstoreApiForLogOut = (req, res) => {
     }
     console.log("" + options.url + ":" + (Date.now() - req.start));
     // to write data into redis database
-    if ((<any>environment).isRedisCacheEnabled) {
-      redisController.writeToCache(body, req, response);
-    }
+    // if ((<any>environment).isRedisCacheEnabled) {
+    //   redisController.writeToCache(body, req, response);
+    // }
     const incomingToken = _.get(req, "headers.authtoken", undefined);
     const decodedToken = tokenStore.decodeToken(incomingToken);
-    dynamicRedis.deleteTokenData(decodedToken.mobileNumOrNRIC, (errorFromDel, responseFromDel) => {
-      if (errorFromDel) {
-        console.log(errorFromDel);
-      } else if (responseFromDel) {
-        return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
-      } else {
-        return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
-      }
-    });
+    // dynamicRedis.deleteTokenData(decodedToken.mobileNumOrNRIC, (errorFromDel, responseFromDel) => {
+    //   if (errorFromDel) {
+    //     console.log(errorFromDel);
+    //   } else if (responseFromDel) {
+    //     return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
+    //   } else {
+    //     return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
+    //   }
+    // });
     // return res.status(response.statusCode).send(body);
     // return utils.sendResponseByEliminatingXSS(req, res, error, response, body);
   });
@@ -570,7 +568,7 @@ export let generateEstoreUserOptions = (req, res) => {
 export let generateEstoreOptions = (req, res) => {
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : "";
   const auth = "Bearer " + token;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   const urlData = (<any>environment).eStoreUrl + req.url;
   logger.info( /* "Function Name: " +  stack[0].method + " : " + stack[0].line + */" File Name: " + __filename + "URL : " + urlData);
   let options;
@@ -619,7 +617,7 @@ export let postEstoreData = (req, res) => {
 export let generateEstoreOptionsForPost = (req, res) => {
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : eStoreToken;
   const auth = "Bearer " + token;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   const urlData = (<any>environment).eStoreUrl + req.url;
   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line + */" File Name: " + __filename + "URL : " + urlData);
   const bodyData = JSON.stringify(req.body);
@@ -803,15 +801,15 @@ export let postEstoreDataWithUserToken = (req, res) => {
       const responseBody = JSON.parse(body);
       if (_.get(responseBody[0], "clearRedis")) {
         const key = '/rest/V1/devicedetails/' + _.get(req, 'body.data.bundle_product_sku', '');
-        redisController.deleteKey(key, (err) => {
-          if (err) {
-            logger.info(err);
-          } else {
-            logger.info("Key Deleted From Redis. Key : " + key);
-          }
-        });
+        // redisController.deleteKey(key, (err) => {
+        //   if (err) {
+        //     logger.info(err);
+        //   } else {
+        //     logger.info("Key Deleted From Redis. Key : " + key);
+        //   }
+        // });
       } else if ((!_.isNil(selectedSKU) && !_.isNil(deviceName))) {
-        redisController.decrementDeviceCountForPreOrder(selectedSKU, deviceName);
+      //  redisController.decrementDeviceCountForPreOrder(selectedSKU, deviceName);
       }
     }
 
@@ -829,7 +827,7 @@ export let postEstoreDataWithUserToken = (req, res) => {
 export let generateEstoreOptionsForGetWithUserToken = (req, res) => {
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : "";
   const auth = "Bearer " + token;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   const urlData = (<any>environment).eStoreUrl + req.url;
   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line + */ " File Name: " + __filename + " URL :" + urlData);
   let options;
@@ -892,7 +890,7 @@ export let generateEstoreOptionsForGetWithOauth = (req, res) => {
 
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : "";
   // const auth = "Bearer " + token;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line + */ " File Name: " + __filename + " URL :" + urlData);
   let options;
   options = {
@@ -952,7 +950,7 @@ export let generateEstoreOptionsForPostWithOauth = (req, res) => {
   Authorization += '",oauth_nonce="' + nounce + '",oauth_version="1.0",oauth_signature="' + encodedSignature + '"';
 
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : eStoreToken;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line + */
   " File Name: " + __filename + " URL :" + urlData);
   const bodyData = JSON.stringify(req.body);
@@ -993,7 +991,7 @@ export let generateEstoreOptionsForPostWithOauth = (req, res) => {
 export let generateEstoreOptionsForPostWithUserToken = (req, res) => {
   const token = (req.headers['usertoken']) ? req.headers['usertoken'] : eStoreToken;
   const auth = "Bearer " + token;
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   const urlData = (<any>environment).eStoreUrl + req.url;
   logger.info(/* "Function Name: " +  stack[0].method + " : " + stack[0].line + */
   " File Name: " + __filename + " URL :" + urlData);

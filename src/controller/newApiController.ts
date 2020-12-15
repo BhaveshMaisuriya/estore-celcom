@@ -1,5 +1,4 @@
 import * as environment from '../../environment.json';
-import * as dynamicRedis from '../controller/redisController_DynamicData';
 const prodServer = (<any>environment).production;
 const logger = require('../utils/logger');
 const utils = require('./utils');
@@ -113,17 +112,17 @@ export let stockAvailabilityCheck = (req, res) => {
   req.start = Date.now();
   console.log("URL : " + req.url);
   console.log("Start Time : " + Date.now());
-  dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
-    if (isWSO2 == 'true') {
-      req.isNewApiGW = true;
-      return getAccessTokenAndPostForStockAvailablility(req, res, false);
-    } else {
-      return postForStockAvailable(req, res);
-    }
-  }, (error) => {
-    logger.error(JSON.stringify(error));
-    return postForStockAvailable(req, res);
-  });
+  // dynamicRedis.isWSO2ApiGateway().then((isWSO2) => {
+  //   if (isWSO2 == 'true') {
+  //     req.isNewApiGW = true;
+  //     return getAccessTokenAndPostForStockAvailablility(req, res, false);
+  //   } else {
+  //     return postForStockAvailable(req, res);
+  //   }
+  // }, (error) => {
+  //   logger.error(JSON.stringify(error));
+  //   return postForStockAvailable(req, res);
+  // });
 };
 
 export let getAccessTokenAndPostForStockAvailablility = (req, res, isNewToken) => {
@@ -198,15 +197,15 @@ function tokenGeneration(result, req, res) {
       }
     if (_.get(body[0], "status", false) || _.get(body, 'status', false)) {
       const token = tokenStore.generateUniqueJwtToken(mobileNumberOrMsisdn);
-        dynamicRedis.storeJWTToken(mobileNumberOrMsisdn, token, (tokenStorageErr, tokenStorageResult) => {
-          if (tokenStorageErr) {
-            body.token = undefined;
-            return res.status(500).send({status : false, message : "Unable to generate the token. Please try again."});
-          } else {
-            _.isArray(body) ? _.set(body[0], "authtoken", token) : _.set(body, "authtoken", token);
-            return res.status(200).send(body);
-          }
-        });
+        // dynamicRedis.storeJWTToken(mobileNumberOrMsisdn, token, (tokenStorageErr, tokenStorageResult) => {
+        //   if (tokenStorageErr) {
+        //     body.token = undefined;
+        //     return res.status(500).send({status : false, message : "Unable to generate the token. Please try again."});
+        //   } else {
+        //     _.isArray(body) ? _.set(body[0], "authtoken", token) : _.set(body, "authtoken", token);
+        //     return res.status(200).send(body);
+        //   }
+        // });
     } else {
       return res.status(result.response.statusCode).send(body);
     }

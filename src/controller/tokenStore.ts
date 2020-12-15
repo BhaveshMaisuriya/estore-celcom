@@ -1,5 +1,4 @@
 const jwt = require("jwt-simple");
-import * as tokenStorage from './redisController_DynamicData';
 const _ = require('lodash');
 const crypto = require('crypto');
 const asymmetricCrypto = require('asymmetric-crypto');
@@ -48,24 +47,24 @@ export let authenticateWithBearer = (req, res, next) => {
   try {
     const decodedToken = decodeToken(incomingToken);
     const tokenKey = decodedToken.mobileNumOrNRIC;
-    tokenStorage.retriveJWTToken(tokenKey, function (err, tokenData) {
-      if (err) {
-        console.log(err);
-        return res.status(500).json({ success: false, error: err });
-      } else if (!tokenData) {
-        return res.status(401).json({ success: false, message: 'Your session has expired. Please login to continue browsing.' });
-      } else {
-        _.assign(res.locals, { "decodeToken": decodedToken });
-        tokenStorage.resetTokenExpireTime(tokenKey, (e, result) => {
-          if (e) {
-            console.log("Unable to Reset the Expire Time.");
-          } else {
-            // console.log("Successfully Reset the Expire Time.");
-          }
-        });
-        return next(null, decodedToken);
-      }
-    });
+    // tokenStorage.retriveJWTToken(tokenKey, function (err, tokenData) {
+    //   if (err) {
+    //     console.log(err);
+    //     return res.status(500).json({ success: false, error: err });
+    //   } else if (!tokenData) {
+    //     return res.status(401).json({ success: false, message: 'Your session has expired. Please login to continue browsing.' });
+    //   } else {
+    //     _.assign(res.locals, { "decodeToken": decodedToken });
+    //     tokenStorage.resetTokenExpireTime(tokenKey, (e, result) => {
+    //       if (e) {
+    //         console.log("Unable to Reset the Expire Time.");
+    //       } else {
+    //         // console.log("Successfully Reset the Expire Time.");
+    //       }
+    //     });
+    //     return next(null, decodedToken);
+    //   }
+    // });
   } catch (err) {
     return res.status(500).json({
       success: false,
