@@ -11,8 +11,8 @@ import * as compression from "compression";
 import * as environment from "./environment.json";
 import * as apiController from "./src/controller/apiController";
 import * as newApiController from "./src/controller/newApiController";
-import * as redisController from "./src/controller/redisController";
-import * as redisControllerForDynamicData from "./src/controller/redisController_DynamicData";
+//import * as redisController from "./src/controller/redisController";
+//import * as redisControllerForDynamicData from "./src/controller/redisController_DynamicData";
 import * as upgradePlanController from "./src/controller/upgradePlanController";
 import * as orderController from "./src/controller/orderController";
 import * as eKycRoutes from './src/controller/ekycController';
@@ -252,12 +252,12 @@ app.post('*', postRequestInterceptiorForXss);
 app.get("/getDrupalSessionToken", apiController.getDrupalSession);
 
 app.get("/api/*", (req, res) => {
-  const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
-  if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
-    redisController.readFromCache(req, res);
-  } else {
+  //const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
+ // if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
+   // redisController.readFromCache(req, res);
+  //} else {
     apiController.getApi(req, res);
-  }
+  //}
 });
 
 app.post("/email_rest_resource", (req, res) => {
@@ -290,13 +290,13 @@ app.get("/rest/*", (req, res) => {
   res.header('Referer', req.headers.referer);
   // res.header('Expires', '-1');
   res.header('Pragma', 'no-cache');
-  const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
-  console.log(`cache url check : ${isRequiredToCacheDetails}, ${(<any>environment).isRedisCacheEnabled}, ${req.url}`);
-  if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
-    redisController.readFromCache(req, res);
-  } else {
+  //const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
+  //console.log(`cache url check : ${isRequiredToCacheDetails}, ${(<any>environment).isRedisCacheEnabled}, ${req.url}`);
+  //if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
+   // redisController.readFromCache(req, res);
+  //} else {
     apiController.getEstoreApi(req, res);
-  }
+  //}
 });
 
 app.post("/rest/V1/customerOrders", (req, res) => {
@@ -617,146 +617,146 @@ app.get('/rest/V1/applewatcheligibility', (req, res) => {
 
 if (!isProd) {
   app.get("/clearCache", (req, res) => {
-    redisController.flushRedisCache(req, res);
+  //  redisController.flushRedisCache(req, res);
   });
 
-  app.get('/redis-keys', (req, res) => {
-    redisController.readAllKeys().then((val) => {
-      if (val) {
-        return res
-          .status(200)
-          .send(val);
-      }
+  // app.get('/redis-keys', (req, res) => {
+  //   //redisController.readAllKeys().then((val) => {
+  //     if (val) {
+  //       return res
+  //         .status(200)
+  //         .send(val);
+  //     }
 
-      return res
-          .status(404)
-          .send('Not found!');
-    }, error => {
-      return res
-          .status(500)
-          .send({
-            ...error,
-            status: 'Redis is not connected'
-          });
-    });
-  });
+  //     return res
+  //         .status(404)
+  //         .send('Not found!');
+  //   }, error => {
+  //     return res
+  //         .status(500)
+  //         .send({
+  //           ...error,
+  //           status: 'Redis is not connected'
+  //         });
+  //   });
+  // });
 
-  app.post('/redis-value', (req, res) => {
-    const data = req.body;
-    redisController.readKeyValuePair(data?.key).then((val) => {
-      if (val) {
-        return res
-          .status(200)
-          .send(val);
-      }
+  // app.post('/redis-value', (req, res) => {
+  //   const data = req.body;
+  //   redisController.readKeyValuePair(data?.key).then((val) => {
+  //     if (val) {
+  //       return res
+  //         .status(200)
+  //         .send(val);
+  //     }
 
-      return res
-          .status(404)
-          .send('Not found!');
-    }, error => {
-      return res
-          .status(500)
-          .send({
-            ...error,
-            status: 'Redis is not connected'
-          });
-    });
-  });
+  //     return res
+  //         .status(404)
+  //         .send('Not found!');
+  //   }, error => {
+  //     return res
+  //         .status(500)
+  //         .send({
+  //           ...error,
+  //           status: 'Redis is not connected'
+  //         });
+  //   });
+  // });
 
-  app.post('/redis-set', async (req, res) => {
-    const data = req.body;
-    const addedValue = {};
-    for (const key of Object.keys(data)) {
-      redisController.writeKeyValuePair(key, data[key]);
-      let dt;
-      try {
-        dt = await redisController.readKeyValuePair(key);
-      } catch (error) {
-        return res
-          .status(500)
-          .send(addedValue);
-      }
-      addedValue[key] = dt;
-    }
-    return res
-          .status(200)
-          .send(addedValue);
-  });
+  // app.post('/redis-set', async (req, res) => {
+  //   const data = req.body;
+  //   const addedValue = {};
+  //   for (const key of Object.keys(data)) {
+  //     redisController.writeKeyValuePair(key, data[key]);
+  //     let dt;
+  //     try {
+  //       dt = await redisController.readKeyValuePair(key);
+  //     } catch (error) {
+  //       return res
+  //         .status(500)
+  //         .send(addedValue);
+  //     }
+  //     addedValue[key] = dt;
+  //   }
+  //   return res
+  //         .status(200)
+  //         .send(addedValue);
+  // });
   
-  app.get('/redis-keys-dynamic', (req, res) => {
-    redisControllerForDynamicData.readAllKeys().then((val) => {
-      if (val) {
-        return res
-          .status(200)
-          .send(val);
-      }
+  // app.get('/redis-keys-dynamic', (req, res) => {
+  //   redisControllerForDynamicData.readAllKeys().then((val) => {
+  //     if (val) {
+  //       return res
+  //         .status(200)
+  //         .send(val);
+  //     }
 
-      return res
-          .status(404)
-          .send('Not found!');
-    }, error => {
-      return res
-          .status(500)
-          .send({
-            ...error,
-            status: 'Redis is not connected'
-          });
-    });
-  });
+  //     return res
+  //         .status(404)
+  //         .send('Not found!');
+  //   }, error => {
+  //     return res
+  //         .status(500)
+  //         .send({
+  //           ...error,
+  //           status: 'Redis is not connected'
+  //         });
+  //   });
+  // });
 
-  app.post('/redis-value-dynamic', (req, res) => {
-    const data = req.body;
-    redisControllerForDynamicData.readKeyValuePair(data?.key).then((val) => {
-      if (val) {
-        return res
-          .status(200)
-          .send(val);
-      }
+  // app.post('/redis-value-dynamic', (req, res) => {
+  //   const data = req.body;
+  //   redisControllerForDynamicData.readKeyValuePair(data?.key).then((val) => {
+  //     if (val) {
+  //       return res
+  //         .status(200)
+  //         .send(val);
+  //     }
 
-      return res
-          .status(404)
-          .send('Not found!');
-    }, error => {
-      return res
-          .status(500)
-          .send({
-            ...error,
-            status: 'Redis is not connected'
-          });
-    });
-  });
+  //     return res
+  //         .status(404)
+  //         .send('Not found!');
+  //   }, error => {
+  //     return res
+  //         .status(500)
+  //         .send({
+  //           ...error,
+  //           status: 'Redis is not connected'
+  //         });
+  //   });
+  // });
 
-  app.post('/redis-set-dynamic', async (req, res) => {
-    const data = req.body;
-    const addedValue = {};
-    for (const key of Object.keys(data)) {
-      redisControllerForDynamicData.writeKeyValuePair(key, data[key]);
-      let dt;
-      try {
-        dt = await redisControllerForDynamicData.readKeyValuePair(key);
-      } catch (error) {
-        return res
-          .status(500)
-          .send(addedValue);
-      }
-      addedValue[key] = dt;
-    }
-    return res
-          .status(200)
-          .send(addedValue);
-  });
+  // app.post('/redis-set-dynamic', async (req, res) => {
+  //   const data = req.body;
+  //   const addedValue = {};
+  //   for (const key of Object.keys(data)) {
+  //     redisControllerForDynamicData.writeKeyValuePair(key, data[key]);
+  //     let dt;
+  //     try {
+  //       dt = await redisControllerForDynamicData.readKeyValuePair(key);
+  //     } catch (error) {
+  //       return res
+  //         .status(500)
+  //         .send(addedValue);
+  //     }
+  //     addedValue[key] = dt;
+  //   }
+  //   return res
+  //         .status(200)
+  //         .send(addedValue);
+  // });
 
   app.get('/redis-reconnect-dynamic', (req, res) => {
-    redisControllerForDynamicData.reconnect(req, res);
+   // redisControllerForDynamicData.reconnect(req, res);
   });
 
   app.get('/redis-reconnect', (req, res) => {
-    redisController.reconnect(req, res);
+   // redisController.reconnect(req, res);
   });
 }
 
 app.get("/getAdobeUrl", (req, res) => {
-  redisControllerForDynamicData.getAdobeURL(req, res);
+  //redisControllerForDynamicData.getAdobeURL(req, res);
 });
 
 app.post("/userDealerMap", (req, res) => {

@@ -64,7 +64,7 @@ export let generateOptions = (req, res) => {
   // Logger is commented Bcoz we are calling Portal API's
   // logger.info(/* "Function Name: " + stack[0].method + " : " + stack[0].line + */ " File Name: " + __filename + "URL: " + urlData);
   const auth = "Basic " + new Buffer(userName + ":" + pwd).toString("base64");
-  const agentDealerToken = this.getAgentDealerToken(req);
+  const agentDealerToken = getAgentDealerToken(req);
   // console.log(urlData);
   let options;
   options = {
