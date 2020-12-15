@@ -1,0 +1,104 @@
+<ng-container *ngIf="popupType == undefined">
+    <div id="more-supplementary-popup" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div (click)="exitSupplementaryPopup();"><img class="feature-box-close" src="/assets/img/Drop_3/icon/remove.svg"></div>
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Supplementary line will be lost</h3>
+                                <div class="What-would-you-like">
+                                    <p class="supply-warning">You'll have to reselect this supplementary line number if you leave this page.
+                                    </p>
+                                </div>
+                                <div class="supplementary-back-check">
+                                    <div class="guest-connect-login-now">
+                                        <button class="c-cta--default no-default-button" data-css="c-cta" (click)="exitSupplementaryPopup();">
+                                            <span class="cta__content">Stay</span>
+                                        </button>
+                                    </div>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default yes-default-button" data-css="c-cta" (click)="loseSupplementaryLinePopup();">
+                                            <span class="cta__content">Leave page</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="popupType && popupType.type === 'upsellMoon'">
+    <div id="more-supplementary-popup" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div (click)="cancelSwitching();"><img class="feature-box-close" src="/assets/img/Drop_3/icon/remove.svg"></div>
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Hold on!</h3>
+                                <img src="../../../../assets/img/upsell-4gb.svg">
+                                <div class="What-would-you-like What-would-you-like-mobile">
+                                    <div>Just add RM10 to enjoy additional 4GB Internet monthly.</div>
+                                    <div>Don’t miss out on this amazing offer now!</div>
+                                </div>
+                                <div class="supplementary-back-check-upsell">
+                                    <div class="guest-connect-login-now">
+                                        <button class="c-cta--default add-4gb" data-css="c-cta"
+                                            (click)="continueSwitching();">
+                                            <span class="cta__content">Add 4GB extra</span>
+                                        </button>
+                                    </div>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default add-4gb no-thank-you" data-css="c-cta" (click)="cancelSwitching();">
+                                            <span class="cta__content">No, thank you</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="popupType && (popupType.type === 'switchingpurchasetype' || popupType.type === 'switchingplantype')">
+    <div id="more-supplementary-popup" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div (click)="cancelSwitching();"><img class="feature-box-close" src="/assets/img/Drop_3/icon/remove.svg"></div>
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Are you sure?</h3>
+                                <div class="What-would-you-like">
+                                    <p class="proceed-reset">Proceeding this action will reset all your previous selection.</p>
+                                </div>
+                                <div class="supplementary-back-check">
+                                    <div class="guest-connect-login-now">
+                                        <button class="c-cta--default no-default-button proceed-button" data-css="c-cta"
+                                            (click)="continueSwitching();">
+                                            <span class="cta__content">Proceed</span>
+                                        </button>
+                                    </div>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default yes-default-button" data-css="c-cta" (click)="cancelSwitching();">
+                                            <span class="cta__content">Cancel</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>

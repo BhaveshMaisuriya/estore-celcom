@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Atoms/Icons_#333/Interface/Edit</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path fill="#009ade" stroke="#009ade" d="M35.6735398,16.3074602 L31.2900398,11.9239602 L10.4113602,32.8026398 L14.7948602,37.1861398 L35.6735398,16.3074602 Z M37.7948602,14.1861398 L39.6634,12.3176 C40.9134,11.0676 40.9134,9.1836 39.6634,7.9346 C39.0614,7.3316 38.2834,6.9996 37.4714,6.9996 C36.6594,6.9996 35.8814,7.3316 35.2794,7.9346 L33.4113602,9.80263983 L37.7948602,14.1861398 Z M12.3187699,38.9526902 L8.64444883,35.2783692 L7.7324,39.8646 L12.3187699,38.9526902 Z M37.4714,2.9996 C39.2804,2.9996 41.0884,3.7016 42.4924,5.1046 C45.2994,7.9126 45.2994,12.3396 42.4924,15.1456 L15.1754,42.4626 L14.6364,42.5706 L5.1344,44.4606 L2.5974,44.9996 L3.1374,42.4626 L5.0274,32.9616 L5.1344,32.4216 L32.4504,5.1046 C33.8544,3.7016 35.6624,2.9996 37.4714,2.9996 Z" id="path-1"></path>
+    </defs>
+    <g id="Atoms/Icons_#333/Interface/Edit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#333333" xlink:href="#path-1"></use>
+    </g>
+</svg>

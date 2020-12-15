@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="23px" viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Atoms/Icons/Interface/No Filled</title>
+    <defs>
+        <path d="M10.9375,19.7916667 C6.05520833,19.7916667 2.08333333,15.8197917 2.08333333,10.9375 C2.08333333,6.05520833 6.05520833,2.08333333 10.9375,2.08333333 C15.8197917,2.08333333 19.7916667,6.05520833 19.7916667,10.9375 C19.7916667,15.8197917 15.8197917,19.7916667 10.9375,19.7916667 M10.9375,0 C4.896875,0 0,4.896875 0,10.9375 C0,16.978125 4.896875,21.875 10.9375,21.875 C16.978125,21.875 21.875,16.978125 21.875,10.9375 C21.875,4.896875 16.978125,0 10.9375,0 M14.8884896,5.51348958 L10.9374479,9.46453125 L6.98640625,5.51348958 L5.51348958,6.98640625 L9.46453125,10.9374479 L5.51348958,14.8884896 L6.98640625,16.3614063 L10.9374479,12.4103646 L14.8884896,16.3614063 L16.3614063,14.8884896 L12.4103646,10.9374479 L16.3614063,6.98640625 L14.8884896,5.51348958 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DSK/Prin/PrinCheckout" transform="translate(-331.000000, -189.000000)">
+            <g id="Group-8" transform="translate(43.000000, 162.000000)">
+                <g id="Atoms/Icons/Interface/No" transform="translate(287.000000, 26.000000)">
+                    <g id="Colour" transform="translate(1.562500, 1.562500)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+                        <g id="↳🎨Icon-Colour" mask="url(#mask-2)">
+                            <g transform="translate(-1.562500, -1.562500)" id="Atoms/Colours/1_Celcom/1_Primary/Celcom-Blue-#009BDF">
+                                <g>
+                                    <rect id="Atoms/Colours/1_Celcom/1_Primary/#009BDF" fill="#009BDF" x="0" y="0" width="25" height="25"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

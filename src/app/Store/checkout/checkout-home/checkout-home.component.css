@@ -1,0 +1,103 @@
+.step__background-color {
+	background-color: #f3f3f3;
+}
+/*  Callout Steps CSS  */
+
+.callout__step__content {
+	width: 32px;
+	height: 32px;
+	border: 1.5px solid #008c8d;
+	background-color: #f3f3f3;
+	border-radius: 50%;
+	margin: auto;
+	margin-bottom: 16px;
+}
+.has-section-padding.has-border {
+	padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+.callout_step-wrapper.is-step-active .callout__step__content {
+	background-color: #008c8d;
+	color: #fff;
+	border: 1.5px solid #008c8d;
+	margin: auto;
+	border-radius: 50%;
+	margin-bottom: 16px;
+}
+.callout_step-wrapper.is-step-active .callout-item_content {
+	font-weight: bold;
+}
+.callout_step-wrapper.is-step-done .callout__step__content {
+	background-color: #ccc;
+	color: #fff;
+	border: 1.5px solid #ccc !important;
+}
+.steps_wrapper {
+	display: inline-block;
+	margin: auto;
+	width: 100%;
+	padding: 0;
+}
+.steps_wrapper .callout_step-wrapper {
+	display: inline-block;
+	width: 32%;
+	text-align: center;
+}
+.is-1, .is-2, .is-3 {
+	padding-top: 6px;
+}
+.callout-item_content {
+	margin-top: 16px;
+	font-size: 12px;
+}
+.callout-item_content_payment {
+	font-size: 12px;
+}
+.line_connect_step {
+	width: 63%;
+	position: absolute;
+	top: 25%;
+	left: 17%;
+	opacity: 0.2;
+	border: 1px solid #008c8d;
+	z-index: -1;
+}
+@media (max-width: 767px) {
+	.line_connect_step {
+		top: 21%;
+		left: 17%;
+	}
+	.callout-item_content {
+		width: 50px;
+		text-align: center;
+		margin: auto;
+	}
+	.callout_step-wrapper:last-of-type .callout__step__content {
+		margin-bottom: 32px;
+	}
+	.callout_step-wrapper.is-mnp {
+		margin-left: 120px;
+	}
+	.callout_step-wrapper.is-mnp .callout__step__content {
+		margin-bottom: 16px;
+	}
+	.has-section-padding.has-border {
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+	}
+	.callout-item_content_payment {
+		position: relative;
+		top: -20px;
+	}
+}
+@media (max-width: 768px) and (min-width: 768px) {
+	.callout_step-wrapper.is-mnp {
+		margin-left: 230px;
+	}
+}
+@media (min-width:769px) {
+	.is-mnp {
+		margin-left: 32%;
+	}
+}

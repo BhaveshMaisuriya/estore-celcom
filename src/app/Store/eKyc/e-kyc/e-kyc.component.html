@@ -1,0 +1,223 @@
+<div class="ekyc" *ngIf="isMobile">
+    <div class="carouselContent" *ngIf="step === 1">
+        <img class="logo" src="/assets/img/svg/logo.svg" alt="Celcom" />
+        <h4>Scan your ID</h4>
+
+        <ngu-carousel
+            #ekycCarousel
+            [inputs]="ekycCarouselConfig"
+            [dataSource]="ekycImages"
+        >
+            <div *nguCarouselDef="let item" class="item">
+                <p class="scanInstruction">
+                    {{item.text}}
+                </p>
+                <img [src]="item.img" alt="Ic" />
+            </div>
+        </ngu-carousel>
+        <ul class="myPoint" NguCarouselPoint>
+            <li
+                *ngFor="let i of ekycCarousel.pointNumbers; let j = index"
+                [class.active]="j == ekycCarousel.activePoint"
+                (click)="ekycCarousel.moveTo(j)"
+            ></li>
+        </ul>
+        <div class="scanContainer">
+            <button
+                class="btn btn-rounded btn-primary scan"
+                (click)="goToStep(6)"
+            >
+                Scan Now
+            </button>
+        </div>
+    </div>
+    <div *ngIf="step === 6 || step === 7">
+        <app-image-capture (imageSet)="uploadImage()" (close)="goToStep(step === 6 ? 1 : 3)" [mode]="step === 6 ? 'environment': 'user'"></app-image-capture>
+    </div>
+    <div class="idDetails" *ngIf="step === 2">
+        <h5>Your ID</h5>
+        <img src="data:image/jpeg;base64,{{ idImage }}" alt="your Id" />
+        <h5 class="mt">User Information</h5>
+        <p class="desc">
+            Please ensure the details below are correct, especially your ID
+            number.
+        </p>
+        <form [formGroup]="personalDetails">
+            <app-estore-input
+              label="Full name (As per ID)"
+              appearance="standard"
+              formControlName="name"
+              disabled="true"
+            ></app-estore-input>
+            <div *ngIf="!isPassport">
+              <app-estore-input
+              label="ID Number"
+              appearance="standard"
+              formControlName="idNumber"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="Citizenship"
+              appearance="standard"
+              formControlName="citizenShip"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="Address Line 1"
+              appearance="standard"
+              formControlName="address1"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="Address Line 2"
+              appearance="standard"
+              formControlName="address2"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="Postcode"
+              appearance="standard"
+              formControlName="postCode"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="City"
+              appearance="standard"
+              formControlName="city"
+              disabled="true"
+            ></app-estore-input>
+            <app-estore-input
+              label="State"
+              appearance="standard"
+              formControlName="state"
+              disabled="true"
+            ></app-estore-input>
+            </div>
+            <div *ngIf="isPassport">
+              <app-estore-input
+                label="Passport ID"
+                appearance="standard"
+                formControlName="idNumber"
+                disabled="true"
+              ></app-estore-input>
+              <app-estore-input
+                label="Passport Issuing Country"
+                appearance="standard"
+                formControlName="issueCountry"
+                disabled="true"
+              ></app-estore-input>
+              <app-estore-input
+                label="Nationality"
+                appearance="standard"
+                formControlName="issueCountry"
+                disabled="true"
+              ></app-estore-input>
+              <app-estore-input
+                label="Date of Expiry"
+                appearance="standard"
+                formControlName="expireDate"
+                disabled="true"
+              ></app-estore-input>
+            </div>
+          </form>
+        <div class="stickyFooter">
+            <h4>Information Correct?</h4>
+            <div class="btnSection">
+                <button class="btn btn-rounded scanAgain" (click)="goToStep(1)">
+                    No, scan again
+                </button>
+                <button class="btn btn-rounded btn-primary" (click)="goToStep(3)">
+                    Yes, proceed
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="selfieInstructions" *ngIf="step === 3">
+        <img class="logo" src="/assets/img/svg/logo.svg" alt="celcom" />
+        <h4>Scan your ID</h4>
+        <p class="scanInstruction">
+            Please take selfie under good lighting conditions and make sure that
+            your face appears clearly.
+        </p>
+        <img src="assets/img/eKyc/SelfieSample.svg" alt="Selfie" />
+        <div class="scanContainer">
+            <button
+                class="btn btn-rounded btn-primary scan"
+                (click)="goToStep(7)"
+            >
+                Take Selfie Now
+            </button>
+        </div>
+    </div>
+    <div class="successPage" *ngIf="step === 4">
+        <img src="assets/img/eKyc/Success.svg" alt="Success" />
+        <h6>Submission Successful</h6>
+        <p>Your information has been successfully submitted.</p>
+        <div *ngIf="fromDesktop">
+            <div class="proceedDesktop">
+                <mat-icon>notifications_none</mat-icon>
+                <p>
+                    Close this window and head to your desktop to
+                    complete your purchase.
+                </p>
+            </div>
+        </div>
+        <div class="scanContainer" *ngIf="!fromDesktop">
+            <button
+                class="btn btn-rounded btn-primary"
+                (click)="proceed()"
+            >
+                Proceed to Complete Purchase
+            </button>
+        </div>
+    </div>
+    <div class="loadingStep" *ngIf="step === 5">
+        <div>
+            <div class="d-flex justify-content-center">
+                <span class="spin-loader loading"></span>
+            </div>
+            <h3>uploading....</h3>
+        </div>
+    </div>
+    <div class="successPage" *ngIf="step === 8 || step === 9">
+        <img src="assets/img/eKyc/Fail.svg" alt="Fail" />
+        <div [innerHTML]="errMsg | safeHtml"></div>
+        <div class="scanContainer">
+            <button
+                class="btn btn-rounded btn-primary scan"
+                (click)="goToStep(step === 8 ? 1 : 3)"
+            >
+                {{step === 8 ? 'Scan again' : 'Take Selfie Again'}}
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="notMobile" *ngIf="!isMobile">
+    <img src="assets/img/eKyc/Error.svg" alt="Error" />
+    <h1>Oops!</h1>
+    <p>
+        The page you’re looking for is only available to view in mobile devices
+        only.
+    </p>
+    <button class="btn btn-rounded btn-primary" [routerLink]="['/']">
+        Back to Online Shop
+    </button>
+</div>
+
+<app-modal
+    id="session-expried-popup"
+    [rounded]="true"
+    [autoShow]="false"
+    [closeBtn]="false"
+>
+    <div class="sessionExpired">
+        <h6>
+            Sorry, your Session has expired or not found. Please rescan your QR
+            Code
+        </h6>
+        <button class="btn btn-rounded btn-primary" [routerLink]="['/']">
+            Home
+        </button>
+    </div>
+</app-modal>

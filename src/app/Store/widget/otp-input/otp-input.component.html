@@ -1,0 +1,63 @@
+<div class="" [ngClass]="{'home_wireless_otp': pageType === 'hwInLine' , 'cobp-otp': pageType === 'cobpInLine' , 'newLine-otp-bg': pageType === 'newInLine' || pageType === 'suppLines' , 'nric-newLine-bg-star' : isProjectStar(),'fastcheckout-msisdn': pageBlock == 'msisdnblock'}">
+  <div class="box-shadow-login-content" [ngClass]="{'newLine-otp': pageType === 'newInLine' || pageType === 'suppLines' , 'cobp-otp-nomargin': pageType === 'cobpInLine','fastcheckout-msisdn': pageBlock == 'msisdnblock'}">
+  <div class="">
+      <div class="otp-shadow-login-width" [ngClass]="{'cobp-otp-nomargin': pageType === 'cobpInLine'}">
+        <p class="mobile-otp-num" *ngIf="TextFlag">OTP number:
+        <span class="mobile-no-manadatory">*</span>
+        </p>
+        <p class="mobile-otp-num" *ngIf="TextFlag !== true">Enter OTP Number
+            <span class="mobile-no-manadatory">*</span>
+          </p>
+        <div class="otp-content">
+          <div class="otp-content-inner">
+            <div class="moblie-form-group-otp" [ngClass]="{'errorred': errorExits}">
+              <input class="form-control otp-control otp-box-width" id="txtOtp_1" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp1" #testOtp1="ngModel" required maxlength="1" (keyup)="onLogin($event,'2','1')" (click)="otpInputBoxClicked($event,'2')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+              <input class="form-control otp-control"  id="txtOtp_2" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp2" #testOtp2="ngModel" required maxlength="1" (keyup)="onLogin($event,'3','2')" (click)="otpInputBoxClicked($event,'3')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+              <input class="form-control otp-control"  id="txtOtp_3" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp3" #testOtp3="ngModel" required maxlength="1" (keyup)="onLogin($event,'4','3')" (click)="otpInputBoxClicked($event,'4')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+              <input class="form-control otp-control"  id="txtOtp_4" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp4" #testOtp4="ngModel" required maxlength="1" (keyup)="onLogin($event,'5','4')" (click)="otpInputBoxClicked($event,'5')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+              <input class="form-control otp-control"  id="txtOtp_5" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp5" #testOtp5="ngModel" required maxlength="1" (keyup)="onLogin($event,'6','5')" (click)="otpInputBoxClicked($event,'6')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+              <input class="form-control otp-control"  id="txtOtp_6" name="customerName" type="number" inputmode="numeric"
+                [(ngModel)]="otp6" #testOtp6="ngModel" required maxlength="1" (keyup)="onLogin($event,'','6')" (click)="otpInputBoxClicked($event,'')" [ngClass]="{'cobp-otp-box': (pageType === 'cobpInLine' && !forceGrayBG) , 'newLine-otp-length': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() }"/>
+            </div>
+            <div *ngIf="errorExits" class="error otp-error" [ngClass]="{'home_wireless_otp_error': pageType === 'hwInLine' , 'home_wireless_otp_error1': pageType === 'cobpInLine' ,'fastcheckout-msisdn': pageBlock == 'msisdnblock', 'home_wireless_otp_error2': pageType === 'newInLine' || pageType === 'suppLines'}">
+              <span class="otp-error-heading">{{errorMessage.message}}</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="otp-expiry-login">
+              OTP expires in
+              <span
+                class="count-down" [ngClass]="{'count-down-end': otpCounter === 0}"
+              >{{ otpCounter | formatTime }}</span>
+            </div>
+            <div class="otp__link">
+              <a class="c-link--default" data-css="c-link" (click)="ResendOtp();" [ngClass]="{'disable_resend': resendLinkDisabled}">
+                <span class="link__icon icon is-icon-arrow"></span>
+                <span class="otp-link__content">Send new OTP</span>
+              </a>
+              <p class="required-field">* Mandatory Field</p>
+            </div>
+            <div class="otp-connect-login-now">
+              <button class="btn btn-rounded" (click)="validateOTPByMC();" (keyup)="onLogin($event)"
+                [disabled]="isDisableLogin() || loading">
+                <span *ngIf="loading" class="btn-loader">
+                  <span class="spin-loader"></span>
+                </span>
+                Login
+              </button>
+            </div>
+            <!-- <div class="eligible-homewireless">
+            <p class="eligible-hw">You are eligible. To continue purchase, kindly login as guest.</p>
+            <button class="proceed-hw">Proceed as Guest</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-page-loader [hidden]="!loading"></app-page-loader>

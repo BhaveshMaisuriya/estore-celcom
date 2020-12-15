@@ -1,0 +1,35 @@
+<section class="page-container">
+  <div class="u-grid-col">
+    <button class="c-cta--default previous" data-css="c-cta" routerLink="/store/agentlandingpage"><span class="cta__icon icon is-icon-arrow icon-previous"></span>Previous</button>
+    <h3 class="headline">{{campaignType}} Campaign</h3>
+    <div *ngIf="!isDisplayErrorPopup && campaignDataResponse && campaignDataResponse.length >0">
+      <table class="table-data">
+        <tr class="table-header">
+          <th class="campaign-width">Name of Campaign</th>
+          <th>Start date</th>
+          <th>End date</th>
+          <th class="campaign-width">IKB URL</th>
+          <th class="upfront-th">Upfront charged<br><span>(Yes/No)</span></th>
+          <th class="plan-padding">Target Plan</th>
+          <th>Target Device</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let data of campaignDataResponse" class="table-body">
+          <td class="campaign-width">{{data.promotion_name}}</td>
+          <td class="date-width">{{data.start_date}}</td>
+          <td class="date-width">{{data.end_date}}</td>
+          <td class="url-blue campaign-width"><a class="pointer-class" href="{{data.ikb_url}}">{{data.ikb_url}}</a></td>
+          <td class="date-width">{{data.upfront_payment}}</td>
+          <td class="plan-width">{{data.targeted_plan}}</td>
+          <td class="target-padding">{{data.targeted_device}}</td>
+          <td><a href="{{data.campaign_url}}"><button class="previous c-cta--default btn" data-css="c-cta">Upsell Now</button></a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<ng-container *ngIf="isDisplayErrorPopup && apiLoad">
+  <app-notification-error *ngIf="isDisplayErrorPopup && apiLoad" [data]="errorMessage" (OnContinue)="OnContinue($event);"></app-notification-error>
+</ng-container>
+<app-agent-footer class="footer-clm"></app-agent-footer>

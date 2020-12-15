@@ -1,0 +1,21 @@
+[
+  {
+    "status": true,
+    "message": "You are eligible to add supplimentary lines",
+    "placement": "0133748272",
+    "validation_id": "47768",
+    "accountdetails": [
+      {
+        "principle_no": "0133748272",
+        "plan_name": "MEGA Plan",
+        "supply_count": 1,
+        "supply_details": [
+          {
+            "supplyNo": "0136377748",
+            "supplyName": "Family Line Plan"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,70 @@
+<!-- prepaid-nric-login -->
+<p>Enter your personal details for verification.</p>
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="nricForm" (submit)="onSubmit()">
+
+        <div class="row">
+
+          <app-estore-input
+              *ngIf="typeOfPurchase === typeOfPurchaseOptions.mnp"
+              inputType="phone"
+              label="Your Current Prepaid Number"
+          ></app-estore-input>
+
+          <div class="col-lg-6 col-md-12">
+            <app-estore-input
+              label="ID Type"
+              inputType="select"
+              [success]="nricForm?.controls?.idType?.valid"
+              [options]="idTypeOptions"
+              appearance="fill"
+              formControlName="idType"
+              [disabled]="showEligible"
+            ></app-estore-input>
+          </div>
+
+          <div class="col-lg-6 col-md-12">
+            <!-- ! Currently estore-input don't support dynamic inputType -->
+            <app-estore-input
+              *ngIf="idType === 'nric'"
+              inputType="nric"
+              label="ID Number"
+              appearance="fill"
+              customValidationLabel="ID Number"
+              [success]="nricForm?.controls?.idNumber?.valid"
+              formControlName="idNumber"
+              [disabled]="showEligible"
+            ></app-estore-input>
+
+            <app-estore-input
+              *ngIf="idType === 'Passport'"
+              inputType="text"
+              label="ID Number"
+              appearance="fill"
+              customValidationLabel="ID Number"
+              [success]="nricForm?.controls?.idNumber?.valid"
+              formControlName="idNumber"
+              [disabled]="showEligible"
+            ></app-estore-input>
+          </div>
+        </div>
+
+        <p class="eligible-align" *ngIf="showEligible">
+          <span class="eligible-style">Hurray! You are eligible.</span>
+        </p>
+
+        <button
+          *ngIf="chkElgbBtn"
+          class="btn btn-primary btn-rounded"
+          type="submit"
+          [disabled]="!nricForm.controls.idNumber.valid || !nricForm.controls.idType.valid || loading"
+        >
+          <span *ngIf="loading" class="btn-loader" style="margin-left: 0">
+            <span class="spin-loader"></span>
+          </span>
+          Check Eligibility
+        </button>
+    </form>
+  </div>
+</div>

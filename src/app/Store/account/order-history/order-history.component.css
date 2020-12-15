@@ -1,0 +1,296 @@
+	/*  Breadcrumb Section CSS Start */
+
+	.c-breadcrumb--default {
+		z-index: 51;
+		padding: 2rem 18rem 2rem 18rem;
+		position: relative;
+	}
+	a {
+		cursor: pointer;
+	}
+	.c-link--default:hover {
+		text-decoration: none;
+	}
+	a.disabled {
+		pointer-events: none;
+		cursor: default;
+		color: gray;
+	}
+	.link__content {
+		text-align: left;
+		margin-right: -20px;
+	}
+	.is-icon-arrow-down {
+		font-size: 100%;
+		line-height: 1.35;
+		margin-left: -10px;
+	}
+	/*  Breadcrumb Section CSS End */
+
+	/*  Purchase History Hero Section CSS Start  */
+
+	.compare_mask {
+		background-image: url(../../../../assets/img/Drop_3/purchase-history-banner.jpg);
+		height: 146px;
+	}
+	.Reload-Now {
+		width: 100%;
+		height: 43px;
+		font: 32px Lato;
+		line-height: 0.9;
+		letter-spacing: -0.5px;
+		text-align: center;
+		color: #fff;
+		margin: 12px auto auto auto;
+	}
+	.Lets-begin-with-sim {
+		width: 278px;
+		height: 56px;
+		font: 18px Lato;
+		line-height: 1.11;
+		text-align: center;
+		color: #fff;
+		margin: 12px auto auto auto;
+	}
+	/*  Purchase History Hero Section CSS End  */
+
+	/* Purchase History Sortby Section CSS Start  */
+
+	.has-margin-top-2 {
+		margin-top: 2em;
+	}
+
+	.sorty-by-button {
+		display: inline-block;
+		width: 100%;
+		font: 14px Lato;
+		padding: 15px 25px;
+		text-align: left;
+		cursor: pointer;
+		text-decoration: none;
+		outline: none;
+		color: #000;
+		background-color: #f3f3f3;
+		border: none;
+		border-bottom: 2px solid #ccc;
+		/*Newly added property*/
+		box-shadow: 0 0 #ccc;
+		text-transform: capitalize;
+		/*changes in existing property*/
+	}
+	.is-width__100 {
+		width: 100%;
+	}
+	.filter-by-status {
+		/*Newly added class*/
+		position: absolute;
+		top: 50px;
+		z-index: 10;
+	}
+	.sorty-by-button>img {
+		width: 16px;
+		float: right
+	}
+	.sorty-by-button.is-filter-active {
+		border-bottom: 2px solid #2196f3 !important;
+	}
+	.sorty-by-button.is-filter-active img {
+		transform: rotate(180deg);
+	}
+	.sortby__list {
+		list-style: none;
+		padding: 0;
+		line-height: 3em;
+		margin: 0;
+		color: #626262;
+		font-size: 14px;
+	}
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		.filter-by-status {
+			left: 0;
+		}
+	}
+	.sortby__list .sortby__list_item {
+		padding-left: 23px;
+		cursor: pointer;
+	}
+	.sortby__list .sortby__list_item:hover {
+		background-color: #009ade;
+		color: #fff;
+	}
+	.is-filter-show {
+		display: block;
+	}
+	.filter__background {
+		background-color: #fff;
+		box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+		margin-top: 5px;
+	}
+	/*  Purchase History Sortby Section CSS End  */
+
+	/*  Purchase History List of Orders Sections CSS Start  */
+
+	.has-margin-top-2 {
+		margin-top: 2em;
+	}
+	.sorty-by-button>img {
+		width: 16px;
+		float: right
+	}
+	.row_heading {
+		font: normal bold 14px Lato;
+		font-stretch: normal;
+		line-height: 3.5;
+		letter-spacing: normal;
+		text-align: left;
+		background-color: #f3f3f3;
+	}
+	.order_list {
+		font: normal 14px Lato;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		text-align: left;
+		line-height: 1.5em;
+		border-bottom: 2px solid #ccc;
+		padding: 31px 0;
+	}
+	.order_list .track_anchor {
+		width: 74px;
+		height: 17px;
+		font: normal bold 14px Lato;
+		font-stretch: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		text-align: left;
+		color: #009ade;
+	}
+	.order_list .purchased_on {
+		line-height: 1.5;
+	}
+	.order_list .wrap-link {
+		word-wrap: break-word;
+	}
+	.order_list .no-margin-left {
+		margin-left: 0;
+	}
+	.tracking_id {
+		width: 160px;
+		height: 18px;
+		font: normal 14px Lato;
+		font-stretch: normal;
+		letter-spacing: normal;
+		text-align: left;
+	}
+	.tracking_id .tracking-id-no {
+		font-weight: bold;
+	}
+	.track-id-delivery {
+		line-height: 1.5;
+	}
+	.track_delivery {
+		min-width: 11rem !important;
+	}
+	.purchase_date {
+		display: block;
+	}
+	.load_more {
+		margin-bottom: 1em;
+		font: 14px Lato;
+	}
+	.order-history-no-records {
+		text-align: center;
+	}
+	.agentfooter {
+		/* position: fixed; */
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff;
+		width: 100%;
+	}
+	.is-text-align-center {
+		position: relative;
+		top: -40px;
+	}
+	.section__inner {
+	   position: relative;
+       z-index: 1;
+       padding-bottom: 2%;
+	}
+	@media (max-width:767px) {
+		.order_list {
+			line-height: 2;
+			padding: 14px 0;
+		}
+		.has-section-padding {
+			padding-top: 1rem;
+		}
+		.order_list .purchased_on {
+			padding-top: 0;
+		}
+		.is-mobile-absolute-top {
+			position: absolute;
+			right: 0;
+		}
+		.purchase_date {
+			margin-right: 10px;
+			display: inline;
+		}
+		.track-id-delivery {
+			margin-left: 20px;
+			width: 252px;
+		}
+		.track_delivery {
+			padding: 1px 2rem;
+		}
+		.tracking_id {
+			width: 95px;
+			height: auto;
+			display: table-cell;
+			line-height: 1.29;
+		}
+		.order_history_tracking {
+			display: table-cell;
+			padding-bottom: 20px;
+		}
+		.is-mobile-padding {
+			padding-bottom: 1em;
+			width: 100%;
+			margin-right: 20px;
+		}
+		.sorty-by-button {
+			width: 100%;
+		}
+		.previous {
+			width: 100%;
+		}
+		 .is-text-align-center {
+			top: -80px;
+		}
+		.section__inner {
+			padding-bottom: 15%;
+		 }
+	}
+	@media (min-width:768px) and (max-width:768px) {
+		.u-grid-col {
+			margin-left: 10px;
+		}
+		.payment-amount {
+			line-height: 1;
+			padding-top: 11px;
+		}
+	}
+	/*THIS IS A TEMPORARY FIX
+remove this when two more columns are added to the order history page*/
+
+	@media (min-width:768px) {
+		.is-col-tablet-p-2 {
+			text-align: center;
+			margin-left: 0;
+			width: calc(12.6666666667% - -22.67px);
+		}
+	}
+
+	.qrcode-img{
+		margin: 0px 10px;
+	}

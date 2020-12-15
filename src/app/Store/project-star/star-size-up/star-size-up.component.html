@@ -1,0 +1,88 @@
+<div id="section_2" class="u_section sectionize is-bg-color-grey ">
+     <div class="section__content is-container">
+    <div class="section2 dev-dtl-plan-heading">
+        <div class="section_index_container"><span class="section_index">2</span></div>
+        <h2 class="section_name">Size Up</h2>
+    </div>
+    <p *ngIf="selectedPass?.sku !== pass_gb_sku" class="__plan_text">Choose your UNLIMITED pass</p>
+    <p *ngIf="selectedPass?.sku === pass_gb_sku" class="__plan_text">Select passes  and enjoy unlimited internet for as long as you like without worries </p>
+    <!-- 
+        TODO: Replace old plans with this
+     -->
+    <section class="sizes_up__row2 is-equal-height plan-cards " *ngIf="false && (pass$ | async) as pass">
+        <app-plan-card 
+            *ngFor="let plan of pass.associated_passes"
+            (click)="OnTypeSelection(plan)"
+            [autoExpanded]="true"
+            [selected]="(plan$ | async)?.sku == plan.sku"
+            [title]="plan.name"
+            [collapsibleFooter]="true"
+            [pricetagTemplate]="price"
+            [description]="plan.offer | safeHtml"
+            [collapseButtonTemplate]="collapseBtn"
+            [height100]="true"
+        >
+            <ng-template #price>
+                <span style="font-size: 28px;">&#43;{{ plan.key_text }}</span>/month
+                <div *ngIf="(plan$ | async)?.sku != plan.sku">
+                    <img src="../../../../assets/img/add_new.svg" alt="add" class="image_in_center">
+                    <span class="add__remove_buttontext">Add</span>
+                </div>
+            </ng-template>
+            <ng-template #collapseBtn>
+                <div *ngIf="(pass$ | async)?.sku == pass_gb_sku" class="add_on_font">{{ plan.key_figures_text }}</div>
+            </ng-template>
+        </app-plan-card>
+    </section>
+    <section class="sizes_up__row2 u-grid-row is-equal-height " *ngIf="selectedPass">
+        <div class="side_by_side" *ngFor="let type of selectedPass?.associated_passes">
+            <div class="remove_div">
+                <div class="pass_s"
+                    (click)="!(typeAdded && typeAdded === type.sku) ? OnTypeSelection(type) : false"
+                    [ngClass]="{
+                        'is_active': typeAdded && typeAdded === type.sku,
+                        'clickable': !(typeAdded && typeAdded === type.sku)
+                    }">
+                    <div class="card-padding">
+                        <div class="add_on_font" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}">{{type.name}}</div>
+                        <div class="add_on_font gb_data" *ngIf="selectedPass?.sku === pass_gb_sku" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}">{{type.key_figures_text}}</div>
+                        <div class="gb_font" [innerHTML]="type.offer | safeHtml" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}"></div>
+                        <p class="videoWalla" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}"></p>
+                        <p class="pass_s__price" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}">+{{type.key_text}}<span class="monthly_charges_pass_s" [ngClass]="{'is_active':typeAdded && typeAdded === type.sku}">/month</span></p>
+                    </div>
+                    <div *ngIf="typeAdded !== type.sku" class="star_pass">
+                        <img src="../../../../assets/img/add_new.svg" alt="add" class="image_in_center">
+                        <span class="add__remove_buttontext">Add</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="selection_text">
+        <div class="form-group" *ngIf="selectedPass?.sku === pass_gb_sku">
+            <label class="check_container">
+                I want to purchase base plan only. I don’t need a pass
+                <input 
+                    type="checkbox" 
+                    name="nowant" 
+                    id="nowant" 
+                    [checked]="nowant"
+                    (change)="onTogglePass(plan$)">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <p class="_no_margin">You have selected: <b>{{selectedPass?.sku === pass_gb_sku ? dataLimit + "GB" : "Unlimited"}} Internet and Unlimited Calls to All Networks</b></p>
+        <p class="_has_margin">Total monthly commitment: <b>RM{{totalMonthlyPay}}/month</b></p>
+        <p *ngIf="selectedPass && selectedPass?.sku === pass_gb_sku" class="gb_text">To purchase with device, view <span class="redirect_link" (click)="moveToCatalog()">device catalogue</span> to pick your selection</p>
+    </div>
+    <div id="covid-campaign" *ngIf="is_campaign_active && agentType !== 'dealer'">
+        *Valid for new and port-in customers only. The rebate will be reflected in the customer’s second (2<sup>nd</sup>) to fourth (4<sup>th</sup>) month’s bill upon successful payment.
+    </div>
+
+</div>
+</div> <!-- end section_2 -->
+<ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopupStar">
+   <app-losing-supplementary-line-popup [popupType]='popupType' (OnContinueSupplementaryPopup)="onContinueSwitchingStarPassTab($event);"
+     (OnLeaveSupplementaryPopup)="onCancellingStarSwitchingPassTab($event)"></app-losing-supplementary-line-popup>
+ </ng-container>

@@ -1,0 +1,31 @@
+@import "app/styles/scss/colors.scss";
+
+body {
+  background-image: url('assets/img/youtube-bg.jpg');
+  background-repeat: repeat;
+}
+
+#container {
+  font-size: 20px;
+  color: #333333;
+  margin-bottom: 80px;
+
+  mat-icon {
+    color: $danger-color;
+    width: 200px;
+    height: 200px;
+    font-size: 200px;
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 40px;
+    color: $primary-color;
+  }
+
+  button {
+    display: flex;
+    margin: 16px auto;
+    width: 176px;
+  }
+}

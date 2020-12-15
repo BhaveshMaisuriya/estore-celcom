@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Shape" stroke="#FFFFFF" stroke-width="2">
+            <path d="M28.5041366,17.0440797 L28.5041366,7.87603416 C28.5041366,4.07850535 25.4256313,1 21.6281025,1 L12.4600569,21.6281025 L12.4600569,46.8405249 L38.3139454,46.8402277 C40.5997379,46.8660687 42.5552234,45.203906 42.8979681,42.9438084 L46.0609438,22.3157059 C46.2627692,20.9860077 45.8704712,19.6347603 44.9879582,18.6198704 C44.1054452,17.6049804 42.8217626,17.0288501 41.4769211,17.0440797 L28.5041366,17.0440797 Z"></path>
+            <path d="M12.4600569,46.8402277 L5.58402277,46.8402277 C3.0523369,46.8402277 1,44.7878908 1,42.2562049 L1,26.2121252 C1,23.6804394 3.0523369,21.6281025 5.58402277,21.6281025 L12.4600569,21.6281025 L12.4600569,46.8402277 Z" id="Path" fill="#FFFFFF"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94" height="81" viewBox="0 0 94 81">
+    <defs>
+        <path id="a" d="M.003 0h54.285v81H.003z"/>
+        <path id="c" d="M0 81h93.067V0H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g transform="translate(19.388)">
+                <mask id="b" fill="#fff">
+                    <use xlink:href="#a"/>
+                </mask>
+                <path fill="#009ADE" d="M48.472 0H5.819C2.609 0 .003 2.59.003 5.786v69.428C.003 78.41 2.608 81 5.819 81h42.653c3.212 0 5.816-2.59 5.816-5.786V5.786C54.288 2.59 51.684 0 48.472 0zM7.758 73.286h38.775V7.714H7.758v65.572z" mask="url(#b)"/>
+            </g>
+            <path fill="#009ADE" d="M50.52 66.227a3.864 3.864 0 0 1-3.877 3.857 3.864 3.864 0 0 1-3.878-3.857 3.864 3.864 0 0 1 3.878-3.857 3.864 3.864 0 0 1 3.877 3.857"/>
+            <mask id="d" fill="#fff">
+                <use xlink:href="#c"/>
+            </mask>
+            <path fill="#009ADE" d="M40.827 16.084h11.632v-3.857H40.827z" mask="url(#d)"/>
+            <path fill="#F4F4F4" d="M0 53.11h93.067V27.89H0z" mask="url(#d)"/>
+        </g>
+        <text fill="#009ADE" font-family="Lato-Black, Lato" font-size="20" font-weight="700" letter-spacing=".343">
+            <tspan x="14.723" y="48">PLANS</tspan>
+        </text>
+    </g>
+</svg>

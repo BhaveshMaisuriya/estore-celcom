@@ -1,0 +1,34 @@
+<div class="card-wrapper" [ngClass]="{'size2': cardType == 'easyphone' || planType == 'gb', 'has-badge': hasBadge}"
+  *ngIf="!isLoading; else loadingEl">
+  <app-plan-card *ngFor="let plan of plans" [ngClass]="{
+      'disabled': disabled
+    }" (click)="selectPlan(plan)" [useMaterialTheme]="true" [selected]="selectedSku == plan.selected_lifestylecontract"
+    [pricetag]="plan.price" [pricetagTemplate]="customPrice ? pricetagTemplate : null" [title]="plan.title"
+    [collapsibleFooter]="false" [height100]="false" [disabled]="disabled" [promotion_badge]="plan.badge"
+    [promotion_text]="plan.promotion_text"
+    [footerTemplate]="cardType != 'plan' ? footer : (plan.offers ? footer : null)">
+
+    <ng-template #footer>
+      <ng-container [ngSwitch]="true">
+        <ng-container *ngSwitchCase="cardType == 'plan'">
+          <div [innerHTML]="plan.offers | safeHtml"></div>
+        </ng-container>
+      </ng-container>
+    </ng-template>
+
+
+    <ng-template #pricetagTemplate>
+      <span class="price-text">{{ plan.price }}</span>
+      <span class="grey-text">voucher</span>&nbsp;
+    </ng-template>
+
+
+  </app-plan-card>
+</div>
+<ng-template #loadingEl>
+  <app-page-loader *ngIf="loadingType == 'spinner'"></app-page-loader>
+  <div *ngIf="loadingType == 'shimmer'" class="card-wrapper">
+    <div *ngFor="let plans of [1, 2, 3]" class="shimmer placeholder-card">
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,5 @@
+<div class="limited_stock__container" *ngIf="stock" [ngClass]="{'outstock': stock.status === 'Out of Stock'}">
+  <img class="limited-stock-icon"  *ngIf="stockStatus === 2" src="../../../../assets/img/svg/icons-layout/icon-instock.svg">
+  <img class="limited-stock-icon"  *ngIf="stockStatus === 3" src="../../../../assets/img/svg/icons-layout/icon-outofstock.svg">
+  <p class="limited-stock" [@stockCheck]="stockStatus">&nbsp;{{stock.stockStatusMsg}}</p>
+</div>

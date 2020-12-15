@@ -1,0 +1,22 @@
+.alternate-title {
+	font-size: 20px;
+}
+hr.separator {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ccc;
+	margin: 40px 0 40px;
+	padding: 0;
+}
+label {
+	font-weight: bold;
+}
+
+.personal-details-form {
+	bottom: 78px;
+}
+
+.personal-details-form .sub-section {
+  margin-bottom: 32px;
+}

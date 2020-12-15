@@ -1,0 +1,9 @@
+<app-ekyc-steps *ngIf="showEkycDetails === false" [showPassport]="showPassport" (getStatus)="setIntervalFn($event)"></app-ekyc-steps>
+<app-ekyc-details
+    *ngIf="showEkycDetails"
+    [ekycDetails]="ekycDetails"
+    [showImage]="showImage"
+></app-ekyc-details>
+<span *ngIf="isLoading">
+    <span class="spin-loader"></span>
+</span>

@@ -1,0 +1,279 @@
+.is-zindex-0 {
+  z-index: 0;
+}
+.is-container {
+  max-width: 88%;
+}
+.Device-bundle.single_tab {
+  margin-left: 0;
+}
+.details__choose_content_header {
+  height: 22px;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  padding-bottom: 8px;
+  display: inline;
+}
+.tabspace {
+  margin-left: 5%;
+}
+
+.choose__number__accordian .note__tab.is-active {
+  border: none;
+}
+
+.no-click {
+  pointer-events: none;
+}
+
+.select-dtls {
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: #fff;
+  border: solid 2px #ccc;
+  cursor: pointer;
+}
+
+.select-dtls:focus {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: solid 2px #009ade;
+  border-radius: 8px;
+  outline: none;
+}
+
+.details__choose_number {
+  margin-left: 8px;
+}
+
+.Device-bundle.pointerEve, .Easyphone.pointerEve, .device-only.pointerEve {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.Device-bundle.disableClass, .Easyphone.disableClass, .device-only.disableClass {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.Device-bundle.is-selected, .Easyphone.is-selected, .device-only.is-selected {
+  border: solid 1px #009ade !important;
+  border-radius: 8px;
+  background-color: #009ade;
+  color: #fff;
+  pointer-events: none;
+}
+
+.Device-bundle, .Easyphone, .device-only {
+  float: left;
+  width: 140px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: solid 1px #ccc;
+  cursor: pointer;
+  margin: 8px;
+  text-align: center;
+  margin-top: 20px;
+  display: table;
+  padding: 25px 0;
+}
+
+.Device-bundle__Details, .Easyphone__Details, .device-only__Details {
+  width: 100%;
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+}
+.ownRent {
+  margin: 0;
+}
+.Easyphone {
+  padding-top: 18px;
+  padding-bottom: 15px;
+}
+
+.device-only__Details{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.purchase-align-middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.is-selected {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: solid 2px #009ade;
+  border-radius: 8px;
+  background-color: #009ade;
+  pointer-events: none;
+}
+
+.storage__details.is-selected {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: solid 2px #009ade;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.number__details.is-selected {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  border: solid 2px #009ade;
+  border-radius: 8px;
+  background-color: #009ade;
+  color: #fff;
+  pointer-events: none;
+}
+
+.details {
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  text-align: center;
+  margin: 8px 21px 0;
+}
+
+.price-details {
+  width: 227.6px;
+  height: 54px;
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+@media (max-width:768px) {
+  .details__choose_content_header {
+    text-align: center;
+    padding-bottom: 8px;
+  }
+  .tabspace {
+    margin-left: 0;
+  }
+}
+@media (min-width: 768px) {
+  .rent-price-margin {
+    margin: 6px 0;
+  }
+}
+
+@media (min-width:769px) {
+  .details__choose_content_header {
+    text-align: left;
+  }
+}
+
+.c-accordion--default .accordion__btn::after,
+.c-footer .footer__sitemap .footer__sitemap__group .footer__sitemap__group-header::after,
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .device-detail-plan-border .plan-comparison__list__item__header::after {
+  content: " ";
+}
+
+@media (max-width: 767px) {
+  .Easyphone__Details,.Device-bundle__Details {
+    width: 100%;
+  }
+  .rent-price-margin {
+    margin: 9px 25px 8px;
+  }
+  .is-no-margin {
+    margin: 0;
+  }
+  .details {
+    margin: 0 25px 16px;
+  }
+  #neptune-container .is-container {
+    padding: 0 1.8rem 0 2.5rem;
+    max-width: 96%;
+  }
+
+  .Device-bundle,.Easyphone {
+    width: 120px;
+    margin: 16px 0 0;
+    padding: 24px 0;
+  }
+  .device-only {
+    margin: 16px 0;
+  }
+
+  .Device-bundle {
+    width: 40%;
+    display: inline-table;
+    vertical-align: middle;
+    margin-right: 5%;
+  }
+
+  .Easyphone {
+    width: 40%;
+    display: inline-table;
+    vertical-align: middle;    
+  }
+  .mobile-buy-device {
+    display: flex;
+  }
+  .device-only {
+    width: 40%;
+    display: inline-table;
+    vertical-align: middle;
+    padding: 24px 0;
+  }
+  .easy_phone_deatils {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    height: 180px;
+  }
+  .easy_phone_deatils_top {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    text-align: center;
+  }
+  .easy_phone_deatils_top p:first-child {
+    margin-bottom: 10px;
+  }
+  .easy_phone_deatils_top p:last-child {
+    margin-top: 10px;
+  }
+  .select_pricing_option {
+    width: 50%;
+    margin: auto;
+    border: 1px solid #009ade;
+    border-bottom-left-radius: 28px;
+    height: 40px;
+    border-top-left-radius: 27px;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    background-color: white;
+  }
+  .rent-tab {
+    margin-right: 0px;
+    padding-right: 13px;
+  }
+  .details__choose_number {
+    margin-left: 0;
+  }
+  .Easyphone {
+    padding-top: 20px;
+    padding-bottom: 15px;
+    margin-right: 6%;
+  }  
+}

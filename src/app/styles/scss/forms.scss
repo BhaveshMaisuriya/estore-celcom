@@ -1,0 +1,77 @@
+.form-group {
+    margin-bottom: 1rem;
+    label {
+		margin: 1rem 0;
+        display: block;
+        font-weight: bold;
+    }
+    
+    select.form-control, input.form-control {
+        padding: 10px;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        font-size: 14px;
+        background-color: #fff;
+        width: 100%;
+        position: relative;
+        color: #626262;
+        min-width: 100px;
+    }
+    option {
+        font-family: Lato, Arial, sans-serif;
+    }
+    
+    input.ng-dirty.ng-invalid, input.ng-touched.ng-invalid{
+        border-bottom: 2px solid #F54F44;
+    }
+
+    .error {
+        .text-danger {
+            &::before {
+                content: url('/assets/img/ThresholdAlertNotification.svg');
+                margin-right: 1em;
+            }
+            display: block;
+            margin-left: .3em;
+            margin-top: .5em;
+        }
+    }
+}
+
+.general-error {
+    .text-danger {
+        &::before {
+            content: url('/assets/img/ThresholdAlertNotification.svg');
+            margin-right: 1rem;
+        }
+        display: block;
+        margin-bottom: 1rem;
+    }
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+form.bg-gray {
+    input.form-control, select.form-control {
+        background-color: #f3f3f3 !important;
+    }
+}
+
+.input-group {
+	display: flex;
+}
+
+button[disabled] {
+    cursor: not-allowed;
+    opacity: .65;
+    background-color: #74BEEA;
+}

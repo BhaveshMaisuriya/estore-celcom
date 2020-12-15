@@ -1,0 +1,88 @@
+ <div class="r-page" [ngClass]="{'csagent': isCSAgentDealer}">
+		<main class="r-main" id="main">
+			<section class="u-section has-section-padding-bottom background-image-login">
+				<div class="section__inner">
+					<div class="section__content">
+						<div class="">
+							<div class="c-picture--slider is-full-width-image" data-css="c-picture">
+								<img class="dispMob" src="../assets/img/Drop_3/hero_banner_image_mob.png">
+									<img class="dispDesk" src="../assets/img/Drop_3/hero_banner_image.png">
+										<!--<img class="picture__image" src="../assets/img/Drop_3/hero_banner_image.png" alt="Banner">-->
+							</div>
+							<div class="hero-banner__container is-vertical-center is-mobile-absolute-top login-top">
+								<div class="hero-banner__content is-container">
+									<div class="u-grid-row is-collapsed">
+										<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-col-desktop-l-6">
+											<div class="hero-banner__item">
+											
+																<div class="">
+																	<div class="login-otp-model-dtls">
+																		<div class="otp-shadow-login" [ngClass]="{'padding-on-top': notValid}">
+																			<div class="otp-main-header">OTP Verification</div>
+																			<div class="otp-sub-header">A One-Time PIN has been sent to your registered mobile number</div>
+																			<div class="">
+																				<div class="otp-shadow-login-width">
+																			<p class="mobile-otp-num">Enter OTP Number<span class="mobile-no-manadatory">*</span>
+																			</p>
+																			<div class="otp-content">
+																				<div class="otp-content-inner">
+																				<div class="moblie-form-group-otp" [ngClass]="{'errorred': errorExits}">
+                                                                                   <input class="form-control otp-control"  id="txtOtp_1" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp1" #testOtp1="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'2','1')" (click)="otpInputBoxClicked($event,'2')"/>
+																					<input class="form-control otp-control" id="txtOtp_2" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp2" #testOtp2="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'3','2')" (click)="otpInputBoxClicked($event,'3')"/>
+																					<input class="form-control otp-control" id="txtOtp_3" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp3" #testOtp3="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'4','3')" (click)="otpInputBoxClicked($event,'4')"/>
+																					<input class="form-control otp-control" id="txtOtp_4" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp4" #testOtp4="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'5','4')" (click)="otpInputBoxClicked($event,'5')"/>
+																					<input class="form-control otp-control" id="txtOtp_5" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp5" #testOtp5="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'6','5')" (click)="otpInputBoxClicked($event,'6')"/>
+																					<input class="form-control otp-control" id="txtOtp_6" name="customerName" type="number" inputmode="numeric" [(ngModel)]="otp6" #testOtp6="ngModel" required maxlength = "1" (keyup)="loginThroughEnterButton($event,'','6')" (click)="otpInputBoxClicked($event,'')"/>
+																				</div>
+																				
+
+																				<!--<div *ngIf="(((testOtp1.invalid && (testOtp1.dirty || testOtp1.touched))||(testOtp2.invalid && (testOtp2.dirty || testOtp2.touched))||(testOtp3.invalid && (testOtp3.dirty || testOtp3.touched))||(testOtp4.invalid && (testOtp4.dirty || testOtp4.touched))) && this.errorExits ==  false)">
+																					<div class="error otp-error"> <span class="otp-error-heading">{{formErrors.ENTER_VALUE_MSG}}</span>
+																						<div class="warning-icon otp-warning-icon">
+																							<img src="../assets/img/Drop_3/ThresholdAlertNotification.svg">
+																						</div>
+																						<div class="clearfix"></div>
+																					</div>
+																				</div>-->
+																				<div class="error otp-error" *ngIf="errorExits"> 
+																					<span class="otp-error-heading">{{errorMessage.message}}</span>																					
+																					<div class="clearfix"></div>
+																				</div>
+																				<div *ngIf="!errorExits && disableResendLink === 0"  class="otp-expiry-login">Your otp will expire in 2 minutes</div>
+            																	<div *ngIf="!errorExits && disableResendLink > 0"  class="otp-expiry-login">You may request for a new OTP in 30 Seconds in case you do not receive it</div>
+																				<div class="otp__link">
+																					<a class="c-link--default" data-css="c-link" (click)="ResendOtp();" [ngClass]="{'disable_resend': disableResendLink > 0}"> <span class="link__icon icon is-icon-arrow"></span>
+																						<span class="otp-link__content">Resend OTP</span>
+																					</a>
+																				</div>
+																			</div>
+																			</div>
+																		</div>
+																			</div>
+																			<div class="otp-connect-login-now">
+										<button class="c-cta--default login-default-button" data-css="c-cta" (click)="loginAfterOtp();" (keyup)="loginThroughEnterButton($event)" [disabled]="checkValidation()"
+										> <span class="cta__content">Login Now</span>
+											<span class="cta__icon icon is-icon-arrow"></span>
+										</button>
+									</div>
+
+																		</div>
+																	</div>
+																</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										 </div>
+								  </div>
+							</div>
+						</section>
+				
+		</main>
+	<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+	<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>
+	</div>	
+	<app-notification-error *ngIf="showValidationNotification" [data]="validationNotification"></app-notification-error>
+	<app-notification-error *ngIf = "isApiError" [data] = "apiErrorMessage"></app-notification-error>
+

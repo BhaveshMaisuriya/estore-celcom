@@ -1,0 +1,240 @@
+@import "app/pages/postpaid/postpaid.component.scss";
+@import "app/styles/scss/colors.scss";
+
+.section h1 {
+    margin-bottom: 0;
+}
+.section-title p {
+  font-size: 12px;
+  color: #333333;
+  margin-top: -15px;
+  margin-left: 42px;
+}
+
+.sub-text {
+  font-size: 14px;
+  color: #333333;
+  margin: 0 0 16px 0;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 16px;
+}
+
+.device-stock {
+  display: flex;
+  width: 121px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  background-color: #f3f3f3;
+  padding: 18px 0 17px 0;
+  transition:
+    color 300ms ease-in-out,
+    width 300ms ease-in-out;
+
+  &.in-stock {
+    color: #21C479;
+  }
+
+  &.out-stock {
+    color: #f44236;
+    width: 150px;
+  }
+
+  & > .icon {
+    height: 21px;
+    width: 21px;
+    margin: auto 5px auto 18px;
+  }
+
+  & > p.stock-text {
+    margin: 0;
+    margin-top: 1px;
+    font-size: 16px;
+  }
+}
+
+.related-product {
+    display: flex;
+    margin: 24px 0 0 0;
+    justify-content: center;
+    width: 300px;
+
+    @media (min-width: 600px){
+        width: 100%;
+    }
+}
+
+.product-link {
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: bold;
+    color: #009bdf;
+    position: relative;
+    padding: 0 25px;
+
+    &:not(:last-child) {
+        border-right: 2px solid #009bdf;
+        height: 84%;
+    }
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+
+.more-details {
+    font-family: Lato;
+    font-size: 14px;
+    color: #333333;
+
+    span {
+        color: #009bdf;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+.specs-section {
+    background-color: rgba(0, 155, 223, 0.1) !important;
+}
+
+.price-content-wrapper {
+	padding: 0;
+    display: inline;
+    font-family: Lato;
+
+    .price-content {
+        font-size: 12px;
+        display: inline-block;
+        margin-left: 3px;
+    }
+}
+
+app-addon-plan-wrapper {
+    margin-bottom: 16px;
+    display: block;
+}
+
+/* Device only login popup starts */
+.guest-login-container {
+    margin: auto;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+    padding-bottom: 10px;
+    overflow: hidden;
+    
+    h3 {
+        font: normal bold 24px Lato;
+        line-height: 1.33;
+    }
+    p {
+        font: normal normal 16px Lato;
+        line-height: 1.5;
+        color: #000;
+    }
+    button {
+        min-width: 19rem;
+    }
+    button.no-button {
+        margin-right: 36px;
+    }
+}
+
+@media (max-width: 960px) {
+	.guest-login-container {
+		width: 95%;
+        margin: auto;
+        overflow: hidden;
+
+        button.no-button {
+            margin: 0;
+        }
+        button.yes-button {
+            margin-top: 20px;
+        }
+    }
+}
+/* Device only login popup end */
+
+/* promo badge start */
+#section1 {
+
+    .section-title {
+        margin-bottom: 16px;
+    }
+
+    #device-specs-container {
+        @media(max-width: 992px) {
+            margin-top: 32px;
+        }
+    }
+
+    .badges {
+        position: relative;
+        top: -16px;
+    }
+    .promotion {
+        max-width: 335px;
+        border-radius: 2px;
+        background-color: #007cb3;
+        margin: 0 0 24px 0;
+        color: #ffffff;
+        font-size: 14px;
+        padding: 16px 23px 21px;
+        position: relative;
+    
+        &:before {
+            background-image: url('assets/img/landing/price.png');
+            background-size: 66px 66px;
+            display: inline-block;
+            width: 66px; 
+            height: 66px;
+            content:"";
+            position: absolute;
+            opacity: 0.22;
+            margin-top: 6px;
+            top: 0;
+            left: 0;
+        }
+    }
+}    
+
+/* promo badge end */
+
+/* Campaign Start */
+.buy-now {
+    margin-top: 40px;
+
+    span {
+        width: 219px;
+        height: 19px;
+        font-family: Lato;
+        font-size: 16px;
+        color: #333333;
+        margin-right: 10px;
+    }
+}
+/* Campaign End */
+
+.campaign-price {
+    font-size: 14px;
+    margin-bottom: 16px;
+
+    .price {
+        color: $danger-color;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .discounted-price {
+        text-decoration: line-through;
+    }
+}

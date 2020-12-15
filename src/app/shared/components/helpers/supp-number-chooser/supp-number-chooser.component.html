@@ -1,0 +1,53 @@
+
+<div
+    class="supp-card" [ngClass]="{
+        'selected': isChecked,
+        'is-value': !!selected,
+        'is-disabled': disabled
+    }">
+    <div class="row1">
+        <div class="label"
+            [ngClass]="{
+                'selectable': !selected
+            }"
+            (click)="onCardClick($event)">
+            <div class="number-info">{{ label }}</div>
+            <div *ngIf="!!selected" class="number-label">{{ selected }}</div>
+        </div>
+        <div *ngIf="allowChangeNumber" class="control form-group custom-fg">
+            <mat-checkbox
+                *ngIf="!selected; else delBtn"
+                [ngClass]="{
+                    'cursor-not-allowed': preventDelete
+                }"
+                #tooltip="matTooltip"
+                matTooltip="1 Family Line is required!"
+                matTooltipPosition="below"
+                [matTooltipDisabled]="tooltipDisabled"
+                [disabled]="disabled || preventDelete"
+                [checked]="isChecked"
+                (click)="toggleCheckbox($event)"></mat-checkbox>
+            <ng-template #delBtn>
+                <mat-icon
+                    class="selectable"
+                    svgIcon="estore-times" style="color: #009bdf; width: 21px; height: 21px;"
+                    (click)="onRemoveNumber($event)"></mat-icon>
+            </ng-template>
+        </div>
+    </div>
+    <div class="row2" *ngIf="!!selected">
+        <div class="form-group custom-fg">
+            <mat-checkbox
+                [checked]="isComboNumberChecked"
+                (click)="toggleDeviceComboCheckbox($event)">Assign this number to Device 2</mat-checkbox>
+        </div>
+    </div>
+</div>
+<div *ngIf="isChecked" [@myInsertRemoveTrigger]="isChecked ? 'open': 'close'">
+    <app-number-chooser
+        label=""
+        type="postpaid"
+        [autoSelectNumber]="false"
+        (onSelectNumber)="onNumberClick($event)"
+    ></app-number-chooser>
+</div>

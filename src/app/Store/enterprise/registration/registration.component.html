@@ -1,0 +1,95 @@
+<div class="container-fluid p-0"><!--container-fluid-->
+    <div class="row"><!--row-->
+        <div class="col"><!--col-->
+            <div class="container-fluid enterprise-container"><!--container-fluid-->
+                <div class="first-container">
+                    <div class="enterprise-bg-img">
+                        <div class="img-gradient">
+                            <h3>Skip The Crowd, Register Online!</h3>
+                            <p>Online Store for Celcom Enterprise Business is now available anywhere, anytime.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container second-container"><!--container-->
+                    <div class="row"><!--row-->
+                        <div class="col-md-12 form-container"><!--col-md-12-->
+                            <ul class="tab redeem-tabs m-0">
+                                <li [ngClass]="{'active': selectedUserTab==='new-user'}">
+                                <a href="javascript:void(0)" (click)="onUserTabChange('new-user')">New User</a>
+                                </li>
+                                <li [ngClass]="{'active': selectedUserTab==='existing-user'}">
+                                <a href="javascript:void(0)" (click)="onUserTabChange('existing-user')">Existing Users</a>
+                                </li>
+                            </ul>
+
+                             <!--new-user-->
+                             <div *ngIf="selectedUserTab==='new-user'">
+                                <p class="fill-info-text">Fill in your information to get started.</p>
+                                <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="onFormSubmit()">
+                                    <app-estore-input
+                                        label="Name"
+                                        inputType="text"
+                                        placeholder="Name as per NRIC"
+                                        formControlName="name"
+                                        [success]="registerForm?.controls?.name?.valid"
+                                    ></app-estore-input>
+
+                                    <app-estore-input
+                                        label="Email"
+                                        [inputType]="'email'"
+                                        placeholder="e.g. john@companyname.com"
+                                        formControlName="email"
+                                        [success]="registerForm?.controls?.email?.valid"
+                                    ></app-estore-input>
+
+                                    <app-estore-input
+                                        label="NRIC Number"
+                                        [inputType]="'nric'"
+                                        placeholder="e.g. 880880088088"
+                                        formControlName="nric"
+                                        [success]="registerForm?.controls?.nric?.valid"
+                                    ></app-estore-input>
+
+                                    <button
+                                      class="btn btn-primary btn-rounded"
+                                      type="submit"
+                                      [disabled]="!registerForm.valid"
+                                    >Submit</button>
+                                </form><!--form-->
+
+                            </div>
+
+                            <!--existing user-->
+                            <div *ngIf="selectedUserTab==='existing-user'">
+                                <p class="fill-info-text">If you have registered with us, fill in your email below and we will resend the login URL and new OTP.</p>
+                                <form autocomplete="off" [formGroup]="resendEmailForm" (ngSubmit)="onResendFormSubmit()">
+                                    <app-estore-input
+                                      label="Email"
+                                      [inputType]="'email'"
+                                      placeholder="e.g. john@companyname.com"
+                                      formControlName="email"
+                                      [success]="resendEmailForm?.controls?.email?.valid"
+                                    ></app-estore-input>
+
+                                    <button
+                                      class="btn btn-primary btn-rounded"
+                                      type="submit"
+                                      [disabled]="!resendEmailForm.valid"
+                                    >Resend Email</button>
+                                </form>
+
+                            </div>
+                        </div><!--col-md-12-->
+                    </div><!--row-->
+
+                </div><!--container-->
+            </div><!--container-fluid-->
+        </div><!--col-->
+    </div><!--row-->
+</div><!--container-fluid-->
+<!--new enterprise page-->
+
+
+
+<app-agent-footer></app-agent-footer>
+<app-notification-error *ngIf="showPopup" [data]="popupData"></app-notification-error>

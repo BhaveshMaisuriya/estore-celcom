@@ -1,0 +1,10 @@
+  <div class="note"
+    *ngIf="notesContent else contentProjection"
+    [innerHTML]="notesContent"
+  ></div>
+
+<ng-template #contentProjection>
+  <div class="note">
+    <ng-content></ng-content>
+  </div>
+</ng-template>

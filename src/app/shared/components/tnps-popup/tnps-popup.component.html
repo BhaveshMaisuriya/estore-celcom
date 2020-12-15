@@ -1,0 +1,202 @@
+<app-modal [id]="modal_id" [rounded]="true" [autoShow]="autoShow" [position]="'center'" [closeBtn]="false">
+    <ng-template>
+        <div class="tnps-container">
+            <div class="main-container middle-aligned" *ngIf="isLoading; else appReady">
+                <app-page-loader></app-page-loader>
+            </div>
+            <ng-template #appReady>
+                <ng-container *ngIf="isError; else notError">
+                    <ng-container *ngTemplateOutlet="errorScreen"></ng-container>
+                </ng-container>
+                <ng-template #notError>
+                    <div class="main-container">
+                        <ng-container *ngIf="currentStep <= surveys?.length - 1; else formContainer">
+                            <ng-container *ngFor="let survey of [surveys[currentStep]]">
+                                <ng-container *ngTemplateOutlet="ratingInput; context: {survey: survey}"></ng-container>
+                            </ng-container>
+                        </ng-container>
+                        <ng-template #formContainer>
+                            <ng-container 
+                                *ngTemplateOutlet="currentStep <= surveys?.length ? formInput : thankyouScreen"></ng-container>
+                        </ng-template>
+                    </div>
+                    <div class="footer-container text-center" *ngIf="currentStep <= surveys?.length">
+                        <button 
+                            (click)="onClickNext()" 
+                            class="button btn btn-rounded btn-primary" 
+                            [disabled]="isButtonDisabled()">Next</button>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </div>
+    </ng-template>
+</app-modal>
+
+<ng-template #topButton>
+    <div class="button-container">
+        <div class="prev-btn" *ngIf="currentStep > 0">
+            <button mat-icon-button aria-label="Previous Screen" (click)="onClickPrev()">
+                <mat-icon style="width: 40px; height: 40px;" svgIcon="estore-chevron-left"></mat-icon>
+            </button>
+        </div>
+        <div class="close-btn text-right">
+            <button mat-icon-button aria-label="Close" (click)="onClickClose()">
+                <mat-icon aria-hidden="false" aria-label="Close" style="width: 40px; height: 40px;" svgIcon="estore-close"></mat-icon>
+            </button>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #ratingInput let-survey="survey">
+    <ng-container *ngTemplateOutlet="topButton"></ng-container>
+    <ng-container *ngIf="survey?.question">
+        <div class="info-section text-center mb-estore-1">
+            <h4 class="mb-estore-1" *ngIf="survey.title" [innerHtml]="survey.title | safeHtml"></h4>
+            <div class="smalltext mb-estore-h">Step {{ currentStep + 1 }} of {{ surveys?.length + 1 }}</div>
+            <div class="text-bold text1 mb-estore-1" [innerHtml]="survey.question | safeHtml"></div>
+            <div class="text2 mb-estore-1" [innerHtml]="survey.hint | safeHtml"></div>
+            <div class="icon-container">
+                <ng-container *ngIf="survey.value === null; else emoticonIcon">
+                    <svg #animateThis id="Icon_Expressive_Rate_Us" data-name="Icon Expressive — Rate Us" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+                        <rect id="Rectangle_2321" data-name="Rectangle 2321" fill="#f4f4f4" opacity="0.001"/>
+                        <g id="Icon_Star_Filled" class="star" data-name="Icon — Star Filled" transform="translate(5 12.5)">
+                            <rect id="Rectangle_1117" data-name="Rectangle 1117" width="30" height="30" fill="#80cdef" opacity="0"/>
+                            <path id="Path_3546" data-name="Path 3546" d="M-1886.229,228.79l2.764,5.6a1.418,1.418,0,0,0,1.068.775l6.181.9a1.418,1.418,0,0,1,.786,2.418l-4.473,4.36a1.416,1.416,0,0,0-.408,1.254l1.056,6.157a1.418,1.418,0,0,1-2.057,1.494l-5.529-2.907a1.42,1.42,0,0,0-1.32,0l-5.529,2.907a1.418,1.418,0,0,1-2.057-1.494l1.056-6.157a1.416,1.416,0,0,0-.408-1.254l-4.473-4.36a1.418,1.418,0,0,1,.786-2.418l6.181-.9a1.417,1.417,0,0,0,1.067-.775l2.764-5.6A1.418,1.418,0,0,1-1886.229,228.79Z" transform="translate(1902.5 -224.875)" fill="#80cdef" fill-rule="evenodd"/>
+                        </g>
+                        <g id="Icon_Star_Filled-2" class="star" data-name="Icon — Star Filled" transform="translate(35 12.5)">
+                            <rect id="Rectangle_1117-2" data-name="Rectangle 1117" width="30" height="30" fill="#80cdef" opacity="0"/>
+                            <path id="Path_3546-2" data-name="Path 3546" d="M-1886.229,228.79l2.764,5.6a1.418,1.418,0,0,0,1.068.775l6.181.9a1.418,1.418,0,0,1,.786,2.418l-4.473,4.36a1.416,1.416,0,0,0-.408,1.254l1.056,6.157a1.418,1.418,0,0,1-2.057,1.494l-5.529-2.907a1.42,1.42,0,0,0-1.32,0l-5.529,2.907a1.418,1.418,0,0,1-2.057-1.494l1.056-6.157a1.416,1.416,0,0,0-.408-1.254l-4.473-4.36a1.418,1.418,0,0,1,.786-2.418l6.181-.9a1.417,1.417,0,0,0,1.067-.775l2.764-5.6A1.418,1.418,0,0,1-1886.229,228.79Z" transform="translate(1902.5 -224.875)" fill="#80cdef" fill-rule="evenodd"/>
+                        </g>
+                        <g id="Icon_Star_Filled-3" class="star" data-name="Icon — Star Filled" transform="translate(65 12.5)">
+                            <rect id="Rectangle_1117-3" data-name="Rectangle 1117" width="30" height="30" fill="#80cdef" opacity="0"/>
+                            <path id="Path_3546-3" data-name="Path 3546" d="M-1886.229,228.79l2.764,5.6a1.418,1.418,0,0,0,1.068.775l6.181.9a1.418,1.418,0,0,1,.786,2.418l-4.473,4.36a1.416,1.416,0,0,0-.408,1.254l1.056,6.157a1.418,1.418,0,0,1-2.057,1.494l-5.529-2.907a1.42,1.42,0,0,0-1.32,0l-5.529,2.907a1.418,1.418,0,0,1-2.057-1.494l1.056-6.157a1.416,1.416,0,0,0-.408-1.254l-4.473-4.36a1.418,1.418,0,0,1,.786-2.418l6.181-.9a1.417,1.417,0,0,0,1.067-.775l2.764-5.6A1.418,1.418,0,0,1-1886.229,228.79Z" transform="translate(1902.5 -224.875)" fill="#80cdef" fill-rule="evenodd"/>
+                        </g>
+                        <g id="Icon_Pointer" data-name="Icon — Pointer" transform="translate(11.25 27.5)">
+                            <rect id="Transparent_BG" data-name="Transparent BG" width="60" height="60" fill="#333" opacity="0"/>
+                            <path id="Path_3483" data-name="Path 3483" d="M-754.25,26.5a1.25,1.25,0,0,1-1.25-1.25V19a2.534,2.534,0,0,0-2.5-2.5,2.534,2.534,0,0,0-2.5,2.5v5a1.25,1.25,0,0,1-1.25,1.25A1.25,1.25,0,0,1-763,24V19a5.005,5.005,0,0,1,5-5,5.005,5.005,0,0,1,5,5v6.25A1.25,1.25,0,0,1-754.25,26.5Z" transform="translate(789.25 3.5)" fill="#333"/>
+                            <path id="Path_3484" data-name="Path 3484" d="M-748.25,27.5a1.25,1.25,0,0,1-1.25-1.25V19.915a2.494,2.494,0,0,0-2.56-2.415,2.4,2.4,0,0,0-2.44,2.415V25a1.25,1.25,0,0,1-1.25,1.25A1.25,1.25,0,0,1-757,25V19.915A4.875,4.875,0,0,1-752.06,15,4.994,4.994,0,0,1-747,19.915V26.25A1.25,1.25,0,0,1-748.25,27.5Z" transform="translate(790.75 3.75)" fill="#333"/>
+                            <path id="Path_3485" data-name="Path 3485" d="M-749.624,54c-4.344,0-8.376-.38-11.549-3.057l-15.344-14.911A4.833,4.833,0,0,1-778,32.542a4.832,4.832,0,0,1,1.484-3.487,5.11,5.11,0,0,1,7.074,0l2.693,2.263V9a5.005,5.005,0,0,1,5-5,4.963,4.963,0,0,1,5,4.915V26.5h-2.5V8.915a2.461,2.461,0,0,0-2.5-2.415,2.534,2.534,0,0,0-2.5,2.5V36.684l-6.869-5.776a2.618,2.618,0,0,0-3.655-.06,2.349,2.349,0,0,0-.726,1.695,2.345,2.345,0,0,0,.726,1.695l15.279,14.854c3.012,2.537,7.365,2.461,12.414,2.38.914-.016,1.844-.031,2.785-.031,7.43,0,7.545-9.349,7.546-9.746V24a2.534,2.534,0,0,0-2.5-2.5,2.534,2.534,0,0,0-2.5,2.5v5h-2.5V24a5.005,5.005,0,0,1,5-5,5.005,5.005,0,0,1,5,5V41.695c0,4.235-2.1,12.245-10.046,12.245-.927,0-1.844.015-2.742.03C-747.91,53.985-748.772,54-749.624,54Z" transform="translate(785.5 1)" fill="#333"/>
+                        </g>
+                    </svg>
+                </ng-container>
+                <ng-template #emoticonIcon>
+                    <mat-icon 
+                        *ngIf="survey.value <= survey.max_low_value"
+                        style="color: #e73737;"
+                        svgIcon="estore-emoji-2"></mat-icon>
+                    <mat-icon 
+                        *ngIf="survey.value > survey.max_low_value && survey.value <= survey.min_high_value"
+                        style="color: #fda73e;"
+                        svgIcon="estore-emoji-3"></mat-icon>
+                    <mat-icon 
+                        *ngIf="survey.value > survey.min_high_value"
+                        style="color: #5aaa00;"
+                        svgIcon="estore-emoji-4"></mat-icon>
+                </ng-template>
+            </div>
+        </div>
+        <div class="rating-container">
+            <mat-button-toggle-group (change)="onRatingChanged($event, survey)" [value]="survey.value" name="ratingValue" aria-label="Rating Value">
+                <mat-button-toggle 
+                    *ngFor="let value of generateNumberRangeFromSurvey(survey)"
+                    [value]="value"
+                    [ngClass]="{
+                        'btn-red': value <= survey.max_low_value,
+                        'btn-yellow': value > survey.max_low_value && value <= survey.min_high_value,
+                        'btn-green': value > survey.min_high_value
+                    }">
+                    {{value}}
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+            <div class="description mt-estore-h mb-estore-h">
+                <div>Very Unlikely</div>
+                <div>Very Likely</div>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #formInput>
+    <ng-container *ngTemplateOutlet="topButton"></ng-container>
+    <div class="info-section text-center mb-estore-1">
+        <div class="smalltext mb-estore-h">Step {{ currentStep + 1 }} of {{ surveys?.length + 1 }}</div>
+        <div class="text-bold text1 mb-estore-1" [innerHtml]="formQuestion | safeHtml"></div>
+    </div>
+    <div class="form-container">
+        <form [formGroup]="tnpsForm" autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <app-estore-input 
+                        label="Reason"
+                        [appearance]="'fill'"
+                        [inputType]="'select'"
+                        formControlName="reason"
+                        [options]="reasons" >
+                    </app-estore-input>
+                </div>
+            </div>
+            <div class="row mb-estore-1">
+                <div class="col text-center">Please share your feedback with us</div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <app-estore-input
+                        #feedbackTR
+                        placeholder="Share your feedback here"
+                        label="Your feedback"
+                        [inputType]="'textarea'"
+                        formControlName="feedback"
+                        appearance="fill">
+                    </app-estore-input>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="container" *ngIf="errorMessage">
+        <div class="row mb-estore-1 text-center">
+            <div class="col text-danger">{{ errorMessage }}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #thankyouScreen>
+    <div class="middle-aligned">
+        <div class="info-section text-center mb-estore-1">
+            <div class="icon-container-success">
+                <img src="/assets/img/svg/Icon Display — Success.svg" alt="">
+            </div>
+            <div class="text-bold text1 mb-estore-1 mt-estore-2">Thank You</div>
+            <div class="text2 mb-estore-1">Thank you for sharing your feedback with us!</div>
+        </div>
+        <div class="text-center">
+            <button 
+                        (click)="onClickNext()" 
+                        class="button btn btn-rounded btn-primary">Done</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #errorScreen>
+    <div class="main-container">
+        <div class="middle-aligned">
+            <div class="info-section text-center mb-estore-1">
+                <div class="icon-container-success">
+                    <mat-icon
+                        svgIcon="estore-times" 
+                        style="
+                        width: 128px;
+                        height: 128px;
+                        color: #c40d42;"></mat-icon>
+                </div>
+                <div class="text-bold text1 mb-estore-1 mt-estore-2">Oops something went wrong!</div>
+                <div class="text2 mb-estore-1">{{ errorMessage }}</div>
+            </div>
+            <div class="text-center">
+                <button 
+                            (click)="closeModal()" 
+                            class="button btn btn-rounded btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

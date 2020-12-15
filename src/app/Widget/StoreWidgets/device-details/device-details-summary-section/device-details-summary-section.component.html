@@ -1,0 +1,361 @@
+
+<section class="u-section" id="step4">
+    <div class="section__inner">
+        <div class="section__content is-container">
+            <div class="u-grid-row has-border-bottom">
+                            <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center" *ngIf = "orderDeviceName">
+                                <img class="summary-samsung" src="{{selectedImage}}">
+                            </div>
+                            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center" *ngIf = "!orderDeviceName && orderPlanName && !isProjectStar">
+                                <img  class="benji-img"  src="{{data?.image_url}}">
+                            </div> -->
+                            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                                 <img [ngClass]="ImageClass()" src="{{selectedImage ? selectedImage : data?.image_url}}">
+                            </div>
+                            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-9">
+                                <div *ngIf="checkIsNotDeviceOnly() && !isEasyPhone">
+                                    <div class="summary-grid-content item-bot8"  *ngIf="checkStarBasePlan()" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                    <div class="plan-applies is-font-bold" [innerHTML]="basePlanStarName | safeHtml"> </div>
+                                        <!-- <span [ngClass]="BasePlanBundle()">RM {{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00 ) | number : '1.2-2' }}</span> -->
+                                    <div class="summary-grid-right plan-applies" *ngIf = "isEasyPhone">RM{{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <!-- <div class="summary-grid-right up_front_right is-font-bold">RM {{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00 ) | number : '1.2-2' }}</div> -->
+                                    </div>
+
+                                    <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && (isBundleClicked) && isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                            <div class="plan-applies is-font-bold"> {{orderPlanName ? orderPlanName : '--'}} Pass</div>
+                                            <div class="summary-grid-right plan-applies" *ngIf = "isEasyPhone">RM{{ ((orderEasyphonePrice)  ? (orderEasyphonePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    </div>
+                                    <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && checkIsDeviceBundle() && isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                            <div class="plan-applies is-font-bold"> Device Bundle</div>
+                                    </div>
+                                </div>
+
+                                <!--pre order info start-->
+                                    <!-- easy phone rent and own text --> 
+                                    <div *ngIf="checkIsEasyPhoneRent()" class="is-text-bold item-bot16">EasyPhone™ Rent <span class="contract_mobile"> (24 months contract)</span></div>
+                                    <div *ngIf="checkIsEasyPhoneOwn()" class="is-text-bold item-bot16">EasyPhone™ Own <span class="contract_mobile"> (24 months contract)</span></div>
+
+                                    <div class="pre_order_content" *ngIf ="data?.basic_details?.preorder" [ngClass]="{'item-bot16': (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone)}">
+                                            <div class="summary-grid-left is-summary">Pre-Order</div>
+                                            <div class="summary-grid-right" *ngIf = "!isEasyPhone && isBundleClicked && !(suppLinesDetails && suppLinesDetails.length > 0)">RM{{ (orderDevicePrice ? (orderDevicePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                            <div class="summary-grid-right" *ngIf = "!isEasyPhone && isBundleClicked && (suppLinesDetails && suppLinesDetails.length > 0)">RM{{ (devicePriceWithSubsidy ? (devicePriceWithSubsidy) : 0.00)  | number : '1.2-2'}}</div>
+                                    </div>
+                                    
+                                    <!-- easy phone rent and own text -->
+                                    <div class="pre_order_content" *ngIf ="data?.basic_details?.preorder" [ngClass]="{'item-bot16': (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone)}">
+                                            <div class="summary-grid-left is-summary">{{orderDeviceName}} {{orderSummaryColor}} {{orderSummaryStorage}}</div>
+                                            <div class="summary-grid-right" *ngIf = "isEasyPhone && isBundleClicked">RM{{ (bundlePrice ? (bundlePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                            <div class="summary-grid-right" *ngIf = "isEasyPhone && isRentClicked">RM{{ (rentTotal ? (rentTotal) : 0.00)  | number : '1.2-2'}}</div>
+                                            <div class="summary-grid-right" *ngIf = "isEasyPhone && isOwnClicked">RM{{ (ownTotal ? (ownTotal) : 0.00)  | number : '1.2-2'}}</div>
+                                            <p class="item_top8" *ngIf="preOrderData?.free_gift_data?.gift_message!=null">{{preOrderData?.free_gift_data?.gift_message}}</p>		
+                                    </div>
+
+                                <!--pre order info end-->
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderDeviceName && data.basic_details && !data.basic_details.preorder">
+                                    <div class="summary-grid-left is-summary">{{orderDeviceName}} {{orderSummaryColor}} {{orderSummaryStorage}}</div>
+                                    <div class="summary-grid-right" *ngIf = "isEasyPhone && isBundleClicked && orderPlanName">RM{{ (bundlePrice ? (bundlePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "isEasyPhone && isBundleClicked && !orderPlanName">RM{{ (orderTotalPay ? (orderTotalPay) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "isEasyPhone && isRentClicked">RM{{ (rentTotal ? (rentTotal) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "isEasyPhone && isOwnClicked">RM{{ (ownTotal ? (ownTotal) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "!isEasyPhone && orderPlanName  && (!suppLinesDetails || (suppLinesDetails && suppLinesDetails.length < 1))">RM{{ ((orderDevicePrice && orderDevicePrice > '0.00') ? (orderDevicePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "!isEasyPhone && orderPlanName && suppLinesDetails && suppLinesDetails.length > 0">RM{{ ((devicePriceWithSubsidy && devicePriceWithSubsidy > '0.00' )? (devicePriceWithSubsidy) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right" *ngIf = "!isEasyPhone && !orderPlanName">RM{{ (orderTotalPay ? (orderTotalPay) : 0.00)  | number : '1.2-2'}}</div>
+                                </div>
+                                <!--easy phone realted upfront start-->
+                                <div class="summary-grid-content rent-own-plan" *ngIf ="isEasyPhone && isRentClicked && deviceUpfront && !isProjectStar">
+                                    <div *ngIf="deviceUpfrontToDisplay < 2" class="plan-applies upfront_device " >Upfront payment (RM{{(rentPrice? (rentPrice) : 0.00) | number : '1.2-2'}} X {{deviceUpfront}} month) </div>
+                                    <div *ngIf="deviceUpfrontToDisplay >= 2" class="plan-applies upfront_device " >Upfront payment (RM{{(rentPrice? (rentPrice) : 0.00) | number : '1.2-2'}} X {{deviceUpfront}} months) </div>
+                                </div>
+                                <div class="summary-grid- rent-own-plan" *ngIf ="isEasyPhone && isOwnClicked && deviceUpfront && !isProjectStar">
+                                    <div *ngIf="deviceUpfrontToDisplay < 2" class="plan-applies upfront_device " >Upfront payment (RM{{(ownPrice? (ownPrice) : 0.00) | number : '1.2-2'}} X {{deviceUpfront}} month) </div>
+                                    <div *ngIf="deviceUpfrontToDisplay >= 2" class="plan-applies upfront_device " >Upfront payment (RM{{(ownPrice? (ownPrice) : 0.00) | number : '1.2-2'}} X {{deviceUpfront}} months) </div>
+                                </div>
+                                <!--easy phone realted upfront end-->
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && !isRentClicked && !isOwnClicked && !isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                    <div class="plan-applies is-font-bold"> {{orderPlanName ? orderPlanName : '--'}} Pass
+                                        <!-- For Device + Plan contract terms text-->
+                                        <span *ngIf="orderDevice!=null" class="display__block"> ({{SharedContract}} months contract)</span>
+                                        <!-- For Plan only contract terms text - Commented due to CEO-515 -->
+                                        <!-- <span *ngIf="orderPlan!=null && orderDevice==null" class="display__block"> ({{SharedContract}})</span> -->
+                                    </div>
+                                    <div class="summary-grid-content" *ngIf = "isBundleClicked && suppLinesDetails && suppLinesDetails.length > 0">
+                                        <div class="principle-line">{{suppLinesDetails.length}} X Supplementary Line(s):{{suppLinesDetails[suppLinesDetails.length -1].planType}}</div>
+                                    </div>
+                                    <!-- <div class="summary-grid-right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName">RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2'}}</div> -->
+                                </div>
+
+                                <div class="summary-grid-content item-bot16"  *ngIf="checkStarBasePlan() && !isBundleClicked" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                        <div *ngIf="orderPlanName && !isRentClicked && !isOwnClicked">
+                                            <div class="plan-applies is-font-bold"> {{orderPlanName ? orderPlanName : '--'}} Pass
+                                                <!-- <span *ngIf="orderDevice!=null" class="display__block"> ({{SharedContract}} months contract)</span> -->
+                                            </div>
+                                            <!-- <div class="summary-grid-right up_front_right is-font-bold">RM {{ ( orderMonthlyPay ? (orderMonthlyPay) : 0.00 ) | number : '1.2-2' }}</div> -->
+                                            <!-- <div class="summary-grid-right plan-applies" *ngIf = "isCOBPFlow && !isBundleClicked">RM{{ ((+orderMonthlyPay)  ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</div> -->
+                                        </div>
+                                        <div class="summary-grid-content" *ngIf = "isBundleClicked && suppLinesDetails && suppLinesDetails.length > 0">
+                                            <div class="principle-line">{{suppLinesDetails.length}} X Supplementary Line(s):{{suppLinesDetails[suppLinesDetails.length -1].planType}}</div>
+                                        </div>
+                                    </div>
+                                
+                                <div class="summary-grid-content item-bot16 rent-own-plan" *ngIf = "orderPlanName && isEasyPhone && (isRentClicked || isOwnClicked) && !isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                    <div class="plan-applies is-font-bold"> {{orderPlanName ? orderPlanName : '--'}} Pass</div>
+                                    <div class="summary-grid-right plan-applies" *ngIf = "orderPlanName">RM{{ (orderMonthlyPayTotal ? (orderMonthlyPayTotal) : 0.00)  | number : '1.2-2'}}</div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf ="isEasyPhone && (isRentClicked || isOwnClicked) && planUpfront && !isProjectStar">
+                                    <div *ngIf="planUpfrontToDisplay < 2" class="plan-applies up-front-payment" >Upfront payment (RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}} X {{planUpfront}} month) </div>
+                                    <div *ngIf="planUpfrontToDisplay >= 2" class="plan-applies up-front-payment" >Upfront payment (RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}} X {{planUpfront}} months) </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf ="isEasyPhone && !isRentClicked && isOwnClicked && deviceUpfront && isProjectStar">
+                                        <div class="plan-applies up-front-payment" >Upfront payment (RM{{(ownPrice ? (ownPrice) : 0.00)  | number : '1.2-2'}} X {{deviceUpfront}} month) </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf ="isEasyPhone && isRentClicked && !isOwnClicked && planUpfront && isProjectStar">
+                                        <div class="plan-applies up-front-payment" >Upfront payment (RM{{(rentPrice ? (rentPrice) : 0.00)  | number : '1.2-2'}} X {{planUpfront}} month) </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "isBundleClicked && suppLinesDetails && suppLinesDetails.length > 0">
+                                    <div class="display__block is-font-bold">{{suppLinesDetails.length}} X Supplementary Line(s)</div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "checkStarBasePlan() && !orderMonthlyPay && !isBundleClicked && MnpEligible()">
+                                    <div class="principle-line">Monthly Charges: <b class="display__block">RM{{(MonthlyChargesStar() ? (MonthlyChargesStar()) : 0.00) | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "checkStarBasePlan() && !orderMonthlyPay && !isBundleClicked && !MnpEligible()">
+                                        <div class="principle-line">Monthly Charges: <b class="display__block">RM{{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00)  | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "checkStarBasePlan() && orderMonthlyPay && (!isBundleClicked && !isEasyPhone) && checkIsNotDeviceOnly()">
+                                        <div class="principle-line">Monthly Charges: <b class="display__block">RM{{(MonthlyChargesStar() ? (MonthlyChargesStar()) : 0.00) | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone) && !isGoldenNumberSelected && !isProjectStar">
+                                    <div class="principle-line">Monthly Charges: <b class="display__block">RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone) && isGoldenNumberSelected">
+                                    <div class="principle-line">Monthly Charges: </div>
+                                    <div><b class="golden-number-content">RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && data?.basic_details?.is_easy_phone === 1 && isBundleClicked && !isProjectStar">
+                                    <div class="principle-line">Monthly Charges:</div>
+                                    <div class="display__block is-font-bold">RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</div>
+                                </div>
+                                <div class="item-bot16 monthly_charges_easyp" *ngIf = "checkIsDeviceBundle() && isProjectStar">
+                                        <div class="is-font-bold">Monthly Charges: <b> RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</b></div>
+                                        <div>Plan: RM{{(orderMonthlyPay ? (orderMonthlyPay) : 0.00)  | number : '1.2-2'}}</div>
+                                    </div>
+                                <div *ngIf="isEasyPhone">
+                                    <div class="summary-grid-content item-bot8"  *ngIf="checkStarBasePlan()" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                    <div class="plan-applies is-font-bold" [innerHtml]="basePlanStarName | safeHtml"></div>
+                                        <!-- <span [ngClass]="BasePlanBundle()">RM {{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00 ) | number : '1.2-2' }}</span> -->
+                                    <div class="summary-grid-right plan-applies" *ngIf = "isEasyPhone">RM{{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <!-- <div class="summary-grid-right up_front_right is-font-bold">RM {{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00 ) | number : '1.2-2' }}</div> -->
+                                    </div>
+                                    <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && (isEasyPhone || isRentClicked || isOwnClicked || isBundleClicked) && isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                        <div class="plan-applies is-font-bold"> {{orderPlanName ? orderPlanName : '--'}} Pass</div>
+                                        <div class="summary-grid-right plan-applies" *ngIf = "isEasyPhone">RM{{ ((orderEasyphonePrice)  ? (orderEasyphonePrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    </div>
+                                    <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && checkIsDeviceBundle() && isProjectStar" [ngClass]="{'padding_for_dp':OrderDeviceExist}">
+                                            <div class="plan-applies is-font-bold"> Device Bundle</div>
+                                    </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf ="isEasyPhone && !isRentClicked && isOwnClicked && planUpfront && isProjectStar">
+                                        <div class="plan-applies up-front-payment" >Upfront payment (RM{{(totalPayEasyPhone ? (totalPayEasyPhone) : 0.00)  | number : '1.2-2'}} X {{planUpfront}} month) </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf ="isEasyPhone && isRentClicked && !isOwnClicked && deviceUpfront && isProjectStar">
+                                        <div class="plan-applies up-front-payment" >Upfront payment (RM{{(rentPrice ? (rentPrice) : 0.00)  | number : '1.2-2'}} X {{deviceUpfront}} month) </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPhoneNo && orderNumberType != 'SwitchToCelcom' && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone) && !isGoldenNumberSelected && !isProjectStar">
+                                    <div class="principle-line">Mobile Number (Principal Line): <b class="display__block">{{orderPhoneNo ? orderPhoneNo : '--'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPhoneNo && orderNumberType != 'SwitchToCelcom' && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone) && !isGoldenNumberSelected && isProjectStar">
+                                    <div class="principle-line">Mobile Number (Principal Line): <b class="display__block">{{orderPhoneNo ? orderPhoneNo : '--'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPhoneNo && orderNumberType != 'SwitchToCelcom' && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone) && isGoldenNumberSelected">
+                                        <div class="new-number">Mobile Number (Principal Line): </div>
+                                        <div> <b class="golden-number-content">VIP</b> </div>
+                                        <div><b class="golden-number-content">{{orderPhoneNo ? orderPhoneNo : '--'}}</b></div>
+                                </div> 
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && orderPhoneNo && orderNumberType && orderNumberType == 'SwitchToCelcom' && (data?.basic_details?.is_easy_phone === 0 || !data?.basic_details?.is_easy_phone)">
+                                    <div class="new-number">Mobile Number (Principal Line): <b class="display__block">{{orderPhoneNo ? orderPhoneNo : '--'}}</b></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPhoneNo && orderNumberType != 'SwitchToCelcom' && data?.basic_details?.is_easy_phone === 1 && !isProjectStar">
+                                    <div class="principle-line">Mobile Number (Principal Line):</div>
+                                    <div class="display__block is-font-bold">{{orderPhoneNo ? orderPhoneNo : '--'}}</div>
+                                </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPhoneNo && orderNumberType != 'SwitchToCelcom' && data?.basic_details?.is_easy_phone === 1 && isProjectStar">
+                                        <div class="principle-line"> Principal Line: 
+                                            <b class="display__block is-font-bold">{{orderPhoneNo ? orderPhoneNo : '--'}}</b></div>
+                                    </div>
+                                <div class="summary-grid-content item-bot16" *ngIf = "orderPlanName && orderPhoneNo && orderNumberType && orderNumberType == 'SwitchToCelcom' && data?.basic_details?.is_easy_phone === 1">
+                                    <div class="new-number">Mobile Number (Principal Line):</div>
+                                    <div class="display__block is-font-bold">{{orderPhoneNo ? orderPhoneNo : '--'}}</div>
+                                </div>
+                                <div class="item-bot16 monthly_charges_easyp" *ngIf = "orderPlanName && data?.basic_details?.is_easy_phone === 1 && isRentClicked">
+                                    <div class="is-font-bold">Monthly Charges: <b> RM{{(totalPayEasyPhone ? (totalPayEasyPhone + rentPrice) : 0.00)  | number : '1.2-2'}}</b></div>
+                                    <div>Phone: RM{{(rentPrice ? (rentPrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div>Plan: RM{{(totalPayEasyPhone ? (totalPayEasyPhone) : 0.00)  | number : '1.2-2'}}</div>
+                                </div>
+                                <div class="item-bot16 monthly_charges_easyp" *ngIf = "orderPlanName && data?.basic_details?.is_easy_phone === 1 && isOwnClicked">
+                                    <div class="is-font-bold">Monthly Charges: <b> RM{{(totalPayEasyPhone ? (totalPayEasyPhone + ownPrice) : 0.00)  | number : '1.2-2'}}</b></div>
+                                    <div>Phone: RM{{(ownPrice ? (ownPrice) : 0.00)  | number : '1.2-2'}}</div>
+                                    <div>Plan: RM{{(totalPayEasyPhone ? (totalPayEasyPhone) : 0.00)  | number : '1.2-2'}}</div>
+                                </div>
+
+                                <div class="summary-grid-content summary-grid-border 1"  *ngIf = "deviceUpfrontPenalty && deviceUpfrontPenalty !== 0 && (orderNumberType === 'KeepNumber' || isEasyPhone)">
+									<div class="plan-applies is-font-bold up-front-payment" >Device Penalty</div>
+                                    <div class="summary-grid-right up_front_right is-font-bold">RM{{ (deviceUpfrontPenalty? (deviceUpfrontPenalty) : 0.00) | number : '1.2-2'}}</div>
+    
+								</div>
+
+                                <div class="summary-grid-content item-bot16 campaign_mviva" *ngIf = "orderDeviceName && orderPlanName && isMviva && mvivaSummaryMessage">
+									<div class="upfront-waived up-front-payment"> {{ mvivaSummaryMessage }} </div>
+								</div>
+								<div class="summary-grid-content item-bot25" *ngIf = "orderDeviceName && !isEasyPhone && !isProjectStar">
+                                    <div class="additional-info" *ngIf="orderPlanName && !upfrontWaived">
+                                        <div class="plan-applies up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div><br *ngIf="additionalInfo">
+                                        <div class="plan-applies up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div><br *ngIf="additionalInfo">
+                                        <div class="plan-applies up-front-payment additional-info " *ngIf="additionalInfo">{{additionalInfo}} </div>
+                                   </div>
+									<div class="plan-applies up-front-payment  is-font-bold" *ngIf="orderPlanName && upfrontWaived">Upfront Payment Waiver (Guna Celcom)</div>
+									<div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && !mvivaBundleUpfront">RM{{(orderOneTimePay ? (orderOneTimePay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && upfrontWaived && !mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+									<!-- <div class="rebate-applies" *ngIf="orderDevice && orderPlanName">*RM{{orderOneTimePay}} rebate applies (RM{{orderOneTimePay}} x 1 month)</div> -->
+									<div class="upfront-waived up-front-payment" *ngIf="orderPlanName && upfrontWaived">
+										<span class="to-be-rebate upfront-waived-eligible">You're eligible! Upfront payment has been waived.</span>
+									</div>
+                                </div>
+                                <div class="summary-grid-content item-bot25" *ngIf = "orderDeviceName && !isEasyPhone && isProjectStar">
+                                        <div class="additional-info" *ngIf="orderPlanName && !upfrontWaived">                                            
+                                            <div class="plan-applies up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div><br *ngIf="additionalInfo">
+                                            <div class="plan-applies up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div><br *ngIf="additionalInfo">
+                                            <div class="plan-applies up-front-payment additional-info " *ngIf="additionalInfo">{{additionalInfo}} </div>
+                                       </div>
+                                        <div class="plan-applies up-front-payment  is-font-bold" *ngIf="orderPlanName && upfrontWaived">Upfront Payment Waiver (Guna Celcom)</div>
+                                        <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && !mvivaBundleUpfront">RM{{(orderOneTimePay ? (orderOneTimePay) : 0.00) | number : '1.2-2'}}</div>
+                                        <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && upfrontWaived && !mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+                                        <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+                                        <div class="upfront-waived up-front-payment" *ngIf="orderPlanName && upfrontWaived">
+                                            <span class="to-be-rebate upfront-waived-eligible">You're eligible! Upfront payment has been waived.</span>
+                                        </div>
+                                    </div>
+								<div class="summary-grid-content item-bot16" *ngIf = "orderDeviceName && isEasyPhone && isBundleClicked">
+                                    <div class="plan-applies up-front-payment" *ngIf="orderPlanName && !upfrontWaived && !isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+									<div class="plan-applies up-front-payment" *ngIf="orderPlanName && !upfrontWaived && isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+									<div class="plan-applies up-front-payment is-font-bold" *ngIf="orderPlanName && upfrontWaived">Upfront Payment Waiver (Guna Celcom)</div>
+									<div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && !mvivaBundleUpfront">RM{{(bundleUpfrontPrice ? (bundleUpfrontPrice) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && upfrontWaived && !mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right" *ngIf="orderPlanName && !upfrontWaived && mvivaBundleUpfront">RM{{(0.00) | number : '1.2-2'}}</div>
+									<div class="upfront-waived up-front-payment" *ngIf="orderPlanName && upfrontWaived">
+										<span class="to-be-rebate upfront-waived-eligible">You're eligible! Upfront payment has been waived.</span>
+                                    </div>
+                                </div>
+                                <div class="summary-grid-content item-bot16 campaign_mviva" *ngIf = "!orderDeviceName && orderPlanName && isMviva && mvivaSummaryMessage">
+									<div class="upfront-waived up-front-payment"> {{ mvivaSummaryMessage }}</div>
+								</div>
+                                <div class="summary-grid-content summary-grid-border summary-list-items" *ngIf = "orderDeviceName && isPromotion">
+                                    <div class="up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                </div>
+                                <div class="summary-grid-content item-bot16 free-sim-card-text" *ngIf ="data?.basic_details?.preorder && (orderNumberType !== 'KeepNumber' && !isEasyPhone)">*Free SIM card delivery</div>
+								<div class="summary-grid-content summary-grid-border 1"  [ngClass]="{'is-telco-day': (isTelcoDay && telcoDayMessage)}" *ngIf = "PlanNewNumber()">
+                                    <div class="plan-applies up-front-payment" *ngIf="orderPlanName && !isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+									<div class="plan-applies up-front-payment" *ngIf="orderPlanName && isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                                    <div class="summary-grid-right up_front_right" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront">RM{{ (orderMonthlyPay? (orderMonthlyPay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right " *ngIf = "!orderDeviceName && orderPlanName && mvivaPlanUpfront">RM{{ (0.00) | number : '1.2-2'}}</div>
+									<!-- <div class="rebate-applies" *ngIf="orderPlanName">*Upfront payment is required for the first month</div> -->
+                                    <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                    <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                </div>
+                                <div class="summary-grid-content summary-grid-border 1"  [ngClass]="{'is-telco-day': (isTelcoDay && telcoDayMessage)}" *ngIf = "PlanNewNumberStar()">
+                                        <div class="plan-applies up-front-payment" *ngIf="orderPlanName && !isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+                                        <div class="plan-applies up-front-payment" *ngIf="orderPlanName && isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                                        <div class="summary-grid-right up_front_right" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront">RM{{MonthlyChargesStar() | number : '1.2-2'}}</div>
+                                        <div class="summary-grid-right up_front_right " *ngIf = "!orderDeviceName && orderPlanName && mvivaPlanUpfront">RM{{ (0.00) | number : '1.2-2'}}</div>
+                                        <!-- <div class="rebate-applies" *ngIf="orderPlanName">*Upfront payment is required for the first month</div> -->
+                                        <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                        <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                    </div>
+                                    <div class="summary-grid-content summary-grid-border 1"  [ngClass]="{'is-telco-day': (isTelcoDay && telcoDayMessage)}" *ngIf = "UpfrontGB()">
+                                        <div class="plan-applies up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+                                        <div class="plan-applies up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                                        <div class="summary-grid-right up_front_right" *ngIf = "!orderDeviceName && !mvivaPlanUpfront">RM{{ (basePlanStarPrice ? (basePlanStarPrice) : 0.00 ) | number : '1.2-2' }}</div>
+                                        <div class="summary-grid-right up_front_right " *ngIf = "!orderDeviceName && mvivaPlanUpfront">RM{{ (0.00) | number : '1.2-2'}}</div>
+                                        <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                        <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                    </div>
+								<div class="summary-grid-content summary-grid-border 2"  [ngClass]="{'is-telco-day': (isTelcoDay && telcoDayMessage)}" *ngIf = "!orderDeviceName && orderPlanName && orderNumberType == 'KeepNumber' && !isRentClicked && !isOwnClicked && !isProjectStar">
+                                    <div class="plan-applies up-front-payment" *ngIf="orderPlanName && !isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+									<div class="plan-applies up-front-payment" *ngIf="orderPlanName && isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront  && !deviceUpfrontPenalty">RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront  && deviceUpfrontPenalty">RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && mvivaPlanUpfront">RM{{ (0.00) | number : '1.2-2'}}</div>
+									<!-- <div class="rebate-applies" *ngIf="orderPlanName">*Upfront payment is required for the first month</div> -->
+                                    <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                    <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                </div>
+                                <div class="summary-grid-content summary-grid-border 2"  [ngClass]="{'is-telco-day': (isTelcoDay && telcoDayMessage)}" *ngIf = "!orderDeviceName && orderPlanName && orderNumberType == 'KeepNumber' && !isRentClicked && !isOwnClicked && isProjectStar">
+                                    <div class="plan-applies up-front-payment" *ngIf="orderPlanName && !isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+									<div class="plan-applies up-front-payment" *ngIf="orderPlanName && isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront  && !deviceUpfrontPenalty">RM{{ (orderTotalPay ? (orderTotalPay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && !mvivaPlanUpfront  && deviceUpfrontPenalty">RM{{ (orderTotalPay ? (orderTotalPay) : 0.00) | number : '1.2-2'}}</div>
+                                    <div class="summary-grid-right up_front_right is-font-bold" *ngIf = "!orderDeviceName && orderPlanName && mvivaPlanUpfront">RM{{ (0.00) | number : '1.2-2'}}</div>
+									<!-- <div class="rebate-applies" *ngIf="orderPlanName">*Upfront payment is required for the first month</div> -->
+                                    <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                    <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+								</div>
+								<div *ngIf = "!orderDeviceName && orderNumberType == 'SwitchToCelcom'" class="mnp-subscription-charges">Subscription charges will be added in your first billing cycle</div>
+								<div class="summary-grid-content summary-grid-border 3" *ngIf = "!orderDeviceName && orderNumberType == 'SwitchToCelcom'">
+									<!-- <div class="plan-applies is-font-bold up-front-payment" *ngIf="orderPlanName">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div> -->
+									<!-- <div *ngIf = "!orderDeviceName && orderPlanName && orderNumberType == 'SwitchToCelcom'" class="gold-cart-grid-content"> -->
+									<div class="gold-cart-grid-left mnp-sim-left">*Free SIM card delivery
+										<div class="gold-cart-grid-right mnp-sim-right summary-grid-right is-font-bold">RM0.00</div>
+                                        <div *ngIf="lifestylePlans" class="lifestyle-section up-front-payment lifestyle-plans">Free Lifestyle Privileges <span class="to-be-rebate">(12 months contract)</span></div>
+                                        <div *ngIf="isPromotion" class="lifestyle-section up-front-payment lifestyle-plans" [innerHtml]= "lifestyleSummaryText"></div>
+                                    </div>
+                                   
+                                </div>
+                                <!-- <div *ngIf="(billType === 2 || data?.bill_type === 2 || selectedPlanDetails?.bill_type === 2 || isEasyPhone)" class="autoBilling"><span class="is-font-bold">Mandatory Autobilling</span></div> -->
+                                <div *ngIf="mandatoryAutoBilling === '2' && !IsDeviceOnly()" class="autoBilling"><span class="is-font-bold">Mandatory Autobilling</span></div>
+                                <div class="summary-grid-content item-bot16 campaign_mviva" *ngIf = "!orderDeviceName && orderPlanName && isTelcoDay && telcoDayMessage && showEligibleRebate">
+									<div class="upfront-waived up-front-payment"> {{ telcoDayMessage }}</div>
+                                </div>
+                            </div>
+                        </div>
+     <!-- new reframe device summary end-->
+
+
+     <!-- The below code has to iterate -->
+     <div *ngIf="suppLinesDetails && suppLinesDetails.length > 0">
+        <div class="u-grid-row has-border-bottom" *ngFor="let plan of suppLinesDetails; let i = index">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-9">
+            <div class="supplementary-lines">
+                <div class="summary-grid-content item-bot16">
+                    <div class="new-number_one">Supplementary line {{i+1}}: <b>{{plan.planPhoneNumber}}</b></div>
+                </div>
+                <div class="summary-grid-content item-bot16">
+                    <div class="new-number">Monthly Charges: <b>RM{{(plan.planPrice? (plan.planPrice) : 0.00) | number : '1.2-2'}}</b></div>
+                </div>
+                <div class="summary-grid-content">
+                    <div class="new-number item-bot16">{{plan.planType}}</div>
+                </div>
+
+                <div class="summary-grid-content summary-grid-border">
+                    <div class="plan-applies  up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+                    <div class="plan-applies  up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                    <div class="summary-grid-right up_front_right">RM{{ (plan.planPrice? (plan.planPrice) : 0.00) | number : '1.2-2'}}</div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="u-grid-row">
+		<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-9">
+			<div class="summary-grid-content is-summary-total">
+				<div class="summary-grid-left">Total</div>
+				<div class="summary-grid-right">RM{{ getTotalPay() | number : '1.2-2'}}*
+					<p class="gst-include">*SST not included</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</section>

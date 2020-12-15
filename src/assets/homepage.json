@@ -1,0 +1,36 @@
+{  
+    "data":
+    {   
+        "TemplateName":"Home",
+        "Component":[
+            
+            {
+                "Name":"starRating",
+                "Api":"starratingresponse.json",
+                "IsRotating":false,
+                "TextDisplayRight":false,
+                "IsClickable":false,
+                "SequenceNumber":2
+            },
+            {
+                "Name":"iconLayout",
+                "Api":"iconlayoutresponse.json",                
+                "SequenceNumber":3
+            },
+            {
+                "Name":"productcard",
+                "Api":"productcard.json",                
+                "SequenceNumber":4
+            },
+            {
+                "Name":"herobannerimageclickable",
+                "Api":"herobannerimageclickable.json",                
+                "SequenceNumber":5
+            }            
+       ]  
+    },         
+    "status":"OK",
+    "statusMessage":"SUCCESS"    
+}
+ 
+ 

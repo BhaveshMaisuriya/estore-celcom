@@ -1,0 +1,112 @@
+.estimateDeliveryDiv {
+	display: flex;
+}
+.billingAddContainer {
+	width: 50%;
+	display: inline-block;
+	text-align: center;
+}
+.deliveryPlace {
+  font: 14px Lato;
+	line-height: 20px;
+}
+.deliveryPlace span {
+  font: bold 14px Lato;
+	line-height: 20px;
+}
+.deliveryInfoContainer {
+	padding: 22px 0 0;
+	width: 390px;
+	margin: 0 auto;
+	text-align: left;
+}
+@media(max-width:767px) {
+	.deliveryPlace {
+    text-align: left;
+    padding: 0 16px;
+	}
+	.deliveryInfoContainer {
+		padding: 22px 0 0;
+		width: 100%;
+		margin: 0 auto;
+		text-align: left;
+	}
+}
+.choose_shipping_add_title {
+  font: normal normal normal 20px/normal Lato;
+  letter-spacing: normal;
+  color:#000000;
+  padding: 30px 55px 0px 55px;
+  margin: 0;
+}
+
+.choose_shipping_add_subtitle {
+	font: normal normal normal 16px/normal Lato;
+	letter-spacing: normal;
+	color:#000000;
+	padding: 0 55px 16px 55px;
+	margin: 0;
+}
+
+.choose_shipping_estimate {
+	font: normal normal normal 16px/normal Lato;
+	letter-spacing: normal;
+	color:#000000;
+	padding: 0 55px 30px 55px;
+	margin: 0;
+}
+
+.tab-slider--body {
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding: 24px 0 24px 0;
+	border-bottom: solid 1px #ccc;
+}
+.midnightHeading {
+  font: normal normal 14px Lato;	
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	color: #000;
+	text-align: center;
+}
+.midnightContent {
+	background-color: #e5f5fc;
+	/* margin: 0 16px;
+	width: 96.5%; */
+	text-align: left;
+	font: 14px Lato;
+	line-height: 1.43;
+	padding: 20px;
+}
+.chooseAddress {
+	margin: 16px 0;
+	text-align: center;
+}
+.chooseAddress label {
+	font: normal normal 16px Lato;
+	  font-stretch: normal;
+	  line-height: 18px;
+	  margin-left: 5px;
+}
+.chooseAddress-error-align {
+    position: relative;
+    top: 3px;
+    right: 5px;
+}
+.deliveryIcon {
+	height: 32px;
+	width: 32px;
+	position: relative;
+	top: -10px;
+	vertical-align: bottom;
+}
+.icon-center {
+	display: flex;
+	justify-content: center;
+}
+.text-blue {
+	color:#009ade;
+	font-family: Lato;
+  	font-size: 14px;
+}

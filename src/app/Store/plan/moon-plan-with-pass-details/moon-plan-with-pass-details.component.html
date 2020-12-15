@@ -1,0 +1,233 @@
+<div class="footer_fix" [hidden]="!loading">
+  <app-page-loader></app-page-loader>
+</div>
+
+<section class="campaign-container">
+  <app-omni-banner [data]="omniCampaign"></app-omni-banner>
+</section>
+<section
+  class="container-fluid clm-container"
+  *ngIf="
+    isMviva &&
+    mvivaCampaign.mvivaBannerDesktop &&
+    mvivaCampaign.mvivaBannerMobile
+  "
+>
+  <div class="desktop congrats-msg" [innerHtml]="mvivaCampaign.mvivaBannerDesktop | safeHtml"></div>
+  <div class="mobile congrats-msg" [innerHtml]="mvivaCampaign.mvivaBannerMobile | safeHtml"></div>
+</section>
+<section
+  class="u_section"
+  [hidden]="loading"
+  *ngIf="PlanPassDeviceDetailResponse"
+  id="section_1"
+>
+  <div class="section2 dev-dtl-plan-heading">
+    <div class="section_index_container">
+      <span class="section_index">1</span>
+    </div>
+    <h2 class="section_name">Choose a Plan</h2>
+  </div>
+  <p class="__plan_text" *ngIf="PlanPassDeviceDetailResponse.promotion_message">
+    {{ PlanPassDeviceDetailResponse.promotion_message }}
+  </p>
+  <section class="plans__row">
+    <div
+      class="base_plan_box"
+      *ngFor="let item of PlanPassDeviceDetailResponse.base_plan"
+    >
+      <section class="plan_main">
+        <div class="plan__name_main" *ngIf="PlanPassDeviceDetailResponse.name">
+          {{ PlanPassDeviceDetailResponse.name }}
+        </div>
+        <div class="plan__gb">{{ item.key_figures_text }}</div>
+      </section>
+      <p class="condition_styling" [innerHTML]="item.offer | safeHtml"></p>
+      <p class="base_plan__price">
+        {{ item.key_text }}<span class="monthly_charges">/month</span>
+      </p>
+    </div>
+    <!-- <div
+      class="side_by_side"
+      *ngFor="let item of PlanPassDeviceDetailResponse.pass_plan"
+    >
+      <div class="remove_div">
+        <div class="pass_s">
+          <div class="card-padding">
+            <div class="add_on_font">{{ item.name }}</div>
+            <div class="gb_font">{{ item.key_figures_text }}</div>
+            <p class="videoWalla" [innerHTML]="item.offer | safeHtml"></p>
+            <p class="pass_s__price">
+              {{ item.key_text
+              }}<span class="monthly_charges_pass_s">/month</span>
+            </p>
+          </div>
+          <div
+            *ngIf="item.sku !== selectedPassPlan"
+            class="add_pass"
+            (click)="addPass(item)"
+          >
+            <img
+              src="../../../../assets/img/add_icon.svg"
+              alt="add"
+              class="image_in_center"
+            /><span class="add__button_text">Add</span>
+          </div>
+          <div *ngIf="item.sku === selectedPassPlan" class="add_pass_m">
+            <img
+              src="../../../../assets/img/added_icon.svg"
+              alt="add"
+              class="added_icon"
+            /><span class="added_text">Added</span>
+          </div>
+        </div>
+        <div
+          *ngIf="item.sku === selectedPassPlan && !isMviva"
+          class="remove_pass"
+          (click)="removeAddonPass()"
+        >
+          Remove
+        </div>
+      </div>
+    </div> -->
+  </section>
+  <!-- <div class="selection_text">
+    <p class="_no_margin">
+      You have selected:
+      <strong>
+        {{ totalDataLimit }}GB Internet {{ selectedPassOfferTitle }} and
+        Unlimited Calls to All Networks
+      </strong>
+    </p>
+    <p class="_has_margin">
+      Total monthly commitment: <strong>RM{{ totalPrice }}</strong>
+    </p>
+    <p class="reward_text">
+      *Get rewarded on the 7th month onwards when you Stay On for 6 consecutive
+      months
+    </p>
+  </div> -->
+</section>
+
+<section
+  class="u_section is-bg-color-grey"
+  [hidden]="loading"
+  *ngIf="PlanPassDeviceDetailResponse"
+  id="section_2"
+>
+  <div class="section2 dev-dtl-plan-heading">
+    <div class="section_index_container">
+      <span class="section_index">2</span>
+    </div>
+    <h2 class="section_name">Size up</h2>
+  </div>
+
+  <p class="__plan_text" *ngIf="PlanPassDeviceDetailResponse.promotion_message">
+    {{ PlanPassDeviceDetailResponse.promotion_message }}
+  </p>
+
+  <div class="plans-size-up__row">
+
+    <div
+      *ngFor="let item of PlanPassDeviceDetailResponse.pass_plan"
+      [ngClass]="{
+        pass_s: true,
+        pass_s_selected: item.sku === selectedPassPlan
+      }"
+    >
+      <div class="card-padding">
+        <div class="add_on_font xl-text-m">{{ item.name }}</div>
+        <div class="gb_font">{{ item.key_figures_text }}</div>
+        <p class="videoWalla" [innerHTML]="item.offer | safeHtml"></p>
+        <p class="pass_s__price">
+          {{ item.key_text
+          }}<span class="monthly_charges_pass_s">/month</span>
+        </p>
+      </div>
+      <div
+        *ngIf="item.sku !== selectedPassPlan"
+        class="add_pass"
+        (click)="addPass(item)"
+      >
+        <img
+          src="../../../../assets/img/add_icon.svg"
+          alt="add"
+          class="image_in_center remove-btn-m"
+        /><span class="add__button_text">Add</span>
+      </div>
+      <div
+        *ngIf="item.sku === selectedPassPlan"
+        class="add_pass"
+        (click)="removeAddonPass()"
+      >
+        <img
+          src="../../../../assets/img/close-popup-clm.svg"
+          alt="added"
+          class="image_in_center remove-btn-m"
+        /><span class="remove__button_text">Remove</span>
+      </div>
+    </div>
+  </div>
+  <div class="selection_text">
+    <p class="_no_margin">You have selected: <b>{{ totalDataLimit }}GB Internet {{selectedPassOfferTitle}} and Unlimited Calls to All Networks</b></p>
+    <p class="_has_margin">Total monthly commitment: <b>RM{{ totalPrice }}</b></p>
+    <p class="reward_text" *ngIf="agentType !== 'dealer'">
+      *Get rewarded on the 7th month onwards when you Stay On for 6 consecutive months
+    </p>
+  </div>
+</section>
+
+<section>
+  <app-moon-plan-with-device-details
+    id="section_2"
+    *ngIf="deviceDataForAddonPass && selectedPassPlan"
+    [editProduct]="editDeviceObjForMoon"
+    [deviceDataForAddonPass]="deviceDataForAddonPass"
+    [SelectionAferLogin]="SelectionAferLogin"
+    [selectedDevice]="selectedDevice"
+  >
+  </app-moon-plan-with-device-details>
+</section>
+<app-device-details-choose-number
+  id="section_3"
+  *ngIf="PlanPassDeviceDetailResponse"
+  (mnpEligibilityCheckPlanPurchase)="OnMnpEligibilityPlanPurchase($event)"
+  (COBPEligibilityCheckPlanPurchase)="OnCOBPEligibilityPlanMoonPurchase($event)"
+  [data]="PlanPurchaseDataToPass"
+  [selectedProd]="editDeviceObjForMoon"
+  [SelectionAferLogin]="keepCelcomNumObj"
+  [isPromotion]="false"
+  [isMoon]="isMoon"
+  [chosenPlan]="chosenPlan"
+  [addOnsSelected]="addOnTermsAccepted"
+>
+</app-device-details-choose-number>
+<app-moon-summary-section
+  id="section_4"
+  [moonPlanDeviceDetailsData]="PlanPassDeviceDetailResponse"
+  [totalMonthlyCommitment]="totalPrice"
+></app-moon-summary-section>
+<app-moon-sticky-summary-section
+  [moonPlanDeviceDetailsData]="PlanPassDeviceDetailResponse"
+  [selectedProdForEdit]="editDeviceObjForMoon"
+  [mnpCheckPlanPurchase]="mnpCheckPlanPurchase"
+></app-moon-sticky-summary-section>
+<app-DetailBannerTextLeft
+  class="is_full_width"
+  *ngIf="isBanner"
+  [data]="dataForBanner"
+></app-DetailBannerTextLeft>
+<ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopup">
+  <app-losing-supplementary-line-popup
+    [popupType]="popupType"
+    (OnContinueSupplementaryPopup)="onContinueSwitchingPassTab($event)"
+    (OnLeaveSupplementaryPopup)="onCancellingSwitchingPassTab($event)"
+  ></app-losing-supplementary-line-popup>
+</ng-container>
+<ng-container *ngIf="displayMvivaPopup">
+  <age-eligibility-popup-component
+    [EligibilityPopupType]="MvivaInvalidPopupType"
+    (OnContinue)="OnContinueMvivaCheck($event)"
+  >
+  </age-eligibility-popup-component>
+</ng-container>

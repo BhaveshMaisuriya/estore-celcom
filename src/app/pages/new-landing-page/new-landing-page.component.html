@@ -1,0 +1,266 @@
+<div
+  class="container-fluid"
+>
+    <div class="row" *ngIf="isEnterprise">
+        <div class="col p-0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 enterprise-container">
+                        <img src="assets/img/Drop_3/enterprise-banner.jpg" alt=""/>
+                        <div class="img-gradient">
+                            <h3>Celcom Business is now online</h3>
+                            <p>Accelerating your connectivity with top value deals!</p>
+                        </div><!--img-gradient-->
+                    </div><!--enterprise-container-->
+                </div><!--row-->
+            </div><!--container-fluid-->
+        </div> <!--col-->
+    </div> <!--row-->
+    <div class="row section-row" *ngIf='!isEnterprise'>
+        <div class="col">
+            <div class="container newLandingContainer">
+                <div
+                  class="row top-static-banner"
+                  *ngIf="!(shopBannerLoading$ | async) else topBannerLoading"
+                >
+                    <div class="col-sm-12 col-md-7 col-lg-8">
+                        <app-static-hero-banner
+                          [banner$]="topLeftCarousel$"
+                        ></app-static-hero-banner>
+                    </div><!-- /.col-8 -->
+                    <div class="col-sm-12 col-md-5 col-lg-4 top-banner-carousel">
+                      <app-shop-plan-banner
+                        [bannerType]="'top_right'"
+                        [banners$]="topRightCarousel$"
+                      ></app-shop-plan-banner>
+                    </div><!-- /.col-4 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row section-row">
+        <div class="col">
+            <div class="container sectionPadding">
+                <div class="row" id="devices" #shopDevices>
+                    <div class="col">
+                        <h2 class="mt-estore-3" *ngIf="((featureTabs$ | async).length == 0 && !isEnterprise)">Shop Devices</h2>
+                        <div class="container phone-tab-container mb-estore-4" *ngIf="((featureTabs$ | async).length > 0 && !isEnterprise)">
+                            <div class="row align-items-center">
+                              <div class="col-md-5 col-12 p-0">
+                                <h2 class="m-0" >I’d like to shop for:</h2>
+                              </div>
+                              <div class="col-md-7 col-12 p-0 phone-tab-column">
+                                <ul class="tab profile-tabs" *ngIf="!(shopDevicesLoading$ | async)">
+                                  <ng-container *ngFor="let featureTab of featureTabs$ | async">
+                                    <li
+                                      [id]="featureTab.key"
+                                      [ngClass]="{
+                                        active: featureTab.key === (selectedfeatureTab$ | async)
+                                      }"
+                                      [attr.data-analytics-region]="featureTab.key">
+                                    
+                                      <a
+                                        class="tab-items"
+                                        [innerHTML]="featureTab.name"
+                                        (click)="onShopDevicesTabClick(featureTab.key, 'feature-tab')"
+                                      ></a>
+                                    </li>
+                                  </ng-container>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        <ng-container *ngIf="isEnterprise">
+                            <h2 class="mt-estore-3">Our Offerings</h2>
+                            <p class="mx-estore-3 text-center">Pair your plan with a brand new phone for the best experience</p>
+                        </ng-container>
+
+                        <ng-container *ngIf="(shopDevicesLoading$ | async) then shopDevicesLoadingHeader">
+                        </ng-container>
+
+                        <ul class="tab full-width" *ngIf="!(shopDevicesLoading$ | async)">
+                            <ng-container *ngFor="let brand of brands$ | async">
+                                <li
+                                    [id]="brand.key"
+                                    [ngClass]="{
+                                           active: brand.key === (selectedBrand$ | async)
+                                       }"
+                                    [attr.data-analytics-region]="brand.key"
+                                >
+                                    <a
+                                        class="tab-items"
+                                        [innerHTML]="brand.name"
+                                        (click)="onShopDevicesTabClick(brand.key, 'brand')"
+                                    ></a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                        <ul class="tab blue-oval-tab mt-estore-2" *ngIf="!(shopDevicesLoading$ | async)">
+                            <ng-container *ngFor="let plan of plans$ | async">
+                                <li
+                                    [id]="plan.key"
+                                    [ngClass]="{
+                                         active: plan.key === (selectedPlan$ | async)
+                                      }"
+                                    [attr.data-analytics-region]="plan.key"
+                                >
+                                    <a
+                                        class="tab-items"
+                                        [innerHTML]="plan.name"
+                                        (click)="onShopDevicesTabClick(plan.key, 'plan-tab')"
+                                    ></a>
+                                </li>
+                            </ng-container>
+                        </ul>
+                        <div class="container card-layout">
+                            <div class="row">
+                                <!-- * Device Cards # start -->
+                                <ng-container *ngFor="let device of devices$ | async">
+                                    <ng-container *ngIf="(selectedfeatureTab$ | async) === 'device-combo'; else deviceCard">
+                                        <div class="col-xl-4 col-md-6 device-card" [attr.data-analytics-region]="device.name">
+                                            <app-device-combo-card
+                                                [device]="device"
+                                                [planSku]="device?.device_combo_data?.planSku"
+                                            >
+                                            </app-device-combo-card>
+                                        </div>
+                                    </ng-container>
+                                    <ng-template #deviceCard>
+                                        <div class="col-xl-4 col-md-6 device-card" [attr.data-analytics-region]="device.name">
+                                            <app-device-card [device]="device"></app-device-card>
+                                        </div>
+                                    </ng-template>
+                                </ng-container>
+                                <!-- * Device Cards # end -->
+                                <!-- * if no Devices # start -->
+                                <div
+                                    *ngIf="(devices$ | async).length === 0 && !(shopDevicesLoading$ | async)"
+                                    class="no-devices-container"
+                                >
+                                    <p
+                                        *ngIf="!(shopDevicesError$ | async)"
+                                        class="warn-text"
+                                    >Oops, no device available at the moment</p>
+
+                                    <p
+                                        *ngIf="(shopDevicesError$ | async)"
+                                        class="warn-text"
+                                    >{{ shopDevicesError$ | async }}</p>
+                                </div>
+                                <!-- * if no Devices # end -->
+
+                              <ng-container
+                                *ngIf="(shopDevicesLoading$ | async) then shopDevicesLoadingBody"
+                              ></ng-container>
+                            </div><!--row card-layout-->
+                        </div>
+
+                        <app-pagination
+                            *ngIf="(shopDevicesTotalPages$ | async) > 1"
+                            [totalPages]="shopDevicesTotalPages$ | async"
+                            [currentPage]="shopDevicesCurrentPage$ | async"
+                            (onPageClick)="onShopDevicesPageClick($event)"
+                        ></app-pagination>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row plans-carousel" *ngIf='!isEnterprise'>
+        <div class="col">
+            <div class="container newLandingContainer">
+                <div class="row">
+                    <div class="col">
+                        <h2 id="plans" #shopPlans>Shop Plans</h2>
+                        <app-shop-plan-banner
+                          [bannerType]="'shop_plans'"
+                          [banners$]="shopPlans$"
+                        ></app-shop-plan-banner>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row feature-highlight" *ngIf='!isEnterprise'>
+        <div class="col">
+            <div class="container sectionPadding">
+                <div class="row">
+                    <div class="col">
+                        <h2 id="highlights" #highlights>Featured Highlights</h2>
+                        <div class="feature_add_on_text">Awesome rewards and online deals made just for you</div>
+                        <app-shop-plan-banner
+                          [bannerType]="'featured'"
+                          [banners$]="featured$"
+                        ></app-shop-plan-banner>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row static-grid" *ngIf='!isEnterprise'>
+        <div class="col">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2 id="why-us" #whyUs> Shop Online For Great Perks!</h2>
+                        <div class="row text-center">
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/shipping.png" alt="Free shipping">
+                                <p class="m-0">Free Shipping</p>
+                            </div>
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/cart.png" alt="Online Exclusive Offers">
+                                <p class="m-0">Online Exclusive Offers</p>
+                            </div>
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/help.png" alt="24/7 Support">
+                                <p class="m-0">24/7 Support</p>
+                            </div>
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/thumb.png" alt="100% Authentic">
+                                <p class="m-0">100% Authentic</p>
+                            </div>
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/warranty.png" alt="Warranty">
+                                <p class="m-0">Warranty</p>
+                            </div>
+                            <div class="col-sm-4 col-6 card">
+                                <img class="img-fluid" src="assets/img/landing/price.png" alt="Best Price">
+                                <p class="m-0">Best Price</p>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.col -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
+
+<footer-component></footer-component>
+<app-notification-error *ngIf="redirectPopUp" [data]="popupData"></app-notification-error>
+
+<ng-template #topBannerLoading>
+  <div class="top-banner-loading row top-static-banner">
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+  </div>
+</ng-template>
+
+<ng-template #shopDevicesLoadingHeader>
+    <ul class="tab full-width loading-tab-con">
+      <li *ngFor="let x of [1, 2, 3, 4, 5]" class="loading-tab-1"  [ngClass]="{active: x === 1}">
+        <span class="shimmer"></span>
+      </li>
+    </ul>
+    <ul class="tab blue-oval-tab loading-tab-con">
+      <li *ngFor="let x of [1, 2]" class="loading-tab-2" [ngClass]="{active: x === 1}">
+      </li>
+    </ul>
+</ng-template>
+
+<ng-template #shopDevicesLoadingBody>
+  <div *ngFor="let x of [1,2,3,4,5,6]" class="col-xl-4 col-md-6 device-card card shimmer">
+  </div>
+</ng-template>
+

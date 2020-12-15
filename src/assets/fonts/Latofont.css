@@ -1,0 +1,178 @@
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/transfonter/Lato-Regular.eot);
+    undefined: undefined;
+    src: url(../fonts/transfonter/Lato-Regular.eot?#iefix) format("embedded-opentype"), url(../fonts/transfonter/Lato-Regular.woff2) format("woff2"), url(../fonts/transfonter/Lato-Regular.woff) format("woff"), url(../fonts/transfonter/Lato-Regular.ttf) format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    text-rendering: optimizeLegibility
+}
+
+
+html {
+    font-family: Lato;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+body {
+
+    font-family: Lato;
+    scroll-behavior: smooth;
+
+}
+
+.is-h1,
+.is-h2,
+.is-h3,
+.is-h4,
+.is-headline,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Lato;
+    font-weight: 400;
+    margin: 0 0 1rem
+}
+
+.r-header,
+[data-css=c-cta] {
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.c-accordion--default .accordion__btn.is-active,
+[data-css=c-card] .card__link {
+    font-family: Lato, Arial, sans-serif-bold
+}
+.c-card--category .card__headline,
+.c-card--collarge .card-title__title,
+.c-navigation--default .navigation__link,
+[data-css=c-teaser] .teaser__headline {
+    font-family: LatoLatinWeb,Arial,sans-serif;
+}
+
+[data-css=c-button-description] .button-description__text {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__header__level-name {
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__header__key {
+
+    font-family: Lato;
+
+}
+
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__content__detail.is-highlighted {
+
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__actions .link {
+
+    font-family: Lato, Arial, sans-serif-bold;
+
+}
+
+.o-plan .plan__header .plan__level-name {
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.o-plan .plan__header .plan__key {
+    font-family: Lato;
+
+}
+
+.o-plan .plan__content .plan__content-detail.is-highlighted {
+
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.o-plan .plan__content .plan__actions .link {
+
+    font-family: Lato, Arial, sans-serif-bold;
+
+}
+
+.o-plan.is-horizontally-aligned .plan__header .plan__key {
+
+    font-family: Lato, Arial, sans-serif-bold;
+
+}
+
+[data-css=c-table-static] .table-static__col {
+
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+[data-css=c-table-static] .table-static__headline {
+
+    font-family: Lato
+}
+
+.c-meta-navigation--default .meta-navigation__list-item.is-active .meta-navigation__link {
+
+    border-bottom: 3px solid #000
+}
+
+.c-quicksearch--default {
+
+    font-family: Lato;
+
+}
+
+.c-sec-navigation--default {
+
+    font-family: Lato
+}
+
+[data-css=c-search-header] .search-header__title {
+
+    font-family: Lato;
+
+}
+
+[data-css=c-search-header] .search-header__subtitle {
+
+    font-family: Lato;
+
+}
+
+.c-table .table__table .table__body .table__row .table__cell,
+.c-table .table__table .table__cell-content--emphasized {
+    font-family: Lato, Arial, sans-serif-bold
+}
+
+.c-table .table__table .table__body .table__row .table__cell-header {
+    font-family: Lato;
+
+}
+
+.c-global-navigation .global-navigation__meta {
+
+    font-family: Lato;
+
+}
+
+.c-tabs .c-tabs__tab.is-active {
+    font-family: Lato, Arial, sans-serif-bold;
+
+}
+
+[data-css=c-breadcrumb] {
+    font-family: Lato
+}
+.c-footer .footer__sitemap .footer__sitemap__group .footer__sitemap__group-header::after{
+    float: right;
+}
+
+
+
+

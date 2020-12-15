@@ -1,0 +1,68 @@
+.error-container {
+  .-uh-oh-3-top {
+    top: 30% !important;
+  }
+
+  .-uh-oh-3-main {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .-uh-oh-3-Rectangle-3 {
+    text-align: left;
+  }
+
+  .-uh-oh-3-button {
+    cursor: pointer;
+  }
+
+  .-uh-oh-3 {
+    font-size: 40px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+  }
+
+  .Error-Page-not-foun {
+    font-size: 18px;
+    text-align: left;
+    color: #000000;
+  }
+
+  @media (min-width: 768px) {
+    .dispMob {
+      display: none;
+    }
+    .dispDesk {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .dispMob {
+      display: block;
+      width: 100%;
+    }
+    .dispDesk {
+      display: none;
+    }
+
+    .-uh-oh-3 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .Error-Page-not-foun {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .-uh-oh-3-Rectangle-3 {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<div class="main-container" [ngStyle]="additionalStyles">
+    <div class="main-content">
+            <router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
+    </div>
+    <div *ngIf="showSideSummary" class="side-summary-container" [ngClass]="{expanded: isSideSummaryExpanded}"
+        [ngStyle]="summaryAdditionalStyles">
+        <app-side-summary (onExpanded)="onSideSummaryExpanded($event)"></app-side-summary>
+    </div>
+</div>
+<footer-component></footer-component>

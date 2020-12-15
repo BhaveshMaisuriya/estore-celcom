@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="39" viewBox="0 0 42 39">
+    <defs>
+        <path id="a" d="M0 39h42V.018H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(0 -.017)">
+            <path fill="#000" d="M39 7H3a3 3 0 0 0-3 3v5a3 3 0 0 0 3 3h36a3 3 0 0 0 3-3v-5a3 3 0 0 0-3-3zM3 15h36v-5H3v5z"/>
+            <path fill="#000" d="M39 15H3v21a3 3 0 0 0 3 3h30a3 3 0 0 0 3-3V15zM6 36h30V18H6v18z"/>
+            <mask id="b" fill="#fff">
+                <use xlink:href="#a"/>
+            </mask>
+            <path fill="#000" d="M20 16h3v-3h-3zM27.982.018c-3.045 0-5.145 2.31-6.51 4.252L21 5.058l-.473-.788C19.162 2.328 17.062.018 14.017.018c-2.888 0-5.25 2.362-5.25 5.25 0 2.857 3.201 4.732 3.201 4.732h18.063s3.201-1.875 3.201-4.732c0-2.888-2.362-5.25-5.25-5.25m-13.965 3c1.32 0 2.592.919 3.995 2.892l.17.282.245.409.24.399H12.93c-.536-.46-1.162-1.161-1.162-1.732a2.252 2.252 0 0 1 2.25-2.25m13.965 0a2.252 2.252 0 0 1 2.25 2.25c0 .567-.606 1.26-1.16 1.732h-5.739l.24-.4.244-.408.17-.282c1.403-1.973 2.675-2.892 3.995-2.892" mask="url(#b)"/>
+        </g>
+        <text fill="#000" font-family="Lato-Black, Lato" font-size="20" font-weight="700" transform="translate(0 -1)">
+            <tspan x="12.821" y="34.119">%</tspan>
+        </text>
+    </g>
+</svg>

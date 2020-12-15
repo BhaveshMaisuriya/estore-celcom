@@ -1,0 +1,115 @@
+$red-color: #f44236;
+$yellow-color: #ff9700;
+$green-color: #21c479;
+
+.tnps-container {
+    width: 100%;
+    @media (min-width: 550px) {
+        width: 593px;
+    }
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    .main-container {
+        flex: 1;
+        .button-container {
+            display: flex;
+            color: #333333;
+            .close-btn {
+                flex: 1;
+            }
+        }
+    }
+    .btn {
+        width: 115px;
+    }
+}
+
+.info-section {
+    h4 {
+        font-size: 24px;
+    }
+    .smalltext {
+        font-size: 12px;
+        color: #666666;
+    }
+    .text1 {
+        font-size: 16px;
+    }
+    .text2 {
+        font-size: 14px;
+    }
+    .icon-container {
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        mat-icon {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .icon-container-success {
+        width: 128px;
+        height: 128px;
+        margin: auto;
+    }
+}
+
+.form-container {
+    max-width: 328px;
+    margin: auto;
+}
+
+.rating-container {
+    mat-button-toggle-group {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        width: 100%;
+
+        mat-button-toggle {
+            flex: 1;
+            border-radius: 8px;
+            .mat-button-toggle-button {
+                height: 62px;
+                @media (min-width: 550px) {
+                    height: 52px;
+                }
+            }
+            .mat-button-toggle-label-content {
+                padding: 0 !important;
+            }
+            &.btn-red {
+                color: $red-color;
+                &.mat-button-toggle-checked {
+                    background-color: $red-color;
+                    color: white;
+                }
+            }
+            &.btn-yellow {
+                color: $yellow-color;
+                &.mat-button-toggle-checked {
+                    background-color: $yellow-color;
+                    color: white;
+                }
+            }
+            &.btn-green {
+                color: $green-color;
+                &.mat-button-toggle-checked {
+                    background-color: $green-color;
+                    color: white;
+                }
+            }
+        }
+    }
+    .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+        border-left: 0 !important;
+    }
+    .description {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+}

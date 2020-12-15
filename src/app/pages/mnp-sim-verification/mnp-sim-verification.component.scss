@@ -1,0 +1,291 @@
+.mnp-sim-container {
+    margin: 40px auto;
+    text-align: center;
+    color: #333333;
+    font-size: 14px;
+    max-width: 672px;
+
+    .instruction-text {
+        max-width: 308px;
+        margin: 16px auto 40px;
+        @media (min-width: 600px) {
+            max-width: 618px;
+        }  
+    }
+
+    .mnp-title {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        h5 {
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        mat-icon {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    .wrapper-progressBar {
+        width: 100%;
+        font-size: 12px;
+
+        .progressBar {
+
+            li {
+                list-style-type: none;
+                float: left;
+                width: 33%;
+                position: relative;
+                text-align: center;
+
+                .user-icon {
+                    position: absolute;
+                    top: -35px;
+                    left: 37%;
+
+                    @media (min-width: 600px) {
+                        left: 43%;
+                    }
+
+                    mat-icon {
+                        width: 32px;
+                        height: 32px;
+                        color: #cccccc;
+                    }
+                }
+
+                &.active {
+                    color: #009ade;
+
+                    &:before {
+                        border-color: #009ade;
+                        width: 24px;
+                        height: 24px;
+                        background-color: #fff;
+                        margin: 4px auto;     
+                    }
+
+                    mat-icon {
+                        color: #009ade !important;
+                    }
+                }
+
+                &.activeBg {
+                    color: #009ade;
+
+                    &:before {
+                        background-color: #009ade;
+                        border-color: #009ade;
+                    }
+
+                    &+:after {
+                        background-color: #009ade;
+                    }
+
+                    mat-icon {
+                        color: #009ade !important;
+                    }
+                }
+
+                &:before {
+                    content: " ";
+                    line-height: 30px;
+                    border-radius: 50%;
+                    width: 12px;
+                    height: 12px;
+                    border: 2px solid #ccc;
+                    display: block;
+                    text-align: center;
+                    margin: 0 auto 10px;
+                    background-color: #ccc;
+                    margin: 10px auto 10px;
+                    box-sizing: border-box;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #cccccc;
+                    top: 15px;
+                    left: -50%;
+                    z-index: -1;
+                }
+
+                &:first-child {
+                    &:after {
+                        content: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .mnp-id-box {
+        justify-content: center;
+
+        @media (min-width: 600px) {
+            justify-content: start;
+        }
+
+        .mnp-id-input {
+            max-width: 328px;
+            width: 100%;
+        }
+
+        :nth-child(1) {
+            margin-right: 0;
+
+            @media (min-width: 768px) {
+                margin-right: 8px;
+            }
+        }
+        :nth-child(2) {
+            margin-left: 0;
+
+            @media (min-width: 768px) {
+                margin-left: 8px;
+            }
+        }
+    }
+    
+    .btn-next {
+        width: 115px;
+        height: 40px;
+        border-radius: 280px;
+    }
+
+    .sim-verify-container {
+        margin: 40px auto 24px;
+
+        .is-justify-center {
+            justify-content: center;
+        }
+
+        .sim-serial-num-box {
+            text-align: center;
+            display: grid;
+            font-size: 16px;
+            grid-template-columns: repeat(auto-fill, 54px);
+            gap: 8px;
+            max-width: 302px;
+            margin: 0 auto;
+        }
+        
+        .sim-card {
+
+            .serial-no-error-text {
+                display: inline-flex;
+    
+                mat-icon {
+                    width: 16.8px;
+                    height: 16.8px;
+                    color: #333333;
+                }
+
+                .find-serial-no-text {
+                    color: #999999;
+                    line-height: 1.25;
+                    font-size: 12px;
+                    margin-left: 10px;
+                }
+            }
+
+            .sim-card-sample {
+                width: 160px;
+                height: 147px;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        input {
+            max-width: 54px;
+            border-radius: 8px;
+            border: 1px solid #009bdf;
+            background-color: #f3f3f3;
+            font-size: 16px;
+            outline: none;
+            font-weight: bold;
+            box-sizing: border-box;
+            padding: 21px 8px 20px;
+            background: #fff;
+            text-align: center;
+
+            &:disabled {
+                color: #666666;
+                border-color: #cccccc;
+                background-color: #f3f3f3;
+                cursor: not-allowed;
+            }
+
+            &:focus {
+                caret-color: #009bdf;
+                border-width: 1px !important;
+                border-color: #009bdf !important;
+                color: #009bdf;
+            }
+        }
+    }
+
+    .port-in-row {
+        justify-content: flex-end;
+        margin: 0 10px;
+
+        @media (min-width: 600px) {
+            margin: 0 -15px;
+        }
+
+        .port-in-box {
+            text-align: left;
+
+            h5 {
+                font-weight: bold;
+                line-height: 1.2;
+            }
+
+            p {
+                font-weight: bold;
+                width: 100%;
+            }
+            
+            ul {
+                padding-left: 20px;
+
+                :nth-child(2) {
+                    margin: 8px 0;
+                }
+
+                li {
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .got-it-btn {
+        width: 127px;
+    }
+}
+
+#mnp-sim-error-popup .modal-container {
+    text-align: center;
+
+    p {
+        margin-bottom: 25px;
+    }
+}
+
+.footer-fix {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

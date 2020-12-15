@@ -1,0 +1,28 @@
+<div class="social-media-panel c-footer" *ngIf="SocialMediaLinksInfoTitle != null">
+        <div class="footer__sitemap__group-header">{{ SocialMediaLinksInfoTitle }}</div>
+        <div class="headingLineSocial"> </div>
+        <div class="footer__social-media">
+                <a class="footer__link footer__social-media__link" (click)="ManageContentNavigation(SocialMediaLinksInfoFb.uri);defaultOnClick();"
+                        href="{{SocialMediaLinksInfoFb.uri}}">
+                        <i class="newIcon" [ngStyle]="{'background-image': 'url('+ FbIcon.path +')' , 'background-repeat': 'no-repeat' }"></i>
+                </a>
+                <a class="footer__link footer__social-media__link" (click)="ManageContentNavigation(SocialMediaLinksInfoTwitter.uri);defaultOnClick();"
+                        href="{{SocialMediaLinksInfoTwitter.uri}}">
+                        <i class="newIcon" [ngStyle]="{'background-image': 'url('+ TwitterIcon.path +')' , 'background-repeat': 'no-repeat' }"></i>
+                </a>
+                <a class="footer__link footer__social-media__link" href="{{SocialMediaLinksInfoInsta.uri}}" (click)="ManageContentNavigation(SocialMediaLinksInfoInsta.uri);defaultOnClick();">
+                        <i class="newIcon" [ngStyle]="{'background-image': 'url('+ InstaIcon.path +')' , 'background-repeat': 'no-repeat' }"></i>
+                </a>
+                <a class="footer__link footer__social-media__link last-link" (click)="ManageContentNavigation(SocialMediaLinksInfoYoutube.uri);defaultOnClick();"
+                        href="{{SocialMediaLinksInfoYoutube.uri}}">
+                        <i class="newIcon" [ngStyle]="{'background-image': 'url('+ YoutubeIcon.path +')' , 'background-repeat': 'no-repeat' }"></i>
+                </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="redress-complaints" *ngIf="CompliantInfo">
+                <img *ngIf="!CompliantInfo.url" alt="Redress Batch" class="redress-batch" [src]="CompliantInfo.icon" />
+                <a *ngIf="CompliantInfo.url" [href]="CompliantInfo.url" target="_blank">
+                        <img alt="Redress Batch" class="redress-batch" [src]="CompliantInfo.icon" />
+                </a>
+        </div>
+</div>

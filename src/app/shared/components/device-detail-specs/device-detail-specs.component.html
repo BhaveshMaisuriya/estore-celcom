@@ -1,0 +1,123 @@
+<div class="section">
+    <div class="section-Content">
+        <div class="device-specs-container">
+            <div class="device-specs-content">
+                <p #featuresSpecs class="device-specs-heading mt-0">Features & Specifications</p>
+        
+                <!-- Shipping details starts -->
+                <mat-accordion *ngIf='deviceMoreDetails?.shipping_details'>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header class="specs-head">
+                            <mat-panel-title>
+                                <span class="specs-title">Shipping details</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="specs-content">
+                            <p [innerHTML]="deviceMoreDetails?.shipping_details"></p>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- Shipping details end -->
+        
+                <!-- Features starts -->
+                <mat-accordion *ngIf='deviceMoreDetails?.features'>
+                    <mat-expansion-panel class="specs-wrapper">
+                        <mat-expansion-panel-header class="specs-head">
+                            <mat-panel-title>
+                                <span class="specs-title">Features</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="specs-content">
+                            <p [innerHTML]="deviceMoreDetails?.features"></p>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- Features end -->
+        
+                <!-- What’s in box starts -->
+                <mat-accordion *ngIf='deviceMoreDetails?.whatInTheBox'>
+                    <mat-expansion-panel class="specs-wrapper">
+                        <mat-expansion-panel-header class="specs-head">
+                            <mat-panel-title>
+                                <span class="specs-title">What’s in box</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="specs-content">
+                            <p [innerHTML]="deviceMoreDetails?.whatInTheBox"></p>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- What’s in box end -->
+        
+                <!-- Specifications starts -->
+                <mat-accordion *ngIf='deviceMoreDetails?.specification'>
+                    <mat-expansion-panel class="specs-wrapper">
+                        <mat-expansion-panel-header class="specs-head">
+                            <mat-panel-title>
+                                <span class="specs-title">Specifications</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="specs-content">
+                            <div *ngIf="deviceMoreDetails?.specification?.display">
+                                <p class="specs-sub-heading">Display</p>
+                                <p class="content-sub-desc">{{deviceMoreDetails?.specification?.display}}</p>
+                            </div>
+                            <div *ngIf="deviceMoreDetails?.specification?.screen_size">
+                                <p class="specs-sub-heading">Size and Weight</p>
+                                <p class="content-sub-desc">{{deviceMoreDetails?.specification?.screen_size}}</p>
+                            </div>
+                            <div *ngIf="deviceMoreDetails?.specification?.operating_system">
+                                <p class="specs-sub-heading">Operating System</p>
+                                <p class="content-sub-desc">{{deviceMoreDetails?.specification?.operating_system}}</p>
+                            </div>
+                            <div *ngIf="deviceMoreDetails?.specification?.camera">
+                                <p class="specs-sub-heading">Camera</p>
+                                <p class="content-sub-desc">{{deviceMoreDetails?.specification?.camera}}</p>
+                            </div>
+                            <div *ngIf="deviceMoreDetails?.specification?.dimension">
+                                <p *ngIf='deviceDetail?.dimension' class="specs-sub-heading">Dimension</p>
+                                <p class="content-sub-desc">{{deviceDetail?.dimension}}</p>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- Features end -->
+        
+                <!-- Terms and conditions starts -->
+                <mat-accordion>
+                    <mat-expansion-panel class="specs-wrapper">
+                        <mat-expansion-panel-header class="specs-head">
+                            <mat-panel-title>
+                                <span class="specs-title">Terms & Conditions</span>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+        
+                        <div class="specs-content">
+                            <p *ngIf='deviceTermsConditions?.plans?.label' class="specs-sub-heading">{{deviceTermsConditions?.plans?.label}}</p>
+                            <div class="content-sub-desc">
+                                <p [innerHtml]="deviceTermsConditions?.plans?.desc"></p>
+                            </div>
+                            <p *ngIf='deviceTermsConditions?.contract_terms?.label' class="specs-sub-heading">{{deviceTermsConditions?.contract_terms?.label}}</p>
+                            <div class="content-sub-desc">
+                                <p [innerHtml]="deviceTermsConditions?.contract_terms?.desc"></p>
+                            </div>
+                            <p *ngIf='deviceTermsConditions?.legal?.label' class="specs-sub-heading">{{deviceTermsConditions?.legal?.label}}</p>
+                            <div class="content-sub-desc">
+                                <p [innerHtml]="deviceTermsConditions?.legal?.desc"></p>
+                            </div>
+                            <p *ngIf='deviceTermsConditions?.cancellation?.label' class="specs-sub-heading">{{deviceTermsConditions?.cancellation?.label}}</p>
+                            <div class="content-sub-desc">
+                                <p [innerHtml]="deviceTermsConditions?.cancellation?.desc"></p>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- Terms and conditions end -->
+            </div>
+        </div>        
+    </div>
+</div>

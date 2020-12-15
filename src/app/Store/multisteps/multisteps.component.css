@@ -1,0 +1,107 @@
+.c-callout-icon-item--steps .callout-icon-item__image {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  width: 128px;
+  height: 128px;
+  border: 2px solid #fdb934;
+  border-radius: 50%;
+}
+
+.c-callout-icon-item--steps.is-0 .callout-icon-item__image-wrapper::after {
+  background: none;
+}
+
+.c-callout-icon-item--steps.is-1 .callout-icon-item__image {
+  border-color: #fdb934;
+}
+
+.c-callout-icon-item--steps.is-1 .callout-icon-item__image-wrapper::after {
+  background: #fdb934;
+}
+
+.c-callout-icon-item--steps.is-2 .callout-icon-item__image {
+  border-color: #fdb934;
+}
+
+.c-callout-icon-item--steps.is-2 .callout-icon-item__image-wrapper::after {
+  background: #fdb934;
+}
+
+.c-callout-icon-item--steps.is-3 .callout-icon-item__image {
+  border-color: #fdb934;
+}
+
+.c-callout-icon-item--steps.is-3 .callout-icon-item__image-wrapper::after {
+  background: #fdb934;
+}
+
+.steps-wrapper {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.steps-wrapper .c-callout-icon-item--steps {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .c-callout-icon-item--steps .callout-icon-item__image-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 11.5em;
+    top: initial;
+    height: 20px;
+    width: 2px;
+    left: 50%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+  .steps-wrapper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-css=c-callout-icon-item] .callout-icon-item__content {
+    padding: 0 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    word-break: break-word;
+    /*steps wordbreak 20171116*/
+  }
+}
+
+.c-callout-icon-item--steps .callout-icon-item__content {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  word-break: break-word;
+}
+
+footer.grid-items__footer .c-cta--default {
+  margin: 0 1rem;
+}
+
+@media(max-width:767px) {
+  footer.grid-items__footer .c-cta--default {
+    margin: 1rem 1rem;
+  }
+}
+
+.c-cta--default {
+  min-width: 13rem;
+}
+
+.has-section-padding {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+.steps-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}

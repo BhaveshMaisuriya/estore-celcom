@@ -1,0 +1,22 @@
+<!--<app-mignight-delivery *ngIf='midnightDelivery' [billingAddress]='billingAddress' [checkoutData]='cartmineData'></app-mignight-delivery>
+<app-standard-delivery *ngIf='standardDelivery' [billingAddress]='billingAddress' [checkoutData]='cartmineData'></app-standard-delivery>-->
+<div class="tab-slider" *ngIf="false">
+  <ul  class="tab-slider--tabs">
+  <li class="tab-slider--trigger" (click)="viewMode('standardDelivery')" [ngClass]="{'is-standard-delivery':(showMidnightDelivery == false),'is-active':(standardDelivery==true)}"><img *ngIf= 'standardDelivery==false'
+  src="./assets/img/delivery.svg" class="deliveryIcon" [ngClass]="{'is-standard-delivery-icon':(showMidnightDelivery == false)}"><img *ngIf= 'standardDelivery==true'
+  src="./assets/img/delivery_blue.svg" class="deliveryIcon" [ngClass]="{'is-standard-delivery-icon':(showMidnightDelivery == false)}">
+  <div class="deliveryMethodAlign">Standard Delivery</div></li>
+  <li *ngIf='showMidnightDelivery == true' class="tab-slider--trigger" (click)="viewMode('midnightDelivery')" [ngClass]="{'is-active':(midnightDelivery==true)}"><img *ngIf= 'midnightDelivery==false'
+  src="./assets/img/late-night.svg" class="deliveryIcon"><img *ngIf= 'midnightDelivery==true'
+  src="./assets/img/late-night-blue.svg" class="deliveryIcon"> <div class="deliveryMethodAlign">Midnight Delivery</div></li>
+  </ul>
+  </div>
+<div class="deliveryMethodContainer">
+  <div class="arrow-down"></div>
+  <div class="deliveryMethodSubContainer">
+    <!-- <app-mignight-delivery *ngIf='midnightDelivery && cartmineData' (errorToDisplay)="errorToDisplay($event);" (sessionInvalidChange)="sessionInvalidChange($event);" [billingAddress]='billingAddress' [checkoutData]='cartmineData' [disableButton]='disableButton'></app-mignight-delivery> -->
+    <app-standard-delivery *ngIf='(standardDelivery || midnightDelivery) && cartmineData' (errorToDisplay)="errorToDisplay($event);" (sessionInvalidChange)="sessionInvalidChange($event);" [billingAddress]='billingAddress' [checkoutData]='cartmineData' [disableButton]='disableButton'></app-standard-delivery>
+  </div>
+</div>
+<app-notification-error *ngIf = "sessionInvalid" [IsSessionInValid] = "sessionInvalid" ></app-notification-error>
+<app-notification-error *ngIf = "showErrorNoticification" [data] = "errorNotification" ></app-notification-error>

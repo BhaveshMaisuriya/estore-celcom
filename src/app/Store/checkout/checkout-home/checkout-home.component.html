@@ -1,0 +1,49 @@
+<app-checkout-hero-banner [data]='{"Title":"Checkout","SubTitle":""}'></app-checkout-hero-banner>
+<!-- <div class="checkout-steps">
+  <section class="u-section has-section-padding has-border step__background-color">
+    <div class="section__inner">
+      <div class="section__content">
+        <ul class="steps_wrapper">
+          <li class="callout_step-wrapper" [ngClass]="[isActive('/store/checkout/personal-details'),isActive('/store/checkout/shipping')]" *ngIf="userType == 'GUEST' && guestUser !== 'YES'">
+            <div class="callout__step__content">
+              <div class="is-1">1</div>
+            </div>
+            <div class="callout-item_content">Personal Details</div>
+            <span class="line_connect_step"></span>
+          </li>
+          <li class="callout_step-wrapper" [ngClass]="isActive('/store/checkout/shipping')" *ngIf="userType != 'GUEST'">
+            <div class="callout__step__content">
+              <div class="is-1">1</div>
+            </div>
+            <div class="callout-item_content">Personal Details</div>
+            <span class="line_connect_step"></span>
+          </li>
+          <li class="callout_step-wrapper" [ngClass]="isActive('/store/checkout/shipping')" *ngIf="userType == 'GUEST' && guestUser == 'YES'">
+            <div class="callout__step__content">
+              <div class="is-1">1</div>
+            </div>
+            <div class="callout-item_content">Personal Details</div>
+            <span class="line_connect_step"></span>
+          </li>
+          <li class="callout_step-wrapper" [ngClass]="[isActive('/store/checkout/summary'), getMnpClass()]">
+            <div class="callout__step__content">
+              <div class="is-2">2</div>
+            </div>
+            <div class="callout-item_content">Order Summary</div>
+          </li>
+          <li class="callout_step-wrapper" [ngClass]="{'is-mnp': isMnp === true}" routerLinkActive="active" *ngIf = "!isMnp || this.cart.grossTotal">
+            <div class="callout__step__content">
+              <div class="is-3">3</div>
+            </div>
+            <div class="callout-item_content_payment">Payment</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div> -->
+
+<router-outlet></router-outlet>
+
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>

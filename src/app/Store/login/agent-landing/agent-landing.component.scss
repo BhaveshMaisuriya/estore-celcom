@@ -1,0 +1,278 @@
+.dealer-landing-container {
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: url('assets/img/youtube-bg.jpg');
+    background-repeat: repeat-x;
+    position: relative;
+    padding-bottom: 10em !important;
+
+    &:before {
+        content: " ";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: hsla(0,0%,95.3%,.3);
+    }
+    
+    .product-category-container {
+        max-width: 500px;
+
+        @media (min-width: 1366px) {
+            max-width: 100%;
+        }
+    }
+
+    .product-category-text {
+        color: #666666;
+        line-height: 1.21;
+        text-align: center;
+        margin: 40px 0 4px 0;
+
+        @media (min-width: 600px) {
+            margin: 60px 0 12px 0;
+        }
+    }
+
+    .options-select-text {
+        line-height: 1.21;
+        color: #666666;
+        text-align: center;
+        margin: 60px 0 0 0;
+    }
+
+    .product-category-cards {
+        max-width: 154px;
+        text-align:center;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 12px 10px;
+        padding: 16px;
+        
+        @media(min-width: 1366px) {
+            margin: 12px;
+            max-width: 230px;
+            padding: 32px 14px 24px 16px;
+        }
+
+        .device-img-m-h {
+            height: 80px;
+
+            @media (min-width: 600px) {
+                height: auto;
+            }
+        }
+
+        .triangle-down {
+            position: absolute;
+            margin: 0;
+            left: 48%;
+            bottom: -12px;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-bottom: 12px solid #009bdf;
+        }
+
+        .product-category-name {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 1.19;
+
+            @media(min-width: 600px) {
+                font-size: 20px;
+                line-height: 1.2;
+            }
+        }
+
+        .product-category-desc {
+            min-height: 85px;
+            font-size: 14px;
+            line-height: 1.21;
+
+            @media(min-width: 600px) {
+                min-height: 76px;
+                font-size: 16px;
+                line-height: 1.19;
+            }
+        }
+
+        .divider {
+            width: 97px;
+            height: 5px;
+            border-radius: 8px;
+            background-color: #009bdf;
+            margin: 0 auto;
+            box-sizing: border-box;
+            border: none;
+        }
+    
+        button {
+            width:116px;
+            border-radius: 280px;
+            padding: 6px 0;
+            line-height: 1.21;
+        }
+    }
+
+    .blue-pop-up {
+        background:#009bdf;
+        color: #fff;
+        padding: 32px 89px 8px 86px;
+        position: absolute;
+        left: -175px;
+        top: 103%;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+        @media (min-width: 1366px) {
+            padding: 32px 36px 8px 36px;
+            left: 0;
+        }
+
+        .buttons-for-popup {
+            margin: 24px auto 0;
+            display: block;
+
+            .plan-name {
+                border-radius: 20px;
+                border: solid 1px #fff;
+                color: #fff;
+                padding: 8px 0 7px 0;
+                font-size: 14px;
+                font-weight: bold;
+                width: 150px;
+                box-sizing: border-box;
+                margin: 16px auto;
+                line-height: 1.21;
+            }
+        }
+    }
+
+    .sale-link-row {
+        background-color: #007cb2;
+        padding: 24px 0 16px 0;
+        color: #ffffff;
+        text-align: center;
+        margin: 28px 0 0 0;
+        opacity: .9;
+
+        .sales-link-column {
+            max-width: 290px;
+            margin: 0 0 14px 0;
+        }
+    }
+
+    .target-campaign-text {
+        color: #666666;
+        line-height: 1.21;
+        text-align: center;
+        margin: 22px 0 24px 0;
+
+        @media (min-width: 600px) {
+            margin: 28px 0 24px 0;
+        }
+    }
+
+    .gamification-card {
+        max-width: 333px;
+        width: 100%;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16);
+        background-color: #fff;
+        padding: 24px 0 24px 0;
+        word-break: break-word;
+        color: #333333;
+        opacity: 0.9;
+        cursor: pointer;
+        outline: none;
+        margin: 40px auto 10px;
+
+        > div {
+            cursor: pointer;
+        }
+
+        h5 {
+            font-weight: bold;
+            line-height: 1.2;
+            margin: 16px 0;
+            height: 24px;
+        }
+
+        p {
+            margin: 16px auto 23px;
+            width: 100%;
+            max-width: 202px;
+            height: 38px;
+            line-height: 1.19;
+        }
+
+        .divider {
+            width: 100%;
+            height: 5px;
+            border-radius: 8px;
+            background-color: #009bdf;
+            margin: 0 auto;
+            max-width: 97px;
+        }
+
+        button {
+            width: 116px;
+            padding: 6px 0 7px 0;
+        }
+    }
+
+    .game-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .is-justify-center {
+        justify-content: center;
+    }
+
+    .mb-blue-pop-up {
+        margin-bottom: 0;
+
+        @media(min-width: 600px) {
+            margin-bottom: 16.5em;
+        }
+    }
+
+    .mt-blue-pop-up {
+        margin-top: 17em;
+
+        @media (min-width: 768px) {
+            margin-top: 16em;
+        }
+
+        @media (min-width: 1366px) {
+            margin-top: 12px;
+        }
+    }
+
+    .mx-m-n1 {
+        margin-left: -16px;
+        margin-right: -16px;
+
+        @media (min-width: 600px) {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+.footer-background {
+    background-color: #333333;
+    color: #fff;
+}
+
+.footer-fix {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}    

@@ -1,0 +1,28 @@
+[data-css=c-breadcrumb] {
+    z-index: 51;
+    padding: 0rem 18rem 0rem 18rem;
+    position: relative;
+    height: 35px;
+}
+[data-css=c-breadcrumb] .breadcrumb__list {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 7px;
+}
+
+/* breadcrumb will not cover underlying component */
+@media(min-width:769px){
+    breadcrumb-component{
+        display: block;
+        min-height: 31px;
+    }
+}
+/* NOT REQUIRED as it is working without below IE Hack.
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active){
+	[data-css=c-breadcrumb] {
+    padding:2rem 18rem 2rem 18rem;
+    }
+}
+*/

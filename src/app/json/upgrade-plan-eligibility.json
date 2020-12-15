@@ -1,0 +1,109 @@
+[
+    {
+        "penaltyCheck": {
+            "status": true,
+            "endDate": "20211227_000000",
+            "productPromotionPartNumber": "PB11860",
+            "productPromotionId": "1-XMK1EL",
+            "exception": false,
+            "current_plan": "PB11860",
+            "eligible_contract_extend": false,
+            "device_upfront_penalty": "2937.5"
+        },
+        "openOrder": {
+            "status": false,
+            "exception": false,
+            "outputOpenOrderValidationResp": {
+                "Error_spcMessage": "",
+                "OrderStatus": "",
+                "orderNumber": "",
+                "serialNumber": "",
+                "openOrderFlag": "",
+                "outletId": "",
+                "OrderId": "",
+                "Error_spcCode": ""
+            },
+            "message": null
+        },
+        "blackList": {
+            "blacklistChkResponse": {
+                "blacklistIndicator": "No"
+            },
+            "status": true,
+            "exception": false,
+            "blacklistIndicator": "No",
+            "message": null
+        },
+        "productEligibility": {
+            "status": true,
+            "message": "Plan is eligible for this user",
+            "exception": false,
+            "plan": 0,
+            "process_type": ""
+        },
+        "customer_eligibility": {
+            "status": true,
+            "exception": false,
+            "message": ""
+        },
+        "golden_number_note": {
+            "status": true,
+            "message": ""
+        },
+        "callBaring": {
+            "queryFirstAppUsageResponse": {
+                "callBarDetails": {
+                    "elementId": "0",
+                    "callbarReason": ""
+                },
+                "bADetailsRetrieve": {
+                    "paymentMethod": "",
+                    "creditCardVerificationNumber": ""
+                },
+                "balanceSummaryDetails": {
+                    "cmuBalanceSummaryVbc": [
+                        {
+                            "TotalDue": "0",
+                            "latestAmountDue": "-7441",
+                            "dueNow": "7441",
+                            "unbilledUsage": "2699.11"
+                        }
+                    ]
+                }
+            },
+            "exception": false,
+            "status": true,
+            "response": "",
+            "message": null
+        },
+        "contract_check": {
+            "message": "",
+            "status": true,
+            "exception": true,
+            "autopayment": "Y"
+        },
+        "star_eligibility": {
+            "status": true,
+            "message": "Plan is eligible",
+            "response": {
+                "notAllowed": 0,
+                "plan": 0,
+                "pass": 0,
+                "penalty": 1,
+                "upfront": 0,
+                "device": 0,
+                "is_same": 0,
+                "same_pass": 0,
+                "same_plan_type": 0,
+                "plan_los": 22.266666666667,
+                "device_contract": 1,
+                "pass_contract": 0,
+                "pass_exist": true,
+                "device_exist": false
+            },
+            "change_itemtype": 0,
+            "is_ultra": 1
+        },
+        "validated_id": "46749"
+    }
+]

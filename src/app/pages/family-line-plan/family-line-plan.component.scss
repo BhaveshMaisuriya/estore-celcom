@@ -1,0 +1,150 @@
+@import "app/Store/plan/prepaid/prepaid.component.scss";
+
+#section-group {
+  @media (max-width: 768px) {
+    padding-top: 60px;
+  }
+}
+.side-summary-container {
+  position: fixed;
+  right: 0;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+
+  @media (min-width: 769px) {
+    position: absolute;
+    padding: 40px;
+    width: 376px;
+    bottom: 0;
+  }
+}
+
+.base-plan-container {
+  width: 318px;
+}
+
+.success-text {
+  color: #00c871;
+}
+
+.error-text {
+  color: #d0011b;
+}
+
+.account-details-title {
+  font-weight:bold;
+  word-break: break-word;
+  margin-top:26px;
+  margin-bottom: 24px;
+}
+
+.change-number-txt {
+  font-size: 14px;
+  font-weight: bold;
+  color: #009bdf;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .65;
+  }
+}
+
+.account-details-card {
+  max-width: 328px;
+  padding:16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
+
+  .horizontal-border {
+    width: 96px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #009be4;
+    margin:16px 0;
+    box-sizing: border-box;
+    border: 0;
+  }
+
+  .account-details-desc {
+    font-size: 14px;
+    color: #666666;
+    font-weight: bold;
+
+    .p-normal {
+      font-weight: normal;
+      padding: 0;
+    }
+
+    .mb-8 {
+      margin: 0 0 8px;
+    }
+  }
+}
+
+.warning-container {
+  display: flex;
+  margin-top: 24px;
+
+  .warning-msg {
+    color: #333333;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-left: 10px;
+    word-break: break-word;
+  }
+}
+
+
+button {
+  width: 125px;
+  padding: 11px 0 10px;
+}
+
+.otp-text {
+    font-size: 14px;
+}
+
+.no-top-padding {
+  margin-top: -86px;
+}
+.checkout-info-container {
+  max-width: 317px;
+  border-radius: 2px;
+  background-color: #cce5f0;
+  padding: 15px 0;
+  color: #333333;
+  font-size: 14px;
+  text-align: center;
+  display: flex;
+  margin: 24px 0;
+
+  p {
+    margin: 2px 0 1px;
+  }
+
+  img {
+    margin: 0 16px;
+  }
+}
+
+.mt-8 {
+  margin: 8px 0 0  !important;
+}
+
+.nric-box {
+  max-width: 328px;
+  padding: 0;
+  
+  .mat-input-element:disabled {
+    color: #333333;
+  }
+}
+
+.has-badge {
+  padding-top: 15px;
+}

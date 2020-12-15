@@ -1,0 +1,11 @@
+<div class="u_section">
+  <div class="section2 dev-dtl-plan-heading">
+    <div class="section_index_container esim-sectionize"><span class="section_index">1</span></div>
+    <h2 class="section_name">Please verify your details</h2>
+    <app-nric-input [pageType]="pageType" [hwEligible]="esimEligible" (resetMsisdnOtp)="onCallResetMsisdnOtp($event)" (isMCUser)="onCallIsMCUser($event);"></app-nric-input>
+    <app-msisdn-input [pageType]="pageType" [verificationFor]="verificationFor" *ngIf="enableMCAuthentication" [nric]="nric" (resetOtp)= "onCallResetOtp($event)" (sentOtp)="onSentOtp($event);"></app-msisdn-input>
+    <app-otp-input [pageType]="pageType" *ngIf="enableMCotp" [nric]="nric" [msisdn]="msisdnOtp" [esim]="true" (validateOtp)="onValidOtp($event);"></app-otp-input>
+  </div>
+</div>
+ <app-page-loader [hidden]="!loading"></app-page-loader>
+ 

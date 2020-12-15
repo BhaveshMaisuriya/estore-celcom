@@ -1,0 +1,14 @@
+.hero-banner-img-link {
+	display: none;
+}
+.hero-banner-img-link.show {
+	display: block;
+	color: #fff;
+	font-size: 2em;
+}
+.is-icon-arrow {
+	margin-top: 3px;
+}
+.hide {
+	display: none;
+}

@@ -1,0 +1,11 @@
+<app-page-loader *ngIf="isLoading"></app-page-loader>
+<ng-container *ngIf="isInvalid">
+    <div class="container text-center" id="container">
+        <mat-icon>highlight_off</mat-icon>
+        <h1>Oops! Offer Not Applicable</h1>
+        Looks like the link you followed is not applicable on Online Shop.<br>
+        Enjoy other exclusive offers we have for you!
+        <button (click)="onClickBacktoShop()" class="btn btn-rounded btn-primary">Back to Shop</button>
+    </div>
+</ng-container>
+<footer-component></footer-component>

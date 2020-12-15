@@ -1,0 +1,156 @@
+.card {
+    position: relative;
+    display: grid;
+    max-width: 100%;
+    margin: 0;
+    // padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 16px;
+
+    &.selected {
+        background: white !important;
+        border-width: 2px;
+        border-color: #009bdf !important;
+        color: black !important;
+    }
+    
+    &.disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+}
+
+.top_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 152px);
+
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(auto-fill, 156px);
+    }
+    
+    grid-column-gap: 16px;
+    grid-auto-rows: 64px;
+    grid-row-gap: 16px;
+
+    &.device-card {
+        grid-template-columns: repeat(auto-fill, 202px);
+        grid-auto-rows: 80px;
+        @media (max-width: 600px) {
+            grid-template-columns: repeat(100, 202px);
+            overflow-x: scroll;
+            scrollbar-width: none;  /* Firefox */
+            &::-webkit-scrollbar {
+                display: none;  /* Safari and Chrome */
+            }
+        }
+        .card {
+            display: flex;
+            align-items: stretch;
+            padding: 8px;
+
+            .optionImage {
+                flex-basis: 48px;
+                img {
+                    width: 48px;
+                    height: 48px;
+                }
+            }
+            .optionDesc {
+                flex: 1;
+                display: flex;
+                align-items: flex-start;
+                font-weight: bold;
+
+                .optionLabel {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    max-height: 100%;
+                    flex: 1;
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+                .round-button, .checkbox-container {
+                    align-self: center;
+                }
+            }
+        }
+    }
+
+    &.reload-card {
+        grid-template-columns: repeat(auto-fill, 180px);
+
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.optionDesc {
+    display: grid;
+    grid-template-columns: 85px 28px;
+    grid-column-gap: 12px;
+    line-height: 16px;
+    align-items: center;
+
+    &.reload-card {
+        grid-template-columns: 110px 32px;
+
+        .optionLabel {
+            line-height: 20px;
+        }
+    }
+}
+
+.checkbox-container {
+    display: grid;
+    width: 28px;
+    height: 28px;
+}
+
+.round-button {
+    background: #f9faff;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.placeholder {
+    border: 0;
+}
+
+.myPoint {
+    list-style-type: none;
+    text-align: center;
+    padding: 12px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: auto;
+    box-sizing: border-box;
+    li {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        opacity: 0.8;
+        border-radius: 100px;
+        transition: 0.4s;
+        background-color: #cccccc;
+        margin-left: 4px;
+        &.active {
+            background: #009bdf;
+            width: 12px;
+            border-radius: 999em;
+        }
+    }
+}

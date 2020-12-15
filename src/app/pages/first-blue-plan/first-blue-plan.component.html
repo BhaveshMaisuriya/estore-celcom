@@ -1,0 +1,81 @@
+<app-page-loader *ngIf="loading.pageLoading"></app-page-loader>
+
+<div class="section-group theme-material" *ngIf="!loading.pageLoading">
+
+  <aside class="side-summary-container">
+    <app-side-summary
+      [overrideTotalPrice]="true"
+      [totalPrice]="totalPayment"
+      (onAddtoCartClick)="onAddToCartClick()"
+    ></app-side-summary>
+  </aside>
+
+  <section class="section no-counter" *ngIf="isCampaignMviva">
+    <div class="section-content clm-container" [innerHTML]="campaignMviva?.desktop_content | safeHtml"></div>
+  </section>
+
+  <div class="section">
+
+    <div class="section-title">
+      <h1>Plan Details</h1>
+    </div>
+
+    <div class="section-content">
+      <div class="mb-5">
+        Choose a plan
+      </div>
+      <div *ngIf="basePlan$ | async as basePlan">
+        <app-plan-card
+          class="base-plan-container"
+          [collapsibleFooter]="false"
+          [footerTemplate]="footer"
+          [height100]="true"
+          [pricetag]="basePlan.key_text"
+          [default]="false"
+          [useMaterialTheme]="true"
+          [selected]="true"
+          [title]="getTitle(basePlan)"
+          [useMaterialTheme]="false">
+
+          <ng-template #footer>
+            <div [innerHTML]="basePlan.offer | safeHtml">
+            </div>
+          </ng-template>
+        </app-plan-card>
+
+      </div>
+      <div *ngIf="isCampaignMviva && !isNewLine && isCobp && !isMnp && !top_type" class="buy-now">
+        <span>I am interested to buy this plan</span>
+        <button matSuffix class="btn btn-rounded btn-primary btn-small" (click)="buyNow()">Buy now</button>
+      </div>
+    </div>
+  </div>
+  <div class="section" *ngIf="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp || top_type ))">
+    <div class="section-title" *ngIf="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp))">
+    <a href="#" id="top" #topAnchor class="anchor"></a><!-- /.anchor -->
+        <h1>Type of Purchase</h1>
+    </div>
+    <div class="section-content">
+      <app-typeof-purchase-wrapper
+        [newline]="isNewLine" 
+        [cobp]="isCobp" 
+        [mnp]="isMnp" 
+        [showOptions]="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp))"
+        [selectedType]="(topType$ | async)"
+        (onSelect)="selectedTypeOfPurchase($event)"
+      >
+    </app-typeof-purchase-wrapper>
+    </div>
+  </div>
+
+  <section class="section no-counter">
+    <div class="section-content">
+      <app-notes
+        *ngIf="_planData?.tabData?.notes"
+        [notesContent]="_planData?.tabData?.notes"
+      ></app-notes>
+    </div>
+  </section>
+</div>
+
+<footer-component></footer-component>

@@ -1,0 +1,151 @@
+.features-box-dtls {
+	width: 90%;
+	margin: auto;
+	padding-bottom: 34px;
+}
+/* Acordeon styles */
+
+.features-box-tab {
+	position: relative;
+	margin-bottom: 8px;
+	width: 100%;
+	color: #fff;
+	overflow: hidden;
+	background-color: #f4f4f4;
+}
+input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+label {
+	position: relative;
+	display: block;
+	padding: 0 0 0 1em;
+	font-weight: bold;
+	line-height: 3;
+	cursor: pointer;
+	color: #009ade;
+	text-align: left;
+}
+.blue label {
+	background: #2980b9;
+}
+.features-box-tab-content {
+	height: 0;
+	overflow: hidden;
+	color: #000;
+	-webkit-transition: max-height .35s;
+	-o-transition: max-height .35s;
+	transition: max-height .35s;
+}
+.features-box-tab-content p {
+	margin: 1em;
+	line-height: 1.5em;
+	font-size: 14px;
+}
+/* :checked */
+
+input:checked~.features-box-tab-content {
+	height: auto;
+}
+/* Icon */
+
+label::after {
+	font-family: cc-icons;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	line-height: 3;
+	text-align: center;
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+	transform: rotate(90deg);
+}
+input[type=checkbox]+label::after {
+	content: "\f103";
+	transform: rotate(90deg);
+}
+input[type=checkbox]:checked+label::after {
+	transform: rotate(270deg);
+}
+input[type=checkbox]:checked+label>span {
+	font-weight: bold;
+}
+.features-box-tab span {
+	color: #000;
+	object-fit: contain;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	text-align: left;
+}
+.dev-dtl-features-box {
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+}
+.features-box-heading {
+	font-size: 24px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	padding-top: 32px;
+	margin-top: 0;
+}
+.content-sub-heading {
+	font-weight: bold;
+	font-size: 14px;
+}
+.content-sub-desc {
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.5em;
+}
+.feature-box-close {
+	width: 16px;
+	float: right;
+	margin: 20px;
+	cursor: pointer;
+}
+.content-sub-desc-outer {
+	line-height: 0.3em;
+}
+.tnc___margin_top {
+	margin-top: 4em;
+}
+/*  device_details_modal CSS Start  */
+
+.device_details_modal {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.device_details_modal-content {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+@media(min-width:769px) {
+	.dev-dtl-features-box {
+		margin-top: 24px;
+	}
+}

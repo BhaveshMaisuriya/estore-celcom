@@ -1,0 +1,82 @@
+[
+  {
+    "title": "MyCelcom Postpaid App",
+    "uri": "node",
+    "alias": "node",
+    "absolute": "http://10.0.15.10/node",
+    "external": false,
+    "weight": "-50"
+  },
+  {
+    "title": "Connect with us",
+    "uri": "node",
+    "alias": "node",
+    "absolute": "http://10.0.15.10/node",
+    "external": false,
+    "weight": "-47",
+    "below": [
+      {
+        "title": "Facebook",
+        "uri": "https://www.facebook.com/celcom/",
+        "alias": "https://www.facebook.com/celcom/",
+        "absolute": "https://www.facebook.com/celcom/",
+        "external": true,
+        "weight": "-50"
+      },
+      {
+        "title": "Instagram",
+        "uri": "https://www.instagram.com/celcom/",
+        "alias": "https://www.instagram.com/celcom/",
+        "absolute": "https://www.instagram.com/celcom/",
+        "external": true,
+        "weight": "-49"
+      },
+      {
+        "title": "Twitter",
+        "uri": "https://twitter.com/celcom",
+        "alias": "https://twitter.com/celcom",
+        "absolute": "https://twitter.com/celcom",
+        "external": true,
+        "weight": "-48"
+      },
+      {
+        "title": "YouTube",
+        "uri": "https://www.youtube.com/user/CelcomChannel",
+        "alias": "https://www.youtube.com/user/CelcomChannel",
+        "absolute": "https://www.youtube.com/user/CelcomChannel",
+        "external": true,
+        "weight": "-47"
+      }
+    ]
+  },
+  {
+    "copyright":
+      "Copyright 2018 Celcom Axiata Berhad [Company No. 167469-A]. All Rights Reserved."
+  },
+  {
+    "complianceInfo": {
+      "icon":
+        "/sites/default/files/cms_content_images/footerimages/redress-batch.png",
+      "url": "http://complaint.cfm.my/",
+      "text": "Redress your complaints at the<br/>Consumer Forum Malaysia(CFM)"
+    }
+  },
+  {
+    "postpaidApps": {
+      "title": "Getmy Celcom Postpaid App",
+      "items": [
+        {
+          "title": "Google Play Store",
+          "icon":  "http://10.1.61.215/sites/default/files/cms_content_images/quicklinks/icon_reload.svg",
+          "url": "https://play.google.com/store/apps/details?id=com.First"
+        },
+        {
+          "title": "IPhone App Store",
+          "icon": "http://10.1.61.215/sites/default/files/cms_content_images/quicklinks/icon_reload.svg",
+          "url":
+            "https://itunes.apple.com/my/app/mycelcom-postpaid/id1192298514"
+        }
+      ]
+    }
+  }
+]

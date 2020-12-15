@@ -1,0 +1,177 @@
+<app-modal id="gamification-popup" [rounded]="true" [autoShow]="true">
+  <div class="modal-container">
+    <div class="row">
+      <div class="col-lg-6 col-8 m-auto game-text" [hidden]="stage === 3">
+        <h5>Grab Your Free Gift!</h5>
+        <p>Up to 100% cashback could be yours.</p>
+      </div>
+    </div>
+    <div class="inner-container" [hidden]="stage !== 1">
+      <img class="bg-img" src="assets/img/gamification/bg-cloud.png" />
+      <img
+        class="multi-clouds"
+        src="assets/img/gamification/multi-clouds.png"
+        alt="multi clouds image"
+      />
+      <img
+        class="tap-me-btn"
+        id="tap_me"
+        (click)="moveRider()"
+        src="assets/img/gamification/grab/tap-me-btn.png"
+        alt="tap-me-button"
+      />
+      <div id="rider-container">
+        <img
+          class="motorbike-img"
+          id="bike"
+          src="assets/img/gamification/grab/motorbiker.png"
+          alt="motorbike image"
+        />
+        <img
+          id="smallsmoke"
+          src="assets/img/gamification/grab/smoke1.png"
+          class="smoke"
+          alt="small smoke"
+        />
+        <img
+          id="bigsmoke"
+          src="assets/img/gamification/grab/smoke2.png"
+          class="bigsmoke"
+          alt="big smoke"
+        />
+      </div>
+
+      <div class="right-container" id="right-container">
+        <p class="winning-text text-center">
+          Chances to win these awesome prizes
+        </p>
+        <div class="voucher-container">
+          <ng-container *ngFor="let voucher of firstRow">
+            <div *ngIf="voucher" class="voucher">
+              <div class="dot">
+                <img src="assets/img/gamification/grab/dot.png" />
+                <img class="promo-images" src="assets/img/gamification/grab/promo-img.svg" />
+              </div>
+              <div class="ribbon">
+                <img
+                  src="assets/img/gamification/grab/ribbon.png"
+                  class="ribbon-img"
+                />
+                <p class="m-0 price">
+                  {{ voucher?.voucher_value }}
+                </p>
+              </div>
+              <div class="promo-code">{{ voucher?.voucher_name }}</div>
+            </div>
+          </ng-container>
+        </div>
+        <div class="voucher-container">
+          <ng-container *ngFor="let voucher of secondRow">
+            <div *ngIf="voucher" class="voucher">
+              <div class="dot">
+                <img src="assets/img/gamification/grab/dot.png" />
+                <img class="promo-images" src="assets/img/gamification/grab/promo-img.svg" />
+              </div>
+              <div class="ribbon">
+                <img
+                  src="assets/img/gamification/grab/ribbon.png"
+                  class="ribbon-img"
+                />
+                <p class="m-0 price">
+                  {{ voucher?.voucher_value }}
+                </p>
+              </div>
+              <div class="promo-code">{{ voucher?.voucher_name }}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="explosion-content" *ngIf="stage === 2">
+      <div id="explosion-container">
+        <img [src]="explosionPath" alt="explosion image" />
+      </div>
+    </div>
+    <div *ngIf="stage === 3">
+      <div class="row">
+        <div class="col-lg-6 col-12 m-auto voucher-title-text">
+          <h4> Yay!</h4>
+          <h5>You just won {{ wonVoucher?.voucher_value }}
+            {{ wonVoucher?.voucher_name }}!</h5>
+        </div>
+      </div>
+
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-5 mx-auto">
+            <div class="container voucher-code-box">
+              <div class="voucher-dot">
+                <img
+                  class="voucher-dot-image"
+                  src="assets/img/gamification/grab/voucher-dot.svg"
+                  alt="dot image"
+                />
+                <img
+                  class="voucher-promo-images"
+                  src="assets/img/gamification/grab/promo-img.svg"
+                  alt="promo-images"
+                />
+              </div>
+
+              <div class="voucher-ribbon">
+                <img
+                  class="voucher-ribbon-img"
+                  src="assets/img/gamification/grab/voucher-ribbon.svg"
+                  alt="ribbon image"
+                />
+                <p class="m-0 voucher-price">
+                  {{ wonVoucher?.voucher_value }}
+                </p>
+              </div>
+
+              <div class="voucher-promo-code">
+                {{ wonVoucher?.voucher_name }}
+              </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+        <div class="row">
+          <p class="m-0 mt-4 w-100" *ngIf="!isDealer">
+            The voucher has been sent to your email. You can also redeem the voucher at My Vouchers section.
+          </p>
+          <h5 class="mt-4 dealerText" *ngIf="isDealer">
+            An email with the voucher won has been sent to customer.
+            Alternatively they can log on to Celcom Online Shop to redeem the
+            voucher at myVoucher section.
+          </h5>
+
+          <div class="modal-buttons w-100" *ngIf="!isDealer">
+            <button type="button" class="btn" (click)="closePopup()">
+              Later
+            </button>
+            <button
+              type="button"
+              class="btn btn-rounded btn-primary"
+              (click)="closePopup()"
+              [routerLink]="['/store/profile/vouchers']"
+            >
+              Go to My Vouchers
+            </button>
+          </div>
+          <div class="modal-buttons w-100" *ngIf="isDealer">
+            <button
+              class="btn btn-rounded btn-primary goToHome"
+              (click)="closePopup()"
+              [routerLink]="['/store/dealerlandingpage']"
+            >
+              Go to Home
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-modal>

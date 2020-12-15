@@ -1,0 +1,70 @@
+<section class="landing-container">
+  <div class="type-of-purchase">
+    <p class="type-of-purchase-text">
+      Here are the plans under <br><span>{{ organization }}</span>
+    </p>
+  </div>
+  <app-page-loader [hidden]="!isLoading"></app-page-loader>
+  <div class="landing-card-body" *ngIf="!isLoading">
+    <div
+      class="device-bundle card"
+      [routerLink]="['/home']"
+      *ngIf="showDeviceMenu"
+    >
+      <img
+        src="assets/img/enterprise-plan-img.svg"
+        alt="Plan Image"
+      />
+      <img class="plus-icon" src="assets/img/enterprise-plus-icon.svg" alt="Plus Icon"/>
+      <img
+        src="assets/img/enterprise-device-img.svg"
+        alt="Device Image"
+      />
+      <div class="device-bundle-description">
+        <h5>Device Bundle</h5>
+        <div class="divider"></div>
+        <p>Get a plan that you need with a device of your choice, from iPhones to Android device.</p>
+        <button class="btn btn-primary btn-rounded">Buy Now</button>
+      </div>
+    </div>
+    <div class="postpaid-plans card" (click)="onPlanClick()" *ngIf="showPlanMenu">
+      <img
+        src="assets/img/enterprise-plan-img.svg"
+        alt="Postpaid Plans"
+        class="plan-img"
+      />
+      <div class="postpaid-plan-description">
+        <h5>Plans</h5>
+        <div class="divider"></div>
+        <p>Get only the plan from MEGA™ & XP Lite™ Postpaid with more customisation options.</p>
+        <button class="btn btn-primary btn-rounded">Learn Now</button>
+      </div>
+      <div *ngIf="showMultiplePlans" class="triangle-up"></div>
+    </div>
+
+    <!--blue pop up-->
+
+    <!--blue pop up-->
+  </div>
+  <div *ngIf="showMultiplePlans" class="blue-popup">
+    <div class="plan-popup">Buy your preferred plan</div>
+    <div class="buttons-for-popup">
+      <div
+        *ngFor="let plan of plans"
+        class="buttons"
+        (click)="onListClick(plan)"
+        [innerHTML]="plan.tabname | safeHtml"
+      ></div>
+    </div>
+    <div class="close-button" (click)="CloseMultiplePlans()">
+      <div>Close</div>
+      <mat-icon class="arrow-up">keyboard_arrow_up</mat-icon>
+    </div>
+  </div>
+</section>
+
+<app-agent-footer class="footer-fix"></app-agent-footer>
+<app-notification-error
+  *ngIf="showPopup"
+  [data]="popupData"
+></app-notification-error>

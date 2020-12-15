@@ -1,0 +1,31 @@
+<div class="card-wrapper" [ngClass]="{'has-badge': hasBadge}" *ngIf="!isLoading; else loadingEl">
+  <app-plan-card 
+    *ngFor="let plan of plans"
+    (click)="selectPlan(plan.sku)"
+    [useMaterialTheme]="true"
+    [selected]="selectedSku == plan.sku" 
+    [pricetag]="plan.price" 
+    [title]="plan.title"
+    [collapsibleFooter]="false"
+    [height100]="false"
+    [image]="plan.image"
+    [disabled]="disabled"
+    [promotion_badge]="plan.badge"
+    [promotion_text]="plan.promotion_text"
+    [footerTemplate]="plan.offers ? footer : null">
+    
+    <ng-template #footer>
+      <div [innerHTML]="plan.offers | safeHtml">
+      </div>
+    </ng-template>
+  </app-plan-card>
+</div>
+<ng-template #loadingEl>
+  <app-page-loader *ngIf="loadingType == 'spinner'"></app-page-loader>
+  <div *ngIf="loadingType == 'shimmer'" class="card-wrapper">
+    <div 
+      *ngFor="let plans of [1, 2]"
+      class="shimmer placeholder-card">
+    </div>
+  </div>
+</ng-template>

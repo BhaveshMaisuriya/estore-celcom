@@ -1,0 +1,62 @@
+<div class="pagination-root">
+  <ng-container *ngIf="pageArray.length <= 3; else pageCarouselWrapper">
+    <ul class="pagination">
+      <ng-container *ngFor="let item of pageArray">
+        <li
+          class="page-number-container pages normal"
+          [ngClass]="{ active: item === currentPage }"
+          (click)="handlePageClick(item)"
+        >
+          <span class="page-number-text">{{ item }}</span>
+        </li>
+      </ng-container>
+    </ul>
+  </ng-container>
+
+  <ng-template #pageCarouselWrapper>
+    <div class="pagination">
+      <div
+        class="page-number-container"
+        [ngClass]="{disabled: isPrevDisabled}"
+        (click)="handlePrevClick()"
+      >
+          <span class="page-number-text">
+            <img
+              class="page-navigator"
+              src="assets/img/pagination_Chevron_left.svg"
+              alt="Previous"
+            />
+          </span>
+      </div>
+      <ngu-carousel
+        #pageCarousel
+        class="pagination-carousel"
+        [inputs]="carouselConfig"
+        [dataSource]="pageArray"
+      >
+        <div *nguCarouselDef="let item;" class="item page-container">
+          <div
+            class="page-number-container pages"
+            [ngClass]="{ active: item === currentPage }"
+            (click)="handlePageClick(item)"
+          >
+            <span class="page-number-text">{{ item }}</span>
+          </div>
+        </div>
+      </ngu-carousel>
+      <div
+        class="page-number-container"
+        [ngClass]="{disabled: isNextDisabled}"
+        (click)="handleNextClick()"
+      >
+          <span class="page-number-text">
+            <img
+              class="page-navigator"
+              src="assets/img/chevron-right.svg"
+              alt="Next"
+            />
+          </span>
+      </div>
+    </div>
+  </ng-template>
+</div>

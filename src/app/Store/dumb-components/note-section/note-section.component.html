@@ -1,0 +1,75 @@
+<section id="note" class="u-section active tabcontent" *ngIf="noteCheck && noteDataCMS === undefined && notes === undefined">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="note__content">
+        <div class="note__content__inner">NOTE:</div>
+        <ul class="note__details">
+          <li class="note__details__description">Applicable for customers who do NOT have a contract with Celcom at this juncture.</li>
+          <li class="note__details__description">Do NOT submit multiple applications.</li>
+          <li class="note__details__description">Upon successful change of plan, user will not be able to return to original plan.</li>
+          <li class="note__details__description">Subsidy for supplementary line is not available for now.</li>
+          <li class="note__details__description">Terms and conditions apply</li>
+        </ul>
+      </div>
+      </div>
+  </div>
+</section>
+<section id="note" class="u-section active tabcontent" *ngIf=" noteCheck && noteDataCMS !== undefined">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="note__content" [innerHtml]="noteDataCMS | safeHtml">
+      </div>
+    </div>
+  </div>
+</section>
+<section id="note" class="u-section tabcontent active" *ngIf="cartNoteCheck">
+  <div class="section__inner">
+    <div class="section__content is-container-note">
+      <div class="note__content checkout-note">
+        <div class="note__content__inner checkout-note-inner">NOTE:</div>
+        <ul class="note__details checkout-note-details"  *ngIf="showCartSummaryNote === false">
+            <li class="note__details__description">Your SIM card is pre-activated.
+              </li>
+          <li class="note__details__description">For new customers, a new 3in1 SIM card will be delivered to you.</li>
+          <li class="note__details__description">For existing Celcom subscribers who are using an old SIM type, Celcom will provide a new 3in1 SIM together with your purchase.</li>
+        </ul> 
+       <ul class="note__details checkout-note-details no-ul" *ngIf="showCartSummaryNote === true">
+          <li class="note__details__description no-bullet">In conjunction with Chinese New Year festive season, we would like to inform that there will be a delay in our delivery service. For orders made within the below affected periods, delivery will commence from 28th January 2020 onwards.
+          </li>
+          <li class="note__details__description no-bullet push-right">West Malaysia - Orders from 20th January – 27th January 2020.</li>
+          <li class="note__details__description no-bullet push-right">East Malaysia - Orders from 17th January – 27th January 2020.</li>
+          <li class="note__details__description no-bullet">We apologise for any inconvenience caused.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="note" class="u-section tabcontent active" *ngIf="bBNoteCheck">
+  <div class="section__inner">
+    <div class="section__content is-container-note">
+      <div class="note__content checkout-note">
+        <div class="note__content__inner checkout-note-inner">NOTE:</div>
+        <ul class="note__details checkout-note-details">
+          <li class="note__details__description">Upon receiving SIM card, please call Celcom Customer Service at 1111 to activate your SIM card within 24 hours.
+            </li>
+          <li class="note__details__description">For new customers, a new 3in1 SIM card will be delivered to you.</li>
+          <li class="note__details__description">For existing Celcom subscribers who are using an old SIM type, Celcom will provide a new 3in1 SIM together with your purchase.</li>
+          <li class="note__details__description">Please note the 30 Days free trial begins from the date of order.</li>
+          <li class="note__details__description">Once active the device should not be moved to a different home.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="note" class="u-section active is-zindex tabcontent" *ngIf="(notes?.length > 0 && noteDataCMS === undefined)">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="note__content">
+        <div class="note__content__inner">NOTE :</div>
+        <ul class="note__details">
+          <li class="note__details__description__homewireless" *ngFor="let note of notes;">{{note.text}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

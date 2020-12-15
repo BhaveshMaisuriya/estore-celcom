@@ -1,0 +1,478 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<div [hidden]="loading">
+  <section id="step-1" class="u-section tabcontent">
+    <div class="section__inner">
+      <div class="section__content is-text-align-center">
+        <!--    Personal Details Section Start      -->
+        <section
+          class="u-section has-section-padding has-border has_bg_color section-padding-mobileView"
+        >
+          <div class="section__inner">
+            <div class="section__content is-container">
+              <div
+                class="checkout__grid-row"
+                *ngIf="checkoutData && personalDetails"
+              >
+                <!-- Name Email / -->
+                <div class="checkout__grid-cell">
+                  <p class="checkout__grid-label">Name</p>
+                  <p>
+                    {{ personalDetails?.displaySalutation }}.
+                    <span *ngIf="OldGuestUser == 'YES'">
+                      {{ personalDetails?.displayFirstname }}
+                      {{ personalDetails?.displayLastname }}
+                    </span>
+                    <span *ngIf="OldGuestUser == 'NO'">
+                      {{ personalDetails?.displayFullname }}
+                    </span>
+                  </p>
+
+                  <p class="checkout__grid-label">Email</p>
+                  <p>{{ personalDetails?.displayEmail }}</p>
+                </div>
+                <!-- / Name Email -->
+
+                <!-- Contact Number / -->
+                <div class="checkout__grid-cell">
+                  <p class="checkout__grid-label">Contact Number</p>
+                  <p>{{ personalDetails?.displayContactNumber }}</p>
+                </div>
+                <!-- / Contact Number -->
+                <!-- Address / -->
+                <div class="checkout__grid-cell">
+                  <div
+                    class="checkout_billing_address"
+                    *ngIf="billingAddress"
+                    [ngClass]="{ edited_billing: editBilling }"
+                  >
+                    <p class="checkout__grid-label">Billing Address</p>
+                    <p class="billing-caps">
+                      {{ billingAddress?.billing_unit_number }}
+                    </p>
+                    <p class="billing-caps">
+                      {{ billingAddress?.address_line_1 }}
+                    </p>
+                    <p
+                      *ngIf="billingAddress.address_line_2"
+                      class="billing-caps"
+                    >
+                      {{ billingAddress.address_line_2 }}
+                    </p>
+                    <p class="billing-caps">
+                      {{ billingAddress?.postcode }} {{ billingAddress?.city }}
+                    </p>
+                    <p class="billing-caps">{{ billingAddress?.region }}</p>
+                    <p hidden>{{ billingAddress?.country_id }}</p>
+                    <p hidden>{{ billingAddress?.telephone }}</p>
+                    <p hidden *ngIf="billingAddress.custom_attributes">
+                      {{ (billingAddress?.custom_attributes)[0].value }}
+                    </p>
+                  </div>
+                </div>
+                <!-- / Adress -->
+
+                <!-- Edit Adress / -->
+                <div
+                  *ngIf="!editBilling"
+                  class="checkout__grid-cell checkout__edit-container"
+                >
+                  <div class="checkout_edit">
+                    <p>
+                      <a (click)="editAddress()">
+                        <img src="./assets/img/icon/Edit.svg">
+                      </a>
+                    </p>
+                  </div>
+                </div>
+                <!-- / Edit Adress -->
+              </div>
+              <!---->
+              <div *ngIf="editBilling">
+                <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+                  <div class="section__inner">
+                    <div
+                      class="section__content is-container is-container-edit"
+                    >
+                      <div class="choose_new_add edit_billing_form">
+                        <div class="choose_new_add-form">
+                          <div class="choose_form_group">
+                            <label style="padding-top:10px;display:inline-block"
+                              >Address
+                              <span class="new-add_require">*</span>
+                            </label>
+                          </div>
+                          <div class="u-grid-row is-collapsed is-equal-height">
+                            <div
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height"
+                            >
+                              <div class="choose_form_group">
+                                <input
+                                  class="choose_form_control"
+                                  type="text"
+                                  placeholder="Home/Lot/Unit"
+                                  id="address"
+                                  name="address"
+                                  [(ngModel)]="addr"
+                                  [pattern]="formPattern.address"
+                                  required
+                                  #address="ngModel"
+                                  maxlength="15"
+                                  (keypress)="addressUnitValidation($event)"
+                                  (touchend)="addressUnitValidation($event)"
+                                  [ngClass]="{
+                                    errorborder:
+                                      !address.valid && address.touched
+                                  }"
+                                />
+                                <div
+                                  class="error"
+                                  *ngIf="!address.valid && address.touched"
+                                >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!address.hasError('required')"
+                                    >{{ modelLabels.ADDRESS_MSG }}</span
+                                  >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!address.hasError('pattern')"
+                                    >{{ modelLabels.VALID_ADDRESS_MSG }}</span
+                                  >
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg"
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height"
+                            >
+                              <div class="choose_form_group">
+                                <input
+                                  class="choose_form_control address_group"
+                                  type="text"
+                                  placeholder="Address Line 1"
+                                  id="addressLine1"
+                                  name="addressLine1"
+                                  [(ngModel)]="addrline1"
+                                  [pattern]="formPattern.addressLine"
+                                  required
+                                  #addressLine1="ngModel"
+                                  maxlength="100"
+                                  (keypress)="addressUnitValidation($event)"
+                                  (touchend)="addressUnitValidation($event)"
+                                  [ngClass]="{
+                                    errorborder:
+                                      !addressLine1.valid &&
+                                      addressLine1.touched
+                                  }"
+                                />
+                                <div
+                                  class="error"
+                                  *ngIf="
+                                    !addressLine1.valid && addressLine1.touched
+                                  "
+                                >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="
+                                      !addressLine1.hasError('required')
+                                    "
+                                    >{{ formHelperText.addressLine.req }}</span>
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!addressLine1.hasError('pattern')"
+                                    >{{ formHelperText.addressLine.invalid }}</span>
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg" alt=""
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height"
+                            >
+                              <div class="choose_form_group">
+                                <input
+                                  class="choose_form_control address_group"
+                                  type="text"
+                                  placeholder="Address Line 2 (Optional)"
+                                  id="addressLine2"
+                                  name="addressLine2"
+                                  [(ngModel)]="addrline2"
+                                  [pattern]="formPattern.addressLine"
+                                  #addressLine2="ngModel"
+                                  maxlength="100"
+                                  (keypress)="addressUnitValidation($event)"
+                                  (touchend)="addressUnitValidation($event)"
+                                  [ngClass]="{
+                                    errorborder: !addressLine2.valid
+                                  }"
+                                />
+                                <div class="error" *ngIf="!addressLine2.valid">
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!addressLine2.hasError('pattern')"
+                                    >{{ formHelperText.addressLine.invalid }}</span>
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg"
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height"
+                            >
+                              <div class="choose_form_group">
+                                <input
+                                  class="choose_form_control"
+                                  type="text"
+                                  placeholder="Postcode"
+                                  id="postalCode"
+                                  name="postalCode"
+                                  [(ngModel)]="posCod"
+                                  required
+                                  #postalCode="ngModel"
+                                  pattern="[0-9]{5}"
+                                  maxlength="5"
+                                  (keypress)="postalCodeValidation($event)"
+                                  (touchend)="postalCodeValidation($event)"
+                                  [ngClass]="{
+                                    errorborder:
+                                      !postalCode.valid && postalCode.touched
+                                  }"
+                                />
+                                <div
+                                  class="error"
+                                  *ngIf="
+                                    !postalCode.valid && postalCode.touched
+                                  "
+                                >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!postalCode.hasError('required')"
+                                    >{{ modelLabels.POSTAL_MSG }}</span
+                                  >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!postalCode.hasError('pattern')"
+                                    >{{ modelLabels.VALID_POSTAL_MSG }}</span
+                                  >
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg" alt=""
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height"
+                            >
+                              <div class="choose_form_group">
+                                <input
+                                  class="choose_form_control"
+                                  type="text"
+                                  placeholder="City"
+                                  id="city"
+                                  name="city"
+                                  [(ngModel)]="ciy"
+                                  required
+                                  #city="ngModel"
+                                  pattern="[a-zA-Z\s]+"
+                                  maxlength="30"
+                                  (keypress)="cityValidation($event)"
+                                  (touchend)="cityValidation($event)"
+                                  [ngClass]="{
+                                    errorborder: !city.valid && city.touched
+                                  }"
+                                />
+                                <div
+                                  class="error"
+                                  *ngIf="!city.valid && city.touched"
+                                >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!city.hasError('required')"
+                                    >{{ modelLabels.CITY_MSG }}</span
+                                  >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!city.hasError('pattern')"
+                                    >{{ modelLabels.VALID_CITY_MSG }}</span
+                                  >
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg"
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              id="stateContainer"
+                              class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height"
+                            >
+                              <div class="choose_form_group" *ngIf="states">
+                                <select
+                                  class="choose_form_control"
+                                  id="state"
+                                  name="state"
+                                  ngModel
+                                  [(ngModel)]="stat"
+                                  required
+                                  #state="ngModel"
+                                  [ngClass]="{
+                                    errorborder: !state.valid && state.touched
+                                  }"
+                                >
+                                  <option disabled selected value>State</option>
+                                  <option
+                                    *ngFor="let st of states.available_regions"
+                                    [value]="st.id"
+                                  >
+                                    {{ st.name }}
+                                  </option>
+                                </select>
+                                <div
+                                  class="error"
+                                  *ngIf="!state.valid && state.touched"
+                                >
+                                  <span
+                                    class="text-danger"
+                                    [hidden]="!state.hasError('required')"
+                                    >{{ modelLabels.STATE_MSG }}</span
+                                  >
+                                  <span class="warning-icon"
+                                    ><img
+                                      src="../assets/img/ThresholdAlertNotification.svg"
+                                  /></span>
+                                  <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mandatory-text">
+                            <span class="asterisk">*</span>Mandatory Fields
+                          </div>
+                          <div class="is-text-align-center buttonContainer">
+                            <button
+                              class="c-cta--default proceed_anchor"
+                              data-css="c-cta"
+                              type="submit"
+                            >
+                              Update
+                            </button>
+                          </div>
+                          <div
+                            *ngIf="isEditBillingOpen === true"
+                            class="error update-error-center"
+                          >
+                            <span class="warning-icon update-error-icon"
+                              ><img
+                                src="../assets/img/ThresholdAlertNotification.svg"
+                            /></span>
+                            <span class="text-danger"
+                              >Please click on "Update" to save your
+                              address.</span
+                            >
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="u-grid-row is-collapsed is-equal-height checkout_row">
+                <!---->
+                <div
+                  class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height"
+                >
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <div
+                      class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height"
+                    >
+                      <div
+                        class="img_personal"
+                        *ngIf="deliveryType == 'Standard Delivery'"
+                      >
+                        <img src="./assets/img/delivery.svg" />
+                      </div>
+                      <div
+                        class="img_personal"
+                        *ngIf="deliveryType == 'Midnight Delivery'"
+                      >
+                        <img src="./assets/img/late-night.svg" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!---->
+                <div
+                  class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-11 is-equal-height"
+                >
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <div
+                      class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-10 is-equal-height is-justify-content-left"
+                    >
+                      <div class="checkout_billing_address">
+                        <p class="billing_address">Delivery Method</p>
+                        <p>{{ deliveryType }}</p>
+                      </div>
+                    </div>
+                    <div
+                      class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2 is-equal-height is-justify-content-left"
+                    >
+                      <div class="checkout_edit">
+                        <p>
+                          <a href="" hidden>Edit</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--  Personal Details Section End   -->
+        <!-- start:email retrieval-->
+        <app-email-retrieval
+          (disableProceed)="disableProceed($event)"
+          *ngIf="emailRetrieval"
+        ></app-email-retrieval>
+        <!--End: email retrieval-->
+        <!-- Shipping & Billing Address Section Start -->
+        <section class="u-section is-bg-color-white choose_shipping_section">
+          <div class="section__content">
+            <app-select-delivery-method
+              *ngIf="checkoutData && billingAddress"
+              [disableButton]="disable"
+              [billingAddressData]="billingAddress"
+              [cartmineData]="checkoutData"
+            ></app-select-delivery-method>
+          </div>
+        </section>
+        <section id="my-address">
+          <div
+            class="u-section tab_address_content"
+            [style.display]="addressSide === 'existing' ? 'block' : 'none'"
+          ></div>
+        </section>
+        <!-- Shipping & Billing Address Section End -->
+      </div>
+    </div>
+  </section>
+</div>
+<app-notification-error
+  *ngIf="sessionInvalid || showGuestNoticification"
+  [IsSessionInValid]="sessionInvalid"
+  [data]="IsExistingGuest"
+></app-notification-error>

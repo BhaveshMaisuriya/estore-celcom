@@ -1,0 +1,30 @@
+<div class="details__choose_color">
+	<div class="details__choose_content">
+		<div class="details__choose_content_header">Colour: <span>{{selectedColor}}</span></div>
+		<ul class="choose__content" [ngClass]="{'disableClass': cobpLoading}">
+			<li class="choose__content_detail color_name_detail" *ngFor="let color of colorList;">
+				<div class="content__details" [ngClass]="{'is-selected':selectedColor === color.colorName}" (click)="SelectColor(color.colorName);">
+					<div class="Oval" [style.background]="color.colorHex"></div>
+					<!-- <div class="content_detail__description">{{color.colorName}}</div> -->
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="details__choose_storage">
+	<div class="details__choose_content">
+			<div class="details__choose_content_header">Storage</div>
+		<ul class="choose__content" [ngClass]="{'disableClass': cobpLoading}">
+			<li class="choose__content_detail" [ngClass] = "{'choose__content_detail_moon' : this.productType === 'moon'}" *ngFor="let storage of storageList;">
+				<div class="storage__details" [ngClass]="{'is-selected':selectedStorage === storage}" (click)="SelectStorage(storage);">
+					<div class="storage__details__description">{{storage}}</div>
+				</div>
+			</li>
+            <!--<li class="choose__content_detail" *ngIf="deviceStock">
+              <div class="storage__details__description">
+                <p>{{deviceStock | titlecase}}</p>
+              </div>
+            </li>-->
+		</ul>
+	</div>
+</div>

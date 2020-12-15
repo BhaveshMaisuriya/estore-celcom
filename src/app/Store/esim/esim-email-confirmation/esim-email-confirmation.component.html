@@ -1,0 +1,80 @@
+<section id="step3">
+  <section class="u-section sectionize is-bg-color-white">
+    <div class="section__inner">
+      <div class="section__content is-container">
+        <div class="section_index_container">
+          <span class="section_index">3</span>
+        </div>
+        <div class="details__choose_content_header">Email Address Confirmation</div>
+        <ng-container *ngIf="eSimEligible === true">
+          <div class="user_greetings"> Your eSIM QR activation code will be sent to
+            <span>
+              <strong>{{userEmailId}}</strong>
+            </span>
+          </div>
+          <div class="user_greetings">
+            <p class="no_btm_margin">Please make sure email address above is active and valid.</p>
+            <p class="valid_check">If email address above is valid, click
+              <span>'Add to Cart'</span> to proceed. Otherwise, click below to update your email address.</p>
+            <button class="c-cta--default btn" (click)="changeEmailAddress()" [disabled]="" *ngIf="!enableChangeEmailAddress">
+              Change email address
+            </button>
+          </div>
+          <div class="emailMethodContainer" *ngIf="enableChangeEmailAddress">
+            <div class="choose_form_group_esim">
+              <label>Key in new email address:
+              </label>
+            </div>
+            <form #esimEmailForm="ngForm">
+              <div class="choose_form_group_esim">
+                <div>
+                  <div>
+                    <input class="guest-choose-form-control-text" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                      maxlength="50" type="email" placeholder="" id="contactEmail" name="contactEmail" [(ngModel)]="contactEmailId" [readonly]="emailSent !== null"
+                      required #contactEmail="ngModel" [ngClass]="{'errorborder':!contactEmail.valid && contactEmail.touched ||  emailSent === false, 'success_border': emailSent === true, 'txtDisable':emailSent !== null}">
+                    <span *ngIf="emailSent !== null" class="remove-x-blue-esim" (click)="clearEmailId()">
+                      <img class="remove-x" src="../../../../assets/img/Drop_3/icon/remove-blue-icon.svg"> Reset
+                    </span>
+                  </div>
+                  <div>
+                    <div class="error" *ngIf="!contactEmail.valid && contactEmail.touched">
+                      <span class="warning-icon">
+                        <img src="../assets/img/ThresholdAlertNotification.svg">
+                      </span>
+                      <span class="text-danger" [hidden]="!contactEmail.hasError('required')">Please enter email address </span>
+                      <span class="text-danger" [hidden]="!contactEmail.hasError('pattern')">Please enter a valid email address</span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                  <div class="eligible-align-message" *ngIf="emailSent">
+                    <img src="../../../../assets/img/eligible-homwWireless.svg" *ngIf="enableVerifyEmailAddress">
+                    <div class="eligible-style">{{changeEmailResp}}</div>
+                  </div>
+                </div>
+                <button *ngIf="emailSent === null" class="c-cta--default btn_update" (click)="updateEmailAddress(false)" [disabled]="!contactEmail.valid">
+                  Update
+                </button>
+              </div>
+            </form>
+            <div class="success_validate" *ngIf="enableVerifyEmailAddress">
+              <p>
+                <span class="mailbox_note">{{validityText}}</span>
+              </p>
+              <button class="btn c-cta--default eligible-align" (click)="verifyEmailAddress()" [disabled]="">
+                I have validated my email
+              </button>
+              <div>
+                <a class="c-link--default" data-css="c-link" (click)="updateEmailAddress(true)">
+                  <span class="otp-link__content">Resend email</span>
+                  <span class="link__icon icon is-icon-arrow"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <app-page-loader [hidden]="!loading"></app-page-loader>
+</section>
+<app-notification-error *ngIf="isApiError"  [data]="apiErrorMessage"></app-notification-error>

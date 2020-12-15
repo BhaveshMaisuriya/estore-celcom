@@ -1,0 +1,38 @@
+{  
+  "Name":"iconLayout",
+  "Title":"Celcom difference",
+  "ButtonLink":"http:\/\/google.com",
+  "ButtonText":"Click here",
+  "0":{  
+     "fieldIcon":{  
+        "img":"./assets/img/svg/icons-layout/icon-speed.svg",
+        "alt":"Fast Internet",
+        "title":"The internet is so fast, you’ll be surprised."
+     },
+     "iconSubtitle":"\u003Cp\u003EThe internet is so fast, you’ll be surprised.\u003C\/p\u003E\r\n"
+  },
+  "1":{  
+     "fieldIcon":{  
+        "img":"./assets/img/svg/icons-layout/icon-receive.svg",
+        "alt":"Big Bills",
+        "title":"Hello savings, goodbye big bills!"
+     },
+     "iconSubtitle":"\u003Cp\u003EHello savings, goodbye big bills!\u003C\/p\u003E\r\n"
+  },
+  "2":{  
+    "fieldIcon":{  
+       "img":"./assets/img/svg/icons-layout/icon-hand.svg",
+       "alt":"Strong Network",
+       "title":"Get strong network everywhere"
+    },
+    "iconSubtitle":"\u003Cp\u003EGet strong network everywhere\u003C\/p\u003E\r\n"
+ },
+ "3":{  
+  "fieldIcon":{  
+     "img":"./assets/img/svg/icons-layout/icon-gift.svg",
+     "alt":"Rewards",
+     "title":"Rewards that only you deserve!"
+  },
+  "iconSubtitle":"\u003Cp\u003ERewards that only you deserve!\u003C\/p\u003E\r\n"
+}
+}

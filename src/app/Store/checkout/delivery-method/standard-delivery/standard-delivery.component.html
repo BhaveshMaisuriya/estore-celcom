@@ -1,0 +1,57 @@
+<div class="section__content is-container">
+<div *ngIf="!midnight && this.checkoutData.all_items[0].midnight_delivery !== '1'">
+<p class="choose_shipping_add_title is-text-align-center">Delivery Method</p>
+<p class="choose_shipping_add_subtitle is-text-align-center">Standard Delivery</p>
+<p class="choose_shipping_estimate is-text-align-center ">
+  <b>Estimated Delivery</b><br>
+  Pen Msia – 3 to 5 working days<br>
+  East Msia – 5 to 7 working days<br>
+  (During MCO, delivery to certain areas may be restricted or delayed. Click <a href="https://www.celcom.com.my/personal/important-announcement/delivery-areas-affected-by-Movement-Control-Order" target="_blank">here</a> to know more.)
+</p>
+</div>
+<div *ngIf="midnight">
+  <p class="choose_shipping_add_title is-text-align-center">Choose Delivery Method</p>
+  <div class='chooseAddress'>
+    <div class="billingAddContainer">
+      <input type="radio" id="radiostd1" name="deliveryMethod" [(ngModel)]="deliveryType" value="standard" (click)="flagMidnight(0)">
+      <label for="radiostd1">Standard Delivery </label>
+    </div>
+    <div class="billingAddContainer">
+      <input type="radio" id="radiostd2" name="deliveryMethod" [(ngModel)]="deliveryType" value="night" (click)="flagMidnight(1)">
+      <label for="radiostd2">Special Delivery </label>
+    </div>
+  </div>
+  <div class="tab-slider--body" *ngIf="deliveryType === 'night'">
+    <div class="icon-center">
+    <img src="./assets/img/late-night-blue.svg" class="deliveryIcon">
+  </div>
+  <p class="is-text-align-center text-blue">Special Delivery</p>
+    <h4 class='midnightHeading'>Available for pre-orders only</h4>
+    <div class="midnightContent">
+      <ul>
+        <li>For midnight delivery option, you will be notified via SMS or phone call the day before delivery if your order is eligible for midnight delivery.</li>
+        <li>No change of delivery address will be allowed during the pre-order period.</li>
+        <li>Midnight delivery order will be delivered between <b>12am to 3am</b> on the device launch date. Please ensure that you are available during the mentioned time frame to receive the parcel. </li>
+        <li>Your presence with ID is required at the address provided for midnight delivery.</li>
+        <li>In the event that your parcel is not delivered through midnight delivery, the parcel will be delivered on the next available working day to the address provided.</li>
+        <li>Terms and conditions apply.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tab-slider--body" *ngIf="deliveryType === 'standard'">
+    <div class="icon-center">
+    <img src="./assets/img/delivery_blue.svg" class="deliveryIcon">
+  </div>
+  <p class="is-text-align-center text-blue">Standard Delivery</p>
+  <p class="choose_shipping_estimate is-text-align-center ">
+    <b>Estimated Delivery</b><br>
+    Pen Msia – 3 to 5 working days<br>
+    East Msia – 5 to 7 working days<br>
+    (During MCO, delivery to certain areas may be restricted or delayed. Click <a href="https://www.celcom.com.my/personal/important-announcement/delivery-areas-affected-by-Movement-Control-Order" target="_blank">here</a> to know more.)
+  </p>
+  </div>
+  </div>
+<p class="choose_shipping_add_title is-text-align-center">Choose Delivery Address</p>
+<app-choose-address *ngIf='billingAddress' [billingAddress]='billingAddress' [disableButton]='disableButton'
+  (errorDisplay)="errorDisplay($event);" (sessionInvalidCheck)="sessionInvalidCheck($event);" [checkoutData]='checkoutData'></app-choose-address>
+</div>

@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label [innerHTML]="title"></label>
+  <app-estore-input appearance="fill" [iconName]="'estore-share'" [iconType]="'svg'" [iconStyle]="{'color': '#333'}"
+    [readonly]="true" [buttonText]="'Copy'" [(ngModel)]="link" #linkInput (onButtonClicked)="onCopyLink()">
+  </app-estore-input>
+</div>

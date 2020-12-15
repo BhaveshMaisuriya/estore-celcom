@@ -1,0 +1,997 @@
+/* easy phone css start */
+.is-align-center {
+    text-align: center;
+}
+.plan-background {
+	background-color: #f3f3f3;
+	border-radius: 20px;
+}
+.title-enterprise {
+	height: 36px;
+	font-family: Lato;
+	font-size: 32px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	text-align: center;
+	color: #333333;  
+}
+.enterprise-banner {
+	width: 100%;
+}
+.sub-enterprise {
+	height: 20px;
+	font-family: Lato;
+	font-size: 16px;
+	font-weight: normal;
+	font-stretch: normal;
+	font-style: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: center;
+	color: #333333;
+}
+.filter-plan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Lato;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  color: black;
+  border-radius: 20px;
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+.filter-plan.is-active {
+	color: #ffffff;
+	border-radius: 20px;
+	background-color: #4569ab;
+	cursor: default;
+}
+.full-width {
+	width: 100%;
+}
+.easy_phone_text {
+	color: #fff;
+	width: 140px;
+	height: 20px;
+	text-align: center;
+	margin: 0 auto;
+	font-size: 14px;
+	border-radius: 10px;
+	background-color: #008c8d;
+}
+.rectangle__black__layout {
+	background-color: #000;
+	border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+.easy_phone_main {
+	margin-bottom: 10px;
+}
+.device_bundle_text {
+	font-size: 14px;
+	text-align: center;
+	color: #666666;
+	margin-bottom: -2px;
+}
+.device_bundle_detail-description {
+	font-size: 16px;
+	text-align: center;
+	color: #666666;
+}
+.top__align__text {
+	display: inline-block;
+	vertical-align: top;
+}
+.easy_phone_price {
+	font-size: 32px;
+	font-weight: normal;
+	color: #000;
+}
+.easyphone_ios {
+	font-size: 14px;
+	font-weight: bold;
+	margin-right: 6px;
+	text-decoration: none;
+}
+.easy_phone_arrow {
+	margin-left: 5px;
+}
+.easy_phone_links .is-icon-arrow {
+	color: #009ade;
+}
+.easyphone_ios_main {
+	display: inline;
+}
+.easyphone_andriod_main {
+	display: inline-block;
+	margin-left: 20px;
+}
+@media(max-width:767px) {
+	.easy_phone_links {
+		text-align: center;
+	}
+	.easyphone_andriod_main {
+		display: block;
+		margin-left: 0px;
+	}
+	.easyphone_ios_main {
+		display: block;
+	}
+	.accordian__content {
+		width: 149px;
+		height: 225px;
+	}
+	.not_most {
+		padding-top: 17px;
+	}
+	.Samsung-Galaxy-S8 {
+		width: 114px;
+	}
+	.compare__plus__icon {
+		width: 35px;
+		height: 35px;
+		margin: 5em 0 1em 0;
+	}
+	.compare__samsung__img {
+		height: 96.5px;
+		margin: 6px 18px 1px 22px;
+	}
+}
+.background_white {
+	background-color: #fff !important;
+}
+.background {
+	background-color: #f3f3f3 !important;
+}
+/* easy phone css end */
+
+.check_container input:checked~.checkmark {
+	background-color: #009ade !important;
+}
+button[disabled] {
+	opacity: 0.5;
+	cursor: not-allowed;
+	background-color: #009ade;
+}
+.apply__filter__btn button {
+	width: 150px;
+}
+.has_padding_top {
+	padding-top: 1em;
+}
+.has_padding_top_4 {
+	padding-top: 40px;
+}
+.has_padding {
+	padding: 2em;
+}
+.filter-by {
+	text-decoration: none;
+	color: #666;
+}
+a.filter-by>h5 {
+	font-size: 14px;
+}
+.link__content {
+  font: normal bold 14px Lato;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: 0px;
+	text-align: center;
+	color: #009ade;
+}
+.filter-by-close {
+	float: right;
+	cursor: pointer;
+	transform: rotate(180deg);
+	width: 20px;
+}
+.filter-button {
+	display: inline-block;
+	width: 100%;
+	padding: 15px 25px;
+	text-align: left;
+	cursor: pointer;
+	font: 14px Lato;
+	text-decoration: none;
+	outline: none;
+	color: #000;
+	background-color: #f3f3f3;
+	border: none;
+	box-shadow: 0 2px #ccc;
+}
+.filter-button:hover {
+	background-color: #eee
+}
+.filter-button:active {
+	background-color: #eee;
+	box-shadow: 0 2px #ccc;
+}
+.filter-button>img {
+	width: 20px;
+	float: right
+}
+h5.interested-in {
+	font-size: 16px;
+	font-weight: bold !important;
+}
+/* The Check box container */
+
+.check_container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 1.5em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* Hide the browser's default checkbox */
+
+.check_container input {
+	position: absolute;
+	opacity: 0;
+	left: 2px;
+	z-index: 100;
+	bottom: 1px;
+	width: 18px;
+	height: 18px;
+}
+/* Create a custom checkbox */
+
+.checkmark {
+	position: absolute;
+	top: -4px;
+	left: 0;
+	height: 18px;
+	width: 18px;
+	background-color: #fff;
+	border: 1px solid;
+}
+/* On mouse-over, add a grey background color */
+
+.check_container:hover input~.checkmark {
+	background-color: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+
+.check_container input:checked~.checkmark {
+	background-color: #2196F3;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+/* Show the checkmark when checked */
+
+.check_container input:checked~.checkmark:after {
+	display: block;
+}
+/* Style the checkmark/indicator */
+
+.check_container .checkmark:after {
+	left: 5px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	color: white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.RM__Offer__box__layout {
+	width: 100%;
+	position: relative;
+	margin-top: 10px;
+	z-index: 1;
+}
+.RM__Offer__RM__box {
+	width: 100%;
+	height: 59px;
+	background-color: #221767;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	text-align: center;
+	margin: auto;
+}
+.RM__Offer {
+	font: normal bold 14px Lato;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	padding-top: 8px;
+	margin: auto;
+}
+.RM__Offer__exclusive {
+	width: 155px;
+  height: 12px;
+  font: normal bold 12px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: 4px auto;
+	background-color: #eb005b;
+	border-radius: 100px;
+	padding: 3px 0px 5px 0px;
+}
+.capMargin {
+	margin-top: 40px!important;
+}
+/* pre order tag css start*/
+/* Lifestyle hat css start*/
+.RM-offer-lefestyle-bakground {
+	background-color: #f69320;
+}
+.lifestyle-exclusive-offer {
+	font: normal bold 12px Lato;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #fff;
+    margin: 4px 15px;
+    background-color: #ad1e48;
+    border-radius: 100px;
+    padding: 3px 0 5px 0;
+}
+/* Lifestyle hat css end*/
+.preorder__box__layout {
+	width: 100%;
+	z-index: 1;
+}
+.preorder__box {
+	width: 100%;
+	height: 59px;
+	background-color: #eb005b;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	text-align: center;
+	margin: auto;
+}
+.cart-space {
+	align-items: flex-end;
+}
+@media (max-width:768px) {
+	.is-mobile-padding {
+		padding-bottom: 1em;
+		width: 100%;
+		margin-right: 20px;
+	}
+	.filter-button {
+		width: 100%;
+	}
+	.marginTop15 {
+		margin-top: 0px;
+	}
+	.has_padding_top_4 {
+		padding-top: 25px;
+	}
+	.plan-comparision-subcontent {
+		text-align: center;
+	}
+	.plan-comparison__list__item__headeing__nameh4 {
+		padding: 20px 0px 0px 0px;
+    text-align: center;
+    font: 20px Lato;
+	}
+	.align_button {
+		text-align: center;
+	}
+	.rectangle__box__layout {
+		width: 100%;
+		margin: auto;
+	}
+	.apply__filter {
+		text-align: center;
+	}
+	.apply__filter .clear_filter {
+		display: block;
+		margin-top: 15px;
+		text-align: center;
+	}
+	.compare_close {
+		right: 15px;
+	}
+}
+.Pre__Order {
+  font: normal bold 14px Lato;
+	font-stretch: normal;
+	line-height: 1.86;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	padding-top: 8px;
+}
+.pre__Order__estimation {
+  margin: 0;
+  font: normal normal 14px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+}
+.filter-button {
+	margin-bottom: -4px;
+}
+.marginTop15 {
+	margin-top: 16px;
+}
+/* pre order tag css end*/
+
+/*catalogue css*/
+
+.is-color-lightblue {
+	color: #009ade;
+}
+.is-color-white {
+	color: #fff;
+}
+.is-bg-color-navyblue {
+	background-color: #0B448E!important;
+	color: #fff;
+}
+.likeicon__left {
+	width: 30px;
+	padding-left: 24px;
+}
+.bordernone {
+	border: none !important;
+}
+.plan-comparison__list__item__headeing__nameh4 {
+	padding: 20px 0px 0px 0px;
+	font: 20px Lato;
+}
+.plan-comparison__list__item__headeing__nameh4>span {
+	display: block;
+}
+.listing__type__text__details {
+	border-bottom: 1px solid #ccc;
+}
+.align_button .link {
+	text-decoration: none;
+	color: #009ade;
+	font-family: LatoLatinWebBold, Arial, sans-serif-bold;
+	font-size: 1.4rem;
+}
+.mask {
+	background-color: #72a9b1;
+}
+.Reload-Now {
+	width: 100%;
+	height: 43px;
+	font-size: 48px;
+	line-height: 0.9;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #fff;
+}
+.Lets-begin-with-sim {
+	width: 278px;
+	height: 56px;
+	font-size: 18px;
+	line-height: 1.11;
+	text-align: left;
+	color: #fff;
+}
+.plan-comparison__list__item__header__iconimg__left {
+	width: 24px;
+	float: left;
+	padding: 0;
+}
+.plan-comparison__list__item__header__iconimg__right {
+	width: 24px;
+	float: right;
+	padding: 10px;
+}
+.plan-comparison__list__item__headeing__nameh4 {
+	padding: 20px 0px 0px 0px;
+	text-align: center;
+	font: 20px Lato;
+	margin-bottom: 16px;
+}
+.plan_image_container {
+	width: 212px;
+	margin: auto;
+	margin-top: 25px;
+}
+.plan_image_container img {
+	width: 212px;
+	height: 212px;
+}
+.align_button {
+  line-height: 3em;
+  padding: 10px 0 24px 0;
+}
+.bordernone {
+	padding: 16px;
+	border: none !important;
+}
+.bundle_plan_details {
+	margin-top: 15px;
+}
+.most_popular {
+	margin-top: 0px;
+}
+.catalogue_list_margin {
+	margin-bottom: 32px;
+}
+.accordian-bordernone {
+	padding: 0;
+}
+.listing_type_text {
+	line-height: 2em;
+	text-align: center;
+	font: 14px Lato;
+}
+.listing__type__text__details {
+	border-bottom: 1px solid #ccc;
+}
+.align_button .link {
+	text-decoration: none;
+	color: #009ade;
+	font-family: LatoLatinWebBold, Arial, sans-serif-bold;
+	font-size: 1.4rem;
+}
+.plan-comparison__list__item__content__detail__description {
+	justify-content: center;
+    align-items: center;
+	color: #666;
+    display: inline-flex;
+    margin: 10px 0 15px;
+}
+.plan-comparison__list__item__content__detail__description__num {
+	font: bold 16px Lato;
+	color: #000;
+}
+.from-price {
+	margin-right: 7px;
+}
+.price-month {
+	margin-left: 7px;
+}
+.is-width-100 {
+	width: 100%;
+}
+.plan-comparision-sup {
+	font-size: 8px;
+	font-weight: bold;
+}
+.most_popular_one {
+	padding-top: 16px;
+}
+.not_most {
+	margin-top: 17px;
+}
+.rectangle__box {
+	background-color: #eb005b;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	text-align: center;
+	margin: auto;
+}
+.likeicon__left {
+	width: 30px;
+	padding-top: 10px;
+}
+.is-margin-top-4 {
+	margin-top: 4em;
+}
+.rectangle__box__layout {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+}
+.MOST-POPULAR {
+	width: 320px;
+  height: 18px;
+  font: normal bold 14px Lato;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	padding: 8px 0px;
+}
+.is-yellow-font {
+    color: #f8b734;
+}
+.MOST-POPULAR img {
+	width: 24px;
+	height: 24px;
+	margin-top: -3px;
+}
+.popularCapMargin {
+	margin-top: 34px;
+}
+.most-star[_ngcontent-c7] {
+	width: 24px;
+	height: 24px;
+	padding-right: 8px;
+	margin-top: -5px;
+}
+.most_two {
+	padding-top: 32px;
+}
+.most-star {
+	width: 24px;
+  height: 24px;
+  padding: 2px 8px 0 0;
+}
+.load_more {
+	padding: 0 0 1em;
+}
+.has_padding_top {
+	padding-top: 1em;
+}
+.is-margin-bottom-2 {
+	margin-bottom: 24px;
+}
+.has_padding {
+	padding: 25px 25px 27px 22px;
+}
+.filter__background {
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	margin-top: 5px;
+}
+.filter-button.is-filter-active {
+	height: 42px;
+	border-bottom: 2px solid #009ade !important;
+}
+.filter-button.is-filter-active img {
+	transform: rotate(180deg);
+}
+.is-filter-hide {
+	display: none;
+}
+.is-filter-show {
+	display: block;
+}
+.is-width__100 {
+	width: 100%;
+}
+.filter-button {
+	display: inline-block;
+	width: 100%;
+	height: 42px;
+	font-size: 14px;
+	padding: 15px 25px;
+	text-align: left;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+	color: #666;
+	background-color: #f3f3f3;
+	border-bottom: 1px solid #ccc !important;
+	border: none;
+}
+.filter-button>img {
+	width: 16px;
+	float: right;
+	margin-top: -3px;
+}
+h5.interested-in {
+	font-size: 16px;
+	font-weight: bold;
+}
+/* The Check box container */
+
+.check_container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 1.5em;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* Hide the browser's default checkbox */
+
+.check_container input {
+	position: absolute;
+	opacity: 0;
+}
+/* Create a custom checkbox */
+
+.checkmark {
+	position: absolute;
+	top: -4px;
+	left: 0;
+	height: 18px;
+	width: 17px;
+	background-color: #fff;
+	border: 2px solid #666;
+}
+/* On mouse-over, add a grey background color */
+
+.check_container:hover input~.checkmark {
+	background-color: #fff;
+}
+/* When the checkbox is checked, add a blue background */
+
+.check_container input:checked~.checkmark {
+	background-color: #2196F3;
+	border: none;
+	width: 20px;
+	height: 20px;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+/* Show the checkmark when checked */
+
+.check_container input:checked~.checkmark:after {
+	display: block;
+}
+/* Style the checkmark/indicator */
+
+.check_container .checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 11px;
+	border: solid white;
+	color: white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.bundle__pading {
+	padding: 25px 25px 0 22px;
+}
+.sortby__list {
+	list-style: none;
+	padding: 0;
+	line-height: 3em;
+	margin: 0;
+	color: #626262;
+	font-size: 14px;
+}
+.sortby__list .sortby__list_item {
+	/*padding-left: 23px;*/
+	cursor: pointer;
+}
+.sortby__list .sortby__list_item .check_container {
+	margin-bottom: 0;
+	padding-left: 24px;
+}
+.sortby__list .sortby__list_item.is-sort-selected, .sortby__list .sortby__list_item:hover {
+	background-color: #009ade;
+	color: #fff;
+}
+.apply__filter {
+	padding-top: 16px;
+	border-top: 2px solid #ccc;
+}
+.apply__filter .apply__filter__btn {
+	display: inline;
+}
+.apply__filter .clear_filter {
+	display: inline;
+	margin-left: 20px;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: right;
+}
+.clear_filter a {
+	text-decoration: none;
+	color: #009ade;
+}
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item {
+	margin-top: 0em;
+}
+.c-plan-comparison {
+	margin-bottom: 24px;
+}
+@media (max-width:769px)and (min-width:768px) {
+	.is-mobile-hidden {
+		display: none;
+	}
+}
+@media (min-width:769px) {
+	.is-desktop-hidden {
+		display: none;
+	}
+}
+/* Copied from device-catalogue-component css file */
+
+.mask {
+	background-color: #72a9b1;
+}
+.Reload-Now {
+	width: 618px;
+	height: 43px;
+	font: 48px Lato;
+	line-height: 0.9;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #fff;
+}
+.Lets-begin-with-sim {
+	width: 278px;
+	height: 56px;
+	font: 18px Lato;
+	line-height: 1.11;
+	text-align: left;
+	color: #fff;
+}
+.compare__plus__icon {
+	width: 47.3px;
+	height: 48.1px;
+	margin: 5em 5em 3em;
+}
+.compare__samsung__img {
+	height: 100px;
+	margin: 46px 18px 1px 45px;
+}
+.accordian__color {
+	background-color: #666666 !important;
+	color: #fff !important;
+}
+.accordian__content {
+	width: 224px;
+	height: 220px;
+	background-color: #f3f3f3 !important;
+}
+.Find-out-more {
+	text-align: center;
+	margin-top: 2em;
+}
+.Find-out-more a {
+	cursor: pointer;
+}
+.Clear-All {
+	text-decoration: none;
+	color: #009ade;
+	font-size: 14px;
+	font-weight: bold;
+}
+.Samsung-Galaxy-S8 {
+	width: 175px;
+  height: 40px;
+  font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	margin: auto;
+	word-wrap: break-word;
+}
+.add_more_mobile {
+	width: 143px;
+  height: 16px;
+  font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #333333;
+	margin: auto;
+}
+.Rectangle-11 {
+	text-align: center;
+}
+.has-padding-top {
+	padding-top: 2em;
+}
+.accordion__content-innerrow .has-padding-top {
+	padding-top: 24px;
+}
+.compare_close {
+	width: 20px;
+	float: right;
+	padding: 10px 10px 0 0;
+}
+.c-compare {
+	background-color: #fff;
+	color: #000;
+}
+.compare-down-arrow {
+	width: 20px;
+	float: right;
+	margin-top: 16px;
+	transform: rotate(180deg);
+	transition: bottom .3s linear .3s, transform .3s linear
+}
+.c-compare .accordion__content-innerrow {
+	display: block;
+	color: #d8d8d8;
+	text-decoration: none;
+}
+.c-compare .compare__sitemap {
+	width: 100%;
+	margin: 0 auto;
+	font-size: 1.4rem;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-header {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	font: 18px Lato;
+	background-color: #666;
+	cursor: pointer;
+	height: 48px;
+	line-height: 48px;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-header.is-active .compare-down-arrow {
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-content:not(.is-active) .accordion__content-innerrow {
+	height: 0;
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.is-open {
+	-webkit-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-content .accordion__content-innerrow {
+	display: block;
+	line-height: 2em;
+	overflow: hidden;
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.compare__position {
+	position: fixed !important;
+	bottom: 0;
+	width: 100%;
+	z-index: 1000 !important;
+}
+.is-background-white {
+	background-color: #fff;
+}
+.add_More_Mobile {
+	border: none !important;
+}
+.plan-comparison__list {
+	border: 1px solid #ccc;
+}
+.is-black-border {
+	border: 1px solid #000;
+}
+/*rewriting style.css changes for estore*/
+
+@media (min-width: 980px) {
+	.c-plan-comparison .plan-comparison__list .plan-comparison__list__item {
+		margin-right: 0rem;
+		text-align: center;
+	}
+}
+.c-cta--default {
+	cursor: pointer;
+}

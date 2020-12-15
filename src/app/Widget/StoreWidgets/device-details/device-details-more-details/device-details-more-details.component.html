@@ -1,0 +1,87 @@
+<div id="keyFeat_terms_Modal">
+		<section class="u-section" id="more_details">
+			<div class="section__inner">
+				<div class="section__content">
+					<div class="dev-dtl-features-box">
+						<div class="features-box-dtls">
+							<p class="features-box-heading">Features & Specifications</p>
+							<!-- shipping details for pre order start -->
+							<div *ngIf="!false && DeviceMoreDetailsResponse?.shipping_details" class="features-box-tab">
+								<input id="features-box-tab-pre" type="checkbox" checked name="tabs">
+								<label for="features-box-tab-pre"><span>Shipping details</span>
+											</label>
+								<div class="features-box-tab-content">
+									<p [innerHTML]="DeviceMoreDetailsResponse?.shipping_details"></p>
+								</div>
+							</div>
+							<!-- shipping details for pre order end-->
+							<div *ngIf='DeviceMoreDetailsResponse?.features' class="features-box-tab">
+								<input id="features-box-tab-one" type="checkbox" name="tabs">
+								<label for="features-box-tab-one"><span>Features</span>
+											</label>
+								<div class="features-box-tab-content">
+									<p [innerHTML]="DeviceMoreDetailsResponse?.features"></p>
+								</div>
+							</div>
+							<div *ngIf='DeviceMoreDetailsResponse?.whatInTheBox' class="features-box-tab">
+								<input id="features-box-tab-two" type="checkbox" name="tabs">
+								<label for="features-box-tab-two"><span>What’s in box</span>
+											</label>
+								<div class="features-box-tab-content">
+									<p [innerHTML]="DeviceMoreDetailsResponse?.whatInTheBox"></p>
+								</div>
+							</div>
+							<div class="features-box-tab">
+								<input id="features-box-tab-three" type="checkbox" name="tabs">
+								<label for="features-box-tab-three"><span>Specifications</span>
+											</label>
+								<div class="features-box-tab-content">
+									<p *ngIf = "DeviceMoreDetailsResponse?.specification?.display" class="content-sub-heading">Display</p>
+									<p class="content-sub-desc">{{DeviceMoreDetailsResponse?.specification?.display}}</p>
+									<p *ngIf='DeviceMoreDetailsResponse?.specification?.screen_size' class="content-sub-heading">Size and Weight</p>
+									<div class="content-sub-desc-outer">
+										<p class="content-sub-desc">{{DeviceMoreDetailsResponse?.specification?.screen_size}}</p>
+									</div>
+									<p *ngIf='DeviceMoreDetailsResponse?.specification?.operating_system' class="content-sub-heading">Operating System</p>
+									<div class="content-sub-desc-outer">
+										<p class="content-sub-desc">{{DeviceMoreDetailsResponse?.specification?.operating_system}}</p>
+									</div>
+									<p *ngIf='DeviceMoreDetailsResponse?.specification?.camera' class="content-sub-heading">Camera</p>
+									<div class="content-sub-desc-outer">
+										<p class="content-sub-desc">{{DeviceMoreDetailsResponse?.specification?.camera}}</p>
+									</div>
+									<p *ngIf='data?.dimension' class="content-sub-heading">Dimension</p>
+									<div class="content-sub-desc-outer">
+										<p class="content-sub-desc">{{data?.dimension}}</p>
+									</div>
+								</div>
+							</div>
+							<div class="features-box-tab" [ngClass] = "">
+									<input id="features-box-tab-four" type="checkbox" name="tabs">
+									<label for="features-box-tab-four"><span>Terms & Conditions</span>
+												</label>
+									<div class="features-box-tab-content">
+											<p *ngIf='DeviceTermsResponse?.plans?.label' class="content-sub-heading">{{DeviceTermsResponse?.plans?.label}}</p>
+											<div class="content-sub-desc">
+													<p [innerHtml]="DeviceTermsResponse?.plans?.desc"></p>
+												</div>
+											<p *ngIf='DeviceTermsResponse?.contract_terms?.label' class="content-sub-heading">{{DeviceTermsResponse?.contract_terms?.label}}</p>
+											<div class="content-sub-desc">
+													<p [innerHtml]="DeviceTermsResponse?.contract_terms?.desc"></p>
+											</div>
+											<p *ngIf='DeviceTermsResponse?.legal?.label' class="content-sub-heading">{{DeviceTermsResponse?.legal?.label}}</p>
+											<div class="content-sub-desc">
+													<p [innerHtml]="DeviceTermsResponse?.legal?.desc"></p>
+											</div>
+											<p *ngIf='DeviceTermsResponse?.cancellation?.label' class="content-sub-heading">{{DeviceTermsResponse?.cancellation?.label}}</p>
+											<div class="content-sub-desc">
+													<p [innerHtml]="DeviceTermsResponse?.cancellation?.desc"></p>
+											</div>
+										</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+</div>

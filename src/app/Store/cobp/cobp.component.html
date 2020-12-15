@@ -1,0 +1,202 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<section id="register" [hidden]="loading" class="u-section" *ngIf="typeOfNumber === 'EXISTING_NUMBER' && ((basePlan$ | async) || (plan$ | async)) && !(device$ | async) ">
+  <div class="section__inner">
+    <div class="section__content is-container dev-dtl-num-padding" *ngIf="eligibilityResponse !== null && !guestFlow">
+      <div class="star-elg-block" *ngIf = "!starElgibilityError && !moonElgibilityError && !showMsisdnBlock">
+        <div class="eligible-sucess1 elg-img-block">
+          <img class="success-img" src="../assets/img/Drop_3/eligible-icon.png">
+          <p>Eligible</p>
+        </div>
+        <div class="elg-info">
+          Your number is <span class="dev-dtl-bold">{{msisdn}}</span>
+          <span class="change-num-display"><a (click)="showMsisdnInput(); defaultOnClick();" class="c-link--default" data-css="c-link">
+            Change number <span class="link__content"><img
+              class="Chevron_right" src="assets/img/chevron-right.svg" /></span>
+          </a></span>
+          <p *ngIf="!deviceUpfrontPenalty">You are currently subscribing to <span class="dev-dtl-bold" [innerHTML]="customerSubscribingTo | safeHtml"></span>. You are eligible to subscribe for <span class="dev-dtl-bold" [innerHTML]="(basePlan$ | async)? (basePlan$ | async).name : ''| safeHtml"></span><b>{{(plan$ | async)?.name}}.</b></p>
+          <p class="upfrontcheck-info">Upfront payment of RM{{(upfrontPayment$ | async) | number : '1.2-2'}} is chargable when your length of stay with Celcom is less than 6 months.</p>
+            <p *ngIf="deviceUpfrontPenalty" class="point-one">You are currently subscribing for <span class="dev-dtl-bold" [innerHTML]="customerSubscribingTo | safeHtml"></span> with an
+              <span class="dev-dtl-bold">active</span> contract of
+              <span class="dev-dtl-bold">{{contractLengthYears}} year(s) {{contractLengthMonths}} month(s)</span> left.
+            </p>
+            <p class="note process-fee upfrontcheck-info" *ngIf="deviceUpfrontPenalty && contractExtendedWithOrWithOutPenalty === false">
+              <span class="dev-dtl-bold">Note:</span>Upon Proceeding you'll be charged with Device Penalty of
+              <span>RM{{ (deviceUpfrontPenalty ? deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</span>.
+            </p>
+
+            <div *ngIf="deviceUpfrontPenalty" class="understood-and-agree upfrontcheck-info">
+              <label class="check_container guest-checkbox">
+                <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B')">
+                <span class="checkmark"></span>
+              </label>
+              <span class="checkout-i-agree">By Proceeding, I agree to the <a
+                data-css="c-link"
+                target="_blank"
+                href="https://www.celcom.com.my/legal/terms-and-conditions/general#general-celcom-online-shop"
+              >
+                <span class="accptance-conditions">Terms and conditions</span>
+              </a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="star-elg-block" *ngIf = "(starElgibilityError || moonElgibilityError) && !showMsisdnBlock && !isInternallyBlacklisted">
+        <div class="eligible-sucess1 elg-img-block">
+          <img class="success-img margin-img-block" src="../assets/img/group-4.svg">
+        </div>
+        <div class="elg-info">
+          Your number is <span class="dev-dtl-bold">{{msisdn}}</span>
+          <span class="change-num-display"><a (click)="showMsisdnInput(); defaultOnClick();" class="c-link--default" data-css="c-link">
+            Change number <span class="link__content"><img
+              class="Chevron_right" src="assets/img/chevron-right.svg" /></span>
+          </a></span>
+          <p>You are currently subscribing to <span [innerHTML]="customerSubscribingTo | safeHtml"></span>. You are not eligible to subscribe for <span [innerHTML]="(basePlan$ | async)? (basePlan$ | async).name : ''| safeHtml"></span> {{(plan$ | async)?.name}}.</p>
+        </div>
+      </div>
+      <app-msisdn-input *ngIf="showMsisdnBlock" [pageType]="pageType" [pageBlock]="pageBlock" (successfulLogin)="onSuccessfulLogin($event);"></app-msisdn-input>
+      <app-note-section *ngIf = "!showMsisdnBlock" [noteDataCMS]= "noteDataCMS" [noteCheck]="true"></app-note-section>
+
+</div>
+</div>
+</section>
+  <section id="register" [hidden]="loading" class="u-section is-bg-color-grey" *ngIf="typeOfNumber === 'EXISTING_NUMBER' && (device$ | async) ">
+  <div class="section__inner">
+    <div class="section__content is-container dev-dtl-num-padding" *ngIf="eligibilityResponse !== null && !guestFlow">
+      <div class= "moon-text">
+        <div>This number is currently subscribed to: <span class="dev-dtl-bold" [innerHTML]="customerSubscribingTo | safeHtml"></span>.</div>
+        <div>You are eligible to purchase/remove Add-On Pass only.</div>
+      </div>
+      <div *ngIf="eligibleCheck && eligibleCheck !== null && eligibleCheck!= undefined">
+        <div class="principal-line-eligibility">
+          <div class="principal-line">
+            <div class="u-grid-row is-collapsed is-equal-height has-border__bottom has-padding-inner">
+              <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2">
+                <div class="principal-line-icon">
+                  <img class="principal-line-icon-img" src="../assets/img/Drop_3/principal-line-icon.svg">
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-7 is-col-tablet-p-10 is-mobile-right">
+                <div class="principal-line-no">
+                  <p>Mobile Number (Principal Line)</p>
+                  <p class="number">{{msisdn}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="eligible-sucess">
+          <div class="is-container1" [ngClass]="{'contractExt': eligibleContractExtend === false}">
+            <div class="eligible-sucess1">
+              <img class="success-img" src="../assets/img/Drop_3/eligible-icon.png">
+              <p class="image_padding">Eligible</p>
+            </div>
+            <section class="extension" *ngIf="eligibleContractExtend">
+            <div class="margin-top-bottom">
+              <p class="mobile-line-height">You have an <b>active contract</b>, with remaining
+                <b>{{contractLengthYears}} year(s) {{contractLengthMonths}} month(s)</b>.</p>
+              <p class="current-contract-mob">Do you want to extend your current contract?</p>
+            </div>
+            <div class="yes-no">
+            <div class="yes-extension" (click)="contractExtended('true')" [ngClass]="{'contractExtendedSelected': contractExtendedSelected === 'true'}">
+              <div class="yes-no-text">Yes</div>
+              <p>I'd like my contract to be extended to
+                <p>{{newExtensionDate}}
+            </div>
+            <div class="no-extension cards-gap" (click)="contractExtended('false')" [ngClass]="{'contractExtendedSelected': contractExtendedSelected === 'false'}">
+                <div class="yes-no-text">No</div>
+                <p>I'd like to settle penalty of <b>RM{{ (deviceUpfrontPenalty ?
+                  deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</b> and start a new contract.
+            </div>
+            </div>
+          </section>
+          </div>
+        </div>
+        <div class="u-grid-row" *ngIf="!eligibleContractExtend">
+          <div class="u-grid-row is-collapsed is-equal-height easy_phone_not_eligible plan-lower" *ngIf="endDate!==null">
+            <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2 easy_phone_not_eligible_icon">
+              <img class="principal-line-icon-img-rebate" src="../assets/img/Drop_3/warning-icon.png">
+            </div>
+            <div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-10 addon-contract-text">
+              <p class="point-one">You have an
+                <span>active</span> contract of
+                <span>{{contractLengthYears}} year(s) {{contractLengthMonths}} month(s)</span> left.
+              </p>
+              <p class="note process-fee" *ngIf="goldenpenaltymessage === null && !deviceUpfrontPenalty && contractExtendedWithOrWithOutPenalty === false">
+                <span>Note:</span>You'll be charged with Processing Fee in your next bill.
+              </p>
+              <p class="note process-fee" *ngIf="contractExtendedWithOrWithOutPenalty === true">
+                If you proceed, your current contract will be extended and your new contract end date will be <span>{{newExtensionDate}}</span>.
+              </p>
+              <p class="note process-fee" *ngIf="goldenpenaltymessage === null && deviceUpfrontPenalty && contractExtendedWithOrWithOutPenalty === false">
+                <span>Note:</span>Upon Proceeding you'll be charged with Device Penalty of
+                <span>RM{{ (deviceUpfrontPenalty ? deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</span>.
+              </p>
+              <p class="note process-fee" *ngIf="goldenpenaltymessage">
+                <span>Note:</span>{{goldenpenaltymessage}}
+              </p>
+              <div class="understood-and-agree">
+                <label class="check_container guest-checkbox">
+                  <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B')">
+                  <span class="checkmark"></span>
+                </label>
+                <span class="checkout-i-agree">I have read, understood and agreed to the above and would like to proceed </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="!eligibleCheck && eligibleCheck !== null && eligibleCheck!= undefined">
+        <div class="principal-line-eligibility">
+          <div class="principal-line">
+            <div class="u-grid-row is-collapsed is-equal-height has-border__bottom has-padding-inner">
+              <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2">
+                <div class="principal-line-icon">
+                  <img class="principal-line-icon-img" src="../assets/img/Drop_3/principal-line-icon.svg">
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-7 is-col-tablet-p-10 is-mobile-right">
+                <div class="principal-line-no">
+                  <p>Mobile Number (Principal Line)</p>
+                  <p class="number">{{msisdn}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="eligible-fail">
+          <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+          <p>Not eligible</p>
+        </div>
+        <!-- easy phone not eligible text start -->
+        <div  *ngIf="easyphoneError" class="u-grid-row is-collapsed is-equal-height easy_phone_not_eligible_text">
+            <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2 easy_phone_not_eligible_icon eligibility-table-align">
+              <div class="eligibility-table-cell-align">
+                <img class="principal-line-icon-img warningCobp" src="../assets/img/Drop_3/error-copy-2.svg">
+              </div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-10 easy_phone_not_eligible_text_inner easy_phone_error_msg">
+              <p>{{easyphoneFlowMsg}}</p>
+             </div>
+        </div>
+        <!-- easy phone not eligible text start -->
+      </div>
+    </div>
+    <div class="section__content is-container dev-dtl-num-padding-guest" *ngIf="guestFlow">
+        <div class="eligible-fail">
+            <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+            <p>Not eligible</p>
+          </div>
+          <!-- easy phone not eligible text start -->
+          <div  *ngIf="easyphoneError" class="u-grid-row is-collapsed is-equal-height easy_phone_not_eligible_text">
+              <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2 easy_phone_not_eligible_icon">
+                  <img class="principal-line-icon-img" src="../assets/img/Drop_3/error-copy-2.svg">
+              </div>
+              <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-10 easy_phone_not_eligible_text_inner easy_phone_error_msg">
+                <p>{{easyphoneFlowMsg}}</p>
+               </div>
+          </div>
+    </div>
+  </div>
+</section>
+<app-notification-error *ngIf="apiFailure" [data]="infoMNPflow"></app-notification-error>

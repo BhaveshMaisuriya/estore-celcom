@@ -1,0 +1,25 @@
+<div class="internet-pass-wrapper">
+	<ng-container *ngFor="let pass of passes">
+		<app-plan-card
+			(click)="selectPass(pass.sku)"
+			[title]="pass?.name"
+			[pricetag]="pass?.price"
+			[selected]="selectedSku === pass.sku"
+			[useMaterialTheme]="true"
+			[promotion_badge]="pass?.promotion_badge"
+			[footerTemplate]="pass?.offer ? passOffer : null"
+			[collapsibleFooter]="false"
+			[pricetagTemplate]="passPrice"
+		>
+
+			<ng-template #passOffer>
+				<div [innerHTML]="pass?.offer | safeHtml"></div>
+			</ng-template>
+
+			<ng-template #passPrice>
+				<span class="prepaid-pricetag" [innerHTML]="pass?.key_text | safeHtml"></span>
+			</ng-template>
+
+		</app-plan-card>
+	</ng-container>
+</div>

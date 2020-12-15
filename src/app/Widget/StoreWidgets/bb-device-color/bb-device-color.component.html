@@ -1,0 +1,12 @@
+<div class="details__choose_color">
+    <div class="details__choose_content">
+      <div class="details__choose_content_header"><b>Colour</b>: <span>{{selectedColor}}</span></div>
+      <ul class="choose__content">
+        <li class="choose__content_detail color_name_detail" *ngFor="let color of colorList;">
+          <div class="content__details" [ngClass]="{'is-selected':selectedColor === color.colorName}" (click)="selectColor(color.colorName);">
+            <div class="Oval" [style.background]="color.colorHex"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>

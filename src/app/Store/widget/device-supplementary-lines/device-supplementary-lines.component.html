@@ -1,0 +1,294 @@
+<div class="is-bg-color-grey">
+    <div id="number_anchor"></div>
+    <!-- New Principal Line Code Start  -->
+    <section class="u-section">
+        <div class="section__inner">
+            <div class="section__content connect_more_is-container">
+                <div class="connect_more_align">
+                    <!-- <p class="Connect-more-save-m" [hidden]="!defaultSuppOption">
+                        Connect more, save more. Enjoy affordable supplementary lines for your loved ones.
+                    </p> -->
+                    <div [hidden]="hideInternetSharingOption">
+                    <p class="Connect-more-save-m">
+                    Connect more, save more. Share quota with your supplementary lines and enjoy up to {{ dataLimit ? dataLimit : 0 }}GB monthly Internet.
+                    </p>
+                    <div class="checkout-plus-terms">
+                        <label class="check_container guest-checkbox">
+                            <span class="checkout-i-agree">I want to share quota with Family at RM10/permonth</span>
+                            <input type="checkbox" id="agree" name="agree" [(ngModel)]="isInternetSharingChecked" (change)="OnCheckBoxChange($event)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                    <div class="supplementary-selection" [hidden]="!suppLinesOption || !suppLinesOptionSection">
+                        <button class="c-cta--default wout-supple-lines" data-css="c-cta" (click)="buyWithoutSuppLinesForDevice()" [disabled] = "isInternetSharingChecked">Buy without supplementary lines</button>
+                        <button class="c-cta--default with-supple-lines" data-css="c-cta" (click)="showSupp()"
+                            [disabled]="addOnSelected">Get supplementary lines</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="u-section" [hidden]="!isShowAddedSuppLines">
+        <div class="section__inner">
+            <div class="section__content">
+
+                <div class="supplementary-line" *ngFor="let supp of suppLinesAddedDetails;let i=index" [hidden]="(!displayAddedSuppList) || confirmSubsidySelection">
+                    <div class="u-grid-row is-collapsed is-equal-height has-border__bottom has-padding-inner">
+                        <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2 is-col-tablet-supp">
+                            <div class="supplementary-line-icon">
+                                <img src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                            </div>
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-8 is-col-tablet-p-10 is-mobile-right">
+
+                            <div class="supplementary-line-no">
+                                <p class="is-text-bold">Supplementary line <span>{{i+1}}</span></p>
+                                <p>{{supp.planType}}</p>
+                                <p>{{supp.planPhoneNumber}}</p>
+                            </div>
+                            <!-- <div class="supplementary-subsidy" [ngClass] = '{"subsidy-hide": (showSubsidy === false)}'>
+                            <p class="subsidy"><b>RM{{(supp.subsidyAmount ? supp.subsidyAmount : '0.00') | number : '1.2-2'}}</b> subsidy</p>
+                            </div> -->
+                            <div class="remove-val remove-supp" (click)="deleteSuppLine(i)">
+                                <img class="remove-x-blue" src="/assets/img/Drop_3/icon/remove-blue-icon.svg"><span>Remove</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div *ngIf="!showSubsidy" id="max-supplimentary-info" class="note-supplimentary-info-container">
+                    <div class="supplimentary-note-content"><span class="is-text-bold">Note:</span> Supplementary line subsidies are unavailable for zero-rated device.
+                        </div>
+                </div> -->
+
+                <div class="principle_supplementary" [hidden]="isFinishAddingSuppLines">
+                    <div>
+                        <div *ngIf="(suppLinesAddedDetails.length>=0) && noOfLinesMoreAllowed>=0 !isFinishAddingSuppLines">
+                            <div class="supplementary-line-numbers">
+                                <div class="plan__image-wrapper">
+                                    <img class="plan__image" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                                </div>
+                                <p class="You-can-have-X-suppl">You can add <span class="text-style-1">{{(noOfLinesMoreAllowed > 0)
+                                        ? noOfLinesMoreAllowed: 0}}</span> more supplementary line(s)</p>
+                            </div>
+                            <div class="supplementary-selection">
+                                <button class="c-cta--default wout-supple-lines" data-css="c-cta" (click)="ConfirmSubsidySelection()"
+                                    [disabled]="(noOfLinesMoreAllowed)<0">Finish adding lines</button>
+                                <button class="c-cta--default with-supple-lines" data-css="c-cta" (click)="suppPlanSelected()"
+                                    [disabled]="addOnSelected">Add another line</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div [hidden]="isFinishAddingSuppLines" class="error_supplementary"><img src="../../../../assets/img/error-icon.svg"><span class="supp_image_gap">Please select 'Finish adding line' to proceed.</span></div>
+                <div class="align-subsidy" [hidden]="!isFinishAddingSuppLines || !confirmSubsidySelection" *ngIf="this.suppLinesAddedDetails.length > 0">
+                        
+                    <p class="use-subsidy"> Use Subsidy</p>
+                    <p class="subsidy-text" *ngIf = "this.subsidyMessage">
+                       {{this.subsidyMessage}}
+                    </p>
+                    
+                    <div *ngFor="let supp of suppLinesAddedDetails;let i=index">
+                    <div class="supplementary-line" [hidden]="!displayAddedSuppList">
+                        <div class="u-grid-row is-collapsed is-equal-height has-border__bottom has-padding-inner">
+                            <div class="u-grid-col is-col-mobile-p-4 is-col-tablet-p-2 is-col-tablet-supp">
+                                <div class="supplementary-line-icon">
+                                    <img src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                                </div>
+                            </div>
+                            <div class="u-grid-col is-col-mobile-p-8 is-col-tablet-p-10 is-mobile-right">
+    
+                                <div class="supplementary-line-no">
+                                    <p class="is-text-bold">Supplementary line <span>{{i+1}}</span></p>
+                                    <p>{{supp.planType}}</p>
+                                    <p>{{supp.planPhoneNumber}}</p>
+                                </div>
+                                <!-- <div class="subsidy-checkbox">
+                                        <input type="checkbox" class="sample_chk" disabled checked="checked"> <span class="check_text">Use my <b>RM{{(supp.subsidyAmount) | number : '1.2-2'}}</b> subsidy</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="savings-section"  [hidden] = "i < (suppLinesAddedDetails.length - 1)">
+                        <span class="savings">Total Savings</span>
+                        <span class="savings-amount">RM{{TotalSubsidyAmount | number : '1.2-2'}}</span>
+                    </div> -->
+                </div>
+                    <div class="subsidy-confirm-button" (click) = "ConfirmSubsidySelection()">
+                        <p class="subsidy-button-text">Confirm subsidy selection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <section class="u-section sectionize_top" *ngIf="showSuppLines">
+        <div class="section__inner">
+            <div class="section__content is-container">
+                <div class="choose_supplementary">
+                    <div class="Choose-your-suppleme">Choose your supplementary plan</div>
+                </div>
+                <div class="tab">
+                    <ng-container>
+                        <div class="select-dtls Keep_celcom_Num tablinks" data-js-item="accordion-btn-tabs"  [ngClass]="{ 'is-selected' : (true)}"
+                             (click)="isPlanTypeSelected(selectedPlanType)">
+                            <div class="Keep_celcom_Num__Details" >{{selectedPlanType}}</div>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div>
+                    <div class="supplementary-line-numbers">
+                        <div class="plan__image-wrapper">
+                            <img class="plan__image" src="/assets/img/Drop_3/icon/first-1-5-family-icon-new.svg">
+                        </div>
+                        <p class="You-can-have-X-suppl">You can have {{(noOfLinesMoreAllowed > 0) ? noOfLinesMoreAllowed: 0}} supplementary
+                            line(s) with <span>{{selectedPlanType}}</span></p>
+                    </div>
+
+                    <section class="u-section" *ngIf="!isDisplaySuppLineNumList">
+                        <div class="section__inner">
+                            <div class="section__content">
+                                <div class="note__content checkout-note">
+                                    <div class="note__content__inner checkout-note-inner">NOTE:</div>
+                                    <ul class="note__details checkout-note-details">
+                                        <li class="note__details__description">A
+                                            plan subscription charge of <span class="text-style-1"> RM48.00 </span>per
+                                            supplementary line is required upfront.</li>
+                                        <li class="note__details__description">All supplementary lines must have the
+                                            same supplementary plan.</li>     
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="next-sub-section next-sub-sect-m">
+                        <button class="c-cta--default cancel-default-button" data-css="c-cta" (click)="goBackStartPoint()">
+                            <span class="cta__content">Cancel</span>
+                        </button>
+                        <button class="c-cta--default next-default-button" data-css="c-cta" (click)="suppPlanSelected()"
+                            [disabled]="maxLinesOfSelectedPlan[i]<=0">
+                            <span class="cta__content">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- retrieve number -->
+    <!-- <app-page-loader [hidden]="!loading"></app-page-loader> -->
+    <section  [hidden]="!isDisplaySuppLineNumList" *ngIf="deviceNumberToDisplay != null">
+        <div class="section__inner choose-number-padding">
+            <div class="section__content">
+                <div class="Choose-your-suppleme">Choose a number</div>
+                <!-- <div class="choose-supplementary-text">Supplementary line {{noOfSuppLinesAdded+1}}</div> -->
+                <div class="choose-supplementary-text">Supplementary line {{noOfSuppLinesAdded+1}} </div>
+                <div class="search__number">
+                    <input class="search__number__input" type="text" name="search" maxlength="4" (keypress)="numberValidation($event);"
+                    (keydown)="numberKeyHandler($event)" placeholder="Search Number (Min. 2 - Max. 4)" [(ngModel)]="searchNumber"
+                        [ngClass]="{'errorborder':this.errorExits ==  true}" />
+                        <span class="_arrow" (click)="searchNumbersForPattern();">
+                            <img class="blue-arrow" src="../../../../../assets/img/search_number_icon.svg">
+                          </span>
+                    <!-- <div class="teaser__link margin_bottom_2" *ngIf="deviceNumberToDisplay.length > 0">
+                        <a href="javascript:void(0);" class="c-link--default" data-css="c-link" (click)="getRefreshNumbers();">
+                            <div class="link__content"><img src="../../../../../assets/img/chevron-right.svg"/></div>
+                        </a>
+                    </div> -->
+                    <!-- Error Messages should be below the refresh number -->
+                    <div class="error" *ngIf="this.errorExits && !this.noNumbersToDisplay">
+                        <span class="otp-error-heading">{{errorMessage.message}}</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="error" *ngIf="this.noNumbersToDisplay && !this.errorExists">
+                        <span class="otp-error-heading">{{errorMessage.noNumbersDisplay}}</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="error" *ngIf="this.retrieveNumbersAPI && !this.noNumbersToDisplay && !this.errorExists">
+                        <span class="otp-error-heading">{{errorMessage?.apiError}}</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div [hidden]="loading">
+                <div class="number-container">
+                    <div class="margin_top_2" *ngIf="deviceNumberToDisplay.length > 0" [ngClass]="{'noPaginationChevrons' : pager.totalPages === 1}">
+                        <a href="javascript:void(0);" class="c-link--default" data-css="c-link" (click)="setPage(pager.currentPage - 1)">
+                        <span *ngIf="pager.currentPage === 1" class="link__content"><img class="disabled-chevron-left" src="../../../../../assets/img/disabled-left-chevron.svg"></span>
+                        <span *ngIf="pager.currentPage > 1" class="link__content"><img class="chevron" src="../../../../assets/img/moon-chevron-left.svg"></span>
+                        </a>
+                    </div>
+                    
+                    <div class="u-grid-row numbers_align">
+                        <!--Repeat the below list for angular-->
+                        <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-3 is-col-desktop-3 is-margin-bottom-16"
+                        *ngFor="let number of totalPageItems">
+                            <div class="number__details" (click)="SelectNumber(number.number);" [ngClass]="{'is-selected':(selectedNumber === number.number)}">
+                                <div class="number__details__description" [innerHTML]= "number.number | highlight: searchNumber"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="margin_bottom_2" *ngIf="deviceNumberToDisplay.length > 0" [ngClass]="{'noPaginationChevronright' : pager.totalPages === 1}">
+                      <a href="javascript:void(0);" class="c-link--default" data-css="c-link" (click)="setPage(pager.currentPage + 1)">
+                        <span *ngIf="pager.currentPage !== pager.totalPages" class="link__content"><img class="chevron" src="../../../../../assets/img/chevron-right.svg" /></span>
+                        <span *ngIf="pager.currentPage === pager.totalPages" class="link__content"><img class="disabled-chevron-right"
+                            src="../../../../../assets/img/disabled-left-chevron.svg"></span>
+                      </a>
+                    </div>
+                </div>
+                
+
+                <div class="pagination-numbers">
+                        <div *ngIf="pager.pages && pager.pages.length" class="align-number-refresh">
+                          <ul *ngIf="pager.pages && pager.pages.length && pager.totalPages > 1" class="pagination">
+                            <li class="marginleft-right page-number-design" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                              <a [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div *ngIf="pager.currentPage === pager.totalPages" class="refresh-numbers" [ngClass]="{'noPagination' : pager.totalPages === 1}">
+                          <a href="javascript:void(0);" (click)="getRefreshNumbers();" class="noUnderline">Refresh numbers</a>
+                        </div>
+                      </div>
+                    </div>
+                      <!-- <app-page-loader [hidden]="!loading"></app-page-loader> -->
+                <div class="next-sub-section" [hidden]= "loading">
+                    <button class="c-cta--default cancel-default-button" data-css="c-cta" (click)="backToSuppLines()">
+                        <span class="cta__content">Back</span>
+                    </button>
+                    <button class="c-cta--default next-default-button" [disabled]="!selectedNumber" data-css="c-cta"
+                        (click)="addSupplimentaryLines();">
+                        <span class="cta__content">Confirm</span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    </div>
+    <app-page-loader [hidden]="!loading"></app-page-loader>
+    <!-- <section>
+        <div *ngIf="isDisplayLoginLink" id="max-supplimentary-info" class="max-supplimentary-info-container">
+            <div class="max-supplimentary-image"><img src="./assets/img/notifications.svg" class="supplimentary-notification"></div>
+            <div class="supplimentary-notification-content">Have you exceeded your maximum number of supplementary
+                lines?
+                <a class="text-style-1" href="/store/login">Login</a> now to check.</div>
+        </div>
+    </section> -->
+    <app-nric-input *ngIf="!isUserLoggedIn && enableNRICfield" class="appNric section__content is-container" [pageType]="pageType"
+    (succesfulLogin)="OnSuccessfulLogin($event);"></app-nric-input>
+    <app-choose-your-way *ngIf="chooseYourWay" (hideChooseWay)="disableChooseWay($event);"></app-choose-your-way>
+
+    <ng-container *ngIf="IsDisplaySupplementaryPopup">
+        <app-more-supplementary-popup (OnContinueSupplementaryPopup)="OnContinueSupplementaryPopup($event);"></app-more-supplementary-popup>
+    </ng-container>
+    <ng-container *ngIf="IsDisplayLossSupplementaryPopup">
+        <app-losing-supplementary-line-popup (OnContinueSupplementaryPopup)="OnContinueSupplementaryLosingPopup($event);"
+            (OnLeaveSupplementaryPopup)="OnLeaveSupplementaryPopup($event)"></app-losing-supplementary-line-popup>
+    </ng-container>
+    <app-notification-error *ngIf="numberExists" [data]="numExistMsg"></app-notification-error>
+    <age-eligibility-popup-component *ngIf="isDisplayLimitExceededPopUp" [EligibilityPopupType]="eligibilityInfo" (OnContinue)="OnClickingProceed($event);">
+        </age-eligibility-popup-component>

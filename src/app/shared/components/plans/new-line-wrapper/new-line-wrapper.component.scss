@@ -1,0 +1,154 @@
+.new-line-container {
+  .input-form-field {
+    width: 328px;
+  }
+
+  .my-form {
+    > div {
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+
+    .nric-box {
+      max-width: 328px;
+      padding: 0;
+
+    }
+
+    button {
+      width: 125px;
+      padding: 11px 0 10px 0;
+      margin-top: 6px;
+    }
+  }
+
+  .welcome-text {
+    color: #00c871;
+    margin-top: 14px;
+    margin-bottom: 0;
+    word-break: break-word;
+  }
+
+  .personal-det-txt {
+    margin-bottom:0;
+    font-size: 14px;
+    color: #333333;
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+
+  .btn-default {
+    padding: 11px 0 10px;
+    font-size:14px;
+    background-color: #cccccc;
+    border-color: #cccccc;
+    color: #ffffff;
+    border-radius: 20px;
+    margin-top: 16px;
+    width: 125px;
+    box-sizing: border-box;
+  }
+
+  .warning-container {
+    display: flex;
+    margin-top: 24px;
+
+    .warning-msg {
+      color: #333333;
+      font-size: 14px;
+      margin-top: 5px;
+      margin-bottom: 2px;
+      margin-left: 10px;
+      word-break: break-word;
+    }
+  }
+
+  .supplementary-buttons {
+    display: flex;
+    margin: 24px 0 0 0;
+
+    @media (max-width:576px) {
+      display: grid;
+    }
+
+    & button {
+      width: 257px;
+      padding: 7px 0;
+      border: 1px solid #009bdf;
+
+      &:first-of-type {
+        margin-right: 16px;
+
+        @media (max-width: 576px) {
+          margin-right: 0;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  .chekout-without-supplymentary {
+    max-width: 317px;
+    border-radius: 2px;
+    background-color: #cce5f0;
+    padding: 15px 0;
+    color: #333333;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    margin-top: 14px;
+
+    img {
+      margin: 0 16px;
+    }
+
+    p {
+      margin: 0;
+      margin-top: 2px;
+      margin-bottom: 1px;
+    }
+  }
+
+  .principle-line {
+    width: 328px;
+    border-radius: 8px;
+    border: solid 1px #dadada;
+    background-color: #ffffff;
+    padding: 16px 0;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+
+    .principle-line-desc {
+      color: #333333;
+
+      span {
+        font-size: 12px;
+      }
+
+      p {
+        font-weight: bold;
+        margin: 0;
+        margin-top: 6px;
+        font-size: 16px;
+      }
+    }
+
+    img
+    {
+      &:first-of-type {
+        padding: 0 16px;
+      }
+      &:last-of-type {
+        position: absolute;
+        right: 0;
+        width: 21px;
+        height: 20px;
+        margin-right: 16px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}

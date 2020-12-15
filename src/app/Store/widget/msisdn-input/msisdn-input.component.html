@@ -1,0 +1,68 @@
+<form #form="ngForm" [ngClass]="{'newLine-msisdn-bg': pageType === 'newInLine' || pageType === 'suppLines' , 'bundle-cobp-msisdn-sectionize': pageType === 'cobpInLine' , 'nric-newLine-bg-star' : isProjectStar()}">
+    <div class="box-shadow-login-content" [ngClass]="{'home_wireless_msisdn': pageType === 'hwInLine' ,
+    'bundle-cobp-msisdn': pageType === 'cobpInLine' , 'newLine-msisdn': pageType === 'newInLine' || pageType === 'suppLines','fastcheckout-msisdn': pageBlock == 'msisdnblock'}">
+    <p class="mobile-connect-heading" *ngIf="TextFlag">Your mobile number:
+      <span class="mobile-no-manadatory">*</span>
+      </p>
+    <p class="mobile-connect-heading" *ngIf="TextFlag !== true">Enter Your Celcom Number
+        <span class="mobile-no-manadatory">*</span>
+      </p>
+      <div class="moblie-form-grouph">
+        <input class="form-control id-number numeric-textbox celcom-number-font  number-box-width" type="tel" name="mobileNumber" placeholder="60123456789" (keyup)="validateMsisdn();"
+        (keydown) = "restrictOnlyNum($event)" (keyup)="onLogin($event,form)" [(ngModel)]="msisdn" #mobileNumber="ngModel" maxlength="12"
+          required [ngClass]="{'errorborder':!mobileNumber.valid && mobileNumber.touched && !enableNRICAuthentication && msisdn !== '' || this.invalidmsisdn == true ,
+          'disabled': enableNRICAuthentication || showSendOtp === false || loading,
+          'formStyle': ((showSendOtp === false && !loading) || enableNRICAuthentication || forceWhiteBG)  && !forceGrayBG , 'bundle-cobp-input-form': (pageType === 'cobpInLine' || forceGrayBG) , 'newLine-msisdn-bg-input': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar()}">
+          <span [ngClass]="{'resetAfterSubmit': showSendOtp === false || enableNRICAuthentication}" class="remove-x-blue"
+           *ngIf="(showSendOtp === false && !loading) || enableNRICAuthentication" (click)="clearMsisdn()">
+            <img class="remove-x reset-x" src="../../../../assets/img/Drop_3/icon/remove-blue-icon.svg">
+            Reset
+          </span>
+          <div class="center-button cobp-line-search-icon arrow-icon" *ngIf ="showSendOtp && !enableNRICAuthentication">
+            <button class="send-otp" (click)="onMsisdnEnter(form); errorExits = false;" [disabled]="form.invalid || invalidmsisdn || loading || enableNRICAuthentication">
+                <span class="cta__icon">
+                    <img class="blue-arrow" src="../../../../assets/img/voucher_icon.svg">
+                </span>
+            </button>
+        </div>
+      </div>
+      <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)">
+        <div class="error">
+          <span class="text-danger login-error error-span" *ngIf="mobileNumber.errors.required">
+            <div class="warning-icon-login">
+              <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+            </div>
+            <span>{{formErrors.ENTER_VALUE_MSG}}</span>
+            <div class="clearfix"></div>
+          </span>
+        </div>
+      </div>
+      <div class="error" [ngClass]="{'home_wireless_msisdn_error': pageType === 'hwInLine'}">
+        <span class="text-danger login-error error-span" *ngIf="this.errorExits ===  true && this.msisdn && this.msisdn > 0">
+          <div class="warning-icon-login">
+            <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+          </div>
+          <span>{{errorMessage.message}}</span>
+          <div class="clearfix"></div>
+        </span>
+    </div>
+    <div>
+    </div>
+  </div>
+  <div class="error" [ngClass]="{'newLine-msisdn': pageType === 'newInLine' || pageType === 'suppLines' , 'home_wireless_msisdn_error_2': pageType === 'hwInLine'}">
+    <span class="text-danger login-error error-span" *ngIf="this.invalidmsisdn == true">
+      <div class="warning-icon-login">
+        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+      </div>
+      <span>{{formErrors.VALID_MOBILE_NUM_MSG}}</span>
+      <div class="clearfix"></div>
+    </span>
+  </div>
+  <p class="note-otp" *ngIf ="showSendOtp && !enableNRICAuthentication" [ngClass]="{'newLine-msisdn': pageType === 'newInLine' || pageType === 'suppLines' , 'home_wireless_mandatory': pageType === 'hwInLine','fastcheckout-msisdn': pageBlock == 'msisdnblock'}"><b>Note</b>: OTP will be sent to this mobile number.</p>
+  <p class="required-field mandatory-font" [ngClass]="{'newLine-msisdn': pageType === 'newInLine' || pageType === 'suppLines' , 'home_wireless_mandatory': pageType === 'hwInLine','fastcheckout-msisdn': pageBlock == 'msisdnblock'}" *ngIf ="showSendOtp && !enableNRICAuthentication">* Mandatory Field</p>
+</form>
+<app-nric-input *ngIf="enableNRICAuthentication && pageType === 'cobpInLine'" class="appNric section__content is-container" [enableResetButton]="enableResetButton" [msisdn]="msisdn" [pageType]="pageType"
+(onNricVerification)="callOnNricVerification($event);" (resetMsisdnOtp)= "ResetMsisdnOtp($event)">
+</app-nric-input>
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<app-otp-input *ngIf="enableMCotpBox && pageType === 'cobpInLine'" [forceGrayBG]="forceGrayBG" [pageType]="pageType" [pageBlock]="pageBlock" [msisdn]="msisdn" (validateOtp)="onValidOtp($event);"></app-otp-input>

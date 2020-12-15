@@ -1,0 +1,25 @@
+<!-- start  -->
+<div *ngIf="PostPaidAppInfo" class="footer__app-download">
+   <div  class="footer__sitemap__group-header" *ngIf="PostPaidAppInfo.title != '' ">  {{PostPaidAppInfo.title}} </div>
+   <div *ngIf="PostPaidAppInfo.title != '' " class="headingLineDownload" > </div>
+<div class="CelcomVerticalAlign">
+   <span>
+      <a *ngIf="PostPaidAppInfo.celcom_life_icon != '' " [href]="" target="_blank">
+          <img alt="" class="celcom_life_icon" [src]="PostPaidAppInfo.celcom_life_icon" />
+      </a>
+  </span>
+  <span> 
+  <h4 class="celcom_life_icon_txt" *ngIf="PostPaidAppInfo.celcom_life_text != '' "> {{PostPaidAppInfo.celcom_life_text}} </h4> 
+</span>
+</div>
+  <!-- start items -->
+  <ng-container>  
+  <a *ngFor="let item of PostPaidAppInfo.items" class="footer__link footer__app-download__link CelcomIconiAlign" (click)="ManageContentNavigation(item.url);defaultOnClick();"
+    href="{{item.url}}">
+    <i class="icon is-icon-app" *ngIf="item &&  item.icon != '' " [ngStyle]="{'background-image': 'url(' + item.icon +')' , 'background-repeat': 'no-repeat' }">
+    </i>
+  </a>
+  <div class="border-line-thin"></div>
+</ng-container>
+</div>
+<!-- end -->

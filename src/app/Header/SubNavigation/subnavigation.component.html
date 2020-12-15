@@ -1,0 +1,34 @@
+<ul class="navigation__list">
+    <ng-container *ngFor="let item of RemainingParentMenu">
+        <li *ngIf="menu == item.title" class="navigation__list-item is-meta" >
+            <a href="{{item.absolute_path}}" class="navigation__link">{{item.title}}</a>
+        </li>
+    </ng-container>
+
+    <!-- Old Navigation Code # Start -->
+    <!-- <li *ngFor="let item of Data; let i = index" class="navigation__list-item"
+      [class.is-active] ="isPartOfCurrentUrl(item) "
+      (click)="highlightedMenu(item)">
+      <a *ngIf="!item.external" href="{{item.alias}}" (click)="ManageContentNavigation(item.alias);defaultOnClick();" class="navigation__link">{{item.title}}</a>
+      <a *ngIf="item.external" href="{{item.absolute}}" (click)="ManageContentNavigation(item.absolute);;defaultOnClick();"  class="navigation__link">{{item.title}}</a>
+    </li> -->
+    <!-- Old Navigation Code # End -->
+
+    <!-- New Navigation Code # Start -->
+    <li
+      *ngFor="let item of Data;"
+      class="navigation__list-item"
+      [class.is-active] ="isPartOfCurrentUrl(item) "
+    >
+        <a [href]="item.absolute" class="navigation__link">
+          {{item.title}}
+        </a>
+    </li>
+    <!-- New Navigation Code # End -->
+
+    <ng-container *ngFor="let item of RemainingParentMenu">
+        <li *ngIf="menu != item.title" class="navigation__list-item is-meta">
+        <a href="{{item.absolute_path}}" class="navigation__link">{{item.title}}</a>
+        </li>
+    </ng-container>
+</ul>

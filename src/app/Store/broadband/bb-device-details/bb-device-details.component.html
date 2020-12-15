@@ -1,0 +1,59 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<section class="u-section" id="step1" *ngIf="BbDeviceDetailsResponse !== null">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="o-hero-banner o-hero-device">
+        <div class="u-grid-row is-collapsed is-equal-height">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 device_details_grid">
+            <ng-container *ngIf="isInitializeSlider">
+              <div class="top-margin">
+
+              </div>
+              <app-device-slider-component [data]="sliderImageList"></app-device-slider-component>
+            </ng-container>
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-tablet-value">
+            <div class="is-padding-2 details__mobile_center">
+               <div class="new_stock_details" *ngIf="BbDeviceDetailsResponse.stock_indicator_text && BbDeviceDetailsResponse.stock_indicator_text.length > 0">
+                    <div class="new_stock_details_icon">
+                  <img class="new_stock_details_img" src="{{BbDeviceDetailsResponse.stock_indicator_image}}">
+                </div>
+                <div class="new_stock_details_text" [innerHtml]="BbDeviceDetailsResponse.stock_indicator_text | safeHtml">
+                </div>
+              </div>
+              <app-bb-device-name-price *ngIf="bbDeviceDetailsData" [price]="monthlyPay"></app-bb-device-name-price>
+              <app-bb-device-color *ngIf="bbDeviceDetailsData" (selectedColorEE)="onSelectedColor($event);" [selectedProd]="bbSelectedDevice"
+                [data]="bbDeviceDetailsData">
+              </app-bb-device-color>
+              <ng-container *ngIf="loadStockCheck">
+                <app-bb-device-stock-check [selectedColor]="selectedColor" [data]="bbDeviceDetailsData"></app-bb-device-stock-check>
+              </ng-container>
+              <div class="apply-font teaser__link" id="moreDetailsBB">
+                <a class="c-link--default reframe_anchor_arrow" data-css="c-link" (click)="moreDetailsClick();">
+                  <span class="link__icon icon is-icon-arrow-down" [ngClass]="{'is-arrow-active':is_icon_active}"></span>
+                  <span class="link__content">More details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <device-details-more-details *ngIf="bbDeviceDetailsData" [@slideInOut]="isInitializeMoreDetails" [data]="bbDeviceDetailsData"></device-details-more-details>     
+      </div>
+    </div>
+  </div>
+</section>
+<app-DetailBannerTextLeft style="width:100%" *ngIf="isInitializeDetailBannerLeft" [data]="dataForDetailBannerTextLeft"></app-DetailBannerTextLeft>
+<app-bb-plan-section *ngIf="bbDeviceDetailsData && selectedColor" [deviceDetailsData]="bbDeviceDetailsData" [selectedColor]="selectedColor"></app-bb-plan-section>
+<app-bb-typeof-purchase *ngIf="BbDeviceDetailsResponse !== null" [data]="BbDeviceDetailsResponse"></app-bb-typeof-purchase>
+<app-bb-summary-section *ngIf="bbDeviceDetailsData" [deviceDetailsData]="bbDeviceDetailsData"></app-bb-summary-section>
+<app-bb-sticky-summary *ngIf="bbDeviceDetailsData" [deviceDetailsData]="bbDeviceDetailsData"></app-bb-sticky-summary>
+<app-notification-error *ngIf='showErrorToaster' [data]="errorToasterData"></app-notification-error>
+<app-notification-error *ngIf="errorDealer" [data]="dealerMessage"></app-notification-error>
+<ng-container *ngIf="IsDisplayDealerPopup">
+  <age-eligibility-popup-component
+      [EligibilityPopupType]="DealerPopupType"
+      (OnContinue)="OnContinueDealerCheck($event);">
+  </age-eligibility-popup-component>
+</ng-container>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<!-- <app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer> -->

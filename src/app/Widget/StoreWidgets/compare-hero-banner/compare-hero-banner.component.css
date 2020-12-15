@@ -1,0 +1,22 @@
+.shopping_mask {
+	background-image: url(/assets/img/Drop_3/compare-banner-image.jpg);
+	height: 146px;
+}
+.Reload-Now {
+    font: normal normal 32px Lato;
+	font-stretch: normal;
+	line-height: 1.34;
+	letter-spacing: -0.3px;
+	text-align: center;
+	color: #fff;
+	margin: 10px;
+}
+.sub-text {
+    font: normal normal 18px Lato;
+	font-stretch: normal;
+	line-height: 1.11;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: 10px;
+}

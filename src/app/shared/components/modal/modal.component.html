@@ -1,0 +1,16 @@
+<div class="mdl-container" [ngClass]="{
+    'rounded': rounded, 
+    'isShown': isShown, 
+    'isCenter': position === 'center',
+    'isHidden': !visible
+}">
+    <div class="mdl-close" *ngIf="closeBtn">
+        <img (click)="close()" src="/assets/img/svg/icons/close.svg" alt="x">
+    </div><!-- /.mdl-close -->
+    <div class="mdl-body">
+        <ng-content></ng-content>
+        <ng-template *ngTemplateOutlet="templateRef; context: { close: close, message: context?.message, title: context?.title, btnCancel: context?.btnCancel, btnConfirm: context?.btnConfirm }">
+        </ng-template>
+    </div><!-- /.mdl-body -->
+</div><!-- /.mdl-container -->
+<div class="mdl-background" [ngClass]="{'isShown': isShown}" (click)="onBackdropClick()"></div><!-- /.mdl-background -->

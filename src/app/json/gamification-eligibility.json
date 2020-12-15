@@ -1,0 +1,67 @@
+[
+  {
+     "status":true,
+     "message":"Success",
+     "customer_name":"",
+     "nric":"880102455678",
+     "customer_email":"",
+     "voucher_data":[
+        {
+           "voucher_code":"",
+           "voucher_name":"GrabFood RM1",
+           "voucher_details":"Lorem Ipsum dolor sit amet, consectetur adipsicing elite. Got it? Neither did we. In the publishing and design industries,",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/wysiwyg\/GrabFoodLogo-RewardsThumb.jpg",
+           "voucher_value":"Rm 1",
+           "selected":"NO"
+        },
+        {
+           "voucher_code":"",
+           "voucher_name":"GrabFood RM10",
+           "voucher_details":"Lorem Ipsum dolor sit amet, consectetur adipsicing elite. Got it? Neither did we. In the publishing and design industries,",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/wysiwyg\/GrabFoodLogo-RewardsThumb_1.jpg",
+           "voucher_value":"RM 10",
+           "selected":"NO"
+        },
+        {
+           "voucher_code":"",
+           "voucher_name":"GrabCar RM5",
+           "voucher_details":"Lorem Ipsum dolor sit amet, consectetur adipsicing elite. Got it? Neither did we. In the publishing and design industries,",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/wysiwyg\/Grabcar-icon-250x248.jpg",
+           "voucher_value":"RM 5",
+           "selected":"NO"
+        },
+        {
+           "voucher_code":"GRAB10RM5",
+           "voucher_name":"GrabCar RM10",
+           "voucher_details":"Lorem Ipsum dolor sit amet, consectetur adipsicing elite. Got it? Neither did we. In the publishing and design industries,",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/wysiwyg\/Grabcar-icon-250x248_1.jpg",
+           "voucher_value":"RM 10",
+           "selected":"Yes"
+        },
+        {
+           "voucher_code":"",
+           "voucher_name":"GRABPoint 1000",
+           "voucher_details":"Lorem Ipsum dolor sit amet, consectetur adipsicing elite. Got it? Neither did we. In the publishing and design industries,",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/wysiwyg\/Grabcar-icon-250x248_2.jpg",
+           "voucher_value":"Point 1000",
+           "selected":"NO"
+        },
+        {
+           "voucher_code":"100% Cashback XPLite Plan",
+           "voucher_name":"100% Cashback XPLite Plan",
+           "voucher_details":"",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/salesrule\/tmp\/image\/XP_LITE.jpg",
+           "voucher_value":"20.0000",
+           "selected":"NO"
+        },
+        {
+           "voucher_code":"100% Cashback Mega base",
+           "voucher_name":"100% Cashback Mega base",
+           "voucher_details":"",
+           "voucher_logo":"https:\/\/estorecms-03.celcom.com.my\/media\/salesrule\/tmp\/image\/mega.jpg",
+           "voucher_value":"0.0000",
+           "selected":"NO"
+        }
+     ]
+  }
+]

@@ -1,0 +1,78 @@
+<div class="card-wrapper" 
+  [ngClass]="{
+    'size2': cardType == 'easyphone', 
+    'size3': cardType != 'easyphone' && planType == 'gb', 
+    'has-badge': hasBadge
+  }" 
+  *ngIf="!isLoading; else loadingEl">
+  <app-plan-card 
+    *ngFor="let plan of plans"
+    [ngClass]="{
+      'disabled': disabled
+    }"
+    (click)="selectPlan(plan.sku)"
+    [useMaterialTheme]="true"
+    [selected]="selectedSku == plan.sku" 
+    [pricetag]="plan.price" 
+    [pricetagTemplate]="customPrice ? pricetagTemplate : null"
+    [title]="plan.title"
+    [collapsibleFooter]="false"
+    [height100]="false"
+    [disabled]="disabled"
+    [promotion_badge]="plan.badge"
+    [promotion_text]="plan.promotion_text"
+    [footerTemplate]="cardType != 'plan' ? footer : (plan.offers ? footer : null)">
+    
+    <ng-template #footer>
+      <ng-container [ngSwitch]="true">
+        <ng-container *ngSwitchCase="cardType == 'plan'" >
+          <div [innerHTML]="plan.offers | safeHtml"></div>
+        </ng-container>
+        <ng-container *ngSwitchCase="cardType == 'device'">
+          <span class="grey-text">Get device at </span>&nbsp;<span class="price-text">RM{{ plan.device_price | number  : '1.0-2' }}</span>
+        </ng-container>
+        <div *ngSwitchCase="cardType == 'easyphone'" class="easyphone-footer">
+          <div>
+            <!-- Width hack. Do not delete this text -->
+            Text
+            <div>
+              <div class="grey-text">Total</div>
+              <div class="price-text">RM{{ ((plan.easyphone_data?.base_price || 0) + plan.easyphone_data?.pass_price + plan.easyphone_data?.phone_price) | number  : '1.0-2' }}</div>
+              <div class="grey-text">/month</div>
+            </div>
+          </div>
+          <div *ngIf="plan.easyphone_data?.base_label">
+            <div class="price-text">RM{{ plan.easyphone_data?.base_price | number  : '1.0-2' }}</div>
+            <div class="grey-text" [innerHTML]="plan.easyphone_data.base_label | safeHtml"></div>
+          </div>
+          <div>
+            <div class="price-text">RM{{ plan.easyphone_data?.pass_price | number  : '1.0-2' }}</div>
+            <div class="grey-text">Pass</div>
+          </div>
+          <div>
+            <div class="price-text">RM{{ plan.easyphone_data?.phone_price | number  : '1.0-2' }}</div>
+            <div class="grey-text">{{ plan.easyphone_data?.multiple_devices ? 'Phones' : 'Phone' }}</div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+    
+
+    <ng-template #pricetagTemplate>
+      <span class="grey-text">{{ priceLabel }}</span>
+      <span class="price-text">{{ plan.price }}</span>
+      <span class="grey-text">/month</span>&nbsp;
+    </ng-template>
+    
+    
+  </app-plan-card>
+</div>
+<ng-template #loadingEl>
+  <app-page-loader *ngIf="loadingType == 'spinner'"></app-page-loader>
+  <div *ngIf="loadingType == 'shimmer'" class="card-wrapper">
+    <div 
+      *ngFor="let plans of [1, 2, 3]"
+      class="shimmer placeholder-card">
+    </div>
+  </div>
+</ng-template>

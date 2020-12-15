@@ -1,0 +1,100 @@
+.emailMethodContainer {
+	background: url('/assets/img/product-cards/bg-grey-white-stripes.jpg');
+	padding: 32px 0;
+}
+.emailMethodSubContainer {
+	width: 80%;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+    padding-bottom: 8px;
+    text-align: left;
+}
+.choose_form_group {
+	margin: 2px 0 16px;
+	width: 100%;
+}
+.choose_form_group label {
+	font: normal bold 16px Lato;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+	padding-top: 10px;
+	display: inline-block
+}
+.choose_form_control {
+	border: none;
+	outline: 0;
+	border-bottom: 2px solid #ccc;
+	width: 95%;
+	height: 36px;
+	background-color: #f3f3f3;
+	text-indent: 15px;
+	font: 14px Lato;
+}
+.choose_form_control:-webkit-autofill {
+	-webkit-box-shadow: inset 0 0 0 9999px #f3f3f3;
+	box-shadow: inset 0 0 0 9999px #f3f3f3;
+}
+.choose_form_control:active, 
+.choose_form_control:focus {
+	border-bottom: solid 2px #009ade;
+}
+.choose_form_control:-webkit-autofill:focus, 
+.choose_form_control:-webkit-autofill:active {
+	-webkit-box-shadow: inset 0 0 0 9999px #f3f3f3;
+	box-shadow: inset 0 0 0 9999px #f3f3f3;
+}
+select.choose_form_control {
+	width: 95%;
+	color: #626262;
+	text-indent: 10px;
+	background: url(/assets/img/select-arrow.png) no-repeat right #f3f3f3;
+	-webkit-appearance: none;
+	background-position-x: 98%;
+}
+.is-container-margin-left {
+    margin: 0 0 9px 38px;
+}
+.is-right-container-margin {
+    margin-left: 10px;
+}
+.email-retrieve-header { 
+	margin-left: 16px;
+	padding-top: 21px;
+	font: 16px Lato;
+}
+.choose_form_group.errorborder, .choose_form_group.errorborder {
+	border-bottom: 2px solid #d0021b !important;
+}
+.error {
+	padding-right: 25px;
+	margin-top: -8px;
+}
+.error .warning-icon {
+	float: left;
+	padding-top: 5px;
+}
+.error .text-danger {
+	font: 14px Lato;
+	color: #d0021b;
+}
+.chooseAddress-error-align {
+    position: relative;
+	bottom: 2px;
+	padding-right: 7px;
+}
+@media (max-width: 767px) {
+	select.choose_form_control {
+		width: 88%;
+	}
+	.is-mobile-container {
+		width: 88%;
+		margin-left: 12%;
+	}
+	.choose_form_control,.email-retrieve-header {
+		width:88%;
+	}
+}

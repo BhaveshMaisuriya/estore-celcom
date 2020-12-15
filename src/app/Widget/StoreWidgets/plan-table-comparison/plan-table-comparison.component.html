@@ -1,0 +1,85 @@
+<ng-container *ngIf="TableComparisonResponse != null">  
+  <section class="u-section is-bg-color-white has-section-padding has-border has-border-bottom" style="padding-bottom: 0;" [attr.data-analytics-region]="dataAnalyticsRegion">
+    <div class="section__inner">
+      <div class="section__content is-container">
+       <div data-js-module="accordion" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+             <div class="c-tabs is-full-width" style="margin: 0;">
+              <ng-container *ngFor="let item of TableComparisonResponse; let i=index">
+                <div class="c-tabs__tab" [ngClass]="{'is-active': item.tabname === SelectedTab}"
+                (click)="OnTabSelect(item, i);" [attr.data-analytics-region]="item.tabname">
+                  {{ item.tabname }}
+                </div>
+              </ng-container>
+            </div> 
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="u-section has-section-padding has-border" style="padding-top: 0;" [class.cs-agent-div]="isCSAgent">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div data-js-module="accordion" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}" >
+        <div class="c-tab-content is-active" data-js-item="accordion-content-tabs" id="1" data-js-height="659" aria-expanded="true">
+          <h2 class="c-tab-content__headline">{{PlanData.tabtitle}}</h2>
+          <p class="c-tab-content__subline">{{PlanData.tabsubtitle}}</p> 
+        </div>
+        <!-- <div></div> -->
+        <section class="u-section">
+          <div class="section__inner">
+            <div class="section__content">
+              <div class="c-plan-comparison">
+                <div class="plan-comparison__list"  data-js-module="accordion" data-js-options='{"closeClass": "", "openClass": "is-active", "toggleContentVisibility": false, "context": "plan-comparison"}'>
+                  <div class="plan-comparison__list__item" *ngFor="let item of PlanData.tabdata.Items;let i=index" >
+                    <div class="plan-comparison__list__item__header" [ngClass]="{ 'has-xpax-arrow':item.is_xpax }" data-js-item="accordion-btn-plan-comparison" [attr.href]="item.AtrHref" (click) = "accordianOpen($event,i)">
+                      <div *ngIf="!item.is_xpax" class="plan-comparison__list__item__level-indicator {{item.IndicatorClass}}"></div>
+                      <div *ngIf="item.is_xpax" class="plan-comparison__list__item__level-indicator is-level-xpax"></div>                      
+                      <div class="plan-comparison__list__item__header__level-name">{{ item.ProductText  }}</div>                      
+                      <div class="plan-comparison__list__item__header__key-figures">{{ item.KeyFiguresText }}</div>
+                      <h4 *ngIf="!item.is_xpax" class="plan-comparison__list__item__header__key">{{ item.KeyText }}</h4>
+                      <h4 *ngIf="item.is_xpax" class="plan-comparison__list__item__header__key plan-comparison__list__item__header__key_xpax">{{ item.KeyText }}</h4>
+                    </div>
+                    <div class="plan-comparison__list__item__content" data-js-item="accordion-content-plan-comparison" id="rm-{{i}}" data-js-height="308" aria-expanded="false">
+                      <ul>
+                        <ng-container *ngFor="let detail of item.TableInfo">
+                          <li *ngIf="!item.is_xpax" class="plan-comparison__list__item__content__detail" [ngClass]="{'is-highlighted': detail.heighlight == '1'}"> 
+                            <span class="plan-comparison__list__item__content__detail__description">
+                                {{ detail.headline }}
+                            </span>
+                          </li>
+                        <!-- </ng-container> -->
+                        <!-- <ng-container *ngIf="item.is_xpax" *ngFor="let detail of item.TableInfo"> -->
+                            <li *ngIf="item.is_xpax" class="plan-comparison__list__item__content__detail detail-xpax" [ngClass]="{'is-highlighted': detail.heighlight == '1'}"> 
+                              <span class="plan-comparison__list__item__content__detail__description">
+                                  {{ detail.headline }}
+                              </span>
+                            </li>
+                          </ng-container>
+                      </ul>
+                      <div class="plan-comparison__list__item__actions">
+                        <div class="plan-comparison__list__item__actions__primary" *ngIf="item.BuynowText!=''" [attr.data-analytics-region]="item.name"> 
+                          <a class="c-cta--default" data-css="c-cta" (click)="loadAnalyticsBuyPlanScript(item.analytics_key_addtocart);RedirectToPlanPurchasePage(item.BuynowLink);">
+                               {{item.BuynowText}}<i class="icon is-icon-arrow cta__icon"></i>
+                          </a> 
+                        </div>
+                        <div class="plan-comparison__list__item__actions__secondary" *ngIf="item.knowMoreText!=''" [attr.data-analytics-region]="item.name"> 
+                          <a class="link" (click)="loadAnalyticsLearnPlanScript(item.analytics_key_addtocart);RedirectToPlanPurchasePage(item.knowMoreLink);" href="{{item.knowMoreLink}}">{{item.knowMoreText}} <i class="icon is-icon-arrow"></i></a>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+</ng-container>
+<ng-container *ngIf="IsDisplayDealerPopup">
+    <age-eligibility-popup-component
+        [EligibilityPopupType]="DealerPopupType"
+        (OnContinue)="OnContinueDealerCheck($event);">
+    </age-eligibility-popup-component>
+</ng-container>

@@ -1,0 +1,422 @@
+<div class="container-fluid viewProfileContainer">
+  <div class="row">
+    <div class="col">
+      <div class="container profileContainer">
+        <div class="row head-text">
+          <div class="col" *ngIf="checkoutData">
+            <h3>Hi, {{checkoutData.Name}}</h3>
+            <ul class="tab profile-tabs">
+              <li [ngClass]="{'active': selectedProfileTab==='profile'}">
+                <a href="javascript:void(0)" (click)="onProfileTabChange('profile');">My Profile</a>
+              </li>
+              <li [ngClass]="{'active': selectedProfileTab==='voucher'}">
+                <a href="javascript:void(0)" (click)="onProfileTabChange('voucher');">My Vouchers</a>
+              </li>
+              <li [ngClass]="{'active': selectedProfileTab==='order_history'}">
+                <a href="javascript:void(0)" (click)="onProfileTabChange('order_history');">Order History</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div><!--container-->
+    </div><!--col-->
+  </div><!--row-->
+  <div *ngIf="selectedProfileTab==='profile' && checkoutData">
+    <div class="row">
+      <div class="col">
+        <div class="container profileContainer">
+          <div class="row table-content">
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                  <div>
+                    <p>Name</p>
+                    <p>{{checkoutData.Name}}</p>
+                  </div>
+                  <div>
+                    <p>ID Type</p>
+                    <p>New NRIC</p>
+                  </div>
+                  <div>
+                    <p>Gender</p>
+                    <p>{{checkoutData.Gender}}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                  <div>
+                      <p>Mobile Number (Principal Line)</p>
+                      <p class="gender-demo" style="margin: 0;">{{checkoutData.Mobile_Number}}</p>
+                  </div>
+                  <div>
+                    <p>Email</p>
+                    <p>{{checkoutData.Email}}</p>
+                </div>
+                  <div class="d-block">
+                    <p>Preferred Contact Method</p>
+                    <p>{{checkoutData.preferable_contact_method ? 'Call' : 'Email'}}</p>
+                  </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                <div>
+                    <p> Billing Address </p>
+                    <div>
+                          <p class="normalFont">No {{checkoutData.Default_Billing_Address.unit_number}}, {{checkoutData.Default_Billing_Address.street}},</p>
+                          <p class="secondLineAddress">{{checkoutData.Default_Billing_Address.region}},</p>
+                          <p> {{checkoutData.Default_Billing_Address.postcode}}, {{checkoutData.Default_Billing_Address.city}}</p>
+                    </div>
+                </div>
+            </div>
+          </div><!--row-->
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+
+    <div class="row">
+      <div class="col">
+        <div class="container profileContainer">
+          <div class="row withContract">
+            <div class="col-lg-12">
+              <h4>Contract Details</h4>
+            </div>
+          </div>
+          <!--without-contract details angular to do-->
+          <div class="row withoutContract" *ngIf="activeContractDetails.length == 0">
+            <div class="col-lg-12 col-12">
+                <p>It looks like you’re not on contract.</p>
+                <a href="/home">Buy Device
+                  <img src="assets/img/Chevron_white_right.svg" alt="buy device">
+                </a>
+            </div>
+          </div>
+          <!--without-contract details-->
+          <div *ngIf="activeContractDetails.length > 0">
+            <div class="row table-content">
+              <div class="profileStatus">
+                <p *ngIf="activeContractDetails.length > 0">You are currently subscribed to <strong>{{activeContractDetails[0].Current_plan}}</strong> and have an active contract , with remaining <strong>{{activeContractDetails[0].remaning_contract}} month(s)</strong>.</p>
+              </div>
+              <div class="contractLine"></div>
+              <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                <div class="table-text">
+                  <p>Plan Name</p>
+                  <p>{{activeContractDetails[0].Current_plan}}</p>
+                </div>
+                <div>
+                  <p>Device Name</p>
+                  <p>{{activeContractDetails[0].Current_device}}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                  <div class="table-text">
+                    <p>Start Date</p>
+                    <!-- <p>dd/mm/yyyy</p> -->
+                    <p>{{contractStartDate}}</p>
+                  </div>
+                  <div>
+                    <p>End Date</p>
+                    <p>{{contractEndDate}}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+                  <div>
+                    <p>Processing Fee/Penalty</p>
+                    <p>RM{{activeContractDetails[0].penalty | number : '1.2-2'}}</p>
+                </div>
+            </div>
+          </div>
+          </div><!--2nd table row-->
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+    <div class="row">
+      <div class="col">
+        <div class="container profileContainer">
+          <div class="row note">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <p>NOTE: </p>
+              <p>If you need to update your billing address, just register or login to <a class="note-content-inner" href="https://ocs.celcom.com.my/servicecenter/faces/oracle/webcenter/portalapp/pages/selfservice/slogin.jspx">Online Customer Service</a> to do so.</p>
+            </div>
+          </div><!--row note-->
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+  </div>
+
+  <!-- Dealer -->
+  <div class="row head-text" *ngIf="checkoutDataDealerAgent">
+    <div class="col">
+      <h3>Hi, {{checkoutDataDealerAgent.agent_name}}</h3>
+      <ul class="tab profile-tabs">
+        <li [ngClass]="{'active': selectedProfileTab==='profile'}">
+          <a href="javascript:void(0)" (click)="onProfileTabChange('profile');">My Profile</a>
+        </li>
+        <li [ngClass]="{'active': selectedProfileTab==='order_history'}">
+          <a href="javascript:void(0)" (click)="onProfileTabChange('order_history');">Order History</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div *ngIf="selectedProfileTab==='profile' && checkoutDataDealerAgent">
+    <div class="row">
+      <div class="col">
+        <div class="container profileContainer">
+          <div class="row table-content">
+            <div class="col-lg-4 col-md-4 col-sm-12 table-inner">
+              <div>
+                <p>Name</p>
+                <p>{{checkoutDataDealerAgent.agent_name}}</p>
+              </div>
+            </div>
+          </div><!--row-->
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+    <div class="row">
+      <div class="col">
+        <div class="container profileContainer">
+          <div class="row note">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <p>NOTE: </p>
+              <p>If you need to update your billing address, just register or login to <a class="note-content-inner" href="https://ocs.celcom.com.my/servicecenter/faces/oracle/webcenter/portalapp/pages/selfservice/slogin.jspx">Online Customer Service</a> to do so.</p>
+            </div>
+          </div><!--row note-->
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+  </div>
+
+  <!--offering and redeem-->
+  <div *ngIf="selectedProfileTab==='voucher'">
+    <div class="row">
+      <div class="col">
+        <div class="container">
+          <div class="row is-justify-content-center">
+            <ul class="tab redeem-tabs">
+              <li [ngClass]="{'active': selectedVoucherTab==='offerings'}">
+                <a href="javascript:void(0)" (click)="onVoucherTabChange('offerings')">Offerings</a>
+              </li>
+              <li [ngClass]="{'active': selectedVoucherTab==='redeemed'}">
+                <a href="javascript:void(0)" (click)="onVoucherTabChange('redeemed')">Redeemed</a>
+              </li>
+            </ul>
+          </div>
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->
+    <div *ngIf="selectedVoucherTab==='offerings'">
+      <div class="row mx-auto">
+        <div class="col">
+          <div class="container-fluid">
+              <div class="row card-layout">
+                <div class="col-lg-4 col-md-6 mb-4 card" *ngFor="let item of filteredOfferingItems;">
+                    <img
+                      [alt]="item.voucher_title"
+                      [src]="item.merchant_logo"
+                    >
+                    <div class="card-body">
+                      <ng-container *ngIf="item?.tags">
+                        <div class="promo-tags" [innerHTML]="item.tags | safeHtml"></div>
+                      </ng-container>
+                      <h6>{{ item.voucher_title }}</h6>
+                      <p>Expiry {{ item.promo_validity | date:"dd/MM/yyyy" }}</p>
+                      <button class="btn btn-rounded"  (click)="openVoucherModal(item)">Redeem</button>
+                    </div>
+                </div>
+              </div><!--row card-layout-->
+          </div><!--fluid-container-->
+        </div><!--col-->
+      </div><!--row-->
+    </div>
+    <!--end offering and redeem-->
+
+    <!--Redeemed table-->
+    <div *ngIf="selectedVoucherTab==='redeemed'">
+      <div class="row mx-0">
+        <div class="col">
+          <div class="container-fluid">
+            <div class="row redeem-table" *ngIf="listingRedeemedItems && listingRedeemedItems.length > 0">
+              <div class="col-lg-12">
+                  <div class="row">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Rewards</th>
+                          <th>Merchant</th>
+                          <th>Redeemed on</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let item of listingRedeemedItems;">
+                          <td>{{item.voucher_title}}</td>
+                          <td>{{item.promo_code}}</td>
+                          <td>{{item.redeem_on}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div><!--row redeem-table-->
+          </div>
+          <app-pagination
+              *ngIf="totalRedeemedPages > itemsPerPage"
+              [totalPages]="totalRedeemedPages"
+              [currentPage]="currentPage"
+              (onPageClick)="onRedeemedPageClick($event)"
+          ></app-pagination>
+      <!--pagination-->
+          </div><!--fluid-container-->
+      </div><!--col-->
+    </div><!--row-->
+  </div>
+
+  <!-- order-history -->
+  <div *ngIf="selectedProfileTab==='order_history'">
+    <div class="row mx-0">
+      <div class="col">
+        <div class="container-fluid">
+          <section class="u-section has-margin-top-2">
+            <div class="section-inner">
+              <div class="section-content is-container">
+                <div class="u-grid-row is-collapsed is-equal-height">
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-mobile-padding">
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-mobile-padding">
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-mobile-padding">
+                    <button id="sortBy" class="sorty-by-button" (click)="openSortBy()" [ngClass]="!hideSortBy ? 'is-filter-active' : ''">{{filterText}}<img src="../assets/img/Drop_3/carrot-down.png"></button>
+                    <section class="u-section has-border is-width__100 filter-by-status is-filter-hide" [hidden]="hideSortBy">
+                      <div class="section-inner">
+                        <div class="section-content">
+                          <div class="filter__background">
+                            <ul class="filter__background sortby__list">
+                              <li class="sortby__list_item" (click)="applyFilter('All')">All</li>
+                              <li class="sortby__list_item" (click)="applyFilter('open')">Open</li>
+                              <li class="sortby__list_item" (click)="applyFilter('shipped')">Shipped</li>
+                              <li class="sortby__list_item" (click)="applyFilter('cancelled')">Cancelled</li>
+                              <li class="sortby__list_item" (click)="applyFilter('completed')">Completed</li>
+                              <li class="sortby__list_item" (click)="applyFilter('processing')">Processing</li>
+                              <li class="sortby__list_item" (click)="applyFilter('pending')">Pending</li>
+                              <li class="sortby__list_item" (click)="applyFilter('failed')">Failed</li>
+                              <li class="sortby__list_item" (click)="applyFilter('in progress')">In Progress</li>
+                              <li class="sortby__list_item" (click)="applyFilter('success')">Success</li>
+                              <li class="sortby__list_item" (click)="applyFilter('unsuccessful')">Unsuccessful</li>
+                              <li class="sortby__list_item is-sort-selected" (click)="applyFilter('delivered')">Delivered</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="row order-history">
+            <div class="col-lg-12">
+                <div class="row">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Purchased On</th>
+                        <th>Purchased By</th>
+                        <th>Order Type</th>
+                        <th>Payment Amount</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of data | orderFilter: filterText">
+                        <td class="u-grid-col wrap-link no-margin"
+                        *ngIf="item.cel_siebel_order">
+                          <a class="track_anchor" (click) = "orderNumber(item.cel_siebel_order);">#{{item.cel_siebel_order}}</a>
+                        </td>
+                        <td class="u-grid-col wrap-link no-margin"
+                        *ngIf="!item.cel_siebel_order && item.transaction_id">
+                          <a class="track_anchor" (click) = "orderNumber(item.transaction_id);">View</a>
+                        </td>
+                        <td class="u-grid-col wrap-link no-margin"
+                        *ngIf="!item.cel_siebel_order && !item.transaction_id">
+                          <a class="track_anchor" (click) = "orderNumber(item.order_id);">View</a>
+                        </td>
+
+                        <td>{{item.purchased_on}}</td>
+                        <td>{{item.purchased_by}}</td>
+                        <td>{{item.order_type}}</td>
+                        <td>RM{{item.grand_total}}</td>
+                        <td>{{item.status}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+          </div><!--row redeem-table-->
+        </div>
+        <app-pagination
+            *ngIf="totalRedeemedPages > itemsPerPage"
+            [totalPages]="totalRedeemedPages"
+            [currentPage]="currentPage"
+            (onPageClick)="onRedeemedPageClick($event)"
+        ></app-pagination>
+    <!--pagination-->
+        </div><!--fluid-container-->
+      </div><!--col-->
+    </div><!--row-->
+</div><!--fluid-container-->
+<!--end Redeemed table-->
+<!--modal start-->
+<app-modal id="voucher-popup" [rounded]="true" [autoShow]="false">
+  <div class="container-fluid discount-voucher-modal">
+    <div class="row is-justify-center m-0">
+      <h4>{{ firstVoucher[0]?.voucher_title }}</h4>
+      <p class="discount-text">{{ firstVoucher[0]?.voucher_content }}</p>
+    </div>
+    <div class="row is-justify-center">
+      <div class="col-lg-12 blue-voucher-box">
+        <p>Voucher Code</p>
+        <h5>{{ firstVoucher[0]?.promo_code }}</h5>
+        <hr>
+        <p>Expiry</p>
+        <h5>{{ firstVoucher[0]?.promo_validity  | date:"dd/MM/yyyy" }}</h5>
+      </div>
+    </div>
+    <div class="row terms-condition-desc is-justify-center">
+      <div class="title">Instruction to redeem</div>
+      <div 
+        class="redeem-list"
+        [innerHTML]="firstVoucher[0]?.redeem_instruction | safeHtml"
+        >
+      </div>
+    </div>
+    <div class="row terms-condition-desc is-justify-center">
+      <div class="title">Terms & Conditons</div>
+      <div 
+        class="redeem-list" 
+        [innerHTML]="firstVoucher[0]?.term_condition | safeHtml"
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div class="modal-buttons w-100 mt-5">
+        <button 
+          class="btn redeem-later" 
+          (click)="closeRedeemModal()"
+          >
+          Redeem Later
+        </button>
+        <button 
+          class="btn btn-rounded btn-primary"
+          (click)="applyVoucher(firstVoucher[0].promo_code)"
+          >
+          Redeem Now
+        </button>
+      </div>
+    </div>
+  </div>
+</app-modal>
+<!--modal end-->
+
+
+
+
+<app-notification-error *ngIf = "sessionInvalid" [IsSessionInValid] = "sessionInvalid"></app-notification-error>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>

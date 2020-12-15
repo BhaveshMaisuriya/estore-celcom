@@ -1,0 +1,105 @@
+<section class="u-section compare_mask">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="o-hero-banner">
+        <div class="u-grid-row is-collapsed">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12">
+            <div class="hero-banner__item is-mobile-centered is-padding-top-20 is-padding-bottom-20">
+              <div class="" data-css="">
+                <div *ngIf="isCSAgent" class="">
+                    <p class="Reload-Now">Order History</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-section has-section-padding has-border">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="tracking_content">
+        <div class="mobile_margin">
+            <button class="c-cta--default previous" data-css="c-cta" routerLink="/store/account/order-search">Previous</button>
+            <div class="customer-name" *ngIf="customerName && customerName.length>0">
+                <span>Customer Name: {{customerName}},</span>
+            </div>
+            <div  class="misdn-name" *ngIf="nricId && nricId.length>0">
+                <span>NRIC: {{nricId}}</span>
+            </div>
+        </div>
+        <div class="u-grid-row row_heading is-mobile-hidden">
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2">Order ID</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2">Purchased On</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2">Order Type</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2 payment-amount">Payment Amount</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2">Status</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2"></div>
+        </div>
+        <div class="u-grid-row order_list" *ngFor="let order of data | orderFilter: filterText | slice: start: limit">
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2" *ngIf="order.cel_siebel_order"><a class="track_anchor" (click) = "orderNumber(order.cel_siebel_order);">#{{order.cel_siebel_order}}</a></div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2" *ngIf="!order.cel_siebel_order && order.transaction_id"><a class="track_anchor" (click) = "orderNumber(order.transaction_id);">View</a></div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2" *ngIf="!order.cel_siebel_order && !order.transaction_id"><a class="track_anchor" (click) = "orderNumber(order.order_id);">View</a></div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2">
+            <div class="purchased_on"><span class="purchase_date">{{order.purchased_on}}</span></div>
+          </div>
+          <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2">{{order.siebel_order ? 'Device' : 'Plan'}}</div> -->
+          <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2"><span *ngIf='order.pre_order'>Pre-Order </span>{{order.order_type ?  order.order_type : '--'}}</div> -->
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2">{{order.order_type ?  order.order_type : '--'}}</div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2">RM{{ (order.grand_total ? order.grand_total : 0.00) | number : '1.2-2'}}</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2 is-mobile-absolute-top">
+            {{order.status | titlecase}}
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-2 no-margin-left" *ngIf="order.tracking_id">
+            <div class="track-id-delivery">
+              <p class="tracking_id"><span class="tracking-id-no">Tracking ID</span> {{order.tracking_id}}</p>
+              <div class="order_history_tracking">
+                <a class="c-cta--default track_delivery" data-css="c-cta" href="{{order.siebel_order}}" target="_blank">
+                    Track delivery<i class="cta__icon icon is-icon-arrow"></i>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-grid-row text-center" *ngIf="!data?.length">
+          <p *ngIf="!serviceOver" class="order-history-no-records">Fetching orders...</p>
+          <p *ngIf="serviceOver" class="order-history-no-records">No orders available</p>
+        </div>
+      </div>
+        <div *ngIf="data?.length" class="pages_icon">
+          <div *ngIf="serviceOver">
+            <span class="page-button" (click)="goToPrevPage()" [attr.disabled]="currentPage === 1"><img src="../../../../assets/img/arrow_previous.svg"
+                *ngIf="currentPage === 1" alt="arrow_previous" class="arrow_align"><img *ngIf="currentPage !== 1" src="../../../../assets/img/arrow_previous_blue.svg"
+                alt="arrow_previous_blue" class="arrow_align"></span>
+            <span class="page-button" [ngClass]="{'active': page.selected==true}" (click)="LoadOrder(page.pageno)" *ngFor="let page of pages">{{page.pageno}}</span>
+            <span class="page-button" (click)="goToNextPage()" [attr.disabled]="totalPage === currentPage"><img *ngIf="totalPage === currentPage"
+                src="../../../../assets/img/arrow_next.svg" alt="arrow_next" class="arrow_align"><img *ngIf="totalPage !== currentPage"
+                src="../../../../assets/img/arrow_next_blue.svg" alt="arrow_next_blue" class="arrow_align"></span>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="u-section" *ngIf="data?.length">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="load_more">
+        <!-- <div class="teaser__link is-text-align-center">
+          <a class="c-link--default" data-css="c-link" (click)="loadMore()" *ngIf="data.length > limit" [class.disabled]="data.length < limit ? true : null">
+            <span class="link__icon icon is-icon-arrow-down"></span>  <span class="link__content">Load More</span>
+					</a>
+        </div> -->
+        <div class="teaser__link is-text-align-center" *ngIf="(data | orderFilter: filterText) as result">
+          <a class="c-link--default" data-css="c-link" (click)="loadMore()" *ngIf="result.length > limit" [class.disabled]="data.length < limit ? true : null">
+          <span class="link__icon icon is-icon-arrow-down"></span> <span class="link__content">Load More</span>
+                    </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-notification-error *ngIf = "sessionInvalid" [IsSessionInValid] = "sessionInvalid"></app-notification-error>
+<footer-component *ngIf="!isCSAgent"></footer-component>
+<app-agent-footer *ngIf="isCSAgent" class="agentfooter"></app-agent-footer>

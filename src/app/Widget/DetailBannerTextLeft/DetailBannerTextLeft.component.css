@@ -1,0 +1,11 @@
+@media only screen and (min-width: 768px) {
+  .u-section .section__inner.is-absolute-top.xpax-detail-left-wrapper {
+    left: 10%; 
+  }
+}
+
+@media (min-width: 980px) {
+  [data-css=c-teaser] {
+    text-align: center;
+  }
+}

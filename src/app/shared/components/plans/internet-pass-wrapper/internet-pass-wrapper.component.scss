@@ -1,0 +1,15 @@
+.internet-pass-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(auto, 178px));
+	gap: 17px;
+	margin-bottom: 24px;
+
+	&:empty {
+		display: none;
+	}
+}
+
+.prepaid-pricetag {
+    font-size: 24px;
+    font-weight: bold;
+}

@@ -1,0 +1,34 @@
+{
+    "Items":[
+       {
+          "SubTitleImage":"./assets/img/xpax-logo.png",
+          "Subtitle":"",
+          "Title":"Callout One",
+          "Content":"Enjoy 50% more data. For Malaysians 25 and below.",
+          "ButtonLink":"http:\/\/example.com",
+          "ButtonText":"Find out more",
+          "UnderlineTitleColor":"is-bg-color-green"
+       },
+       {
+          "SubTitleImage":"",
+          "Subtitle":"PostPaid",
+          "Title":"Callout Two",
+          "Content":"Hype up your life to the next level with more calls, more data, more entertainment",
+          "ButtonLink":"http:\/\/google.com",
+          "ButtonText":"Find out more",
+          "UnderlineTitleColor":"is-bg-color-purple"
+       },
+       {
+          "SubTitleImage":"",
+          "Subtitle":"Devices",
+          "Title":"Callout Three",
+          "Content":"Team iPhone or Android, we’ve got you covered with widest range of devices.",
+          "ButtonLink":"http:\/\/facebook.com",
+          "ButtonText":"Find out more",
+          "UnderlineTitleColor":"is-bg-color-blue"
+       }
+    ],
+    "Status":"200",
+    "StatusMessage":"SUCCESS"
+ }
+ 

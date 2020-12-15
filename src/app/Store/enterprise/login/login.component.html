@@ -1,0 +1,108 @@
+<div class="container-fluid p-0"><!--container-fluid-->
+  <div class="row"><!--row-->
+      <div class="col"><!--col-->
+          <div class="container-fluid enterprise-container"><!--container-fluid-->
+
+              <div class="first-container">
+                  <div class="enterprise-bg-img" alt="Enterprise Image">
+                      <div class="img-gradient">
+                          <h3>Skip The Crowd, Register Online!</h3>
+                          <p>Online Store for Celcom Enterprise Business is now available anywhere, anytime.</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="container second-container"><!--container-->
+                  <div class="row">
+                      <div class="col-md-12 form-container">
+                          <h5 class="welcome-text">Hi {{ name }},</h5>
+
+                          <div class="container">
+                              <div class="row mt-5">
+                                  <div class="col-md-12 personal-info-card">
+                                      <p class="m-0">Personal Information</p>
+                                      <hr class="horizontal-border">
+                                      <div class="row personal-info">
+                                        <div class="col-lg-5 col-5 p-0">
+                                            <p class="m-0">Name</p>
+                                        </div>
+                                        <div class="col-lg-7 col-7 p-normal p-0">
+                                            <p class="m-0">{{ name }}</p>
+                                        </div>
+                                      </div>
+                                      <div class="row personal-info">
+                                        <div class="col-lg-5 col-5 p-0">
+                                            <p class="m-0">NRIC</p>
+                                        </div>
+                                        <div class="col-lg-7 col-7 p-normal p-0">
+                                            <p class="m-0">{{ maskedNric }}</p>
+                                        </div>
+                                      </div>
+                                      <div class="row personal-info">
+                                        <div class="col-lg-5 col-5 p-0">
+                                            <p class="m-0">Email</p>
+                                        </div>
+                                        <div class="col-lg-7 col-7 p-normal p-0">
+                                            <p class="m-0">{{ email }}</p>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="row otp-content">
+                      <div class="col">
+                          <p>Please enter the One-Time Password (OTP) that has been sent to your mailbox.</p>
+
+                          <form
+                              [formGroup]="otpForm"
+                              (ngSubmit)="onFormSubmit()"
+                              class="otp-container"
+                              autocomplete="off"
+                          >
+                              <app-estore-input
+                                  label="One-Time Password"
+                                  inputType="text"
+                                  placeholder="One-Time Password"
+                                  formControlName="otp"
+                                  [success]="otpForm?.controls?.otp?.valid"
+                              ></app-estore-input>
+
+                              <button
+                                  class="btn btn-primary btn-rounded"
+                                  type="submit"
+                                  [disabled]="!otpForm.valid"
+                              >Submit</button>
+
+                          </form>
+
+
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+<app-agent-footer></app-agent-footer>
+
+
+
+<!-- * Old missing Code -->
+
+<!--<div class="expires-container">-->
+<!--    <p class="expires-note is-text-small is-margin-bottom-24 ">Note: This One Time Password will expire in 24-->
+<!--        hours.</p>-->
+<!--    <p class="expires-msg is-margin-bottom-32 is-text-small is-bold-font">If you do not receive your OTP or it-->
+<!--        has expired, please resend another email to request for a new OTP.</p>-->
+<!--    <div>-->
+<!--        <a class="c-link&#45;&#45;default" data-css="c-link">-->
+<!--            <span class="otp-link__content is-bold-font" [routerLink]="['/store/enterprise/registration']" [queryParams]="{'resend-email': true}">Resend email</span>-->
+<!--            <span class="link__icon icon is-icon-arrow"></span>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->

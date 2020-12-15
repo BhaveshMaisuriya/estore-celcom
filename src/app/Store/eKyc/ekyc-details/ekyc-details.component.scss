@@ -1,0 +1,78 @@
+.personal-info-card {
+  max-width: 330px;
+  min-width: 260px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  text-align: left;
+  word-break: break-word;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+
+  .personal-info {
+    font-size: 14px;
+    color: #666666;
+    font-weight: bold;
+    margin: 0 0 4px 0;
+    line-height: 1.21;
+
+    .p-normal {
+      font-weight: normal;
+    }
+
+    > div {
+      &:last-of-type {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.title {
+  font-size: 16px;
+  color: #333333;
+  font-weight: bold;
+}
+
+.horizontal-border {
+  width: 96px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #009be4;
+  margin: 16px 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+.detailsContainer {
+  display: flex;
+  flex-direction: row;
+
+  .content{
+    text-align: center;
+  }
+
+  @media screen and (max-width: 990px){
+      flex-direction: column;
+      .content {
+        text-align: left;
+      }
+  }
+}
+
+.idSection {
+  margin: 16px 0 16px 30px;
+
+  @media screen and (max-width: 990px){
+    margin: 25px 0;
+  }
+
+  img {
+    width: 248px;
+    height: 159px;
+    object-fit: contain;
+  }
+}
+
+.captialize {
+  text-transform: uppercase;
+}

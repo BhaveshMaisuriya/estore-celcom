@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Store Links",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-50",
+        "below": [
+            {
+                "title": "App Store",
+                "uri": "https://itunes.apple.com/my/app/mycelcom-postpaid/id1192298514",
+                "alias": "https://itunes.apple.com/my/app/mycelcom-postpaid/id1192298514",
+                "absolute": "https://itunes.apple.com/my/app/mycelcom-postpaid/id1192298514",
+                "external": true,
+                "weight": "-50"
+            },
+            {
+                "title": "Google Play",
+                "uri": "https://play.google.com/store/apps/details?id=com.First",
+                "alias": "https://play.google.com/store/apps/details?id=com.First",
+                "absolute": "https://play.google.com/store/apps/details?id=com.First",
+                "external": true,
+                "weight": "-49"
+            }
+        ]
+    },
+    {
+        "title": "Social Media Icons",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-47",
+        "below": [
+            {
+                "title": "Facebook",
+                "uri": "https://www.facebook.com/celcom/",
+                "alias": "https://www.facebook.com/celcom/",
+                "absolute": "https://www.facebook.com/celcom/",
+                "external": true,
+                "weight": "-50"
+            },
+            {
+                "title": "Instagram",
+                "uri": "https://www.instagram.com/celcom/",
+                "alias": "https://www.instagram.com/celcom/",
+                "absolute": "https://www.instagram.com/celcom/",
+                "external": true,
+                "weight": "-49"
+            },
+            {
+                "title": "Twitter",
+                "uri": "https://twitter.com/celcom",
+                "alias": "https://twitter.com/celcom",
+                "absolute": "https://twitter.com/celcom",
+                "external": true,
+                "weight": "-48"
+            },
+            {
+                "title": "YouTube",
+                "uri": "https://www.youtube.com/user/CelcomChannel",
+                "alias": "https://www.youtube.com/user/CelcomChannel",
+                "absolute": "https://www.youtube.com/user/CelcomChannel",
+                "external": true,
+                "weight": "-47"
+            },
+            {
+                "title": "Google Plus",
+                "uri": "https://google.com/celcom",
+                "alias": "https://google.com/celcom",
+                "absolute": "https://google.com/celcom",
+                "external": true,
+                "weight": "-46"
+            }
+        ]
+    }
+]

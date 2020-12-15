@@ -1,0 +1,101 @@
+<!-- <header class="r-header" style="min-height:102px !important"> -->
+<header class="r-header homeMargin" [class.user-name-strip]="userName" [attr.data-analytics-region]="dataAnalyticsRegion">
+  <nav [class.has-item-above]="isNotificationOpen" class="c-global-navigation is-fixed is-animated headroom--top headroom--not-bottom"
+    data-js-module="global-navigation" data-js-options="{}">
+    <div class="global-navigation__main">
+      <div class="global-navigation__prime-wrapper">
+        <div class="c-logo--default" data-css="c-logo">
+          <a href="https://www.celcom.com.my">
+            <img class="screen" src="./assets/img/svg/logo.svg" alt="Celcom" title="Celcom">
+          </a>
+        </div>
+      </div>
+      <div class="global-navigation__sec-wrapper">
+        <div id="sec-wrapper-navigation" class="c-sec-navigation--default" data-css="c-sec-navigation" data-js-atom="toggle-nav-item"
+          [ngClass]="{'is-menu-open': toggleMenu || agentLoggedIn || dealerLoggedIn}">
+          <ul class="sec-navigation__list">
+            <li *ngIf="(!agentLoggedIn && noAgentLoginPage) && (!dealerLoggedIn && noDealerLoginPage)" class="sec-navigation__list-item login-margin">
+              <a (click)="login();" class="sec-navigation__link">
+                <img _ngcontent-c1="" class="cart-img-style" src='../../assets/img/svg/icon_myaccount.svg'>
+                <span class="loginSpan">Login</span>
+              </a>
+            </li>
+            <li *ngIf="agentLoggedIn && noAgentLoginPage && agentName && !dealerName && !dealerLoggedIn" class="dropdown user-login-name sec-navigation__list-item Rectangle-8">
+              <a class="dropbtn sec-navigation__link login-anchor">
+                <img _ngcontent-c1="" class="cart-img-style login-image" src='../../assets/img/svg/icon_myaccount.svg'>
+                <span class="Hi-Username">Hi, {{agentName}}</span>
+              </a>
+              <div class="dropdown-content">
+                <a class="sec-navigation__link is-desktop-hidden"><strong>Hi, {{agentName}}</strong></a>
+                <a [ngClass]="(agentName == 'GUEST')?'is-disabled':'true'" (click)='RedirectHeader("/store/viewmyprofile")' class="sec-navigation__link is_border_bottom guestblock">My
+                  Profile</a>
+                <a [ngClass]="(agentName == 'GUEST')?'is-disabled':'true'" *ngIf="!landingPage" (click)='RedirectHeader("/store/agentlandingpage")'
+                  class="sec-navigation__link is_border_bottom guestblock">Home</a>
+                <a [ngClass]="(agentName == 'GUEST')?'is-disabled':'true'" (click)='RedirectHeader("/store/account/order-history")'
+                  class="sec-navigation__link is_border_bottom guestblock">Order History</a>
+                <a [ngClass]="(agentName == 'GUEST')?'is-disabled':'true'" (click)='RedirectHeader("/store/account/order-search")'
+                  class="sec-navigation__link is_border_bottom guestblock">Search Order</a>
+                <a href="javascript:void(0);" (click)="logoutConfirmation();" class="sec-navigation__link">Logout</a>
+              </div>
+            </li>
+            <li *ngIf="dealerLoggedIn && noDealerLoginPage && dealerName && !agentName && !agentLoggedIn" class="dropdown user-login-name sec-navigation__list-item Rectangle-8">
+                <a class="dropbtn sec-navigation__link login-anchor">
+                  <img _ngcontent-c1="" class="cart-img-style login-image" src='../../assets/img/svg/icon_myaccount.svg'>
+                  <span class="Hi-Username">Hi, {{dealerName}}</span>
+                </a>
+                <div class="dropdown-content">
+                  <a class="sec-navigation__link is-desktop-hidden"><strong>Hi, {{dealerName}}</strong></a>
+                  <a [ngClass]="(dealerName == 'GUEST')?'is-disabled':'true'" href="/store/viewmyprofile" class="sec-navigation__link is_border_bottom guestblock">My
+                    Profile</a>
+                    <a [ngClass]="(dealerName == 'GUEST')?'is-disabled':'true'" *ngIf="dealerLoggedIn && !(dealerLandingPage)" href="/store/dealerlandingpage"
+                    class="sec-navigation__link is_border_bottom guestblock">Home</a>
+                  <a [ngClass]="(dealerName == 'GUEST')?'is-disabled':'true'" href="/store/account/order-history"
+                    class="sec-navigation__link is_border_bottom guestblock">Order History</a>
+                  <a href="javascript:void(0);" (click)="logoutConfirmation();" class="sec-navigation__link">Logout</a>
+                </div>
+              </li>
+          </ul>
+        </div>
+        <div id="guest-choose-way" class="guest-choose-model" style="display:none;">
+          <div class="guest-modal-content">
+            <section class="u-section" id="more_details" style="display: block;">
+              <div class="section__inner">
+                <div class="section__content">
+                  <div class="guest-dtl-features-box">
+                    <a (click)="close__terms__login();">
+                      <img class="guest-box-close" src="../assets/img/store/shopcart-remove.svg">
+                    </a>
+                    <div class="guest-features-box-dtls">
+                      <h3 class="Choose-your-way-in">Leaving so soon?</h3>
+                      <p class="innerText">Are you sure you want to log out? </p>
+                      <div class="logout-pop">
+                        <div class="guest-connect-login-now1">
+                          <a class="c-cta--default login-default-button" data-css="c-cta" (click)="close__terms__login();">
+                            <span class="cta__content">Cancel</span>
+
+                          </a>
+                        </div>
+                        <div class="guest-connect-login-now">
+                          <a class="c-cta--default login-default-button" data-css="c-cta" (click)="LogoutAgent();">
+                            <span class="cta__content">Yes</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="userName && noAgentSpecificPage" class="mobile_connect_strip">
+      <div class="mobile_login_section">Logged in as <span class="user_name">{{ userName }}</span>,</div>
+      <div class="mobile_login_control_section">
+        <div *ngIf="userName !== 'GUEST'" class="mobile_login_controls" (click)="LogoutUser();">Logout Customer</div>
+        <div *ngIf="userName === 'GUEST'" class="mobile_login_controls" (click)="LogoutUser();">Logout Guest</div>
+      </div>
+    </div>
+  </nav>
+</header>

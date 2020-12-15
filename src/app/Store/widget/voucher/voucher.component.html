@@ -1,0 +1,32 @@
+<div class="has-border">
+  <section class="is-bg-grey">
+      <p class="voucher_text" *ngIf="!isThirdPartyOrder">Got a Voucher Code ?</p>
+      <p class="voucher_text" *ngIf="isThirdPartyOrder">Transaction ID</p>
+      <form *ngIf="!isVoucherCodeApplied">
+        <div class="voucher_field_box">
+          <input type="text" [(ngModel)]="voucherCode" name="vouchercode" maxlength="15" (ngModelChange)="onVoucherCodeChange();" class="voucher_field" placeholder="Enter Voucher Code" />
+          <span class="_arrow"  [ngClass]="{'disabled': !isVoucherCodeValid }" (click)="ApplyVoucher()">
+            <img class="blue-arrow" src="../../../../assets/img/voucher_icon.svg">
+          </span>
+        </div>
+        <div *ngIf="VoucherCodeError.length>0" class="invalid_coupon">
+          <img class="caution-icon" src="../assets/img/Drop_3/ThresholdAlertNotification.svg">
+          <span [innerHTML]="VoucherCodeError | safeHtml"></span>
+        </div>
+      </form>
+      <div class="wrap_on_voucher" *ngIf="isVoucherCodeApplied">
+          <img src="../../../../assets/img/voucher_applied.svg">
+          <div class="coupon_code"><img src="../../../../assets/img/voucher_left_icon.svg" class="image_float">{{voucherCode}}</div>
+          <span class="remove-x-blue" (click)="RemoveVoucher()">
+            <img class="remove-x" src="../../../../assets/img/Drop_3/icon/remove-blue-icon.svg">
+            Remove
+          </span>
+         <!-- <p class="_voucher_success is-bold-font">Voucher code applied succesfully</p> -->
+         <p class="_voucher_success is-bold-font" [innerHTML]="voucherSuccessText | safeHtml"></p>
+        <div *ngIf="VoucherCodeError.length>0" class="invalid_coupon">
+          <img class="caution-icon" src="../assets/img/Drop_3/ThresholdAlertNotification.svg">
+          {{VoucherCodeError}}
+        </div>
+      </div>
+  </section>
+</div>

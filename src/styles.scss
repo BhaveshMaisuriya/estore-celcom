@@ -1,0 +1,84 @@
+@import "./app/styles/scss/theme/default.scss";
+@import "./app/styles/scss/forms.scss";
+@import "./app/styles/scss/utilities.scss";
+@import "./app/styles/scss/tabs.scss";
+@import "./app/styles/scss/badges.scss";
+@import "./app/styles/scss/buttons.scss";
+@import '~ngx-toastr/toastr';
+
+@media (min-width:769px) {
+	.padded-section {
+		padding: 0 3em 0 12%;
+	}
+}
+
+
+.navigation__list-item, .sec-navigation__list-item {
+	margin: 0 !important;
+}
+.c-sec-navigation--default {
+	white-space: nowrap;
+}
+.c-burger--default {
+	left: auto;
+}
+
+.toast-top-right {
+	top: 70px;
+	@media (max-width: 550px) {
+		top: 89px;
+		right: initial;
+		transform: translate(-50%, 0%);
+		left: 50%;
+	}
+}
+
+.toast-success {
+    background-color: #008c8d;
+}
+
+.toast-container .ngx-toastr {
+	border-radius: 8px;
+	height: 57px;
+
+	.toast-message {
+		padding-top: 5px;
+	}
+}
+
+.toast-success {
+	background-image: url("/assets/img/Drop_3/icon/success.svg");
+}
+a.anchor {
+	position: relative;
+	visibility: hidden;
+	top: -100px;
+	@media (max-width: 550px) {
+		top: -180px !important;
+	}
+}
+
+.shimmer {
+    background-color: #f6f7f8 !important;
+    background-image: linear-gradient(to right, #f3f3f3 0%, #edeef1 20%, #f3f3f3 40%, #f3f3f3 100%) !important;
+    background-repeat: no-repeat;
+    background-size: 800px 204px; 
+    display: inline-block;
+    position: relative; 
+    
+    animation-duration: 1s;
+    animation-fill-mode: forwards; 
+    animation-iteration-count: infinite;
+    animation-name: placeholderShimmer;
+    animation-timing-function: linear;
+}
+
+@keyframes placeholderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    
+    100% {
+      background-position: 468px 0; 
+    }
+}

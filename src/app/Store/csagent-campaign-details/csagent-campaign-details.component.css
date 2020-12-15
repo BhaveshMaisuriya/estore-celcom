@@ -1,0 +1,88 @@
+.headline {
+    text-transform: capitalize;
+    margin-top: 28px;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+.page-container {
+  padding: 20px 0 0 40px;
+  margin-bottom: 10em;
+}
+td {
+  text-align: left;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #e3e3e3;
+  word-break: break-word;
+}
+th {
+  text-align: left;
+  font-weight: normal;
+}
+.icon-previous {
+  transform: rotate(180deg);
+  position: relative;
+  right: 13px;
+}
+table {
+    width: 98%;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.table-header {
+  background-color: #221767;
+  height: 66px;
+  color: #fff;
+  font-weight: 10;
+  font-size: 12px;
+
+}
+.table-body {
+  width: 1352px;
+  height: 66px;
+  box-shadow: -5px 0 10px -5px #e3e3e3, 5px 0 10px -5px #e3e3e3;
+}
+
+.url-blue {
+  color: #009ade;
+}
+.campaign-width {
+  width: 20%;
+  padding: 1.5%;
+  word-break: break-all;
+}
+.upfront-th {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.btn {
+  width: 140px;
+  height: 40px;
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 20px;
+  padding: 0;
+}
+.date-width {
+  width: 10%
+}
+.pointer-class {
+  cursor: pointer;
+}
+.footer-clm {
+  position: fixed;
+	width: 100%;
+	bottom: 0;
+	background:#fff;
+	z-index: 999;
+}
+.plan-width {
+  width: 13%;
+  padding: 18px;
+}
+.target-padding {
+  padding: 18px;
+  width: 10%;
+}
+.plan-padding {
+  padding: 18px;
+}

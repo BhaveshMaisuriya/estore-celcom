@@ -1,0 +1,20 @@
+<section id="step3">
+  <section class="u-section sectionize is-bg-color-white is-zindex-0">
+    <div class="section__inner">
+      <div class="section__content is-container">
+        <div class="details__choose_number">
+          <div class="details__choose_content">
+            <div class="section_index_container"><span class="section_index">2</span></div>
+            <div class="details__choose_content_header">Please validate your details</div>
+          </div>
+        </div>
+        <app-nric-input [pageType]="pageType" [hwEligible]="isNewRegEligible" [hwNricReset]="nricReset" (resetMsisdnOtp)= "onCallResetMsisdnOtp($event)" (isMCUser)="onCallIsMCUser($event);"></app-nric-input>
+        <app-msisdn-input [pageType]="pageType" *ngIf="enableMCAuthentication" [nric]="nric" (resetOtp)= "onCallResetOtp($event)" (sentOtp)="onSentOtp($event);"></app-msisdn-input>
+        <app-otp-input [pageType]="pageType" *ngIf="enableMCotp" [nric]="nric" [msisdn]="msisdnOtp" (validateOtp)="onValidOtp($event);"></app-otp-input>
+      </div>
+    </div>
+  </section>
+  <app-page-loader [hidden]="!loading"></app-page-loader>
+  <app-note-section [noteDataCMS]="hwNoteDataCMS" [noteCheck]="true" [notes]="notes"></app-note-section>
+</section>
+<app-notification-error *ngIf='showErrorToaster' [data]="errorToasterData"></app-notification-error>

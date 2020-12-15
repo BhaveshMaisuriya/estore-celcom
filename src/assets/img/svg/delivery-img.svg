@@ -1,0 +1,10 @@
+<svg id="Icon_Delivery_Shipping" data-name="Icon — Delivery / Shipping" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="Transparent_BG" data-name="Transparent BG" width="48" height="48" fill="#009bdf" opacity="0"/>
+  <path id="Path_3668" data-name="Path 3668" d="M577.991-77h-4.908a1,1,0,0,1-1-1v-6a1,1,0,0,1,1-1,1,1,0,0,1,1,1v5h3.908a1,1,0,0,1,1,1A1,1,0,0,1,577.991-77Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3669" data-name="Path 3669" d="M589-77h-4.512a1,1,0,0,1-1-1,1,1,0,0,1,1-1H588v-21H562a1,1,0,0,1-1-1,1,1,0,0,1,1-1h27a1,1,0,0,1,1,1v23A1,1,0,0,1,589-77Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3670" data-name="Path 3670" d="M581-73.5a4,4,0,0,1-4-4,4,4,0,0,1,4-4,4,4,0,0,1,4,4A4,4,0,0,1,581-73.5Zm0-6a2,2,0,0,0-2,2,2,2,0,0,0,2,2,2,2,0,0,0,2-2A2,2,0,0,0,581-79.5Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3671" data-name="Path 3671" d="M603.042-77H599a1,1,0,0,1-1-1,1,1,0,0,1,1-1h3.042v-8.627l-6.456-6.456H590V-79h3a1,1,0,0,1,1,1,1,1,0,0,1-1,1h-4a1,1,0,0,1-1-1V-95.083a1,1,0,0,1,1-1h7a1,1,0,0,1,.707.292l7.042,7.042a1,1,0,0,1,.293.707V-78A1,1,0,0,1,603.042-77Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3672" data-name="Path 3672" d="M596-73.5a4,4,0,0,1-4-4,4,4,0,0,1,4-4,4,4,0,0,1,4,4A4,4,0,0,1,596-73.5Zm0-6a2,2,0,0,0-2,2,2,2,0,0,0,2,2,2,2,0,0,0,2-2A2,2,0,0,0,596-79.5Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3673" data-name="Path 3673" d="M580-94H565a1,1,0,0,1-1-1,1,1,0,0,1,1-1h15a1,1,0,0,1,1,1A1,1,0,0,1,580-94Z" transform="translate(-559 113)" fill="#009bdf"/>
+  <path id="Path_3674" data-name="Path 3674" d="M580-88H570a1,1,0,0,1-1-1,1,1,0,0,1,1-1h10a1,1,0,0,1,1,1A1,1,0,0,1,580-88Z" transform="translate(-559 113)" fill="#009bdf"/>
+</svg>

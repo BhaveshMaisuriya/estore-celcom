@@ -1,0 +1,231 @@
+.errorred input[type=text] {
+	border-bottom-color: red;
+}
+.errorred .otp-control:focus {
+	border-bottom-color: red !important;
+}
+.is-full-width-image {
+	padding-top: 5em;
+}
+.is-container {
+	position: relative;
+	max-width: 102.4rem;
+	margin: initial;
+}
+.otp-main-header {
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+.mobile-otp-num {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 31px;
+}
+.mobile-no-manadatory {
+	color: #d0011b;
+	padding: 5px;
+}
+.form-control {
+	border: none;
+	outline: 0;
+	padding: 5px;
+	margin: 2px;
+	border-bottom: 2px solid silver;
+	width: 400px;
+	background-color: #f3f3f3;
+}
+.login-default-button {
+	padding: 0 4em;
+	border-radius: 280px;
+}
+.otp-control {
+	width: 21.5%;
+	height: 36px;
+	border-bottom: 2px solid #CCC;
+	box-shadow: none;
+}
+.moblie-form-group-otp input {
+	text-align: center;
+	min-width: 1em;
+	width: 48px;
+	height: 62px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #ffffff !important;
+	font-size: 32px;
+	color: #333333;
+	outline: none;
+}
+.otp-control:focus {
+	border-color: #009ade !important;
+}
+.errorborder {
+	border-color: 2px solid #d0021b !important;
+}
+.otp-expiry-login {
+	font-size: 12px;
+	color: #666666;
+	text-align: left;
+	margin-top: 16px;
+}
+
+@media (max-width:320px) {
+	.moblie-form-group-otp input {
+		width: 33px !important;
+		height: 51px !important;
+	}
+}
+
+@media (min-width:321px) and (max-width:360px) {
+	.moblie-form-group-otp input {
+		width: 39px !important;
+		height: 58px !important;
+	}
+}
+
+@media (min-width:361px) and (max-width:768px) {
+	.moblie-form-group-otp input {
+		width: 41px !important;
+		height: 58px !important;
+	}
+}
+.login-resend-otp {
+	margin-top: 5em;
+}
+.otp-num-time {
+	margin-top: 1em;
+	font-size: 18px;
+}
+.otp-sub-header {
+	font-size: 14px;
+	text-align: center;
+	padding-top: 8px;
+}
+.otp-link__content {
+	font-weight: bold;
+	font-size: 14px;
+}
+.after-otp-login-now {
+	margin-top: 0.5em;
+}
+.login-otp-model-box {
+    background-color: #fff;
+    padding: 10px 0 60px 0;
+	border: 1px solid #fff;
+	border-radius: 2%;
+}
+.otp-error-heading{
+	display: inline-block;
+    width: 93%;
+	word-spacing: -1px;
+}
+.caution-icon{
+	margin-top: 3px;
+}
+.otp-error {
+	font-size: 12px;
+	padding: 0 0 7px;
+	color: #d0021b;
+	display: flex;
+	align-items: flex-start;
+	margin-top: 8px;
+}
+.padding-on-top{
+	padding-top: 101.5px !important;
+}
+.otp-warning-icon {
+	float: right;
+	text-align: center;
+    width: 25px;
+}
+.otp-content-inner {
+	width: 96.5%;
+}
+.otp__link {
+    margin: 10px 0 15px 0;
+}
+.otp__link a {
+	text-decoration: none;
+}
+.otp__link .is-icon-arrow {
+	margin-left: 12px;
+	font-weight: bold;
+}
+.otp-shadow-login {
+	box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.2);
+	border: solid 1px #fff;
+	padding-top: 30px;
+	border-radius: 3%;
+	background-color: #fff;
+}
+.login-top {
+	top: 22% !important;
+}
+.csagent .login-top {
+	top: 21% !important;
+}
+
+.otp-shadow-login-width {
+	width: 92%;
+	margin: 0 auto;
+}
+.otp-connect-login-now {
+	margin: 20px 0;
+	text-align: center;
+	margin-bottom: 32px;
+}
+.disable_resend,
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	pointer-events: none;
+}
+button[disabled] {
+	background-color: #009ade;
+}
+@media (max-width: 767px) {
+	.login-top {
+		top: 28% !important;
+	}
+	.dispMob {
+		display: block;
+	}
+	.dispDesk {
+		display: none;
+	}
+}
+@media (max-width: 768px) and (min-width:768px) {
+	.login-top {
+		top: 34% !important;
+	}
+}
+@media (max-width: 768px) {
+	.otp-control {
+		width: 23.5%;
+		height: 36px;
+        border-bottom: 2px solid #CCC !important;
+        padding: 0;
+	}
+	.otp-main-header {
+		font-size: 28px;
+		font-weight: bold;
+		text-align: center;
+	}
+	.mobile-otp-num {
+		text-align: left;
+	}
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+	.login-top {
+		top: 29% !important;
+	}
+}
+@media(min-width: 768px) {
+	.dispMob {
+		display: none;
+	}
+	.dispDesk {
+		display: block;
+	}
+}

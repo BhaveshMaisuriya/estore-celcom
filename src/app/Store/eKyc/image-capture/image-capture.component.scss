@@ -1,0 +1,75 @@
+.vid {
+  width: 100%;
+  height: 210px;
+  position: relative;
+  z-index: 1;
+  max-height: 450px;
+  max-width: 330px;
+  object-fit: cover;
+}
+
+.selfie {
+  width: 330px;
+  height: 440px;
+}
+
+.imageContainer {
+  min-height: 100vh;
+  background-color: #666666;
+  display: flex;
+  padding-top: 70px;
+  justify-content: center;
+}
+
+.iconContainer {
+  margin-top: 30px;
+  .icon {
+    font-size: 28px;
+    color: white;
+  }
+  .iconRight {
+    float: right;
+    margin-right: 30px;
+  }
+  .iconLeft {
+    margin-left: 30px;
+  }
+}
+
+.greenBorder {
+  padding: 3px;
+  border: 7px solid #5cf000;
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 30px;
+
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #666666;
+  }
+
+  &::before {
+    top: -8px;
+    bottom: -8px;
+    left: 1em;
+    right: 1em;
+  }
+
+  &::after {
+    left: -9px;
+    right: -9px;
+    top: 1em;
+    bottom: 1em;
+  }
+}
+
+.close{
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  font-size: 32px;
+  color: white;
+}

@@ -1,0 +1,66 @@
+.check_container {
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 1.5em;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	input {
+		position: absolute;
+		opacity: 0;
+		&:checked~.checkmark {
+			background-color: #2196F3;
+			border: none;
+			width: 20px;
+			height: 20px;
+			&:after {
+				display: block;
+			}
+		}
+	}
+	.checkmark {
+		&:after {
+			left: 6px;
+			top: 2px;
+			width: 5px;
+			height: 11px;
+			border: solid white;
+			color: white;
+			border-width: 0 3px 3px 0;
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			transform: rotate(45deg);
+		}
+	}
+    .checkmark {
+        position: absolute;
+        top: -4px;
+        left: 0;
+        height: 18px;
+        width: 17px;
+        background-color: #fff;
+        border: 2px solid #666;
+        &:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+    }
+}
+label {
+	font-weight: normal;
+	display: inline-block;
+}
+.plan-cards {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(210px, 260px));
+	justify-items: stretch;
+	>* {
+		display: block;
+		height: 100%;
+	}
+}

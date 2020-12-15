@@ -1,0 +1,49 @@
+<p>Follow the quick guide below to complete your purchase.</p>
+<div class="steps-container">
+  <div class="steps">
+    <h5>Step 1</h5>
+    <img src="assets/img/eKyc/QRScan.svg" alt="QR Scan" />
+    <p>Scan the QR code below.</p>
+  </div>
+  <div class="hr"></div>
+  <div class="steps">
+    <h5>Step 2</h5>
+    <img src="assets/img/eKyc/ScanID.svg" alt="Scan ID" />
+    <p>Scan your IC <span *ngIf="showPassport">or Passport</span> and validate the information.</p>
+  </div>
+  <div class="hr"></div>
+  <div class="steps">
+    <h5>Step 3</h5>
+    <img src="assets/img/eKyc/People.svg" alt="Selfie" />
+    <p>Take a clear selfie.</p>
+  </div>
+  <div class="hr" *ngIf="!isMobile"></div>
+  <div class="steps" *ngIf="!isMobile">
+    <h5>Step 4</h5>
+    <img src="assets/img/eKyc/Agreement.svg" alt="Sign" />
+    <p>Return to the desktop and complete your purchase.</p>
+  </div>
+</div>
+<div class="mt4">
+  <div>
+    <h5 class="ready">When you are ready,</h5>
+    <p *ngIf="!isMobile">
+      Scan this QR code using the camera on your mobile phone. Make sure the
+      phone is connected to Internet.
+    </p>
+    <p *ngIf="isMobile">Prepare your IC <span *ngIf="showPassport"> or Passport</span> to start scanning</p>
+    <div class="d-flex" *ngIf="!isMobile">
+      <mat-icon class="notificationIcon">notifications</mat-icon>
+      <p>Do not close this browser or refresh this page.</p>
+    </div>
+  </div>
+
+  <div class="qrCode" *ngIf="!isMobile">
+    <div [ngClass]="{'refreshQr' : refreshSession}" *ngIf="qrValue && !loading">
+      <ngx-kjua [text]="qrValue" [size]="150"></ngx-kjua>
+      <mat-icon class="refreshIcon" *ngIf="refreshSession" (click)="getQRValue()">refresh</mat-icon>
+    </div>
+  </div>
+</div>
+<button class="btn btn-rounded btn-primary scan-now" *ngIf="isMobile && showScanNow" (click)="openEkyc()">Scan Now</button>
+<h5 class="text-danger" *ngIf="isMobile && !showScanNow ">Please Use Safari Browser for this activity</h5>

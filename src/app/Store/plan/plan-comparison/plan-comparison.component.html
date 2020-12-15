@@ -1,0 +1,5 @@
+<app-compare-hero-banner [data]='{"Title":"Compare Phones","SubTitle":"Always make an informed choice"}'></app-compare-hero-banner>
+<app-plan-device-comparison></app-plan-device-comparison>
+<app-hero-banner-image-clickable [data]='bannerURL'></app-hero-banner-image-clickable>
+<footer-component *ngIf="isCSAgentDealer === notCSAgent"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer === csAgent"></app-agent-footer>

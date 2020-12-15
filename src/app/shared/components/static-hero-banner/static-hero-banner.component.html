@@ -1,0 +1,39 @@
+
+<ng-container *ngIf="(banner$ | async)?.image_url">
+  <img
+    class="static-img desktop"
+    [src]="(banner$ | async)?.image_url"
+    [alt]="(banner$ | async)?.headline"
+    *appWebp="(banner$ | async)?.image_url_webp"
+    [attr.data-analytics-promo]="(banner$ | async)?.headline"
+  />
+</ng-container>
+<ng-container *ngIf="(banner$ | async)?.image_mobile_url">
+  <img
+    class="static-img mobile"
+    [src]="(banner$ | async)?.image_mobile_url"
+    [alt]="(banner$ | async)?.headline"
+    *appWebp="(banner$ | async)?.image_mobile_url_webp"
+    [attr.data-analytics-promo]="(banner$ | async)?.headline"
+  />
+</ng-container>
+<div class="img-gradient">
+  <div class="overlay-text">
+    <h4
+      [innerHTML]="(banner$ | async)?.headline"
+      [ngStyle]="getHeadlineStyles(banner$ | async)"
+    ></h4>
+    <p
+      [innerHTML]="(banner$ | async)?.description"
+      [ngStyle]="getDescriptionStyles(banner$ | async)"
+    ></p>
+    <a
+      [href]="(banner$ | async)?.button_url"
+      [attr.target]="(banner$ | async)?.is_newtab === '1' ? '_blank' : null"
+    >
+      <span>{{ (banner$ | async)?.button_text }}</span>
+      <img src="assets/img/landing/chevron-right.svg" alt="right arrow">
+    </a>
+  </div><!--img-gradient-->
+</div><!--overlay-text-->
+

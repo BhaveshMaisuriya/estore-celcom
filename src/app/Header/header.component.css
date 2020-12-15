@@ -1,0 +1,415 @@
+/* above tab only */
+@media screen and (min-width: 769px) {
+  .r-header.homeMargin {
+    min-height:102px;
+  }
+}
+
+.cart-img-style {
+  padding-right: .2rem;
+  width: 32px;
+  height: 32px;
+}
+.icon-cart-margin{
+  margin:2.1rem 1.2rem .8rem 1rem;
+}
+.login-margin{
+   margin:2.1rem 4.2rem 0.8rem 1rem;
+}
+
+/* link enabled for IE */
+/* .c-meta-navigation--default .meta-navigation__list-item .meta-navigation__link{
+	display: block;
+} */
+.c-sec-navigation--default .sec-navigation__list-item .sec-navigation__link {
+vertical-align: super;
+}
+.loginSpan{
+    display: inline-block;
+    margin-top: 7px;
+}
+.c-global-navigation {
+  pointer-events: auto;
+}
+
+.c-global-navigation.is-fixed {
+  height: auto;
+}
+
+.Choose-your-way-in {
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: center;
+}
+.has-item-above{
+  top:46px;
+}
+.welcome-title {
+  color: #009ade;
+  margin-top: 20px;
+}
+.login-title {
+color: #009ade;
+}
+.form-group {
+margin: 5px 0px;
+}
+.form-control {
+border: none;
+outline: 0;
+padding: 5px;
+margin-bottom: 10px;
+border-bottom: 1px solid silver;
+width: 400px;
+}
+.forgot-password {
+display: block;
+padding: 10px 0px;
+color: #009ade;
+}
+.form-button {
+border: none;
+outline: 0;
+font-style: inherit;
+display: inline-block;
+font-size: 1.4rem;
+letter-spacing: .02px;
+line-height: 4rem;
+height: 4rem;
+padding: 0 3rem;
+}
+/*Register page start*/
+.container_width_37{
+max-width:35%;
+}
+.check-terms-color{
+color: #009ade;
+text-decoration:underline;
+}
+select.form-control{
+width:410px;
+}
+.width_container_45{
+width:35%;
+}
+.btnradius{
+border-radius:5px;
+margin:10px 0 0 0;
+}
+
+/* Intially login to be displayed*/
+#login.active{
+display:block;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+}
+/* Register page end*/
+
+
+/* Forgot Password Pages CSS Start */
+
+.dropdownwidth{
+max-width:310px !important;
+}
+.btnradius{
+    border-radius: 5px;
+}
+.innercontentview{
+width: 33%;
+
+}
+.centeralign{
+padding:10px 0px 0px 10px;
+}
+.form-align{
+    max-width: 300px;
+}
+.btn-align{
+padding-top:10px;
+}
+.lefticonalign{
+position: absolute;
+font-size:25px !important;
+  left: 6px;
+color: #009ade;
+}
+
+/*  Logout Page CSS Start   */
+.is-padding-none{
+padding-right: 0;
+}
+.sec-navigation__link {
+  cursor: pointer;
+}
+.sec-navigation__link .is-icon-user{
+  color: #000;
+}
+.Hi-Username {
+max-width: 172px;
+font-family: Lato;
+font-size: 14px;
+font-weight: bold;
+text-align: left;
+color: #000000;
+padding-left: .5rem;
+text-overflow: ellipsis;
+overflow: hidden;
+white-space: nowrap;
+display: inline-block;
+margin-bottom: 4px;
+min-width: 90px;
+}
+
+.dropdown-content>a{
+font-family: Lato;
+font-size: 14px;
+line-height: 2.86;
+text-align: left;
+color: #000000;
+}
+.is_border_bottom{
+  border-bottom: 1px solid #000;
+}
+.is-logout-show{
+display: block;
+}
+.is-logout-hide{
+display: none;
+}
+
+.dropbtn {
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 0px !important;
+}
+.dropdown > .dropbtn{
+  padding:3.1rem 3rem 1.1rem 1rem;
+}
+.c-sec-navigation--default {
+  padding-right: 0;
+
+}
+.dropdown-content {
+  right:0;
+  display: none;
+  position: absolute;
+  background-color: #f4f4f4;
+  min-width: 100%;
+  z-index: 1;
+  /*padding: 0 15px;*/
+  top:67px;
+}
+
+@media (min-width:769px) {
+  .user-login-name {
+    min-width: 120px;
+  }
+}
+
+.dropdown-content a {
+  color: #000 !important;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+  margin:0 15px;
+}
+
+li.dropdown:hover {background-color: #f4f4f4}
+
+li.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown:hover{
+background-color: #f4f4f4;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f4f4f4;
+}
+
+@media (max-width:1096px) and (min-width:1024px){
+  .dropdown {
+    width: 180px;
+  }
+  .Hi-Username {
+    max-width: 109px;
+  }
+}
+@media (max-width:1023px){
+  .dropdown > .dropbtn{
+    padding:2.1rem 2.2rem 1.7rem 1rem;
+  }
+  .dropdown-content {
+    top:63px;
+    min-width: 200px;
+  }
+  .dropdown{
+    width: auto;
+  }
+  .dropdown-content a {
+    width: 170px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+.guest-connect-login-now1 .c-cta--default {
+  min-width: 9rem;
+  color: #009ade;
+  background-color: #fff;
+  box-shadow: none;
+  border:1px solid #009ade;
+}
+
+.innerText {
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+  }
+  .guest-modal-content{
+    margin: auto;
+      padding-top: 201px;
+  width: 50%;
+  height: auto;
+  }
+  .guest-choose-model{
+    pointer-events: auto;
+    position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+  }
+  .guest-box-close{
+    width: 24px;
+    height: 24px;
+  float: right;
+  margin: 20px;
+  }
+  .guest-dtl-features-box{
+    background-color: #fff;
+  }
+  .guest-features-box-dtls{
+    width: 70%;
+  margin: auto;
+  padding-bottom: 80px;
+
+  padding-top: 40px;
+  }
+  .guest-connect-login-now{
+
+    float: right;
+    cursor: pointer;
+  }
+  .guest-connect-login-now1{
+    padding-bottom: 20px;
+    float: left;
+    cursor: pointer;
+    padding-right: 20px;
+  }
+  .guest-mobile-connect-login-now{
+    padding-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .guest-connect-login-now1 .c-cta--default,.guest-connect-login-now .c-cta--default{
+    min-width: 5rem;
+  }
+  .logout-pop{
+    width: 246px;
+    margin: auto;
+    display: block;
+    text-align: center;
+  }
+  @media (max-width: 768px){
+    .guest-features-box-dtls {
+      width: 85%;
+      margin: auto;
+      padding-bottom: 40px;
+      padding-top: 40px;
+  }
+  .guest-modal-content {
+      margin: auto;
+      padding-top: 73px;
+      width: 80%;
+      height: auto;
+  }
+  .guest-box-close{
+    width: 24px;
+    height: 24px;
+      float: right;
+      margin: 12px;
+  }
+  .guest-connect-login-now,.guest-connect-login-now1{
+    text-align: center;
+    display: inline-block;
+    float: none;
+  }
+
+  }
+  @media (max-width: 330px){
+    .logout-pop{
+      width: 219px;
+      margin: auto;
+      display: block;
+      text-align: center;
+    }
+    .logout-pop .guest-connect-login-now1{
+      padding-right: 0;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 768px) {
+    .guest-features-box-dtls {
+          padding-bottom: 44px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .guest-features-box-dtls {
+      width: 62%;
+      margin: auto;
+      padding-bottom: 132px;
+      padding-top: 40px;
+  }
+  .guest-modal-content {
+      margin: auto;
+      padding-top: 73px;
+      width: 70%;
+      height: auto;
+  }
+  }
+  @media (min-width: 769px) {
+    .login-image {
+      margin-top: -9px;
+    }
+    .login-anchor {
+      display: inline-flex !important;
+    }
+  }
+  .dropdown-content > a.sec-navigation__link.is-disabled{
+    display: none;
+  }
+/*  Logout Page CSS end   */

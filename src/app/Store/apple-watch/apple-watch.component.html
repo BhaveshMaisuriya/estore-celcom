@@ -1,0 +1,128 @@
+<section class="u-section has-section-padding has-border apple-watch">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height">
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 iwatch_grid">
+          <!-- <div class="left-gird">
+            <div class="image-heading">This is a Title Placeholder. <br>
+              Change here.</div>
+            <p class="image-sub-heading">This is a subtitle placeholder. Change here.</p>
+          </div> -->
+          <div class="iwatch-width">
+              <div class="iwatch-image">
+                  <img src="../assets/img/iwatch.jpg" />
+              </div>
+              <!-- <div class="iwatch-logo">
+                  <img  class="img-responsive" src="../assets/img/i-watch-logo.png" />
+              </div> -->
+            </div>
+        </div>
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-tablet-value">
+          <div class="is-padding-2 details__iwatch_center">
+            <div class="eligibility-title">
+              Eligibility Checker
+              <h4 *ngIf="!isLogin">Please verify your details</h4>
+              <app-page-loader [hidden]="!loadingscreen"></app-page-loader>
+            </div>
+            <!-- Login -->
+            <div class="right-grid" *ngIf="!isLogin" [hidden]="loadingscreen">
+              <app-nric-input [pageType]="pageType" [AppleWatchGuestFlag]="AppleWatchGuestFlag" [TextFlag]="TextFlag"
+                (resetMsisdnOtp)="onReset($event)" (isMCUser)="OnMobileConnectUser($event);"></app-nric-input>
+              <app-msisdn-input [pageType]="pageType" *ngIf="enableMCAuthentication" [nric]="nric" [TextFlag]="TextFlag"
+                (resetOtp)="onCallResetOtp($event)" (sentOtp)="onSentOtp($event);"></app-msisdn-input>
+              <app-otp-input [pageType]="pageType" *ngIf="enableMCotp" [nric]="nric" [msisdn]="msisdnOtp" [TextFlag]="TextFlag"
+              (loadingScreen)="WhenValidatingOtp($event)" (validateOtp)="onValidOtp($event);"></app-otp-input>
+            </div>
+            <!-- Guest -->
+            <div *ngIf="!isExisting && isNotBlackListed">
+              <div class="right-grid">
+                <div class="guest-heading">Hello <b> Guest,</b></div>
+                <p class="guest-sub-heading">Your eligibility is checked for NRIC: <b>{{ nric }}</b></p>
+              </div>
+              <app-page-loader [hidden]="!loading"></app-page-loader>
+              <div class="eligible-fail" *ngIf="!loading">
+                <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+                <p class="Choose-your-way-in">Uh Oh! You're not eligible.</p><br><br>
+              </div>
+              <p class="guest-sub-heading" [innerHtml]="message | safeHtml"></p>
+            </div>
+            <!-- Returning Guest -->
+            <div *ngIf="isExisting && !isReturning">
+              <div class="right-grid">
+                <div class="guest-heading">Hello <b> Guest,</b></div>
+                <p class="guest-sub-heading">Your eligibility is checked for NRIC: <b>{{ nric }}</b></p>
+              </div>
+              <app-page-loader [hidden]="!loading"></app-page-loader>
+              <div class="eligible-fail" *ngIf="!loading">
+                <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+                <p class="Choose-your-way-in">Uh Oh! You're not eligible.</p><br><br>
+              </div>
+              <p class="guest-sub-heading" [innerHtml]="message | safeHtml"></p>
+            </div>
+            <!-- Blacklist-->
+            <div *ngIf="isExisting && !isNotBlackListed">
+              <div class="right-grid">
+                <div class="guest-heading">Hello <b> Guest,</b></div>
+                <p class="guest-sub-heading">Your eligibility is checked for NRIC: <b>{{ nric }}</b></p>
+              </div>
+              <app-page-loader [hidden]="!loading"></app-page-loader>
+              <div class="eligible-fail" *ngIf="!loading">
+                <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+                <p class="Choose-your-way-in">Uh Oh! You're not eligible.</p><br><br>
+              </div>
+              <p class="guest-sub-heading" [innerHtml]="message | safeHtml"></p>
+            </div>
+            <!-- Redirect User -->
+            <div *ngIf="!isNotRedirection && isNotBlackListed">
+              <div class="right-grid-guest-login">
+                <div class="guest-heading">Hello <b>{{ CustomerName }},</b></div>
+                <p class="guest-sub-heading">Check your eligibility for mobile number: <b>{{ CustomerNumber }}</b></p>
+              </div>
+              <div class="guest-connect-login-now">
+                <button class="c-cta--default no-default-button" data-css="c-cta" (click)="onValidOtp(true)">
+                  <span class="cta__content">Check Now</span>
+                </button>
+              </div>
+            </div>
+            <!-- Mobile Connect User -->
+            <div *ngIf="isEligible && isNotRedirection && flagCheck">
+              <div class="right-grid">
+                <div class="guest-heading">Hello <b>{{ CustomerName }},</b></div>
+                <p class="guest-sub-heading">Your eligibility is checked for mobile number: <b>{{ CustomerNumber }}</b></p>
+              </div>
+              <div class="eligible-success">
+                <img class="success-img" src="../assets/img/Drop_3/eligible-icon.png">
+                <span class="eligible-text">Hurray! You are eligible.</span>
+              </div>
+              <div class="text-visit"> <span> To purchase, visit <a href="https://www.celcom.com.my/support/store-locator" ><b>Bluecubes</b></a> nearby.</span></div>
+              <div class="eligible-note">
+                  <div class="note__content">
+                      <div class="note__content__inner">NOTE:</div>
+                      <ul class="note__details">
+                        <li class="note__details__description">Your IC number & Mother’s Maiden Name registered with Celcom is required when you sign up for NUMBERshare&trade;. <b><a href="https://ocs.celcom.com.my">Check info now</a></b></li>
+                        <li class="note__details__description">Please ensure that you are currently not on Celcom MultiSIM service.</li>
+                        <li class="note__details__description">A primary plan can only activate one (1) NUMBERshare&trade; subscription at a time.</li>
+                      </ul>
+                    </div>
+              </div>
+            </div>
+            <!-- Mobile Connect User Not Eligible-->
+            <div *ngIf="!isEligible && isNotRedirection && flagCheck">
+              <div class="right-grid">
+                <div class="guest-heading">Hello <b> {{ CustomerName }},</b></div>
+                <p class="guest-sub-heading">Your eligibility is checked for mobile number: <b>{{ CustomerNumber }}</b></p>
+              </div>
+              <app-page-loader [hidden]="!loading"></app-page-loader>
+              <div class="eligible-fail" *ngIf="!loading && !systemDown">
+                <img class="fail-img" src="../assets/img/Drop_3/not-eligible-icon.svg">
+                <p class="Choose-your-way-in">Uh Oh! You're not eligible.</p><br><br>
+              </div>
+              <p class="guest-sub-heading" [innerHtml]="message | safeHtml"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer-component></footer-component>

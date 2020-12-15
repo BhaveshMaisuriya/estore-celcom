@@ -1,0 +1,32 @@
+<button
+    #menuTrigger="matMenuTrigger"
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    (menuClosed)="isOpen = false"
+    (menuOpened)="isOpen = true"
+    (click)="onButtonClick($event)"
+    aria-label="Example icon-button with a menu">
+    <mat-icon
+        [@upDown]="(isOpen && rotateOnOpen) ? 'up' : 'down'" 
+        *ngIf="iconName"
+        [ngStyle]="iconStyle"
+        [svgIcon]="iconType === 'svg' ? iconName : null">
+        {{ iconType === 'normal' ? iconName : null }}
+    </mat-icon>
+</button>
+<mat-menu #menu="matMenu" [xPosition]="'before'">
+    <ng-container *ngFor="let menu of items">
+        <button
+            mat-menu-item
+            (click)="onItemClicked(menu.value)"
+            [ngClass]="{'selected': menu.value === selected}">
+            <span [title]="menu.label">{{ menu.label }}</span>
+            <div class="form-group radio">
+                <mat-radio-group [value]="selected" aria-label="Select an option">
+                    <mat-radio-button
+                        [value]="menu.value"></mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </button>
+    </ng-container>
+</mat-menu>

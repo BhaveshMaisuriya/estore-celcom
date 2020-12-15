@@ -1,0 +1,27 @@
+<div id="item_added_popup" class="item-added-modal">
+    <div class="item-added-modal-content">
+        <section class="u-section">
+            <div class="section__inner">
+                <div class="section__content">
+                    <div class="item_added-container">
+                        <div>
+                            <img src="../assets/img/Drop_3/icon/icon-happy.svg">
+                        </div>
+                        <div class="item-added-title">
+                            Item Successfully Added!
+                        </div>
+                        <div class="item-added-subtext">
+                            What would you like to do next?
+                        </div>
+                        <div class="item-view-cart">
+                            <button class="c-cta--default" data-css="c-cta" (click)="redirectToCart()">View Cart<i class="cta__icon icon is-icon-arrow"></i></button>
+                        </div>
+                        <div class="teaser__link has_margin_top_2" *ngIf="!mnpFlow">
+                            <a class="c-link--default" data-css="c-link" (click) = "continueShopping()"> <span class="link__icon icon is-icon-arrow"></span>  <span class="link__content">Continue Shopping</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

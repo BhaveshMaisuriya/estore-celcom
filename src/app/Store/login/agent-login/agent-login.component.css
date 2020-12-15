@@ -1,0 +1,252 @@
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	background-color: #009ade;
+}
+.error-span {
+	display: table;
+}
+.agent-login-top {
+	top: 27% !important;
+}
+.warning-icon {
+	display: table-cell;
+    width: 20px;
+    height: 20px;
+	vertical-align: top;
+	position: relative;
+    top: 3px;
+}
+.proceed-agent {
+	padding-bottom: 30px;
+	text-align: center;
+}
+.disabled {
+	pointer-events: none;
+	cursor: default;
+}
+.agent-heading {
+	font-weight: bold;
+	font-size: 16px;
+	float: left;
+}
+.form-control:active, .form-control:focus {
+	border-bottom: solid 2px #009ade;
+}
+.errorborder {
+	border-bottom: solid 2px #d0021b !important;
+}
+.form-control {
+	border: none;
+	outline: 0;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+	width: 100%;
+	background-color: #f3f3f3;
+	font-size: 14px;
+	height: 40px;
+}
+select.form-control {
+	height: 40px;
+	color: #626262;
+}
+select.form-control option {
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	border: none !important;
+	padding: 10px;
+}
+.login-default-button {
+	padding: 0 4em;
+}
+.required-field {
+	color: #d0011b;
+	padding: 5px;
+}
+.box-shadow-agent {
+	box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.2);
+	border: solid 1px #fff;
+	border-radius: 12px;
+	background-color: #fff;
+}
+.box-shadow-agent-content {
+	width: 90%;
+	margin: 0 auto;
+	padding-bottom: 0;
+}
+.agent-mobile-width {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.agent-dsk {
+	font-size: 32px;
+	text-align: center;
+	padding-bottom: 8px;
+}
+.error .text-danger {
+	font-size: 14px;
+	font-family: Lato;
+	color: #d0021b;
+}
+.login-error {
+	font-size: 14px;
+}
+.agent-dsk-heading {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 15px 0 0;
+}
+.mobile-form-group {
+  font-size: 16px;
+  padding: 15px 0 0 0;
+}
+.mobile-form-group .id-number {
+	width: 97%;
+}
+.has-margin-bottom_1 {
+	margin-bottom: 1em;
+}
+.already_member {
+    height: 32px;
+    font: normal normal 18px Lato;
+	font-stretch: normal;
+	line-height: 1.78;
+	letter-spacing: normal;
+	text-align: center;
+}
+.agent-login-link .c-cta--border {
+	width: 200px;
+	height: 40px;
+	border: solid 1px #009ade;
+}
+.agent-login-link .cta__content {
+	width: 69px;
+	height: 17px;
+	font: 14px Lato;
+	color: #009ade;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: right;
+}
+.agent-login-link .cta__icon {
+	color: #009ade;
+}
+.is-container {
+	position: relative;
+	max-width: 102.4rem;
+	margin: 0;
+}
+.agent-need-help {
+  width: 300px;
+  margin: 0 auto;
+  float: right;
+}
+
+.need-help-text {
+	font-size: 24px;
+	line-height: 1.33;
+	margin: 0;
+}
+
+.call-text {
+	font-size: 16px;
+	line-height: 2;
+	margin: 0;
+}
+@media (max-width: 767px) {
+	.background-image-agent {
+		padding-top: 5em;
+	}
+	.agent-login-top {
+		top: 14% !important;
+	}
+	.dispMob {
+		display: block;
+		margin-top: -25%;
+	}
+	.dispDesk {
+		display: none;
+	}
+}
+@media (max-width: 768px) {
+	.agent-need-help {
+		width: 80%;
+		margin: 3% 10% 0 10%;
+	}
+}
+@media (max-width: 769px) and (min-width:768px) {
+	.background-image-agent {
+		padding-top: 0em;
+	}
+	.agent-login-top {
+		top: 40% !important;
+	}
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+	.agent-login-top {
+		top: 35% !important;
+	}
+}
+@media (min-width:768px) {
+	.agent-already_member {
+		margin-top: 4em;
+	}
+	.dispMob {
+		display: none;
+	}
+	.dispDesk {
+		display: block;
+	}
+	.hero-banner__item {
+		width: 459px;
+	}
+	.box-shadow-agent {
+		min-height: 295px;
+	}
+}
+/* End of Agent css */
+.choose_form_group {
+	margin: 2px 0 16px;
+	width: 100%;
+}
+.choose_form_group label {
+	font: normal bold 16px Lato;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+	padding-top: 10px;
+	display: inline-block
+}
+.choose_form_control {
+	border: none;
+	outline: 0;
+	border-bottom: 2px solid #ccc;
+	width: 95%;
+	height: 36px;
+	background-color: #f3f3f3;
+	text-indent: 15px;
+	font: 14px Lato;
+}
+.choose_form_control:-webkit-autofill {
+	-webkit-box-shadow: inset 0 0 0 9999px #f3f3f3;
+	box-shadow: inset 0 0 0 9999px #f3f3f3;
+}
+.choose_form_control:active,
+.choose_form_control:focus {
+	border-bottom: solid 2px #009ade;
+}
+.choose_form_control:-webkit-autofill:focus,
+.choose_form_control:-webkit-autofill:active {
+	-webkit-box-shadow: inset 0 0 0 9999px #f3f3f3;
+	box-shadow: inset 0 0 0 9999px #f3f3f3;
+}

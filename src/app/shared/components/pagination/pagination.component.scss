@@ -1,0 +1,70 @@
+@import "../../../styles/scss/colors.scss";
+
+/*
+  ? You can apply styles from parent
+  ? directly to this component using
+  ? this dummy :host class
+*/
+:host {
+  color: inherit;
+}
+
+.pagination-root {
+  display: flex;
+  width: 100%;
+
+  .pagination {
+    margin: 0 auto;
+    text-align: center;
+    display: -webkit-inline-box;
+    list-style: none;
+    padding: 0;
+  }
+
+  .page-number-container {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    color: $primary-color;
+
+    &.pages {
+      border: 1px solid #e6e6e6;
+      background-color: #fff;
+      margin: 0 auto;
+    }
+
+    &.pages.normal {
+      margin: 0 17px;
+    }
+
+    &.active {
+      background-color: $primary-color;
+      border: 1px solid $primary-color;
+      color: white;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      filter: saturate(0) opacity(0.5);
+    }
+  }
+
+  .page-navigator {
+    width: 10px;
+    height: 18px;
+    object-fit: contain;
+  }
+
+  .page-number-text {
+    width: 100%;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .pagination-carousel {
+    width: 186px;
+  }
+}

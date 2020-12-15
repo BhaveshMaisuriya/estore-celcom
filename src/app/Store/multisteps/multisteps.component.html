@@ -1,0 +1,39 @@
+<section class="u-section has-section-padding {{multistepsResponse.field_background_color}}" *ngIf="multistepsResponse!= null">
+    <div class="section__inner">
+        <div class="section__content is-container">
+            <div class="o-grid-items--default" data-css="o-grid-items">
+
+                <div class="c-teaser--default is-text-align-center is-padding-bottom-40" data-css="c-teaser">
+                    <h1 class="teaser__headline is-h2">{{multistepsResponse.Title}}</h1>
+                </div>
+
+                <div class="u-grid-row is-collapsed is-equal-height steps-wrapper">
+                  <ng-container *ngFor="let step of multistepsResponse.Steps; let index = index">
+                    <div _ngcontent-c5="" class="u-grid-col is-col-mobile-p-12 {{step.StepClass}} is-equal-height">
+                            <div _ngcontent-c5="" data-css="c-callout-icon-item" class="c-callout-icon-item--steps is-{{index}}">
+                                <h3 _ngcontent-c5="" class="callout-icon-item__headline">{{step.title}}</h3>
+                                  <div _ngcontent-c5="" class="callout-icon-item__image-wrapper">
+                                    <div _ngcontent-c5="" class="callout-icon-item__image">                                    
+                                      <img src="{{step.fieldIcon}}" />
+                                    </div>
+                                  </div>
+                                <div _ngcontent-c5="" class="callout-icon-item__content" [innerHtml]="step.description"></div>
+                            </div>
+                        </div>
+                      </ng-container>
+                </div>
+
+                <footer class="grid-items__footer" *ngIf="multistepsResponse.ButtonText.trim() || multistepsResponse.ButtonTwoText.trim()">
+                    <a id="steps_btn1" class="c-cta--default" *ngIf="multistepsResponse.ButtonText.trim()" data-css="c-cta" href="{{multistepsResponse.ButtonLink}}" [attr.data-analytics-promo]='multistepsResponse.ButtonAnalytic ? multistepsResponse.ButtonAnalytic : null'  > 
+                        <span class="cta__content">{{multistepsResponse.ButtonText}}</span> 
+                        <span class="cta__icon icon is-icon-arrow"></span> 
+                    </a>
+                    <a id="steps_btn2" class="c-cta--default" *ngIf="multistepsResponse.ButtonTwoText.trim()" data-css="c-cta" href="{{multistepsResponse.ButtonTwoLink}}" [attr.data-analytics-promo]='multistepsResponse.Button2Analytic ? multistepsResponse.Button2Analytic : null'> 
+                        <span class="cta__content">{{multistepsResponse.ButtonTwoText}}</span> 
+                        <span class="cta__icon icon is-icon-arrow"></span> 
+                    </a>
+                </footer>
+            </div>
+        </div>
+    </div>
+</section>

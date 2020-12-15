@@ -1,0 +1,19 @@
+<section id="step2">
+    <section class="u-section sectionize is-bg-color-grey">
+      <div class="section__inner">
+        <div class="section__content is-container">
+            <div class="section_index_container"><span class="section_index">2</span></div>
+            <div class="details__choose_content_header">Type of eSIM</div>
+            <ng-container *ngIf="eSimEligible === true">
+            <div class="user_greetings"> Hello <span><strong>{{userName}},</strong></span></div>
+            <div class="user_greetings"> You are requesting for: <span>{{simType}} to eSIM</span></div>
+            <div class="esim_notes">
+              <span>Note:</span>
+              <div [innerHtml]="notes | safeHtml"></div>
+            </div>
+          </ng-container>
+         </div>
+      </div>
+    </section>
+  </section>
+  

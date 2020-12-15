@@ -1,0 +1,46 @@
+/* ===================================================
+Accordion Component
+=================================================== */
+
+/* ---------------------------------------------------
+Global Imports
+--------------------------------------------------- */
+@import "../../../../scss/helpers";
+
+:host {
+	.c-tabs {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		overflow-x: auto;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		&.is-full-width {
+			margin: 0 2.5rem;
+			@include media('>tablet-p') {
+				margin: 0 4rem;
+			}
+		}
+
+		.tabs__tab {
+			flex: 1 0 auto;
+			text-align: center;
+			line-height: 3rem;
+			cursor: pointer;
+			padding: 0 1rem;
+
+			@include media('<tablet-p') {
+				min-width: 19vw;
+			}
+
+			&.is-active {
+				font-family: $font-bold;
+				color: $cerulean;
+				pointer-events: none;
+				border-bottom: .3rem solid $cerulean;
+			}
+		}
+	}
+}

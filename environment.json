@@ -1,0 +1,41 @@
+{
+  "production": false,
+  "preProduction": false,
+  "isRedisCacheEnabled": true,
+  "feedbackSheetUrl":"",
+  "portalFrontEndURL": "https://www.celcom.com.my",
+  "apiUrl": "http://10.1.61.214",
+  "nodeUrl": "",
+  "apiGateWayUrl": "http://10.5.133.84:8001",
+  "redisConfigForEstore": [
+    {
+      "port": "6379",
+      "host": "10.1.58.64"
+    }
+  ],
+  "redisConfigForEstoreDynamicData": [
+    {
+      "port": "6379",
+      "host": "10.1.58.64",
+      "db" : 1
+    }
+  ],
+  "elasticSearchUrl": "http://10.1.61.214",
+  "eStoreFrontEndUrl": "https://estore-02.celcom.com.my",
+  "eStoreUrl": "https://estorecms-02.celcom.com.my",
+  "mobileConnectUrl": "http://54.255.196.111",
+  "outletId": "CKL47948",
+  "blackListedSystem": "Internal",
+  "isPortal": false,
+  "wso2Url": "https://igw.apistg.celcom.com.my",
+  "localhost": true,
+  "remarketKeys":{
+    "fbId":"1835176380039735",
+    "twitterId":"nzt5f",
+    "googleId":"AW-879277272",
+    "googlePurchaseGtagId":"UaSeCPPMr5ABENjpoqMD",
+    "twitterPurchasePid":"o0ldy",
+    "googleCheckoutGtagId":"RjbGCMXytpABENjpoqMD",
+    "twitterCheckoutPid":"o0ldx"
+  }
+}

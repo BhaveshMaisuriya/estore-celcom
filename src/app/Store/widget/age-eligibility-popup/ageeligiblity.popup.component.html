@@ -1,0 +1,305 @@
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType == 'LOWER_AGE'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. You're below the age limit.</h3>
+                                <div *ngIf="EligibilityPopupType && EligibilityPopupType.type == 'first'">
+                                    <p class="What-would-you-like">You need to be above 18 years old to make a purchase.</p>
+                                </div>
+                                <div *ngIf="EligibilityPopupType && EligibilityPopupType.type == 'xpax'">
+                                    <p class="What-would-you-like">You need to be above 18 years old to make a purchase.</p>
+                                </div>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue();">	<span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType == 'LOWER_AGE_LOGIN'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. You're below the age limit.</h3>
+                                <div *ngIf="EligibilityPopupType && EligibilityPopupType.type == 'first'">
+                                    <p class="What-would-you-like">You need to be above 18 years old to make a purchase.</p>
+                                </div>
+                                <div *ngIf="EligibilityPopupType && EligibilityPopupType.type == 'device'">
+                                    <p class="What-would-you-like">You need to be above 18 years old to make a purchase.</p>
+                                </div>
+                                <div *ngIf="EligibilityPopupType && EligibilityPopupType.type == 'xpax'">
+                                    <p class="What-would-you-like">You need to be above 18 years old to make a purchase.</p>
+                                </div>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue();">	<span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='UPPER_AGE'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. You've passed the age limit.</h3>
+                                <p class="What-would-you-like">This plan is only offered to customers between the ages of 18-25 years old</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='LIMIT_EXCEEDED'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. You've exceeded the maximum limit.</h3>
+                                <p class="What-would-you-like">You can have a maximum of 15 postpaid and 5 prepaid numbers on one ID. You are entitled to only change of plan.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='LIMIT_EXCEEDED_WITH_OPEN_COUNT'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. Number Limit Exceeded.</h3>
+                                <p class="What-would-you-like">You have exceeded the limit of numbers that can be tied to one ID.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='INVALID_MVIVA_URL'">
+        <div id="guest-choose-way" class="guest-choose-model">
+            <div class="eligibility-modal-content">
+                <section class="u-section" id="more_details">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="guest-dtl-features-box">
+                                <div class="guest-features-box-dtls">
+                                    <h3 class="Choose-your-way-in">Oops, sorry!</h3>
+                                    <p class="What-would-you-like">This campaign is invalid.</p>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                            <span class="cta__content">OK</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+</ng-container>
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='INVALID_DEALER_URL'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Oops, sorry!</h3>
+                                <p class="What-would-you-like">This page is not available for you.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='mnpPlanOnly'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">IMPORTANT NOTE</h3>
+                                <p class="What-would-you-like unbold">In order to avoid your current mobile service from being interrupted, ensure you reply 'YES' to the SMS <strong>only after when you've received the SIM card from Celcom.</strong></p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="DisplayPromotionalLifeStyle">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Oops, sorry!</h3>
+                                <p class="What-would-you-like">This promotion is invalid.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="OnLifeStyle()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType =='homeWireless'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Oops, sorry!</h3>
+                                <p class="What-would-you-like">You are not eligible to purchase Home Wireless. Please contact the nearest Blue Cube center to check your eligibility.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='guestUser'">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Oops, sorry!</h3>
+                                <p class="What-would-you-like">You are not eligible to proceed further. Please use a New NRIC which is linked to an existing CELCOM number.</p>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                        <span class="cta__content">OK</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="EligibilityPopupType && EligibilityPopupType.displayType=='CS-AGENT-CAMPAIGN-API-ERROR'">
+        <div id="guest-choose-way" class="guest-choose-model">
+            <div class="eligibility-modal-content">
+                <section class="u-section" id="more_details">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="guest-dtl-features-box">
+                                <div class="guest-features-box-dtls">
+                                   <!-- <h3 class="Choose-your-way-in">Oops, sorry!</h3> -->
+                                    <p class="What-would-you-like">{{EligibilityPopupType.message}}</p>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="emitContinue()">
+                                            <span class="cta__content">OK</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </ng-container>

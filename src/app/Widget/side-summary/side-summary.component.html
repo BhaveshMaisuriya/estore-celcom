@@ -1,0 +1,554 @@
+<div class="main-container"
+    [ngStyle]="additionalStyles"
+    [ngClass]="{
+        collapsed: !isExpanded,
+        'theme-material': useMaterialTheme
+    }">
+    <div class="title-content" [@slideInOut]="!isMobile || isExpanded ? 'in' : 'out'">Order Summary</div>
+    <!-- <div class="main-content" [@slideInOut]="!isMobile || isExpanded ? 'in' : 'out'"> -->
+    <div class="main-content" [@slideInOut]="!isMobile || isExpanded ? 'in' : 'out'">
+        <perfect-scrollbar [config]="{wheelPropagation: true}">
+            <div class="main-group">
+                <!-- #region Loading shimmer -->
+                <ng-container *ngTemplateOutlet="templateLoading"></ng-container>
+                <!-- #endregion -->
+                <!-- #region eSIM -->
+                <ng-container *ngTemplateOutlet="templateeSIM"></ng-container>
+                <!-- #endregion -->
+                
+                <ng-container *ngIf="!(isMoon$ | async)">
+                    <!-- #region Device -->
+                    <ng-container *ngTemplateOutlet="(deviceCombo$ | async) ? templateDeviceCombo : templateDevice"></ng-container>
+                    <!-- #endregion Device -->
+                </ng-container>
+                
+                <!-- #region Plan -->
+                <ng-container *ngTemplateOutlet="templatePlan"></ng-container>
+                <!-- #endregion Plan -->
+                
+                <ng-container *ngIf="(isMoon$ | async)">
+                    <!-- #region Device -->
+                    <ng-container *ngTemplateOutlet="templateDevice"></ng-container>
+                    <!-- #endregion Device -->
+                </ng-container>
+                
+                <!-- #region Supplementary Lines -->
+                <ng-container *ngTemplateOutlet="templateSuppLines"></ng-container>
+                <!-- #endregion Supplementary Lines -->
+            </div>
+        </perfect-scrollbar>
+    </div>
+    <div class="mobile-subtotal"[@slideInOut]="!isMobile || isExpanded ? 'in' : 'out'">
+        <div>
+            <div>Sub Total</div>
+            <div class="price">
+                <ng-container *ngIf="!overrideTotalPrice; else ngTotal">
+                    RM{{ (planZeroUpfront ? 0 : +((totalPay$ | async) || 0)) | number : '1.2-2' }}*
+                </ng-container>
+                <ng-template #ngTotal>
+                    RM{{ (+totalPrice || 0) | number : '1.2-2' }}*
+                </ng-template>
+            </div>
+        </div>
+        <small>*SST not included</small>
+    </div>
+    <div class="total-content">
+        <div class="collapse-button-left" (click)="toggleExpand()" [ngClass]="{'expanded': isExpanded}">
+            <div class="toggle-arrow"></div>
+        </div><!-- /.collapse-button -->
+        <div class="subtotal">
+            <div>Sub Total</div>
+            <div class="price">
+                <div>
+                    <ng-container *ngIf="!overrideTotalPrice; else ngTotal">
+                        RM{{ (planZeroUpfront ? 0 : +((totalPay$ | async) || 0)) | number : '1.2-2' }}*
+                    </ng-container>
+                    <ng-template #ngTotal>
+                        RM{{ (+totalPrice || 0) | number : '1.2-2' }}
+                    </ng-template>
+
+                </div>
+                <small>*SST not included</small>
+            </div>
+        </div>
+        <button
+            [disabled]="!(checkoutButtonEnabled$ | async) || addToCartClicked"
+            (click)="onCheckoutBtnClicked()"
+            [ngClass]="useMaterialTheme ? 'btn btn-rounded btn-primary' : 'c-cta--default proceed_anchor checkout-btn'"
+            [attr.data-css]="useMaterialTheme ? null : 'c-cta'">
+            Checkout
+        </button>
+        <div class="collapse-button" (click)="toggleExpand()" [ngClass]="{'expanded': isExpanded}">
+            <!-- <img src="/assets/img/chevron-down.png" alt="" [ngClass]="{'is-up': isExpanded}"> -->
+            <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.344 12L24 30.344 5.656 12 3 15.001 24 36l21.001-20.999z"/></svg>
+            <!-- <span class="link__icon icon is-icon-arrow-down" [ngClass]="{'is-arrow-active': isExpanded}"></span> -->
+        </div><!-- /.collapse-button -->
+    </div>
+</div>
+<app-notification-error *ngIf="showPopup" [data]="popupData"></app-notification-error>
+
+<ng-template #internetShare>
+    <div class="section-group" *ngIf="(shareQuota$ | async) && (pass$ | async)?.internet_share as internetshare">
+        <div class="section-title">{{internetshare?.label}}</div>
+        <div class="section-detail">
+            <div class="text-bold">RM{{(internetshare?.monthly_price || 0) |  number : '1.2-2' }}</div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateRebate>
+    <ng-container *ngIf="(omniCampaign$ | async) as omni">
+        <div class="section-detail upfront-text" *ngIf="(+omni?.rebate_frequency || 0) > 0">
+            <div>
+                Rebate <span class="text-danger">-RM{{ (omni.rebate_amount || 0) |  number : '1.2-2' }}</span> &times; {{ omni.rebate_frequency }} months
+                <small>(To be deducted in the next bill)</small>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #templateLifestyle>
+    <ng-container *ngIf="(enableLifeStyleSection$ | async) == true && (lifeStyleContract$ | async)">
+        <div class="section-group">
+            <div class="section-title">Lifestyle Voucher</div>
+            <div class="section-detail">
+                <div class="text-bold">{{(lifeStyleContract$ | async)?.contract_period}} months contract</div>
+            </div>
+        </div>
+        <div class="section-group">
+            <div class="section-detail upfront-text">
+                <div>
+                    Upfront Payment <br>
+                    <strong>Plan + Lifestyle Voucher</strong>
+                    <small>(To be rebated in next 10 months' bill)</small>
+                </div>
+                <ng-container *ngIf="!(cobpResponse$ | async); else cobpUpfront">
+                    <div class="text-bold">RM{{ (lifeStyleContract$ | async)?.lifestyle_upfront | number : '1.2-2' }}
+                    </div>
+                </ng-container>
+                <ng-template #cobpUpfront>
+                    <ng-container *ngIf="(cobpResponse$ | async) && cobpErrorMsg !== null; else cobpElgibleUpfront">
+                        <div class="text-bold">
+                            RM{{ (lifeStyleContract$ | async)?.lifestyle_upfront | number : '1.2-2' }}</div>
+                    </ng-container>
+                    <ng-template #cobpElgibleUpfront>
+                        <div class="text-bold">RM{{ (upfrontPayment$ | async) | number : '1.2-2' }}</div>
+                    </ng-template>
+                </ng-template>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #internetPassAndReload>
+    <ng-container>
+        <div class="section-group" *ngIf="(internetPrepaidPass$ | async) as internetPass">
+            <div class="section-title">Internet Pass</div>
+            <div class="section-detail">
+                <div class="text-bold">{{internetPass?.category_tab}} {{internetPass?.name}}</div>
+                <div>RM{{ internetPass.price | number : '1.2-2' }}</div>
+            </div>
+        </div>
+        <div class="section-group" *ngIf="(reloadItem$ | async) as reloadItem">
+            <div class="section-title">Reload Amount</div>
+            <div class="section-detail">
+                <div class="text-bold">Credit</div>
+                <div>RM{{ reloadItem.price | number : '1.2-2' }}</div>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #templateLoading>
+    <ng-container *ngIf="isLoading">
+        <section class="placeholder">
+            <div class="section-group" *ngFor="let item of [1, 2, 3]">
+                <div class="section-title shimmer">Plan</div>
+                <div class="section-detail shimmer">
+                    <div class="text-bold">MEGA™</div>
+                </div>
+            </div>
+        </section>
+        <section class="placeholder">
+            <div class="section-group">
+                <div class="section-detail upfront-text">
+                    <div class="shimmer"> Upfront Payment</div>
+                    <div class="shimmer">RM98.00</div>
+                </div>
+            </div>
+        </section>
+    </ng-container>
+</ng-template>
+
+<ng-template #templateeSIM>
+    <section *ngIf="isEsim">
+        <div class="section-group">
+            <div class="section-title">
+                <div class="text-bold">
+                    eSIM Activation
+                </div><!-- /.text-bold -->
+            </div><!-- /.section-title -->
+            <br>
+            <div class="section-title">
+                <div>
+                    eSIM Charges: <strong>RM0.00*</strong><br>
+                    (Will be charged in the next bill)
+                </div><!-- /.text-bold -->
+            </div><!-- /.section-title -->
+        </div><!-- /.section-group -->
+    </section>
+</ng-template>
+
+<ng-template #templateDeviceCombo>
+    <section *ngIf="(device$ | async) as device">
+        <div class="section-title">Device 1</div>
+        <div *ngIf="isPreorder$ | async">
+            <div class="text-bold">Pre-Order</div>
+        </div>
+        <div class="section-detail">
+            <div>
+                <div class="text-bold">
+                    {{ (deviceBundle$ | async)?.name }}<span *ngIf="device.color">, {{ device.color }}</span><span *ngIf="device.memory">, {{ device.memory }}</span><span *ngIf="device.size">, {{ device.size }}</span>
+                </div>
+                <!-- <div class="gift-message" *ngIf="(isPreorder$ | async) && (device$ | async)?.free_gift_data?.gift_message as message">
+                    {{ message }}
+                </div> -->
+                <ng-container *ngIf="(deviceCombo$ | async) as deviceCombo">
+                    <div class="mt-estore-1" style="font-weight: normal;">Device 2</div>
+                    <div class="text-bold">
+                        {{ (deviceBundleCombo$ | async)?.name }}<span *ngIf="deviceCombo.color">, {{ deviceCombo.color }}</span><span *ngIf="deviceCombo.memory">, {{ deviceCombo.memory }}</span><span *ngIf="deviceCombo.size">, {{ deviceCombo.size }}</span>
+                    </div>
+                </ng-container>
+                <div class="mt-estore-1">
+                    <ng-container *ngIf="(deviceBundleTypeLabel$ | async) as deviceBundleType">
+                        <ng-container *ngIf="(isEasyPhone$ | async)">
+                            {{ deviceBundleType }}
+                        </ng-container>
+                        <ng-container *ngIf="!(isEasyPhone$ | async)">
+                            Charges for device 1 and 2
+                        </ng-container>
+                    </ng-container>
+                </div>
+                <div class="text-bold">
+                    <ng-container *ngIf="(isMoon$ | async) && device.contract as contract">
+                        ({{ contract }} months contract)
+                    </ng-container>
+                    <ng-container *ngIf="(isEasyPhone$ | async) && (easyphoneSelectedContractPeriod$ | async) as contract">
+                        ({{ contract }} months contract)
+                    </ng-container>
+                    <ng-container *ngIf="(isDeviceBundle$ | async) && (deviceBundleSelectedContractPeriod$ | async) as contract">
+                        ({{ contract }} months contract)
+                    </ng-container>
+                </div>
+            </div>
+            <div class="move-up-price" *ngIf="!(isEasyPhone$ | async) || !(cobpResponse$ | async)">RM{{ (devicePrice$ | async) | number : '1.2-2'   }}</div>
+        </div>
+        <ng-container *ngIf="(isEasyPhone$ | async)">
+            <div class="section-group" *ngIf="(cobpResponse$ | async) as cobpResponse">
+                <div class="section-detail">
+                    <div>
+                        Upfront payment (RM{{ (devicePrice$ | async) | number : '1.2-2' }} &times; {{ cobpResponse[0]?.duration_check?.device || 0 }}
+                        <span [ngPlural]="cobpResponse[0]?.duration_check?.device">
+                            <ng-template ngPluralCase="=1">&nbsp;month</ng-template>
+                            <ng-template ngPluralCase="other">&nbsp;months</ng-template>
+                        </span>)
+                    </div>
+                    <div>
+                        RM{{ ((devicePrice$ | async) * (cobpResponse[0]?.duration_check?.device || 0)) | number : '1.2-2' }}
+                    </div>
+                </div>
+            </div>
+            <div class="section-group">
+                <div class="section-title">Monthly Charges</div>
+                <div class="section-detail">
+                    <div class="text-bold">RM{{ (devicePrice$ | async) | number : '1.2-2' }}</div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- <div class="section-group" *ngIf="(device$ | async)?.free_gift_data?.gift_message as message">
+            <div class="section-detail">
+                <div>{{ message }}</div>
+                <div class="invisible">RM{{ (devicePrice$ | async) | number : '1.2-2'   }}</div>
+            </div>
+        </div> -->
+        <div class="section-group" *ngIf="(mvivaCampaign$ | async)?.summary_message as message">
+            <div class="section-detail">
+                <div>{{ message }}</div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+
+<ng-template #templateDevice>
+    <section *ngIf="(device$ | async) as device">
+        <div class="section-title">Device</div>
+        <div *ngIf="isPreorder$ | async">
+            <div class="text-bold">Pre-Order</div>
+        </div>
+        <div class="section-detail">
+            <div>
+                <span class="text-bold">
+                    {{ (deviceBundle$ | async)?.name }}<span *ngIf="device.color">, {{ device.color }}</span><span *ngIf="device.memory">, {{ device.memory }}</span><span *ngIf="device.size">, {{ device.size }}</span>
+                </span>
+                <!-- <div class="gift-message" *ngIf="(isPreorder$ | async) && (device$ | async)?.free_gift_data?.gift_message as message">
+                    {{ message }}
+                </div> -->
+                <span class="text-bold">
+                    <ng-container *ngIf="(deviceCombo$ | async) as deviceCombo">
+                        <br>
+                        {{ (deviceBundleCombo$ | async)?.name }}<span *ngIf="deviceCombo.color">, {{ deviceCombo.color }}</span><span *ngIf="deviceCombo.memory">, {{ deviceCombo.memory }}</span><span *ngIf="deviceCombo.size">, {{ deviceCombo.size }}</span>
+                    </ng-container>
+                    <ng-container *ngIf="(deviceBundleTypeLabel$ | async) as deviceBundleType">
+                        <br>{{ deviceBundleType }}
+                    </ng-container>
+                    <ng-container *ngIf="(isMoon$ | async) && device.contract as contract">
+                        <br>({{ contract }} months contract)
+                    </ng-container>
+                    <ng-container *ngIf="(isEasyPhone$ | async) && (easyphoneSelectedContractPeriod$ | async) as contract">
+                        <br>({{ contract }} months contract)
+                    </ng-container>
+                    <ng-container *ngIf="(isDeviceBundle$ | async) && (deviceBundleSelectedContractPeriod$ | async) as contract">
+                        <br>({{ contract }} months contract)
+                    </ng-container>
+                </span>
+            </div>
+            <div *ngIf="!(isEasyPhone$ | async) || !(cobpResponse$ | async)">RM{{ (devicePrice$ | async) | number : '1.2-2'   }}</div>
+        </div>
+        <ng-container *ngIf="(isEasyPhone$ | async)">
+            <div class="section-group" *ngIf="(cobpResponse$ | async) as cobpResponse">
+                <div class="section-detail">
+                    <div>
+                        Upfront payment (RM{{ (devicePrice$ | async) | number : '1.2-2' }} &times; {{ cobpResponse[0]?.duration_check?.device || 0 }}
+                        <span [ngPlural]="cobpResponse[0]?.duration_check?.device">
+                            <ng-template ngPluralCase="=1">&nbsp;month</ng-template>
+                            <ng-template ngPluralCase="other">&nbsp;months</ng-template>
+                        </span>)
+                    </div>
+                    <div>
+                        RM{{ ((devicePrice$ | async) * (cobpResponse[0]?.duration_check?.device || 0)) | number : '1.2-2' }}
+                    </div>
+                </div>
+            </div>
+            <div class="section-group">
+                <div class="section-title">Monthly Charges</div>
+                <div class="section-detail">
+                    <div class="text-bold">RM{{ (devicePrice$ | async) | number : '1.2-2' }}</div>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- <div class="section-group" *ngIf="(device$ | async)?.free_gift_data?.gift_message as message">
+            <div class="section-detail">
+                <div>{{ message }}</div>
+                <div class="invisible">RM{{ (devicePrice$ | async) | number : '1.2-2'   }}</div>
+            </div>
+        </div> -->
+        <div class="section-group" *ngIf="(mvivaCampaign$ | async)?.summary_message as message">
+            <div class="section-detail">
+                <div>{{ message }}</div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+<ng-template #templatePlan>
+    <section *ngIf="(basePlan$ | async) || (plan$ | async)">
+        <ng-container *ngIf="(basePlan$ | async) as basePlan; else noBasePlan">
+            <div class="section-title">Plan</div>
+            <div class="section-detail">
+                <div class="text-bold" [innerHTML]="basePlan?.name | safeHtml"></div>
+                <!-- Use this if you want to display Base + Pass -->
+                <!-- <div class="text-bold" [innerHTML]="basePlan?.name + ' ' + ((pass$ | async)?.name || '') | safeHtml"></div> -->
+                <div *ngIf="showPlanPrices$ | async">RM{{ (basePrice$ | async) | number : '1.2-2'  }}</div>
+            </div>
+
+            <ng-container *ngIf="(plan$ | async) as plan">
+            <!-- Use this if you want to display Base + Pass -->
+            <!-- <ng-container *ngIf="(plan$ | async) as plan; else noplan"> -->
+                <div class="section-group">
+                    <div class="section-title">Pass</div>
+                    <div class="section-detail">
+                        <div class="text-bold" [innerHTML]="plan?.name | safeHtml"></div>
+                        <div *ngIf="showPlanPrices$ | async">RM{{ (planPrice$ | async) | number : '1.2-2'  }}</div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #noplan>
+                <div class="section-group">
+                    <div class="section-title">Pass</div>
+                    <div class="section-detail">
+                        <div class="text-bold">No Pass</div>
+                    </div>
+                </div>
+            </ng-template>
+        </ng-container>
+        <ng-template #noBasePlan>
+            <div class="section-group" *ngIf="(plan$ | async) as plan">
+                <div class="section-title">Plan</div>
+                <div class="section-detail">
+                    <ng-container *ngIf="!(prepaidCampaignPack$ | async) else prepaidCampaign">
+                        <div class="text-bold" [innerHTML]="plan?.name | safeHtml"></div>
+                        <div *ngIf="showPlanPrices$ | async">RM{{ (planPrice$ | async) | number : '1.2-2' }}</div>
+                    </ng-container>
+                    <ng-template #prepaidCampaign>
+                        <ng-container *ngIf="(prepaidCampaignPack$ | async) as prepaidPack">
+                            <div class="text-bold" [innerHTML]="prepaidPack?.name | safeHtml"></div>
+                            <div>RM{{ prepaidPack?.price | number : '1.2-2' }}</div>
+                        </ng-container>
+                    </ng-template>
+                </div>
+            </div>
+            <ng-container *ngTemplateOutlet="internetPassAndReload"></ng-container>
+        </ng-template>
+
+        <div class="section-group" *ngIf="(principalLine$ | async) as number">
+            <div class="section-title">{{ getNumberLabel(topType$ | async, isPrepaid$ | async) }}</div>
+            <div class="section-detail">
+                <div class="text-bold">{{ number | numberStandardFilter}}</div>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!((shareQuota$ | async) && (isFamilyPlan$ | async)) else internetShare">
+        </ng-container>
+
+        <ng-container *ngIf="!((isPrepaid$ | async) || (isFamilyPlan$ | async))">
+            <div class="section-group">
+                <div class="section-title">Monthly Charges</div>
+                <div class="section-detail">
+                    <div class="text-bold">RM{{ (selectPlanMonthlyCharges$ | async) | number : '1.2-2' }}</div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="(isCobpElgible$ | async) && (cobpResponse$ | async) as cobpResponse">
+                <ng-container *ngIf="cobpResponse[0]?.penaltyCheck?.device_upfront_penalty > 0">
+                    <div class="section-group" *ngIf="cobpResponse[0]?.penaltyCheck?.device_upfront_penalty as penaltyAmount">
+                        <ng-container *ngIf="!cobpResponse[0]?.penaltyCheck?.eligible_contract_extend">
+                            <div class="section-detail">
+                                <div>{{ cobpResponse[0]?.lifestyle_eligibility?.existing_lifestyle_contract ? 'Processing Fee' : 'Device Penalty'}}</div>
+                                <div>RM{{ penaltyAmount | number : '1.2-2' }}</div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="!(shareQuota$ | async) else internetShare"></ng-container>
+
+            <ng-container *ngIf="planZeroUpfront; else notZeroUpfront">
+                <div class="section-group">
+                    <div class="section-detail">
+                        <div data-upfront-tag1>Upfront payment</div>
+                        <div>RM0.00</div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #notZeroUpfront>
+                <ng-container *ngIf="(isEasyPhone$ | async) && (cobpResponse$ | async) as cobpResponse">
+                    <div class="section-group">
+                        <div class="section-title" data-upfront-tag2>Upfront payment (RM{{ (selectPlanMonthlyCharges$ | async) | number : '1.2-2' }} &times; {{ cobpResponse[0]?.upfront_payment_check?.plan || 0 }}
+                            <span [ngPlural]="cobpResponse[0]?.upfront_payment_check?.plan || 0">
+                                <ng-template ngPluralCase="=1">&nbsp;month</ng-template>
+                                <ng-template ngPluralCase="other">&nbsp;months</ng-template>
+                            </span>)</div>
+                    </div>
+                </ng-container>
+
+                <div class="section-group">
+                    <div class="section-detail upfront-text" *ngIf="(isEasyPhone$ | async) == false && !(lifeStyleContract$ | async)">
+                        <div [ngClass]="{'mb-estore-2': !(upfrontPaymentWaived$ | async)}" data-upfront-tag3>
+                            {{ (topType$ | async) == topEnum.mnp ? '*Free SIM card delivery' : 'Upfront Payment' }}
+                            <ng-container *ngIf="(device$ | async)?.upfront_installment as installment; else noInstallment">
+                                <small *ngIf="!(upfrontPaymentWaived$ | async)">
+                                    (To be rebated over {{ installment }} months)
+                                </small>
+                            </ng-container>
+                            <ng-template #noInstallment>
+                                <small *ngIf="!(upfrontPaymentWaived$ | async)">(To be rebated in first bill)</small>
+                            </ng-template>
+                        </div>
+                        <div>RM{{ (upfrontPaymentWaived$ | async) ? "0.00" : (upfrontPayment$ | async) | number : '1.2-2' }}</div>
+                    </div>
+                    <ng-container *ngTemplateOutlet="templateRebate"></ng-container>
+                    <ng-container *ngTemplateOutlet="templateLifestyle"></ng-container>
+                </div>
+                <ng-container *ngIf="(isEasyPhone$ | async); else normalAutobilling">
+                        <div class="section-group" *ngIf="(mvivaCampaign$ | async)?.optional_easyphone_auto_billing != '1'
+                                    || (!(mvivaCampaign$ | async) && (deviceBundle$ | async)?.easyphone_autobill != '1'
+                                    && (deviceBundle$ | async)?.easyphone_autobill != '0')">
+                            <div class="section-title text-bold">Mandatory Autobilling</div>
+                        </div>
+                </ng-container>
+                <ng-template #normalAutobilling>
+                    <div class="section-group" *ngIf="(autobilling$ | async) == 2">
+                        <div class="section-title text-bold">Mandatory Autobilling</div>
+                    </div>
+                </ng-template>
+            </ng-template>
+        </ng-container>
+
+    </section>
+</ng-template>
+
+<ng-template #templateSuppLines>
+    <ng-container *ngIf="(supplementaryLines$ | async) as supplines">
+        <section *ngIf="supplines?.length > 0">
+            <div class="section-group">
+                <div class="section-title">Supplementary Lines</div>
+                <div class="section-detail">
+                    <div class="text-bold">+{{ supplines?.length }} Line(s)</div>
+                </div>
+            </div>
+
+            <div class="section-group">
+                <div class="section-title">Monthly Charges</div>
+                <div class="section-detail">
+                    <div class="text-bold">
+                        RM{{ getSuppMonthlyPrice(supplines) | number : '1.2-2' }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-detail upfront-text">
+                <div>Upfront Payment
+                    <small>(To be rebated in first bill)</small>
+                </div>
+                <div *ngIf="!(isFamilyPlan$ | async)">
+                    RM{{
+                        ((topType$ | async) === topEnum.mnp && isPlanOnly)
+                        ? (0 | number : '1.2-2')
+                        : getSuppMonthlyPrice(supplines) | number : '1.2-2'
+                    }}
+                </div>
+
+                <div *ngIf="(isFamilyPlan$ | async)">
+                    RM{{
+                        (upfrontPaymentWaived$ | async)
+                        ? (0 | number : '1.2-2')
+                        : getSuppMonthlyPrice(supplines) | number : '1.2-2'
+                    }}
+                </div>
+            </div>
+            
+            <ng-container *ngIf="isFamilyPlan$ | async">
+                <div class="section-group">
+                    <ng-container *ngTemplateOutlet="templateRebate"></ng-container>
+                </div>
+            </ng-container>
+            <!-- 
+                Rule:
+                1. Device -> device.isneptune_subsidy = false
+                2. Family line -> device_combo_subsidy = false
+                3. Plan -> show whenever value is there
+            -->
+            <ng-container *ngIf="!(device$ | async) || (device$ | async)?.is_neptune_subsidy === false">
+                <div class="section-group" data-tag="rebate" *ngIf="(supplementaryDataLabel$ | async) as rebate">
+                    <div class="section-detail upfront-text">
+                        <div class="text-bold" [innerHTML]="rebate | safeHtml"></div>
+                    </div>
+                </div>
+            </ng-container>
+        </section>
+    </ng-container>
+</ng-template>

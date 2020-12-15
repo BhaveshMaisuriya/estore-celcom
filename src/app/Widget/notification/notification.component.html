@@ -1,0 +1,25 @@
+<!-- <div class="notification__main">
+  <div class="notification__close-button icon is-icon-close" (click)="closeNotification($event)"></div>
+  <div class="notification__content">
+    <ng-content></ng-content>
+  </div>
+</div> -->
+
+
+
+<div class="m-notification" [class.is-open]=" isNotificationOpen" [class.is-closed]="!isNotificationOpen">
+  <div class="m-notification__close-button icon is-icon-close" (click)="closeNotification($event)"></div>
+
+  <marquee class="m-notification__marquee"  >
+    <p>All-new Celcom is ready! Still want the former website experience?
+      <a href="https://www.celcom.com.my/personal" target="_blank">Click here
+        <span class="cta__icon icon is-icon-arrow"></span>
+      </a>
+    </p>
+  </marquee>
+
+   
+   
+  
+
+</div>

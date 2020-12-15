@@ -1,0 +1,59 @@
+button {
+    width: 131px;
+    height: 40px;
+    border-radius: 280px;
+}
+
+#expiry-text {
+    color: #333333;
+    margin-top: 16px;
+    font-size: 14px;
+}
+#resend-text {
+    margin: 8px 0 24px;
+    font-size: 14px;
+    a {
+        font-weight: bold;
+        text-decoration: underline;
+        color: #009bdf;
+        cursor: pointer;
+
+        &.disabled {
+          cursor: not-allowed;
+          color: #999999;
+        }
+    }
+}
+.tnc-container {
+    text-align: center;
+}
+
+.count-down {
+  color: #ff9700;
+  font-weight: bold;
+
+  &.count-down-end {
+    color: #f44236;
+  }
+}
+
+.otp-text {
+    font-size: 14px;
+}
+
+.celcom-box {
+    max-width: 328px;
+    padding: 0;
+}
+
+.general-error {
+    .text-danger {
+        &::before {
+            content: '';
+            margin-right: 0;
+        }
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+}

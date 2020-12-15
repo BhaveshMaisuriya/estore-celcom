@@ -1,0 +1,117 @@
+[
+    {
+        "penaltyCheck": {
+            "status": true,
+            "endDate": null,
+            "productPromotionPartNumber": "PB19090",
+            "productPromotionId": "1-15XX9XVC",
+            "exception": false,
+            "current_plan": "PB19090",
+            "eligible_contract_extend": false,
+            "device_upfront_penalty": 0,
+            "leftMonth": 23
+        },
+        "openOrder": {
+            "status": true,
+            "exception": false,
+            "outputOpenOrderValidationResp": {
+                "Error_spcMessage": "",
+                "OrderStatus": "",
+                "orderNumber": "",
+                "serialNumber": "0132646295",
+                "openOrderFlag": "N",
+                "outletId": "",
+                "OrderId": "",
+                "Error_spcCode": ""
+            },
+            "message": null
+        },
+        "blackList": {
+            "blacklistChkResponse": {
+                "blacklistIndicator": "No"
+            },
+            "status": true,
+            "exception": false,
+            "blacklistIndicator": "No",
+            "message": null
+        },
+        "productEligibility": {
+            "status": true,
+            "message": "Plan is eligible for this user",
+            "exception": false,
+            "process_type": "upgrade"
+        },
+        "customer_eligibility": {
+            "status": true,
+            "exception": false,
+            "message": "Eligible for device bundle"
+        },
+        "golden_number_note": {
+            "status": true,
+            "message": ""
+        },
+        "callBaring": {
+            "queryFirstAppUsageResponse": {
+                "callBarDetails": {
+                    "elementId": "0",
+                    "callbarReason": ""
+                },
+                "bADetailsRetrieve": {
+                    "paymentMethod": "",
+                    "creditCardVerificationNumber": ""
+                },
+                "balanceSummaryDetails": {
+                    "cmuBalanceSummaryVbc": [
+                        {
+                            "TotalDue": "0",
+                            "latestAmountDue": "-810",
+                            "dueNow": "810",
+                            "unbilledUsage": "854.6"
+                        }
+                    ]
+                }
+            },
+            "exception": false,
+            "status": true,
+            "response": "",
+            "message": null
+        },
+        "upfront_payment": {
+            "status": false,
+            "message": "Sorry the number keyed in is not eligible for upfront waiver (Guna Celcom) promotion. For more info, please call 1111 from your Celcom mobile.",
+            "plan": "1",
+            "exception": false
+        },
+        "contract_check": {
+            "message": "You have an active EasyPhone contract. Please contact the nearest blue cube center to change your plan.",
+            "status": false,
+            "exception": false,
+            "autopayment": "Y"
+        },
+        "star_eligibility": {
+            "status": false,
+            "message": "Oops! You\u2019ve changed your plan for more than the allowed limit within this bill cycle.",
+            "response": {
+                "notAllowed": 0,
+                "plan": "40.0000",
+                "pass": "70.0000",
+                "penalty": 0,
+                "upfront": "500",
+                "device": "1678",
+                "is_same": 1,
+                "same_pass": 0,
+                "same_plan_type": 1,
+                "plan_los": 10.066666666667,
+                "device_contract": 0,
+                "pass_contract": 1,
+                "pass_exist": true,
+                "device_exist": true
+            },
+            "change_itemtype": 0,
+            "is_ultra": 1,
+            "exception": false,
+            "not_allowed": 1
+        },
+        "validated_id": "46713"
+    }
+]

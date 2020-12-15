@@ -1,0 +1,293 @@
+<app-DetailBannerTextLeft style="width:100%" *ngIf="is404; else isFound" [data]="data404"></app-DetailBannerTextLeft>
+<ng-template #isFound>
+    <app-page-loader *ngIf="isLoading; else ready"></app-page-loader>
+    <ng-template #ready>
+
+        <div class="section-group theme-material">
+          <section class="section no-counter referal-banner" *ngIf="(plan$ | async)?.referrer_data && referalId">
+            <ng-container *ngIf="(plan$ | async) as plan">
+              <div class="campaign_container no-counter col-lg-12 col-md-6" *ngIf="plan?.referrer_data && referalId">
+                  <div class="referal-text" [innerHTML]="plan?.referrer_data | safeHtml"></div>
+                  <div class="promo-text"><h5>Referral Code: {{referalId}}</h5></div>
+              </div>
+            </ng-container>
+          </section>
+
+          <!-- # Prepaid campaign - Dynamic sim starts -->
+          <ng-container *ngIf="(plan$ | async) as plan">
+            <section
+              *ngIf="plan?.prepaid_campaign"
+              class="section no-counter referal-banner"
+              [ngStyle]="getPrepaidBannerStyle(plan?.prepaid_campaign?.banner_image)"
+            >
+              <div class="campaign_container col-lg-12 col-md-6">
+                <div class="referal-text">
+                  <div>
+                    <strong [innerHTML]="plan?.prepaid_campaign?.banner_title | safeHtml"></strong>
+                  </div><br>
+                  <div [innerHTML]="plan?.prepaid_campaign?.banner_subtitle | safeHtml"></div>
+                </div>
+              </div>
+            </section>
+          </ng-container>
+          <!-- # Prepaid campaign - Dynamic sim end -->
+
+          <aside class="side-summary-container">
+            <app-side-summary
+                [isLoading]="isLoading"
+                [overrideTotalPrice]="true"
+                [totalPrice]="totalPayment"
+            ></app-side-summary>
+          </aside>
+
+            <section
+              class="section no-counter"
+              *ngIf="removeHTMLTags((campaignMviva$ | async)?.desktop_content) as strippedText"
+            >
+                <div class="section-content clm-container" [innerHTML]="strippedText | safeHtml"></div>
+            </section>
+
+            <div class="section" id="section1">
+
+              <div class="section-title">
+                <h1>Plan</h1>
+              </div>
+
+              <div class="section-content">
+                <div class="card-wrapper">
+
+                  <ng-container *ngFor="let plan of [(plan$ | async)]">
+                    <app-plan-card
+                      [title]="plan?.prepaid_pack?.name || plan.name"
+                      [pricetag]="plan?.prepaid_pack?.key_text || plan.key_text"
+                      [selected]="true"
+                      [useMaterialTheme]="true"
+                      [promotion_badge]="promotionBadge"
+                      [promotion_text]="promotionText"
+                      [footerTemplate]="(plan?.prepaid_pack?.offer || plan.offer) ? footer : null"
+                      [collapsibleFooter]="false"
+                      [pricetagTemplate]="pricetagTemplate"
+                    >
+
+                      <ng-template #footer>
+                        <div [innerHTML]="(plan?.prepaid_pack?.offer || plan.offer) | safeHtml">
+                        </div>
+                      </ng-template>
+
+                      <ng-template #pricetagTemplate>
+                        <span class="prepaid-pricetag" [innerHTML]="(plan?.prepaid_pack?.key_text || plan.key_text) | safeHtml"></span>
+                      </ng-template>
+
+                    </app-plan-card>
+                  </ng-container>
+
+                </div>
+
+                <app-notes>
+                    <div class="note__content">
+                      <div class="note__content__inner">NOTE:</div>
+                      <ul class="note__details">
+                        <li class="note__details__description">
+                          Only users 12 years old and above are eligible for this purchase.
+                        </li>
+                        <li class="note__details__description">
+                          Each user may only register up to 5 prepaid numbers.
+                        </li>
+                        <li class="note__details__description">
+                          Once the starter pack is successfully delivered, user will need to perform self-registration via Celcom Life.
+                        </li>
+                      </ul>
+                    </div>
+                </app-notes>
+              </div>
+
+            </div><!-- section-1 -->
+
+            <ng-container *ngIf="(plan$ | async)?.internet_passes?.length">
+              <div class="section" *ngIf="(plan$ | async)?.internet_passes[0]?.items?.length">
+                <div class="section-title">
+                  <h1>Internet Pass</h1>
+                </div>
+
+                <div class="section-content dynamic-sim-content">
+                  <div class="mb-estore-2">
+                      Select passes and enjoy high-speed internet
+                  </div>
+                  <ng-container *ngIf="(plan$ | async)?.internet_passes[0].category_tabs?.length">
+                    <ul class="tab redeem-tabs inline">
+                      <li
+                        *ngFor="let tab of (plan$ | async)?.internet_passes[0].category_tabs"
+                        [ngClass]="{
+                          'active': tab?.name === (internetPassType$ | async)
+                        }"
+                        (click)="selectInternetPassCategory(tab?.name)">
+                        <a href="javascript:void(0);">{{ tab?.name }}</a>
+                      </li>
+                    </ul>
+                  </ng-container>
+                  <app-internet-pass-wrapper
+                    [passes]= "prepaidInternetPasses"
+                    [selectedSku]= "selectedInternetPassSku"
+                    (onSelect)= "handleSelectedInternetPass($event)"
+                  >
+                  </app-internet-pass-wrapper>
+                  <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col p-0 form-group">
+                            <mat-checkbox 
+                                #internetPassCheckbox
+                                [checked]="!selectedInternetPass"
+                                class="reload-checkbox"
+                                (change)="toggleCheckboxInternetPass($event)">
+                                I don't need Internet Pass
+                            </mat-checkbox>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                  </div><!-- /.container -->
+                </div>
+              </div>
+            </ng-container><!-- section-2 Internet Pass -->
+
+            <div class="section" *ngIf="(plan$ | async)?.credit_reload?.length">
+              <div class="section-title">
+                <h1>Credit Reload</h1>
+              </div>
+              <div class="section-content dynamic-sim-content">
+                <div class="mb-estore-2">
+                  Select reload amount
+                </div>
+                <app-card-options
+                  [isLoading] = "false"
+                  [isReloadCard] = "true"
+                  [options] = "reloadOptions"
+                  [selectedOption] = "selectedCreditReload?.sku"
+                  (onSelect) = "handleSelectedReloadOption($event)"
+                >
+                </app-card-options>
+
+                <div class="container-fluid">
+                  <div class="row mb-3">
+                      <div class="col p-0 form-group">
+                          <mat-checkbox 
+                              #creditReloadCheckbox
+                              [checked]="!selectedCreditReload"
+                              class="reload-checkbox"
+                              (change)="toggleCheckboxReload($event)">
+                              I don't need Credit Reload
+                          </mat-checkbox>
+                      </div><!-- /.col -->
+                  </div><!-- /.row -->
+                </div><!-- /.container -->
+
+              </div>
+            </div><!-- section-3 Credit Reload -->
+
+            <div class="section" id="section2">
+                <div class="section-title">
+                    <h1>Type of Purchase</h1>
+                </div>
+                <div class="section-content" *ngIf="loadNumber">
+                    <app-typeof-purchase-wrapper
+                        [newline]="true"
+                        [mnp]="isMnp"
+                        [cobp]="false"
+                        [showOptions]="true"
+                        [customChildren]="true"
+                        [selectedType]="typeOfPurchase$ | async"
+                        (onSelect)="selectTypeOfPurchase($event)"
+                    ></app-typeof-purchase-wrapper>
+
+                    <ng-container
+                        *ngIf="(typeOfPurchase$ | async) === typeOfPurchaseOptions.newline then newLineBlock"
+                    ></ng-container>
+
+                    <ng-container
+                        *ngIf="(typeOfPurchase$ | async) === typeOfPurchaseOptions.mnp then mnpBlock"
+                    ></ng-container>
+                </div>
+            </div>
+
+            <div class="section" #section3 id="section3" (deferLoad)="loadNumber = true">
+                <div
+                  class="section-title"
+                  [ngClass]="{'inactive': ((typeOfPurchase$ | async) !== typeOfPurchaseOptions.newline && !flags.showEKyc)}"
+                >
+                    <h1>Personal Information Detail</h1>
+                </div>
+                <div class="section-content" *ngIf="(typeOfPurchase$ | async) === typeOfPurchaseOptions.newline">
+                    <app-prepaid-nric-check (passPrePaidNRICSts)="getPrePaidNricStatus($event)">
+                    </app-prepaid-nric-check>
+                    <ng-container *ngIf="showPersonalDetailsBlock">
+                        <hr class="top-margin">
+                        <p class="Insert-your-personal">Insert your personal detail to register</p>
+                        <app-personal-information [idDetails]="idDetails"></app-personal-information>
+                    </ng-container>
+                </div>
+
+                <div class="kycDetails" *ngIf="flags.showEKyc">
+
+                  <app-ekyc-wrapper [showPassport]="flags.showPassport" (onEkycSuccess)="ekycSuccess($event)"></app-ekyc-wrapper>
+
+                  <div
+                    class="row m-0"
+                    *ngIf="checkoutButtonEnabled$ | async"
+                  >
+                    <div class="col-lg-6 p-0">
+                      <div class="chekout-without-supplymentary">
+                        <img class="" src="assets/img/checkout_arrow.svg" alt="checkout-img"/>
+                        <p>Click <strong>“Checkout”</strong> to complete your order</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+            </div>
+
+            <!-- to here, if you want to see old version -->
+        </div>
+    </ng-template>
+</ng-template>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer" class="footer_fix"  [ngClass]="{'footer-margin' : isCSAgentDealer}"></app-agent-footer>
+<app-notification-error *ngIf="showPopup" [data]="popupData"></app-notification-error>
+
+
+<!-- * New Line Template -->
+<ng-template #newLineBlock>
+    <app-number-chooser
+      *ngIf="!mobile_number"
+      (onSelectNumber)="onSelectNumber($event)"
+      [additionalRequestPayload] = "additionalRequestPayload"
+    ></app-number-chooser>
+
+    <div class="row m-0 mt-4" *ngIf="mobile_number">
+        <div class="col-lg-6 p-0">
+            <p>Selected Mobile Number</p>
+            <div class="principle-line">
+                <img alt="user-icon" src="assets/img/svg/icons/user_principle_line.svg">
+                <div class="principle-line-desc">
+                    <span>Principal Line</span>
+                    <p>{{ mobile_number}}</p>
+                </div>
+                <img
+                    src="assets/img/close_icon.svg"
+                    alt="remove principle"
+                    (click)="onSelectNumber('')"
+                />
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- * MNP Template -->
+
+<ng-template #mnpBlock>
+    <div class="mt-4">
+        <app-mnp-wrapper
+            type="Prepaid"
+            [showPassport]="flags.showPassport"
+            (onSuccessEligible)="handleMnpEligible($event)"
+            (onMnpReset)="handleMnpReset()"
+        ></app-mnp-wrapper>
+    </div>
+</ng-template>

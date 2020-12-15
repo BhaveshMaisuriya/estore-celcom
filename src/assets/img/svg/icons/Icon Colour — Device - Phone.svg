@@ -1,0 +1,8 @@
+<svg id="Icon_Colour_Device_Phone" data-name="Icon Colour — Device / Phone" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="Icon_Device_Phone" data-name="Icon — Device / Phone">
+    <rect id="Rectangle_1027" data-name="Rectangle 1027" width="48" height="48" fill="#009bdf" opacity="0"/>
+    <path id="Path_4031" data-name="Path 4031" d="M371-107a1,1,0,0,1,1,1v36a1,1,0,0,1-1,1H349a1,1,0,0,1-1-1v-36a1,1,0,0,1,1-1h22m0-2H349a3,3,0,0,0-3,3v36a3,3,0,0,0,3,3h22a3,3,0,0,0,3-3v-36a3,3,0,0,0-3-3Z" transform="translate(-336 112)" fill="#009bdf"/>
+    <path id="Path_4032" data-name="Path 4032" d="M363-103h-6a1,1,0,0,1-1-1,1,1,0,0,1,1-1h6a1,1,0,0,1,1,1A1,1,0,0,1,363-103Z" transform="translate(-336 112)" fill="#009bdf"/>
+  </g>
+  <rect id="Rectangle_1920" data-name="Rectangle 1920" width="24" height="38" transform="translate(12 5)" fill="#009bdf" opacity="0.2"/>
+</svg>

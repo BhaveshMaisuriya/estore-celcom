@@ -1,0 +1,111 @@
+<section [ngStyle]="{'display':IsXpax == true ? 'none' : 'block' }" *ngIf="TableComparisonResponse != null" class="u-section {{TableComparisonResponse.BackgroundColor}} has-section-padding has-border" style="padding-top: 0;">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div data-js-module="accordion" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+        <div class="c-tab-content is-active" data-js-item="accordion-content-tabs" id="1" data-js-height="659" aria-expanded="true">
+          <h2 class="c-tab-content__headline">{{data.Headline}}</h2>
+          <p class="c-tab-content__subline">{{data.Description}}</p> 
+        </div>
+        <!-- <div></div> -->
+        <section class="u-section has-section-padding has-border">
+          <div class="section__inner">
+            <div class="section__content">
+              <div class="c-plan-comparison">
+                <div class="plan-comparison__list" data-js-module="accordion" data-js-options='{"closeClass": "", "openClass": "is-active", "toggleContentVisibility": false, "context": "plan-comparison"}'>
+                  <div class="plan-comparison__list__item" *ngFor="let item of TableComparisonResponse;let i=index">
+                    <div class="plan-comparison__list__item__header" data-js-item="accordion-btn-plan-comparison" [attr.href]="item.AtrHref">
+                      <div class="plan-comparison__list__item__level-indicator {{item.IndicatorClass}}"></div>
+                      <div class="plan-comparison__list__item__header__level-name">{{ item.ProductText  }}</div>                      
+                      <div class="plan-comparison__list__item__header__key-figures">{{ item.KeyFiguresText }}</div>
+                      <h4 class="plan-comparison__list__item__header__key">{{ item.KeyText }}</h4>
+                    </div>
+                    <div class="plan-comparison__list__item__content" data-js-item="accordion-content-plan-comparison" id="rm-{{i}}">
+                      <ul>
+                        <ng-container *ngFor="let detail of item.TableInfo">
+                          <li class="plan-comparison__list__item__content__detail" [ngClass]="{'is-highlighted': detail.heighlight == '1'}"> 
+                            <span class="plan-comparison__list__item__content__detail__description">
+                                {{ detail.headline }}
+                            </span>
+                          </li>
+                        </ng-container>
+                      </ul>
+                      <div class="plan-comparison__list__item__actions">
+                        <div class="plan-comparison__list__item__actions__primary" *ngIf="item.BuynowText!=''"> 
+                          <a class="c-cta--default" data-css="c-cta" (click)="ManageContentNavigation(item.BuynowLink);defaultOnClick();" href="{{item.BuynowLink}}">
+                                {{item.BuynowText}}<i class="icon is-icon-arrow"></i>
+                          </a> 
+                        </div>
+                        <div class="plan-comparison__list__item__actions__secondary" *ngIf="item.knowMoreText!=''" > 
+                          <a class="link" (click)="ManageContentNavigation(item.knowMoreLink);defaultOnClick();" href="{{item.knowMoreLink}}">{{item.knowMoreText}} <i class="icon is-icon-arrow"></i></a>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section [ngStyle]="{'display':IsXpax == true ? 'block' : 'none', 'background-image': 'url('+DesktopBackgroundImage+')' }" *ngIf="XpaxTableComparisonResponse != null" class="u-section {{TableComparisonResponse.BackgroundColor}} has-section-padding has-border xpax-table-comparison" style="padding-top: 0;">
+  <div class="section__inner">
+      <div class="section__content is-container">
+        <div data-js-module="accordion" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+          <!-- <div></div> -->
+          <section class="u-section has-section-padding has-border">
+            <div class="section__inner">
+              <div class="section__content">
+                <div class="c-plan-comparison">
+                  <ng-container *ngIf="XPaxTabData.length>1">
+                    <cc-tabs-new [data]="XPaxTabData" (OnSelectedTab)="OnTabSelectFromChildComponent($event);"></cc-tabs-new>
+                  </ng-container>
+                  <div class="plan-comparison__list" data-js-module="accordion" data-js-options='{"closeClass": "", "openClass": "is-active", "toggleContentVisibility": false, "context": "plan-comparison"}'>
+                    <div class="plan-comparison__list__item" *ngFor="let item of XpaxTableComparisonResponse;let i=index">
+                        <div class="is-pop" [ngStyle]="{'background-color': item.FeaturedBGColor}"> 
+                            <span class="popular-icon"><img src="{{item.FeaturedIcon}}"/></span>
+                            <span class="popular-text" [innerHtml]="item.FeaturedTitle"></span>
+                          </div>
+                      <div class="plan-comparison__list__item__header" data-js-item="accordion-btn-plan-comparison" [attr.href]="item.AtrHref">
+                        <div class="plan-comparison__list__item__level-indicator"></div>
+                        <h4 class="plan-comparison__list__item__header__key mobile-hide" [innerHtml]="item.Title"></h4>
+                        <div class="plan-comparison__level-name previous-title" [innerHtml]="item.PreviousTitle"></div>                   
+                        <div class="plan-comparison__level-name" [innerHtml]="item.Subtitle"></div>
+                        <h4 class="plan-comparison__list__item__header__key desktop-hide" [innerHtml]="item.Title"></h4>
+                      </div>
+                      <div class="plan-comparison__list__item__content" data-js-item="accordion-content-plan-comparison" id="rm-{{i}}">
+                        <ul>
+                          <li class="plan-comparison__list__item__content__detail" [innerHtml]="item.Description"></li>
+                          <ng-container *ngFor="let detail of item.PlanInfo">
+                            <li class="plan-comparison__list__item__content__detail" [ngClass]="{'is-highlighted': detail.Highlight == '1'}"> 
+                              <span class="plan-comparison__list__item__content__detail__description" [innerHtml]="detail.HighlightRow">
+                              </span>                            
+                            </li>
+                          </ng-container>
+                        </ul>
+                        <div class="plan-comparison__list__item__actions">
+                          <div class="plan-comparison plan-subscription-text mobile-hide">Dial {{item.SubscriptionText}}</div>
+                          <div class="plan-comparison plan-subscription-text desktop-hide"><a href="tel:{{item.SubscriptionText}}">Dial {{item.SubscriptionText}}</a></div>
+                          <div class="plan-comparison__list__item__actions__primary" *ngIf="item.BuynowText!=''"> 
+                            <a class="c-cta--default" data-css="c-cta" (click)="ManageContentNavigation(item.BuyMoreLink);defaultOnClick();" href="{{item.BuyMoreLink}}">
+                                  {{item.BuyMoreText}}
+                            </a> 
+                          </div>
+                          <div class="plan-comparison__list__item__actions__secondary" *ngIf="item.knowMoreText!=''" > 
+                            <a class="link" (click)="ManageContentNavigation(item.knowMoreLink);defaultOnClick();" href="{{item.KnowMoreLink}}">{{item.ActionLinkText}} <i class="icon is-icon-arrow"></i></a>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+</section>

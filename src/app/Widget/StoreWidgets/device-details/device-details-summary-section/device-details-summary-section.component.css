@@ -1,0 +1,1220 @@
+.item-bottom8 {
+	padding-bottom: 8px;
+}
+.is-telco-day {
+	padding-bottom: 16px !important;
+}
+.additional-info {
+	width: 40%;
+	display: inline-block;
+}
+.bold-font {
+	font-weight: bold;
+}
+.item_top8 {
+	padding-top: 8px;
+	line-height: 1em;
+}
+.item-bot25 {
+	padding-bottom: 24px;
+}
+.autoBilling {
+	font-size: 14px;
+	padding-bottom: 20px;
+}
+.campaign_mviva {
+	word-break: break-word;
+}
+.lifestyle-plans {
+	font: normal normal 14px Lato;
+    font-stretch: normal;
+    letter-spacing: normal;
+	text-align: left;
+	width: 75%;
+}
+.lifestyle-section {
+	padding-top: 16px;
+}
+/*pre order css start*/
+
+.pre_order_content {
+	line-height: 1.5em;
+	font-size: 16px;
+}
+.pre_order_content p {
+	margin: 0;
+	font-size: 14px;
+	white-space: pre-wrap;
+	max-width: 75%;
+}
+.free-sim-card-text {
+	margin-top: -15px;
+}
+/*pre order css end*/
+
+/* MNP new added code start */
+
+.mnp-summary-lines {
+	font: normal normal 12px Lato;
+	font-stretch: normal;
+	line-height: 1.17;
+	letter-spacing: normal;
+	text-align: left;
+	padding-top: 8px;
+}
+.mnp-subscription-charges {
+	line-height: 0;
+	font-size: 12px;
+}
+.mnp-sim-left {
+	font: normal normal 14px Lato;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+	padding-top: 16px;
+}
+.mnp-cart-grid-content {
+	padding-top: 16px;
+}
+.mnp-sim-right {
+	font: normal normal 14px Lato;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: right;
+	padding-top: 0px;
+}
+.mnp-lines {
+	font: 14px Lato;
+	line-height: 1.5em;
+}
+.plan-applies {
+	font: normal normal 14px Lato;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+	display: inline;
+}
+.upfront-waived {
+	font: normal normal 14px Lato;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+}
+.upfront-waived-eligible {
+	display: block;
+	margin-top: 15px;
+}
+
+/* MNP new added code end */
+.summary-grid-left {
+	display: inline-block;
+	width: 427px;
+	height: 19px;
+	font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: 1.3;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+	font-size: 14px;
+}
+
+/* Celcom Drop_3 Details Page Start */
+
+.is-container {
+	max-width: 87%;
+}
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	background-color: #009ade;
+}
+.proceed_anchor {
+	cursor: pointer;
+}
+.detail_samsung_galaxy {
+	font-size: 32px;
+}
+.c-breadcrumb--default {
+	padding: 0 18rem 1rem 26rem;
+}
+.is-margin-left-2 {
+	margin-left: 2em;
+}
+.has_margin_top_2 {
+	margin-top: 2em;
+}
+.is-padding-2 {
+	padding: 2em 0;
+}
+.slider-container {
+	width: 300px;
+	margin: auto;
+}
+.has-line-through {
+	text-decoration: line-through;
+}
+.o_plan {
+	margin-bottom: 0;
+	border: none;
+	margin-top: 0;
+}
+.plan_content {
+	padding-bottom: 0!important;
+}
+.plan__content__wrapper>.plan__content-detail {
+	font-size: 14px;
+}
+.plan__content__wrapper>.plan__content-detail>.plan__content-detail__description {
+	font-size: 18px;
+	font-weight: bold;
+}
+.plan__delivary>span {
+	font-size: 18px;
+	font-weight: bold;
+}
+.has-border-bottom {
+	border-bottom: 1px solid #ccc;
+}
+.device_details_grid {
+	margin: 1.7em 0 2em 0;
+}
+.details-slider-default {
+	width: 300px;
+}
+.slider-list-wrapper {
+	width: 300px;
+	height: 300px;
+}
+.is-details-previous {
+	left: 5px !important;
+	border-radius: 50% 50% 50% 50%;
+	width: 30px;
+	opacity: 0.47;
+	background-color: #000 !important;
+}
+.is-details-next {
+	left: 15em;
+	right: unset !important;
+	border-radius: 50% 50% 50% 50%;
+	width: 30px;
+	opacity: 0.47;
+	background-color: #000 !important;
+}
+.is-arrow-prev {
+	font-size: 30px;
+	margin-left: 8px;
+	-ms-transform: rotate(180deg);
+	/* IE 9 */
+	-webkit-transform: rotate(180deg);
+	/* Safari 3-8 */
+	transform: rotate(180deg);
+	color: #fff;
+}
+.is-arrow-next {
+	font-size: 30px;
+	margin-left: 8px;
+	color: #fff;
+}
+.plan__content__wrapper {
+	padding: 0;
+	list-style-type: none;
+	line-height: 2em;
+	width: 160px;
+}
+.Estimated-Delivery {
+	width: 364px;
+	height: 16px;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.limited_stock__container {
+	width: 120px;
+	height: 20px;
+	background-color: #008c8d;
+	border-radius: 10px;
+}
+.Limited-Stock {
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: 0;
+}
+.content__details {
+	width: 140px;
+	height: 74px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	text-align: center;
+	cursor: pointer;
+}
+.Oval {
+	width: 16px;
+	height: 16px;
+	border-radius: 50px;
+	margin: 1em auto;
+}
+.is-bg-color-midnight_black {
+	background-color: #000;
+}
+.is-bg-color-orchid_gray {
+	background-color: #6e6e6e;
+}
+.is-bg-color-arctic_silver {
+	background-color: #c6c6c6;
+}
+.is-bg-color-coral_blue {
+	background-color: #4a65bc;
+}
+.is-bg-color-maple_gold {
+	background-color: #bca17b;
+}
+.is-bg-color-rose_pink {
+	background-color: #dfb0bd;
+}
+.choose__content {
+	display: inline-block;
+	padding: 0;
+}
+.choose__content_detail {
+	margin: 5px;
+	display: inline-block;
+}
+.details__choose_content_header {
+	height: 22px;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+}
+.is-selected {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+.storage__details.is-selected {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+.storage__details {
+	width: 140px;
+	height: 46px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.storage__details__description {
+	text-align: center;
+	margin: 1em;
+}
+.choose__content_detail:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+@media (max-width: 768px) {
+	.details__mobile_center {
+		text-align: center;
+	}
+	.detail_samsung_galaxy {
+		font-size: 28px;
+	}
+	.campaign_mviva {
+		max-width: 65%;
+	}
+	.details__mobile_center .limited_stock__container {
+		margin: auto;
+	}
+	.details-plan .details-plan__content .plan__content__wrapper {
+		margin: auto;
+	}
+	.details__choose_content_header {
+		text-align: center;
+	}
+	.summary__add_to_cart {
+		padding: 0;
+		width: 230px;
+	}
+	.device__outerrow__right {
+		display: inline;
+		float: none;
+	}
+	.section2 {
+		line-height: 2em;
+	}
+	.device_detail_arrow {
+		margin-top: 1px;
+	}
+	.device_detail_arrow-heading {
+		margin-top: 6px;
+	}
+	.device_detial_inner {
+		width: 100%;
+	}
+	.dev-dtl-link-condition {
+		float: left;
+		margin-left: 20px;
+	}
+	.device_detail_link {
+		font-size: 14px;
+	}
+	.dev-dtl-plan-header {
+		padding-left: 3em !important;
+	}
+	.summary-grid-left {
+		display: inline-block;
+		width: 143px;
+	}
+	.plan-applies {
+		width: 157px;
+	}
+	.rebate-applies {
+		width: 175px;
+	}
+	.summary-center {
+		text-align: center;
+		bottom: 25px;
+	}
+	.is-summary-total {
+		font-size: 16px;
+	}
+	.is-summary-total>.summary-grid-left {
+		font-size: 16px;
+	}
+	.mnp-subscription-charges {
+		line-height: 1em;
+	}
+}
+/* Celcom Drop_3 Details Details Page End */
+
+.section2 {
+	margin-bottom: 12px;
+}
+.dev-dtl-plan-heading {
+	border-bottom: 1px solid #ccc;
+}
+.device_detail_link {
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: right;
+	color: #009ade;
+	text-decoration: none;
+}
+.device_detail_link_style {
+	text-decoration: none !important;
+}
+.device_detail_left_link {
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+}
+.device_detial_inner {
+	width: 100%;
+	overflow-x: visible !important;
+}
+.device__outerrow__right {
+	display: inline;
+	margin: 3px;
+}
+.device_outerrow__left {
+	display: inline;
+}
+.device-detail-plan-border {
+	border: 1px solid #d8d8d8;
+	height: 80%;
+}
+.device-detail-plan-bordernone {
+	border-style: none !important;
+}
+.select-dtls {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.select-dtls-description {
+	text-align: center;
+	margin: 1em;
+}
+.dev-dtl-select {
+	margin: 10px 0px;
+}
+.is-selected {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+.dev-dtl-condition {
+	margin-top: auto;
+	position: absolute;
+	bottom: 100px !important;
+	width: 100%;
+}
+.dev-dtl-bold {
+	font-weight: bold;
+}
+.dev-dtl-color {
+	color: #000 !important;
+}
+.dev-dtl-desc-font {
+	font-size: 12px;
+}
+.dev-dtl-right-link {
+	margin-right: 23px;
+}
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .device-detail-plan-border .plan-comparison__list__item__header.is-active::after, .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .device-detail-plan-border .plan-comparison__list__item__header::after {
+	margin-top: 1rem;
+	border: solid 2px #979797;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	z-index: 1000;
+	border-radius: 50%;
+	float: left;
+	left: 13px;
+}
+.c-plan-comparison .plan-comparison__list .plan-comparison__list__item .device-detail-plan-border .plan-comparison__list__item__header.is-active::after {
+	margin-top: 1rem;
+	border: solid 2px #979797;
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	z-index: 1000;
+	border-radius: 50%;
+	float: left;
+	background-color: #009ade;
+	left: 13px;
+}
+.c-accordion--default .accordion__btn::after, .c-footer .footer__sitemap .footer__sitemap__group .footer__sitemap__group-header::after, .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .device-detail-plan-border .plan-comparison__list__item__header::after {
+	content: " ";
+}
+/*   CSS For Device Choose Number Start */
+
+.details__choose_number {
+	margin-bottom: 20px;
+}
+.Get_New_Number {
+	display: inline-block;
+	width: 141px;
+	height: 62px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.Get_New_Number__Details {
+	width: 109px;
+	height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 1em auto;
+}
+.Keep_celcom_Num__Details {
+	width: 109px;
+	height: 29.5px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 1em auto;
+}
+.Keep_celcom_Num {
+	display: inline-block;
+	width: 141px;
+	height: 62px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+	margin-left: 21px;
+}
+.choose__number__accordian .tab {
+	margin: 0;
+}
+.Get_New_Number.is-active, .Keep_celcom_Num.is-active {
+	border: solid 1px #009ade !important;
+	border-radius: 8px;
+}
+.details__choose_content_header {
+	height: 22px;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+}
+.choose__number {
+	padding: 0;
+}
+.content__number_detail {
+	margin: 10px 10px 10px 0;
+	display: inline-block;
+}
+.number__details {
+	width: 140px;
+	height: 46px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.is-selected {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+.My-Celcom-Number {
+	width: 294px;
+	height: 14px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+}
+.dev-dtl-number-select-unsucess {
+	padding-top: 20px;
+}
+.dev-dtl-number-select-unsucess p {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ec186a;
+	display: inline-block;
+}
+.number-select-unsuccess-dtls {
+	width: 140px;
+	height: 46px;
+	opacity: 0.5;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+}
+.number-select-dtls-description-num {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 3.33;
+	letter-spacing: normal;
+	text-align: center;
+}
+.unsucess-sorry {
+	width: 540px;
+	height: 67px;
+}
+.unsucess-sorry .unsucess-story-content {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 0.43;
+	letter-spacing: normal;
+	text-align: left;
+	background-color: #f3f3f3;
+	padding: 6px;
+}
+.not_eligible {
+	font-size: 12px;
+	padding: 20px 0;
+	color: #ea005a;
+}
+.warning__eligible {
+	margin-left: 10px;
+}
+.choose__number__accordian .note__tab.is-active {
+	border: none;
+}
+.note__content {
+	padding: 20px;
+	background-color: #f3f3f3;
+}
+.note__content__inner {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+}
+.note__content .note__details {
+	font-size: 14px;
+}
+.upgrade_tick_mark {
+	width: 12px;
+	margin-left: 14px;
+}
+input.search__number__input::after {
+	content: "";
+	clear: both;
+}
+/* Intially Note to be displayed*/
+
+#note.active {
+	display: block;
+}
+/* Style the tab content */
+
+.tabcontent {
+	display: none;
+	padding: 32px 0;
+}
+/*  Device Summary Section CSS Start   */
+
+#summary-section.sticky {
+	position: sticky;
+	position: -webkit-sticky;
+	bottom: 0;
+}
+
+.u-section {
+	width: 100%;
+	padding: 40px 0;
+	z-index: -1;
+}
+.summary__header {
+	background-color: #666;
+}
+.summary__list .summary_list_wrapper {
+	font-size: 14px;
+	list-style-type: none;
+	padding: 0;
+}
+.summary_list_item {
+	line-height: 1;
+	padding: 8px 0;
+}
+.summary_list_item.list__item__selected {
+	font-size: 12px;
+}
+.summary_list_item.item_selected_padding {
+	padding-bottom: 0;
+}
+.summary_list_item sup {
+	font-size: 7px;
+}
+.is-float-right {
+	float: right;
+}
+.is-text-bold {
+	font-weight: bold;
+}
+.summary__list_total {
+	padding: 24px 0 0;
+}
+.summary__list_total .summary__list__title {
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 0.75;
+	letter-spacing: normal;
+	text-align: left;
+}
+.summary__list__gst {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: right;
+	padding: 10px 0;
+}
+.summary__list__period {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.17;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 10px 0;
+}
+.summary__add_to_cart {
+	padding: 0;
+	width: 300px;
+}
+.summary__list_total .plan-comparison__list__item__actions__primary {
+	padding-top: 15px;
+	text-align: center;
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header::after {
+	content: "\f103"
+}
+.summary {
+	background-color: #fff;
+	color: #000;
+}
+.summary::after, .summary::before {
+	content: " ";
+	display: table
+}
+.summary .summary__sitemap {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 0 32px;
+	font-size: 1.4rem
+}
+.summary .summary__sitemap .summary__sitemap__group {
+	width: 100%;
+	margin: auto;
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header {
+	display: block;
+	text-decoration: none;
+	padding: 18px 2.5em;
+	background-color: #666;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #fff;
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header::after {
+	font-family: cc-icons;
+	vertical-align: middle;
+	float: right;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	transition: bottom .3s linear .3s, transform .3s linear;
+	transform: rotate(90deg);
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header.is-active::after {
+	transform: rotate(270deg)
+}
+.summary .summary__sitemap .summary__sitemap__group:first-child .summary__sitemap__group-header {
+	border-top: none
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-content {
+	padding-bottom: 1rem
+}
+.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-content:not(.is-active) {
+	padding-bottom: 0
+}
+/*   CSS for More Details and Terms and Conditions    */
+
+.features-box-dtls {
+	width: 90%;
+	margin: auto;
+	padding-bottom: 34px;
+}
+/* Acordeon styles */
+
+.features-box-tab {
+	position: relative;
+	margin-bottom: 1px;
+	width: 100%;
+	color: #fff;
+	overflow: hidden;
+	background-color: #f4f4f4;
+}
+input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+label {
+	position: relative;
+	display: block;
+	padding: 0 0 0 1em;
+	font-weight: bold;
+	line-height: 3;
+	cursor: pointer;
+	color: #009ade;
+	text-align: left;
+}
+.blue label {
+	background: #2980b9;
+}
+.features-box-tab-content {
+	max-height: 0;
+	overflow: hidden;
+	color: #000;
+	-webkit-transition: max-height .35s;
+	-o-transition: max-height .35s;
+	transition: max-height .35s;
+}
+.features-box-tab-content p {
+	margin: 1em;
+}
+/* :checked */
+
+input:checked~.features-box-tab-content {
+	max-height: 25em;
+}
+/* Icon */
+
+label::after {
+	font-family: cc-icons;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	line-height: 3;
+	text-align: left;
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+	transform: rotate(90deg);
+}
+input[type=checkbox]+label::after {
+	content: "\f103";
+	transform: rotate(90deg);
+}
+input[type=checkbox]:checked+label::after {
+	transform: rotate(270deg);
+}
+input[type=checkbox]:checked+label>span {
+	font-weight: bold;
+}
+.features-box-tab span {
+	color: #000;
+	object-fit: contain;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	text-align: left;
+}
+.dev-dtl-features-box {
+	background-color: #fff;
+}
+.features-box-heading {
+	font-size: 24px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	padding-top: 56px;
+}
+.content-sub-heading {
+	font-weight: bold;
+	font-size: 14px;
+}
+.content-sub-desc {
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.5em;
+}
+.feature-box-close {
+	width: 16px;
+	float: right;
+	margin: 20px;
+}
+.content-sub-desc-outer {
+	line-height: 0.3em;
+}
+.tnc___margin_top {
+	margin-top: 4em;
+}
+/*  device_details_modal CSS Start  */
+
+.device_details_modal {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.device_details_modal-content {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+#keyFeat_terms_Modal {
+	display: none;
+}
+#more_details {
+	display: none;
+}
+#terms_details {
+	display: none;
+}
+.choose__content_detail:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+	outline: none;
+}
+.content__number_detail:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+	outline: none;
+}
+.select-dtls:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+	outline: none;
+}
+.benji-img {
+	width: 97.1px;
+	object-fit: contain;
+	margin-bottom: 2rem;
+}
+.summary-center {
+	text-align: center;
+}
+.item-bot16 {
+	padding-bottom: 16px;
+	font-size: 14px;
+}
+.item-bot32 {
+	padding-bottom: 32px;
+}
+.item-bot8 {
+	padding-bottom: 16px;
+}
+.item-bot5 {
+	padding-bottom: 16px;
+}
+.rent-own-plan {
+	margin-top: 16px;
+}
+.up_front_right {
+	font-size: 14px;
+}
+@media (min-width: 768px) {
+	.summary .summary__sitemap {
+		width: auto;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-pack: justify;
+		justify-content: space-between
+	}
+	.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header::after {
+		display: none
+	}
+	.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-header {
+		pointer-events: none;
+		height: 1em;
+		border: none;
+		font-size: 18px;
+		font-weight: normal;
+		font-style: normal;
+		font-stretch: normal;
+		line-height: 1;
+		letter-spacing: normal;
+		text-align: left;
+		color: #fff;
+	}
+	.summary__item_col {
+		margin: 0;
+	}
+	.summary__list {
+		padding-right: 40px;
+	}
+	.supplementary-lines {
+		padding: 32px 0 0 0px;
+	}
+}
+@media (max-width: 767px) {
+	.pre_order_content p {
+		max-width: 100%;
+	}
+	.summary-grid-content {
+		line-height: 20px;	
+	}
+	.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-content.is-active {
+		overflow: hidden;
+		height: auto;
+		border-bottom: 1px solid #ccc;
+	}
+	.summary .summary__sitemap .summary__sitemap__group .summary__sitemap__group-content:not(.is-active) {
+		padding-bottom: 0;
+		height: 0;
+		overflow: hidden;
+	}
+	.display__block {
+		display: block;
+		line-height: 0.5em;
+	}	
+	.item-bot8 {
+		padding-bottom: 8px;
+	}
+	.item-bot5 {
+		padding-bottom: 5px;
+	}
+	.mnp-subscription-charges {
+		padding-top: 5px;
+	}
+	.padding_for_dp {
+		padding-bottom: 16px;
+	}
+	.is-container {
+		max-width: 95%;
+		padding: 0 1.5rem;
+	}
+	.up-front-payment {
+		display: inline-block;		
+	}
+	.up-front-payment .to-be-rebate {
+		display: block;
+		line-height: 1em;
+	}
+	.contract_mobile {
+		display: block;
+	}
+}
+@media (max-width: 769px) {
+	.summary-list-items {
+		width: 60%;
+		display: inline-block;
+	}
+}
+
+@media (min-width: 769px) {
+	.campaign_mviva {
+		max-width: 80%;
+	}
+}
+/* new reframe device summmary start*/
+
+.gst-include {
+	font-size: 12px;
+	font-weight: normal;
+	margin: 0;
+	text-align: right;
+}
+.new-number, .principle-line {
+	font-size: 14px;
+}
+.summary-samsung {
+	height: 127.5px;
+	padding-bottom: 32px;
+}
+.summary-grid-content {
+	font-size: 14px;
+}
+.summary-content-inner {
+	line-height: 1.3em;
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+
+.summary-grid-right {
+	float: right;
+	text-align: right;
+}
+.has-border-bottom .summary-grid-border {
+	padding-bottom: 20px;
+}
+.summary-grid-border {
+	padding-bottom: 16px;
+}
+.summary-link-style {
+	text-decoration: none !important;
+}
+.is-font-bold {
+	font-weight: bold;
+}
+.is-summary-total {
+	font-size: 24px;
+	font-weight: bold;
+	line-height: 1.5;
+	padding-top: 22px;
+}
+.is-summary-total>.summary-grid-left {
+	font-size: 24px;
+}
+.upfront_device {
+	padding-top: 8px;
+}
+.upfront_device_main {
+	margin-bottom: 16px;
+}
+.padding_top8 {
+	padding-top: 8px;
+}
+.monthly_charges_easyp {
+	line-height: 1.4em;
+}
+/* new reframe device summmary end*/
+
+/*  Supplementary Lines Summary Section */
+
+.supplementary-line-icon {
+	width: 44px;
+	height: 127.5px;
+}
+.has-border-bottom {
+	border-bottom: 1px solid #ccc;
+}
+.mnp-subscription-charges {
+	line-height: 1.3;
+	font-size: 14px;
+}
+.gold-cart-grid-content {
+	line-height: 3em;
+	font-size: 16px;
+}
+.golden-number-content {
+	display: block;
+	line-height: 2em;
+}

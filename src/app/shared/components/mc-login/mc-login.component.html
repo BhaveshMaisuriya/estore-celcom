@@ -1,0 +1,93 @@
+<ng-container *ngIf="step == 1 || minimalist">
+    <form [formGroup]="loginForm" class="bg-gray" autocomplete="off">
+        <h2 class="mb-4" *ngIf="!minimalist">Login to Online Shop</h2>
+        <div class="row m-0">
+            <div class="col celcom-box">
+                <app-estore-input
+                  label="Enter your Celcom number"
+                  customValidationLabel="mobile number"
+                  [inputType]="'phone'"
+                  [success]="mobileNumberControl.touched && mobileNumberControl.valid"
+                  placeholder="e.g 0191231234"
+                  formControlName="mobileNumber"
+                  [readonly]="step != 1"
+                  (keydown)="generalError = ''" >
+                </app-estore-input>
+            </div>
+        </div>
+        <button
+            *ngIf="step == 1"
+            [ngClass]="{'w-100': !minimalist, 'mt-3': mobileNumberControl.invalid}"
+            [disabled]="!(loginForm.valid) || isLoading"
+            class="btn btn-rounded btn-primary" (click)="next()">
+            <span *ngIf="isLoading" class="btn-loader">
+                <span class="spin-loader"></span>
+            </span>
+            Next
+        </button>
+    </form>
+</ng-container>
+<ng-container *ngIf="step == 2">
+    <ng-container *ngIf="!minimalist">
+        <h2>OTP Verification</h2>
+    </ng-container>
+    <div class="row mb-4">
+        <div class="col">
+            <span class="otp-text">Enter your OTP sent to <strong>{{ mobileNumberControl.value }}</strong></span>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col">
+            <app-new-otp-input [showLabel]="false" #otpFormInput></app-new-otp-input>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row" *ngIf="generalError && step == 2">
+        <div class="col general-error">
+            <span class="text-danger">
+                {{ generalError }}
+            </span><!-- /.text-danger -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row" id="expiry-text">
+        <div class="col">
+          OTP expires in
+          <span
+            class="count-down" [ngClass]="{'count-down-end': otpCounter === 0}"
+          >{{ otpCounter | formatTime }}</span>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row" id="resend-text">
+        <div>
+            <a href="javascript:void(0)"
+                (click)="onClickResendOTP()"
+                [ngClass]="{'disabled': resendLinkDisabled}"
+            >Send new OTP</a>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col">
+            <button
+                [ngClass]="{'w-100': !minimalist}"
+                [disabled]="!otpForm?.otpForm.valid || otpExpired || isLoading"
+                class="btn btn-rounded btn-primary" (click)="next()">
+                <span *ngIf="isLoading" class="btn-loader">
+                    <span class="spin-loader"></span>
+                 </span>
+                Submit
+            </button>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</ng-container>
+<!-- #endregion -->
+<app-modal id="tnc-login" [rounded]="false" [closeBtn]="false" [autoShow]="false">
+    <div class="tnc-container">
+        <h3>Terms and Conditions</h3>
+        <p>By setting up an account, you are agreeing to
+            the Terms & Conditions. The Mobile Connect Privacy Promise means that your
+            mobile number will not be shared, and no personal information will be
+            disclosed without your consent.</p>
+        <button
+            class="btn btn-rounded btn-primary"
+            (click)="onClickAgree()">I Agree</button><!-- /.c-cta--default -->
+    </div><!-- /.tnc-container -->
+</app-modal>

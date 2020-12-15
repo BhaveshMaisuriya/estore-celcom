@@ -1,0 +1,61 @@
+<div class="device-container">
+  <!-- Carousel # start -->
+  <div class="device-carousel-container">
+    <ngu-carousel #deviceCarousel [inputs]="deviceCarouselConfig" [dataSource]="deviceImages">
+        <div *nguCarouselDef="let item;" class="item">
+          <div class="tile" [style.background]="'url(' + item + ')'"></div>
+        </div>
+    </ngu-carousel>
+  </div>
+  <!-- Carousel # end -->
+
+  <!-- Thumbnail # start -->
+  <div class="thumbnail-root" *ngIf="deviceCarousel.pointNumbers.length > 1">
+    <ul class="thumbnail">
+      <!-- Previous # start -->
+      <li
+        class="thumbnail-container"
+        [ngClass]="{disabled: isPrevDisabled}"
+        (click)="handlePrevClick()"
+      >
+        <span class="nav-container">
+          <img
+            class="navigator"
+            src="assets/img/pagination_Chevron_left.svg"
+            alt="Previous"
+          />
+        </span>
+      </li>
+      <!-- Previous # end -->
+
+      <!-- Slides # start -->
+      <ng-container *ngFor="let item of thumbnailsArray">
+        <li
+          class="thumbnail-container"
+          [ngClass]="{ active: item === deviceCarousel.activePoint }"
+          (click)="deviceGoTo(item)"
+        >
+          <img class="thumb-image" alt="Thumb" [src]="deviceImages[item]" />
+        </li>
+      </ng-container>
+      <!-- Slides # end -->
+
+      <!-- Next # start -->
+      <li
+        class="thumbnail-container"
+        [ngClass]="{disabled: isNextDisabled}"
+        (click)="handleNextClick()"
+      >
+        <span class="nav-container">
+          <img
+            class="navigator"
+            src="assets/img/chevron-right.svg"
+            alt="Next"
+          />
+        </span>
+        <!-- Next # end -->
+      </li>
+    </ul>
+  </div>
+  <!-- Thumbnail # end -->
+</div>

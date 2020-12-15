@@ -1,0 +1,15 @@
+.api-success {
+    margin: 3%;
+}
+.updateStatus {
+    font-size: 28px;
+    color: #009ade
+}
+.font16 {
+    font-size: 16px;
+}
+@media only screen and (max-width: 767px) {
+    .api-success {
+        margin: 9%;
+    }
+}

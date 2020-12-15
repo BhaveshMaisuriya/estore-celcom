@@ -1,0 +1,235 @@
+.device-banner {
+    width: 100%;
+    max-height: 300px;
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.top-right {
+    position: absolute;
+    top: 23%;
+    right: 4%;
+    color: #333;
+    width: 30%;
+    color: #333;
+}
+.banner-font-headline {
+    font-size: 36px;
+    margin-bottom: 16px;
+    margin-top: 0;
+    text-align: left;
+    width: auto;
+    word-break: break-all;
+}
+.banner-font-sub {
+    font-size: 24px;
+    margin: 0;
+    text-align: left;
+    width: auto;
+    word-break: break-all;
+}
+.form-container {
+    width: auto;
+    padding: 0 7.5%;
+    margin-top: 36px;
+}
+.roi-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #009ade;
+    margin-bottom: 14px;
+}
+.roi-subtext {
+    font-size: 16px;
+}
+.form-section {
+    margin-top: 40px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+.border {
+    border-bottom: 1px solid #dbdbdb;
+    width: 80%;
+    margin-bottom: 30px;
+}
+.font-style {
+    font-size: 16px;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.input-fields {
+    width: 90%;
+    height: 40px;
+    padding-left: 14px;
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #dbdbdb;
+}
+.input-fields:focus {
+    border-bottom: 2px solid #009ade;
+}
+input::placeholder {
+    font-size: 14px;
+}
+.is-row {
+    display: -webkit-box;
+    width: 80%;
+}
+.input-width {
+    width: 37%;
+}
+.margin-form {
+    margin-left: 13%;
+}
+.second-row-margin {
+    margin-top: 17px;
+    width: 80%;
+}
+.dropdown {
+    width: 94%;
+    height: 43px;
+    text-align: left;
+	cursor: pointer;
+	font: 14px Lato;
+	text-decoration: none;
+	outline: none;
+	color: #000;
+	background-color: #f3f3f3;
+    border: none;
+    border-bottom: 2px solid #dbdbdb;
+    padding-left: 15px;
+}
+.dropdown:hover {
+	background-color: #eee
+}
+
+.dropdown>img {
+    width: 10px;
+    height: 10px;
+    float: right;
+    margin-top: 1%;
+}
+.device-color {
+    margin-top: 16px;
+}
+.color-font {
+    font-size: 16px;
+}
+.Oval {
+	width: 24px;
+	height: 24px;
+	border-radius: 50px;
+	margin: 2px;
+}
+.content__details {
+    width: 28px;
+    height: 28px;
+	border-radius: 50%;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	text-align: center;
+	cursor: pointer;
+}
+.choose__content_detail:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+}
+.new-line {
+    display: block;
+}	
+.submit {
+    width: 130px;
+    height: 40px;
+    margin: 40px 0;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    box-shadow: none !important;
+}
+option {
+    font-size: 14px;
+}
+.error {
+    padding-right: 9%;
+    padding-top: 10px;
+}
+.error .warning-icon {
+	float: right;
+	padding-top: 5px;
+}
+.error .text-danger {
+	font: 14px Lato;
+	color: #d0021b;
+}
+.warning-icon-login {
+    padding-right: 3px;
+    float: right;
+}
+.errorborder {
+	border-bottom: 2px solid #d0021b !important;
+}
+.warning-nric {
+    padding-right: 0;
+    margin-top: 2px;
+}
+button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.65;
+    background-color: #009ade;
+    }
+@media screen and (max-width: 768px) {
+    .border {
+        width: 100%;
+    }
+    .is-row {
+        display: inline-block;
+        width: 105%;
+    }
+    .margin-form {
+        margin-left: 0;
+        margin-top: 16px;
+    }
+    .form-container {
+        width: auto;
+        padding: 0 8%;
+    }
+    .center-button {
+        text-align: center;
+    }
+    .submit {
+        width: 100%;
+    }
+    .input-width {
+        width: 100%;
+    }
+    .dropdown {
+        width: 100%;
+    }
+    .is-row-prefered {
+        width: 100%;
+    }
+    .error-preferred {
+        padding-right: 3%;
+    }
+    .top-right {
+        top: 50%;
+        text-align: center;
+        margin: 0;
+        left: 50%;
+        width: 80%;
+        -webkit-transform: translate(-50%, -50%);
+    }
+    .banner-font-headline {
+        text-align: center;
+    }
+    .banner-font-sub {
+        text-align: center;
+        width: 100%
+    }
+}

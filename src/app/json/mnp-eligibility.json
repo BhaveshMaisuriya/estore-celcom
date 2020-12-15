@@ -1,0 +1,9 @@
+[
+    {
+        "status": true,
+        "response": {
+            "mobile_connect_user": true
+        },
+        "message": "You are eligible for the porting"
+    }
+]

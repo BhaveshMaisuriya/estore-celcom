@@ -1,0 +1,71 @@
+<div class="supplymentary-wrapper">
+  <form [formGroup]="form">
+    <!--Angular to add family line-->
+    <div class="row m-0" *ngIf="!hideFamilyLineMessage">
+      <div class="col-lg-8 family-line-box">
+        <p class="family-line-text">Family line (RM{{supplementaryLinePrice | number:'.2-2'}}/month, 30GB internet and unlimited calls)</p>
+      </div>
+      <p class="max-lines">You can add maximum <strong>{{supplementaryLines?.length}} {{ topType === typeOfPurchaseOptions.mnp ? "supplementary" : "family" }} lines</strong>
+        to a principal line. Click on check box to start adding family line.</p>
+    </div>
+
+    <div *ngFor="let line of supplementaryLines; let i = index">
+      <ng-container *ngIf="!line.isVerified">
+        <div class="row supplementary-lines" [ngClass]="{'mb-32': topType === typeOfPurchaseOptions.mnp &&
+          checkControlErrors(line.planPhoneNumber, undefined)}">
+          <div class="col-lg-5 lines"
+          [ngClass]="{'line-added': form.controls[line.planPhoneNumber + '_Add Line']?.value}">
+            {{ line.planPhoneNumber }}
+            <div class="row">
+              <div class="col-lg-2 checkbox-container">
+                <app-estore-checkbox formControlName="{{line.planPhoneNumber + '_Add Line'}}" (click)="active = i"
+                [disabled]="line.isDisabled">
+                </app-estore-checkbox>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="topType === typeOfPurchaseOptions.mnp && form.controls[line.planPhoneNumber + '_Add Line']?.value">
+            <div class="col-lg-5 supplines-added">
+              <app-estore-input
+                  label="{{line.planPhoneNumber}}"
+                  [inputType]="'phone'"
+                  placeholder="E.g. 0912323232"
+                  formControlName="{{line.planPhoneNumber}}"
+                  [buttonText]="'Submit'"
+                  [buttonDisabled]="!form.controls[line.planPhoneNumber]?.valid"
+                  (onButtonClicked)="submitSuppLine(line.planPhoneNumber)">
+              </app-estore-input>
+            </div>
+          </ng-container>
+        </div>
+        <ng-container *ngIf="topType === typeOfPurchaseOptions.newline">
+          <div *ngIf="form.controls[line.planPhoneNumber + '_Add Line']?.value">
+            <app-number-chooser
+              label=""
+              type="postpaid"
+              (onSelectNumber)="chooseSuppLine(line.planPhoneNumber, $event)"
+            ></app-number-chooser>
+          </div>
+        </ng-container>
+      </ng-container>
+      <div class="supplymentary-line-added" *ngIf="line.isVerified">
+        <div class="supplymentary-line-desc">
+          <span>{{line.planPhoneNumber}}</span>
+          <p>{{form.controls[line.planPhoneNumber]?.value}}</p>
+        </div>
+        <img src="assets/img/close_icon.svg" alt="close-icon" (click)="removeSuppLine(line.planPhoneNumber)">
+      </div>
+    </div>
+    <div class="row m-0" *ngIf="supplementaryLines && supplementaryLines[0]?.isVerified && !!internetShare?.enabled">
+      <div class="col-lg-6 p-0">
+        <div class="d-flex align-items-center">
+          <div class="flex-grow-1">
+            <app-estore-checkbox label="{{internetShare?.label}}" formControlName="internet_share" (ngModelChange)="updateShareQuota()">
+            </app-estore-checkbox>
+            </div>
+            <div><strong>RM{{internetShare?.monthly_price}}</strong>/monthly</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+<ng-container>
+    <div id="more-supplementary-popup" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <div (click)="ExitSupplementaryPopup();"><img class="feature-box-close" src="/assets/img/Drop_3/icon/remove.svg"></div>
+                            <div class="guest-features-box-dtls">
+                                <h3 class="Choose-your-way-in">Uh Oh. You have too many lines.</h3>
+                                <div class="What-would-you-like">
+                                    <p>You've exceeded the number limit that can be tied to one ID.</p>
+                                    <p>You need to remove some lines to proceed.</p>
+                                </div>
+                                <div class="guest-connect-login-now1">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="ExitSupplementaryPopup();"><span class="cta__content">OK</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>

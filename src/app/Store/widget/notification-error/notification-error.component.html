@@ -1,0 +1,144 @@
+<!-- <div class="b-notification" *ngIf="data && !IsSessionInValid" id="b-notification" [ngClass]="{'isBgcolor':data.color==='7D7D7D','isSuccesscolor':data.color==='229B9C','has-more-margin': isNotification && isSticky,'has-margin':isNotification || isSticky }"
+    [ngStyle]="popupStyle">
+
+    <div class="b-notification__close icon is-icon-close" (click)="close_icon();"></div>
+    <p class="b-notification__text toaster-container" *ngIf="data">
+        <span *ngIf="data.color!=='7D7D7D' && data.color!=='229B9C'" class="warning-notify">
+            <span class="escalatory"><img class="exclamation-img" src="/assets/img/exclamation-button.svg"></span>
+        </span>
+        <span *ngIf="data.color==='229B9C'" class="warning-notify">
+            <span class="escalatory"><img class="exclamation-img" src="/assets/img/Drop_3/icon/success.svg"></span>
+        </span>
+        <span class="toaster-message">{{data.content}}</span>
+    </p>
+
+</div> -->
+<ng-container *ngIf="data && data['title'] && data['button'] && data['content']; else legacyPopup">
+    <div id="guest-choose-way" class="guest-choose-model">
+        <div class="eligibility-modal-content">
+            <section class="u-section" id="more_details">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="guest-dtl-features-box">
+                            <img src="/assets/img/svg/icons/close.svg" alt="Close" (click)="close_icon();">
+                            <div [ngClass]="{
+                                'guest-features-box-mco-dtls': data['mco'] === true,'guest-features-box-dtls': data['mco'] != true
+                              }">
+                                <!-- <h3 class="Choose-your-way-in">Oops, sorry!</h3> -->
+                                <p class="popup-title">{{data.title}}</p>
+                                <p>{{ data.content }}</p>
+                                <p *ngIf="data && data['deliverycontent']">{{ data.deliverycontent }}</p>
+                                <p *ngIf="data && data['deliverydetailcontent']" [innerHTML]="data.deliverydetailcontent | safeHtml"></p>
+                                <p *ngIf="data && data['refcontent']">{{data.refcontent}}</p>
+                                <!-- <p>{{ data.link }}</p> -->
+                                <div class="guest-connect-login-now1">
+                                    <ng-container *ngIf="data && data['mco'] === true; else generalButton;">
+                                        <a href="https://www.celcom.com.my/personal/important-announcement/delivery-areas-affected-by-movement-control-order" target="_blank" rel="noopener noreferrer">
+                                            <button class="c-cta--default login-default-button" data-css="c-cta">
+                                                <span class="cta__content">{{ data.button }}</span>
+                                            </button>
+                                        </a>
+                                    </ng-container>
+                                    <ng-template #generalButton>
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="close_icon();">
+                                            <span class="cta__content">{{ data.button }}</span>
+                                        </button>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #legacyPopup>
+    <ng-container *ngIf="data && !IsSessionInValid">
+        <div id="guest-choose-way" class="guest-choose-model">
+            <div class="eligibility-modal-content">
+                <section class="u-section" id="more_details">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="guest-dtl-features-box">
+                                <div class="guest-features-box-dtls">
+                                    <p class="What-would-you-like">{{data.content}}</p>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="close_icon();">
+                                            <span class="cta__content">OK</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+<!-- <div class="b-notification" *ngIf="data" id="b-notification" [ngClass]="{'isBgcolor':data.color==='7D7D7D'}" [ngStyle]="popupStyle">
+
+    <div class="b-notification__close icon is-icon-close" (click)="close_icon();"></div>
+    <p class="b-notification__text" *ngIf="data"> <span *ngIf="data.color!=='7D7D7D'" class="warning-notify"><span class="escalatory">!</span></span>Your session has expired. Please login to continue browsing.</p>
+
+</div> -->
+<!-- <div class="b-notification" *ngIf="!data" id="b-notification" [ngClass]="{'has-more-margin': isNotification && isSticky,'has-margin':isNotification || isSticky}"
+    [ngStyle]="popupStyle">
+
+    <div class="b-notification__close icon is-icon-close" (click)="close_icon();"></div>
+    <p class="b-notification__text toaster-container" *ngIf="!data">
+        <span class="warning-notify">
+            <span class="escalatory"><img class="exclamation-img" src="/assets/img/exclamation-button.svg"></span></span>
+        <span class="toaster-message">Uh Oh. Unable to add item to cart.</span></p>
+
+</div> -->
+
+<ng-container *ngIf="!data">
+        <div id="guest-choose-way" class="guest-choose-model">
+            <div class="eligibility-modal-content">
+                <section class="u-section" id="more_details">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="guest-dtl-features-box">
+                                <div class="guest-features-box-dtls">
+                                    <p class="What-would-you-like">Uh Oh. Unable to add item to cart.</p>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="close_icon();">
+                                            <span class="cta__content">OK</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </ng-container>
+<ng-container *ngIf="IsSessionInValid">
+        <div id="guest-choose-way" class="guest-choose-model">
+            <div class="eligibility-modal-content">
+                <section class="u-section" id="more_details">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="guest-dtl-features-box">
+                                <div class="guest-features-box-dtls">
+                                    <p class="What-would-you-like">Your session has expired. Please login to continue browsing.</p>
+                                    <div class="guest-connect-login-now1">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="close_icon();">
+                                            <span class="cta__content">OK</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </ng-container>

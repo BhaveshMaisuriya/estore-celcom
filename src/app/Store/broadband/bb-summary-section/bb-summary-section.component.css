@@ -1,0 +1,90 @@
+.is-container {
+    max-width: 89.5%;
+}
+.is-zindex-0 {
+    padding: 60px 0 40px;
+    z-index: -1;
+}
+.is-bold {
+    font-weight: bold;
+    display: block;
+    padding-top: 5.34px;
+}
+.devicename-gap {
+    margin-bottom: 8px;
+    margin-left: 0px;
+    font-weight: bold;
+}
+.contract-gap {
+    margin-bottom: 16px;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.is-bottom-gap {
+    margin-bottom: 16px;
+    margin-left: 0px;
+    font-size: 14px;
+}
+.is-top-gap {
+    margin-top: 13px;
+}
+.is-border-top {
+    border-top: 1px solid #ccc;
+    margin-left: 0px;
+    width: 100%;
+}
+.grand-total {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 0px;
+}
+.right-align {
+    text-align: right;
+}
+.gst-include {
+	font-size: 12px;
+	font-weight: normal;
+    text-align: right;
+    margin: 8px 0 0 0;
+}
+.summary-samsung {
+    width: 191px;
+    height: 189px;
+}
+.margin-class {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+.margin-main-class {
+    margin-left: 20px;
+}
+.bottom-gap {
+    padding-bottom: 15px;
+}
+.is-font-bold {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+    .summary-samsung {
+        width: 184px;
+        height: 181px;
+        margin: 0% 21%;
+    }
+    .margin-main-class {
+        width: 100%;
+        margin: 16px 25px;
+        padding: 10px 18px;
+    }
+}
+@media (max-width: 768px) {
+    .is-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+.auto-billing {
+    margin-bottom: 10px
+}

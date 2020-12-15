@@ -1,0 +1,421 @@
+<div class="section-group theme-material">
+    <aside class="side-summary-container">
+      <app-side-summary
+        [isLoading]="isLoadingAPIResponse$ | async"
+        [overrideTotalPrice]="true"
+        [totalPrice]="totalPayment"
+        (onAddtoCartClick)="handleCheckoutClick()"
+        >
+      </app-side-summary>
+    </aside>
+    <section class="section no-counter" *ngIf="campaignOmni as omni">
+        <div class="section-content campaign-container">
+          <app-omni-banner [data]="omni"></app-omni-banner>
+        </div>
+    </section>
+    <section class="section no-counter col-lg-12 col-md-6" *ngIf="campaignMviva?.desktop_content">
+      <div class="section-content clm-container" [innerHTML]="campaignMviva?.desktop_content | safeHtml"></div>
+    </section>
+    <div 
+      app-device-combo-wrapper 
+      class="section" 
+      id="section1"
+      [devicePrice]="totalPayment"
+      [response]="deviceDetailApiResponse?.items"
+      [campaignOmni]="campaignOmni"
+      [selectedDevice]="device$ | async"
+      [isPreorder]="isPreorder"
+      [isLoading]="isLoadingAPIResponse$ | async"
+      [selectedDeviceCombo]="device_combo"
+      (onSelectProduct)="onSelectProduct($event)"
+      (onSelectProductCombo)="onSelectProductCombo($event)"
+      (onOpenFeaturesSpecsClick)="openFeaturesSpecs()">
+
+    </div>
+    <div class="section" id="section1" *ngIf="false"> 
+        <div class="section-title">
+            <a href="#" id="basic" #basicAnchor class="anchor"></a><!-- /.anchor -->
+            <h1>{{ (basicDetails$ | async)?.name }}</h1>
+            <div class="price-content-wrapper">
+              <div class="price-content">RRP
+                <span>RM{{ (basicDetails$ | async)?.rrp | number : '1.2-2'}}</span>
+              </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="col">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <app-device-carousel *ngIf="display.images.length > 0"
+                            [deviceImages]="display.images"
+                          >
+                        </app-device-carousel>
+
+                        <div class="related-product" *ngIf="deviceDetailApiResponse?.items?.related_products">
+                          <div class="product-link" *ngFor="let item of deviceDetailApiResponse?.items?.related_products">
+                              <a href="{{ item.campaign_url ? item.campaign_url : '/device-detail/'+item.sku }}">
+                                <span>{{item.name}}</span>
+                              </a>
+                          </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6 p-0" id="device-specs-container">
+
+                      <!-- #promo badges & text starts -->
+                      <div 
+                        *ngIf="basicDetailsItem?.promotion_badge?.promotion_badge_text"
+                        class="badges" 
+                        [ngStyle]="{
+                            color: basicDetailsItem?.promotion_badge?.promotion_badge_text_color,
+                            background: basicDetailsItem?.promotion_badge?.promotion_badge_background_color
+                        }"
+                      >{{ basicDetailsItem.promotion_badge.promotion_badge_text }}</div>
+                      
+                      <div 
+                        *ngIf="isPreorder && basicDetailsItem?.pre_order_data?.preorder_hat"
+                        class="promotion">
+                        <div class="promotion-text" [innerHTML]="basicDetailsItem?.pre_order_data?.preorder_hat | safeHtml"></div>
+                      </div>
+                      <div 
+                        *ngIf="!isPreorder && basicDetailsItem?.stock_indicator_text"
+                        class="promotion">
+                        <div class="promotion-text" [innerHTML]="basicDetailsItem?.stock_indicator_text | safeHtml"></div>
+                      </div>
+                      <div class="campaign-price" *ngIf="campaignOmni as omni">
+                        <span class="text-muted">Now </span>
+                        <span class="price">RM{{ (omni?.device_bundle_price || 0) | number : '1.2-2' }} </span>
+                        <span class="discounted-price">RM{{ (omni?.device_retail_price || 0) | number : '1.2-2' }}</span>
+                      </div>
+                      <!-- #promo badges & text ends -->
+
+                      <p class="sub-text">Select Device Specification</p>
+
+                      <div *ngIf="deviceDetailApiResponse">
+                        <app-device-color-storage-picker
+                          [isLoading]="isCheckingStock"
+                          [productList]="deviceDetailApiResponse.items.associated_product"
+                          [selectedProduct]="device"
+                          (onSelectProduct)="onSelectProduct($event)"
+                        ></app-device-color-storage-picker>
+                      </div>
+
+                      <div
+                        *ngIf="(deviceStock$ | async) && !isCheckingStock; else isCheckingStockLoadingEl"
+                        class="device-stock mt-estore-1"
+                        [ngClass]="
+                          (deviceStock$ | async).response.in_stock
+                            ? 'in-stock'
+                            : 'out-stock'
+                        "
+                        >
+                        <span *ngIf="(deviceStock$ | async).response.in_stock" class="icon">
+                          <mat-icon 
+                            style="width: 21px; height: 21px;"
+                            svgIcon="estore-check">
+                          </mat-icon>
+                        </span>
+
+                        <span *ngIf="!(deviceStock$ | async).response.in_stock" class="icon">
+                          <mat-icon 
+                            style="width: 21px; height: 21px;"
+                            svgIcon="estore-times">
+                          </mat-icon>
+                        </span>
+
+                        <p class="stock-text">{{
+                          (deviceStock$ | async).response.in_stock
+                            ? 'In Stock'
+                            : 'Out of Stock'
+                          }}</p>
+                      </div>
+
+                      <ng-template #isCheckingStockLoadingEl>
+                        <div class="device-stock mt-estore-1 pl-estore-1 p2-estore-1">
+                          Loading...
+                        </div><!-- /.device-stock -->
+                      </ng-template>
+                      
+
+                      <div class="more-details">
+                        More details on
+                        <span (click)="openFeaturesSpecs();">Features & specification</span>
+                      </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+  <ng-container *ngIf = "!isFirstBlue">
+    <div class="section" *ngIf="!isCampaignMviva || (deviceBuyOptions.length > 1 && isCampaignMviva)">
+        <div class="section-title">
+          <a href="#" id="buydevice" #buydeviceAnchor class="anchor"></a><!-- /.anchor -->
+          <h1>Buy Device Option</h1>
+        </div>
+        <div class="section-content">
+          <app-card-options
+              [isLoading]="isLoadingAPIResponse$ | async"
+              [disabled]="isLoadingToP$ | async"
+              [options] = "deviceBuyOptions"
+              [selectedOption] = "selectedBuyOption"
+              (onSelect) = "handleSelectedDeviceBuyOption($event)"
+            >
+            </app-card-options>
+        </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="(deviceBundleType$ | async) != dbDeviceEnum.deviceOnly">
+    <div class="section">
+      <div class="section-title">
+        <a href="#" id="plans" #plansAnchor class="anchor"></a><!-- /.anchor -->
+        <h1>Choose Pricing Options</h1>
+      </div>
+      <div class="section-content">
+        <!-- #region Base Plan -->
+        <ng-container *ngIf="!isFirstBlue; else showSectionForFirstBlue">
+          <ng-container *ngFor="let basePlan of [(basePlan$ | async)]">
+            <ng-container *ngIf="getBasePlansToDisplay(basePlan) as plans">
+              <app-base-plan-wrapper
+                [isLoading]="isLoadingAPIResponse$ | async"
+                (onSelect)="selectPassbySKU($event)"
+                [plans]="plans"
+                [selectedSku]="(pass$ | async)?.sku"
+                ></app-base-plan-wrapper>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <ng-template #showSectionForFirstBlue>
+              <ng-container *ngTemplateOutlet="deviceBundleContractPeriodsTemplate"></ng-container>
+              <app-addon-plan-wrapper
+                (onSelect)="selectPlanbySKU($event, pass)"
+                [isLoading]="isLoadingAPIResponse$ | async"
+                [disabled]="isLoadingToP$ | async"
+                [customPrice]="true"
+                [priceLabel]="(deviceBundleType$ | async) == dbDeviceEnum.deviceBundle ? 'Total ' : null"
+                [plans]="getAddonPlansToDisplay(pass)"
+                [selectedSku]="(plan$ | async)?.sku"
+                [cardType]="'device'"
+                [planType]="'gb'"
+              ></app-addon-plan-wrapper>
+              <div class="my-4">
+                <div class="container-fluid">
+                  <div class="summary-box row" *ngIf="!(isLoadingAPIResponse$ | async)">
+                    <div class="left-side col my-4">
+                      <div class="title">
+                          You have selected
+                      </div>
+                      <div class="description" *ngIf="(plan$ | async)">
+                        <span [innerHTML]="(plan$ | async)?.name | safeHtml"></span>
+                        <ng-container *ngIf="(deviceBundleContractPeriods$ | async)?.length > 0 && (deviceBundleSelectedContractPeriods$ | async) as contract">
+                          in {{ contract }} months contract
+                        </ng-container>
+                      </div>
+                    </div>
+                    <div class="right-side col-12 col-md-auto my-md-4 mb-4">
+                      <div class="title">
+                          Total commitment
+                      </div>
+                      <div class="description">
+                          <span class="pricetag">RM{{ getDeviceContractTotalMonthlyPay(plan$ | async) }}</span>/month
+                      </div>
+                    </div><!-- /.summary-box -->
+                    <div *ngIf="isCampaignMviva && !isNewLine && isCobp && !isMnp && !top_type" class="campaign-buy-now d-flex align-items-center">
+                      <div class="image align-self-start">
+                          <img src="assets/img/clm-star-icon.svg" alt="star image"/>
+                      </div>
+                      <div class="flex-grow-1 d-flex align-items-md-center flex-column flex-md-row">
+                          <div class="flex-grow-1">You are a few steps away from enjoying your offer! </div>
+                          <button class="btn btn-rounded btn-primary align-self-start mt-4 mt-md-0" (click)="buyNow()">Buy Now</button>
+                      </div>													 
+                  </div>
+                  </div>
+                </div><!-- /.summary-box -->
+              </div>
+        </ng-template>
+        <!-- #endregion -->
+
+        <div class="my-4" *ngIf = "!isFirstBlue">
+          <!-- #region EasyPhone -->
+          <ng-container *ngIf="(easyphoneContractPeriods$ | async)?.length > 0">
+            Choose contract period and the pass you preferred
+            <ul class="tab redeem-tabs inline">
+              <ng-container *ngFor="let item of (easyphoneContractPeriods$ | async)">
+                <li
+                  *ngIf="isContractAvailable(item)"
+                  [ngClass]="{
+                    'active': item === (easyphoneSelectedContractPeriods$ | async)
+                  }"
+                  (click)="OnContractTabSelected(item)"
+                >
+                  <a href="javascript:void()">{{ item }} months</a>
+                </li>
+              </ng-container>
+            </ul>
+          </ng-container>
+          <ng-container *ngTemplateOutlet="deviceBundleContractPeriodsTemplate"></ng-container>
+
+          <!-- #endregion -->
+          <ng-container>
+            <div class="mt-estore-2">
+              <ng-container *ngIf="!(isLoadingAPIResponse$ | async)">
+                <!-- For customized plan -->
+                <div class="mb-estore-2" *ngIf="!(basePlan$ | async)">
+                    Choose a plan
+                </div>
+                <div class="mb-estore-2" *ngIf="
+                  (basePlan$ | async) &&
+                  (!(easyphoneContractPeriods$ | async)?.length || (deviceBundleType$ | async) == dbDeviceEnum.deviceBundle)">
+                    <ng-container [ngSwitch]="(pass$ | async)?.sku">
+                      <!-- Use this to show different text of pass -->
+                      <!-- <div *ngSwitchCase="pass_speed_sku">Enjoy seamless High-Speed Internet for all your entertainment needs</div>
+                      <div *ngSwitchCase="pass_gb_sku">Enjoy seamless High-Speed Internet for all your entertainment needs</div> -->
+                      <div *ngSwitchDefault>Choose a pass</div>
+                    </ng-container>
+                </div>
+              </ng-container>
+              <app-addon-plan-wrapper
+                (onSelect)="selectPlanbySKU($event, pass)"
+                [isLoading]="isLoadingAPIResponse$ | async"
+                [disabled]="isLoadingToP$ | async"
+                [customPrice]="true"
+                [priceLabel]="(deviceBundleType$ | async) == dbDeviceEnum.easyPhone ? (device_combo ? 'Own 2 devices at ' : 'Own phone at ') : (((pass$ | async)?.sku != pass_speed_sku && (basePlan$ | async)) ? 'Total ' : null)"
+                [plans]="getAddonPlansToDisplay(pass)"
+                [selectedSku]="(plan$ | async)?.sku"
+                [cardType]="(deviceBundleType$ | async) == dbDeviceEnum.easyPhone ? 'easyphone' : ((basePlan$ | async) ? 'device' : 'plan')"
+                [planType]="((pass$ | async)?.sku != pass_speed_sku ? 'gb' : 'speed')"
+              ></app-addon-plan-wrapper>
+            </div>
+            <div class="container-fluid">
+              <div class="summary-box row" *ngIf="!(isLoadingAPIResponse$ | async)">
+                <div class="left-side col my-4">
+                  <div class="title">
+                      You have selected
+                  </div>
+                  <div class="description" *ngIf="(basePlan$ | async) && (plan$ | async); else legacyPlanDesc">
+                    <span [innerHTML]="(basePlan$ | async)?.name | safeHtml"></span> with
+                    <span [innerHTML]="(plan$ | async)?.name | safeHtml"></span>
+
+                    <ng-container *ngIf="(deviceBundleType$ | async) === dbDeviceEnum.deviceBundle"> Pass</ng-container>
+                    <ng-container *ngIf="(isEasyPhone$ | async) && (easyphoneSelectedContractPeriod$ | async) as contract">
+                      in {{ contract }} months contract
+                    </ng-container>
+                  </div>
+                  <ng-template #legacyPlanDesc>
+                    <div class="description" *ngIf="(plan$ | async)">
+                      <span [innerHTML]="(plan$ | async)?.name | safeHtml"></span>
+                    </div>
+                  </ng-template>
+                  
+                </div>
+                <div class="right-side col-12 col-md-auto my-md-4 mb-4">
+                  <div class="title">
+                      Total commitment
+                  </div>
+                  <div class="description">
+                      <span class="pricetag">RM{{ getTotalMonthlyPay(basePlan$ | async, plan$ | async) }}</span>/month
+                  </div>
+                </div><!-- /.summary-box -->
+              </div><!-- /.summary-box -->
+            </div>
+            <div class="container-fluid p-0">
+                <div *ngIf="isCampaignMviva && !isNewLine && isCobp && !isMnp && !top_type" class="campaign-buy-now d-flex align-items-center">
+                    <div class="image align-self-start">
+                        <img src="assets/img/clm-star-icon.svg" alt="star image"/>
+                    </div>
+                    <div class="flex-grow-1 d-flex align-items-md-center flex-column flex-md-row">
+                        <div class="flex-grow-1">You are a few steps away from enjoying your offer! </div>
+                        <button class="btn btn-rounded btn-primary align-self-start mt-4 mt-md-0" (click)="buyNow()">Buy Now</button>
+                    </div>													 
+                </div>
+            </div>
+          </ng-container>
+        </div>
+        </div><!-- /.my-4 -->
+      </div>
+    <div class="section" *ngIf="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp || top_type))">
+      <div class="section-title" *ngIf="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp))">
+        <a href="#" id="top" #topAnchor class="anchor"></a><!-- /.anchor -->
+        <h1>Type of Purchase</h1>
+      </div>
+      <div class="section-content">
+        <app-typeof-purchase-wrapper
+          [newline]="isNewLine" 
+          [cobp]="isCobp" 
+          [mnp]="isMnp" 
+          [showOptions]="!isCampaignMviva || (isCampaignMviva && (isNewLine || isMnp))"
+          [selectedType]="(topType$ | async)" 
+          (onSelect)="handleSelectedTypeOfPurchase($event)"
+          (onEvent)="onToPEvent($event)"
+          >
+        </app-typeof-purchase-wrapper>
+
+          <!-- <device-switch-guides
+            *ngIf="(deviceBundleType$ | async) === dbDeviceEnum.deviceBundle && !(topType$ | async)">
+          </device-switch-guides> -->
+        </div>
+      </div>
+    </ng-container>
+		 
+  <section class="section no-counter">
+    <div class="section-content"
+        [ngClass]="{
+          'no-top-padding': isCampaignMviva && ((top_type && deviceBuyOptions.length === 1) || (!isNewLine && !isMnp && !top_type && deviceBuyOptions.length > 1))
+        }"
+    >
+      <app-notes 
+        *ngIf="deviceDetailApiResponse?.items?.notes"
+        [notesContent]="deviceDetailApiResponse?.items?.notes"
+      ></app-notes>
+    </div>
+  </section>
+
+<a #deviceSpecsAnchor class="anchor"></a><!-- /.anchor -->
+<section class="section no-counter specs-section">
+  <div class="section-content note-container">
+    <app-device-detail-specs *ngIf="deviceDetailApiResponse?.items"
+        [deviceDetail]="deviceDetailApiResponse?.items"
+      >
+    </app-device-detail-specs>
+  </div>
+</section>
+
+</div>
+<footer-component *ngIf="!isEnterprise; else enterpriseFooter"></footer-component>
+<ng-template #enterpriseFooter>
+    <app-agent-footer></app-agent-footer>
+</ng-template>
+
+<!-- Guest login popup -->
+<app-modal id="guest-login-popup" [rounded]="true" [autoShow]="false">
+<div class="guest-login-container">
+  <h3>Login</h3>
+  <p>Are you an existing Celcom customer?</p>
+  <span>
+    <button class="btn btn-rounded no-button" (click)="redirectLogin('guest')">
+      No, register now
+    </button>
+  </span>
+  <span>
+    <button class="btn btn-rounded btn-primary yes-button" (click)="redirectLogin()">
+      Yes, proceed login
+    </button>
+  </span>
+</div>
+</app-modal>
+
+<ng-template #deviceBundleContractPeriodsTemplate>
+  <ng-container *ngIf="(deviceBundleContractPeriods$ | async)?.length > 0">
+    Choose contract period you preferred
+    <ul class="tab redeem-tabs inline">
+      <li *ngFor="let item of (deviceBundleContractPeriods$ | async)" [ngClass]="{
+        'active': item === (deviceBundleSelectedContractPeriods$ | async)
+      }" (click)="OnDeviceBundleContractTabSelected(item)">
+        <a href="javascript:void()">{{ item }} months</a>
+      </li>
+    </ul>
+  </ng-container>
+</ng-template>
+<!-- Guest login popup -->

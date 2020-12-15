@@ -1,0 +1,150 @@
+<div class="new-line-container">
+
+  <div>
+    <p class="personal-det-txt">Enter your personal details for verification.</p>
+    <form [formGroup]="myForm" class="my-form" (ngSubmit)="handleSubmit()" autocomplete="off">
+      <div class="row">
+        <div class="col-md-6 nric-box">
+          <app-estore-input
+            label="NRIC Number"
+            [inputType]="'nric'"
+            [success]="myForm?.controls?.nric?.valid"
+            placeholder="888888888888"
+            formControlName="nric"
+            [disabled]="flags.loggedIn"
+          ></app-estore-input>
+        </div>
+      </div>
+      <div class="loader-wrapper">
+        <div class="loader"></div>
+      </div>
+      <button
+        *ngIf="!(flags.showMcLogin || flags.loggedIn)"
+        [disabled]="flags.loggedIn || loading || !myForm?.controls?.nric?.valid"
+        class="btn btn-primary btn-rounded"
+        type="submit"
+      >
+        <span *ngIf="loading" class="btn-loader">
+          <span class="spin-loader"></span>
+        </span>
+        Submit
+      </button>
+    </form>
+
+    <div *ngIf="flags.showMcLogin">
+      <app-mc-login
+        [nric]="myForm.controls.nric?.value"
+        (onSuccess)="handleMCLogin()"
+        [minimalist]="true"
+      ></app-mc-login>
+    </div>
+
+  </div>
+
+  <ng-container *ngIf="flags.loggedIn">
+    <div>
+      <h5 class="welcome-text">Welcome {{ data.userName }}!</h5>
+    </div>
+  
+    <div class="warning-container" *ngIf="flags.suppLimitReached">
+      <img class="warning_img" src="assets/img/warning_icon.svg" alt="warning image">
+      <div class="warning-msg">Oops! we can’t process your order as you have reached the maximum limit of postpaid lines allowed per NRIC.</div>
+    </div>
+
+    <ng-container *ngIf="!device_combo; else deviceComboSection">
+      <!-- Choose number section -->
+      <div>
+        <app-number-chooser
+          *ngIf="!flags.pricipleNumSelected && !flags.suppLimitReached && !flags.isUserInternallyBlacklisted"
+          label="Choose for your principal number"
+          type="postpaid"
+          (onSelectNumber)="onSelectNumber($event)"
+        ></app-number-chooser>
+      </div>
+
+      <div class="row m-0 mt-4" *ngIf="flags.pricipleNumSelected">
+        <div class="col-lg-6 p-0">
+          <div class="principle-line">
+            <img alt="user-icon" src="assets/img/svg/icons/user_principle_line.svg">
+            <div class="principle-line-desc">
+              <span>Principal Line</span>
+              <p>{{ mobileNumber$ | async }}</p>
+            </div>
+            <img
+              src="assets/img/close_icon.svg"
+              alt="remove principle"
+              (click)="onRemovePrincipleNumber()"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!--supplymentary line buttons-->
+      <div class="supplementary-buttons" *ngIf="flags.pricipleNumSelected && !(isNewLineAdded$ | async) && !flags.showSuppLines">
+          <!-- handling condition for first-blue-->
+        <ng-container *ngIf="!hideSectionForFirstBlue">
+        <button
+          class="btn btn-rounded"
+          type="button"
+          (click)="handleSuppLineAdd(false)"
+        >Buy without supplementary line</button>
+        <button
+          class="btn btn-rounded"
+          type="button"
+          (click)="handleSuppLineAdd(true)"
+        >Add supplementary line</button>
+      </ng-container>
+      </div>
+      <!--#end supplymentary line buttons-->
+    
+      <ng-container *ngIf="flags.showSuppLines">
+        <app-supplementary-line-wrapper
+          [supplementaryLines]="supplementaryLines"
+          [internetShare]="internet_share"
+          [form]="myForm"
+          (onChoose)="updateSuppLines($event)"
+          (onRemove)="removeSuppLines($event)"
+          (shareQuota)="updateShareQuota()"
+          [supplementaryLinePrice]="data.suppData?.price"
+        ></app-supplementary-line-wrapper>
+      </ng-container>
+    </ng-container>
+
+    <!-- Device combo section -->
+    <ng-template #deviceComboSection>
+      <ng-container>
+        <div class="container text-left" *ngIf="device_combo" [@myInsertRemoveTrigger]="device_combo ? 'open': 'close'">
+          <div class="row mt-estore-1">
+            <div class="col p-0">
+              <app-cobp-number-chooser
+                (onSelectPrincipal)="onSelectNumber($event)"
+                (onSelectSupplementary)="onSelectSupplementaryFromCombo($event)"
+                (onSelectComboNumber)="selectDeviceComboNumber($event)"
+                (onSelectingNumber)="onSelectingNumber($event)"
+                (onToggleInternetshareCheckbox)="updateShareQuotaDB($event)"
+                [principalNumber]="mobileNumber$ | async"
+                [deviceComboNumber]="device_combo_number"
+                [contract_name]="comboType"
+                [supplementaryData]="data.suppData"
+                [suppNumbers]="cleanedSuppNumbers"
+                [isNewLine]="true"
+                [internet_share]="internet_share"
+                [share_quota]="shareQuota$ | async"></app-cobp-number-chooser>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-template>
+    <!-- End of device combo section -->
+
+    <!-- Checkout box -->
+    <div class="row m-0" *ngIf="(isNewLineAdded$ | async)" [@myInsertRemoveTrigger]="(isNewLineAdded$ | async) ? 'open': 'close'">
+      <div class="col-lg-6 p-0">
+        <div class="chekout-without-supplymentary">
+          <img class="" src="assets/img/checkout_arrow.svg" alt="checkout-img"/>
+          <p>Click <strong>“Checkout”</strong> to complete your order</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

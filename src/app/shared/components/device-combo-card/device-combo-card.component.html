@@ -1,0 +1,59 @@
+<a class="device-combo-container" role="button"
+ [routerLink]="routerLink" 
+ [queryParams]="{combo_device: selectedComboDevice?.sku, type: selectedPlan$ | async, pass: planSku}" 
+ [attr.data-analytics-promo]="device?.name">
+    <div class="device-combo-card">
+        <div class="device-combo-head">
+            <div class="row m-0">
+                <div class="col-md-6 col-6 p-0 device-title-img-left">
+                    <p>{{device?.name}}</p>
+                    <img [src]="device?.image" alt="device combo image">
+                </div>
+                <div class="col-md-6 col-6 p-0 device-title-img-right">
+                    <div class="d-flex" (click)="onComboTitleClick($event)">
+                        <p class="right-device-name">{{ selectedComboDevice?.name }}</p>
+                        <div class="device-button-menu">
+                            <app-estore-button-menu
+                                #btnMenu
+                                *ngIf="device?.device_combo_data?.items?.length > 1" 
+                                [items]="getComboItems(device)"
+                                [selected]="selectedComboDevice?.sku"
+                                [iconStyle]="{color: '#009BDF'}"
+                                [iconType]="'svg'"
+                                [iconName]="'estore-chevron-down'"
+                                (onSelect)="onSelectChange($event)"
+                            >
+                            </app-estore-button-menu>
+                        </div>
+                    </div>
+                    <img [src]="selectedComboDevice?.image" alt="device combo image">
+                </div>
+            </div>
+        </div>
+        <div class="device-combo-body">
+            <div *ngIf="device?.promotion_badge?.length > 0">
+                <div
+                    *ngFor="let badge of device.promotion_badge"
+                    class="badges mt-estore-1"
+                    [ngStyle]="{
+                        'background-color': badge.promotion_badge_background_color,
+                        'color': badge.promotion_badge_text_color
+                    }"
+            >{{badge.promotion_badge_text}}</div>
+            </div>
+            <ng-container *ngIf="!device?.is_easy_phone; else easyPhone">
+                <p class="device-name-text">Device Combo</p>
+            </ng-container>
+            <ng-template #easyPhone>
+                <p class="device-name-text">EasyPhone</p>
+            </ng-template>
+            <h4 class="m-0">
+                <span class="lighting-text d-inline-block">Get 2 devices from</span>
+                RM{{selectedComboDeviceprice}}
+                <span class="lighting-text">/month</span>
+            </h4>
+            <span class="lighting-text d-inline-block">with {{selectedPass}}</span>
+            <button [ngClass]="device?.promotion_badge?.length > 0 ? 'button-with-badge':'button-without-badge'" class="btn btn-primary btn-rounded">Buy Now</button>
+        </div>
+    </div>
+</a>

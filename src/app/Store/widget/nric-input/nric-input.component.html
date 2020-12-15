@@ -1,0 +1,75 @@
+<!-- login-nric start -->
+<form #nricInputForm="ngForm" (ngSubmit)="onSubmit(nricInputForm)" [ngClass]="{'nric-newLine-bg': (pageType === 'newInLine' || pageType === 'suppLines') , 'nric-newLine-bg-star' : (isProjectStar() || isProjectMoon())}">
+    <div class="has-margin-bottom_1" [ngClass]="{'home_wireless_nric': pageType === 'hwInLine' , 'nric-cobp': pageType === 'cobpInLine' , 'nric-newLine': pageType === 'newInLine' || pageType === 'suppLines'}">
+        <div class="box-shadow-login-content" [ngClass]="{'box-shadow-login-content-hw': pageType === 'hwInLine' , 'box-shadow-login-content-cobp': pageType === 'cobpInLine' , 'box-shadow-login-content-newLine': pageType === 'newInLine' || pageType === 'suppLines'}">
+            <p class="guest-heading" *ngIf="TextFlag">Your NRIC number:
+                    <span class="required-field">*</span>
+                </p>
+            <p class="guest-heading" *ngIf="TextFlag !== true">Enter your NRIC number for verification
+                <span class="required-field">*</span>
+            </p>
+            <div class="mobile-form-group">
+                <input maxlength="12" class="form-control id-number numeric-textbox nric-box-width" [ngClass]="{'home_wireless_nric_field': pageType === 'hwInLine',
+                'disabled': userLoggedIn === true || hwEligible === true || hwEligible === false || showBtnSubmit === false || isNRICverified || loading,
+                'formStyle': ((!showBtnSubmit && showBtnReset) || (isNRICverified && !isPlanStar)) , 'eligibleBorder': hwEligible === true, 'errorborder': hwEligible === false,
+                 'cobp-nric-field': (pageType === 'cobpInLine' && !isPlanStar && !isPlanMoon) , 'newLine-nric-field': (pageType === 'newInLine' || pageType === 'suppLines') && !isProjectStar() && !isProjectMoon()}"
+                 [ngClass]="{'nric_color': pageType === 'dbInLine'}"
+                    id="customerIDNo" name="customerIDNo" type="tel" pattern="[0-9]*" placeholder="123456789012" required #customerIDNo="ngModel"
+                    [ngClass]="{'errorborder':!customerIDNo.valid && customerIDNo.touched}"
+                    (keydown) = "restrictOnlyNum($event)"
+                    (keyup)="enableReset(nric.toString());this._switchToCelcom.validationForIdType('1', nric.toString());"
+                    (blur)="this._switchToCelcom.validationForIdType('1', customerIDNo.value)" [(ngModel)]="nric">
+                <!-- <span *ngIf="((!showBtnSubmit && showBtnReset) || isNRICverified)" [hidden] = "!enableResetButton" class="remove-x-blue"
+                [ngClass]= "{'disabled element-disabled': (userLoggedIn === true && pageType === 'hwInLine') || hwNricReset== true || hwEligible === true || hwEligible === false , 'home_wireless_remove': pageType === 'hwInLine' , 'remove-cobp': pageType === 'cobpInLine'}"
+                (click)="clearNric()"> -->
+                <span *ngIf="((!showBtnSubmit && showBtnReset) || isNRICverified)" [hidden] = "!enableResetButton" class="remove-x-blue"
+                [ngClass]= "{'home_wireless_remove': pageType === 'hwInLine' , 'remove-cobp': pageType === 'cobpInLine'}"
+                (click)="clearNric();LogoutResetUser();">
+                    <img class="remove-x" src="../../../../assets/img/Drop_3/icon/remove-blue-icon.svg"> Reset
+                </span>
+                <div class="eligible-align" *ngIf="hwEligible === true && apiError === false">
+                    <img src="../../../../assets/img/eligible-homwWireless.svg">
+                    <span class="eligible-style">You are eligible.</span>
+                </div>
+                <div class="eligible-align error error-span" *ngIf="hwEligible === false && errorExits">
+                    <span class="warning-icon">
+                        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <span class="text-danger">{{errorMessage.message}}</span>
+                </div>
+                <div class="error error-span" [ngClass]="{'home_wireless_nric_error': pageType === 'hwInLine',
+                 'home_wireless_nric_error4': pageType === 'cobpInLine',
+                 'home_wireless_nric_error3': pageType === 'newInLine' || pageType === 'suppLines' }"
+                 *ngIf="errorExits && customerIDNo.touched && customerIDNo.valid && !_switchToCelcom.customMessage">
+                    <span class="warning-icon">
+                        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <span class="text-danger">{{errorMessage.message}}</span>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="error error-span" [ngClass]="{'home_wireless_nric_error': pageType === 'hwInLine' , 'home_wireless_nric_error2': pageType === 'cobpInLine' , 'home_wireless_nric_error1': pageType === 'newInLine' || pageType === 'suppLines' }" *ngIf="_switchToCelcom.customMessage">
+                    <span class="warning-icon">
+                        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <span class="text-danger">{{_switchToCelcom.customMsg}}.</span>
+                    <div class="clearfix"></div>
+                </div>
+                <p class="required-field mandatory-font text-bottom" *ngIf="showInline && showBtnSubmit && !hwEligible && !isNRICverified">* Mandatory Field</p>
+                <div *ngIf="showInline && showBtnSubmit && !hwEligible && !isNRICverified" [ngClass]="{'home_wireless_nric_field_submit': pageType === 'hwInLine' , 'send-otp-cobp': pageType === 'cobpInLine'}"
+                    class="cobp-line-search-icon div-submit-btn">
+                    <button class="send-otp" [ngClass]="{'home_wireless_send_mob': pageType === 'hwInLine' , 'send-otp-newLine': pageType === 'newInLine' || pageType === 'suppLines'}" [disabled]="nricInputForm.invalid || _switchToCelcom.customMessage || !customerIDNo.valid">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="center-button" *ngIf="showInline === false">
+        <button class="c-cta--default send-otp" [disabled]="nricInputForm.invalid || _switchToCelcom.customMessage || !customerIDNo.valid">Send OTP
+            <span class="cta__icon icon is-icon-arrow"></span>
+        </button>
+    </div>
+</form>
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<app-msisdn-input *ngIf="isMobileConnectUser && pageType !== 'hwInLine'" [nric]="nric" [pageType]="pageType" (sentOtp)="onSuccessFulSentOtp($event);" (resetOtp) = "onMsisdnReset($event);"></app-msisdn-input>
+<app-otp-input *ngIf="enableOTP" [nric]="nric" [pageType]="pageType" [msisdn]="msisdn" (validateOtp)="onSuccessFulValidOtp($event);"></app-otp-input>

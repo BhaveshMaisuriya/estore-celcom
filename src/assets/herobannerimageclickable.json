@@ -1,0 +1,13 @@
+[
+  {
+     "Title":"Hero Banner Image Clickable test",
+     "BannerImage":"./assets/img/try-celcom.png",
+     "BannerAlt":"altext",
+     "BannerTitle":"titletext",
+     "MobileImage":"\/sites\/default\/files\/Banner-mobile\/sub-content-inner-bg.png",
+     "MobileAlt":"alttet2",
+     "MobileTitle":"title2",
+     "ButtonLink":"http://google.com",
+     "ButtonText":"example"
+  }
+]

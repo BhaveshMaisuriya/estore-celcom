@@ -1,0 +1,67 @@
+.main-container{
+    padding: 0;
+    margin: 0;
+
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+
+    position: relative;
+}
+
+.main-content{
+    flex-grow: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    @media (max-width: 768px) {
+        padding-top: 72px;
+    }
+}
+
+.side-summary-container{
+    flex: 0 0 308px;
+    border-left: 1px solid #f3f3f3;
+    background: white;
+}
+
+@media (max-width: 768px) {
+    .side-summary-container{
+        width: 100%;
+        position: fixed;
+        z-index: 3;
+        top: 0;
+
+        &.expanded {
+            height: 100%;
+            bottom: 0;
+        }
+    }
+}
+
+::ng-deep {
+    app-sticky-summary, app-moon-sticky-summary-section, app-bb-sticky-summary, app-esim-sticky-summary {
+        >section {
+            display: none;
+        }
+    }
+    .main-content {
+        @media (min-width: 769px) {
+            footer-component {
+                display: none;
+            }
+        }
+    }
+    app-devicedetails-summary-section-component, app-moon-summary-section, app-bb-summary-section, app-esim-summary-section {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    footer-component {
+        display: none;
+    }
+}

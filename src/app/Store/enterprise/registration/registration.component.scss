@@ -1,0 +1,183 @@
+.enterprise-container {
+	min-height: auto;
+	width: 100%;
+	padding: 0;
+	display: block;
+
+	@media(min-width: 992px) {
+		display: flex;
+		min-height: 90vh;
+	}
+
+	.first-container {
+		width: 100%;
+
+		@media(min-width: 992px) {
+			width: 50%;
+		}
+
+
+		@media(min-width: 992px) {
+			max-width: 684px;
+		}
+
+		.enterprise-bg-img {
+			min-height: 450px;
+			background-image: url('assets/img/enterprise-bg-img.jpg');
+			background-repeat: no-repeat;
+			height: 100%;
+			width: 100%;
+			background-position: center;
+			background-size: cover;
+		}
+
+		img {
+			width: 100%;
+			min-height: 100%;
+		}
+
+		.img-gradient {
+			position: absolute;
+			top: 0;
+			left: 0;
+			word-break: break-word;
+			text-align: left;
+			padding: 35px;
+
+			@media (min-width: 1200px) {
+				padding: 40px 0 40px 40px;
+			}
+
+			h3 {
+				color: #009bdf;
+				line-height: 1.14;
+				max-width: 306px;
+
+				@media(min-width: 992px) {
+					font-size: 48px;
+					max-width: 498px;
+				}
+			}
+
+			p {
+				color: #333333;
+				margin-top: 24px;
+				max-width: 411px;
+
+				@media (min-width:768px) {
+					font-size: 20px;
+				}
+			}
+		}
+    }
+
+	.second-container {
+		padding: 34px 0;
+		width: 100%;
+
+		@media (min-width: 992px) {
+			padding: 112px 0;
+			width: 50%;
+
+		}
+
+		.form-container {
+			max-width: 328px;
+			margin: 0 auto;
+			text-align: center;
+			padding: 0;
+
+			.redeem-tabs {
+				overflow: hidden;
+				> li {
+					a {
+						padding: 0 0 11px 0;
+						font-size: 24px;
+					}
+
+					.active {
+						color: #333333;
+					}
+				}
+			}
+
+			// form {
+			// 	padding-bottom: 33px;
+			// }
+
+			.fill-info-text {
+				color: #333333;
+				font-size: 14px;
+				margin: 24px 0;
+				width: 100%;
+			}
+
+			.personal-info-card {
+				max-width: 330px;
+				padding: 16px;
+				border-radius: 8px;
+				box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+				background-color: #ffffff;
+				margin: auto;
+				text-align: left;
+				word-break: break-word;
+
+				.horizontal-border {
+					width: 96px;
+					height: 4px;
+					border-radius: 2px;
+					background-color: #009be4;
+					margin:16px 0;
+					box-sizing: border-box;
+				}
+
+				.personal-info {
+					font-size: 14px;
+					color: #666666;
+					font-weight: bold;
+					margin: 0 0 4px 0;
+					line-height: 1.21;
+
+					.p-normal {
+						font-weight: normal;
+					}
+
+					.mb-8 {
+						margin: 0;
+						margin-bottom: 8px;
+					}
+
+					> div {
+
+						&:last-of-type {
+							padding-left: 0;
+						}
+					}
+				}
+			}
+
+			button {
+				padding: 11px 40px 11px;
+			}
+		}
+	}
+
+	.otp-content {
+		font-size: 14px;
+		color: #333333;
+		text-align: center;
+
+		p {
+			margin: 24px 0;
+		}
+
+		button {
+			width: 93px;
+		}
+
+		.otp-container {
+			max-width: 328px;
+			margin: 0 auto;
+		}
+	}
+}

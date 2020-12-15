@@ -1,0 +1,31 @@
+.page-loader {
+    width: 100px;
+    margin: auto;
+    padding: 80px 0;
+}
+.page-loader.extended {
+    width: 130px;
+}
+
+.circle-parent {
+    height: 128px;
+    width: 128px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    height: 8px;
+    width: 8px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+
+.dot + .dot {
+    margin-left: 12px;
+}

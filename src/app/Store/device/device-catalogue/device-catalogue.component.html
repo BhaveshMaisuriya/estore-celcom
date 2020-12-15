@@ -1,0 +1,4 @@
+<app-store-catalogue-banner-mega *ngIf="isCSAgentDealer === notCSAgent && dataForCatalogueBanner.carousals.length > 0"[data]="dataForCatalogueBanner"></app-store-catalogue-banner-mega>
+<app-store-catalogue></app-store-catalogue>
+<footer-component *ngIf="isCSAgentDealer === notCSAgent"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer === csAgent" class="agent_footer"></app-agent-footer>

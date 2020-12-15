@@ -1,0 +1,164 @@
+.is-container {
+    max-width: 89.5%;
+}
+.is-zindex-0 {
+    padding-top: 30px;
+}
+.is-bold {
+    font-weight: bold;
+    padding-top: 0.34px;
+    padding-left: 4px;
+}
+.devicename-gap {
+    margin-bottom: 8px;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contract-gap {
+    margin-bottom: 16px;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: 14px;
+}
+.is-bottom-gap {
+    margin-bottom: 16px;
+    margin-left: 0px;
+    font-size: 14px;
+}
+.is-top-gap {
+    margin-top: 13px;
+}
+.is-border-top {
+    border-top: 1px solid #ccc;
+    margin-left: 0px;
+    width: 100%;
+}
+.grand-total {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 0px;
+}
+.right-align {
+    text-align: right;
+    font-weight: bold;
+    position: relative;
+    left: 80px;
+}
+.gst-include {
+	font-size: 12px;
+	font-weight: normal;
+    text-align: right;
+    margin: 8px 0 0 0;
+    position: relative;
+    left: 80px;
+}
+.summary-samsung {
+    width: 191px;
+    height: 189px;
+    position: relative;
+    bottom: 25px;
+}
+.margin-class {
+    margin-left: 0px;
+    padding-left: 0px;
+    display: flex;
+}
+.margin-main-class {
+    margin-left: 20px;
+}
+.is_upfront_bold {
+    font-weight: bold;
+}
+.type_of_pass {
+    margin-top: 18px;
+    margin-bottom: -3px;
+    margin-left: 0;
+}
+.is-col-mobile-p-5 {
+    margin-top: 2%;
+}
+
+.contract_align {
+    margin-left: 5px;
+}
+.pass {
+    float: left;
+    margin-left: 0;
+    margin-top: 16px;
+}
+.bottom-class {
+    padding-bottom: 16px;
+}
+.top-align {
+    position: relative;
+    bottom: 10px;
+}
+.image-summary {
+    width: 21%;
+}
+
+@media (max-width: 768px) and (min-width: 320px) {
+    .summary-samsung {
+        width: 184px;
+        height: 181px;
+        margin: 0% 25%;
+    }
+    .margin-main-class {
+        width: 100%;
+        margin: 16px 10px;
+    }
+}
+@media (max-width: 768px) {
+    .is-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .is-col-mobile-p-5 {
+        margin-top: 6.3%;
+    }
+    .margin-class {
+        display: grid;
+    }
+    .is-bold {
+        padding-left: 0;
+    }
+    .gst-include {
+        font-size: 12px;
+        font-weight: normal;
+        text-align: right;
+        margin: 8px 0 0 -20%;
+    }
+    .right-align {
+        margin-left: 21%;
+        left: -15px;
+    }
+
+    .bottom-class {
+        margin-bottom: 0; 
+    }
+    .pass {
+        float: left;
+        margin-top: 16px;
+    }
+    .contract_align[_ngcontent-c19] {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .is-col-mobile-p-7 {
+        width: calc(65% - 30px);
+    }
+    .image-summary {
+        width: unset !important;
+    }
+}
+@media only screen and  (max-width: 414px)  {
+div.is-col-mobile-p-6.is-col-tablet-p-3.right-align.has-border-bottom {
+   margin:0px; 
+   left:50px;
+
+} 
+ p.is-col-mobile-p-6.is-col-tablet-p-3.gst-include {
+    margin: 8px 0px 0px -52px;
+}
+}

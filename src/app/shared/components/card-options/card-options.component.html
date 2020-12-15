@@ -1,0 +1,43 @@
+<ng-template #activebox>
+    <div class="checkbox-container">
+        <mat-icon style="width: 28px; height: 28px; color: #009bdf;" svgIcon="estore-check"></mat-icon>
+    </div><!-- /.collapse-button -->
+</ng-template>
+<ng-template #roundbox>
+    <div class="round-button btn-rounded"></div>
+</ng-template>
+
+<div class="top_container" [ngClass]="{'device-card': isDeviceCard, 'reload-card': isReloadCard}"
+(scroll)="onScroll($event)" #cardContainer>
+    <ng-container *ngIf="!isLoading; else loadingEl" [@stagger]>
+        <div
+            class="card" *ngFor="let option of options"
+            [id]="option.value"
+            [ngClass]="{ 
+                selected: option.value === selectedOption,
+                disabled: disabled 
+            }"
+            (click)="selectOption(option.value)">
+            <div class="optionImage" *ngIf="isDeviceCard">
+                <img [src]="option.image" alt="img">
+            </div>
+            <div class="optionDesc" [ngClass]="{'reload-card': isReloadCard}">
+                <div 
+                    class="optionLabel" 
+                    [innerHTML]="option.label | safeHtml"
+                >
+                </div>
+                <ng-container *ngTemplateOutlet="(option.value === selectedOption) ? activebox : roundbox"></ng-container>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #loadingEl>
+        <div class="card placeholder shimmer" *ngFor="let item of [1, 2, 3]"></div>
+    </ng-template>
+</div>
+<ul class="myPoint d-mobile-only" *ngIf="isDeviceCard">
+    <li
+        *ngFor="let op of options; let j = index"
+        [class.active]="(currentSection === 'el-' + j) || (!currentSection && j === 0)"
+    ></li>
+</ul>

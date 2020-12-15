@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23" height="29" viewBox="0 0 23 29">
+    <defs>
+        <filter id="a" width="260%" height="204.3%" x="-80%" y="-52.2%" filterUnits="objectBoundingBox">
+            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="#F8B734" fill-rule="evenodd" filter="url(#a)" transform="translate(4 2)">
+        <path d="M7.5 0L5.183 4.608 0 5.347l3.75 3.588L2.865 14 7.5 11.608 12.135 14l-.885-5.065L15 5.347l-5.182-.739L7.5 0zM5.629 9.47l.14-.758-.593-.538L3.462 6.62l2.37-.32.818-.11.367-.69L8.077 3.5l1.06 1.998.366.69.819.11 2.37.321-1.714 1.555-.594.538.14.758.406 2.197-2.12-1.038-.733-.357-.733.357-2.12 1.038.405-2.197z"/>
+        <text font-family="Lato-Black, Lato" font-size="8" font-weight="700" letter-spacing="-.01">
+            <tspan x="0" y="21">V</tspan> <tspan x="5.886" y="21" letter-spacing="-.011">IP</tspan>
+        </text>
+    </g>
+</svg>

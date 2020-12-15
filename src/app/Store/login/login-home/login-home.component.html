@@ -1,0 +1,140 @@
+<div class="r-page" [ngClass]="{'csagent': isCSAgentDealer}">
+    <main class="r-main" id="main">
+            <section class="u-section background-image-login">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="">
+                            <div class="c-picture--slider is-full-width-image" data-css="c-picture">
+                                <img class="dispMob" [ngClass]="{'dispMobNric': enableNRICAuthentication }" src="../assets/img/hero_banner_image_mob.png">
+                                <img class="dispDesk" src="../assets/img/hero_banner_image.png">
+                                <!--<img class="picture__image" src="../assets/img/hero_banner_image.png" alt="Banner">-->
+                            </div>
+                            <div class="hero-banner__container is-vertical-center is-mobile-absolute-top login-top">
+                                <div class="hero-banner__content is-container">
+                                    <div class="u-grid-row is-collapsed">
+                                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-col-desktop-l-6">
+                                            <div class="hero-banner__item">
+                                                <div class="box-shadow-login">
+                                                    <div class="login-via-mobile-width">
+                                                        <div class="login-via-mobile">Welcome Back !</div>
+                                                        <p class="login-via-mobile-heading">Simply Login with Mobile
+                                                            connect</p>
+                                                    </div>
+                                                    <form #form="ngForm">
+                                                    <div class="">
+                                                        <div class="box-shadow-login-content">
+                                                            <p class="mobile-connect-heading">Enter Your Celcom Number<span
+                                                                    class="mobile-no-manadatory">*</span>
+                                                            </p>
+                                                            <div class="moblie-form-group">
+                                                                <input class="form-control mobile-control numeric-textbox" type="tel"
+                                                                    name="mobileNumber" placeholder="60123456789"  maxlength="12"
+                                                                    (keydown)="validMsisdn($event);" (keyup)="loginThroughEnterButton($event,form)"
+                                                                    [(ngModel)]="msisdn" #mobileNumber="ngModel" [disabled]="enableNRICAuthentication"
+                                                                    required [ngClass]="{'errorborder':!mobileNumber.valid && mobileNumber.touched && !enableNRICAuthentication || this.invalidmsisdn == true }">
+                                                                    <span class="remove-x-blue" *ngIf="remove" (click)="clearMsisdn()">
+                                                                        <img class="remove-x" src="../../../../assets/img/Drop_3/icon/remove-blue-icon.svg">
+                                                                        Remove
+                                                                    </span>
+                                                            </div>
+                                                            <div *ngIf="!invalidmsisdn && mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)">
+
+                                                                <div class="error"> <span class="text-danger login-error error-span"
+                                                                        *ngIf="mobileNumber.errors.required">
+                                                                        <div class="warning-icon-login">
+                                                                            <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                                                                        </div>
+                                                                        <span>{{formErrors.ENTER_VALUE_MSG}}</span>
+                                                                        <div class="clearfix"></div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="error"> <span class="text-danger login-error error-span"
+                                                                    *ngIf="this.errorExits ===  true">
+                                                                    <div class="warning-icon-login">
+                                                                        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                                                                    </div>
+                                                                    <span>{{errorMessage.message}}</span>
+                                                                    <div class="clearfix"></div>
+                                                                </span>
+                                                            </div>
+                                                            <div class="error"> <span class="text-danger login-error error-span"
+                                                                    *ngIf="this.invalidmsisdn == true">
+                                                                    <div class="warning-icon-login">
+                                                                        <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                                                                    </div>
+                                                                    <span>{{formErrors.VALID_MOBILE_NUM_MSG}}</span>
+                                                                    <div class="clearfix"></div>
+                                                                </span>
+                                                            </div>
+                                                        <p class="login-msg" *ngIf="isMnp === true">*Please enter the mobile number you have already registered with Celcom.</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="mobile-connect-login-now" *ngIf = "!enableNRICAuthentication">
+                                                        <button class="c-cta--default login-default-button" data-css="c-cta"
+                                                            type="button" [disabled]="form.invalid || invalidmsisdn"
+                                                            (click)="onLoginClick(form)"> <span class="cta__content">{{loginButtonTxt}}</span>
+                                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                <app-nric-input *ngIf="enableNRICAuthentication" [msisdn] = "msisdn" (onNricVerification)="callOnNricVerification($event);"></app-nric-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <div id="terms_demo" class="login-otp_modal2" [ngStyle]="popupStyle">
+            <div class="login-otp_modal2-content">
+                <section class="u-section">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="login-otp-model-box2">
+                                <a (click)="close__terms__login();">
+                                    <img class="login-otp-model2-close" src="../assets/img/Drop_3/icon/remove.svg">
+                                </a>
+                                <div class="login-terms-condts">
+                                    <p class="conditions-header">Terms and Conditions</p>
+                                    <div class="terms-condts-inner">
+                                        <p class="terms-and-conda-para">By setting up an account, you are agreeing to
+                                            the Terms & Conditions. The Mobile Connect Privacy Promise means that your
+                                            mobile number will not be shared, and no personal information will be
+                                            disclosed without your consent.
+                                        </p>
+                                    </div>
+                                    <div class="terms-i-agree">
+                                        <a class="c-cta--default terms-default-button" data-css="c-cta" (click)="TermsFunction();">
+                                            <span class="cta__content">I Agree</span>
+                                            <span class="cta__icon icon is-icon-arrow"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer-component *ngIf="!isCSAgentDealer"></footer-component>
+    <app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>
+
+</div>
+<!-- Scripts
+================================================== -->
+
+<!--<script>
+function myFunctionTerms() {
+document.getElementById("terms_demo").style.display="block";
+}
+var close__terms__login=function(){
+document.getElementById("terms_demo").style.display="none";
+
+}
+</script> -->

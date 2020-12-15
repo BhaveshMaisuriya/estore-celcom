@@ -1,0 +1,83 @@
+.img-gradient {
+  position: absolute;
+  bottom: 0px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.68) 52%, #000);
+  width: 100%;
+  height: 174px;
+  word-break: break-word;
+  text-align: left;
+
+  .overlay-text {
+    color: white;
+    position: absolute;
+    bottom: 40px;
+    left: 25px;
+    max-width: 64.5rem;
+    p {
+      &:nth-child(2) {
+        font-size: 14px;
+        line-height: 1.29;
+        margin: 8px 0 16px 0;
+      }
+    }
+    a {
+      font-size: 14px;
+      margin: 0;
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      img {
+        width: 9px;
+        height: 15px;
+        margin-left: 7px;
+        vertical-align: middle;
+        object-fit: contain;
+      }
+    }
+    @media (max-width:576px)
+    {
+      max-width: 30.8rem;
+      bottom: 24px!important;
+      left: 30px!important;
+    }
+  }
+}
+
+h4 {
+  margin: 0;
+  font-weight: bold;
+  @media (max-width:576px)
+  {
+    font-size: 2rem;
+  }
+}
+
+.static-img {
+  width: 100%;
+  height: 350px; 
+
+  @media (max-width:576px)
+  {
+    object-fit: cover;
+    height: 36rem;
+  }  
+
+  &.desktop {
+    display: block;
+    @media (max-width:576px)
+    {
+      display: none;
+    }  
+  }
+  
+  &.mobile {
+    display: none;
+    @media (max-width:576px)
+    {
+      display: block;
+    }  
+  }
+}
+
+
+

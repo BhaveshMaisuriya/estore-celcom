@@ -1,0 +1,7 @@
+<div class="b-notification" id="b-notification" [ngStyle]="popupStyle">
+    <div class="b-notification__close icon is-icon-close" (click)="close_icon();"></div>
+        <p class="b-notification__text"><img class="upgrade_tick_mark" src="../assets/img/Drop_3/icon/success.svg" alt="notification">
+            <span *ngIf="!data">Item Successfully Added to Cart</span>
+            <span *ngIf="data">{{data}}</span>
+        </p>
+</div>

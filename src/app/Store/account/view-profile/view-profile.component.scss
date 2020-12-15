@@ -1,0 +1,667 @@
+/* style */
+  .head-text h3 {
+     text-align: center;
+     font-size: 40px;
+     margin: 4rem 0;
+  }
+  .head-text p {
+    text-align: center;
+    margin: 4rem 0 1.6rem 0;
+    color: #333333;
+  }
+  .profileStatus {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+    color: #333333;
+  }
+  .contractLine{
+    width: 881px;
+    margin-bottom: 1rem;
+    border: solid 1px #cccccc;
+  }
+  .table-content {
+    background-color: #def5f3;
+    padding: 4rem;
+  }
+  .table-content div {
+    padding: 0;
+  }
+  .table-content  p {
+    margin: 0;
+  }
+  .withContract {
+    margin: 4rem 0 3.2rem 0;
+  }
+  .withContract h4 {
+    color: #333333;
+    text-align: center;
+    margin: 0;
+  }
+
+  .withoutContract {
+    text-align: center;
+    background-color: #def5f3;
+    padding: 3.1rem 0 5.5rem 0;
+  }
+
+  .withoutContract p {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 2.5rem;
+  }
+
+  .withoutContract a {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.29;
+    letter-spacing: 0.02px;
+    color: #ffffff;
+    padding: 1.1rem 1.6rem;
+    background-color: #009ade;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+
+  .withoutContract img {
+    padding-top: 3px;
+  }
+
+  .note {
+    background-color: #f3f3f3;
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
+    padding: 1.6rem 0;
+  }
+  .note p {
+    font-size: 14px;
+    line-height: 1.43;
+    margin: 0;
+  }
+  .note div p:first-child {
+    font-weight: bold;
+  }
+  .note p a {
+    color: #009bdf;;
+  }
+  .table-inner div:first-child , .table-inner div:nth-child(2){
+    margin-bottom: 1.6rem;
+  }
+
+  .secondLineAddress {
+    margin-bottom: 4px !important;
+  }
+
+  .table-inner div p:first-child {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: .4rem;
+  }
+  .normalFont {
+    font-weight: normal !important;
+    font-size: 16px !important;
+  }
+  .redeem-tabs {
+    width: auto !important;
+    overflow: hidden;
+  }
+  .profile-tabs {
+    max-width: 96rem;
+    margin: auto;
+  }
+  .card {
+    width: 100%;
+    max-width: 416px;
+    min-height: 300px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.14);
+    background-color: #ffffff;
+    padding: 0;
+    border-radius: 8px;
+    margin:0 8px 0 8px;
+    word-break: break-word;
+  }
+  .card img {
+    width: 100%;
+    height: 177px;
+    border-radius: 8px 8px 0 0;
+    display: block;
+  }
+  .card-body {
+    padding: 23px 15px;
+  }
+  .card-body .promo-tags {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    margin: 0;
+    top: 165px;
+    width:100%;
+    font-family: lato;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .card-body h6 {
+    color: #333333;
+    font-weight: bold;
+    margin: 5px 0 4px;
+    font-size: 20px;
+  }
+  .card-body p {
+    font-size: 16px;
+    margin: 0 0 16px 0;
+  }
+  .card-body button {
+    width: 116px;
+  }
+
+  .card-layout {
+    justify-content: center;
+  }
+
+  .redeem-table, .order-history {
+    margin: 36px 15px 32px 15px;
+    text-align: center;
+    border: 1px solid #cccccc;
+  }
+
+  .redeem-table table thead tr th,
+  .redeem-table table tbody tr td,
+  .order-history table thead tr th,
+  .order-history table tbody tr td {
+     padding: 23px 0;
+     width: 33.33%;
+     font-weight: normal;
+     font-size: 14px;
+     line-height: 1.29;
+  }
+
+  .order-history table thead tr th,
+  .order-history table tbody tr td {
+    width: 14.28%;
+  }
+
+  .redeem-table table,
+  .order-history table {
+    width: 100%;
+  }
+
+  .redeem-table table thead tr,
+  .order-history table thead tr {
+    background-color: #004393;
+    color: #ffffff;
+  }
+
+  .redeem-table table tbody tr td,
+  .order-history table tbody tr td {
+    border-bottom: 1px solid #cccccc;
+    color: #333333;
+ }
+
+  .pagination {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 0;
+   }
+   .pagination>li {
+    display: inline;
+    font-size: 12px;
+   }
+
+   .pagination>li>a, .pagination>li>span {
+      position: relative;
+      float: left;
+      padding: 6px 12px;
+      margin-left: -1px;
+      line-height: 1.42857143;
+      color: #009bdf;;
+      text-decoration: none;
+      background-color: #fff;
+      border: 1px solid #e6e6e6;
+  }
+
+.modal-buttons {
+    align-items: center;
+    justify-content: center;
+    margin: 24px 0 0 0;
+    font-weight: bold;
+    line-height: 1.19;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @media(min-width: 768px) {
+      flex-direction: row;
+    }
+
+    button {
+      &:first-child {
+        color: #009bdf;
+        margin: 0;
+      }
+
+      &:last-child {
+        width: 217px;
+        margin: 0 0 16px 0;
+
+        @media (min-width: 768px) {
+          margin: 0;
+        }
+      }
+  }
+}
+
+.pagination>.active>a {
+  z-index: 2;
+  color: #fff;
+  cursor: default;
+  background-color: #009bdf;;
+  border-color: #009bdf;;
+}
+.pagination>li>a, .pagination>li>span {
+  border-radius: 50% !important;
+  margin: 0 17px;
+}
+
+@media (max-width:992px) {
+  .card {
+    max-width: 30.8rem;
+  }
+}
+
+@media (max-width:768px) {
+  .head-text p {
+    font-size: 14px;
+  }
+  .head-text h3 {
+    font-size: 28px;
+ }
+}
+
+@media (max-width:576px) {
+  .table-inner div:last-child {
+    margin-bottom: 1.6rem;
+  }
+  .withoutContract {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .table-content {
+   margin-left: 0;
+   margin-right: 0;
+   padding:4rem 4rem 2.4rem 4rem;
+  }
+  .note {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .card-layout {
+    margin: auto 0;
+  }
+
+  .redeem-table table,
+  .redeem-table table thead,
+  .redeem-table table tbody,
+  .redeem-table table thead tr th,
+  .redeem-table table tbody tr td,
+  .redeem-table table tbody tr,
+  .order-history table,
+  .order-history table thead,
+  .order-history table tbody,
+  .order-history table thead tr th,
+  .order-history table tbody tr td,
+  .order-history table tbody tr {
+    display: block;
+  }
+
+  .redeem-table table thead tr th,
+  .redeem-table table tbody tr td,
+  .order-history table thead tr th,
+  .order-history table tbody tr td {
+    width: 100%;
+ }
+
+ .redeem-table table tbody tr td:first-child,
+ .order-history table tbody tr td:first-child {
+   background-color: #004393;
+   color: #fff;
+   font-size: 18px;
+ }
+
+ .redeem-table table tbody tr td:nth-of-type(2),
+ .order-history table tbody tr td:nth-of-type(2) {
+    padding-top: 16px;
+    padding-bottom: 8px;
+    font-weight: bold;
+  }
+
+  .redeem-table table tbody tr td:nth-of-type(3),
+  .order-history table tbody tr td:nth-of-type(3) {
+    padding-top: 0;
+    padding-bottom: 16px;
+    font-weight: bold;
+  }
+
+  .redeem-table table thead tr,
+  .order-history table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .redeem-table table tbody tr td,
+  .order-history table tbody tr td {
+    border-bottom: 0px solid #cccccc;
+   }
+
+   .redeem-table table thead tr,
+   .order-history table thead tr,
+   .no-margin {
+    margin: 0;
+  }
+
+  .redeem-table table thead tr td,
+  .order-history table thead tr td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .redeem-table table thead tr td:before,
+  .order-history table thead tr td:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  td:nth-of-type(1):before {
+    content: "Rewards";
+    display: none;
+    font-weight: normal;
+  }
+
+  td:nth-of-type(2):before {
+    content: "Merchant";
+    display: block;
+    font-weight: normal;
+   }
+
+  td:nth-of-type(3):before {
+    content: "Redeemed on";
+    display: block;
+    font-weight: normal;
+  }
+}
+
+@media (max-width:411px) {
+   .profile-tabs {
+    width:105vw;
+    display: block!important;
+    margin-left: -3px;
+    overflow: hidden;
+  }
+  .profile-tabs li {
+    padding: 0 28px;
+  }
+}
+  .viewProfileContainer {
+    margin-bottom: 20px;
+  }
+
+  .profileContainer {
+    margin-top: 30px;
+  }
+/* Purchase History Sortby Section CSS Start  */
+
+.has-margin-top-2 {
+  margin-top: 2em;
+}
+
+.sorty-by-button {
+  display: inline-block;
+  width: 100%;
+  font: 14px Lato;
+  padding: 15px 25px;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  color: #000;
+  background-color: #f3f3f3;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  /*Newly added property*/
+  box-shadow: 0 0 #ccc;
+  text-transform: capitalize;
+  /*changes in existing property*/
+}
+.is-width__100 {
+  width: 100%;
+}
+.filter-by-status {
+  /*Newly added class*/
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+}
+.sorty-by-button>img {
+  width: 16px;
+  float: right
+}
+.sorty-by-button.is-filter-active {
+  border-bottom: 2px solid #2196f3 !important;
+}
+.sorty-by-button.is-filter-active img {
+  transform: rotate(180deg);
+}
+.sortby__list {
+  list-style: none;
+  padding: 0;
+  line-height: 3em;
+  margin: 0;
+  color: #626262;
+  font-size: 14px;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .filter-by-status {
+    left: 0;
+  }
+}
+.sortby__list .sortby__list_item {
+  padding-left: 23px;
+  cursor: pointer;
+}
+.sortby__list .sortby__list_item:hover {
+  background-color: #009ade;
+  color: #fff;
+}
+.is-filter-show {
+  display: block;
+}
+.filter__background {
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+}
+/*  Purchase History Sortby Section CSS End  */
+.modal-box .form-input {
+  margin-bottom: 0;
+}
+.modal-box form span.voucher-error {
+  background-color: #ffffff;
+}
+.remove-text {
+  cursor: pointer;
+}
+
+.invalid_coupon {
+  color: #f44236;
+  width: 380px;
+  text-align: center;
+  margin: 10px auto 10px;
+}
+.voucher_description {
+ margin-bottom: 0;
+ margin-top: 10px;
+ font-size: 14px;
+ color: #666666;
+}
+.caution-icon {
+ margin-top: 4px;
+ margin-right: 5px;
+}
+@media(max-width: 768px) {
+ .voucher_field {
+     width: 69%;
+ }
+ .coupon_code {
+     left: 20px;
+ }
+ .remove-x-blue {
+     margin-left: 118px;
+ }
+ .invalid_coupon {
+     width: 100%;
+     margin-left: -5%;
+ }
+ .caution-icon {
+     margin-top: 4px;
+  }
+  .image_float {
+     margin-left: 0;
+     padding-right: 2.5%;
+ }
+}
+
+@media(min-width: 1200px) {
+  .profileContainer {
+    max-width: 960px;
+  }
+}
+
+.discount-voucher-modal {
+  color: #333333;
+  text-align: center;
+  padding: 0;
+  word-break: break-word;
+
+  .is-justify-center {
+      justify-content: center;
+  }
+
+  .discount-text {
+      font-size: 14px;
+      margin: 0;
+      width: 100%;
+      margin: 0 0 14px 0;
+  }
+
+  .blue-voucher-box {
+      max-width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 -2px 10px 0 rgba(0, 0, 0, 0.2);
+      background-color: #164396;
+      padding: 24px;
+      margin: 0;
+
+      p {
+          line-height: 1.19;
+          color: #fff;
+          margin: 0 0 4px 0;
+      }
+
+      hr {
+          width: 200px;
+          background-color: #e6e6e6;
+      }
+
+      h5 {
+          line-height: 1.2;
+          color: #fff;
+          font-weight: bold;
+          margin: 0;
+
+          &:first-child {
+              padding-bottom: 16px;
+          }
+      }
+  }
+
+  .terms-condition-desc {
+    margin: 16px 0 0 0;
+    .title {
+        font-weight: bold;
+        line-height: 1.19;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .redeem-list {
+      margin: 0;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.21;
+      width: 410px;
+      height: 45px;
+      outline: none;
+
+      li {
+        text-align: left;
+      }
+
+      li:not(:first-child) {
+        margin-top: 8px;
+      }
+
+      li p {
+        display: inline;
+      }
+
+      &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: 20px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background-color: #e6e6e6;
+        border-radius: 20px;
+      }
+
+      &::-webkit-scrollbar-thumb, &::-webkit-scrollbar-thumb:hover {
+        background: #009bdf; 
+        border-radius: 20px;
+        height: 2px;
+      }
+    }
+  }
+  
+}
+
+.w-100{
+  width: 100%;
+}
+
+.redeem-later{
+  border: none;
+}
+
+#voucher-popup {
+  .mdl-container {
+    width: 100%;
+    padding: 24px 0;
+
+    @media (min-width: 600px) {
+      max-width: 462px;
+    }
+
+    .mdl-body {
+      padding: 0 24px;
+
+      @media (min-width: 600px) {
+        max-height: max-content;
+        overflow: hidden;   
+      }
+    }
+  }
+}

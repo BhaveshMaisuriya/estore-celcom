@@ -1,0 +1,26 @@
+.guide-content {
+    font: normal normal 11px Lato;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: justify;
+	color: #000;
+	margin-bottom: 0;
+	padding: 35px 20px 0 10px;
+}
+
+.guide-content ul {
+	padding-left: 17px;
+}
+
+.guide-details {
+    padding: 0 !important;
+}
+
+.guide-details > li {
+	list-style: none;
+}
+
+.guide-details ul li {
+	list-style: disc;
+}

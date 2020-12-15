@@ -1,0 +1,183 @@
+<div *ngIf = "!apiError && fieldDataResponse">
+<div class="container">
+  <img src="{{fieldDataResponse?.image}}" alt="device-banner" class="device-banner">
+  <div class="top-right">
+    <p class="banner-font-headline">{{fieldDataResponse?.image_title_1}}</p>
+    <p class="banner-font-sub">{{fieldDataResponse?.image_title_2}}</p>
+  </div>
+</div>
+<div class="form-container">
+  <p class="roi-text">{{fieldDataResponse?.register_interest_title}}</p>
+  <p class="roi-subtext">{{fieldDataResponse?.register_interest_text}}</p>
+  <p class="form-section">{{fieldDataResponse?.tell_us_title}}</p>
+  <div class="border"></div>
+  <form #roiForm="ngForm" (ngSubmit)="onSubmit(roiForm)">
+    <div class="is-row">
+      <div class="input-width">
+        <div class="font-style">
+          Name
+        </div>
+        <div class="guest-choose-form-group">
+          <input placeholder="Name" type="text" class="input-fields" id="name" name="name" [(ngModel)]="nam" required
+            #name="ngModel" pattern="[a-zA-Z0-9.,':!@#$%^&*()-]+(\s+[a-zA-Z0-9.,':!@#$%^&*()-]+)+$" maxlength="50"
+            [ngClass]="{'errorborder':!name.valid && name.touched}">
+          <div class="error" *ngIf="!name.valid && name.touched">
+            <span class="text-danger" [hidden]="!name.hasError('required')">Please enter your full name</span>
+            <span class="text-danger" [hidden]="!name.hasError('pattern')">Please enter name as per IC</span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="margin-form input-width">
+        <div class="font-style">
+          Email
+        </div>
+        <div class="guest-choose-form-group">
+
+          <input
+            pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+            maxlength="50" type="email" placeholder="email@email.com" class="input-fields" name="contactEmail"
+            [(ngModel)]="eml" required #contactEmail="ngModel"
+            [ngClass]="{'errorborder':!contactEmail.valid && contactEmail.touched}">
+          <div class="error" *ngIf="!contactEmail.valid && contactEmail.touched">
+            <span class="text-danger" [hidden]="!contactEmail.hasError('required')">Please enter email address </span>
+            <span class="text-danger" [hidden]="!contactEmail.hasError('pattern')">Please enter a valid email
+              address</span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="is-row second-row-margin">
+      <div class="input-width">
+        <div class="font-style">
+          NRIC Number
+        </div>
+        <div class="guest-choose-form-group">
+          <input placeholder="9645454109" class="input-fields" [maxlength]="12" type="text" name="customerID"
+            [(ngModel)]="valuedata" #customerID="ngModel" required
+            [ngClass]="{'errorborder':(!customerID.valid && customerID.touched) || customMessage}"
+            (keyup)="validationForNRIC(customerID.value)" (blur)="validationForNRIC(customerID.value)">
+          <div *ngIf="customMessageforNRIC">
+            <div class="error">
+              <span class="text-danger login-error">{{customMsgForNRIC}}</span>
+              <span class="warning-icon-login warning-nric">
+                <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+                <div class="clearfix"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="margin-form input-width">
+        <div class="font-style">
+          Mobile Number
+        </div>
+        <div class="guest-choose-form-group">
+          <input type="text" class="input-fields" placeholder="01XXXXXXXX" id="contactMobileNum" name="contactMobileNum" [maxlength] ="11"
+            ngModel required #contactMobileNum="ngModel"
+            [ngClass]="{'errorborder':(!contactMobileNum.valid && contactMobileNum.touched) || this.invalidMobileNumber}"
+            [(ngModel)]="mobNumber" (keyup)="MobileNumberValidation()" (touchend)="MobileNumberValidation()">
+          <div class="error" *ngIf="!contactMobileNum.valid && contactMobileNum.touched">
+            <span class="text-danger" [hidden]="!contactMobileNum.hasError('required')">Please enter contact number
+            </span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="error" *ngIf="this.invalidMobileNumber == true">
+            <span class="text-danger">Please enter a valid contact number </span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="form-section roi-subtext">{{fieldDataResponse?.phone_details_title}}</p>
+    <div class="border"></div>
+    <div class="is-row-prefered is-row">
+      <div class="input-width">
+        <div class="font-style">
+          Model
+        </div>
+        <div>
+          <select class="dropdown" name="model" ngModel required #model="ngModel"
+            [ngClass]="{'errorborder':!model.valid && model.touched}" (change)="onChangeModel($event.target.value)">
+            <option disabled="" selected="" value="">Choose</option>
+            <option *ngFor="let model of deviceModelSet" value="{{model}}">{{model}}</option>
+          </select>
+          <div class="error" *ngIf="!model.valid && model.touched">
+            <span class="text-danger" [hidden]="!model.hasError('required')">Please select Phone Model</span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="margin-form input-width">
+        <div class="font-style">
+          Color
+        </div>
+        <div>
+          <select class="dropdown" name="color" ngModel required #color="ngModel"
+            [ngClass]="{'errorborder':!color.valid && color.touched}">
+            <option disabled="" selected="" value="">Choose</option>
+            <option *ngFor="let color of deviceColorSet" value="{{color}}">{{color}}</option>
+          </select>
+          <div class="error" *ngIf="!color.valid && color.touched">
+            <span class="text-danger" [hidden]="!color.hasError('required')">Please select Phone Color</span>
+            <span class="warning-icon">
+              <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="is-row-prefered is-row new-line" *ngFor = "let ques of fieldDataResponse.query_option;let i=index">
+        <div class="device-color input-width">
+          <div class="font-style">
+           {{ques.question}}
+          </div>
+          <div>
+            <select class="dropdown" name="{{i}}" ngModel required #query="ngModel"
+              [ngClass]="{'errorborder':!query.valid && query.touched}">
+              <option disabled="" selected="" value="">Choose</option>
+              <option *ngFor="let ans of ques.answer" value="{{ans}}">{{ans}}</option>
+            </select>
+            <div class="error" *ngIf="!query.valid && query.touched">
+              <span class="text-danger" [hidden]="!query.hasError('required')">Please select any answer!</span>
+              <span class="warning-icon">
+                <img src="../../../../assets/img/ThresholdAlertNotification.svg">
+              </span>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="center-button">
+      <button class="c-cta--default submit" type="submit" [disabled]="roiForm.invalid || formInvalid">Submit
+      </button>
+    </div>
+  </form>
+</div>
+</div>
+<ng-container *ngIf="isDisplayFormSubmissionPopup">
+  <session-timeout-popup-component (OnContinue)="OnContinue($event);" [formSubmitted]="formSubmitted">
+  </session-timeout-popup-component>
+</ng-container>
+<app-DetailBannerTextLeft style="width:100%" *ngIf="initializeDetailBannerLeft" [data]="infoForDetailBannerTextLeft">
+</app-DetailBannerTextLeft>
+<app-notification-error *ngIf="errorOnSubmit" [data]="errorOnSubmitMessage"></app-notification-error>
+<app-notification-error *ngIf='isErrorToaster' [data]="errorToasterInfo"></app-notification-error>
+<footer-component></footer-component>

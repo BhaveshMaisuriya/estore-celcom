@@ -1,0 +1,172 @@
+.xpax-table-comparison .plan-comparison.plan-subscription-text,
+.xpax-table-comparison .plan-comparison__list__item__description {
+  z-index: 20;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__header__key {
+  color: #000000;
+  font-size: 18.0px;
+  font-weight: 700;
+}
+
+.xpax-table-comparison .plan-comparison__level-name {
+  font-size: 32px;
+  font-weight: 700;
+  padding: 10px;
+  color: #d1209b;
+}
+
+ .xpax-table-comparison .plan-comparison__level-name.previous-title {
+    color: #000;
+  }
+
+.xpax-table-comparison .plan-comparison__feature-item {
+  font-size: 12.0px;
+  padding: 0 0 12px;
+}
+
+.xpax-table-comparison .plan-subscription-text {
+    font-size: 14.0px;
+    margin-bottom: 25px;
+    color: #000000;
+    font-family: "LatoLatinWeb",Arial,sans-serif-bold;
+    font-weight: 400;
+    margin: 15px auto;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item__content__detail.is-highlighted {
+  background: #fff2e6;
+  font-size: 12.0px;
+  font-weight: 700;
+  padding: 5px 30px;
+  height: auto;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__level-indicator:before {
+  background: #d1209b; 
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__content__detail.is-highlighted:after {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__content__detail:after {
+  border-bottom: 0;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item {
+  border: 0;
+}
+
+.xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item {
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #d8d8d8;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.xpax-table-comparison .plan-comparison.plan-subscription-text a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+}
+
+.is-pop {
+  width: 100.4%;
+  background: #ff7001;
+  color: #ffffff;
+  font-size: 16.0px;
+  font-family: "LatoLatinWebBold",Arial,sans-serif;
+  padding: 11px 20px 3px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  box-sizing: border-box;
+  margin: 0 0 5px;
+  min-height: 44px;
+}
+
+span.popular-icon img {
+  width: 29px;
+  height: 31px;
+  float: left;
+}
+
+span.popular-text {
+  color: #ffffff;
+  font-size: 16.0px;
+  display: inline-block;
+  text-align: left;
+  text-transform: uppercase;
+  margin-left: 15px;
+  max-width: 68%;
+}
+
+@media(min-width:980px) {
+  .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__level-indicator {
+    width: calc(100% + .13rem);
+    height: 1rem;
+  }
+  .desktop-hide {
+    display: none;
+  }
+}
+
+@media(max-width:979px) {
+  .xpax-table-comparison .plan-comparison__level-name.previous-title {
+    display: none; 
+  }
+
+  .xpax-table-comparison .plan-comparison__list__item__content.is-active {
+    padding: 1rem;
+  }
+
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content:not(.is-active) {
+    height: 0;
+    display: none;
+  }
+
+  .plan-comparison__item-header-container.is-open .plan-comparison__level-indicator {
+    height: calc(100% + 0.2rem);
+    width: 1rem;
+    top: -0.1rem;
+    left: -0.7px;
+  }
+
+  .xpax-table-comparison .plan-comparison__level-name { 
+    font-size: 16px;
+    z-index: 25;
+  }
+
+  .xpax-table-comparison .plan-comparison__feature-item { 
+    padding: 0 0 12px 20px;
+    margin-top: 18px;
+  }
+
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__actions {
+    position: relative;
+    top: 0;
+  }
+
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header .plan-comparison__list__item__header__key {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header.is-active::after, .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__header::after {
+    position: absolute;
+    right: 10px;
+    top: 1.3rem;
+  }
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content.is-active .plan-comparison__list__item__content__detail {
+    height: auto;
+  }
+  .xpax-table-comparison .c-plan-comparison .plan-comparison__list .plan-comparison__list__item .plan-comparison__list__item__content .plan-comparison__list__item__actions .plan-comparison__list__item__actions__primary .c-cta--default {
+    margin: 0 auto;
+  }
+  .mobile-hide {
+    display: none;
+  }
+}
+
+

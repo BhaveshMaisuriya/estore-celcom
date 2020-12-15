@@ -1,0 +1,14 @@
+[
+  {
+      "status": true,
+      "price": "10.0000",
+      "state": {
+        "region_id": "544",
+        "country_id": "MY",
+        "code": "SL",
+        "default_name": "Selangor",
+        "name": "Selangor"
+      },
+      "message": "Yay! Your area is covered."
+  }
+]

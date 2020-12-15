@@ -1,0 +1,114 @@
+.device-combo-container {
+    text-decoration: none;
+    color: #a0a0a0;
+
+    .device-combo-card {
+        color: #333333;
+        padding: 24px;
+        max-width: 332px;
+        height: 404px;
+        border: 1px solid #cccccc;
+        border-radius: 8px;
+        word-break: break-word;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        margin: 0 auto 16px;
+
+        .device-combo-head {
+            position: relative;
+
+            .device-title-img-left {
+                max-width: 120px;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    background: url(assets/img/enterprise-plus-icon.svg) no-repeat;
+                    width: 44px;
+                    height: 44px;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16);
+                    background-color: #ffffff;
+                    border-radius: 50%;
+                    background-position: center;
+                    left: 99%;
+                    top: 84px;
+                    z-index: 2;
+                }
+
+                p {
+                    font-weight: bold;
+                    min-height: 38px;
+                    margin: 0 0 8px 0;
+                }
+            }
+
+            .device-title-img-right {
+                max-width: 120px;
+                margin-left: auto;
+
+                p {
+                    font-weight: bold;
+                    min-height: 38px;
+                    margin: 0 0 8px 0;
+                }
+                
+                .right-device-name {
+                    max-width: 100px;
+                }
+
+                .mat-icon {
+                    width: 16px;
+                    height: 16px;
+                    vertical-align: top;
+                }
+
+                .device-button-menu {
+                    margin-top: -14px;
+                    margin-right: -14px;
+                }
+            }
+
+            img {
+                width: 120px;
+                height: 120px;
+                display: block;
+            }
+        }
+
+        .device-combo-body {
+            border-top: 1px solid #ccc;
+            margin-top: 16px;
+
+            .badges {
+                margin: 0 0 -8px 0;
+            }
+
+            .device-name-text {
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: bold;
+                margin: 24px 0 4px;
+            }
+
+            .lighting-text {
+                font-size: 12px;
+                color: #999999;
+                line-height: 15px;
+                font-weight: normal;
+            }
+
+            button {
+                width: 136px;
+                padding: 7px 0 6px 0;
+                display: block;
+                margin: 0 auto;
+            }
+            .button-with-badge {
+                margin-top: 16px;
+            }
+            .button-without-badge {
+                margin-top: 48px;
+            }
+        }
+    }
+}

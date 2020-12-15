@@ -1,0 +1,325 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<div [hidden]="loading" class="shop-cart-grid-border">
+  <div class='chooseAddress'>
+    <div class="billingAddContainer">
+      <input type="radio" id="radio1" name="stdDeliveryAddress" [(ngModel)]="shipType" value="shipToBillingAdd" (click)="chooseAddress('shipToBillingAdd')">
+      <label for="radio1" >Ship to billing address </label>
+    </div>
+    <div class="billingAddContainer">
+      <input type="radio" id="radio2" name="stdDeliveryAddress" [(ngModel)]="shipType" value="shipToDiffAdd" (click)="chooseAddress('shipToDiffAdd')">
+      <label for="radio2">Ship to a different address </label>
+    </div>
+  </div>
+  <div class="error" style="text-align: center;" *ngIf="isshowBillingAddressValid === false">
+    <span class="warning-icon chooseAddress-error-align"><img  src="../assets/img/ThresholdAlertNotification.svg"></span>
+    <span class="text-danger">Please choose a shipping address.</span>
+    <div class="clearfix"></div>
+  </div>
+
+  <!-- Start of choose Shipping Address as Billing address -->
+  <div class="checkout_billing_address" *ngIf="billingAddress && showBillingAddress == 'existing'">
+    <p>{{billingAddress?.billing_unit_number}}</p>
+    <p>{{billingAddress?.address_line_1}}</p>
+    <p *ngIf="billingAddress.address_line_2">{{billingAddress.address_line_2}}</p>
+    <p>{{billingAddress?.postcode}} {{billingAddress?.city}} </p>
+    <p class="billing-caps">{{billingAddress?.region}}</p>
+
+      <!--Start:Note section for home wireless-->
+  <div *ngIf= 'preorderchk && preorderchk.is_broadband' class="bb-note-container">
+    <div class="bb-note-header">NOTE:</div>
+    <li class="bb-note-msg">Please ensure that your address is within Celcom Home Wireless serviceable area by verifying with our network checker.</li>
+    <li class="bb-note-msg">Please note that the 30 Days free trial begins from the date of order.</li>
+    <li class="bb-note-msg">Once active the device should not be moved to a different home.</li>
+  </div>
+<!--End:Note section for home wireless-->
+  </div>
+  <div *ngIf="billingAddress && showBillingAddress == 'existing'">
+  <p class="choose_shipping_add_title is-text-align-center">
+    Secondary Contact Number
+  </p>
+  <p class="is-text-align-center">
+    Provide a secondary contact number that the courier company can use to contact you in case you cannot be reached by your primary number.
+  </p>
+  <form (ngSubmit)="gotoOnSubmit(form)" #form="ngForm">
+    <div class="section__inner">
+      <div class="choose_new_add">
+        <div class="choose_new_add-form">
+          <!-- <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              <div class="choose_form_group">
+                <label> Full name (As Per ID)
+                  <span class="new-add_require">*</span>
+                </label>
+              </div>
+              <div class="choose_form_group">
+                <input disabled="" class="choose_form_control input_disable" type="text" placeholder="" id="" name="" value={{checkoutData.customerOtherInfo.customer_full_name}}>
+              </div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              <div class="choose_form_group">
+                <label>ID Number
+                  <span class="new-add_require">*</span>
+                </label>
+              </div>
+              <div class="choose_form_group">
+                <input class="choose_form_control input_disable" type="text" placeholder="" id="customerIdNumber" name="customerIdNumber" readonly value={{nric}}>
+              </div>
+            </div>
+          </div> -->
+          <div class="choose_form_group">
+            <label style="padding-top:10px;display:inline-block">
+              Secondary Contact Number
+              <span class="new-add_require">*</span>
+            </label>
+          </div>
+          <div class="u-grid-row is-collapsed is-equal-height secondary_contact_text_field">
+            <div class="u-grid-col is-col-mobile-p-12 is-equal-height">
+              <div class="choose_form_group">
+                <input class="choose_form_control"
+                [maxlength]="12"
+                pattern="[0-9]{11,}"
+                type="tel"
+                placeholder="01XXXXXXXX"
+                id="alternateMsisdn"
+                name="alternateMsisdn"
+                ngModel
+                #alternateMsisdn="ngModel"
+                (keydown.Tab)="invalidAlternateMsisdn = altMobNum.toString().length < 11"
+                (keydown) = "restrictOnlyNum($event, 'alternateMsisdn')"
+                (keyup)="MobileNumberAlternate($event)" (touchend)="MobileNumberAlternate($event)"
+                [ngClass]="{'errorborder':(!this.invalidAlternateMsisdn && !alternateMsisdn.valid && alternateMsisdn.touched)}"
+                [(ngModel)]="altMobNum"/>
+                <div class="error" *ngIf="!alternateMsisdn.valid && alternateMsisdn.touched">
+                  <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                  <span class="text-danger" [hidden]="!alternateMsisdn.hasError('pattern')">Please Input a Valid Number</span>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="is-text-align-center">
+            <button class="c-cta--default proceed_anchor" data-css="c-cta" type="submit" >Update</button><br>
+            <a class="proceed_anchor" (click)="onCancelEditAddress()" >Cancel</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>
+</div>
+  <!-- <div class="is-text-align-center buttonContainer" *ngIf="disableButton || (!billingAddress || !showBillingAddress)">
+    <button class="c-cta--default proceed_anchor " data-css="c-cta">Proceed
+      <i class="cta__icon icon is-icon-arrow"></i>
+    </button>
+  </div> -->
+
+    <!-- <button *ngIf="showBillingAddress == 'existing'" class="c-cta--default proceed_anchor" data-css="c-cta" (click)="setShippingAddress(billingAddress.id)">Proceedb
+      <i class="cta__icon icon is-icon-arrow"></i>
+    </button> -->
+
+    <!-- <div class="teaser__link back-to-cart is-text-align-center buttonContainer">
+      <a class="c-link--default" data-css="c-link" (click)="backToCart()"> <span class="link__icon icon is-icon-arrow"></span>
+        <span class="link__content">Back to Cart</span>
+      </a>
+    </div> -->
+
+  <!-- End of choose Shipping Address as Billing address -->
+  <!-- Start of choose different Shipping Address -->
+  <div *ngIf="billingAddress && showBillingAddress == 'new'">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <div class="section__inner">
+        <div>
+          <div class="choose_new_add">
+            <div class="choose_new_add-form">
+              <div class="choose_form_group">
+                <label style="padding-top:10px;display:inline-block">Address
+                  <span class="new-add_require">*</span>
+                </label>
+              </div>
+              <div class="u-grid-row is-collapsed is-equal-height border-bottom">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                  <div class="choose_form_group">
+                    <input class="choose_form_control" type="text" placeholder="Home/Lot/Unit" id="address" name="address"
+                      [(ngModel)]="addr" [pattern]="formPattern.address" required
+                      #address="ngModel" maxlength="15" (keypress)="addressUnitValidation($event)" (touchend)="addressUnitValidation($event)"
+                      [ngClass]="{'errorborder':!address.valid && address.touched}" />
+                    <div class="error" *ngIf="!address.valid && address.touched">
+                      <span class="text-danger" [hidden]="!address.hasError('required')">{{modelLabels.ADDRESS_MSG}}</span>
+                      <span class="text-danger" [hidden]="!address.hasError('pattern')">{{modelLabels.VALID_ADDRESS_MSG}}</span>
+                      <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                      <div class="clearfix"></div>
+                    </div>
+                    <!-- <div class="error" *ngIf="address.valid && address.touched && unitInvalid">
+                      <span class="text-danger" [hidden]="!unitInvalid">
+                        Please enter valid address
+                      </span>
+                      <span class="warning-icon" [hidden]="!unitInvalid"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                      <div class="clearfix"></div>
+                    </div> -->
+                  </div>
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                  <div class="choose_form_group">
+                    <input class="choose_form_control address_control" type="text" placeholder="Address Line 1" id="addressLine1"
+                      name="addressLine1" [(ngModel)]="addrline1" [pattern]="formPattern.addressLine"
+                      required #addressLine1="ngModel" maxlength="100" (keypress)="addressUnitValidation($event)"
+                      (touchend)="addressUnitValidation($event)" [ngClass]="{'errorborder':!addressLine1.valid && addressLine1.touched}" />
+                    <div class="error" *ngIf="!addressLine1.valid && addressLine1.touched">
+                      <span class="text-danger" [hidden]="!addressLine1.hasError('required')">{{ formHelperText.addressLine.req }}</span>
+                      <span class="text-danger" [hidden]="!addressLine1.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                      <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                    <div class="choose_form_group">
+                      <input class="choose_form_control address_control" type="text" placeholder="Address Line 2 (Optional)" id="addressLine2"
+                        name="addressLine2" [(ngModel)]="addrline2" [pattern]="formPattern.addressLine"
+                        #addressLine2="ngModel" maxlength="100" (keypress)="addressUnitValidation($event)"
+                        (touchend)="addressUnitValidation($event)" [ngClass]="{'errorborder':!addressLine2.valid}" />
+                      <div class="error" *ngIf="!addressLine2.valid">
+                        <span class="text-danger" [hidden]="!addressLine2.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                        <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                        <div class="clearfix"></div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                  <div class="choose_form_group">
+                    <input class="choose_form_control" type="tel" placeholder="Postcode" id="postalCode" name="postalCode"
+                      [(ngModel)]="posCod" required #postalCode="ngModel" pattern="[0-9]{5}"
+                      maxlength="5" (keypress)="postalCodeValidation($event)" (touchend)="postalCodeValidation($event)"
+                      [ngClass]="{'errorborder':!postalCode.valid && postalCode.touched}" />
+                    <div class="error" *ngIf="!postalCode.valid && postalCode.touched && !isPostalInValid">
+                      <span class="text-danger" [hidden]="!postalCode.hasError('required')">{{modelLabels.POSTAL_MSG}}</span>
+                      <span class="text-danger" [hidden]="!postalCode.hasError('pattern')">{{modelLabels.VALID_POSTAL_MSG}}</span>
+                      <span class="warning-icon">
+                        <img src="../assets/img/ThresholdAlertNotification.svg">
+                      </span>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="error" *ngIf="isPostalInValid">
+                      <span class="text-danger" >{{modelLabels.VALID_POSTAL_MSG}}</span>
+                      <span class="warning-icon">
+                        <img src="../assets/img/ThresholdAlertNotification.svg">
+                      </span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                  <div class="choose_form_group">
+                    <input class="choose_form_control" type="text" placeholder="City" id="city" name="city"
+                      [(ngModel)]="ciy" required #city="ngModel" pattern="[a-zA-Z\s]+" maxlength="30" (keypress)="cityValidation($event)"
+                      (touchend)="cityValidation($event)" [ngClass]="{'errorborder':!city.valid && city.touched}" />
+                    <div class="error" *ngIf="!city.valid && city.touched">
+                      <span class="text-danger" [hidden]="!city.hasError('required')">{{modelLabels.CITY_MSG}}</span>
+                      <span class="text-danger" [hidden]="!city.hasError('pattern')">{{modelLabels.VALID_CITY_MSG}}</span>
+                      <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="stateContainer" class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                  <div class="choose_form_group" *ngIf="states">
+                    <select class="choose_form_control" id="state" name="state"
+                      ngModel [(ngModel)]="stat" required #state="ngModel" [ngClass]="{'errorborder':!state.valid && state.touched}">
+                      <option disabled selected value>State</option>
+                      <option *ngFor="let st of states.available_regions" [value]="st.id"> {{st.name}} </option>
+                    </select>
+                    <div class="error" *ngIf="!state.valid && state.touched">
+                      <span class="text-danger" [hidden]="!state.hasError('required')">{{modelLabels.STATE_MSG}}</span>
+                      <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- </form> -->
+      <!--Start:Note section for home wireless-->
+  <div *ngIf= 'preorderchk && preorderchk.is_broadband' class="bb-note-container">
+    <div class="bb-note-header">NOTE:</div>
+    <li class="bb-note-msg">Please ensure that your address is within Celcom Home Wireless serviceable area by verifying with our network checker.</li>
+    <li class="bb-note-msg">Please note that the 30 Days free trial begins from the date of order.</li>
+    <li class="bb-note-msg">Once active the device should not be moved to a different home.</li>
+  </div>
+<!--End:Note section for home wireless-->
+<p class="choose_shipping_add_title is-text-align-center"> Secondary Contact Number</p>
+<p>Provide an secondary contact number that the courier company can use to contact you in case you cannot be reached by your primary number.</p>
+<!-- <form (ngSubmit)="onSubmit(form)" #form="ngForm"> -->
+  <div class="section__inner">
+      <div class="choose_new_add">
+        <div class="choose_new_add-form">
+          <!-- <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              <div class="choose_form_group">
+                <label> Full name (As Per ID)
+                  <span class="new-add_require">*</span>
+                </label>
+              </div>
+              <div class="choose_form_group">
+                <input disabled="" class="choose_form_control input_disable" type="text" placeholder="" id="" name="" value={{checkoutData.customerOtherInfo.customer_full_name}}>
+              </div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              <div class="choose_form_group">
+                <label>ID Number
+                  <span class="new-add_require">*</span>
+                </label>
+              </div>
+              <div class="choose_form_group">
+                <input class="choose_form_control input_disable" type="text" placeholder="" id="customerIdNumber" name="customerIdNumber" readonly value={{nric}}>
+              </div>
+            </div>
+          </div> -->
+          <div class="choose_form_group">
+            <label style="padding-top:10px;display:inline-block">Secondary Contact Number
+              <span class="new-add_require">*</span>
+            </label>
+          </div>
+          <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              <div class="choose_form_group">
+                <input class="choose_form_control"
+                [maxlength]="12"
+                pattern="[0-9]{11,}"
+                type="tel"
+                placeholder="01XXXXXXXX"
+                id="alternateMsisdn"
+                name="alternateMsisdn"
+                ngModel
+                #alternateMsisdn="ngModel"
+                (keydown.Tab)="invalidAlternateMsisdn = altMobNum.toString().length < 11"
+                (keydown) = "restrictOnlyNum($event, 'alternateMsisdn')"
+                (keyup)="MobileNumberAlternate($event)" (touchend)="MobileNumberAlternate($event)"
+                [ngClass]="{'errorborder':(!this.invalidAlternateMsisdn && !alternateMsisdn.valid && alternateMsisdn.touched)}"
+                [(ngModel)]="altMobNum"/>
+                <div class="error" *ngIf="!alternateMsisdn.valid && alternateMsisdn.touched">
+                  <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                  <span class="text-danger" [hidden]="!alternateMsisdn.hasError('pattern')">Please Input a Valid Number</span>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="is-text-align-center">
+            <button class="c-cta--default proceed_anchor" data-css="c-cta" type="submit">Update</button><br>
+            <a class="proceed_anchor" (click)="onCancelEditAddress()" >Cancel</a>
+          </div>
+        </div>
+      </div>
+  </div>
+</form>
+</div>
+</div>
+
+
+<ng-container *ngIf="IsDisplayIdlePopup">
+  <session-timeout-popup-component (OnContinueMySession)="redirectShopDetails($event);" [data]="cartItemUnreservation"></session-timeout-popup-component>
+</ng-container>
+<app-notification-error *ngIf="showErrorNoticification" [data] = "errorNotification"></app-notification-error>

@@ -1,0 +1,74 @@
+<app-page-loader *ngIf="loading; else ready"></app-page-loader>
+<ng-template #ready>
+    <ng-container *ngIf="selectedNumber?.length > 0; else noNumber">
+        <div class="principal-line">
+            <div class="principal-line-icon">
+                <img src="/assets/img/Drop_3/icon/principal-line-icon-new.svg">
+            </div>
+            <div class="principal-line-label">
+                <div class="desc">
+                    Mobile Number<br>
+                    {{selectedNumber}}
+                </div>
+                <div class="button-remove" (click)="SelectNumber(null)">
+                    <img src="/assets/img/Drop_3/icon/remove-white-icon.svg">
+                    <span>Remove</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #noNumber>
+        <section>
+            <div id="search-form">
+                <label *ngIf="label?.length > 0" for="search">{{ label }}</label>
+                <div id="search-input">
+                    <app-estore-input
+                        placeholder="Search number (max 4 digits)"
+                        maxlength="4"
+                        [inputType]="'postcode'"
+                        [iconName]="'search'"
+                        [buttonText]="'Submit'"
+                        [(ngModel)]="searchNumber"
+                        (onButtonClicked)="searchNumbersForPattern()">
+                    </app-estore-input>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section__inner">
+                <div class="section__content">
+                    <div class="number-container">
+                        <div class="numbers-device-detail">
+                            <div class="number-card" *ngFor="let number of availableNumberToDisplay"
+                                (click)="SelectNumber(number.number)" [ngClass]="{
+                                'is-selected': selectedNumber === number.number
+                                }" [innerHTML]="number.number | highlight: searchNumber"></div>
+                            </div>
+                        </div>
+
+                    <div class="container pagination-container">
+                        <div class="row is-justify-center">
+                            <app-pagination
+                            *ngIf="pager.totalPages > 1"
+                            [currentPage]="pager.currentPage"
+                            [totalPages]="pager.totalPages"
+                            (onPageClick)="setPage($event)"
+                            ></app-pagination>
+                        </div>
+                    </div>
+
+
+                    <div
+                        *ngIf="availableNumberToDisplay.length === 0"
+                        class="refresh-numbers"
+                        [ngClass]="{'noPagination' : pager.totalPages === 1}"
+                    >
+                        <p class="error-msg" *ngIf="error">{{ error }}</p>
+                        <a href="javascript:void(0);" (click)="getRefreshNumbers();" class="noUnderline">Refresh numbers</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </ng-template>
+</ng-template>

@@ -1,0 +1,252 @@
+
+.has_bg_color {
+    background-color: #fafafa;
+}
+.guest-connect-login-now .no-default-button {
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+	top: -1px;
+}
+.guest-connect-login-now {
+	padding-bottom: 20px;
+	display: inline;
+	cursor: pointer;
+}
+
+.iwatch_grid {
+	margin-top: 0;
+    margin-bottom: 40px;
+   
+}
+.eligibility-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.eligibility-title h4{
+    font-size: 14px;
+    margin-top: 10px;
+}
+.guest-heading {
+    font-size: 18px;
+}
+
+.iwatch-width {
+    width: 100%;
+    height: auto;
+}
+.iwatch-image {
+    width: 80%;
+}
+
+.iwatch-logo {
+    margin-bottom: 10px;
+    width: 104px;
+    height: auto;
+    display: inline-flex;
+}
+
+.image-heading {
+    font-size: 28px;
+  font-weight: bold;
+  line-height: 1.39;
+}
+.image-sub-heading {
+    font-size: 14px;
+  font-weight: normal;
+}
+
+
+.guest-sub-heading {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.right-grid{
+    margin-bottom: 40px;
+}
+
+.right-grid-guest-login {
+    margin-bottom: 24px;
+}
+
+.eligible-fail {
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.eligible-fail p {
+	font-size: 16px;
+	font-weight: bold;
+    color: #ad1e48;
+    margin-left: 10px;
+}
+
+.eligible-success{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.eligible-text {
+	font-size: 16px;
+	color: #008c8d;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.eligible-note a {
+    text-decoration: none;
+}
+
+.text-visit b {
+    color: #009bdf;
+}
+
+.text-visit span a {
+    text-decoration: none;
+}
+
+
+.text-visit {
+    margin-bottom: 40px;
+    font-size: 14px;;
+}
+
+.note__content__inner {
+	text-transform: capitalize;
+	font-size: 14px;
+	font-weight: bold;
+}
+.note__content .note__details {
+    font-size: 14px;
+    line-height: 1.4;
+}
+.note__details {
+    padding-left: 1.2em;
+}
+
+:host ::ng-deep .text-bottom {
+    position: absolute;
+    bottom: -47px;
+}
+
+:host ::ng-deep .page-loader {
+    padding: 0 !important;
+}
+
+/* nric css overriden */
+
+:host ::ng-deep .error.otp-error.home_wireless_otp_error {
+    right: 12px;
+}
+:host ::ng-deep .apple-watch .home_wireless_msisdn_error_2 {
+	margin-left: 0;
+}
+:host ::ng-deep .home_wireless_nric {
+	margin-left: 0 !important;
+}
+
+:host ::ng-deep .home_wireless_nric .box-shadow-login-content {
+	margin-left: 0 !important;
+}
+
+:host ::ng-deep  .send-otp {
+    width: 104%;
+}
+
+:host ::ng-deep .home_wireless_nric_field_submit {
+    position: unset !important;
+    top: 0 !important;
+    right: 0 !important;
+    overflow: unset !important;
+    margin-top: 14px !important;
+}
+
+:host ::ng-deep .home_wireless_send_mob {
+    width: 105% !important;
+}
+
+:host ::ng-deep .home_wireless_otp {
+    margin-left: 0 !important;
+}
+
+:host ::ng-deep .box-shadow-login-content.home_wireless_msisdn {
+    margin-left: 0 ;
+}
+:host ::ng-deep .home_wireless_mandatory {
+    margin-left: 0 !important;
+}
+:host ::ng-deep  .resetAfterSubmit {
+    position: absolute !important;
+    right: 40px !important;
+    padding: 11px;
+
+}
+
+:host ::ng-deep .reset-x {
+    margin-top: 8% !important;
+}
+
+
+
+/* MEDIA QUERIES */
+@media (max-width: 767px) {	
+    .iwatch-image {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+	.iwatch_grid {
+		margin-bottom: 30px;
+    }
+    .guest-connect-login-now .yes-default-button{
+		margin-right: 0;
+    }
+    .eligibility-title{
+        margin-bottom: 10px;
+    }
+    .image-heading {
+        font-size: 27px;
+    }
+:host ::ng-deep  .resetAfterSubmit {
+    position: relative !important;
+    float: right;
+    padding: 0;
+    left: -8% !important;
+}
+
+:host ::ng-deep .reset-x {
+        margin-top: 5px !important;
+    }   
+    :host ::ng-deep .login-default-button {
+        width: 96% !important;
+    }
+    :host ::ng-deep .otp-control {
+        margin-right: 2% !important;
+    }
+    :host ::ng-deep .moblie-form-group {
+        max-width: 100% !important;
+    }
+}
+
+@media(max-width: 768px) {	
+    .details__iwatch_center {
+        margin: auto;
+    }
+
+    :host ::ng-deep  span.remove-x-blue.resetAfterSubmit {
+        left: -7%;
+    }
+  
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  
+    :host ::ng-deep .login-default-button {
+        width: 96% !important;
+    }
+    :host ::ng-deep  .resetAfterSubmit {
+        right: 6px !important;
+    }
+}

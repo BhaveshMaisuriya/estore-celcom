@@ -1,0 +1,8 @@
+.eligible-style {
+  font-size: 20px;
+  color: #4bae50;
+}
+
+:host ::ng-deep .form-group {
+  overflow: visible !important;
+}

@@ -1,0 +1,231 @@
+$primary-color: #009bdf;
+.cobp {
+    .personal-det-txt {
+        margin-bottom:0;
+        font-size: 14px;
+        color: #333333;
+        margin-top: 24px;
+        margin-bottom: 16px;
+    }
+
+    .celcom-box {
+        max-width: 328px;
+        padding: 0;
+    }
+
+    button {
+        padding: 11px 0 10px;
+        font-size:14px;
+        background-color: $primary-color;
+        color: #ffffff;
+        border-radius: 20px;
+        width: 125px;
+        box-sizing: border-box;
+        margin-top: 8px;
+    }
+
+    .change-number-txt {
+        font-size: 14px;
+        font-weight: bold;
+        color: #009bdf;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .account-details-title {
+        font-weight:bold;
+        color: #00c871;
+        word-break: break-word;
+        margin-top:26px;
+        margin-bottom: 16px;
+    }
+    .account-details-card {
+        max-width: 328px;
+        padding:16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+        background-color: #ffffff;
+        text-align: left;
+
+        .horizontal-border {
+            width: 96px;
+            height: 4px;
+            border-radius: 2px;
+            background-color: #009be4;
+            margin:16px 0;
+            box-sizing: border-box;
+            border: none;
+        }
+
+        .account-details-desc {
+            font-size: 14px;
+            color: #666666;
+            font-weight: bold;
+
+            .p-normal {
+                font-weight: normal;
+            }
+
+            .mb-8 {
+                margin: 0;
+                margin-bottom: 8px;
+            }
+
+            > div {
+
+                &:last-of-type {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    .agree {
+        color: #333333;
+        font-size: 14px;
+        word-break: break-word;
+        margin: 24px 0 0 0;
+
+        .checkbox-container {
+            padding: 0;
+            max-width: 24px;
+            height: 24px;
+            margin-top: -10px;
+
+            .done-icon {
+                background-color: #cccccc;
+                color: #ffffff;
+                border-radius: 4px;
+                margin-top: 10px !important;
+            }
+        }
+
+        .checkbox-label-txt {
+
+            .tenure-txt {
+                margin:0;
+                margin-bottom: 8px;
+            }
+
+            .cancellation-fee {
+                margin:0;
+                font-weight: bold;
+
+                span {
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+
+    .chekout-without-supplymentary {
+        max-width: 317px;
+        border-radius: 2px;
+        background-color: #cce5f0;
+        padding: 15px 0;
+        color: #333333;
+        font-size: 14px;
+        text-align: center;
+        display: flex;
+        margin-top: 24px;
+
+        img {
+            margin: 0 16px;
+        }
+
+        p {
+            margin: 0;
+            margin-top: 2px;
+            margin-bottom: 1px;
+        }
+    }
+
+    .warning-container {
+        display: flex;
+        margin-top: 24px;
+
+        .warning-msg {
+            color: #333333;
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 2px;
+            margin-left: 10px;
+            word-break: break-word;
+        }
+    }
+
+    a.disabled {
+        cursor: not-allowed;
+        opacity: .65;
+    }
+
+}
+
+.otp-size-color {
+    font-size: 14px;
+    color: #333333;
+
+    a {
+        text-decoration: underline;
+        font-weight: bold;
+        color: #009bdf;
+        cursor: pointer;
+
+        &.disabled {
+          cursor: not-allowed;
+          color: #999999;
+        }
+    }
+}
+
+.mt-8 {
+    margin: 0;
+    margin-top: 8px !important;
+}
+#expiry-text {
+    color: #333333;
+    margin-top: 16px;
+}
+
+.lifestyle-not-elgible {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    gap: 10px;
+    margin-top: 24px;
+    .warning-sign {
+        color: #F44236;
+    }
+    .warning-text {
+        div:first-child {
+            padding-bottom: 7px;            
+            }    
+        }
+}
+.count-down {
+  color: #ff9700;
+  font-weight: bold;
+
+  &.count-down-end {
+    color: #f44236;
+  }
+}
+
+.cobp-error-block {
+    display: inline-flex;
+    gap: 10px;
+    margin-top: 24px;
+    color: #F44236;
+}
+
+.general-error {
+    .text-danger {
+        &::before {
+            content: '';
+            margin-right: 0;
+        }
+        font-size: 14px;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+}

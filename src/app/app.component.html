@@ -1,0 +1,119 @@
+<div class="r-page" [class.transparent-block]="!isStateBrowser">
+    <celcom-header 
+        [apiUrl]="host"
+        [mainPortal]="false"
+        [showShopButton]="false"
+        [profileData]="profileData ? profileData : null"
+        [headerType]="'estore'"
+        *ngIf="(!sideBarMini && !agentDealerUrl) && !isEkycPage"
+        (OnLinkClick)="onMenuClick($event)"
+        [overrideProfileData]="true"></celcom-header>
+    <!-- <app-header-component *ngIf="agentDealerUrl === false" [isNotificationOpen]="isNotificationOpen ||false">
+    </app-header-component> -->
+    <app-agent-header *ngIf="agentDealerUrl === true" [isNotificationOpen]="isNotificationOpen ||false">
+    </app-agent-header>
+</div>
+<main class="r-main" id="main">
+    <router-outlet></router-outlet>
+    <ng-container *ngIf="IsDisplayIdlePopup">
+        <session-timeout-popup-component (OnContinueMySession)="OnContinueMySession($event);" [logout]="logout">
+        </session-timeout-popup-component>
+    </ng-container>
+    <div id="terms_demo" class="login-otp_modal2" [ngStyle]="popupStyle">
+        <div class="login-otp_modal2-content">
+            <section class="u-section">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="login-otp-model-box2">
+                            <a (click)="setMCTncPopUpStyle('hidden');">
+                                <img class="login-otp-model2-close" src="../assets/img/Drop_3/icon/remove.svg">
+                            </a>
+                            <div class="login-terms-condts">
+                                <p class="conditions-header">Terms and Conditions</p>
+                                <div class="terms-condts-inner">
+                                    <p class="terms-and-conda-para">By setting up an account, you are agreeing to the
+                                        Terms & Conditions.
+                                        The Mobile Connect Privacy Promise means that your mobile number will not be
+                                        shared, and
+                                        no personal information will be disclosed without your consent.
+                                    </p>
+                                </div>
+                                <div class="terms-i-agree">
+                                    <a class="c-cta--default terms-default-button" data-css="c-cta"
+                                        (click)="onTCAgree();">
+                                        <span class="cta__content">I Agree</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <section class="u-section is-position-fixed">
+        <div *ngIf="showConnectivityBlock" class="{{internetConnectivityStatusClass}}">
+            <div class="section__inner">
+                <div class="section__content is-container">
+                    <div class="o-hero-banner">
+                        <div class="u-grid-row is-collapsed">
+                            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12">
+                                <div class="network-banner is-padding-top-20 is-padding-bottom-20">
+                                    <div class="is-text-align-left">
+                                        <!-- <img class="online-img" src="assets/img/error-copy-2.svg"> -->
+                                        <span><img class="offline-img"
+                                                src="../../../assets/img/Drop_3/eligible-icon.svg"></span>
+                                        <span class="text-align">{{internetConnectivityStatusMessage}}</span>
+                                        <span class="close"><img class="close-icon" 
+                                                src="../../../assets/img/Drop_3/icon/remove-white-icon.svg" (click)='CloseConnectivityBlock()'>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<app-modal id="mc-login" [rounded]="true" [autoShow]="false">
+    <div class="login-container">
+        <app-mc-login (onSuccess)="onLoginSuccess()"></app-mc-login>
+    </div><!-- /.login-container -->
+</app-modal>
+<app-modal #confirmModal id="confirm-popup" position="center" [rounded]="true" [autoShow]="false" [closeBtn]="false">
+    <ng-template let-close="close" let-message="message" let-title="title" let-btcancel="btnCancel" let-btconfirm="btnConfirm">
+        <div class="container-fluid p-0 text-center popup-body">
+            <h5>{{ title }}</h5>
+            <div class="row error-msg mb-estore-2">
+                <div class="col" [innerHTML]="message | safeHtml">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-rounded mr-4 mb-2" (click)="close(false, confirmModal)">{{ btcancel || 'Cancel' }}</button>
+                    <button class="btn btn-rounded btn-primary mb-2" (click)="close(true, confirmModal)">{{ btconfirm || 'Proceed' }}</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal>
+<app-modal #errorModal id="error-popup" position="center" [rounded]="true" [autoShow]="false" [closeBtn]="false">
+    <ng-template let-close="close" let-message="message" let-title="title">
+        <div class="container-fluid p-0 text-center popup-body">
+            <h5 *ngIf="title">{{ title }}</h5>
+            <div class="row error-msg mb-estore-2">
+                <div class="col">
+                    {{ message }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button (click)="close(null, errorModal)" class="btn btn-primary btn-rounded">Close</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</app-modal>

@@ -1,0 +1,167 @@
+.mask {
+	background-color: #72a9b1;
+}
+.Reload-Now {
+	width: 618px;
+	height: 43px;
+	font: 48px Lato;
+	line-height: 0.9;
+	letter-spacing: -0.5px;
+	text-align: left;
+	color: #fff;
+}
+.Lets-begin-with-sim {
+	width: 278px;
+	height: 56px;
+	font: 18px Lato;
+	line-height: 1.11;
+	text-align: left;
+	color: #fff;
+}
+.compare__plus__icon {
+	width: 47.3px;
+	height: 48.1px;
+	margin: 5em 5em 3em;
+}
+.compare__samsung__img {
+	height: 100px;
+	margin: 3em 0em 1em 1.1em;
+}
+.accordian__color {
+	background-color: #666666 !important;
+	color: #fff !important;
+}
+.accordian__content {
+	width: 224px;
+	height: 240px;
+	background-color: #f3f3f3 !important;
+}
+.Find-out-more {
+	text-align: center;
+	margin: 2em 0;
+}
+.Find-out-more a {
+	cursor: pointer;
+}
+.Clear-All {
+	text-decoration: none;
+	color: #009ade;
+	font-size: 14px;
+	font-weight: bold;
+}
+.Samsung-Galaxy-S8 {
+	width: 175px;
+    height: 40px;
+    font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	margin: auto;
+	word-wrap: break-word;
+}
+.add_more_mobile {
+	width: 143px;
+    height: 16px;
+    font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #333333;
+	margin: auto;
+}
+.Rectangle-11 {
+	text-align: center;
+}
+.has-padding-top {
+	padding-top: 2em;
+}
+.compare_close {
+	width: 20px;
+	float: right;
+	padding: 10px 10px 0 0;
+}
+.c-compare {
+	background-color: #fff;
+	color: #000;
+}
+.compare-down-arrow {
+	width: 20px;
+	float: right;
+	transition: bottom .3s linear .3s, transform .3s linear
+}
+.c-compare .accordion__content-innerrow {
+	display: block;
+	color: #d8d8d8;
+	text-decoration: none;
+}
+.c-compare .compare__sitemap {
+	width: 100%;
+	margin: 0 auto;
+	font-size: 1.4rem;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-header {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	font: 18px Lato;
+	padding: 1em 0;
+	background-color: #666;
+	cursor: pointer;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-header.is-active .compare-down-arrow {
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-content:not(.is-active) .accordion__content-innerrow {
+	height: 0;
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.is-open {
+	-webkit-transform: rotate(180deg);
+	transform: rotate(180deg);
+}
+.c-compare .compare__sitemap .compare__sitemap__group .compare__sitemap__group-content .accordion__content-innerrow {
+	display: block;
+	line-height: 2em;
+	overflow: hidden;
+	transition: bottom .3s linear .3s, transform .3s linear;
+}
+.compare__position {
+	position: fixed !important;
+	bottom: 0;
+	width: 100%;
+	z-index: 1000 !important;
+}
+.is-background-white {
+	background-color: #fff;
+}
+.add_More_Mobile {
+	border: none !important;
+}
+.agent_footer {
+    position: fixed;
+	width: 100%;
+	bottom: 0;
+	background:#fff;
+	z-index: 999;
+}
+app-store-catalogue+.agent_footer{
+	margin-bottom: 0;
+}
+@media(max-width:768px) {
+	.compare_close {
+		right: 15px;
+	}
+}
+@media (max-width:767px) {
+	.Samsung-Galaxy-S8 {
+		width: 114px;
+	}
+	.compare__plus__icon {
+		width: 35px;
+		height: 35px;
+		margin: 5em 0 1em 0;
+	}
+}

@@ -1,0 +1,24 @@
+<div [ngStyle]="disclaimer_Modal" class="disclaimer_modal">
+	<div class="disclaimer_modal-content">
+		<section class="u-section">
+			<div class="section__inner">
+				<div class="section__content">
+					<div class="disclaimer-features-box">
+							<a><img class="feature-box-close" src="../assets/img/Drop_3/icon/remove.svg" (click) = "close__terms__login();"></a>
+						<div class="disclaimer-features-box-dtls">
+							<div class="disclaimer-title is-text-align-center">Disclaimer</div>
+							<div class="disclaimer-features-content">
+								{{DeviceDisclaimerResponse}}
+							</div>
+						</div>
+						<div class="dis-continue is-text-align-center">
+							<div class="disclaimer-accept">By clicking on the continue below you acknowledge that you have read the disclaimer above</div>
+							<button class="c-cta--default" data-css="c-cta" (click)="ContinueBox();" [disabled]="!DeviceDisclaimerResponse">Continue<i class="cta__icon icon is-icon-arrow"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</div>
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59 (86127) - https://sketch.com -->
+    <title>Atoms/Icons/Interface/Orders</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M37.9951,37.8105 L10.0001,37.8265 L10.0001,17.9995 L37.9991,17.9995 L37.9991,18.3315 L37.9951,37.8105 Z M14.0101,9.9995 L22.5001,9.9995 L22.5001,13.9995 L10.7541,13.9995 L14.0101,9.9995 Z M34.0001,10.0015 L37.2511,13.9995 L25.5001,13.9995 L25.5001,9.9995 L33.9901,9.9995 L34.0001,10.0015 Z M41.9951,14.9145 C41.9951,14.0205 41.6961,13.1325 41.1091,12.4115 L37.1051,7.4805 C36.3451,6.5435 35.1991,5.9995 33.9901,5.9995 L14.0101,5.9995 C12.8011,5.9995 11.6551,6.5435 10.8941,7.4805 L6.8911,12.4115 C6.3041,13.1325 6.0051,14.0205 6.0051,14.9145 L6.0001,14.9145 L6.0001,37.8265 C6.0001,40.0265 7.7931,41.8105 10.0051,41.8105 L37.9951,41.8105 C40.2071,41.8105 42.0001,40.0265 42.0001,37.8265 L42.0001,14.9145 L41.9951,14.9145 Z M19,23.9999 L29,23.9999 L29,21.9999 L19,21.9999 L19,23.9999 Z" id="path-1"></path>
+    </defs>
+    <g id="Atoms/Icons/Interface/Orders" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#333333" xlink:href="#path-1"></use>
+    </g>
+</svg>

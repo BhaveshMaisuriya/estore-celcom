@@ -1,0 +1,10 @@
+<input type="hidden" class="page-url-adobe" [value]="current_url"/>
+
+<ng-container *ngIf="BreadcrumbApiUrl!=''">
+    <app-breadcrumb-component *ngIf="!isCSAgent" [apiUrl]="BreadcrumbApiUrl"></app-breadcrumb-component>
+</ng-container>
+
+<div [ngClass]="{'xpax':IsXpaxTheme}">
+    <ng-template app-widget></ng-template>
+</div>
+<feedback-component *ngIf="IsInitialized" [data]="RedirectionInfo"></feedback-component>

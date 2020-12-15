@@ -1,0 +1,64 @@
+@import "./colors.scss";
+.btn {
+    display: inline-flex;
+    box-sizing: border-box;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 2px solid $primary-color;
+    background: white;
+    font-size: 14px;
+    font-weight: bold;
+    color: $primary-color;
+    padding: 10px 16px;
+    justify-content: center;
+    outline: none;
+
+    &[disabled] {
+        background: #ccc !important;
+        opacity: 1 !important;
+        color: white;
+        border-color: #ccc;
+    }
+}
+
+.btn-primary {
+    color: $white;
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.btn-rounded {
+    border-radius: 999em;
+}
+
+.btn-small {
+    padding: 7px 15px !important;
+    border-width: 1px;
+    width: auto;
+}
+
+.btn-transparent {
+	background: transparent;
+	color: $primary-color;
+	padding: 0 !important;
+	border: 0;
+	line-height: 24px;
+	margin: 0;
+}
+
+.btn-loader {
+    font-size: 2px;
+    margin-left: -20px;
+    margin-right: 10px;
+}
+
+.arrow-down-icon {
+    transform: rotate(90deg);
+    transition: transform 300ms ease-in-out;
+}
+
+.arrow-down-icon.up {
+    transform: rotate(270deg);
+}

@@ -1,0 +1,21 @@
+[
+    {
+        "status": true,
+        "message": "success",
+        "journeyId": "8760d07a-84a2-47f3-885d-05988da987c0",
+        "customer_data": {
+            "idNumber": "550106125821",
+            "sex": "KUNA",
+            "fullAddress": "GDW KAMPUNG BAYANGAN^80000 KENINGAU^SABAH",
+            "state": "SABAH",
+            "postCode": "80000",
+            "city": "KENINGAU",
+            "addressLine1": "GDW KAMPUNG BAYANGAN",
+            "addressLine2": "",
+            "unitNo": "",
+            "fullName": "ROWAN SEBASTIAN^ATKINSON",
+            "country": "Malaysia"
+        },
+        "idPhoto": ""
+    }
+]

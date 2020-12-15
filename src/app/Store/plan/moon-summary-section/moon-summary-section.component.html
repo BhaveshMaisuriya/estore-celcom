@@ -1,0 +1,62 @@
+<section *ngIf='moonPlanDeviceDetailsData' class="u-section is-zindex-0" id="step4">
+  <div class="section__inner">
+      <div class="section__content is-container">
+          <div class="u-grid-row has-border-bottom">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center image-summary">
+              <img class="summary-samsung" src="{{summaryInfo.deviceImage}}">
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-9 margin-main-class">
+                <div class="u-grid-row has-border-bottom">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 devicename-gap">
+                      <div *ngIf="summaryInfo.deviceName !== null" class="is-col-mobile-p-7 is-col-tablet-p-9 margin-class bottom-class">{{ summaryInfo?.deviceName}} {{ summaryColor}} {{summaryStorage}} <span *ngIf="summaryInfo.contract != null" class="contract_align">({{summaryInfo?.contract}})</span></div>
+                      <div *ngIf="summaryInfo.deviceName !== null" class="is-col-mobile-p-3 is-col-tablet-p-3 right-align">RM{{ (summaryInfo?.devicePrice ? (summaryInfo.devicePrice) : 0.00) | number : '1.2-2' }}</div>
+                      <div *ngIf='this.summaryInfo.basePlan !== null' class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class item-bot-16">{{ summaryInfo?.basePlan}} </div>
+                      <div *ngIf='this.summaryInfo.addOnpass !== null' class="u-grid-col is-col-mobile-p-12 pass">{{ summaryInfo?.addOnpass }}</div>
+                    </div>
+                </div>
+                <div class="u-grid-row has-border-bottom contract-gap margin-class">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                      <div *ngIf='orderPlanName' class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">{{ summaryPlanName }} ({{ sharedContract }})</div>
+                    </div>
+                </div>
+                <div class="u-grid-row has-border-bottom is-bottom-gap margin-class *ngIf='summaryInfo !== null'">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                      <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">Monthly Charges:<span class="is-bold">RM{{ (totalMonthlyCommitment ? (totalMonthlyCommitment) : 0.00) | number : '1.2-2' }}</span></div>
+                    </div>
+                </div>
+                <div *ngIf='summaryPhoneNo' class="u-grid-row has-border-bottom is-bottom-gap">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                      <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">Mobile Number:<span class="is-bold">{{ summaryPhoneNo }}</span></div>
+                    </div>
+                </div>
+                <div class="u-grid-row has-border-bottom is-bottom-gap margin-class" *ngIf = "deviceUpfrontPenalty">
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                    <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class is_upfront_bold">Device Penalty</div>
+                    <div class="is-col-mobile-p-3 is-col-tablet-p-3 right-align top-align">RM{{ (deviceUpfrontPenalty ? (deviceUpfrontPenalty) : 0.00) | number : '1.2-2' }}</div>
+                  </div>
+              </div>
+                <div class="u-grid-row has-border-bottom is-bottom-gap margin-class">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                      <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class is_upfront_bold" *ngIf="upfrontInstallmentText">{{upfrontInstallmentText}}</div>
+                      <div *ngIf="!mvivaPlanUpfrontMoon" class="is-col-mobile-p-3 is-col-tablet-p-3 right-align top-align">RM{{ (summaryInfo.upfrontPrice ? (summaryInfo.upfrontPrice) : 0.00) | number : '1.2-2' }}</div>
+                      <div *ngIf="mvivaPlanUpfrontMoon" class="is-col-mobile-p-3 is-col-tablet-p-3 right-align top-align">RM{{ 0.00 | number : '1.2-2' }}</div>
+                    </div>
+                </div>
+                <div *ngIf="isMviva && mvivaSummaryMessageMoon" class="u-grid-row has-border-bottom is-bottom-gap margin-class">
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                    <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">{{ mvivaSummaryMessageMoon }}</div>
+                  </div>
+              </div>
+                <div class="u-grid-row is-border-top margin-class">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-top-gap grand-total">
+                      <div class="is-col-mobile-p-6 is-col-tablet-p-9 has-border-bottom margin-class">Total</div>
+                      <div class="is-col-mobile-p-6 is-col-tablet-p-3 right-align has-border-bottom">RM{{ (summaryInfo.totalPrice ? (summaryInfo.totalPrice + deviceUpfrontPenalty) : (0.00 + deviceUpfrontPenalty)) | number : '1.2-2' }}*</div>
+                      <p class="is-col-mobile-p-6 is-col-tablet-p-9"></p>
+                      <p class="is-col-mobile-p-6 is-col-tablet-p-3 gst-include">*SST not included</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+          </div>
+        </div>
+  </section>

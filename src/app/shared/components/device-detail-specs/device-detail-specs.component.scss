@@ -1,0 +1,77 @@
+.device-specs-container * {
+    font-family: Lato;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #333333;
+}
+
+.device-specs-container {
+    width: 100%;
+    
+    .device-specs-content {
+        width: 100%;
+    }
+}
+
+
+.device-specs-heading {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+.specs-sub-heading {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.specs-title {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.mat-expanded .specs-title {
+    font-weight: bold;
+}
+
+.specs-content {
+	font-size: 14px;
+}
+
+.mat-expansion-panel-header {
+    padding-left: 0;
+    padding-right: 6px;
+}
+
+.mat-expansion-panel {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-top: 1px solid #ccc;
+    background-color: inherit;
+}
+
+.mat-accordion .mat-expansion-panel-header:hover {
+    background-color: inherit;
+}
+
+.mat-accordion:last-of-type .mat-expansion-panel {
+    border-bottom: 1px solid #ccc;
+}
+
+::ng-deep .specs-head > .mat-expansion-indicator::after {
+    width: 4px !important;
+    height: 4px !important;
+}
+
+::ng-deep .specs-wrapper .mat-expansion-panel-body,
+::ng-deep .mat-expanded .mat-expansion-panel-body {
+    padding: 0;
+}
+
+::ng-deep .specs-wrapper .mat-expansion-panel-body p {
+    margin-top: 0;
+}

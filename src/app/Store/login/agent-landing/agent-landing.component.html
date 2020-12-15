@@ -1,0 +1,135 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<div *ngIf="!loading" class="container-fluid dealer-landing-container p-0">
+
+  <ng-container *ngIf="!isOnlyGamification">
+    <div class="row" [ngClass]="{'mb-blue-pop-up':showPlans}">
+      <div class="col">
+        <div class="container-fluid product-category-container">
+          <h4 class="product-category-text">Please select Product Category</h4>
+          <div class="row is-justify-center">
+            <div class="col col-6 product-category-cards" (click)="onBundleClick()">
+              <div class="mx-m-n1">
+                <img src="assets/img/agent-landing/device-plus-plans-icon.svg" class="device-img-m-h" alt="device image"/>
+              </div>
+              <p class="product-category-name mt-2">Device Bundle</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Get a plan that you need with a device of your choice, from iPhones to Android devices.</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+            <div class="col col-6 product-category-cards" (click)="showPlans = !showPlans">
+              <img src="assets/img/enterprise-plan-img.svg" alt="postpaid image"/>
+              <p class="product-category-name mt-2">Postpaid Plans</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Get only the plan from MEGA™ & XP Lite™ Postpaid with more customisation options.</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+              <!--blue pop up starts-->
+              <div *ngIf="showPlans" class="triangle-down"></div>
+              <div class="blue-pop-up" *ngIf="showPlans">
+                <p class="m-0 mb-estore-2">Choose preferred plan</p>
+                <div class="buttons-for-popup">
+                  <div class="plan-name" (click)="onPlanClick('mega')">
+                    Celcom MEGA™
+                  </div>
+                  <div class="plan-name" (click)="onPlanClick('xpax')">
+                    XP Lite™
+                  </div>
+                  <div class="plan-name" (click)="onPlanClick('celcom-internetgo')">
+                    Celcom InternetGO
+                  </div>
+                </div>
+              </div>
+              <!--blue pop up end-->
+            </div>
+
+            <div class="col col-6 product-category-cards" (click)="onPrepaidClick()" [ngClass]="{'mt-blue-pop-up':showPlans}">
+              <img src="assets/img/agent-landing/sim-xpax.svg" alt="prepaid image" />
+              <p class="product-category-name mt-2">Prepaid Plans</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Free high-speed Internet to get your game on!</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+            <div class="col col-6 product-category-cards" (click)="onHomewirelessClick()" [ngClass]="{'mt-blue-pop-up':showPlans}">
+              <img src="assets/img/agent-landing/home-wireless.svg" alt="homewireless image"/>
+              <p class="product-category-name mt-2">Home Wireless™</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Stream, browse and stay connected with the high-speed Internet of up to 1TB an instant.</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+            <div class="col col-6 product-category-cards" *ngIf="addGamification" (click)="redirectGameEligibilityCheck()">
+              <mat-icon class="game-icon" svgIcon="game-icon"></mat-icon>
+              <p class="product-category-name mt-2">Game On!</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Play and win exclusive gifts and offerings!</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!--row-->
+
+    <div class="row" *ngIf="agentType !== 'dealer'">
+      <div class="col">
+        <div class="container">
+          <h4 class="target-campaign-text">Targeted Campaign Customers</h4>
+          <div class="row is-justify-center">
+            <div class="col col-6 product-category-cards mt-0" (click)="onMonetizationTabClick()">
+              <img src="assets/img/agent-landing/monetization.svg" alt="monetization image"/>
+              <p class="product-category-name mt-2">Monetisation</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Further upsell our products to the customers.</p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+
+            <div class="col col-6 product-category-cards mt-0" (click)="onRetentionTabClick()">
+              <img src="assets/img/agent-landing/retention.svg" alt="retention image"/>
+              <p class="product-category-name mt-2">Retention</p>
+              <hr class="divider">
+              <p class="product-category-desc mt-estore-1 mb-estore-2">Exclusive deals and promotions for long-time customers. </p>
+              <button class="btn btn-rounded btn-primary">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <div class="row" *ngIf="isOnlyGamification">
+    <div class="col">
+      <div class="container">
+        <h4 class="options-select-text">Select Your Options</h4>
+        <div class="gamification-card">
+          <div (click)="redirectGameEligibilityCheck()">
+            <mat-icon class="game-icon" svgIcon="game-icon"></mat-icon>
+            <h5>Game On!</h5>
+            <div class="divider"></div>
+            <p>Play and win exclusive gifts and offerings!</p>
+            <button class="btn btn-primary btn-rounded">Play Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row sale-link-row" *ngIf="agentType == 'dealer' && !isOnlyGamification">
+    <div class="col">
+      <div class="container">
+        <div class="row ">
+          <div class="col">
+            <h4>Sales Link</h4>
+            <p class="m-0 mb-estore-2" style="font-size: 14px;">Note: Copy that URL and append your reference key in the URLs as in above formate.</p>
+            <div class="row is-justify-center">
+              <div class="col-lg-4 sales-link-column" *ngFor="let link of salesLinks">
+                <app-copy-link-form [title]="link.label" [link]="formatSalesLink(link.url)"></app-copy-link-form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--row-->
+
+</div><!--container-fluid-->
+
+<app-notification-error *ngIf="errorDealer" [data]="dealerMessage"></app-notification-error>
+<app-agent-footer [ngClass]="{'footer-fix' : agentType === 'dealer'}" *ngIf="!loading"></app-agent-footer>

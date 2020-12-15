@@ -1,0 +1,209 @@
+<app-page-loader *ngIf="loading"></app-page-loader>
+<div [ngClass]="{SwitchToCelcomContainer:!ShowSwitchToCelcom, 'white-bg-controls': forceWhiteBG}" *ngIf="!loading">
+	<section class="u-section is-bg-color-grey has-section-padding-bottom tabcontent tab_address_content"
+	[ngClass]="{'choose-number-normal-bg-color': isProjectStar === true}"
+	 id="switchtocelcom">
+		<div class="section__inner">
+			<form #form="ngForm"  [ngClass]="{'bg-gray': !forceWhiteBG}">
+				<div class="section__content is-container switch-to-celcom" [ngClass]="{'isMoonFlow': isMoon}">
+					<div class="choose_new_add">
+						<p class="Switch-it-quick-and is-mobile-hidden">
+						  Switch to Celcom and keep your number. First, we want to get to know you a little bit better.
+						</p>
+						<p class="Switch-it-quick-and is-desktop-hidden is-tablet-hidden">
+						  Switch to Celcom and keep your number. First, we want to get to know you a little bit better.
+						</p>
+						<div class="container ml-n4">
+							<div class="row">
+								<div class="form-group col-md-6">
+									<label>Enter Principal mobile number
+										<span class="text-danger">*</span>
+									</label>
+									<input
+										class="form-control"
+										type="tel"
+										name="portNumber"
+										maxlength="12"
+										placeholder="01XXXXXXXX"
+										[(ngModel)]="mnpCustomer.portNumber"
+										(keydown) = "restrictOnlyNum($event, 'contactMobileNum')"
+										(keyup)="MobileNumber($event)"
+										#portNumber="ngModel"
+										required
+										[ngClass]="{'errorborder':(!portNumber.valid && portNumber.touched) || this.invalidmobNumber}">
+									<div
+										class="error"
+										*ngIf="!invalidmobNumber && (!portNumber.valid && portNumber.touched) || this.validateNumAtZeroLength">
+										<span class="text-danger" *ngIf="portNumber.hasError('required')">
+											Please enter a value
+										</span>
+									</div>
+									<div
+										class="error"
+										*ngIf="invalidmobNumber == true">
+										<span class="text-danger">
+											{{ errorNumber ? errorNumber : "Please enter a valid number" }}
+										</span>
+									</div>
+								</div><!-- /.form-group col-md-6 -->
+							</div><!-- /.row -->
+							<div class="row">
+								<div class="form-group col-md-6">
+									<label>ID type
+										<span class="text-danger">*</span>
+									</label>
+									<select
+										class="form-control"
+										name="customerIDType"
+										#customerIDType="ngModel"
+										required
+										[ngClass]="{'errorborder':!customerIDType.valid && customerIDType.touched}"
+										[(ngModel)]="mnpCustomer.customerIDType">
+											<ng-container>
+												<option
+													*ngFor="let item of IDtypesToDisplay"
+													[value]="item.id"
+													[selected]="mnpCustomer.customerIDType" ngDefaultControl>
+														{{item.value}}
+												</option>
+											</ng-container>
+									</select>
+									<div
+										class="error"
+										*ngIf="customerIDType.invalid && (customerIDType.dirty || customerIDType.touched)">
+										<span
+											class="text-danger"
+											*ngIf="customerIDType.errors.required">
+											{{ errorNumber ? errorNumber : "Please enter a valid number" }}
+										</span>
+									</div>
+								</div><!-- /.form-group col-md-6 -->
+								<div class="form-group col-md-6">
+									<label>Enter ID number
+										<span class="text-danger">*</span>
+									</label>
+									<input
+										class="form-control"
+										[maxlength]="12"
+										type="tel"
+										name="customerID"
+										[(ngModel)]="mnpCustomer.customerID"
+										#customerID="ngModel"
+										[disabled]="isLoggedIn()"
+										required
+										[ngClass]="{'errorborder':(!customerID.valid && customerID.touched) || customMessage}"
+										(keydown) = "restrictOnlyNum($event, 'customerID')"
+										(keyup)="validationForIdType(customerIDType.value, customerID.value)"
+										(blur)="validationForIdType(customerIDType.value, customerID.value)">
+									<div
+										class="error"
+										*ngIf="customMessage">
+										<span
+											class="text-danger"
+											*ngIf="customerIDType.errors.required">
+											{{ customMsg }}
+										</span>
+									</div>
+								</div><!-- /.form-group col-md-6 -->
+							</div><!-- /.row -->
+						</div>
+					</div>
+					<div *ngIf="showGeneralMessage" class="general-message">
+						<img class="general-error" src="../assets/img/ThresholdAlertNotification.svg"><span class="general-danger">{{ generalMessage }}</span>
+					</div>
+					<div>
+						<div class="checkout-plus-terms">
+							<label class="check_container mnp-checkbox"></label>
+							<input type="checkbox" name="IsTermsCheck" [(ngModel)]="isChecked" [value]="isChecked" #IsTermsCheck="ngModel" (click)="termsAccepted();"
+							 required/>
+							<span class="checkmark"></span>
+							<span class="checkout-i-agree">I confirm I have read and met the criteria below</span>
+							<ul class="confirm-criteria">
+								<li>Number entered is a principal number, and is registered under my name.</li>
+								<li>I have no overdue bills, not blacklisted and number is not tied to a contract.</li>
+								<li>I have read and agree to the
+									<a class="c-link--default" data-css="c-link" target="_blank" href="https://www.celcom.com.my/legal/terms-and-conditions">
+										<span class="link__content mnp-link-terms">Terms and conditions</span>
+									</a>.
+								</li>
+							</ul>
+						</div>
+						<div class="check-eligibility">
+							<ng-container>
+								<button class="c-cta--default" data-css="c-cta" [disabled]="form.invalid || invalidmobNumber || customMessage || validateNumAtZeroLength"
+								 (click)="checkMnpEligibility();">Check eligibility
+									<i class="cta__icon icon is-icon-arrow"></i>
+								</button>
+							</ng-container>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+
+	<ng-container *ngIf="ShowEligibilityBox">
+		<section id="mnp-check-eligibility" class="u-section has-section-padding has-border">
+			<div class="section__inner">
+				<div class="section__content switch-to-celcom-eligible">
+					<div class="u-grid-row is-collapsed is-equal-height has_bg_color" [ngClass]="isMoon ? 'moon-check-eligibility-mnp' : 'check-eligibility-mnp'">
+						<div class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+							<div class="u-grid-row is-collapsed is-equal-height">
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+									<div class="img_personal">
+										<img src="/assets/img/Drop_3/icon/principal-line-icon.svg">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-10 is-equal-height">
+							<div class="u-grid-row is-collapsed is-equal-height">
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+									<div class="mnp_title">
+										<p>Primary Line</p>
+										<p class="mnp-phone-num">{{mnpCustomer.portNumber}}</p>
+									</div>
+								</div>
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 is-equal-height is-justify-content-left">
+									<div class="mnp_eligiblity">
+										<p>Eligible for switching</p>
+									</div>
+								</div>
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+									<div class="mnp_edit">
+										<p>
+											<a href="javascript:void(0);" (click)="goToSwitchTOCelcom()">Edit</a>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+				   </div>
+				   <div
+						class="u-grid-row"
+						*ngIf="mobileConnectUserShouldLogin" >
+					   <div class="section__content is-container switch-to-celcom inline-mnp">
+						   <span class="description">
+							   You are eligible. Kindly login to proceed for your purchase.
+						   </span><!-- /.description -->
+							<!-- Inline login -->
+							<app-msisdn-input
+								[pageType]="'cobpInLine'"
+								[forceGrayBG]="(!isDevicePage() && !isMoon) && ((isDevicePage() && isProjectStar) || (!isDevicePage() && isProjectStar) )"
+								[forceWhiteBG]="isDevicePage() || isMoon || (!isDevicePage() && !isProjectStar)"
+								(successfulLogin)="onSuccessfulLogin($event);"></app-msisdn-input>
+					   </div><!-- /.section__content is-container switch-to-celcom -->
+				   </div><!-- /.u-grid-row -->
+				</div>
+			</div>
+		</section>
+	</ng-container>
+	<age-eligibility-popup-component *ngIf="isDisplayAgeEligibilityPopup"
+	[EligibilityPopupType]="eligibilityPopupType" (OnContinue)="onContinueEligibilityCheck($event);">
+    </age-eligibility-popup-component>
+	<app-notification-error *ngIf="errorCheckingEligible || IsMnpFlowFromDevice" [data]="errorMessage"></app-notification-error>
+	<app-notification-bar *ngIf="notification" [data]="success"></app-notification-bar>
+	<ng-container *ngIf="IsDisplayEligibilityPopup">
+			<age-eligibility-popup-component [EligibilityPopupType]="EligibilityPopupType" (OnContinue)="OnContinueEligibilityCheck($event);"></age-eligibility-popup-component>
+	</ng-container>

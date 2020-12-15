@@ -1,0 +1,177 @@
+<div class="container mnp-sim-container p-0" *ngIf="isLoggedIn">
+  <div class="mnp-title">
+    <mat-icon svgIcon="sim-expressive"></mat-icon>
+    <h5 class="m-0">Switch to Celcom Guide</h5>
+  </div>
+  <p class="instruction-text">Once you have received the SIM card(s), follow the steps below to begin the switch to Celcom process.</p>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="wrapper-progressBar">
+        <ul class="progressBar p-0">
+          <li class="active" [class.active]="!isIdVerified" [class.activeBg]="isIdVerified">
+            <span class="user-icon">
+              <mat-icon svgIcon="account-profile"></mat-icon>
+            </span>
+            ID Verification
+          </li>
+          <li [class.active]="isIdVerified && !isSimVerified" [class.activeBg]="isSimVerified">
+            <span class="user-icon">
+              <mat-icon [ngClass]="{ 'active': isIdVerified }" svgIcon="sim-icon"></mat-icon>
+            </span>
+            SIM Verification
+          </li>
+          <li  [class.active]="isSimVerified">
+            <span class="user-icon"> 
+              <mat-icon [ngClass]="{ 'active': isIdVerified && isSimVerified }" svgIcon="tick-icon"></mat-icon>
+            </span>
+            Port-In Initiated
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="!isIdVerified">
+    <p class="mt-estore-3 mb-estore-1">Please enter your details</p>
+
+    <form [formGroup]="mnpSimVerifyForm" class="my-form" (ngSubmit)="verifyID()" autocomplete="off">
+      <div class="row m-0 mnp-id-box">
+        <div class="col-lg-12 col-xl-6 mnp-id-input p-0">
+          <app-estore-input 
+            [label]="'ID Type'" 
+            [inputType]="'select'"
+            [placeholder]="'New NRIC'"
+            formControlName="idType" 
+            [options]="idTypes" 
+            [readonly]="true">
+          </app-estore-input>
+        </div>
+
+        <div class="col-lg-12 col-xl-6 mnp-id-input p-0">
+          <app-estore-input
+            label="ID Number"
+            [inputType]="'nric'"
+            [success]="mnpSimVerifyForm?.controls?.nric?.valid"
+            placeholder="ID Number"
+            formControlName="nric"
+          ></app-estore-input>
+        </div>
+
+        <div class="col-lg-12 col-xl-6 mnp-id-input p-0">
+          <app-estore-input
+            label="Order ID"
+            [inputType]="'text'"
+            [success]="mnpSimVerifyForm?.controls?.orderId?.valid"
+            placeholder="Order ID"
+            formControlName="orderId"
+            minlength="6"
+            maxlength="15"
+          ></app-estore-input>
+        </div>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-rounded btn-next mt-2"
+        [disabled]="enableNext()"
+        (click)="verifyID()"
+      >
+        Next
+      </button>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="isIdVerified && !isSimVerified">
+    <div class="container sim-verify-container">
+      <div class="row is-justify-center">
+        <div class="col-lg-4 col-sm-4 sim-card">
+          <div class="serial-no-error-text">
+            <mat-icon>error_outline</mat-icon>
+            <p class="find-serial-no-text mb-estore-1 mt-0">How to find my serial number?</p>
+          </div>
+          <mat-icon class="sim-card-sample" svgIcon="sim-card-sample"></mat-icon>
+        </div>
+
+        <div class="col-lg-6 col-sm-6">
+          <p class="mt-estore-4 mb-estore-1">Enter the last 4 digits of your SIM Serial Number. </p>
+
+          <div class="sim-serial-num-box">
+            <div class="sNo-input" *ngFor="let sNo of serialNumber; index as i">
+              <input 
+                type="text"
+                id="sNo_{{ i }}"
+                [(ngModel)]="serialNumber[i]"
+                [digitOnly]="true"
+                maxLength="4"
+                [disabled]="i < 4"
+                autofocus="i == 5"
+              />
+            </div>
+          </div>
+
+          <p class="mt-3" *ngIf="isMultipleSIM">If you have received more than one SIM card, you may key in the last 4 digits of one of the SIM cards.</p>
+        </div>
+      </div>
+      
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary btn-rounded btn-next"
+      [disabled]="false"
+      (click)="verifySimDetails()"
+    >
+      Next
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="isIdVerified && isSimVerified">
+    <div class="container">
+      <div class="row port-in-row">
+        <div class="port-in-box mt-estore-4">
+          <h5 class="m-0">Your port-in process has started.</h5>
+          <p class="mt-estore-1 mb-estore-1">This is what you should do next:</p>
+  
+          <ul class="m-0">
+            <li>Expect an SMS from your current mobile service provider to confirm that you want to leave them.</li>
+            <li>Reply <strong>"Yes"</strong> or follow the instructions in the SMS to port-out of their service.</li>
+            <li>Check your port-in status on our <a href="https://www.celcom.com.my/">website</a>.</li>
+          </ul>
+        
+        </div>  
+      </div>
+    </div>
+    
+    <button
+      type="button"
+      class="btn btn-primary btn-rounded got-it-btn mt-estore-2"
+      [routerLink]="[
+        '/store/checkout/trackorderdetails', 
+        mnpSimVerifyForm?.controls?.orderId?.value
+      ]"
+    >
+      Got it
+    </button>
+  </ng-container>
+
+</div>
+
+<footer-component></footer-component>
+
+<app-modal 
+  id="mnp-sim-error-popup" 
+  [rounded]="true" [autoShow]="false" 
+  [closeBtn]="false" [position]="'center'"
+>
+  <div class="modal-container">
+    <p>Please login to proceed</p>
+    <button
+      class="btn btn-rounded btn-primary"
+      (click)="closeErrorPopup()"
+      [routerLink]="['/home']"
+    >
+      Login
+    </button>
+  </div>
+</app-modal>

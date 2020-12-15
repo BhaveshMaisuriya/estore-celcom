@@ -1,0 +1,22 @@
+.checkout_mask {
+	background-color: #008c8d;
+	height: 148px;
+}
+.My-Profile-Details {
+    font: normal normal 32px Lato;
+	font-stretch: normal;
+	line-height: 1.34;
+	letter-spacing: -0.3px;
+	text-align: center;
+	color: #fff;
+	margin: 10px;
+}
+.My-Lorem-a-Lorem-ipsum {
+    font: normal normal 18px Lato;
+	font-stretch: normal;
+	line-height: 1.11;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: 10px;
+}

@@ -1,0 +1,109 @@
+<mat-form-field
+    [floatLabel]="floatlabel || (appearance == 'standard' ? 'always' : 'auto')"
+    class="form-group"
+    [ngClass]="{ 
+        'estore-standard-fill': isUseStandardFillClass,
+        'estore-field-textarea': inputType === 'textarea'
+    }"
+    [appearance]="appearance">
+    <mat-label>{{ label }}</mat-label>
+    <ng-container *ngIf="inputType == 'select'; else isInput">
+        <mat-select
+            [ngModel]="value" 
+            #input="ngModel"
+            [disabled]="disabled"
+            (blur)="onTouched()"
+            (ngModelChange)="value=$event;onChange($event)"
+            [errorStateMatcher]="errorState()"  
+        >
+            <ng-container *ngFor="let option of options">
+                <mat-option *ngIf="option.isNone; else notNone">
+                    <mat-radio-button>{{ option.label }}</mat-radio-button>
+                </mat-option>
+                <ng-template #notNone>
+                    <mat-option [value]="option.value">
+                        <mat-radio-button>{{ option.label }}</mat-radio-button>
+                    </mat-option>
+                </ng-template>
+            </ng-container>
+        </mat-select>
+    </ng-container>
+    <ng-template #isInput>
+        <input 
+            *ngIf="inputType !== 'textarea'; else isTextArea"
+            [type]="type"
+            [digitOnly]="inputmode == 'numeric'"
+            #input="ngModel"
+            #control
+            [ngModel]="value" 
+            [disabled]="disabled"
+            [readonly]="readonly"
+            (ngModelChange)="value=$event;onChange($event)" 
+            matInput
+            [errorStateMatcher]="errorState()" 
+            [placeholder]="placeholder" 
+            (focus)="onFocus()"
+            (blur)="onTouched(); MobileNumber(); onBlur()"
+            (keyup)="MobileNumber()"
+            [attr.inputmode]="inputmode"
+            [attr.maxlength]="maxlength">
+        <ng-template #isTextArea>
+            <textarea
+                #input="ngModel"
+                #control
+                [rows]="rows"
+                [ngModel]="value" 
+                [disabled]="disabled"
+                [readonly]="readonly"
+                (ngModelChange)="value=$event;onChange($event)" 
+                matInput
+                [errorStateMatcher]="errorState()" 
+                [placeholder]="placeholder" 
+                (focus)="onFocus()"
+                (blur)="onTouched(); MobileNumber(); onBlur()"
+                (keyup)="MobileNumber()"
+                [attr.inputmode]="inputmode"
+                [attr.maxlength]="maxlength"></textarea>
+        </ng-template>
+    </ng-template>
+    
+    <!-- Icon & button for standard -->
+    <mat-icon *ngIf="iconName" matPrefix style="position: relative; margin-right: 5px; top: 5px" [ngStyle]="iconStyle" [svgIcon]="iconType === 'svg' ? iconName : null">{{ iconType === 'normal' ? iconName : null }}</mat-icon>
+    <button 
+        *ngIf="buttonText"
+        matSuffix 
+        (click)="onButtonClick($event)"
+        [disabled]="buttonDisabled"
+        style="margin-bottom: 7px; min-width: 74px;" 
+        [ngClass]="buttonText != 'Reset' ? 'btn btn-rounded btn-primary btn-small' : 'btn btn-transparent'">
+        <mat-icon *ngIf="buttonText == 'Reset'">clear</mat-icon>{{ buttonText }}
+    </button>
+
+    <!-- Icon and text for fill -->
+    <mat-icon class="fill-area error-icon" matSuffix style="color: red">error</mat-icon>
+    <mat-icon *ngIf="success" class="fill-area success-icon" matSuffix style="color: #21C479" svgIcon="estore-check"></mat-icon>
+    <mat-icon *ngIf="!success && disabled" matSuffix class="fill-area disabled-icon" style="color: #333333" svgIcon="estore-disabled"></mat-icon>
+    <mat-error [id]="'err1'" class="fill-area" *ngIf="control?.errors?.required">
+        Please enter {{ customValidationLabel || 'value' }}
+    </mat-error>
+    <mat-error [id]="'err2'" class="fill-area" *ngIf="control?.errors?.pattern">
+        Please enter a valid {{ customValidationLabel || 'value' }}
+    </mat-error>
+    <mat-error [id]="'err3'" class="fill-area" *ngIf="control?.errors?.custom">
+        {{ control?.errors?.custom }}
+    </mat-error>
+</mat-form-field>
+<ng-container *ngIf="appearance != 'fill' && matcher?.isErrorState(null, null) && !isFocused">
+    <div class="custom-error" *ngIf="control?.errors?.required">
+        Please enter {{ customValidationLabel || 'value' }}
+        <mat-icon style="color: red">error</mat-icon>
+    </div>
+    <div class="custom-error" *ngIf="control?.errors?.pattern">
+        Please enter a valid {{ customValidationLabel || 'value' }}
+        <mat-icon style="color: red">error</mat-icon>
+    </div>
+    <div class="custom-error" *ngIf="control?.errors?.custom">
+        {{ control?.errors?.custom }}
+        <mat-icon style="color: red">error</mat-icon>
+    </div>
+</ng-container>

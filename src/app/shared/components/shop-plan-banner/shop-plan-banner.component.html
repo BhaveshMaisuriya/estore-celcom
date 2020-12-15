@@ -1,0 +1,118 @@
+<div *ngIf="(banners$ | async)?.length > 0">
+  <div *ngIf="bannerType === 'top_right'"  class="topRight">
+    <ngu-carousel #topRightCarousel [inputs]="carouselConfig" [dataSource]="(banners$ | async)">
+      <div *nguCarouselDef="let item;" class="item">
+        <div class="tile">
+          <ng-container *ngIf="item?.image_url">
+            <img class="carousel-img desktop"
+              [alt]="item.headline"
+              [src]="item.image_url"
+              *appWebp="item.image_url_webp"
+              [attr.data-analytics-promo]="item?.headline"
+            >
+          </ng-container>
+          <ng-container *ngIf="item?.image_mobile_url_webp">
+            <img class="carousel-img mobile"
+              [alt]="item.headline"
+              [src]="item.image_mobile_url"
+              *appWebp="item.image_mobile_url_webp"
+              [attr.data-analytics-promo]="item?.headline"
+            >
+          </ng-container>
+          <div class="description" [ngStyle]="{'background-color': item.description_background_color }">
+            <h5>{{item.headline}}</h5>
+            <p>{{item.description}}</p>
+            <a class="button_link" [href]="item.button_url" [attr.target]="item.is_newtab === '1' ? '_blank' : null">
+              <div class="button_text">
+                <span>{{item.button_text}}</span>
+                <img src="assets/img/landing/chevron-right.svg" alt="right arrow">
+              </div>
+            </a>
+            <ul class="myPoint" NguCarouselPoint>
+              <li *ngFor="let i of topRightCarousel.pointNumbers; let j = index" [class.active]="j==topRightCarousel.activePoint" (click)="topRightCarousel.moveTo(j)"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ngu-carousel>
+  </div>
+
+  <div *ngIf="bannerType === 'shop_plans'"  class="middle">
+    <ngu-carousel #middleCarousel [inputs]="carouselConfig" [dataSource]="(banners$ | async)">
+      <div *nguCarouselDef="let item;" class="item">
+        <div class="tile-middle">
+          <img class="shop_plans_img desktop"
+            [alt]="item.headline"
+            [src]="item.image_url"
+            *appWebp="item.image_url_webp"
+            [attr.data-analytics-promo]="item?.headline"
+          />
+          <img class="shop_plans_img mobile"
+            [alt]="item.headline"
+            [src]="item.image_mobile_url"
+            *appWebp="item.image_mobile_url_webp"
+            [attr.data-analytics-promo]="item?.headline"
+          />
+        </div>
+
+        <div class="description-middle">
+          <div class="desc_container-middle">
+            <div [ngClass]="{'badges': (item.promo_code_text !== null && item.promo_code_text !== ''), 'no-badge': (item.promo_code_text === null || item.promo_code_text === '')}"
+            [ngStyle]="{'background-color': item.promo_code_background_color}"
+            >
+              {{item.promo_code_text}}
+            </div>
+            <h2>{{item.headline}}</h2>
+            <h5>{{item.description}}</h5>
+            <div class="button-middle">
+              <a class="button_link-middle" [href]="item.button_url" [attr.target]="item.is_newtab === '1' ? '_blank' : null">
+                <div class="btn btn-rounded btn-primary">{{item.button_text}}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ngu-carousel>
+
+    <app-pagination
+      *ngIf="middleCarousel.pointNumbers.length > 1"
+      [totalPages]="middleCarousel.pointNumbers.length"
+      [currentPage]="middleCarousel.activePoint + 1"
+      (onPageClick)="shopPlanGoTo($event)"
+    ></app-pagination>
+
+  </div>
+
+  <div *ngIf="bannerType === 'featured'" class="container featureContainer">
+    <div class="row">
+      <div class="col-sm-12 col-lg-4 col-md-4 featured-card" *ngFor="let item of (banners$ | async)">
+        <div class="card">
+          <img
+            class="card-img desktop"
+            [alt]="item.headline"
+            [src]="item.image_url"
+            *appWebp="item.image_url_webp"
+          />
+          <img
+            class="card-img mobile"
+            [alt]="item.headline"
+            [src]="item.image_mobile_url"
+            *appWebp="item.image_mobile_url_webp"
+          />
+          <div class="feature_description">
+            <h5>{{item.headline}}</h5>
+            <p>{{item.description}}</p>
+            <a [href]="item.button_url" class="feature_button_link" [attr.target]="item.is_newtab === '1' ? '_blank' : null">
+              <div>
+                <span>{{item.button_text}}</span>
+                <img src="assets/img/chevron-right.svg" alt="right arrow">
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

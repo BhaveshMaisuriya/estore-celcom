@@ -1,0 +1,65 @@
+/* Display Disclaimer CSS Start  */
+
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	background-color: #009ade;
+}
+.disclaimer-features-box-dtls {
+	width: 90%;
+	margin: auto;
+	padding-bottom: 34px;
+	margin-top: 24px;
+}
+.disclaimer-title {
+	padding: 2em 0 1em;
+	font-size: 24px;
+	line-height: 1em;
+	font-weight: bold;
+}
+.disclaimer-features-content {
+	padding: 10px;
+	line-height: 1.43;
+	text-align: justify;
+}
+.dis-continue {
+	padding-bottom: 2em;
+}
+.dis-continue .disclaimer-accept {
+	margin-bottom: 16px;
+}
+.dis-continue a {
+	cursor: pointer;
+}
+.disclaimer-features-box {
+	background-color: #fff;
+}
+.disclaimer-features-box .feature-box-close {
+	width: 19.3px;
+	float: right;
+	margin: 20px;
+	cursor: pointer;
+}
+/*  disclaimer_modal CSS Start  */
+
+.disclaimer_modal {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.disclaimer_modal-content {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+#disclaimer_Modal {
+	display: none;
+}

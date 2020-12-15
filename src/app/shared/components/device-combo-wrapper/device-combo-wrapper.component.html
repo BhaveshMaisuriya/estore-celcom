@@ -1,0 +1,201 @@
+<div class="section-group theme-material">
+  <div class="section" id="main-section">
+    <div class="section-title">
+      <ng-container *ngIf="!isComboLayout; else comboTitleEl">
+        <h1>{{ selectedDevice?.name || 'Loading...' }}</h1>
+        <div class="price-content-wrapper">
+          <div class="price-content">RRP
+            <span>RM{{ selectedDevice?.rrp | number : '1.2-2'}}</span>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #comboTitleEl>
+        <h1>Select Device Combo</h1>
+      </ng-template>
+    </div>
+    <div class="tab-wrapper mt-estore-3 mb-estore-3" *ngIf="isComboLayout">
+      <div class="tab-container">
+        <ul class="tab device-combo">
+          <li [ngClass]="{'selected': isMainTabSelected}" (click)="onTabClick(true)">
+            <div matRipple>
+              <div class="tab-image">
+                <img [src]="selectedDevice?.image" alt="">
+              </div>
+              <div class="tab-description">
+                <div class="device-type">Device {{ isComboPhone ? '1' : '' }}</div>
+                <div class="device-name">
+                  <span [title]="response?.basic_details?.name">
+                    <!-- {{ response?.basic_details?.name || 'Loading...' }} -->
+                    {{ selectedDevice?.name || 'Loading...' }}
+                  </span>
+                </div>
+                <div class="device-stock">
+                  <ng-container [ngSwitch]="isCheckingStock">
+                    <ng-container *ngSwitchCase="false">
+                      <span
+                        *ngFor="let isInstock of [getDeviceStock(selectedDevice?.sku)]"
+                        [ngClass]="[isInstock ? 'isInstock' : 'isOutstock']">
+                        {{ isInstock ? 'In Stock' : 'Out of Stock' }}
+                      </span>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                      Loading...
+                    </ng-container>
+                  </ng-container>
+                  </div>
+              </div>
+            </div>
+          </li>
+          <li [ngClass]="{'selected': !isMainTabSelected}" (click)="onTabClick(false)">
+            <div matRipple>
+              <div class="tab-image" *ngIf="selectedDeviceCombo">
+                <img [src]="selectedDeviceCombo?.image" alt="">
+                <a *ngIf="availableComboDevices?.length > 1"
+                  href="#"
+                  class="btn-toggle-devices mt-estore-h"
+                  (click)="onToggleEditComboDevice($event)">
+                  {{ showDeviceSelection ? 'Close' : 'Change' }}
+                </a>
+              </div>
+              <div class="tab-description">
+                <div class="device-type"> {{ isComboPhone ? 'Device 2' : 'Accessories' }}</div>
+                <div class="device-name">
+                  <span [title]="comboDevice?.basic_details?.name">
+                    <!-- {{ comboDevice?.basic_details?.name || 'Loading...' }} -->
+                    {{ selectedDeviceCombo?.name || 'Loading...' }}
+                  </span>
+                </div>
+                <div class="device-stock">
+                  <ng-container [ngSwitch]="isCheckingStock">
+                    <ng-container *ngSwitchCase="false">
+                      <span
+                        *ngFor="let isInstock of [getDeviceStock(selectedDeviceCombo?.sku)]"
+                        [ngClass]="[isInstock ? 'isInstock' : 'isOutstock']">
+                        {{ isInstock ? 'In Stock' : 'Out of Stock' }}
+                      </span>
+                    </ng-container>
+                    <ng-container *ngSwitchDefault>
+                      Loading...
+                    </ng-container>
+                  </ng-container>
+                </div>
+                <a *ngIf="availableComboDevices?.length > 1"
+                  href="#"
+                  class="btn-toggle-devices d-mobile-only"
+                  (click)="onToggleEditComboDevice($event)">
+                  {{ showDeviceSelection ? 'Close' : 'Change' }}
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="section-content">
+      <div class="col">
+        <div class="row" *ngIf="availableComboDevices?.length > 0 && showDeviceSelection" @myInsertRemoveTrigger>
+          <div class="col mb-estore-2 device-combo-selection">
+            <app-card-options
+              [isLoading]="false"
+              [disabled]="false"
+              [isDeviceCard]="true"
+              [options]="availableComboDevices"
+              [selectedOption]="comboDevice?.basic_details?.sku"
+              (onSelect)="onChooseComboClick($event)"
+            >
+            </app-card-options>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <app-device-carousel 
+              *ngIf="images?.length > 0" 
+              [deviceImages]="images">
+            </app-device-carousel>
+    
+            <div class="related-product" *ngIf="displayedProduct?.related_products">
+              <div class="product-link" *ngFor="let item of displayedProduct?.related_products">
+                <a href="{{ item.campaign_url ? item.campaign_url : '/device-detail/'+item.sku }}">
+                  <span>{{item.name}}</span>
+                </a>
+              </div>
+            </div>
+    
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 p-0" id="device-specs-container">
+    
+            <!-- #promo badges & text starts -->
+            <div *ngIf="displayedProduct?.basic_details?.promotion_badge?.promotion_badge_text" class="badges mb-estore-1" [ngStyle]="{
+                        color: displayedProduct?.basic_details?.promotion_badge?.promotion_badge_text_color,
+                        background: displayedProduct?.basic_details?.promotion_badge?.promotion_badge_background_color
+                    }">{{ displayedProduct?.basic_details.promotion_badge.promotion_badge_text }}</div>
+    
+            <div *ngIf="isPreorder && displayedProduct?.basic_details?.pre_order_data?.preorder_hat" class="promotion">
+              <div class="promotion-text" [innerHTML]="displayedProduct?.basic_details?.pre_order_data?.preorder_hat | safeHtml"></div>
+            </div>
+            <div *ngIf="!isPreorder && displayedProduct?.basic_details?.stock_indicator_text" class="promotion">
+              <div class="promotion-text" [innerHTML]="displayedProduct?.basic_details?.stock_indicator_text | safeHtml"></div>
+            </div>
+            <div class="campaign-price" *ngIf="campaignOmni as omni">
+              <span class="text-muted">Now </span>
+              <span class="price">RM{{ (omni?.device_bundle_price || 0) | number : '1.2-2' }} </span>
+              <span class="discounted-price">RM{{ (omni?.device_retail_price || 0) | number : '1.2-2' }}</span>
+            </div>
+            <!-- #promo badges & text ends -->
+
+            <ng-container *ngIf="isComboLayout">
+              <div class="mb-estore-h combo-price-label">
+                Combo Price:
+              </div>
+              <div *ngIf="!campaignOmni" class="red-price">RM{{ ((devicePrice$ | async) || 0) | number : '1.2-2' }} </div>
+              <div class="mt-estore-h" *ngFor="let device of [isMainTabSelected ? selectedDevice : selectedDeviceCombo]">
+                RRP RM{{ (device?.rrp || 0) | number : '1.2-2' }}
+              </div>
+            </ng-container>
+    
+            <p class="spec-text">Select Device Specification</p>
+
+            <div *ngIf="displayedProduct">
+              <app-device-color-storage-picker [isLoading]="isCheckingStock"
+                [productList]="displayedProduct?.associated_product" 
+                [selectedProduct]="isMainTabSelected ? selectedDevice : selectedDeviceCombo"
+                (onSelectProduct)="onSelectProductClick($event)"></app-device-color-storage-picker>
+            </div>
+            <ng-container *ngFor="let isInStock of [getDeviceStock((isMainTabSelected ? selectedDevice : selectedDeviceCombo)?.sku)]">
+              <div class="stock-indicator mt-estore-1" [ngClass]="{'is-in-stock': isInStock, 'is-loading': isLoading || isCheckingStock}">
+                <ng-container *ngIf="isLoading || isCheckingStock; else stockReady">
+                  Loading...
+                </ng-container>
+                <ng-template #stockReady>
+                  <mat-icon 
+                    [svgIcon]="isInStock ? 'estore-check' : 'estore-times'">
+                  </mat-icon>
+                  <span>{{ isInStock ? 'In Stock' : 'Out of Stock'}}</span>
+                </ng-template>
+              </div>
+            </ng-container>
+    
+            <ng-template #isCheckingStockLoadingEl>
+              <div class="device-stock mt-estore-1 pl-estore-1 p2-estore-1">
+                Loading...
+              </div><!-- /.device-stock -->
+            </ng-template>
+
+            <div class='redirect-roi-link mt-estore-2'
+              *ngIf="!checkDeviceforROI()">
+              The model you wanted is out of stock? Drop us your details <a href="/roi-form/{{roiDevice.roiSKU}}" target="_blank">here</a> and we’ll
+              be in touch with you.
+            </div>
+
+            <div class="more-details mt-estore-3">
+              More details on
+              <span (click)="openFeaturesSpecs();">Features & specification</span>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</div>

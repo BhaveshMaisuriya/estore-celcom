@@ -1,0 +1,222 @@
+<app-page-loader *ngIf="loading.pageLoading"></app-page-loader>
+
+<div class="section-group theme-material" id="section-group" *ngIf="!loading.pageLoading">
+
+  <aside class="side-summary-container">
+    <app-side-summary
+      [overrideTotalPrice]="true"
+      [totalPrice]="data.totalPayment"
+      (onAddtoCartClick)="onAddToCartClick()"
+    ></app-side-summary>
+  </aside>
+
+  <section class="section no-counter" *ngIf="campaignOmni as omni">
+    <div class="section-content campaign-container">
+      <app-omni-banner [data]="omni"></app-omni-banner>
+    </div>
+  </section>
+
+  <div class="section">
+
+    <div class="section-title">
+      <h1>Plan Details</h1>
+    </div>
+
+    <div class="section-content" [ngClass]="{'has-badge': (basePlan$ | async)?.promotion_badge?.promotion_badge_text}">
+      <div *ngIf="basePlan$ | async as basePlan">
+
+        <app-plan-card
+          class="base-plan-container"
+          [selected]="true"
+          [collapsibleFooter]="false"
+          [footerTemplate]="footer"
+          [height100]="true"
+          [image]="basePlan.image_url"
+          [pricetag]="basePlan.key_text"
+          [promotion_badge]="basePlan.promotion_badge"
+          [promotion_text]="basePlan.promotion_text"
+          [title]="basePlan.name"
+          [useMaterialTheme]="true">
+
+          <ng-template #footer>
+            <div [innerHTML]="basePlan.offer | safeHtml">
+            </div>
+          </ng-template>
+        </app-plan-card>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="section">
+
+    <div class="section-title">
+      <h1>Check Eligibility</h1>
+    </div>
+
+    <div class="section-content">
+      <div class="mb-5">
+        Enter your personal details for verification.
+      </div>
+
+        <form [formGroup]="myForm" autocomplete="off">
+          <div class="container">
+            <div class="row">
+              <div class="col nric-box">
+  
+                <app-estore-input
+                  label="NRIC Number"
+                  inputType="nric"
+                  [success]="myForm?.controls?.nric?.valid"
+                  placeholder="890102345678"
+                  formControlName="nric"
+                  [disabled]="flags.loggedIn"
+                  customValidationLabel="NRIC"
+                ></app-estore-input>
+  
+                <ng-container *ngIf="flags.loggedIn">
+                  <app-estore-input
+                    *ngIf="myForm?.controls?.nric?.valid"
+                    label="Your Celcom Number"
+                    inputType="phone"
+                    [success]="myForm?.controls?.phone?.valid"
+                    placeholder="0191234567"
+                    formControlName="phone"
+                    [disabled]="true"
+                    customValidationLabel="your Celcom number"
+                  ></app-estore-input>
+  
+                  <p *ngIf="flags.loggedIn" class="m-0">
+                    <a class="change-number-txt" (click)="onChangeNumber()">
+                      Change this number
+                    </a>
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col p-0">
+                <app-mc-login 
+                  *ngIf="!flags.loggedIn && myForm?.controls?.nric?.valid"
+                  (onSuccess)="onLoggedIn()"
+                  [minimalist]="true"></app-mc-login>
+              </div>
+            </div>
+          </div>
+        </form>
+
+      <!-- Eligiblity Status # start -->
+      <ng-container *ngIf="loading.eligiblityCheck">
+        <h5 class="account-details-title fade-in-out">Checking for eligiblity...</h5>
+      </ng-container>
+
+      <ng-container *ngIf="flags.isEligible && data.accountDetails !== null">
+        <h5 class="account-details-title success-text">Yay! Your account is verified.</h5>
+      </ng-container>
+
+      <ng-container *ngIf="error.notEligible">
+        <h5 class="account-details-title error-text">Sorry! You're not eligible.</h5>
+      </ng-container>
+      <!-- Eligiblity Status # end -->
+
+      <!-- warning message-->
+      <div class="warning-container" *ngIf="error.notEligible">
+        <img class="warning_img" src="assets/img/warning_icon.svg" alt="warning image">
+        <div class="warning-msg">{{ error.notEligible }}</div>
+      </div>
+      <!--#end warning message-->
+      
+      <div class="container">
+        <div class="row" *ngIf="data.accountDetails as accntDet">
+          <div class="col-lg-6 account-details-card">
+            <p class="m-0">Your Account Details</p>
+            <hr class="horizontal-border">
+            <div class="row account-details-desc">
+              <div class="col-lg-6 col-6">
+                <p class="mb-8">Principal Number</p>
+                <p class="m-0">Plan Name</p>
+              </div>
+              <div class="col-lg-6 col-6 p-normal">
+                <p class="mb-8">{{accntDet?.principle_no}}</p>
+                <p class="m-0">{{accntDet?.plan_name}}</p>
+              </div>
+            </div>
+            <ng-container *ngIf = "accntDet.supply_count > 0">
+              <div class="row account-details-desc mt-8">
+                <ng-container *ngFor="let item of accntDet?.supply_details; let i = index">
+                  <p class="col-lg-6 col-6 m-0 px-0 mt-8">Supplementary Line {{ i + 1 }}</p>
+                  <p class="col-lg-6 col-6 m-0 pl-0 p-normal mt-8">{{ item.supplyNo }}</p>
+  
+                  <!-- Last Supplementary line -->
+                  <div class="col-lg-6 col-6 p-0" *ngIf="accntDet[i + 1] === undefined">
+                    <p class="mt-8">Plan Name</p>
+                  </div>
+                  <div class="col-lg-6 col-6 p-normal">
+                    <p class="mt-8">{{ item.supplyName }}</p>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="section-title" [ngClass]="flags.isEligible ? '' : 'inactive'">
+      <h1>Choose a New Number for Your Supplementary Line</h1>
+    </div>
+
+    <div class="section-content">
+
+      <div *ngIf="data.accountDetails as accountdetail">
+        <p>
+          You can add maximum
+          <strong>{{ 3 - (+accountdetail.supply_count) }} family line(s)</strong>
+          to a principal line. Click on check box to start adding family line.
+        </p>
+
+        <app-supplementary-line-wrapper
+          [form]="myForm"
+          [hideFamilyLineMessage]="true"
+          [supplementaryLines]="data.supplementaryLines"
+          (onChoose)="updateSuppLines($event)"
+          (onRemove)="removeSuppLines($event)"
+          (shareQuota)="updateShareQuota()"
+        ></app-supplementary-line-wrapper>
+      </div>
+
+      <div class="row m-0" *ngIf="(suppLineInCart$ | async).length > 0">
+        <div class="col-lg-6 p-0 mb-5">
+          <div class="checkout-info-container">
+            <img class="" src="assets/img/checkout_arrow.svg" alt="checkout-img"/>
+            <p>Click <strong>“Checkout”</strong> to complete your order</p>
+          </div>
+
+          <button
+            class="btn btn-rounded btn-small"
+            (click)="clearSuppLines()"
+          >Back</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="section no-counter no-top-padding">
+    <div class="section-content">
+      <app-notes
+      [notesContent]="(basePlan$ | async)?.family_line_notes"
+      ></app-notes>
+    </div>
+  </section>
+</div>
+
+<footer-component></footer-component>

@@ -1,0 +1,72 @@
+.mdl-container {
+    display: none;
+    &.isShown {
+        display: block;
+    }
+    &.isHidden {
+        display: none;
+    }
+    &.rounded {
+        border-radius: 8px;
+    }
+    &.isCenter {
+        top: 50% !important;
+        transform: translate3d(-50%, -50%, 0) !important;
+    }
+
+    // makes it hover above all elements
+    z-index: 1000;
+    position: fixed;
+    min-width: 14rem;
+    // min-height: 14rem;
+    background: white;
+    padding: 24px 0;
+    top: 115px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0px 0px 41px 0px rgba(0,0,0,0.35);
+    max-width: 90vw;
+    max-height: 90vh;
+    @media (max-width: 550px) {
+        width: 80vh;
+        padding: 16px 0;
+    }
+
+    .mdl-close {
+        img {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+        }
+        text-align: right;
+        margin: 0 2rem auto;
+    }
+
+    .mdl-body {
+        max-height: 80vh;
+        overflow: auto;
+        padding: 0 24px;
+        // min-width: 335px;
+        @media (max-width: 550px) {
+            min-width: auto;
+            padding: 0 16px;
+        }
+    }
+}
+
+.mdl-background {
+    // should be below the .modal but above all other elements
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    // makes the below elements visible to a degree.
+    opacity: 0.6;
+    display: none;
+    &.isShown {
+        display: block;
+    }
+}

@@ -1,0 +1,138 @@
+<ng-template #checkboxBtn let-selected="selected">
+    <div class="checkbox-container">
+        <mat-icon *ngIf="selected; else roundbox" class="success-icon" matSuffix svgIcon="estore-check" style="width: 28px; height: 28px; color: #009bdf;"></mat-icon>
+        <ng-template #roundbox>
+            <div class="roundBox"></div>
+        </ng-template>
+    </div>
+</ng-template>
+
+
+<div class="info-box">
+    <div class="info-img">
+        <img src="/assets/img/svg/icons/Icon Expressive —  Info.svg" alt="">
+    </div>
+    <div class="info-desc1">
+        You are subscribing to <strong [innerHtml]="contract_name | safeHtml"></strong> Device Bundle.
+    </div>
+    <div class="info-desc2">
+        You will need 1 Principal Number and 1 <span [innerHTML]="supplementaryData?.name | safeHtml"></span> to subscribe to this contract.
+    </div>
+</div>
+<div class="mt-estore-1 mb-estore-1">
+    Please select your preferred mobile number for Principal and <span [innerHTML]="supplementaryData?.name | safeHtml"></span>:
+</div>
+<div class="card-container">
+    <div class="scroll-container emulated-flex-gap">
+        <div class="card" [ngClass]="{
+            'selected': isPrincipalOpen,
+            'selectable': isNewLine
+        }"
+        (click)="isPrincipalOpen = !isPrincipalOpen">
+            <div class="card-image">
+                <img src="/assets/img/svg/icons/Icon Colour — Device - Phone.svg" alt="">
+            </div>
+            <div class="card-description" [ngClass]="{'is-value': !!principalNumber}">
+                <div class="device-type">Device 1</div>
+                <div class="number-info">Principal</div>
+                <div class="number-label">{{ principalNumber }}</div>
+                <a
+                    href="#"
+                    (click)="$event.preventDefault()"
+                    *ngIf="isNewLine && principalNumber">Change number</a>
+            </div>
+        </div>
+        <div class="card selectable" [ngClass]="{'selected': isSuppOpen}" (click)="isSuppOpen = !isSuppOpen">
+            <div class="card-image">
+                <img src="/assets/img/svg/icons/Icon Colour — Device - Phone.svg" alt="">
+            </div>
+            <div class="card-description" [ngClass]="{'is-value': !!deviceComboNumber}">
+                <div class="device-type">Device 2</div>
+                <div class="number-info"><span [innerHTML]="supplementaryData?.name | safeHtml"></span></div>
+                <div class="number-label" *ngIf="deviceComboNumber" @myInsertRemoveTrigger>
+                    {{ deviceComboNumber }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isPrincipalOpen" [@myInsertRemoveTrigger]="isPrincipalOpen ? 'open': 'close'">
+    <app-number-chooser
+        label="Choose for your principal number"
+        type="postpaid"
+        [autoSelectNumber]="false"
+        (onSelectNumber)="onSelectPrincipalNumber($event)"
+    ></app-number-chooser>
+</div>
+<div class="supp-number-container" *ngIf="isSuppOpen" [@myInsertRemoveTrigger]="isSuppOpen ? 'open': 'close'">
+    <ng-container *ngIf="!isNewLine; else newLineEl">
+        <div>
+            <div class="info-text">
+                Please choose which <span [innerHTML]="supplementaryData?.name | safeHtml"></span> will be subscribing to <span [innerHTML]="contract_name | safeHtml"></span> contract from the list below:
+            </div>
+            <ng-container *ngIf="!supplementaryData && !suppNumbers?.length; else hasSuppNum">
+                <div class="text-danger">No supplementary number</div>
+            </ng-container>
+            
+            <ng-template #hasSuppNum>
+                <div class="mt-estore-1" *ngFor="let number of suppNumbers; let i = index">
+                    <app-supp-number-chooser
+                        [label]="'Line ' + (i + 1)"
+                        [selected]="number"
+                        [allowChangeNumber]="false"
+                        [deviceComboNumber]="deviceComboNumber"
+                        (onSelectComboNumber)="onClickComboNumber($event)"
+                    >
+                    </app-supp-number-chooser>
+                </div>
+            </ng-template>
+        </div>
+    </ng-container>
+
+    <ng-template #newLineEl>
+        <div class="newline-suppline-selection-container">
+            <div class="info-text">
+                <span class="text-bold" [innerHTML]="supplementaryData?.name | safeHtml"></span> (RM{{ +supplementaryData?.price || 0 }}/month, 30GB internet and unlimited calls)
+            </div>
+            <div class="mt-estore-1 mb-estore-1">
+                You can add maximum <span class="text-bold">{{ supplementaryData.max_line || 1 }} <span [innerHTML]="supplementaryData?.name + 's' | safeHtml"></span></span> to a principal line. Click on check box to start adding <span [innerHTML]="supplementaryData?.name | safeHtml"></span>.
+            </div>
+            <div class="mt-estore-1" *ngFor="let number of suppDataArray; let i = index">
+                <app-supp-number-chooser
+                    [autoOpen]="i === 0"
+                    [label]="'Line ' + (i + 1)"
+                    [selected]="suppNumbers[i]"
+                    [disabled]="i > 0 && !suppNumbers[i - 1]"
+                    [allowChangeNumber]="isNewLine"
+                    [preventDelete]="i === 0"
+                    [deviceComboNumber]="deviceComboNumber"
+                    (onSelectNumber)="onAddSupp($event, i)"
+                    (onSelectComboNumber)="onClickComboNumber($event)"
+                    (onSelectingNumber)="onUserSelectingNumber($event)"
+                >
+                </app-supp-number-chooser>
+            </div>
+            
+            <div class="container-fluid" *ngIf="internet_share?.enabled && !isSelectingNumber">
+                <div class="row mt-estore-1">
+                    <div class="col col-md-6 p-0 form-group custom-fg">
+                        <div class="row">
+                            <div class="col">
+                                <mat-checkbox 
+                                    [checked]="share_quota"
+                                    (click)="onClickInternetshareCheckbox($event)">
+                                    <span [innerHTML]="internet_share?.label | safeHtml"></span>
+                                </mat-checkbox>
+                            </div>
+                            <div class="col-auto pt-estore-1 text-left">
+                                <span>
+                                    <strong>RM{{ +internet_share?.monthly_price || 0 }}</strong>/monthly
+                                </span>
+                            </div>
+                        </div>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div>
+    </ng-template>
+</div>

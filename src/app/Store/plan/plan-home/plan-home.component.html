@@ -1,0 +1,5 @@
+<herobanner-carousel-component *ngIf="isCSAgentDealer === notCSAgent" [data]='banner404'></herobanner-carousel-component>
+<app-plan-table-comparison [data]='{"Name":"tableComparison","Headline":"Celcom Plans","BackgroundColor":"is-bg-color-white","Description":"Find your perfect match","Api":"magento/index.php/rest/V1/categories/9/products"}'></app-plan-table-comparison>
+<app-hero-banner-image-clickable *ngIf="isCSAgentDealer === notCSAgent" [data]='bannerURL'></app-hero-banner-image-clickable>
+<footer-component *ngIf="isCSAgentDealer === notCSAgent"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer === csAgent" class="agentfooter"></app-agent-footer>

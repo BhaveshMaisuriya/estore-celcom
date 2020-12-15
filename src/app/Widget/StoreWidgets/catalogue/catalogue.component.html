@@ -1,0 +1,393 @@
+<ng-container  *ngIf="isEnterprise()">
+  <section class="u-section mask">
+    <div class="section__border is-top"></div>
+    <div class="section__inner">
+        <div class="section__content">
+            <div class="o-hero-banner o-hero-device">
+                <div class="u-grid-row is-collapsed is-equal-height">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12">
+                        <img src="/assets/img/Drop_3/enterprise-banner.jpg" alt="enterprise-banner" class="enterprise-banner">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+<div class="is-align-center">
+  <p class="title-enterprise">Our Offerings</p>
+  <p class="sub-enterprise">Pair your plan with a brand new phone for the best experience</p>
+</div>
+<section class="u-section has_padding_top_4">
+  <div class="section-inner">
+    <div class="section-content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height plan-background">
+          <div class="filter-plan"
+          *ngFor="let plan of plansName" [innerHTML]="plan.name | safeHtml" (click)="FilterByPlans(plan.filter)"
+          [ngClass]="{'is-active': plan.filter === SelectedTab, 'full-width': plansName.length === 1}"></div>
+      </div>
+    </div>
+  </div>
+</section>
+</ng-container>
+<section class="u-section has_padding_top_4">
+  <div class="section-inner">
+    <div class="section-content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height">
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-mobile-padding">
+          <button id="desk_filterBy" class="filter-button is-mobile-hidden" (click)="desk_filterBy();">Filter By
+            <img src="../assets/img/store/carrot-down.png">
+          </button>
+          <button id="mob_filterBy" class="filter-button is-desktop-hidden" (click)="mob_filterBy();">Filter By
+            <img src="../assets/img/store/carrot-down.png">
+          </button>
+
+          <!-- Mobile View Filter Dropdown Start -->
+
+          <section class="u-section has-border is-width__100 is-filter-hide is-desktop-hidden" id="filter_dropdown">
+            <div class="section-inner">
+              <div class="section-content">
+                <div class="filter__background has_padding">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <ng-container *ngFor="let filterCategory of filterCategories; let i= index">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3">
+                        <h5 class="interested-in">{{filterCategory.name}}</h5>
+                        <span *ngFor="let option of filterCategory.options">
+                          <label class="check_container">
+                            {{option.label}}
+                            <input type="checkbox" (ngModelChange)="optionSelected(option,$event);"
+                              [(ngModel)]="option.IsChecked" name="filterOptions" [checked]="option.IsChecked">
+                            <span class="checkmark"></span>
+                          </label>
+                        </span>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="apply__filter">
+                    <div class="teaser__cta apply__filter__btn">
+                      <button class="c-cta--default" data-css="c-cta" href="javascript:void(0);"
+                        (click)="submitOptions();mob_filterBy();">
+                        <span class="cta__content">Apply</span>
+                        <span class="cta__icon icon is-icon-arrow"></span>
+                      </button>
+                    </div>
+                    <div class="clear_filter" *ngIf="showClearFilter">
+                      <a href="javascript:void(0);" (click)="clearFilterOptions();mob_filterBy();">Clear all filters</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+          <!-- Mobile View Filter Dropdown End -->
+        </div>
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-mobile-padding">
+          <button id="sortBy" class="filter-button" (click)="sortBy();">Sort By
+            <img src="../assets/img/store/carrot-down.png">
+          </button>
+
+          <section class="u-section has-border is-width__100 is-filter-hide" id="sortBy_dropdown">
+            <div class="section-inner">
+              <div class="section-content">
+                <div class="filter__background">
+                  <ul class="filter__background sortby__list">
+                    <li class="sortby__list_item">
+                      <label class="check_container">Newest to Oldest
+                        <input type="radio" name="sortBy" value="positionDesc"
+                          (click)="sortResults('positionDesc');sortBy();">
+                      </label>
+                    </li>
+                    <li class="sortby__list_item">
+                      <label class="check_container">Price (Low to High)
+                        <input type="radio" name="sortBy" value="priceAsc" (click)="sortResults('priceAsc');sortBy();">
+                      </label>
+                    </li>
+                    <li class="sortby__list_item">
+                      <label class="check_container">Price (High to Low)
+                        <input type="radio" name="sortBy" value="priceDesc"
+                          (click)="sortResults('priceDesc');sortBy();">
+                      </label>
+                    </li>
+                  </ul>
+
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--  Desktop View Filter Dropdown Start -->
+
+<section class="u-section has-border is-filter-hide is-mobile-hidden" id="filter_drop">
+  <div class="section-inner">
+    <div class="section-content is-container">
+      <div class="filter__background has_padding">
+        <div class="u-grid-row is-collapsed is-equal-height">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3"
+            *ngFor="let filterCategory of filterCategories; let i= index">
+            <h5 class="interested-in">{{filterCategory.name}}</h5>
+            <div class="has_padding_top">
+              <span *ngFor="let option of filterCategory.options">
+                <label class="check_container">
+                  {{option.label}}
+                  <input type="checkbox" (click)="optionSelected(option);" [(ngModel)]="option.IsChecked"
+                    name="filterOptions" [checked]="option.IsChecked">
+                  <span class="checkmark"></span>
+                </label>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="apply__filter">
+          <div class="teaser__cta apply__filter__btn">
+            <button class="c-cta--default" data-css="c-cta" href="javascript:void(0);"
+              (click)="submitOptions();desk_filterBy();">
+              <span class="cta__content">Apply</span>
+              <span class="cta__icon icon is-icon-arrow"></span>
+            </button>
+          </div>
+          <div class="clear_filter" *ngIf="showClearFilter">
+            <a href="javascript:void(0);" (click)="clearFilterOptions();desk_filterBy();">Clear all filters</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--  Desktop View Filter Dropdown End -->
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<section class="u-section is-margin-bottom-2" [hidden]="loading" *ngIf="catalogueList != null">
+  <div class="section__inner marginTop15">
+    <div class="section__content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height catalogue_list_margin cart-space">
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height" *ngFor="let item of catalogueList"
+          [attr.data-analytics-region]="item.name">
+          <app-most-popular [showComponent]="item.mostpopular"></app-most-popular>
+          <app-pre-order [preOrderCheck]="item"></app-pre-order>
+          <div class="c-plan-comparison is-width-100" [ngClass]="{'background':item.mostpopular}">
+            <!--pre order tag start-->
+            <div class="RM__Offer__box__layout"
+              *ngIf="item.discount_promotion_data && item.discount_promotion_data.discount_price_label">
+              <div class="RM__Offer__RM__box">
+                <p class="RM__Offer">{{item.discount_promotion_data.discount_price_label}}</p>
+                <p class="RM__Offer__exclusive"
+                  *ngIf="item.discount_promotion_data && item.discount_promotion_data.promotion_label">
+                  {{item.discount_promotion_data.promotion_label}}</p>
+              </div>
+            </div>
+            <!--pre order tag end-->
+            <div class="rectangle__box__layout" *ngIf="item.is_premium_plan">
+              <div class="rectangle__black__layout">
+                <p class="MOST-POPULAR is-yellow-font">
+                  <img class="most-star" src="../assets/img/Drop_3/vip.svg"> PREMIUM PLAN</p>
+              </div>
+            </div>
+            <!--Lifestyle tag start-->
+            <div class="RM__Offer__box__layout"
+              *ngIf="isLifestyleUrl && item.is_lifestyle !== 'undefined' && item.is_lifestyle">
+              <div class="RM__Offer__RM__box RM-offer-lefestyle-bakground">
+                <p class="RM__Offer" [innerHtml]="item.lifestyle_hat_text1"></p>
+                <p class="lifestyle-exclusive-offer" [innerHtml]="item.lifestyle_hat_text2"></p>
+              </div>
+            </div>
+            <!--Lifestyle tag end-->
+            <div class="plan-comparison__list " [ngClass]="{'is-black-border':false}">
+              <div class="plan-comparison__list__item bordernone"
+                [ngClass]="item.mostpopular >0 || item.pre_order_data.is_preorder === '1' ? 'background':'background_white'">
+                <!-- <div class="plan-comparison__list__item__header__level-name">
+                  <a href="javascript:void(0);" *ngIf="!item.isAddedToCompare" (click)="addCompareItems(item);">
+                    <img class="plan-comparison__list__item__header__iconimg__left"
+                      src="../assets/img/store/icon/add_to_compare.svg" />
+                  </a>
+                </div> -->
+                <div class="plan-comparison__list__item__header__level-name plan_image_container is-text-align-center">
+                  <a href="/device-detail/{{item.sku}}{{(promotionUrl === '') ? '' : '?'+promotionUrl}}">
+                    <img src="/media/catalog/product/{{item.image}}" />
+                  </a>
+                </div>
+                <div class="plan-comparison__list__item__header__level-name" style="line-height:2em">
+                  <h4 class="plan-comparison__list__item__headeing__nameh4">{{ item.name }}</h4>
+                </div>
+                <!-- easy phone rent and own text start-->
+                <div class="easy_phone_main">
+                  <p *ngIf="item.is_easy_phone && item.is_easy_phone === true" class="easy_phone_text">
+                    {{ item.is_rent ? 'EasyPhone™ Rent' : 'EasyPhone™ Own'}}</p>
+                  <p *ngIf="!item.is_easy_phone || item.is_easy_phone === false" class="device_bundle_text">Device
+                    Bundle</p>
+                </div>
+                <!-- easy phone rent and own text end -->
+                <div>
+                  <div class="plan-comparision-subcontent">
+                    <ul class="listing_type_text">
+                      <!---->
+                      <!---->
+                      <li class="listing__type__text__details">
+                        <div *ngIf="!item.is_easy_phone || item.is_easy_phone === false"
+                          class="plan-comparison__list__item__content__detail__description">
+                          <div class="from-price">From </div>
+                          <div class="easy_phone_price"> RM{{ item.price | number : '1.2-2' }}</div>
+                        </div>
+                        <!--displaying of price when it is easy phone rent and own start-->
+                        <div *ngIf="item.is_easy_phone && item.is_easy_phone === true"
+                          class="plan-comparison__list__item__content__detail__description">
+                          <div class="from-price">From </div>
+                          <div class="easy_phone_price"> RM{{ item.price_start_from | number : '1.2-2' }}</div>
+                          <div class="price-month"> /month</div>
+                        </div>
+                        <!--displaying of price when it is easy phone rent and end-->
+                      </li>
+                      <!---->
+                      <li class="plan-comparison__list__item__content__detail bundle_plan_details">
+                        <span *ngIf="!item.is_easy_phone || item.is_easy_phone === false"
+                          class="device_bundle_detail-description"> with
+                          <span class="device_bundle_detail-description" [innerHtml]="item.default_plan"></span>
+                        </span>
+                        <!-- if easy phone own and rent exists then this span has to dispaly start-->
+                        <span *ngIf="item.is_easy_phone && item.is_easy_phone === true"
+                          class="device_bundle_detail-description">Device Bundle from
+                          RM{{ item.price | number : '1.2-2' }}</span>
+                        <!-- if easy phone own and rent exists then this span has to dispaly end-->
+
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="plan-comparison__list__item__actions align_button">
+                    <div class="plan-comparison__list__item__actions__primary is-text-align-center">
+                      <a class="c-cta--default" data-css="c-cta" (click)="RedirectUrlQueryParamsForDeviceDetail(item)">
+                        Buy now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="easy_phone_links">
+        <p class="easyphone_ios_main">
+          <a href="https://www.celcom.com.my/personal/devices/easyphone/iOS" class="easyphone_ios">EasyPhone™ for iOS
+            devices <i class="cta__icon icon is-icon-arrow easy_phone_arrow"></i></a>
+        </p>
+        <p class="easyphone_andriod_main">
+          <a href="https://www.celcom.com.my/personal/devices/easyphone/android" class="easyphone_ios">EasyPhone™ for
+            Android devices <i class="cta__icon icon is-icon-arrow easy_phone_arrow"></i></a>
+        </p>
+      </div> -->
+
+    </div>
+  </div>
+</section>
+<section class="u-section is-margin-bottom-2" [hidden]="loading"
+  *ngIf="catalogueList !== null && catalogueList.length === 0">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height">
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+          <p>No devices available, please select another filter combo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="u-section is-desktop-hidden">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="load_more">
+        <div class="teaser__link is-text-align-center" *ngIf="IsDisplayLoadMore">
+          <a class="c-link--default" data-css="c-link" (click)="loadMore();">
+            <span class="link__icon icon is-icon-arrow-down"></span>
+            <span class="link__content">Load More</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- compare-tab section -->
+<!-- <section class="u-section">
+  <div class="section__inner compare__position">
+    <div class="section__content">
+      <div class="c-compare">
+        <div class="compare__sitemap" data-js-module="accordion"
+          data-js-options="{&quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false}">
+          <div class="compare__sitemap__group">
+            <a class="compare__sitemap__group-header" data-js-item="accordion-btn" (click)="accordianOpen($event)">
+              <div *ngIf="productsToCompare && productsToCompare.noOfProds" class="is-container">Compare
+                ({{productsToCompare.noOfProds.length}})
+                <img class="compare-down-arrow" [ngClass]="{'is-open' : classActive}"
+                  src="../assets/img/Drop_3/icon/white-down-arrow.png">
+              </div>
+            </a>
+            <div aria-expanded="false" class="compare__sitemap__group-content is-background-white " data-js-height="84"
+              data-js-item="accordion-content" [ngClass]="{'is-active' : classActive}">
+              <div class="accordion__content-innerrow is-container">
+                <div class="u-grid-row is-collapsed is-equal-height has-padding-top"
+                  *ngIf="productsToCompare && productsToCompare != null">
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 is-equal-height"
+                    *ngFor="let item of productsToCompare.noOfProds">
+                    <div class="plan-comparison__list__item accordian-bordernone accordian__content">
+                      <div class="plan-comparison__list__item__header__level-name Rectangle-11">
+                        <a (click)="removeCompareProduct(item)" class="compare_close">
+                          <img src="../assets/img/store/shopcart-remove.svg">
+                        </a>
+                        <img class="compare__samsung__img" src="/media/catalog/product/{{item.image}}">
+                      </div>
+                      <div class="plan-comparison__list__item__header__level-name">
+                        <h4 class="plan-comparison__list__item__headeing__nameh4 Samsung-Galaxy-S8">{{item.name}}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 is-equal-height"
+                    *ngIf="productsToCompare && productsToCompare.noOfProds && (productsToCompare.noOfProds.length < addMoreDeviceAccordian)">
+
+                    <div class="plan-comparison__list__item accordian-bordernone accordian__content">
+
+                      <div class="plan-comparison__list__item__header__level-name is-text-align-center">
+                        <a (click)="addMoreDevice();">
+                          <img class="compare__plus__icon" src="../assets/img/store/icon/add_to_compare.svg">
+                        </a>
+                      </div>
+
+                      <div class="plan-comparison__list__item__header__level-name">
+                        <h4 class="plan-comparison__list__item__headeing__nameh4 add_more_mobile">Add More Mobile</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="plan-comparison__list__item__actions__primary Find-out-more ">
+                  <a class="c-cta--default" data-css="c-cta" (click)="compareCheck();">
+                    Compare
+                    <i class="cta__icon icon is-icon-arrow"></i>
+                  </a>
+                  <p>
+                    <a class="Clear-All" href="javascript:void(0);" (click)="removeAllCompareProducts();">Clear All </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!--lifestyle popup-->
+<ng-container *ngIf="isDisplayPromotionalLifeStyle">
+  <age-eligibility-popup-component [DisplayPromotionalLifeStyle]="isDisplayPromotionalLifeStyle"
+    [promotionType]="device" (OnContinue)="onContinueDisplay($event)">
+  </age-eligibility-popup-component>
+</ng-container>
+
+<app-notification-error *ngIf="journeyNotifyPopup" [data]="popupData"></app-notification-error>

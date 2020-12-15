@@ -1,0 +1,264 @@
+<div class="footer_fix" [hidden]="!loading">
+    <app-page-loader></app-page-loader>
+</div>
+<section class="u-section sectionize is-bg-color-white odd" id="section_1" [hidden]="loading" *ngIf="!isInitializeDetailBannerLeft && !isProjectMoon">
+    <div class="section__inner">
+        <div *ngIf="isMviva && mvivaCampaign.mvivaBannerDesktop && mvivaCampaign.mvivaBannerMobile">
+            <div class="desktop" [innerHtml]="mvivaCampaign.mvivaBannerDesktop | safeHtml"></div>
+            <div class="mobile" [innerHtml]="mvivaCampaign.mvivaBannerMobile | safeHtml"></div>
+        </div>
+        <div class="section__content is-container">
+            <div class="section2 dev-dtl-plan-heading">
+                <div class="section_index_container"><span class="section_index">1</span></div>
+                <h2 class="device_outerrow__left device_detail_left_link">Base Plan</h2>
+                <!-- <p class="__plan_text">Select passes based on your internet needs (optional)</p> -->
+
+            </div>
+            <section class="u-section" *ngIf="!isMviva">
+                <div class="section__inner">
+                    <div class="section__content">
+                        <div class="u-grid-row is-equal-height plan-purchase-tabs">
+                            <!-- First plans -->
+                            <ng-container *ngIf="isProjectStar === false">
+                                <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2" *ngFor="let item of DeviceDetailsPlanResponse;let i=index">
+                                    <div class="plan__name_detail">
+                                        <!-- <div class="plan__details" (click)="SelectPlan(item.name, item.sku,item.PlanMonthlyPay, item);_deviceDataService.publishUpdateStep(2);" -->
+                                        <div *ngIf="item.telco_day && item.telco_day.status && item.telco_day.hat_text" class="rebate-hat">{{ item.telco_day.hat_text }}</div>
+                                        <div class="hat__container" *ngIf="item.is_premium_plan">
+                                            <img src="../assets/img/Drop_3/vip.svg">PREMIUM PLAN</div>
+                                        <div class="plan__details" [ngClass]="{'kardashian-radius': item.is_premium_plan, 'rebate-plan-border': (item.telco_day && item.telco_day.status && item.telco_day.hat_text)}"
+                                            (click)="onSwitchingPlanTabs(item.name, item.sku,item.PlanMonthlyPay, item);" [class.is-selectedPlan]="(item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive"
+                                            [class.is_selected_rebatePlan]="(item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive && item.telco_day && item.telco_day.status && item.telco_day.hat_text">
+                                            <div class="plan__details__description">
+                                                <p class="plan_text">{{ item.ProductText }}</p>
+                                                <p class="plan_figure">{{ item.KeyFiguresText }}</p>
+                                                <p class="plan_price">{{ item.KeyText }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <!-- End First plans -->
+                            <!-- Ultraplans -->
+                            <ng-container *ngIf="isProjectStar === true && ultraPlanPassDetailResponse">
+                                <p class="base_plan_text">Choose your base plan</p>
+                                <section class="plans__row baseplan-container">
+                                    <app-plan-card 
+                                        *ngFor="let pass of ultraPlanPassDetailResponse?.pass_plan"
+                                        (click)="selectPass(pass)"
+                                        [autoExpanded]="true"
+                                        [selected]="(pass$ | async)?.sku == pass.sku"
+                                        [pricetag]="ultraPlanPassDetailResponse.base_plan[0]?.key_text"
+                                        [title]="ultraPlanPassDetailResponse.base_plan[0]?.name+' '+pass.name"
+                                        [collapsibleFooter]="true"
+                                        [footerTemplate]="pass.offer? footer : null"
+                                    >
+                                        <ng-template #gb>{{ pass.name }}</ng-template>
+                                        <ng-template #footer>
+                                            <div [innerHTML]="pass.offer | safeHtml"></div>
+                                        </ng-template>
+                                    </app-plan-card>
+                                </section>
+                            </ng-container>
+                            <!-- End Ultraplans -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="u-section " *ngIf="isMviva">
+                    <div class="section__inner">
+                        <div class="section__content">
+                            <div class="u-grid-row is-equal-height">
+                                <!-- First plans -->
+                                <ng-container *ngIf="isProjectStar === false">
+                                    <ng-container *ngFor="let item of DeviceDetailsPlanResponse;let i=index">
+                                        <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-2 mviva-plans" *ngIf="(item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive">
+                                            <div class="plan__name_detail">
+                                                <!-- <div class="plan__details" (click)="SelectPlan(item.name, item.sku,item.PlanMonthlyPay, item);_deviceDataService.publishUpdateStep(2);" -->
+                                                <div class="plan__details" (click)="onSwitchingPlanTabs(item.name, item.sku,item.PlanMonthlyPay, item);" [class.is-selectedPlan]="(item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive">
+                                                    <div class="plan__details__description">
+                                                        <p class="plan_text">{{ item.ProductText }}</p>
+                                                        <p class="plan_figure">{{ item.KeyFiguresText }}</p>
+                                                        <p class="plan_price">{{ item.KeyText }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- End First plans -->
+                                <!-- Ultraplans -->
+                                <ng-container *ngIf="isProjectStar === true && ultraPlanPassDetailResponse">
+                                    <p class="__plan_text" *ngIf="ultraPlanPassDetailResponse.promotion_message">{{ultraPlanPassDetailResponse.promotion_message}}</p>
+                                    <section class="plans__row">
+                                        <div class="base_plan_box" *ngFor="let item of ultraPlanPassDetailResponse.base_plan">
+                                            <section class="plan_main">
+                                                <div class="plan__name_main" *ngIf="item.name" [innerHTML]="item.name | safeHtml"></div>
+                                                <!-- <div class="plan__gb">{{ item.key_figures_text }}</div> -->
+                                            </section>
+                                            <p class="condition_styling" [innerHTML]="item.offer | safeHtml"></p>
+                                            <p class="base_plan__price">{{ item.key_text }}
+                                                <span class="monthly_charges">/month</span>
+                                            </p>
+                                        </div>
+                                    </section>
+                                </ng-container>
+                                <!-- End Ultraplans -->
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- <p class="terms_conds mobile-only"><strong>Choose a plan to enjoy up to RM180 cashback*</strong></p>
+            <p class="terms_conds mobile-only">*Applicable for New Celcom Mobile plan customers.</p> -->
+            <!-- <div *ngIf="!isProjectStar" class="teaser__link has_margin_top_2" id="moreDetailsD">
+                <a class="c-link--default" data-css="c-link" target="_blank" (click)="MoreDetails();">
+                    <span class="link__icon icon is-icon-arrow-down" [ngClass]="{'is-arrow-active':is_icon_active}"></span>
+                    <span class="link__content">Plan details</span>
+                </a>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- <section *ngIf="!isProjectStar" class="u-section" id="step2" [@slideInOut]="showMoreDetails" >
+    <div class="section__inner has-plan-border">
+        <div class="section__content is-container">
+            <div class="section2">
+                <h2 class="device_detail_left_link">Plan Features</h2>
+            </div>
+            <div class="c-plan-comparison">
+                <div class="plan-comparison__landscape-hint">
+                    <div class="icon is-icon-landscape"></div>
+                    <p>Rotate your screen for a better Choose Plan experience</p>
+                </div>
+                <div class="plan-comparison__list device_detial_inner" *ngIf="isXpax !== undefined && isXpax === false" data-js-module="accordion" data-js-options="{&quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;context&quot;: &quot;plan-comparison&quot;}">
+                    <div class="plan-comparison__list__item" *ngFor="let item of DeviceDetailsPlanResponse;let i=index ">
+                        <div class="plan-comparison__list__item__header" [attr.href]="item.atrHref" (click)="accordianOpen(i);">
+                            <div class="plan-comparison__list__item__level-indicator {{item.IndicatorClass}}"></div>
+                            <div class="plan-comparison__list__item__header__level-name dev-dtl-key-fig">{{ item.ProductText }}</div>
+                            <div class="plan-comparison__list__item__header__key-figures dev-dtl-key-fig">{{ item.KeyFiguresText }}</div>
+                            <h4 class="plan-comparison__list__item__header__key">{{ item.KeyText }}</h4>
+                        </div>
+                        <div class="plan-comparison__list__item__content plan-section-padding" data-js-item="accordion-content-plan-comparison" id="rm-{{i}}"
+                            data-js-height="308" aria-expanded="false">
+                            <ul>
+                                <ng-container *ngFor="let detail of item.TableInfo">
+                                    <li class="plan-comparison__list__item__content__detail" [ngClass]="{'is-highlighted': detail.heighlight == '1'}">
+                                        <span class="plan-comparison__list__item__content__detail__description">
+                                            {{ detail.headline }}
+                                        </span>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-comparison__list" *ngIf="isXpax !== undefined && isXpax === true" data-js-module="accordion" data-js-options="{&quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;context&quot;: &quot;plan-comparison&quot;}">
+                    <div class="plan-comparison__list__item" *ngFor="let item of DeviceDetailsPlanResponse;let i=index">
+                        <div class="plan-comparison__list__item__header" [attr.href]="item.AtrHref" (click)="accordianOpen(i)">
+                            <div *ngIf="!item.is_xpax" class="plan-comparison__list__item__level-indicator {{item.IndicatorClass}}"></div>
+                            <div *ngIf="item.is_xpax" class="plan-comparison__list__item__level-indicator is-level-xpax"></div>
+                            <div class="plan-comparison__list__item__header__level-name">{{ item.ProductText }}</div>
+                            <div class="plan-comparison__list__item__header__key-figures">{{ item.KeyFiguresText }}</div>
+                            <h4 *ngIf="!item.is_xpax" class="plan-comparison__list__item__header__key">{{ item.KeyText }}</h4>
+                            <h4 *ngIf="item.is_xpax" class="plan-comparison__list__item__header__key plan-comparison__list__item__header__key_xpax">{{ item.KeyText }}</h4>
+                        </div>
+                        <div class="plan-comparison__list__item__content" data-js-item="accordion-content-plan-comparison" id="rm-{{i}}" data-js-height="308"
+                            aria-expanded="false">
+                            <ul>
+                                <ng-container *ngFor="let detail of item.TableInfo">
+                                    <li *ngIf="!item.is_xpax" class="plan-comparison__list__item__content__detail" [ngClass]="{'is-highlighted': detail.heighlight == '1'}">
+                                        <span class="plan-comparison__list__item__content__detail__description">
+                                            {{ detail.headline }}
+                                        </span>
+                                    </li>
+                                    <li *ngIf="item.is_xpax" class="plan-comparison__list__item__content__detail detail-xpax" [ngClass]="{'is-highlighted': detail.heighlight == '1'}">
+                                        <span class="plan-comparison__list__item__content__detail__description">
+                                            {{ detail.headline }}
+                                        </span>
+                                    </li>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<!-- Section Plans Start  -->
+
+<!-- project moon component -->
+<app-moon-plan-with-pass-details  *ngIf="isProjectMoon" [editProduct] = "editProduct" [SelectionAferLogin]="keepCelcomNumObj"></app-moon-plan-with-pass-details>
+<!-- lifestyle addon component -->
+<app-lifestyle-plans id="section_2" class="even"
+    *ngIf="chosenPlan && chosenPlan.addons && chosenPlan.addons.title && isInitializeAddons && isXpax === false && !isProjectMoon" 
+    [addOnData]="chosenPlan"
+    (onAgreeTC)="setAddOnTermsAccepted($event);">
+</app-lifestyle-plans>
+<app-star-size-up *ngIf="ultraPlanPassDetailResponse" 
+[data] ="ultraPlanPassDetailResponse" 
+[ProjectStarQueryParams]="ProjectStarQueryParams"
+[selectedProd]="editDeviceObj"
+></app-star-size-up>
+<app-device-details-choose-number id="section_3" class="odd"
+    *ngIf="PlanPurchaseDataToPass!=null && !isProjectMoon"
+    (mnpEligibilityCheckPlanPurchase)="OnMnpEligibilityPlanPurchase($event);"
+    (COBPEligibilityCheckPlanPurchase)="OnCOBPEligibilityPlanPurchase($event);"
+    (resetPriceData)="onResetPriceData($event);"
+    [data]="PlanPurchaseDataToPass"
+    [selectedProd]="editDeviceObj"
+    [SelectionAferLogin]="keepCelcomNumObj"
+    [isPromotion] = "isLifestyle"
+    [chosenPlan]="chosenPlan"
+    [isProjectStar] = "isProjectStar"
+    [addOnsSelected]="addOnTermsAccepted"></app-device-details-choose-number>
+<app-sticky-summary id="section_4" class="even" *ngIf="IsInitializedSummary && !isProjectMoon"
+    [mnpCheckPlanPurchase]="mnpCheckPlanPurchase"
+    [data]="PlanPurchaseDataToPass"
+    [cobp]="PlanPurchaseDataToPass"
+    [mnpData]="PlanPurchaseDataToPass"
+    [productToRemoveFromCart]="editProduct"
+    [isProjectStar] = "isProjectStar"
+    [selectedProd]="editDeviceObj"></app-sticky-summary>
+<app-devicedetails-summary-section-component 
+*ngIf="IsInitializedSummary && !isProjectMoon"
+[data]="PlanPurchaseDataToPass"
+[isProjectStar]="isProjectStar"
+[mnpData]="PlanPurchaseDataToPass"
+[productToRemoveFromCart]="editProduct"
+[selectedProd]="editDeviceObj"
+[isPromotion] = "isLifestyle"></app-devicedetails-summary-section-component>
+<app-notification-error *ngIf="errorAddToCart || errorMessage || IsMnpFlowFromDevice" [data] = "infoMNPflow"></app-notification-error>
+<app-notification-error *ngIf="errorDealer" [data] = "dealerMessage"></app-notification-error>
+<app-DetailBannerTextLeft style="width:100%" *ngIf="isInitializeDetailBannerLeft" [data]="dataForDetailBannerTextLeft"></app-DetailBannerTextLeft>
+<footer-component *ngIf="isCSAgentDealer === notCSAgent"></footer-component>
+<!-- <app-agent-footer *ngIf="isCSAgentDealer === csAgent" class="footer_fix"></app-agent-footer> -->
+<ng-container *ngIf="IsDisplaySwitchingPlansTabPopup">
+  <app-losing-supplementary-line-popup [popupType]='popupType'
+    (OnContinueSupplementaryPopup)="onContinueSwitchingPlanTabs($event);"
+    (OnLeaveSupplementaryPopup)="onCancellingSwitchingTab($event)">
+  </app-losing-supplementary-line-popup>  
+</ng-container>
+<!--lifestyle popup-->
+<ng-container *ngIf="IsDisplayPromotionalLifeStyle">
+  <age-eligibility-popup-component
+    [DisplayPromotionalLifeStyle]="IsDisplayPromotionalLifeStyle"
+    [promotionalPlan]= "promotionalPlan"
+    (OnContinue)="OnContinueDisplayPlanPage($event)">
+  </age-eligibility-popup-component>
+</ng-container>
+<ng-container *ngIf="IsDisplayMvivaPopup">
+    <age-eligibility-popup-component
+        [EligibilityPopupType]="MvivaPopupType"
+        (OnContinue)="OnContinueMvivaCheck($event);">
+    </age-eligibility-popup-component>
+</ng-container>
+<!-- <ng-container *ngIf="IsDisplayDealerPopup">
+    <age-eligibility-popup-component
+        [EligibilityPopupType]="DealerPopupType"
+        (OnContinue)="OnContinueDealerCheck($event);">
+    </age-eligibility-popup-component>
+</ng-container> -->

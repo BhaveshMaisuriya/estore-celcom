@@ -1,0 +1,14 @@
+<svg id="Icon_Expressive_Info" data-name="Icon Expressive —  Info" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <rect id="Rectangle_1544" data-name="Rectangle 1544" width="28.8" height="28.8" fill="none"/>
+  <path id="Path_4482" data-name="Path 4482" d="M20.668,0H2.432A2.439,2.439,0,0,0,0,2.432v11.55a2.439,2.439,0,0,0,2.432,2.432H6.748a2.159,2.159,0,0,1,.547.243L11.611,19.7a.4.4,0,0,0,.547-.122V16.413h8.511A2.439,2.439,0,0,0,23.1,13.982V2.432A2.439,2.439,0,0,0,20.668,0Z" transform="translate(6 6)" fill="#82cdef"/>
+  <g id="Icon_Info_Enquiry" data-name="Icon — Info / Enquiry" transform="translate(15.6 15.6)">
+    <rect id="Rectangle_1528" data-name="Rectangle 1528" width="28.8" height="28.8" fill="#333" opacity="0"/>
+    <g id="Group_5015" data-name="Group 5015" transform="translate(1.8 1.8)">
+      <path id="Path_4269" data-name="Path 4269" d="M12.6,1.2A11.4,11.4,0,1,1,1.2,12.6,11.395,11.395,0,0,1,12.6,1.2m0-1.2A12.6,12.6,0,1,0,25.2,12.6,12.6,12.6,0,0,0,12.6,0Z" fill="#333"/>
+      <g id="Group_5014" data-name="Group 5014" transform="translate(12 5.4)">
+        <path id="Path_4270" data-name="Path 4270" d="M20.6,25.8a.567.567,0,0,1-.6-.6V15.6a.6.6,0,1,1,1.2,0v9.6A.567.567,0,0,1,20.6,25.8Z" transform="translate(-20 -11.4)" fill="#333"/>
+        <path id="Path_4271" data-name="Path 4271" d="M20.6,11.4a.567.567,0,0,1-.6-.6V9.6a.6.6,0,1,1,1.2,0v1.2A.567.567,0,0,1,20.6,11.4Z" transform="translate(-20 -9)" fill="#333"/>
+      </g>
+    </g>
+  </g>
+</svg>

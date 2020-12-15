@@ -1,0 +1,9 @@
+<div class="edit-details-wrapper-root">
+  <div *ngIf="visible" class="container edit-email-container">
+    <div class="arrow-down"></div>
+    <div class="inner-wrapper">
+      <p *ngIf="title" class="title">{{ title }}</p>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

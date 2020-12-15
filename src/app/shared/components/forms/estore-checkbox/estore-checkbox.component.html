@@ -1,0 +1,9 @@
+<div class="form-group">
+    <mat-checkbox 
+        [ngModel]="isSelected" 
+        (ngModelChange)="onInputChange($event)"
+        (blur)="onTouched()"
+        [disabled]="disabled">
+        {{ label }}
+    </mat-checkbox>
+</div>

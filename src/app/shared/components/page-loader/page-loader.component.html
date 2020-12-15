@@ -1,0 +1,13 @@
+<div class="page-loader" *ngIf="type == 'legacy'">
+  <img src="/assets/img/Drop_3/celcom-loader.gif">
+</div>
+<div class="page-loader" *ngIf="type == 'material'">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="page-loader extended" *ngIf="type == 'new'">
+  <div class="circle-parent">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>

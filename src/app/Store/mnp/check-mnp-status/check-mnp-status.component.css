@@ -1,0 +1,270 @@
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+}
+#mnp-status {
+	background-image: url(/assets/img/product-cards/bg-grey-white-stripes.jpg);
+	padding-bottom: 3em;
+}
+.choose_new_add {
+	margin: 32px 0 0 0;
+	border-radius: 12px;
+	background-color: #fff;
+	text-align: left;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.choose_new_add .choose_new_add-form {
+	padding: 24px;
+}
+.choose_form_group {
+	margin-top: 13px;
+	width: 100%;
+}
+.choose_form_group label {
+  font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.choose_form_group .new-add_require {
+	color: #d0021b;
+}
+.choose_form_group>input[type="text"], .choose_form_group>input[type="number"] {
+	height: 30px;
+	font-size: 14px;
+}
+.choose_form_control {
+	border: none;
+	outline: 0;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+	width: 400px;
+	height: 40px;
+	background-color: #f3f3f3;
+}
+select.choose_form_control {
+	width: 410px;
+	color: #626262;
+}
+.mnp-check {
+	margin-top: 24px;
+	text-align: center;
+}
+.c-cta--default {
+	min-width: 19rem;
+}
+[data-css="c-cta"] {
+	font-size: 14px;
+}
+[data-css="c-cta"] .cta__icon {
+	margin-left: 4rem;
+}
+.choose_form_group .error {
+	padding: 0px 14% 0 6px;
+}
+.choose_form_group .error .text-danger {
+	color: #d0011b;
+}
+.choose_form_group .error .warning-icon {
+	width: 17px;
+	height: 15px;
+	display: inline-block;
+	float: right;
+}
+.choose_form_group .error .clearfix {
+	clear: both;
+}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+.mnp_title {
+  font: normal normal 14px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+/*SECTION 2 END */
+
+/*SECTION 1 START */
+
+.compare_mask {
+	background-image: url(/assets/img/Drop_3/purchase-history-banner.jpg);
+	height: 146px;
+}
+.Check-MNP-Status {
+	width: 100%;
+	height: 43px;
+	font-size: 32px;
+	font-family: Lato;
+	letter-spacing: -0.5px;
+	text-align: center;
+	color: #fff;
+	margin: 12px auto auto auto;
+}
+.Check-your-MNP-statu {
+	width: 278px;
+	height: 56px;
+	font: 18px Lato;
+	line-height: 1.11;
+	text-align: center;
+	color: #fff;
+	margin: 12px auto auto auto;
+}
+.c-breadcrumb--default {
+	padding: 0 18rem 1rem 20rem;
+}
+/*SECTION 1 END */
+
+/*SECTION 3 START*/
+
+.is-justify-content-left {
+	justify-content: left !important;
+}
+.img_personal {
+	width: 32px;
+	height: 32px;
+}
+.mnp_title {
+  font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.mnp_title p, .mnp_eligiblity p, .mnp_edit p, .mnp_remove p, .mnp_check_num p, .mnp_check-status p, .mnp-check-name-progress p {
+	margin: 4px 0;
+}
+.mnp_eligiblity {  
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.check-eligibility-mnp {	
+  padding: 19px 0 21px 0;
+}
+.checkout__grid-row {
+	border-bottom: 2px solid #979797;
+}
+.mnp-edit-right {
+	margin-left: 2em;
+}
+.principle-line {
+  font: normal normal 14px Lato;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: left;
+}
+.mnp-check-name {
+  font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.mnp_check_num {
+  font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.mnp_check-status {
+  font: normal normal 14px Lato;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: left;
+}
+.mnp-check-name-progress {
+  font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: 1.25;
+	letter-spacing: normal;
+	text-align: left;
+}
+.mnp-choose-form-group {
+	margin: 11px 0;
+	width: 100%;
+}
+.choose_form_control:active, .choose_form_control:focus {
+	border-bottom: solid 2px #009ade;
+}
+@media (max-width: 767px) {
+	.mnp-choose-form-group-text {
+		width: 100%;
+	}
+	.mnp-edit-right {
+		justify-content: left !important;
+		margin-left: 21px;
+	}
+	.choose_form_control {
+		width: 97%;
+	}
+	select.choose_form_control {
+		width: 100%;
+	}
+	.choose_form_group .error {
+		padding: 6px 0 0 13px;
+	}
+}
+@media (min-width: 767px) and (max-width: 768px) {
+	.mnp-choose-form-group-text {
+		width: 100%;
+	}
+	select.choose_form_control {
+		width: 100%;
+	}
+	.choose_form_group>input[type="text"], .choose_form_group>input[type="number"] {
+		height: 30px;
+		font-size: 14px;
+		width: 100%;
+	}
+	.choose_form_group .error {
+		padding: 0px;
+	}
+}
+@media (min-width: 767px) and (max-width: 1024px) {
+	.choose_form_group .error {
+		padding: 0 8% 0 6px;
+	}
+}
+/*mnp resubmit css start*/
+
+.IC-num-inccorect {
+  font: normal bold 14px Lato;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: left;
+}
+.mnp-check-unsuccessful, .mnp-check-blacklist, .mnp-check-overdue-bills {
+	margin-top: 14px;
+}
+.mnp-check-unsuccessful p, .mnp-check-blacklist p, .mnp-check-overdue-bills p {
+	margin: 4px 0;
+	font-size: 14px;
+}
+[data-css=c-cta] .cta__icon {
+	margin-left: 3rem;
+}
+.mnp-check .c-cta--default {
+	min-width: 19rem;
+	font-size: 16px;
+}
+/*mnp resubmit css end*/

@@ -1,0 +1,28 @@
+<div class="searchtext">
+  <p class="searchorder">Search Order</p>
+</div>
+<div class="form_button">
+  <form class="input_field_align">
+    <div class="input_button">
+      <input class="choose_form_control" [maxlength]="12" type="text" name="Enter NRIC number" [(ngModel)]="nricId"
+        #customerID="ngModel" required [ngClass]="{'errorborder':(!customerID.valid && customerID.touched) || customMessage}"
+        (keyup)="validationForIdType(customerID.value)" (blur)="validationForIdType(customerID.value)" placeholder="Enter your identification number">
+      <div>
+        <button [disabled]="customMessage" (click)="RedirectSearch()" class="c-cta--default submit" data-css="c-cta">
+          <span class="cta__content">Submit</span>
+          <span class="cta__icon icon is-icon-arrow"></span>
+        </button>
+      </div>
+    </div>
+    <div *ngIf="customMessage" class="customMessage">
+      <div class="warning-icon warning-icon-login">
+        <img src="../assets/img/ThresholdAlertNotification.svg" class="margin-icon">
+        <div class="clearfix"></div>
+      </div>
+    <span class="error">
+        <span class="text-danger login-error">{{customMsg}}</span>
+    </span>
+    </div>
+  </form>
+</div>
+<app-agent-footer class="dsk_bottom"></app-agent-footer>

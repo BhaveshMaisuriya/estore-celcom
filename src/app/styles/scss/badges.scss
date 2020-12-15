@@ -1,0 +1,14 @@
+@import "./colors.scss";
+
+.badges {
+  background: $primary-color;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 8px 4px 8px;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+  vertical-align: baseline;
+  border-radius: 2px;
+  word-break: break-word;
+}

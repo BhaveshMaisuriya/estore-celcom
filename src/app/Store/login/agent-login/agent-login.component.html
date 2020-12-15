@@ -1,0 +1,73 @@
+<!-- Agent Checkout Login Section Start   -->
+<section class="u-section background-image-agent">
+    <div class="section__inner">
+        <div class="section__content">
+            <div class="">
+                <picture class="c-picture--slider is-full-width-image" data-css="c-picture">
+                    <img class="dispMob" src="../assets/img/Drop_3/hero_banner_image_mob.png">
+                    <img class="dispDesk" src="../assets/img/Drop_3/hero_banner_image.png">
+                </picture>
+                <div class="hero-banner__container is-vertical-center is-mobile-absolute-top agent-login-top">
+                    <div class="hero-banner__content is-container">
+                        <div class="u-grid-row is-collapsed">
+                            <form #agentLoginForm="ngForm" (ngSubmit)="onSubmit(agentLoginForm)">
+                                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+                                    <div class="hero-banner__item">
+                                        <div class="box-shadow-agent">
+                                            <div class="agent-mobile-width">
+                                                <div class="agent-dsk">Welcome!</div>
+                                                <p class="agent-dsk-heading"> Simply log in with registered Celcom credentials</p>
+                                            </div>
+                                            <div class="has-margin-bottom_1">
+                                                <div class="box-shadow-agent-content">
+                                                    <div class="mobile-form-group">
+                                                        <input class="choose_form_control" maxlength="15" type="text" placeholder="Username" id="agentEmail" name="agentEmail"
+                                                            [(ngModel)]="enterEmail" ngModel required #agentEmail="ngModel" (keydown)= "restrictSpecialChar($event)" (keyup)="emailMatchCheck()"
+                                                            (touchend)="emailMatchCheck()" (blur)="emailMatchCheck()"
+                                                            [ngClass]="{'errorborder':!agentEmail.valid && agentEmail.touched}"
+                                                        />
+                                                        <div class="error error-span" *ngIf="invalidEmail">
+                                                            <span class="warning-icon">
+                                                                <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                                                            </span>
+                                                            <span class="text-danger">{{errorMessageDisplay}}.</span>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-shadow-agent-content">
+                                                    <div class="mobile-form-group">
+                                                        <input class="choose_form_control" maxlength="50" type="password" placeholder="Password" id="agentPassword" name="agentPassword"
+                                                            [(ngModel)]="enterPassword" ngModel required #agentPassword="ngModel"
+                                                            [ngClass]="{'errorborder':!agentPassword.valid && agentPassword.touched}"
+                                                        />
+                                                        <div class="error error-span" *ngIf="agentPassword.touched && !agentPassword.valid">
+                                                            <span class="warning-icon">
+                                                                <img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg">
+                                                            </span>
+                                                            <span class="text-danger">Please enter password.</span>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="proceed-agent">
+                                                <button class="c-cta--default login-default-button" data-css="c-cta" [disabled]="invalidEmail || agentLoginForm.invalid">
+                                                    <span class="cta__content">Login Now</span>
+                                                    <span class="cta__icon icon is-icon-arrow"></span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Agent Login Section End   -->
+<app-agent-footer></app-agent-footer>
+<app-notification-error *ngIf="showNotificationError" [data]="notificationInfo"></app-notification-error>

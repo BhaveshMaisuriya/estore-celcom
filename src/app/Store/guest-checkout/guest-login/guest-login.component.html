@@ -1,0 +1,116 @@
+<!-- Guest Checkout Login Section Start   -->
+<section class="u-section background-image-guest">
+    <div class="section__inner">
+        <div class="section__content">
+            <div class="">
+                <picture class="c-picture--slider is-full-width-image" data-css="c-picture">
+                    <img class="dispMob" src="../assets/img/Drop_3/hero_banner_image_mob.png" >
+                    <img class="dispDesk" src="../assets/img/Drop_3/hero_banner_image.png" >
+                    <!--<img class="picture__image" src="../assets/img/Drop_3/hero_banner_image.png" alt="Banner">-->
+                </picture>
+                <div class="hero-banner__container is-vertical-center is-mobile-absolute-top guest-login-top">
+                    <div class="hero-banner__content is-container">
+                        <div class="u-grid-row is-collapsed">
+                            <form #guestLoginForm="ngForm" (ngSubmit)="onSubmit(guestLoginForm)">
+                                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+                                    <div class="hero-banner__item">
+                                        <div class="box-shadow-guest">
+                                            <div class="guest-mobile-width">
+                                                <div class="guest-dsk">Welcome Guest !</div>
+                                                <p class="guest-dsk-heading">Please input your details</p>
+                                            </div>
+                                            <div class="has-margin-bottom_1">
+                                                <div class="box-shadow-guest-content">
+                                                    <p class="guest-heading">Enter Your ID type<span class="required-field">*</span></p>
+                                                    <div class="mobile-form-group">
+                                                        <select [disabled]="mnpFlow ? '' : null" class="form-control" id="customerIDType" name="customerIDType" [maxlength]="maxlength" [minlength]="minlength" required #customerIDType="ngModel" [ngClass]="{'errorborder':!customerIDType.valid && customerIDType.touched}" (change)="changetextbox(customerIDNo.value);" [(ngModel)]="preLoadCustomerIDType">
+                                                            <!--<option disabled selected value>Choose an ID type</option>-->
+                                                            <option *ngFor="let cID of customerIDTypes" [value]="cID.id" [selected]="preLoadCustomerIDType"> {{cID.value}} </option>
+                                                        </select>
+                                                        <div class="error error-span" *ngIf="!customerIDType.valid && customerIDType.touched">
+                                                            <span class="text-danger" [hidden]="!customerIDType.hasError('required')">Please select ID type</span>
+                                                            <span class="warning-icon"></span>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-shadow-guest-content">
+                                                    <p class="guest-heading">Enter Your ID Number<span class="required-field">*</span></p>
+                                                    <div class="mobile-form-group">
+                                                        <input [readonly]="mnpFlow ? '' : null" maxlength="12" class="form-control id-number numeric-textbox" id="customerIDNo" name="customerIDNo" type="tel" placeholder="123456789012" required #customerIDNo="ngModel" [ngClass]="{'errorborder':!customerIDNo.valid && customerIDNo.touched, 'disabled':disableNewNRIC}" (keydown)="restrictOnlyNum($event)" (keyup)="validationForIdType(customerIDType.value, customerIDNo.value)" (blur)="validationForIdType(customerIDType.value, customerIDNo.value)"  [disabled]="!selectValue" [(ngModel)]="valuedata">
+                                                        
+                                                        <div class="error error-span" *ngIf="invalidError && customerIDNo.touched && customerIDNo.valid">
+                                                            <span class="warning-icon"><img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                                            <span class="text-danger">{{errorMessage.invalidId}}.</span>                                                            
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                       
+                                                        <div class="error error-span" *ngIf="errorExits && customerIDNo.touched && customerIDNo.valid">
+                                                            <span class="warning-icon"><img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                                            <span class="text-danger">{{errorMessage.message}}</span>                                                            
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                        <div class="error error-span"> <span class="text-danger login-error" *ngIf="errorAge">Uh Oh. You're below the age limit.
+                                                            <div class="warning-icon-login">
+                                                            </div>
+                                                            <div class="clearfix"></div></span>
+                                                        </div>
+                                                        
+                                                        <div class="error error-span" *ngIf="errorAgeRange">
+                                                            <span class="warning-icon"><img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                                            <span class="text-danger">Please enter a valid New NRIC ID of 12 digit</span>                                                            
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        
+                                                        <div class="error error-span" *ngIf="IsCelcomUser">
+                                                            <span class="warning-icon"><img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                                            <span class="text-danger">ID is already tied to an account. Please Log in with your Celcom number.</span>                                                            
+                                                            <div class="clearfix"></div>
+                                                        </div>
+
+                                                        <div class="error error-span" *ngIf="customMessage">
+                                                            <span class="warning-icon"><img class="caution-icon" src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                                            <span class="text-danger">{{customMsg}}.</span>                                                            
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="proceed-guest">
+                                                <button class="c-cta--default login-default-button" data-css="c-cta" [disabled]="guestLoginForm.invalid || loginAttempt>=totalAttempt || this.customMessage || this.celcomUserDisableProceed"> <span class="cta__content">Proceed</span>
+                                                    <span class="cta__icon icon is-icon-arrow"></span>
+                                                </button>
+                                                <br>
+                                                <p class="guest-dsk-heading" *ngIf="errorExits && showLoginAttemptError && loginAttempt">{{totalAttempt-loginAttempt}} Login attempt remaining!</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+                                <div class="guest-already_member is-text-align-center">
+                                    <div class="guest-mobile-width">
+                                        <p class="already_member">Already a member?</p>
+                                    </div>
+                                    <div class="button-block__cta guest-login-link is-text-align-center">
+                                        <button class="c-cta--border" data-css="c-cta" title="Link Title" (click)="existingUserRedirection()"> <span class="cta__content">Login Now</span> <span class="cta__icon icon is-icon-arrow"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-notification-error *ngIf="showGuestNoticification" [data]="isExistingGuest"></app-notification-error>
+<app-notification-error *ngIf="isApiError" [data]="apiErrorMessage"></app-notification-error>
+<ng-container *ngIf="IsDisplayAgeEligibilityPopup">	
+	<age-eligibility-popup-component 
+	[EligibilityPopupType]="EligibilityPopupType" 
+	(OnContinue)="OnContinueEligibilityCheck($event);">
+</age-eligibility-popup-component>
+</ng-container>

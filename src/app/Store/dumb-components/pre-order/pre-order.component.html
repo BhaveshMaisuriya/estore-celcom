@@ -1,0 +1,8 @@
+<div *ngIf="preOrderCheck.pre_order_data.is_preorder === '1'" class="preorder__box__layout">
+  <div class="preorder__box">
+    <p class="Pre__Order">{{preOrderCheck.pre_order_data.preorder_text}}</p>
+    <p class="pre__Order__estimation">
+      {{preOrderCheck.pre_order_data.preorder_from_date_text}} {{preOrderCheck.pre_order_data.preorder_from_date | date: 'dd MMM yyyy'}} {{preOrderCheck.pre_order_data.preorder_to_date_text}}
+      {{preOrderCheck.pre_order_data.preorder_to_date | date: 'dd MMM yyyy'}}</p>
+  </div>
+</div>

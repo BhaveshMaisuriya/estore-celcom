@@ -1,0 +1,50 @@
+<section class="u-section" id="step4">
+    <div class="section__inner">
+        <div class="section__content is-container">
+            <div class="u-grid-row has-border-bottom">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center image-gap">
+                    <img class="summary-samsung" src="{{selectedImage}}">
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-9 margin-main-class">
+                    <div class="u-grid-row has-border-bottom is-bottom-gap">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 devicename-gap">
+                            <div class="is-col-mobile-p-7 is-col-tablet-p-9 margin-class">eSIM Activation</div><br/>
+                        </div>
+                    </div>
+                    <div class="u-grid-row has-border-bottom is-bottom-gap margin-class ">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                            <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">eSIM Charges:
+                                <span class="is-bold">RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2' }}*</span>
+                            </div>
+                            <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class top_gap">(Will be charged in the next bill)</div>
+                        </div>
+                    </div>
+                    <div *ngIf="orderPhoneNo" class="u-grid-row has-border-bottom is-bottom-gap">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                            <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">Mobile Number:<br/>
+                                <span class="is-bold">{{orderPhoneNo}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="simType" class="u-grid-row has-border-bottom is-bottom-gap margin-class">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 margin-class">
+                            <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class">Type of eSIM</div>
+                            <div class="is-col-mobile-p-9 is-col-tablet-p-9 margin-class top_gap">
+                                <span class="is-bold">{{simType}} to eSIM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-grid-row is-border-top margin-class">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-top-gap grand-total">
+                            <div class="is-col-mobile-p-6 is-col-tablet-p-9 has-border-bottom margin-class">Total</div>
+                            <div class="is-col-mobile-p-6 is-col-tablet-p-3 right-align has-border-bottom">RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2' }}*</div>
+                            <p class="is-col-mobile-p-6 is-col-tablet-p-9"></p>
+                            <p class="is-col-mobile-p-6 is-col-tablet-p-3 gst-include">*SST not included</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-notification-error *ngIf="isApiError" [data]="apiErrorMessage"></app-notification-error>

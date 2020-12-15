@@ -1,0 +1,2215 @@
+[
+  {
+    "items": {
+      "basic_details": {
+        "name": "Samsung Galaxy Note20 Ultra 5G",
+        "id": "1393",
+        "sku": "samsung-galaxy-note-20-ultra",
+        "upper_age_limit": null,
+        "lower_age_limit": null,
+        "price": 0,
+        "quntity": 0,
+        "preorder": 1,
+        "preorder_availability_flag": 1,
+        "midnight_delivery": {
+          "status": "0",
+          "label": null
+        },
+        "is_easy_phone": 1,
+        "is_rent": false,
+        "is_own": true,
+        "promotion_badge": {
+          "promotion_badge_text": "Pre-order",
+          "promotion_badge_text_color": "#ffffff",
+          "promotion_badge_background_color": "#a130d3"
+        },
+        "product_text": null,
+        "default_plan": "Lightning XL",
+        "default_plan_sku": "Ultra-GB-XL-Pass",
+        "order_monthly_pay": "108.0000",
+        "default_easyphone_plan_sku": "Ultra-GB-XL-Pass",
+        "default_easyphone_contract": null,
+        "nfc": "0",
+        "mostpopular": "0",
+        "rm": "2998.00",
+        "rrp_rm_strick_price": "5199.0000",
+        "upfront_price": 0,
+        "device_price": 0,
+        "main_image": "\/media\/catalog\/product\/f\/r\/front_88.png",
+        "sub_images": [
+          "\/media\/catalog\/product\/f\/r\/front_88.png"
+        ],
+        "dimension": null,
+        "choose_memory": null,
+        "weight": null,
+        "chip_processor": null,
+        "splash_water_dust_resistant": "0",
+        "talk_time": null,
+        "standby_time": null,
+        "sim_type": null,
+        "stock": "Limited Stock",
+        "preorder_estimate_delivery_text": null,
+        "new_customer": "0",
+        "order_category": "HP",
+        "order_model": "NOTE20 ULTRA 256GB",
+        "order_brand": "SAMSUNG",
+        "segment": "10",
+        "start_date": "2020-08-05 15:24:15",
+        "end_date": "2020-08-08 06:44:14",
+        "default_selected_color": "Bronze",
+        "default_selected_memory": "256GB",
+        "pre_order_data": {
+          "preorder_estimate_delivery_text": "6",
+          "preorder_estimate_delivery_date": "6",
+          "preorder_text": "PRE-ORDER",
+          "preorder_from_date_text": "From",
+          "preorder_to_date_text": "To",
+          "preorder_from_date": "06 Aug 2020",
+          "preorder_to_date": "21 Aug 2020",
+          "preorder_end_flag": 0,
+          "preorder_estimate_delivery": "6",
+          "preorder_submit_date": "2020-08-15 00:00:00",
+          "preorder_stock_available_quantity": 0,
+          "preorder_availble_stock_in_hand": 0,
+          "preorder_stock_status_flag": 0,
+          "preorder_hat": "<p><strong>Pre-order is now open!<\/strong><br \/><br \/>Pre-order with EasyPhone subscription from as low as RM129\/month. Get FREE Galaxy Buds Live White, Wireless Charger Convertible &amp; UV Sterilizer worth a total of RM1,207 when you buy online! *While stocks last.<\/p>"
+        },
+        "is_campaign_mviva": null,
+        "campaign_mviva": null,
+        "campaign_mviva_invalid": null,
+        "is_lifestyle": 0,
+        "addons": [],
+        "stock_indicator_image": "\/media\/catalog\/productno_selection",
+        "stock_indicator_text": "",
+        "default_device_option": "easyPhone"
+      },
+      "more_details": {
+        "features": null,
+        "shipping_details": null,
+        "whatInTheBox": null,
+        "specification": {
+          "display": null,
+          "screen_size": "6.9\"",
+          "operating_system": "Android",
+          "camera": "Rear: 108MP+12MP+12MP Front: 10MP "
+        },
+        "neptune_subsidy_message": "Your selected supplementary line(s) will be tied to your Principal line and will be bound to the same contract. You are recommended to use the maximum amount of subsidy to enjoy the device at lowest price. Choose the subsidies you wish to utilise for this purchase."
+      },
+      "terms_and_condition": {
+        "plans": {
+          "label": "Delivery Locations",
+          "desc": "1.\tDelivery is within Malaysia only.<br>\r\n2.\tFor pre-order placed between 6 - 16 Aug 2020, delivery will be on 21 Aug 2020 onwards.<br>\r\n3.     For pre-order placed between 17 - 20 Aug 2020, delivery will be from 24 Aug 2020 onwards."
+        },
+        "contract_terms": {
+          "label": "Contract Duration",
+          "desc": "24 months contract"
+        },
+        "legal": {
+          "label": "Ownership",
+          "desc": "1.\tThird party collection of the product is not allowed. The product will be deliver on buyer's name and to the address that is indicated in Customer order confirmation.<br>\r\n2.\tCustomer are required to produce Customer NRIC, passport or any other identification document for verification of identity upon receiving the product, failing which the product will not be deliver to the Customer.<br>"
+        },
+        "cancellation": {
+          "label": "Refund Policy",
+          "desc": "1.\tProduct not delivered after three (3) failed delivery attempt and will be returned to the courier agency headquarters. Customer must arrange for self-collection at the courier agency at the designated venue within 7 days or additional delivery fee may be imposed on the Customer if additional delivery is required.<br>\r\n2.\tAll products not delivered, uncollected and unclaimed by the Customer after 7 days, will be deemed cancelled and terminated by Celcom Online Store and no refund will be given."
+        }
+      },
+      "supplementary_details": {
+        "name": "Family Line",
+        "celcom_ultra_plan": [
+          {
+            "name": "L Pass",
+            "sku": "xp-l-pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "XP Lite\u2122",
+            "sku": "xp-b-plan",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "M Pass",
+            "sku": "xp-m-pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "XP Lite",
+            "sku": "xp-base-lite",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM<\/sup>",
+            "sku": "Ultra-Base",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Lightning",
+            "sku": "Ultra-GB",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Lightning L",
+            "sku": "Ultra-GB-L-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Lightning M",
+            "sku": "Ultra-GB-M-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Lightning XL",
+            "sku": "Ultra-GB-XL-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Unlimited",
+            "sku": "Ultra-Speed",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Unlimited M",
+            "sku": "Ultra-Speed-M-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Unlimited L",
+            "sku": "Ultra-Speed-L-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Speed XL",
+            "sku": "Ultra-Speed-XL-Pass",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          },
+          {
+            "name": "Sime Darby RM40 at 20GB",
+            "sku": "P98",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Sime Darby RM30 at 3GB",
+            "sku": "P98-1",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Sime Darby RM50 at 40GB",
+            "sku": "P98-1-1-1",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Celcom Xpax Prepaid Pack",
+            "sku": "Xpax",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM<\/sup> for Business",
+            "sku": "Ultra-Base-for-Business",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "First Gold Plus 98",
+            "sku": "FGP-98",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Sime Darby RM50 at 40GB",
+            "sku": "P98-RM50-V2",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Sime Darby RM30 at 3GB",
+            "sku": "P98-RM30-V2",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Sime Darby RM40 at 20GB",
+            "sku": "P98-RM40-V2",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "First Gold Plus For Business",
+            "sku": "FGP-FSI",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "First Platinum For Business 2.0",
+            "sku": "FP2.0-FSI",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "First Platinum Plus For Business",
+            "sku": "FPP-FSI",
+            "max_line": "5",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI"
+            ]
+          },
+          {
+            "name": "Family Line<sup style=\"font-size:0.5em;top:-1.1em;\">TM<\/sup>",
+            "sku": "family-line",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "40.0000",
+            "subsidy": "0",
+            "enable_plan_skus": [
+              "xp-l-pass",
+              "xp-b-plan",
+              "xp-m-pass",
+              "xp-base-lite",
+              "Ultra-Base",
+              "Ultra-GB",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass",
+              "Ultra-Speed-XL-Pass",
+              "P98",
+              "P98-1",
+              "P98-1-1-1",
+              "Xpax",
+              "Ultra-Base-for-Business",
+              "FGP-98",
+              "P98-RM50-V2",
+              "P98-RM30-V2",
+              "P98-RM40-V2",
+              "FGP-FSI",
+              "FP2.0-FSI",
+              "FPP-FSI",
+              "family-line"
+            ]
+          }
+        ]
+      },
+      "associated_product": [
+        {
+          "name": "Samsung Galaxy Note20 Ultra 5G 256GB Bronze",
+          "sku": "SamsungGalaxyNote20Ultra256GBBronze",
+          "is_new": false,
+          "rrp": "5199.0000",
+          "discounted_device_rrp": null,
+          "color": "Bronze",
+          "order_color": "BRZ",
+          "order_category": "HP",
+          "color_hexa": "#cd7f32",
+          "memory": "256GB",
+          "image": "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront_1.png",
+          "sub_images": [
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront_1.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsangle_1.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsback_1.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsside_1.png",
+            "\/media\/catalog\/product\/w\/h\/white.png",
+            "\/media\/catalog\/product\/u\/v\/uv_3.png",
+            "\/media\/catalog\/product\/w\/i\/wireless_3.png"
+          ],
+          "order_model": "NOTE20 ULTRA 256GB",
+          "part_number": "MDR10195",
+          "product_type": "HP",
+          "new_customer": "0",
+          "segment": null,
+          "contract": "24",
+          "start_date": null,
+          "end_date": null,
+          "upfront_installment": "10",
+          "saleable_plans": [
+            {
+              "sku": "Ultra-GB-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-XL-Pass",
+              "prices": [
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            }
+          ],
+          "pre_order_data": {
+            "preorder_estimate_delivery_text": "",
+            "preorder_estimate_delivery_date": "",
+            "preorder_text": "PRE-ORDER",
+            "preorder_from_date_text": "From",
+            "preorder_to_date_text": "To",
+            "preorder_from_date": "20 Aug 2006",
+            "preorder_to_date": "20 Aug 2021",
+            "preorder_end_flag": 0,
+            "preorder_estimate_delivery": null,
+            "preorder_submit_date": "2015-08-20 00:00:00",
+            "preorder_stock_available_quantity": 24,
+            "preorder_availble_stock_in_hand": 23,
+            "preorder_stock_status_flag": 1,
+            "preorder_hat": null
+          },
+          "free_gift_data": {
+            "gift_image": null,
+            "gift_message": null
+          },
+          "easy_phone": {
+            "default_price_sku": null,
+            "own": [
+              {
+                "Ultra-GB-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "169",
+                "contract_periods": {
+                  "24": "169",
+                  "30": "129"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              }
+            ],
+            "own_selected_plan": [
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass"
+            ],
+            "penalityown": [
+              {
+                "Ultra-GB-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              }
+            ]
+          },
+          "campaign_100days": false,
+          "is_neptune_subsidy": true,
+          "screen_size": "6.9\""
+        },
+        {
+          "name": "Samsung Galaxy Note20 Ultra 5G 256GB Black",
+          "sku": "SamsungGalaxyNote20Ultra256GBBlack",
+          "is_new": false,
+          "rrp": "5199.0000",
+          "discounted_device_rrp": null,
+          "color": "Black",
+          "order_color": "BLK",
+          "order_category": "HP",
+          "color_hexa": "#000000",
+          "memory": "256GB",
+          "image": "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront_2.png",
+          "sub_images": [
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront_2.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsangle_2.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsbcak.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsside_2.png",
+            "\/media\/catalog\/product\/w\/h\/white_2.png",
+            "\/media\/catalog\/product\/u\/v\/uv_1_1.png",
+            "\/media\/catalog\/product\/w\/i\/wireless_1_1.png"
+          ],
+          "order_model": "NOTE20 ULTRA 256GB",
+          "part_number": "MDR10195",
+          "product_type": "HP",
+          "new_customer": "0",
+          "segment": null,
+          "contract": "24",
+          "start_date": null,
+          "end_date": null,
+          "upfront_installment": "10",
+          "saleable_plans": [
+            {
+              "sku": "Ultra-GB-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-XL-Pass",
+              "prices": [
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            }
+          ],
+          "pre_order_data": {
+            "preorder_estimate_delivery_text": "",
+            "preorder_estimate_delivery_date": "",
+            "preorder_text": "PRE-ORDER",
+            "preorder_from_date_text": "From",
+            "preorder_to_date_text": "To",
+            "preorder_from_date": "20 Aug 2006",
+            "preorder_to_date": "20 Aug 2021",
+            "preorder_end_flag": 0,
+            "preorder_estimate_delivery": null,
+            "preorder_submit_date": "2015-08-20 00:00:00",
+            "preorder_stock_available_quantity": 39,
+            "preorder_availble_stock_in_hand": 39,
+            "preorder_stock_status_flag": 1,
+            "preorder_hat": null
+          },
+          "free_gift_data": {
+            "gift_image": null,
+            "gift_message": null
+          },
+          "easy_phone": {
+            "default_price_sku": null,
+            "own": [
+              {
+                "Ultra-GB-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "169",
+                "contract_periods": {
+                  "24": "169",
+                  "30": "129"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              }
+            ],
+            "own_selected_plan": [
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass"
+            ],
+            "penalityown": [
+              {
+                "Ultra-GB-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              }
+            ]
+          },
+          "campaign_100days": false,
+          "is_neptune_subsidy": true,
+          "screen_size": "6.9\""
+        },
+        {
+          "name": "Samsung Galaxy Note20 Ultra 5G 256GB White",
+          "sku": "SamsungGalaxyNote20Ultra256GBWhite",
+          "is_new": false,
+          "rrp": "5199.0000",
+          "discounted_device_rrp": null,
+          "color": "White",
+          "order_color": "WHT",
+          "order_category": "HP",
+          "color_hexa": "#ffffff",
+          "memory": "256GB",
+          "image": "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront.png",
+          "sub_images": [
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsfront.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsangle.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsback.png",
+            "\/media\/catalog\/product\/h\/t\/httpsshopapi.celcom.com.mymediawysiwygproductsside.png",
+            "\/media\/catalog\/product\/u\/v\/uv_4.png",
+            "\/media\/catalog\/product\/w\/i\/wireless_4.png",
+            "\/media\/catalog\/product\/w\/h\/white_1.png"
+          ],
+          "order_model": "NOTE20 ULTRA 256GB",
+          "part_number": "MDR10195",
+          "product_type": "HP",
+          "new_customer": "0",
+          "segment": null,
+          "contract": "24",
+          "start_date": null,
+          "end_date": null,
+          "upfront_installment": "10",
+          "saleable_plans": [
+            {
+              "sku": "Ultra-GB-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-GB-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-GB-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-GB-XL-Pass",
+              "prices": [
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "1200",
+                  "device_price": "2998",
+                  "penalty_price": "2250",
+                  "supplimentary_sku": "Ultra-GB-XL-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-M-Pass",
+              "prices": [
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "300",
+                  "device_price": "3898",
+                  "penalty_price": "1300",
+                  "supplimentary_sku": "Ultra-Speed-M-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            },
+            {
+              "sku": "Ultra-Speed-L-Pass",
+              "prices": [
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplementary_count": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_1",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_2",
+                  "subsidy": 0
+                },
+                {
+                  "upfront_price": "600",
+                  "device_price": "3598",
+                  "penalty_price": "1600",
+                  "supplimentary_sku": "Ultra-Speed-L-Pass_3",
+                  "subsidy": 0
+                }
+              ]
+            }
+          ],
+          "pre_order_data": {
+            "preorder_estimate_delivery_text": "",
+            "preorder_estimate_delivery_date": "",
+            "preorder_text": "PRE-ORDER",
+            "preorder_from_date_text": "From",
+            "preorder_to_date_text": "To",
+            "preorder_from_date": "20 Aug 2006",
+            "preorder_to_date": "20 Aug 2021",
+            "preorder_end_flag": 0,
+            "preorder_estimate_delivery": null,
+            "preorder_submit_date": "2015-08-20 00:00:00",
+            "preorder_stock_available_quantity": 16,
+            "preorder_availble_stock_in_hand": 16,
+            "preorder_stock_status_flag": 1,
+            "preorder_hat": null
+          },
+          "free_gift_data": {
+            "gift_image": "\/media\/catalog\/productno_selection",
+            "gift_message": null
+          },
+          "easy_phone": {
+            "default_price_sku": null,
+            "own": [
+              {
+                "Ultra-GB-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "169",
+                "contract_periods": {
+                  "24": "169",
+                  "30": "129"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "209",
+                "contract_periods": {
+                  "24": "209",
+                  "30": "169"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "189",
+                "contract_periods": {
+                  "24": "189",
+                  "30": "149"
+                }
+              }
+            ],
+            "own_selected_plan": [
+              "Ultra-GB-M-Pass",
+              "Ultra-GB-L-Pass",
+              "Ultra-GB-XL-Pass",
+              "Ultra-Speed-M-Pass",
+              "Ultra-Speed-L-Pass"
+            ],
+            "penalityown": [
+              {
+                "Ultra-GB-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-GB-XL-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-M-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              },
+              {
+                "Ultra-Speed-L-Pass": "5208",
+                "contract_periods": {
+                  "24": "5208"
+                }
+              }
+            ]
+          },
+          "campaign_100days": false,
+          "is_neptune_subsidy": true,
+          "screen_size": "6.9\""
+        }
+      ],
+      "base_plan": [
+        {
+          "name": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM<\/sup>",
+          "sku": "Ultra-Base",
+          "monthlyPlan": "80.0000",
+          "orderPlanBundle": "PB19090",
+          "orderServiceBundle": "RTP0010",
+          "PlanMonthlyPay": "80.0000",
+          "OneTimePayment": null,
+          "newCustomer": "0",
+          "segment": null,
+          "upfrontInstallment": null,
+          "contract": null,
+          "PlanName": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM<\/sup>",
+          "plan_title": "Celcom Ultra",
+          "plan_subtitle": "Celcom Ultra",
+          "offer": "<style>#step2 > div > section > div > div > div.tab-margin > div:nth-child(1) > div > div > div > div.star_ultra_details > p > div {\r\ndisplay: none;\r\n}<\/style><p><span><s>30GB<\/s> 40GB monthly high-speed Internet<\/span><br \/><span>Unlimited calls to all networks<\/span><br \/><span>RM0.20 per SMS<\/span><\/p>",
+          "selected_offer_title": "10Mbps",
+          "data_limit": "40",
+          "banner_image": null,
+          "mobile_image": null,
+          "footNote": null,
+          "upper_age_limit": null,
+          "lower_age_limit": "18",
+          "ngn_part_number": "PB19090",
+          "is_xpax": false,
+          "additional_information": null,
+          "productType": null,
+          "startDate": null,
+          "endDate": null,
+          "backgroundColor": null,
+          "indicatorClass": null,
+          "productText": null,
+          "keyFiguresText": null,
+          "keyText": "RM80",
+          "buyNowLink": "\/plans\/mega",
+          "buyNowText": "Buy now",
+          "knowMoreLink": null,
+          "knowMoreText": null,
+          "mobileDescription": null,
+          "tableInfo": [],
+          "termsAndCondition": {
+            "plans": {
+              "label": "Delivery Locations",
+              "desc": null
+            },
+            "contractTerms": {
+              "label": "Contract Duration",
+              "desc": "24 months contract"
+            },
+            "legal": {
+              "label": "Ownership",
+              "desc": null
+            },
+            "cancellation": {
+              "label": "Refund Policy",
+              "desc": null
+            }
+          },
+          "is_premium_plan": false,
+          "bill_type": 1
+        }
+      ],
+      "choose_plan": [
+        {
+          "tabName": "Unlimited",
+          "tabTitle": null,
+          "tabSubtitle": null,
+          "is_xpax": false,
+          "tabData": [
+            {
+              "name": "Unlimited L",
+              "sku": "Ultra-Speed-L-Pass",
+              "monthlyPlan": "68.0000",
+              "orderPlanBundle": "CPT19014",
+              "orderServiceBundle": "RTP0010",
+              "PlanMonthlyPay": "68.0000",
+              "OneTimePayment": null,
+              "newCustomer": "0",
+              "segment": null,
+              "upfrontInstallment": null,
+              "contract": null,
+              "PlanName": "Unlimited L",
+              "plan_title": "XP L Pass",
+              "plan_subtitle": "XP L Pass",
+              "offer": "Unlimited Internet<br>\r\nFull HD Video Streaming<br>\r\n10GB Monthly Hotspot",
+              "selected_offer_title": "70Mbps",
+              "data_limit": "10",
+              "banner_image": null,
+              "mobile_image": null,
+              "footNote": null,
+              "upper_age_limit": null,
+              "lower_age_limit": null,
+              "ngn_part_number": "CPT19014",
+              "is_xpax": false,
+              "additional_information": null,
+              "productType": null,
+              "startDate": null,
+              "endDate": null,
+              "backgroundColor": null,
+              "indicatorClass": null,
+              "productText": null,
+              "keyFiguresText": "10GB",
+              "keyText": "RM68",
+              "buyNowLink": null,
+              "buyNowText": null,
+              "knowMoreLink": null,
+              "knowMoreText": null,
+              "mobileDescription": null,
+              "tableInfo": [],
+              "termsAndCondition": {
+                "plans": {
+                  "label": "Delivery Locations",
+                  "desc": null
+                },
+                "contractTerms": {
+                  "label": "Contract Duration",
+                  "desc": "24 months contract"
+                },
+                "legal": {
+                  "label": "Ownership",
+                  "desc": null
+                },
+                "cancellation": {
+                  "label": "Refund Policy",
+                  "desc": null
+                }
+              },
+              "is_premium_plan": false,
+              "bill_type": 1
+            },
+            {
+              "name": "Unlimited M",
+              "sku": "Ultra-Speed-M-Pass",
+              "monthlyPlan": "18.0000",
+              "orderPlanBundle": "CPT19012",
+              "orderServiceBundle": "RTP0010",
+              "PlanMonthlyPay": "18.0000",
+              "OneTimePayment": null,
+              "newCustomer": "0",
+              "segment": null,
+              "upfrontInstallment": null,
+              "contract": null,
+              "PlanName": "Unlimited M",
+              "plan_title": "XP M Pass",
+              "plan_subtitle": "XP M Pass",
+              "offer": "Unlimited Internet<br>\r\nHD Video Streaming<br>\r\n5GB Monthly Hotspot",
+              "selected_offer_title": "50Mbps",
+              "data_limit": "5",
+              "banner_image": null,
+              "mobile_image": null,
+              "footNote": null,
+              "upper_age_limit": null,
+              "lower_age_limit": null,
+              "ngn_part_number": "CPT19012",
+              "is_xpax": false,
+              "additional_information": null,
+              "productType": null,
+              "startDate": null,
+              "endDate": null,
+              "backgroundColor": null,
+              "indicatorClass": null,
+              "productText": "10GB",
+              "keyFiguresText": "5GB",
+              "keyText": "RM18",
+              "buyNowLink": null,
+              "buyNowText": null,
+              "knowMoreLink": null,
+              "knowMoreText": null,
+              "mobileDescription": null,
+              "tableInfo": [],
+              "termsAndCondition": {
+                "plans": {
+                  "label": "Delivery Locations",
+                  "desc": null
+                },
+                "contractTerms": {
+                  "label": "Contract Duration",
+                  "desc": "24 months contract"
+                },
+                "legal": {
+                  "label": "Ownership",
+                  "desc": null
+                },
+                "cancellation": {
+                  "label": "Refund Policy",
+                  "desc": null
+                }
+              },
+              "is_premium_plan": false,
+              "bill_type": 1
+            }
+          ],
+          "name": "Unlimited",
+          "sku": "Ultra-Speed",
+          "order_plan_bundle": null,
+          "offer": "Unlimited Internet<br>\r\nUnlimited Calls to All Networks<br>\r\nRM0.20 per SMS",
+          "is_default": null,
+          "image_url": null,
+          "is_saleable": "0"
+        },
+        {
+          "tabName": "Lightning",
+          "tabTitle": null,
+          "tabSubtitle": null,
+          "is_xpax": false,
+          "tabData": [
+            {
+              "name": "Lightning XL",
+              "sku": "Ultra-GB-XL-Pass",
+              "monthlyPlan": "108.0000",
+              "orderPlanBundle": "CPT19098",
+              "orderServiceBundle": "RTP0010",
+              "PlanMonthlyPay": "108.0000",
+              "OneTimePayment": null,
+              "newCustomer": "0",
+              "segment": "10",
+              "upfrontInstallment": null,
+              "contract": "24 months",
+              "PlanName": "Lightning XL",
+              "plan_title": "GB XL",
+              "plan_subtitle": "Doubleriffic dose, doubleriffic usage! Sign up for 12 months for more privileges.",
+              "offer": "<s>70GB<\/s> 80GB + Free Roaming",
+              "selected_offer_title": "10Mbps",
+              "data_limit": "120",
+              "banner_image": null,
+              "mobile_image": null,
+              "footNote": null,
+              "upper_age_limit": "50",
+              "lower_age_limit": "18",
+              "ngn_part_number": "CPT19098",
+              "is_xpax": false,
+              "additional_information": null,
+              "productType": "HP",
+              "startDate": null,
+              "endDate": null,
+              "backgroundColor": "Black",
+              "indicatorClass": "is-bg-color-black",
+              "productText": "GB XL",
+              "keyFiguresText": "80GB",
+              "keyText": "RM108",
+              "buyNowLink": "plans\/star-bundle\/",
+              "buyNowText": "Buy now",
+              "knowMoreLink": "plans\/star-bundle\/",
+              "knowMoreText": "Learn More",
+              "mobileDescription": null,
+              "tableInfo": [],
+              "termsAndCondition": {
+                "plans": {
+                  "label": "Delivery Locations",
+                  "desc": "fulltime"
+                },
+                "contractTerms": {
+                  "label": "Contract Duration",
+                  "desc": "24 months contract"
+                },
+                "legal": {
+                  "label": "Ownership",
+                  "desc": null
+                },
+                "cancellation": {
+                  "label": "Refund Policy",
+                  "desc": null
+                }
+              },
+              "is_premium_plan": false,
+              "bill_type": 1
+            },
+            {
+              "name": "Lightning L",
+              "sku": "Ultra-GB-L-Pass",
+              "monthlyPlan": "68.0000",
+              "orderPlanBundle": "CPT19096",
+              "orderServiceBundle": "RTP0010",
+              "PlanMonthlyPay": "68.0000",
+              "OneTimePayment": null,
+              "newCustomer": "0",
+              "segment": "10",
+              "upfrontInstallment": null,
+              "contract": "24",
+              "PlanName": "Lightning L",
+              "plan_title": "GB L",
+              "plan_subtitle": "Doubleriffic dose, doubleriffic usage! Sign up for 12 months for more privileges.",
+              "offer": "<s>30GB<\/s> 40GB",
+              "selected_offer_title": "10Mbps",
+              "data_limit": "80",
+              "banner_image": null,
+              "mobile_image": null,
+              "footNote": null,
+              "upper_age_limit": null,
+              "lower_age_limit": "18",
+              "ngn_part_number": "CPT19096",
+              "is_xpax": false,
+              "additional_information": null,
+              "productType": "Service",
+              "startDate": null,
+              "endDate": null,
+              "backgroundColor": "Black",
+              "indicatorClass": "is-bg-color-black",
+              "productText": "GB L",
+              "keyFiguresText": "40GB",
+              "keyText": "RM68",
+              "buyNowLink": "plans\/star-bundle\/",
+              "buyNowText": "Buy now",
+              "knowMoreLink": "\/store\/plans\/star-bundle\/",
+              "knowMoreText": "Learn More",
+              "mobileDescription": null,
+              "tableInfo": [],
+              "termsAndCondition": {
+                "plans": {
+                  "label": "Delivery Locations",
+                  "desc": null
+                },
+                "contractTerms": {
+                  "label": "Contract Duration",
+                  "desc": "24 months contract"
+                },
+                "legal": {
+                  "label": "Ownership",
+                  "desc": null
+                },
+                "cancellation": {
+                  "label": "Refund Policy",
+                  "desc": null
+                }
+              },
+              "is_premium_plan": false,
+              "bill_type": 1
+            },
+            {
+              "name": "Lightning M",
+              "sku": "Ultra-GB-M-Pass",
+              "monthlyPlan": "18.0000",
+              "orderPlanBundle": "CPT19094",
+              "orderServiceBundle": "RTP0010",
+              "PlanMonthlyPay": "18.0000",
+              "OneTimePayment": null,
+              "newCustomer": "0",
+              "segment": "10",
+              "upfrontInstallment": null,
+              "contract": null,
+              "PlanName": "Lightning M",
+              "plan_title": "GB M",
+              "plan_subtitle": "Doubleriffic dose, doubleriffic usage! Sign up for 12 months for more privileges.",
+              "offer": "10GB\r\n",
+              "selected_offer_title": "10Mbps",
+              "data_limit": "50",
+              "banner_image": null,
+              "mobile_image": null,
+              "footNote": null,
+              "upper_age_limit": null,
+              "lower_age_limit": "18",
+              "ngn_part_number": "CPT19094",
+              "is_xpax": false,
+              "additional_information": null,
+              "productType": "Service",
+              "startDate": null,
+              "endDate": null,
+              "backgroundColor": "Black",
+              "indicatorClass": "is-bg-color-black",
+              "productText": "GB M",
+              "keyFiguresText": "10GB",
+              "keyText": "RM18",
+              "buyNowLink": "plans\/star-bundle\/",
+              "buyNowText": "Buy now",
+              "knowMoreLink": "plans\/star-bundle\/",
+              "knowMoreText": "Learn More",
+              "mobileDescription": null,
+              "tableInfo": [],
+              "termsAndCondition": {
+                "plans": {
+                  "label": "Delivery Locations",
+                  "desc": null
+                },
+                "contractTerms": {
+                  "label": "Contract Duration",
+                  "desc": "24 months contract"
+                },
+                "legal": {
+                  "label": "Ownership",
+                  "desc": null
+                },
+                "cancellation": {
+                  "label": "Refund Policy",
+                  "desc": null
+                }
+              },
+              "is_premium_plan": false,
+              "bill_type": 1
+            }
+          ],
+          "name": "Lightning",
+          "sku": "Ultra-GB",
+          "order_plan_bundle": "CPT19092",
+          "offer": "<s>30GB<\/s> 40GB monthly high-speed Internet<br>\r\nUnlimited Calls to All Networks<br>\r\nRM0.20 per SMS<br>",
+          "is_default": "1",
+          "image_url": null,
+          "is_saleable": "0"
+        }
+      ],
+      "related_products": [
+        {
+          "name": "Samsung Galaxy Note20 5G",
+          "sku": "samsung-galaxy-note-20"
+        }
+      ],
+      "upsell_products": [],
+      "analytics_key_addtocart": {
+        "fb_add_cart_id": null,
+        "google_add_cart_id": null,
+        "twitter_add_cart_id": null,
+        "fb_learn_more_id": null,
+        "google_learn_more_id": null,
+        "twitter_learn_more_id": null,
+        "fb_buy_now_id": null,
+        "google_buy_now_id": null,
+        "twitter_buy_now_id": null
+      },
+      "notes": "<div class=\"note__content\">\r\n            <div class=\"note__content__inner\">NOTE:<\/div>\r\n            <ul class=\"note__details\">\r\n                <li class=\"note__details__description\">No change of delivery address is allowed after payment is made.<\/li>\r\n                <li class=\"note__details__description\">Upon successful change of plan, user will not be able to return to original plan.<\/li>\r\n                <li class=\"note__details__description\">Subsidy for supplementary line is not available for now.<\/li>\r\n                <li class=\"note__details__description\">Terms and conditions apply<\/li>\r\n            <\/ul>\r\n        <\/div>"
+    },
+    "type_purchse": {
+      "dealer": {
+        "newline": true,
+        "cobp": true,
+        "mnp": true,
+        "easyphone": true
+      },
+      "enterprise": {
+        "newline": true,
+        "cobp": true,
+        "mnp": false
+      }
+    },
+    "auto_bill_type_of_purchase": {
+      "NL": "0",
+      "COBP": "0",
+      "MNP": "0"
+    }
+  }
+]

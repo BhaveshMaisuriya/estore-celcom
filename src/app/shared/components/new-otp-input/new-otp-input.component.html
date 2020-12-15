@@ -1,0 +1,20 @@
+<form [formGroup]="otpForm" class="bg-gray" autocomplete="off">
+    <div class="row" *ngIf="showLabel">
+        <div class="col">
+            <label for="input1">
+                Enter OTP Number <span class="text-danger">*</span><!-- /.text-red -->
+            </label>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    <div class="row">
+        <div class="col">
+            <div class="otp-inputs">
+                <div class="form-group" *ngFor="let input of formInput;  index as i">
+                    <input #formRow digitOnly class="form-control" type="text" maxLength="1" [formControlName]="input"
+                        [attr.id]="input" (keyup)="keyUpEvent($event, i)"
+                        inputmode="numeric" pattern="[0-9]" />
+                </div>
+            </div>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</form>

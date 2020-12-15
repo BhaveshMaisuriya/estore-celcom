@@ -1,0 +1,419 @@
+[
+  {
+    "tabData": {
+      "name": "Star Plan Bundle",
+      "PlanName": "Star Plan Bundle",
+      "sku": "Star-Bundle",
+      "url_key": "star-plan-bundle",
+      "order_plan_bundle": null,
+      "ngn_part_number": null,
+      "contract": "24 months contract",
+      "plan_title": "Star Plan Bundle",
+      "plan_subtitle": null,
+      "BackgroundColor": null,
+      "upfront_installment": null,
+      "IndicatorClass": null,
+      "ProductText": null,
+      "KeyFiguresText": null,
+      "KeyText": null,
+      "BuynowLink": null,
+      "BuynowText": null,
+      "knowMoreLink": null,
+      "knowMoreText": null,
+      "upper_age_limit": null,
+      "lower_age_limit": null,
+      "banner_image": null,
+      "mobile_image": null,
+      "MobileDescription": null,
+      "product_type": null,
+      "footNote": null,
+      "image_url": "/media/catalog/product",
+      "supplementary_data": [
+        {
+            "name": "Celcom Ultra Plan",
+            "max_line": "3",
+            "part_number": "PB19092",
+            "price": "48.0000"
+        }
+    ],
+      "addons": [
+        
+      ],
+      "telco_day": {
+        "status": false,
+        "hat_text": null,
+        "message": null,
+        "allowed_types": [
+          
+        ],
+        "not_allowed_types": [
+          "NEW_NUMBER",
+          "MnpNum",
+          "EXISTING_NUMBER"
+        ],
+        "eligible_message": "Rebate is only eligible for ",
+        "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+      },
+      "is_premium_plan": false,
+      "bill_type": 1,
+      "base_plan": [
+        {
+        "name": "Celcom Ultra",
+        "sku": "xp-b-plan",
+        "offer": "10GB Internet<br>\r\n10Mbps<br>\r\nUnlimited Calls to All Networks",
+        "selected_offer_title": null,
+        "monthly_plan": "20.00",
+        "data_limit": "10",
+        "speed_limit": "10",
+        "order_plan_bundle": "PB12828",
+        "segment": null,
+        "upfront_installment": null,
+        "contract": null,
+        "plan_name": "Celcom Ultra",
+        "plan_title": "Base Plan",
+        "plan_subtitle": null,
+        "product_type": null,
+        "product_text": null,
+        "key_figures_text": "10GB",
+        "key_text": "RM20",
+        "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5_.png",
+        "device_allowed": null,
+        "selected_pass": false,
+          "supplementary_data": [
+            
+          ],
+          "addons": [
+            
+          ],
+          "telco_day": {
+            "status": false,
+            "hat_text": null,
+            "message": null,
+            "allowed_types": [
+              
+            ],
+            "not_allowed_types": [
+              "NEW_NUMBER",
+              "MnpNum",
+              "EXISTING_NUMBER"
+            ],
+            "eligible_message": "Rebate is only eligible for ",
+            "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+          },
+          "is_premium_plan": false,
+          "bill_type": 1,
+          "base_plan": null,
+          "pass_plan": null
+        }
+      ],
+      "pass_plan": [
+        {
+          "name": "Pass Speed",
+          "order_plan_bundle": null,
+          "sku": "speed",
+          "associated_passes": [
+            {
+              "name": "Speed XL",
+            "sku": "speed-xl",
+            "offer": "100Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "100.00",
+            "data_limit": "10",
+            "speed_limit": "100",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "14 GB",
+            "key_text": "RM100",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            },
+            {
+              "name": "Speed L",
+            "sku": "speed-l",
+            "offer": "70Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "70.00",
+            "data_limit": "10",
+            "speed_limit": "70",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "14 GB",
+            "key_text": "RM70",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            },
+            {
+              "name": "Speed M",
+            "sku": "speed-m",
+            "offer": "50Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "50.00",
+            "data_limit": "10",
+            "speed_limit": "50",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "14 GB",
+            "key_text": "RM50",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            }
+          ]
+        },
+        {
+          "name": "Pass GB",
+          "order_plan_bundle": null,
+          "sku": "gb",
+          "associated_passes": [
+            {
+              "name": "GB XL",
+            "sku": "gb-xl",
+            "offer": "10Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "100.00",
+            "data_limit": "100",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "100GB",
+            "key_text": "RM100",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            },
+            {
+              "name": "GB L",
+            "sku": "gb-l",
+            "offer": "10Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "70.00",
+            "data_limit": "70",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "70GB",
+            "key_text": "RM70",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            },
+            {
+              "name": "GB M",
+            "sku": "gb-m",
+            "offer": "10Mbps High-Speed Internet<br>\r\nUnlimited Calls to All Networks",
+            "selected_offer_title": "(12GB Internet + 3GB Video Walla\u2122)",
+            "monthly_plan": "50.00",
+            "data_limit": "50",
+            "order_plan_bundle": "CPT12831",
+            "segment": null,
+            "upfront_installment": null,
+            "contract": "df",
+            "plan_name": "XP L Pass",
+            "plan_title": null,
+            "plan_subtitle": null,
+            "product_type": null,
+            "product_text": null,
+            "key_figures_text": "50GB",
+            "key_text": "RM50",
+            "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+            "device_allowed": "1",
+            "selected_pass": false,
+              "supplementary_data": [
+                
+              ],
+              "addons": [
+                
+              ],
+              "telco_day": {
+                "status": false,
+                "hat_text": null,
+                "message": null,
+                "allowed_types": [
+                  
+                ],
+                "not_allowed_types": [
+                  "NEW_NUMBER",
+                  "MnpNum",
+                  "EXISTING_NUMBER"
+                ],
+                "eligible_message": "Rebate is only eligible for ",
+                "not_eligible_message": "Rebate is not eligible for New registration, Switch to Celcom, Upgrade Plan"
+              },
+              "is_premium_plan": false,
+              "bill_type": 1,
+              "base_plan": null,
+              "pass_plan": null
+            }
+          ]
+        }
+      ]
+    },
+    "type_purchse": {
+      "dealer": {
+        "newline": false,
+        "cobp": true,
+        "mnp": false
+      }
+    }
+  }
+]

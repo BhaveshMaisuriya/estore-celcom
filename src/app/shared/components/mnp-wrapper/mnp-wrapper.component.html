@@ -1,0 +1,119 @@
+<div class="mnp">
+    <form [formGroup]="mnpForm" autocomplete="off">
+        <p class="mnp-msg">Switch to Celcom and keep your number. First, we want to get to know you a little bit better.</p>
+
+        <div class="row m-0">
+            <div class="col-lg-6 principal-number">
+                <app-estore-input
+                    [placeholder]="'0123456789'"
+                    [label]="type === 'Postpaid' ? 'Your Current Principal Number' : 'Prepaid Number to Switch'"
+                    [inputType]="'phone'" formControlName="phone"
+                    [success]="mnpForm?.controls?.phone?.valid"
+                    [disabled]="isEligible"
+                    [customValidationLabel]="type === 'Postpaid' ? 'Principal ' : 'Prepaid ' + 'Number'"
+                ></app-estore-input>
+            </div>
+        </div>
+
+        <div class="row mnp-row" *ngIf="!isEligible && !mobileConnectUserShouldLogin">
+            <div class="col-lg-6 principal-number">
+                <app-estore-input [placeholder]="'New NRIC'" [label]="'ID Type'" [inputType]="'select'"
+                formControlName="id_type" [options]="id_types" [readonly]="true">
+                </app-estore-input>
+            </div>
+            <div class="col-lg-6 principal-number">
+                <app-estore-input
+                  *ngIf="mnpForm?.controls?.id_type.value === 'New NRIC'"
+                  [placeholder]="'888888888888'"
+                  [label]="'ID Number'"
+                  inputType="nric"
+                  formControlName="nric"
+                  [success]="mnpForm?.controls?.nric?.valid"
+                  [disabled]="isLoggedIn"
+                ></app-estore-input>
+                <app-estore-input
+                  *ngIf="mnpForm?.controls?.id_type.value === 'Passport'"
+                  [placeholder]="'A00000000'"
+                  [label]="'ID Number'"
+                  inputType="text"
+                  formControlName="nric"
+                  [success]="mnpForm?.controls?.nric?.valid"
+                  [disabled]="isLoggedIn"
+                ></app-estore-input>
+            </div>
+        </div>
+
+        <div class="checkout-plus-terms" *ngIf="!isEligible && !mobileConnectUserShouldLogin && data.sku !== 'Xpax'">
+            <app-estore-checkbox [label]="'I confirm I have read and met the criteria below'"
+                formControlName="terms_and_conditions">
+            </app-estore-checkbox>
+            <ul class="confirm-criteria">
+                <li>The mobile numbers keyed in are registered under my name.</li>
+                <li>The supplementary lines keyed in are under the same account.</li>
+                <li>I have read and agree to the
+                    <a class="c-link--default" data-css="c-link" target="_blank"
+                        href="https://www.celcom.com.my/legal/terms-and-conditions">
+                        <span class="link__content mnp-link-terms">terms and conditions</span>
+                    </a>.
+                </li>
+            </ul>
+        </div>
+
+        <div class="check-eligibility" *ngIf="!isEligible && !mobileConnectUserShouldLogin">
+            <button class="btn btn-rounded"
+                [disabled]="
+                    loading || !mnpForm?.controls?.phone?.valid ||
+                    !mnpForm?.controls?.id_type?.valid || !mnpForm?.controls?.nric?.valid ||
+                    (data.sku !== 'Xpax' && !mnpForm?.controls?.terms_and_conditions?.value)
+                "
+                (click)="checkMnpEligibility();"
+            >
+                <span *ngIf="loading" class="btn-loader">
+                   <span class="spin-loader"></span>
+                </span>
+                Check Eligibility
+            </button>
+        </div>
+
+        <div *ngIf="mobileConnectUserShouldLogin" class="col-lg-6 p-0 login">
+            <app-mc-login
+                [minimalist]="true"
+                [interceptLogin]="true"
+                (onSuccess)="loginSuccess($event);"
+            ></app-mc-login>
+        </div>
+
+        <div class="principal-number-info" *ngIf="isEligible">
+            <p (click)="changePrincipalNumber();" class="change-principal-number">Change this number</p>
+            <p class="eligible-message">Yay! {{ mnpForm.controls.phone.value }} is eligible to switch to Celcom.</p>
+        </div>
+
+        <div class="port-types" *ngIf="isEligible && !portwithSuppLines && !enableCheckout && !isFirstBlue && data.sku !== 'Xpax'">
+            <button class="btn btn-rounded principal-number-btn" (click)="onClickPort('principalOnly');" type="button">
+                Port in principal line only
+            </button>
+            <button class="btn btn-rounded supp-lines-btn" (click)="onClickPort('withSupplementaryLine');" type="button">
+                Port in with supplementary line
+            </button>
+        </div>
+
+        <div class="supp-lines" *ngIf="portwithSuppLines">
+            <p>Note: To ensure successful port in, you need to port in together with your supplementary lines from the
+                same account.</p>
+            <app-supplementary-line-wrapper [supplementaryLines]="supplementaryLines" [topType]="typeOfPurchaseOptions.mnp"
+            (onSubmit)="checkSuppLines($event)" (onRemove)="removeSuppLines($event)" [form]="mnpForm" [hideFamilyLineMessage]="true"
+            (shareQuota)="updateShareQuota()"></app-supplementary-line-wrapper>
+        </div>
+
+        <div class="row m-0" *ngIf="enableCheckout && type === 'Postpaid'">
+            <div class="col-lg-6 p-0">
+                <div class="chekout-without-supplymentary">
+                    <img class="" src="assets/img/checkout_arrow.svg" alt="checkout-img"/>
+                    <p>Click <strong>“Checkout”</strong> to complete your order</p>
+                </div>
+            </div>
+        </div>
+
+        <button *ngIf="portwithSuppLines" class="btn btn-rounded back-btn" (click)="onBack()">Back</button>
+    </form>
+</div>

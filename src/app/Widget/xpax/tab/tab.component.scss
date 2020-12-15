@@ -1,0 +1,9 @@
+:host {
+	display: block;
+
+	.tabs__content {
+		padding: 3rem;
+		border-top: .1rem solid lighten(#c6c5c5, 10%);
+	}
+	
+}

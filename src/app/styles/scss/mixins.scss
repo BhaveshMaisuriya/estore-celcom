@@ -1,0 +1,68 @@
+@mixin spacing($prefix: "estore", $spacer: 16px) {
+  $spacer-x: $spacer;
+  $spacer-y: $spacer;
+  $spacers: (
+    0: (
+      x: 0,
+      y: 0
+    ),
+    h: (
+      x: (
+        $spacer-x * 0.5
+      ),
+      y: (
+        $spacer-y * 0.5
+      )
+    ),
+    1: (
+      x: $spacer-x,
+      y: $spacer-y
+    ),
+    2: (
+      x: (
+        $spacer-x * 1.5
+      ),
+      y: (
+        $spacer-y * 1.5
+      )
+    ),
+    3: (
+      x: (
+        $spacer-x * 2
+      ),
+      y: (
+        $spacer-y * 2
+      )
+    ),
+    4: (
+      x: (
+        $spacer-x * 2.5
+      ),
+      y: (
+        $spacer-y * 2.5
+      )
+    )
+  );
+  @each $prop, $abbrev in (margin: m, padding: p) {
+    @each $size, $lengths in $spacers {
+      $length-x: map-get($lengths, x);
+      $length-y: map-get($lengths, y);
+
+      .#{$abbrev}-#{$prefix}-#{$size} {
+        #{$prop}: $length-y $length-x !important;
+      } // a = All sides
+      .#{$abbrev}t-#{$prefix}-#{$size} {
+        #{$prop}-top: $length-y !important;
+      }
+      .#{$abbrev}r-#{$prefix}-#{$size} {
+        #{$prop}-right: $length-x !important;
+      }
+      .#{$abbrev}b-#{$prefix}-#{$size} {
+        #{$prop}-bottom: $length-y !important;
+      }
+      .#{$abbrev}l-#{$prefix}-#{$size} {
+        #{$prop}-left: $length-x !important;
+      }
+    }
+  }
+}

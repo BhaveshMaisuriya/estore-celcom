@@ -1,0 +1,55 @@
+<div class="section__inner sectionize is-bg-color-grey">
+  <div class="section__content is-container">
+    <div class="details__plan">
+      <div class="details__plan_content">
+        <div class="section_index_container"><span class="section_index">1</span></div>
+        <div class="details__plan_header">Choose a Home Wireless Plan</div>
+      </div>
+    </div>
+    <div class="section__content">
+      <div class="u-grid-row is-equal-height is-top-margin">
+        <ng-container *ngFor="let item of planData">
+          <div class="u-grid-col is-col-mobile-p-6 is-supplimentary-col-tablet-p-2 ng-tns-c4-0 ng-star-inserted is-margin is-mobile-margin">
+            <div class="plan__name_detail">
+              <div class="broadband_plan__details">
+                <div class="plan__details__description"
+                  [ngClass]="{'is-selectedPlan': (item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive}">
+                  <p>{{item.product_text}}</p>
+                  <p>{{item.key_figures_text}}</p>
+                  <p class='font-class'>{{item.key_text}}</p>
+                </div>
+              </div>
+              <div class="plan-container-border">
+                <div *ngFor="let detail of item.table_info" class="data-plan-msg">
+                  <span>{{ detail.headline }}</span>
+                </div>
+                <div class="data-plan-msg plan-border-top">
+                  <span>{{ item.terms_and_condition.contract_terms.desc }}</span>
+                </div>
+                <div *ngFor="let detail of item.table_info" class="data-plan-msg plan-border-top">
+                    <span [innerHTML]="detail.add_on_data | safeHtml"></span>
+                </div>
+                <div class="data-plan-msg data-plan-msg-select"
+                  [ngClass]="{'is-selected': (item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive}"
+                  (click)="SelectPlan(item, true);">
+                  <div class='select-text'
+                    *ngIf="(item.name && activeStateList[item.name] && activeStateList[item.name].isActive) && isActive">
+                    <img class="selection-tick" src="../../../../assets/img/svg/icons-layout/tick-selection.svg">
+                    Selected</div>
+                  <div class='select-text'
+                    *ngIf="!item.name || !activeStateList[item.name] || !activeStateList[item.name].isActive || !isActive">
+                    Select</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <p class="rent_desc">
+          <strong>Note: Autobilling is mandatory to new Celcom subscriber for Home Wireless subscription.<br/>
+            Credit card issued by AEON, Affin, Alliance, Ambank, BSN, CIMB, Citibank, Hong Leong,
+            Maybank, OCBC, Public Bank, RHB, Standard Chartered and UOB are acceptable.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

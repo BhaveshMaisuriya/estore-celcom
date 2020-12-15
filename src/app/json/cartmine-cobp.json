@@ -1,0 +1,649 @@
+[
+    {
+        "id": 21062,
+        "created_at": "2020-10-02 07:37:00",
+        "updated_at": "2020-10-02 07:37:01",
+        "is_active": true,
+        "is_virtual": false,
+        "items": [
+            {
+                "item_id": 60816,
+                "sku": "iPhone-x-dc-Ultra-GB-applewatchs540mmpink-1-Ultra-GB-M-Pass-ix10sg256GB-Ultra-Base",
+                "qty": 1,
+                "name": "iPhone X Device Combo",
+                "price": 0,
+                "product_type": "bundle",
+                "quote_id": "21062"
+            }
+        ],
+        "items_count": 1,
+        "items_qty": 1,
+        "customer": {
+            "id": 7084,
+            "group_id": 1,
+            "default_billing": "18092",
+            "default_shipping": "18093",
+            "created_at": "2020-09-30 06:50:37",
+            "updated_at": "2020-10-02 07:07:28",
+            "created_in": "Default Store View",
+            "dob": "1991-11-03",
+            "email": "gamireporthree@getnada.com",
+            "firstname": "ESTORE",
+            "lastname": "GAMIREPORTHREE",
+            "gender": 1,
+            "store_id": 1,
+            "website_id": 1,
+            "addresses": [
+                {
+                    "id": 18092,
+                    "customer_id": 7084,
+                    "region": {
+                        "region_code": "TG",
+                        "region": "Terengganu",
+                        "region_id": 545
+                    },
+                    "region_id": 545,
+                    "country_id": "MY",
+                    "street": [
+                        "Lot 34 , Jalan Delima 1/1"
+                    ],
+                    "telephone": "601823456789",
+                    "postcode": "47300",
+                    "city": "SUBANG JAYA",
+                    "firstname": "ESTORE",
+                    "lastname": "GAMIREPORTHREE",
+                    "default_billing": true,
+                    "custom_attributes": [
+                        {
+                            "attribute_code": "residence_type",
+                            "value": "High-Rise"
+                        },
+                        {
+                            "attribute_code": "salutation",
+                            "value": "Mr"
+                        },
+                        {
+                            "attribute_code": "unit_number",
+                            "value": "1333"
+                        }
+                    ]
+                },
+                {
+                    "id": 18093,
+                    "customer_id": 7084,
+                    "region": {
+                        "region_code": "TG",
+                        "region": "Terengganu",
+                        "region_id": 545
+                    },
+                    "region_id": 545,
+                    "country_id": "MY",
+                    "street": [
+                        "Lot 34 , Jalan Delima 1/1"
+                    ],
+                    "telephone": "601823456789",
+                    "postcode": "47300",
+                    "city": "SUBANG JAYA",
+                    "firstname": "ESTORE",
+                    "lastname": "GAMIREPORTHREE",
+                    "default_shipping": true,
+                    "custom_attributes": [
+                        {
+                            "attribute_code": "residence_type",
+                            "value": "High-Rise"
+                        },
+                        {
+                            "attribute_code": "salutation",
+                            "value": "Mr"
+                        },
+                        {
+                            "attribute_code": "unit_number",
+                            "value": "1333"
+                        }
+                    ]
+                }
+            ],
+            "disable_auto_group_change": 0,
+            "extension_attributes": {
+                "is_subscribed": false
+            },
+            "custom_attributes": [
+                {
+                    "attribute_code": "mobile_number",
+                    "value": "601823456789"
+                },
+                {
+                    "attribute_code": "id_type",
+                    "value": "New NRIC"
+                },
+                {
+                    "attribute_code": "id_number",
+                    "value": "911103188812"
+                },
+                {
+                    "attribute_code": "customer_full_name",
+                    "value": "ESTORE GAMIREPORTHREE"
+                },
+                {
+                    "attribute_code": "salutation",
+                    "value": "Mr"
+                },
+                {
+                    "attribute_code": "contact_row_id",
+                    "value": "1-1QFE33TG"
+                },
+                {
+                    "attribute_code": "customer_email_id",
+                    "value": "gamireporthree@getnada.com"
+                },
+                {
+                    "attribute_code": "customer_row_id",
+                    "value": "1-1QFE2PJU"
+                }
+            ]
+        },
+        "billing_address": {
+            "address_id": "47001",
+            "quote_id": "21062",
+            "created_at": "2020-10-02 07:37:00",
+            "updated_at": "2020-10-02 07:37:01",
+            "customer_id": "7084",
+            "save_in_address_book": "0",
+            "customer_address_id": "18092",
+            "address_type": "billing",
+            "email": "gamireporthree@getnada.com",
+            "prefix": null,
+            "firstname": "ESTORE",
+            "middlename": null,
+            "lastname": "GAMIREPORTHREE",
+            "suffix": null,
+            "company": null,
+            "street": "Lot 34 , Jalan Delima 1/1",
+            "city": "SUBANG JAYA",
+            "region": "Terengganu",
+            "region_id": "545",
+            "postcode": "47300",
+            "country_id": "MY",
+            "telephone": "601823456789",
+            "fax": null,
+            "virtual_shipping_id": null,
+            "shipping_unit_number": null,
+            "billing_unit_number": "1333",
+            "salutation": "Mr",
+            "residence_type": "High-Rise",
+            "same_as_billing": "0",
+            "collect_shipping_rates": "0",
+            "shipping_method": null,
+            "shipping_description": null,
+            "weight": "0.0000",
+            "subtotal": "0.0000",
+            "base_subtotal": "0.0000",
+            "subtotal_with_discount": "0.0000",
+            "base_subtotal_with_discount": "0.0000",
+            "tax_amount": "0.0000",
+            "base_tax_amount": "0.0000",
+            "shipping_amount": "0.0000",
+            "base_shipping_amount": "0.0000",
+            "shipping_tax_amount": "0.0000",
+            "base_shipping_tax_amount": "0.0000",
+            "discount_amount": "0.0000",
+            "base_discount_amount": "0.0000",
+            "grand_total": "0.0000",
+            "base_grand_total": "0.0000",
+            "customer_notes": null,
+            "applied_taxes": "null",
+            "discount_description": null,
+            "shipping_discount_amount": null,
+            "base_shipping_discount_amount": null,
+            "subtotal_incl_tax": "0.0000",
+            "base_subtotal_total_incl_tax": null,
+            "discount_tax_compensation_amount": "0.0000",
+            "base_discount_tax_compensation_amount": "0.0000",
+            "shipping_discount_tax_compensation_amount": "0.0000",
+            "base_shipping_discount_tax_compensation_amnt": null,
+            "shipping_incl_tax": "0.0000",
+            "base_shipping_incl_tax": "0.0000",
+            "free_shipping": "0",
+            "vat_id": null,
+            "vat_is_valid": null,
+            "vat_request_id": null,
+            "vat_request_date": null,
+            "vat_request_success": null,
+            "gift_message_id": null,
+            "base_customer_balance_amount": "0.0000",
+            "customer_balance_amount": "0.0000",
+            "gift_cards_amount": "0.0000",
+            "base_gift_cards_amount": "0.0000",
+            "gift_cards": "[]",
+            "used_gift_cards": "[]",
+            "gw_id": null,
+            "gw_allow_gift_receipt": null,
+            "gw_add_card": null,
+            "gw_base_price": null,
+            "gw_price": null,
+            "gw_items_base_price": null,
+            "gw_items_price": null,
+            "gw_card_base_price": null,
+            "gw_card_price": null,
+            "gw_base_tax_amount": null,
+            "gw_tax_amount": null,
+            "gw_items_base_tax_amount": null,
+            "gw_items_tax_amount": null,
+            "gw_card_base_tax_amount": null,
+            "gw_card_tax_amount": null,
+            "gw_base_price_incl_tax": null,
+            "gw_price_incl_tax": null,
+            "gw_items_base_price_incl_tax": null,
+            "gw_items_price_incl_tax": null,
+            "gw_card_base_price_incl_tax": null,
+            "gw_card_price_incl_tax": null,
+            "giftregistry_item_id": null,
+            "reward_points_balance": "0",
+            "base_reward_currency_amount": "0.0000",
+            "reward_currency_amount": "0.0000",
+            "alternate_contact_number": null,
+            "entity_id": "47001",
+            "region_code": "TG",
+            "address_line_1": "Lot 34 , Jalan Delima 1/1",
+            "address_line_2": ""
+        },
+        "orig_order_id": 0,
+        "currency": {
+            "global_currency_code": "MYR",
+            "base_currency_code": "MYR",
+            "store_currency_code": "MYR",
+            "quote_currency_code": "MYR",
+            "store_to_base_rate": 0,
+            "store_to_quote_rate": 0,
+            "base_to_global_rate": 1,
+            "base_to_quote_rate": 1
+        },
+        "customer_is_guest": false,
+        "customer_note_notify": true,
+        "customer_tax_class_id": 3,
+        "store_id": 1,
+        "extension_attributes": {
+            "shipping_assignments": [
+                {
+                    "shipping": {
+                        "address": {
+                            "id": 47002,
+                            "region": "Terengganu",
+                            "region_id": 545,
+                            "region_code": "TG",
+                            "country_id": "MY",
+                            "street": [
+                                "Lot 34 , Jalan Delima 1/1"
+                            ],
+                            "telephone": "601823456789",
+                            "postcode": "47300",
+                            "city": "SUBANG JAYA",
+                            "firstname": "ESTORE",
+                            "lastname": "GAMIREPORTHREE",
+                            "customer_id": 7084,
+                            "email": "gamireporthree@getnada.com",
+                            "same_as_billing": 0,
+                            "customer_address_id": 18093,
+                            "save_in_address_book": 0,
+                            "custom_attributes": [
+                                {
+                                    "attribute_code": "residence_type",
+                                    "value": "High-Rise"
+                                },
+                                {
+                                    "attribute_code": "salutation",
+                                    "value": "Mr"
+                                }
+                            ]
+                        },
+                        "method": null
+                    },
+                    "items": [
+                        {
+                            "item_id": 60816,
+                            "sku": "iPhone-x-dc-Ultra-GB-applewatchs540mmpink-1-Ultra-GB-M-Pass-ix10sg256GB-Ultra-Base",
+                            "qty": 1,
+                            "name": "iPhone X Device Combo",
+                            "price": 0,
+                            "product_type": "bundle",
+                            "quote_id": "21062"
+                        }
+                    ]
+                }
+            ]
+        },
+        "all_items": [
+            {
+                "item_id": "60816",
+                "quantity": 1,
+                "reservation_id": "OP67CE1601624221",
+                "sku": "iPhone-x-dc-Ultra-GB-applewatchs540mmpink-1-Ultra-GB-M-Pass-ix10sg256GB-Ultra-Base",
+                "sku_bundle": "iPhone-x-dc",
+                "is_preorder": 0,
+                "is_broadband": false,
+                "is_easyphone": true,
+                "has_add_ons": false,
+                "add_on_label": null,
+                "add_on_code": null,
+                "utm_source": null,
+                "easyphone_label": "EasyPhone Own (24 months contract)",
+                "preorder_availability_flag": 0,
+                "midnight_delivery": 0,
+                "price": 0,
+                "itemTotal": "0.0000",
+                "selectedProduct": {
+                    "orderMonthlyPayTotal": 98,
+                    "order_device_subt": "Upfront payment (RM 101.00 X 0 months)",
+                    "order_plan_subt": "Upfront payment (RM 98 X 0 months)",
+                    "monthly_charges": {
+                        "plan": "98.00",
+                        "device": "101.00"
+                    },
+                    "is_moon": false,
+                    "is_star": true,
+                    "orderDevice": "iPhone x 10 256GB Space Grey ",
+                    "orderDeviceName": "iPhone x 10 256GB Space Grey ",
+                    "selectedProductSku": "ix10sg256GB",
+                    "selectedImageList": [
+                        "/media/catalog/product/f/r/front_46.png"
+                    ],
+                    "orderPlanName": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM</sup>",
+                    "orderPlan": "Ultra-Base",
+                    "urlKey": "ultra-base-plan",
+                    "orderMonthlyPay": "98.00",
+                    "plan_image_url": "/media/catalog/product/4/1/412.png",
+                    "orderOneTimePay": 0,
+                    "eligibilty": null,
+                    "orderPhoneNo": "60133035391",
+                    "orderNumberType": "KeepNumber",
+                    "orderReqPlanComponent": [],
+                    "selectedPlanDetails": {
+                        "name": "MEGA<sup style=\"font-size:0.5em;top:-1.1em;\">TM</sup>",
+                        "sku": "Ultra-Base",
+                        "urlKey": "ultra-base-plan",
+                        "monthly_plan": "80.0000",
+                        "order_plan_bundle": "PB19090",
+                        "order_service_bundle": "RTP0010",
+                        "order_plan_component": [],
+                        "new_customer": "0",
+                        "segment": null,
+                        "upfront_installment": null,
+                        "product_type": null,
+                        "start_date": null,
+                        "end_date": null,
+                        "BackgroundColor": null,
+                        "IndicatorClass": null,
+                        "ProductText": null,
+                        "KeyFiguresText": "10GB",
+                        "KeyText": "RM80",
+                        "BuynowLink": "/plans/ultra",
+                        "BuynowText": "Buy now",
+                        "knowMoreLink": null,
+                        "knowMoreText": null,
+                        "MobileDescription": null,
+                        "TableInfo": [],
+                        "terms_and_condition": {
+                            "plans": {
+                                "label": "Plans",
+                                "desc": null
+                            },
+                            "contract_terms": {
+                                "label": "Contract Duration",
+                                "desc": "24 months contract"
+                            },
+                            "legal": {
+                                "label": "Legal",
+                                "desc": null
+                            },
+                            "cancellation": {
+                                "label": "Cancellation",
+                                "desc": null
+                            }
+                        },
+                        "AtrHref": "#rm-0",
+                        "telco_day": {
+                            "status": false,
+                            "hat_text": null,
+                            "message": null
+                        },
+                        "is_premium_plan": false,
+                        "is_golden_number": 0,
+                        "additional_information": null
+                    },
+                    "orderDevicePrice": "0.0000",
+                    "orderSummaryColor": "Space Grey",
+                    "orderSummaryStorage": "256GB",
+                    "orderReqServiceBundle": "",
+                    "orderTotalPay": 0,
+                    "total": 0,
+                    "contract": "24 months contract",
+                    "orderReqBrand": "APPLE",
+                    "orderReqCategory": "HP",
+                    "orderReqColor": "GRY",
+                    "orderReqModel": "IPHONE X 256GB",
+                    "orderReqPartNumber": "MDR5584",
+                    "free_gift_data": {
+                        "gift_image": null,
+                        "gift_message": null
+                    },
+                    "is_neptune_subsidy": true,
+                    "selected_pass_details": {
+                        "name": "MEGA GB",
+                        "sku": "Ultra-GB",
+                        "monthly_plan": "0.0000",
+                        "order_plan_bundle": "CPT19092",
+                        "new_customer": "0",
+                        "segment": null,
+                        "upfront_installment": null,
+                        "product_type": null,
+                        "start_date": null,
+                        "end_date": null,
+                        "BackgroundColor": null,
+                        "IndicatorClass": null,
+                        "ProductText": null,
+                        "KeyFiguresText": null,
+                        "KeyText": null,
+                        "selected_associated_pass_details": {
+                            "name": "M",
+                            "sku": "Ultra-GB-M-Pass",
+                            "monthly_plan": "0.0000",
+                            "order_plan_bundle": "CPT19094",
+                            "new_customer": "0",
+                            "segment": "10",
+                            "upfront_installment": null,
+                            "product_type": "Service",
+                            "start_date": null,
+                            "end_date": null,
+                            "BackgroundColor": "Black",
+                            "IndicatorClass": "is-bg-color-black",
+                            "ProductText": "GB M",
+                            "KeyFiguresText": "50GB",
+                            "KeyText": "RM18",
+                            "keyText": "0.0000"
+                        }
+                    },
+                    "comboDeviceDetails": {
+                        "orderDevice": "Apple Watch Series 5 40mm Pink",
+                        "orderDeviceName": "Apple Watch Series 5 40mm Pink",
+                        "orderDevicePrice": "0.0000",
+                        "selectedProductSku": "applewatchs540mmpink-1",
+                        "orderSummaryColor": "PNK",
+                        "orderSummaryStorage": "32GB",
+                        "orderReqServiceBundle": "",
+                        "orderTotalPay": 0,
+                        "total": 0,
+                        "contract": "24 months contract",
+                        "orderReqBrand": "APPLE",
+                        "orderReqCategory": "HP",
+                        "orderReqColor": "PNK",
+                        "orderReqModel": "WATCH S5 40 G AL",
+                        "orderReqPartNumber": "MDR10135",
+                        "selectedImageList": [
+                            "/media/catalog/product//a/p/apple_watch.jpg"
+                        ],
+                        "free_gift_data": {
+                            "gift_image": "/media/catalog/product//a/p/apple_watch.jpg",
+                            "gift_message": null
+                        }
+                    },
+                    "mnp_data": null,
+                    "is_mnp": false
+                },
+                "upfront_waiver": false,
+                "device_upfront_penalty": "0.00",
+                "campaign100_days": false,
+                "campaign": {
+                    "title": null,
+                    "subtitle": null
+                },
+                "is_campaign_mviva": 0,
+                "is_campaign_omni": 0,
+                "campaign_omni_offer_id": "",
+                "campaign_omni": "",
+                "campaign_mviva_message": null,
+                "campaign_mviva_url": "",
+                "promotion_details": "ADA",
+                "bill_type": 2,
+                "voucher_code": "",
+                "coupon_description": "",
+                "rebate_amount": 0,
+                "is_newbie": true,
+                "newbie_message": "Online exclusive! Pay for XP Lite™+ L Pass with Boost and get the 1st month of L Pass (worth RM30) for FREE. You will also stand-a-chance to win 100% cashback on your bills for a whole year!",
+                "esim": false,
+                "upfront_installment": null
+            }
+        ],
+        "is_prepaid": false,
+        "is_thirdparty_order": 0,
+        "customerOtherInfo": {
+            "salutation": "Mr",
+            "alternate_contact_number": null,
+            "unit_number": "1333",
+            "mobile_number": "601823456789",
+            "gender": "Male",
+            "customer_full_name": "ESTORE GAMIREPORTHREE"
+        },
+        "GST": "0.00",
+        "grossTotal": "0.00",
+        "itemsTotal": "1",
+        "simType": "Physical SIM",
+        "family_line_no_upfront": true,
+        "shipping_address": {
+            "address_id": "47002",
+            "quote_id": "21062",
+            "created_at": "2020-10-02 07:37:00",
+            "updated_at": "2020-10-02 07:37:01",
+            "customer_id": "7084",
+            "save_in_address_book": "0",
+            "customer_address_id": "18093",
+            "address_type": "shipping",
+            "email": "gamireporthree@getnada.com",
+            "prefix": null,
+            "firstname": "ESTORE",
+            "middlename": null,
+            "lastname": "GAMIREPORTHREE",
+            "suffix": null,
+            "company": null,
+            "street": "Lot 34 , Jalan Delima 1/1",
+            "city": "SUBANG JAYA",
+            "region": "Terengganu",
+            "region_id": "545",
+            "postcode": "47300",
+            "country_id": "MY",
+            "telephone": "601823456789",
+            "fax": null,
+            "virtual_shipping_id": null,
+            "shipping_unit_number": "1333",
+            "billing_unit_number": null,
+            "salutation": "Mr",
+            "residence_type": "High-Rise",
+            "same_as_billing": "0",
+            "collect_shipping_rates": "0",
+            "shipping_method": null,
+            "shipping_description": null,
+            "weight": "195.0000",
+            "subtotal": "0.0000",
+            "base_subtotal": "0.0000",
+            "subtotal_with_discount": "0.0000",
+            "base_subtotal_with_discount": "0.0000",
+            "tax_amount": "0.0000",
+            "base_tax_amount": "0.0000",
+            "shipping_amount": "0.0000",
+            "base_shipping_amount": "0.0000",
+            "shipping_tax_amount": "0.0000",
+            "base_shipping_tax_amount": "0.0000",
+            "discount_amount": "0.0000",
+            "base_discount_amount": "0.0000",
+            "grand_total": "0.0000",
+            "base_grand_total": "0.0000",
+            "customer_notes": null,
+            "applied_taxes": "[]",
+            "discount_description": null,
+            "shipping_discount_amount": "0.0000",
+            "base_shipping_discount_amount": "0.0000",
+            "subtotal_incl_tax": "0.0000",
+            "base_subtotal_total_incl_tax": "0.0000",
+            "discount_tax_compensation_amount": "0.0000",
+            "base_discount_tax_compensation_amount": "0.0000",
+            "shipping_discount_tax_compensation_amount": "0.0000",
+            "base_shipping_discount_tax_compensation_amnt": null,
+            "shipping_incl_tax": "0.0000",
+            "base_shipping_incl_tax": "0.0000",
+            "free_shipping": "0",
+            "vat_id": null,
+            "vat_is_valid": null,
+            "vat_request_id": null,
+            "vat_request_date": null,
+            "vat_request_success": null,
+            "gift_message_id": null,
+            "base_customer_balance_amount": "0.0000",
+            "customer_balance_amount": "0.0000",
+            "gift_cards_amount": "0.0000",
+            "base_gift_cards_amount": "0.0000",
+            "gift_cards": "[]",
+            "used_gift_cards": "[]",
+            "gw_id": null,
+            "gw_allow_gift_receipt": null,
+            "gw_add_card": null,
+            "gw_base_price": "0.0000",
+            "gw_price": "0.0000",
+            "gw_items_base_price": "0.0000",
+            "gw_items_price": "0.0000",
+            "gw_card_base_price": "0.0000",
+            "gw_card_price": "0.0000",
+            "gw_base_tax_amount": null,
+            "gw_tax_amount": null,
+            "gw_items_base_tax_amount": null,
+            "gw_items_tax_amount": null,
+            "gw_card_base_tax_amount": null,
+            "gw_card_tax_amount": null,
+            "gw_base_price_incl_tax": null,
+            "gw_price_incl_tax": null,
+            "gw_items_base_price_incl_tax": null,
+            "gw_items_price_incl_tax": null,
+            "gw_card_base_price_incl_tax": null,
+            "gw_card_price_incl_tax": null,
+            "giftregistry_item_id": null,
+            "reward_points_balance": "0",
+            "base_reward_currency_amount": "0.0000",
+            "reward_currency_amount": "0.0000",
+            "alternate_contact_number": null,
+            "entity_id": "47002",
+            "region_code": "TG",
+            "address_line_1": "Lot 34 , Jalan Delima 1/1",
+            "address_line_2": ""
+        },
+        "is_star_internet_share": "0",
+        "supplementary_data": [],
+        "cart_session": 0,
+        "reservation_id": "OP67CE1601624221",
+        "tax": {
+            "total_tax": "0.00",
+            "items": []
+        },
+        "delivery_type": {
+            "value": 0,
+            "code": "standard"
+        }
+    }
+]

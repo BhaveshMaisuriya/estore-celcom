@@ -1,0 +1,93 @@
+[
+  {
+    "penaltyCheck": {
+      "status": true,
+      "endDate": null,
+      "productPromotionPartNumber": "PB10850",
+      "isActiveContract": false,
+      "productPromotionId": "1-SOCRAZ",
+      "exception": false,
+      "current_plan": "PB10850",
+      "eligible_contract_extend": false,
+      "device_upfront_penalty": 0
+    },
+    "openOrder": {
+      "status": true,
+      "exception": false,
+      "outputOpenOrderValidationResp": {
+        "Error_spcMessage": "",
+        "OrderStatus": "",
+        "orderNumber": "",
+        "serialNumber": "0122522792",
+        "openOrderFlag": "N",
+        "outletId": "",
+        "OrderId": "",
+        "Error_spcCode": ""
+      },
+      "message": null
+    },
+    "blackList": {
+      "blacklistChkResponse": {
+        "blacklistIndicator": "No"
+      },
+      "status": true,
+      "exception": false,
+      "blacklistIndicator": "No",
+      "message": null
+    },
+    "productEligibility": {
+      "status": true,
+      "process_type": "upgrade",
+      "exception": false,
+      "message": "Plan is eligible for this user"
+    },
+    "customer_eligibility": {
+      "status": true,
+      "exception": false,
+      "message": "Eligible for device bundle"
+    },
+    "golden_number_note": {
+      "status": true,
+      "message": ""
+    },
+    "callBaring": {
+      "queryFirstAppUsageResponse": {
+        "callBarDetails": {
+          "elementId": "0",
+          "callbarReason": ""
+        },
+        "bADetailsRetrieve": {
+          "paymentMethod": "",
+          "creditCardVerificationNumber": ""
+        },
+        "balanceSummaryDetails": {
+          "cmuBalanceSummaryVbc": [
+            {
+              "TotalDue": "0",
+              "latestAmountDue": "0",
+              "dueNow": "0",
+              "dueDate": "20200511000000",
+              "unbilledUsage": "111.5"
+            }
+          ]
+        }
+      },
+      "exception": false,
+      "status": true,
+      "response": "",
+      "message": null
+    },
+    "contract_check": {
+      "message": "",
+      "status": true,
+      "exception": true,
+      "autopayment": "N"
+    },
+    "moon_eligibility": {
+      "status": true,
+      "is_moon": 0,
+      "exception": false,
+      "message": "Not a Moon Plan"
+    }
+  }
+]

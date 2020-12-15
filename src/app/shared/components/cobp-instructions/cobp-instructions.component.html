@@ -1,0 +1,17 @@
+<div class="instruction-container" *ngIf="data">
+    <p class="title">{{data?.title}}</p>
+    <div class="steps-container">
+        <div class="step" *ngFor="let stepInfo of data?.steps; let i=index">
+            <h5>Step {{ i+1 }}</h5>
+            <div>
+                <img class="step-icon" [src]="stepInfo?.image" alt="stepimage" />
+            </div>
+            <p>{{stepInfo?.description}}</p>
+            <button *ngIf="stepInfo?.cta_button" class="btn btn-rounded">
+                <a [href]="stepInfo?.cta_button?.action" target='_blank'>
+                    {{stepInfo?.cta_button?.label}}
+                </a>
+            </button>
+        </div>
+    </div>
+</div>

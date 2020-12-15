@@ -1,0 +1,592 @@
+import "zone.js/dist/zone-node";
+import "reflect-metadata";
+// import { renderModuleFactory } from "@angular/platform-server";
+import { enableProdMode } from "@angular/core";
+const logger = require('./src/utils/logger');
+const commonUtils = require('./src/utils/commonUtils');
+import * as express from "express";
+import { join } from "path";
+import { readFileSync } from "fs";
+import * as compression from "compression";
+import * as environment from "./environment.json";
+import * as apiController from "./src/controller/apiController";
+import * as newApiController from "./src/controller/newApiController";
+import * as redisController from "./src/controller/redisController";
+import * as redisControllerForDynamicData from "./src/controller/redisController_DynamicData";
+import * as upgradePlanController from "./src/controller/upgradePlanController";
+import * as orderController from "./src/controller/orderController";
+
+const tokenStore = require('./src/controller/tokenStore');
+
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const _ = require('lodash');
+const fs = require('fs');
+const http = require("http");
+const utils = require('./src/controller/utils');
+const sha = require('sha.js');
+const cookieParser = require('cookie-parser');
+
+/* Uncomment Below Code If You want to enable Queue IT*/
+/*
+const queueit = require('./src/assets/js/vendor/queueit.js');
+
+const options = {
+  customerId: "celcom", // Customer id
+  eventId: "iphonepreorder", // Event id
+  defaultKnownUserSecretKey: "64e7691e-ebbc-4b64-a6cb-35760069191aa681b16a-82a8-4dcc-831c-481886894145", // Secret key from queue-it account
+  cookieDomain: ".celcom.com.my",
+  queryStringPrefix: "qit", // Optional
+  cookieExpiration: 1200000, // Optional.
+  // The amount of time in milliseconds the user can stay on the website before sent to the queue.
+  // The time will be extended each time validation is performed. Defaults to 20 minutes.
+  extendValidity: false // Optional. If false, the time will not be extended each time validation is performed. Defaults to true.
+};
+
+const queue = queueit(options);
+
+*/
+
+// var privateKey  = fs.readFileSync('./ssl/private.pem', 'utf8');
+// var certificate = fs.readFileSync('./ssl/public.pem', 'utf8');
+
+// var credentials = {key: privateKey, cert: certificate};
+const isProd = (<any>environment).production;
+// Faster server renders w/ Prod mode (dev mode never needed)
+enableProdMode();
+
+// Express server
+const app = express();
+
+const PORT = 8080;
+const DIST_FOLDER = join(process.cwd(), "dist");
+
+// Our index.html we'll use as our template
+const template = readFileSync(join(DIST_FOLDER, "browser", "index.html"), {
+ encoding: "utf8"
+}).toString();
+
+// * NOTE :: leave this as require() since this file is built Dynamically from webpack
+const { AppServerModuleNgFactory } = require("./dist/server/main.bundle");
+
+// Express Engine
+import { ngExpressEngine } from "@nguniversal/express-engine";
+
+// json to query string
+function jsonToQueryString(json) {
+  return '?' +
+    Object.keys(json).map(function (key) {
+      return encodeURIComponent(key) + '=' +
+        encodeURIComponent(json[key]);
+    }).join('&');
+}
+
+/* Server-side rendering */
+function angularRouter(req, res) {
+  res.render(join(DIST_FOLDER, "browser", "index.html"), {
+    req: req,
+    res: res,
+    providers: [
+      {
+        provide: "serverUrl",
+        useValue: `http://localhost:8080`
+      }
+    ]
+  });
+}
+app.get("/", angularRouter);
+/* Uncomment Below Code If You want to enable Queue IT*/
+/* (req, res) => {
+  if (req.originalUrl.includes('/device-detail/')) {
+    redisControllerForDynamicData.getQueuitURLs(function (error, result) {
+      const originalURL = req.originalUrl.split('?')[0];
+      if (result.toString().includes(originalURL)) {
+        queue.validate(req, res, function (err) {
+          if (err) {
+            const queueUrl = queue.getQueueUrl(req, res, req.originalUrl);
+            return res.redirect(queueUrl);
+          }
+          return angularRouter(req, res);
+        });
+      } else {
+        return angularRouter(req, res);
+      }
+    });
+  } else {
+    return angularRouter(req, res);
+  }
+});
+*/
+
+// Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
+app.engine(
+  "html",
+  ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory
+  })
+);
+
+app.set("view engine", "html");
+app.set("views", join(DIST_FOLDER, "browser"));
+
+/* - Example Express Rest API endpoints -
+  app.get('/api/**', (req, res) => { });
+*/
+// Body-Parser
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(compression());
+// Cors
+app.use(cors());
+
+const authenticateRoute = (req, res, next) => {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate,max-age=0');
+  // res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  tokenStore.authenticateWithBearer(req, res, next);
+};
+
+app.all('/oneapi/queryprofile/*', authenticateRoute);
+app.all('/node/*', authenticateRoute);
+// app.all('/store/v1/stockAvailabilityCheck', authenticateRoute);
+app.all('/rest/V1/deletecart/', authenticateRoute);
+app.all('/rest/V1/cartmine*', authenticateRoute);
+app.all('/rest/V1/decrypt-data');
+app.all('/rest/V1/orderList');
+app.all('/rest/V1/customerOrders');
+app.all('/rest/V1/customerdetail*', authenticateRoute);
+app.all('/rest/V1/magorderdetail/*');
+app.all('/rest/V1/salesCoupon', authenticateRoute);
+app.all('/rest/V1/mibpelCreateOrder', authenticateRoute);
+app.all('/rest/V1/create-order', authenticateRoute);
+app.all('/rest/V1/setBillingAsShipping/', authenticateRoute);
+app.all('/rest/V1/planaddtocart', authenticateRoute);
+app.all('/rest/V1/siebelPlaceOrder', authenticateRoute);
+app.all('/rest/V1/placeOrder', authenticateRoute);
+app.all('/rest/V1/paymentData', authenticateRoute);
+app.all('/rest/V1/addshipping', authenticateRoute);
+app.all('/rest/V1/update-profile', authenticateRoute);
+app.all('/rest/V1/directory/countries/MY', authenticateRoute);
+app.all('/rest/V1/bundle', authenticateRoute);
+app.all('/rest/V1/orders-info/*', authenticateRoute);
+app.all('/rest/V1/customerLogout', authenticateRoute);
+
+// Express MiddleWares.
+
+function postRequestInterceptiorForXss(req, res, next) {
+  const body = req.body;
+  utils.sanitizeData(req, body, function (err, result) {
+    if (err) {
+      return res.status(500).send({ success: false, reason: "Something wrong with PostData.", data: JSON.stringify(body) });
+    } else {
+      req.body = result;
+      next();
+    }
+  });
+}
+
+app.post('*', postRequestInterceptiorForXss);
+
+// function sendResponseByEliminatingXSS(req, res, (err, result) => {
+//     console.log('in SendResponse Function');
+// })
+
+// Add headers
+
+app.get("/getDrupalSessionToken", apiController.getDrupalSession);
+
+app.get("/api/*", (req, res) => {
+  const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
+  if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
+    redisController.readFromCache(req, res);
+  } else {
+    apiController.getApi(req, res);
+  }
+});
+
+app.post("/email_rest_resource", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postDataToDrupal(req, res);
+});
+
+// Estore.
+app.get("/rest/V1/orderList", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getEstoreDataWithOauth(req, res);
+});
+
+app.get("/rest/V1/cartmine", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getEstoreDataWithUserToken(req, res);
+});
+
+app.get("/rest/V1/magorderdetail/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getEstoreDataWithOauth(req, res);
+});
+
+app.get("/rest/V1/customerLogout", (req, res) => {
+  apiController.getEstoreApiForLogOut(req, res);
+});
+
+app.get("/rest/*", (req, res) => {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate,max-age=0');
+  // res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  const isRequiredToCacheDetails = redisController.isRequiredToCache(req.url);
+  if ((<any>environment).isRedisCacheEnabled && isRequiredToCacheDetails) {
+    redisController.readFromCache(req, res);
+  } else {
+    apiController.getEstoreApi(req, res);
+  }
+});
+
+app.post("/rest/V1/customerOrders", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithOauth(req, res);
+});
+
+app.post("/rest/V1/cancelOrderRestoreCart/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/addshipping", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/update-profile", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+app.get("/rest/V1/salesCoupon/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getEstoreDataWithUserToken(req, res);
+});
+app.post("/rest/V1/setBillingAsShipping/", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/bundle", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/hw-number", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+app.post("/rest/V1/change-contact-email", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+app.post("/rest/V1/email-verification", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+app.post("/rest/V1/verify-contact-email", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+app.post("/rest/V1/agent-login", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  req.body.password = tokenStore.decrypter(req.body.password, req.body.nonce);
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/decrypt-data", (req, res) => {
+  try {
+    res.status(200).send({status: true, data: tokenStore.decrypter(req.body.data, req.body.nonce) });
+  } catch {
+    res.status(200).send({status: false, data: ""});
+  }
+});
+
+app.post("/rest/V1/placeOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/siebelPlaceOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/deletecart", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/planaddtocart", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/setOrderResponse", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/createMnpOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/mibpelCreateOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/cobpOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/upgradePlan", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/paymentData", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/reserveNumber", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/guestcheckout", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+app.post("/rest/V1/sentOtp", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+app.post("/rest/V1/submit-roi-details", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+app.post("/rest/V1/enterprise-register", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+app.post("/rest/V1/enterprise-resend-otp", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+
+app.post("/rest/V1/verifyCustomer", (req, res) => {
+  logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  req.body = JSON.parse(tokenStore.decrypter(req.body.data, req.body.nonce));
+  // console.log(req.body.data);
+  apiController.postEstoreDataWithOauth(req, res);
+});
+
+app.post("/rest/V1/random-number", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+app.post("/rest/V1/retrieve-number", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.postEstoreData(req, res);
+});
+
+app.post("/rest/V1/login", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.userLoginAndTrackorder(req, res);
+});
+
+app.post("/rest/V1/trackOrder", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.userLoginAndTrackorder(req, res);
+});
+
+app.post("/rest/V1/create-order", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreDataWithUserToken(req, res);
+});
+
+
+app.post("/rest/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postEstoreData(req, res);
+});
+
+
+// payment confirmation
+app.post("/store/checkout/orderconfirmation", (req, res) => {
+  const SendPaymentDataReq = {...req};
+  orderController.SendPaymentData(SendPaymentDataReq, res);
+  orderController.PlaceOrder(req, res);
+});
+
+// Estore Api gateway.
+app.post("/store/v1/reserveNumber", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.reserveNumber(req, res);
+});
+
+app.post("/store/v1/stockAvailabilityCheck", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  newApiController.stockAvailabilityCheck(req, res);
+});
+
+app.post("/store/v1/retrievenumbers", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.retrieveNumber(req, res);
+});
+
+// GW Api, Get method.
+app.get("/order/v1/queryOrderStatus*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getMobileConnCustData(req, res);
+});
+
+// GW Api
+app.post("/order/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postData(req, res);
+});
+
+
+// CTOS Blacklist Api For MNP
+app.post("/mnp/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postData(req, res);
+});
+
+// Estore Get Mobile connect customer data for MNP
+app.get("/mnp/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getMobileConnCustData(req, res);
+});
+
+// CTOS Blacklist Api
+app.post("/oneapi/validation/v1/blacklistinfo", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postDataForblackListInfo(req, res);
+});
+
+app.post("/oneapi/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postData(req, res);
+});
+
+// Estore Get Mobile connect customer data.
+app.get("/oneapi/queryprofile/v1/:msIsdn/customerretrieve", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  const mobileNumOrNRIC = _.get(res, "locals.decodeToken.mobileNumOrNRIC", 0);
+  const msIsdn = _.get(req, "params.msIsdn", 1);
+  if (mobileNumOrNRIC !== msIsdn) {
+    return res.status(401).json({ success: false, error: "You don't have permissions to access." });
+  }
+  apiController.getMobileConnCustData(req, res);
+});
+
+app.get("/oneapi/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getMobileConnCustData(req, res);
+});
+
+// CTOS Blacklist Api
+app.post("/bssmnp/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.postData(req, res);
+});
+
+// Estore Get Mobile connect customer data.
+app.get("/bssmnp/*", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  apiController.getMobileConnCustData(req, res);
+});
+
+app.post("/upgradePlan", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  upgradePlanController.getUpgradePlanDetails(req, res);
+});
+
+app.post("/node/getOrderSummarySignature", (req, res) => {
+  // logger.debug(commonUtils.getObjectForLoggingForRoutes(req, __filename));
+  const body = req.body;
+  let stringForSignature;
+  // const isProd = (<any>environment).production;
+  // console.log("*********************************", isProd);
+  const STORE_ID = "estore";
+  const STORE_PASSWORD = isProd ? "FF4F5A74D29E8BE95E0BF2E53238E286EF8F04F0" : "estore";
+  if (!body.responseorderid) {
+    logger.info(JSON.stringify(body));
+    logger.info("Response Order Id missing in PostObject.");
+    return res.status(400).send({ message: "Response OrderID not found." });
+  }
+  if (!body.totalamtnumb && !body.isRegister) {
+    logger.info(JSON.stringify(body));
+    logger.info("Total Amount missing in PostObject.");
+    return res.status(400).send({ message: "Total Amount not found." });
+  }
+  if (!body.isRegister && !body.isEasyphone) {
+    stringForSignature = STORE_ID + STORE_PASSWORD + body.responseorderid + body.totalamtnumb;
+  } else if (!body.isRegister && body.isEasyphone) {
+    stringForSignature = STORE_ID + STORE_PASSWORD + body.responseorderid + body.totalamtnumb + body.cardType2;
+  } else if (body.isRegister) {
+    stringForSignature = STORE_ID + STORE_PASSWORD + body.responseorderid + body.cardType2;
+  }
+  const signature = sha('sha1').update(stringForSignature).digest('base64');
+  return res.status(200).send({ signature: signature });
+});
+
+app.get('/rest/V1/applewatcheligibility', (req, res) => {
+  apiController.getEstoreDataWithUserToken(req, res);
+});
+
+if (!isProd) {
+  app.get("/clearCache", (req, res) => {
+    redisController.flushRedisCache(req, res);
+  });
+}
+app.get("/getAdobeUrl", (req, res) => {
+  redisControllerForDynamicData.getAdobeURL(req, res);
+});
+
+// Server static files from /browser
+app.get(
+  "*.*",
+  express.static(join(DIST_FOLDER, "browser"), {
+    maxAge: "30d"
+  })
+);
+
+// ALl regular routes use the Universal engine
+app.get("*", angularRouter);
+/* Uncomment Below Code If You want to enable Queue IT*/
+/*(req, res) => {
+  if (req.originalUrl.includes('/device-detail/')) {
+    redisControllerForDynamicData.getQueuitURLs(function (error, result) {
+      const originalURL = req.originalUrl.split('?')[0];
+      if (result.toString().includes(originalURL)) {
+        queue.validate(req, res, function (err) {
+          if (err) {
+            const queueUrl = queue.getQueueUrl(req, res, req.originalUrl);
+            return res.redirect(queueUrl);
+          }
+          return angularRouter(req, res);
+        });
+      } else {
+        return angularRouter(req, res);
+      }
+    });
+  } else {
+    return angularRouter(req, res);
+  }
+}); */
+
+const srvr = http.createServer(app).listen(PORT, function () {
+  logger.info("Server Started on PORT NUM :" + PORT + " Time : " + new Date());
+});
+srvr.timeout = 300000;

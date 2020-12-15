@@ -1,0 +1,76 @@
+<ng-template #defaultCollapseBtn>
+    <div *ngIf="footerTemplate || description" class="collapse-button" (click)="toggleExpand($event);">
+        <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M42.344 12L24 30.344 5.656 12 3 15.001 24 36l21.001-20.999z"/></svg>
+    </div><!-- /.collapse-button -->
+</ng-template>
+
+<ng-template #defaultCheckBtn>
+    <div class="checkbox-container">
+        <mat-icon *ngIf="selected; else roundbox" class="success-icon" matSuffix svgIcon="estore-check" style="width: 28px; height: 28px; color: #009bdf;"></mat-icon>
+        <ng-template #roundbox>
+            <div class="roundBox"></div>
+        </ng-template>
+    </div><!-- /.collapse-button -->
+</ng-template>
+
+<ng-template #defaultPricetag>
+    <span class="pricetag" [innerHTML]="pricetag | safeHtml"></span><span class="month-label">/month</span><!-- /.month-label -->
+</ng-template>
+
+<div class="badges-container">
+    <ng-container *ngFor="let badge of badges">
+        <div 
+            *ngIf="badge?.promotion_badge_text"
+            class="badges" 
+            [ngStyle]="{
+                color: badge?.promotion_badge_text_color,
+                background: badge?.promotion_badge_background_color
+            }"
+        >{{ badge?.promotion_badge_text }}</div>
+    </ng-container>
+</div>
+<div class="card" matRipple [ngClass]="{
+    selected: selected,
+    collapsed: collapsed || (selected && autoExpanded),
+    'h-100': height100,
+    'theme-material': useMaterialTheme,
+    'has-badge': badges[0]?.promotion_badge_text,
+    'no-promotion': !promotion_text,
+    disabled: disabled
+}">
+    <div class="card-promo" *ngIf="promotion_text" [innerHTML]="promotion_text | safeHtml"></div>
+    <div class="main-section">
+        <div class="img-container" *ngIf="image">
+            <img [src]="image" alt="img">
+        </div>
+        <div class="labels">
+            <div class="title-container">
+                <div [innerHTML]="title | safeHtml"></div>
+
+                <ng-container *ngIf="!default">
+                    <ng-container *ngIf="!useMaterialTheme; else materialCheckbox">
+                        <ng-container *ngTemplateOutlet="collapseButtonTemplate ? collapseButtonTemplate : defaultCollapseBtn"></ng-container>
+                    </ng-container>
+                    <ng-template #materialCheckbox>
+                        <ng-container *ngTemplateOutlet="collapseButtonTemplate ? collapseButtonTemplate : defaultCheckBtn"></ng-container>
+                    </ng-template>
+                </ng-container>
+
+            </div>
+            <div
+                *ngIf="collapseButtonTemplate || description && (collapsibleFooter || (collapsed || (selected && autoExpanded)))"
+                class="description"
+                [innerHTML]="description | safeHtml"></div>
+            <ng-container *ngTemplateOutlet="pricetagTemplate ? pricetagTemplate : defaultPricetag"></ng-container>
+        </div>
+    </div>
+    <ng-container *ngIf="footerTemplate">
+        <div
+            class="card-footer"
+            *ngIf="collapseButtonTemplate || !collapsibleFooter || (collapsed || (selected && autoExpanded))">
+            <div>
+                <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>

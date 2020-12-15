@@ -1,0 +1,29 @@
+{
+  "production": false,
+  "isRedisCacheEnabled": true,
+  "portalFrontEndURL": "https://www.celcom.com.my",
+  "apiUrl": "http://10.1.61.214",
+  "nodeUrl": "",
+  "apiGateWayUrl": "http://10.5.133.84:8001",
+  "redisConfigForEstore": [
+    {
+      "port": "6379",
+      "host": "10.1.58.64"
+    }
+  ],
+  "redisConfigForEstoreDynamicData": [
+    {
+      "port": "6379",
+      "host": "10.1.58.64",
+      "db" : 1
+    }
+  ],
+  "elasticSearchUrl": "http://10.1.61.214",
+  "eStoreFrontEndUrl": "https://10.1.58.64",
+  "eStoreUrl": "https://10.1.58.65",
+  "mobileConnectUrl": "http://54.255.196.111",
+  "outletId": "CKL47948",
+  "blackListedSystem": "Internal",
+  "isPortal": false,
+  "wso2Url" : "https://igw.apistg.celcom.com.my"
+}

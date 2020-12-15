@@ -1,0 +1,117 @@
+
+.port-in-container {
+	text-align: center;
+	margin: 40px auto 16px;
+    max-width: 618px;
+	width: 100%;
+	color: #333333;
+    font-size: 14px;
+    
+    .mnp-title {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        
+        h5 {
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        mat-icon {
+            width: 80px;
+            height: 80px;
+        }
+        
+    }
+    
+    .port-in-steps {
+        background-color: #f3f3f3;
+        padding: 24px;
+
+        .port-in-step-box {
+            max-width: 180px;
+            margin: 0 auto;
+            @media (min-width: 600px) {
+                margin: 0;
+            }
+
+            .mt-estore-sm-1 {
+                margin: 16px 0 0 0 !important;
+
+                @media (min-width: 600px) {
+                    margin: 0 !important;
+                }
+            }
+
+            h5 {
+                font-weight: bold;
+                line-height: 1.2;
+            }
+
+            .circle {
+                width: 96px;
+                height: 96px;
+                border: 2px solid #009bdf;
+                display: inline-flex;
+                border-radius: 50%;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+
+            mat-icon {
+                width: 48px;
+                height: 48px;
+                color: #009bdf;
+            }
+
+            a {
+                color: #009bdf;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+
+        button {
+            padding: 11px 0 10px 0;
+            width: 248px;
+        }
+    }
+
+
+    .port-in-process {
+        background-color: #f3f3f3;
+        padding: 19px 15px 24px 24px;
+        text-align: left;
+
+        @media (min-width: 600px) {
+            padding: 19px 24px 24px;
+        }
+
+        .port-in-box {
+            h5 {
+                font-weight: bold;
+                line-height: 1.21;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 1.21;
+            }
+
+            ul {
+                padding: 0 0 0 16px;
+                font-size: 14px;
+
+                li {
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+      
+    }
+}

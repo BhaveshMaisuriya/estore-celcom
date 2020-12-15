@@ -1,0 +1,254 @@
+<div class="section-group theme-material" [ngClass]="{'theme-xp-lite': _planData?.plan_type == refPlanTypeEnum.moon}">
+    <aside class="side-summary-container">
+        <app-side-summary
+            [isLoading]="isLoadingAPIResponse$ | async"
+            [overrideTotalPrice]="true"
+            [totalPrice]="totalPayment"
+            (onAddtoCartClick)="onAddToCartClick()"></app-side-summary>
+    </aside>
+    <section class="section no-counter" *ngIf="campaignOmni as omni">
+        <div class="section-content campaign-container">
+            <app-omni-banner [data]="omni"></app-omni-banner>
+        </div>
+    </section>
+    <section class="section no-counter" *ngIf="campaignMviva?.desktop_content">
+        <div class="section-content clm-container" [innerHTML]="campaignMviva?.desktop_content | safeHtml"></div>
+    </section>
+    <div class="section" *ngIf="isCampaign" [ngClass]="{'no-counter': isCampaign}">
+        <div class="section-content">
+            <ng-container *ngFor="let basePlan of [(basePlan$ | async)]">
+                <app-base-plan-wrapper
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    (onSelect)="selectPassbySKU($event)"
+                    [disabled]="isLoadingToP$ | async"
+                    [plans]="getMVIVAPlansToDisplay()"
+                    [selectedSku]="((pass$ | async) || (basePlan$ | async))?.sku + '|' + ((plan$ | async)?.sku || '')"
+                    ></app-base-plan-wrapper>
+            </ng-container>
+            <div class="mt-estore-1" *ngIf="(plan$ | async)?.associated_bundle_product as devices">
+                <app-moon-device-card-wrapper
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    (onSelect)="selectDeviceAndBundle($event)"
+                    [disabled]="isLoadingToP$ | async"
+                    [data]="devices"
+                    [selectedSku]="device?.sku"
+                    [selectedBundleSku]="deviceBundle?.sku"
+                    [ignoreError]="true"
+                    ></app-moon-device-card-wrapper>
+            </div>
+            <div *ngIf="isCampaign && !isNewLine && isCobp && !isMnp && !top_type " class="campaign-buy-now d-flex align-items-center">
+                <div class="image align-self-start">
+                    <img src="assets/img/clm-star-icon.svg" alt="star image"/>
+                </div>
+                <div class="flex-grow-1 d-flex align-items-md-center flex-column flex-md-row">
+                    <div class="flex-grow-1">You are a few steps away from enjoying your offer! </div>
+                    <button class="btn btn-rounded btn-primary align-self-start mt-4 mt-md-0" (click)="buyNow()">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section" *ngIf="!isCampaign">
+        <div class="section-title">
+          <a href="#" id="plans" #plansAnchor class="anchor"></a><!-- /.anchor -->
+          <h1>{{ _planData?.plan_type != refPlanTypeEnum.cmp ? 'Base Plan' : 'Plan Details'}}</h1>
+        </div>
+        <div class="section-content">
+            <div class="mb-estore-2">
+                Choose a plan
+            </div>
+            <ng-container *ngFor="let basePlan of [(basePlan$ | async)]">
+                <app-base-plan-wrapper
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    (onSelect)="selectBasebySKU($event)"
+                    [disabled]="isLoadingToP$ | async"
+                    [plans]="getBasePlansToDisplay(basePlan)"
+                    [selectedSku]="getSelectedBaseSKU()"
+                    ></app-base-plan-wrapper>
+            </ng-container>
+        </div>
+    </div>
+    <div class="section" *ngIf="!isCampaign && _planData?.plan_type != refPlanTypeEnum.cmp">
+        <div class="section-title">
+            <a href="#" id="sizeup" #sizeupAnchor class="anchor"></a><!-- /.anchor -->
+            <h1>Size Up</h1>
+        </div>
+        <div class="section-content">
+            <div class="mb-estore-2" *ngIf="(pass$ | async)?.sku == pass_speed_sku; else gbPass">
+                Select passes and enjoy unlimited internet for as long as you like without worries
+            </div>
+            <ng-template #gbPass>
+                <div class="mb-estore-2">
+                    Select passes  and Enjoy seamless High-Speed Internet for all your entertainment needs
+                </div>
+            </ng-template>
+            <ng-container *ngFor="let pass of [(pass$ | async)]">
+                <app-addon-plan-wrapper
+                    (onSelect)="selectPlanbySKU($event, pass)"
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    [disabled]="(isLoadingToP$ | async)"
+                    [plans]="getAddonPlansToDisplay(pass)"
+                    [planType]="_planData?.plan_type != refPlanTypeEnum.moon ? null : 'gb'"
+                    [selectedSku]="(plan$ | async)?.sku"
+                    ></app-addon-plan-wrapper>
+                <ng-container *ngIf="!(isLoadingAPIResponse$ | async)">
+                    <div class="my-4 promo-terms" *ngIf="promoTerms" [innerHTML]="promoTerms | safeHtml"></div>
+                    <div class="container-fluid">
+                        <div class="row mb-3" *ngIf="(pass$ | async)?.sku == pass_gb_sku || _planData?.plan_type === refPlanTypeEnum.moon">
+                            <div class="col p-0 form-group">
+                                <mat-checkbox 
+                                    #planOnlyCheckbox
+                                    [checked]="!!!plan"
+                                    (change)="toggleCheckbox($event)">I want to purchase base plan only. I don’t need a pass
+                                </mat-checkbox>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                        <div class="summary-box row">
+                            <div class="left-side col my-4">
+                                <div class="title">
+                                    You have selected
+                                </div>
+                                <div class="description">
+                                    <span *ngIf="getInternetLimit(plan$ | async, pass$ | async) as gb">
+                                        {{ gb }} Internet and
+                                    </span> Unlimited Calls to All Networks
+                                </div>
+                            </div>
+                            <div class="right-side col-12 col-md-auto my-md-4 mb-4">
+                                <div class="title">
+                                    Total commitment
+                                </div>
+                                <div class="description">
+                                    <span class="pricetag">RM{{ getTotalMonthlyPay(basePlan$ | async, plan$ | async) }}</span>/month
+                                </div>
+                            </div>
+                        </div><!-- /.summary-box -->
+                    </div><!-- /.container -->
+                </ng-container>
+            </ng-container>
+            <div class="device-catalogue mt-4" *ngIf="(pass$ | async)?.sku == pass_gb_sku">
+                <div class="image">
+                    <mat-icon aria-hidden="false" aria-label="Choose Device">phone_android</mat-icon>
+                </div><!-- /.image -->
+                <div class="description">
+                    To purchase with device, <a href="/store/devices">view device catalogue</a> to pick your selection
+                </div><!-- /.description -->
+            </div><!-- /.device-catalogue -->
+        </div>
+    </div>
+
+    <div class="section section-lifestyle" *ngIf="enableLifestyleSection && (plan$ | async)" [ngClass]="{'is-disabled': disable_lifestylevoucher}">
+        <div class="section-title">
+            <h1>Add up to RM800 SENHENG | CELCOM Voucher</h1>
+        </div>
+        <div class="section-content lifestyle-content">
+            <div class="mb-estore-2" *ngIf="(pass$ | async)?.sku == pass_speed_sku; else gbPass">
+                Select the Lifestyle Voucher Contract of your choice and enjoy more benefits!
+            </div>
+            <ng-template #gbPass>
+                <div class="mb-estore-2">
+                    Select the Lifestyle Voucher Contract of your choice and enjoy more benefits!                </div>
+            </ng-template>
+            <ng-container *ngFor="let pass of [(pass$ | async)]">
+                <app-lifestyle-voucher-wrapper
+                    (onSelect)="selectLfVoucherbyTitle($event, pass)"
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    [disabled]="(isLoadingToP$ | async) || disable_lifestylevoucher"
+                    [plans]="getLifeStyleVouchersToDisplay(pass)"
+                    [selectedSku]="lifestyle_voucher?.contract_period"
+                    ></app-lifestyle-voucher-wrapper>
+                <ng-container *ngIf="!(isLoadingAPIResponse$ | async)">
+                    <div class="container-fluid">
+                        <div class="row mb-3">
+                            <div class="col p-0 form-group">
+                                <mat-checkbox 
+                                    #lifeStyleCheckbox
+                                    [checked]="!lifestyle_voucher"
+                                    class="lifestyle-checkbox"
+                                    (change)="toggleCheckboxLifestyleVoucher($event)">
+                                    I don't need Lifestyle Voucher Contract
+                                </mat-checkbox>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container -->
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="section-content" *ngIf="disable_lifestylevoucher">
+            <p class="warning-sign">
+                <mat-icon svgIcon="estore-exclamation-triangle"></mat-icon> You are not eligible for Lifestyle Voucher Contract.
+            </p>
+        </div>
+        <div class="section-content notes-container">
+            <app-notes [notesContent]="lifeStyle_note"></app-notes>
+        </div>
+    </div>
+
+    <div class="section" *ngIf="!isCampaign && _planData?.plan_type === refPlanTypeEnum.moon">
+        <div class="section-title">
+            <a href="#" id="gearUp" #gerUpAnchor class="anchor"></a><!-- /.anchor -->
+            <h1>Gear Up</h1>
+        </div>
+        <div class="section-content" *ngFor="let devices of [(plan$ | async)?.associated_bundle_product]">
+            <ng-container *ngIf="devices?.length > 0; else moonNoDevice">
+                <div class="mb-estore-2">
+                    Select your brand new smartphone for the best experience
+                </div>
+                <app-moon-device-card-wrapper
+                    [isLoading]="isLoadingAPIResponse$ | async"
+                    (onSelect)="selectDeviceAndBundle($event)"
+                    [disabled]="isLoadingToP$ | async"
+                    [data]="devices"
+                    [selectedSku]="device?.sku"
+                    [selectedBundleSku]="deviceBundle?.sku"
+                    ></app-moon-device-card-wrapper>
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col p-0 form-group">
+                            <mat-checkbox 
+                                [checked]="!!!device"
+                                (change)="toggleDeviceCheckbox($event)">
+                                I don't need a device.
+                            </mat-checkbox>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </ng-container>
+            <ng-template #moonNoDevice>
+                <div class="mb-estore-2">
+                    Oops, device is not available for this pass selection.
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="section" *ngIf="!isCampaign || (isCampaign && (isNewLine || isMnp || top_type ))">
+        <div class="section-title" *ngIf="!isCampaign || (isCampaign && (isNewLine || isMnp))">
+            <a href="#" id="top" #topAnchor class="anchor"></a><!-- /.anchor -->
+            <h1>Type of Purchase</h1>
+        </div>
+        <div class="section-content">
+            <app-typeof-purchase-wrapper 
+                [newline]="isNewLine" 
+                [cobp]="isCobp" 
+                [mnp]="isMnp" 
+                [showOptions]="!isCampaign || (isCampaign && (isNewLine || isMnp))"
+                [selectedType]="(topType$ | async)" 
+                (onSelect)="selectedTypeOfPurchase($event)">
+            </app-typeof-purchase-wrapper>
+        </div>
+    </div>
+    
+    <section class="section no-counter"
+    *ngIf="_planData?.notes">
+        <div class="section-content notes-container">
+            <app-notes 
+                [notesContent]="_planData?.notes"
+            ></app-notes>
+        </div>
+    </section>
+
+</div>
+<footer-component *ngIf="!isEnterprise; else enterpriseFooter"></footer-component>
+<ng-template #enterpriseFooter>
+    <app-agent-footer></app-agent-footer>
+</ng-template>

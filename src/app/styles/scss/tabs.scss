@@ -1,0 +1,294 @@
+@import "./colors.scss";
+
+ul.tab {
+	list-style: none;
+	padding: 0;
+	width: 100%;
+	overflow-x: auto;
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	li {
+		display: table-cell;
+		overflow: hidden;
+		width: 1%;
+		border-bottom: 1px solid $grey;
+		&.active {
+      // box-shadow: inset 0 -3px 0 0 $primary-color;
+      border-color: $primary-color;
+      border-width: 3px;
+			a {
+				color: $primary-color;
+				font-weight: bold;
+			}
+		}
+	}
+
+	a {
+		text-decoration: none !important;
+		padding: 16px;
+		color: black;
+		position: relative;
+		display: block;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	&.blue-oval-tab {
+		max-width: 800px;
+		table-layout: fixed;
+		display: table;
+
+		a {
+      color: $primary-color;
+      white-space: normal;
+			font-weight: bold;
+            padding: 11px 15px;
+            @media (max-width:551px) {
+                padding: 8px 15px;
+            }
+		}
+		>li {
+      vertical-align: middle;
+
+      & + li {
+        border-left: 0;
+      }
+
+			&:first-child {
+				border-top-left-radius: 999em;
+				border-bottom-left-radius: 999em;
+			}
+
+			&:last-child {
+				border-top-right-radius: 999em;
+				border-bottom-right-radius: 999em;
+			}
+
+			border: 1px solid $primary-color;
+			background: white;
+			&.active {
+				background: $primary-color;
+
+        a{
+          color: white;
+        }
+			}
+		}
+  }
+
+  &.profile-tabs {
+    table-layout: fixed;
+    display: table;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+
+      @media(max-width:411px) {
+        overflow: auto;
+        width: 100%;
+      }
+
+    > li {
+      border-bottom: 0;
+      box-shadow: none;
+
+      a {
+        padding: 11px 0;
+        color: #7e7e7e;
+          @media (max-width: 576px) {
+            font-size: 14px;
+          }
+      }
+
+      &.active {
+        background: #4569ab;
+        border-radius: 20px;
+        a {
+          color: #ffffff;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+
+  &.redeem-tabs {
+    &.inline {
+      width: auto;
+      font-size: 14px;
+      li {
+        width: auto;
+        a {
+          width: auto;
+          display: inline-block;
+          padding: 8px 0;
+        }
+      }
+      li + li {
+        padding-left: 32px;
+      }
+    }
+    > li {
+      border-bottom: 0;
+      box-shadow: none;
+
+      a {
+        color: #7e7e7e;
+        line-height: 1.29;
+        padding: 8px 32px;
+      }
+
+      &.active {
+        :after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, 0);
+          bottom: 0;
+          width: 40px;
+          border-bottom: 4px solid #4669ab;
+          border-radius: 2.5px;
+        }
+      }
+
+      &.active a {
+        color: #666666;
+      }
+    }
+  }
+
+  &.device-combo {
+    width: auto;
+    margin: 0;
+    max-height: 117px;
+    overflow: visible;
+    position: relative;
+    /* Ipad */
+    @media (min-width: 769px) and (max-width: 1185px) {
+        max-width: calc(100vw - 500px) !important;
+    }
+    @media (max-width: 769px) {
+      // display: flex;
+      // align-items: stretch;
+      // margin-bottom: -1px;
+      max-height: 137px;
+      li {
+        // display: block;
+        // flex: 1;
+        >div {
+          height: 112px !important;
+        }
+      }
+    }
+    li {
+      width: 332px;
+      border: 0;
+      >div {
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+        background: #f3f3f3;
+        height: auto;
+        color: #999999;
+        padding: 16px 16px 8px 16px;
+        display: flex;
+        font-size: 14px;
+        height: 92px;
+        border-bottom-color: #ccc;
+        border-bottom-width: 1px;
+
+        .tab-image {
+          height: 100%;
+          flex-basis: 70px;
+          margin-right: 8px;
+          @media (max-width: 767px) {
+            display: none;
+          }
+          img {
+            width: 100%;
+            min-height: 70px;
+          }
+        }
+        .tab-description {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          .device-type {
+            line-height: 15px;
+            font-size: 12px;
+            margin-bottom: 4px;
+
+            @media (max-width: 768px) {
+              font-size: 14px;
+            }
+          }
+          .device-name {
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            margin-bottom: 4px;
+
+            @media (max-width: 767px) {
+              font-size: 14px;
+              min-height: 41px;
+              line-height: 19px;
+              margin: 4px 0;
+            }
+
+            span {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 3;
+              overflow: hidden;
+              max-height: 53px;
+              line-height: 17px;
+            }
+          }
+          .device-stock {
+            color: #999999;
+            font-size: 12px;
+            line-height: 15px;
+            flex: 1;
+          }
+        }
+      }
+
+      & + li {
+        &:before {
+          content: ' ';
+          height: 43px;
+          width: 43px;
+          background: #fff;
+          border-radius: 50%;
+          display: block;
+          position: absolute;
+          z-index: 2;
+          box-shadow: 0px 2px 5px rgba(0, 0, 0, .16);
+          transform: translate(-44%, -50%);
+          top: 50%;
+          // Use this site to encode https://yoksel.github.io/url-encoder/
+          background-image: url('assets/img/enterprise-plus-icon.svg');
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        >div {
+          margin-left: 8px;
+        }
+      }
+
+      &.selected {
+        > div {
+          color: #333333;
+          background: #fff;
+          border: 1px solid #ccc;
+          border-bottom-color: white;
+          border-bottom-width: 1px;
+        }
+      }
+    }
+  }
+}

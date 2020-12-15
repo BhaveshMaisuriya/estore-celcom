@@ -1,0 +1,73 @@
+<div class="detailsContainer">
+  <div class="personal-info-card">
+    <h6 class="m-0 title">Your Profile</h6>
+    <hr class="horizontal-border" />
+    <div class="row personal-info">
+      <div class="col-lg-5 col-5 p-0">
+        <p class="m-0">Name</p>
+      </div>
+      <div class="col-lg-7 col-7 p-normal p-0">
+        <p class="m-0 captialize">{{ekycDetails?.fullName}}</p>
+      </div>
+    </div>
+    <div class="row personal-info">
+      <div class="col-lg-5 col-5 p-0">
+        <p class="m-0">ID Type</p>
+      </div>
+      <div class="col-lg-7 col-7 p-normal p-0">
+        <p class="m-0 captialize">{{ekycDetails?.idType}}</p>
+      </div>
+    </div>
+    <div class="row personal-info">
+      <div class="col-lg-5 col-5 p-0">
+        <p class="m-0">ID Number</p>
+      </div>
+      <div class="col-lg-7 col-7 p-normal p-0">
+        <p class="m-0 captialize">{{ekycDetails?.idNumber}}</p>
+      </div>
+    </div>
+    <div class="row personal-info" *ngIf="ekycDetails?.idType.toLowerCase() !== 'passport'; else passport_content">
+      <div class="col-lg-5 col-5 p-0">
+        <p class="m-0">Address</p>
+      </div>
+      <div class="col-lg-7 col-7 p-normal p-0">
+        <p class="m-0 captialize">{{ekycDetails?.unitNo}}, {{ekycDetails?.addressLine1}}</p>
+        <p class="m-0 captialize">{{ekycDetails?.addressLine2}}, {{ekycDetails?.postCode}}</p>
+        <p class="m-0 captialize">{{ekycDetails?.city}}, {{ekycDetails?.state}}</p>
+      </div>
+    </div>
+    <ng-template #passport_content>
+      <div class="row personal-info">
+        <div class="col-lg-5 col-5 p-0">
+          <p class="m-0">Passport Issuing Country</p>
+        </div>
+        <div class="col-lg-7 col-7 p-normal p-0">
+          <p class="m-0 captialize">{{ekycDetails.nationality}}</p>
+        </div>
+      </div>
+      <div class="row personal-info">
+        <div class="col-lg-5 col-5 p-0">
+          <p class="m-0">Nationality</p>
+        </div>
+        <div class="col-lg-7 col-7 p-normal p-0">
+          <p class="m-0 captialize">{{ekycDetails.nationality}}</p>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="idSection" *ngIf="showImage">
+    <h6 class="m-0 title">Your ID</h6>
+    <hr class="horizontal-border" />
+    <div class="row detailsContainer">
+      <div class="col-12 col-md-6 content">
+        <img [src]="host+ekycDetails?.idPhoto" alt="ID" />
+      </div>
+      <div class="col-12 col-md-6 content">
+        <img
+          [src]="host+ekycDetails?.selfiePhoto"
+          alt="selfie"
+        />
+      </div>
+    </div>
+  </div>
+</div>

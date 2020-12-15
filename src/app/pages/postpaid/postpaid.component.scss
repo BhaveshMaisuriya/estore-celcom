@@ -1,0 +1,62 @@
+@import "app/Store/plan/prepaid/prepaid.component.scss";
+@import "app/shared/components/forms/estore-checkbox/estore-checkbox.component.scss";
+
+.promo-terms {
+    color: #999;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.no-top-padding {
+    margin-top: -50px;
+}
+
+app-addon-plan-wrapper {
+    margin-bottom: 16px;
+    display: block;
+}
+
+.device-catalogue {
+    display: flex;
+    align-items: center;
+
+    .image {
+        color: #009bdf;
+        flex-shrink: 1;
+        margin-right: 2rem;
+
+        mat-icon {
+            font-size: 30px;
+        }
+    }
+
+    .description {
+        flex-grow: 1;
+        a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.section-lifestyle {
+	&.is-disabled {
+		.section-title,
+		.lifestyle-content,
+		.lifestyle-checkbox {
+			filter: grayscale(100%);
+			opacity: 1;
+			cursor: not-allowed;
+		}
+	}
+	.warning-sign {
+		color: #F44236;
+		display: flex;
+		align-items: center;
+		font-size: 14px;
+	}
+}

@@ -1,0 +1,43 @@
+<div class="details__choose_color">
+    <div class="details__choose_content">
+      <div class="details__choose_content_header">Colour: <span class="selected_color">{{colorSelected}}</span></div>
+      <ul class="choose__content" [ngClass]="{'disableClass': cobpLoading}">
+        <li class="choose__content_detail color_name_detail" *ngFor="let color of colorStorageObject;">
+          <div class="content__details" [ngClass]="{'is-selected':colorSelected === color.color}" (click)="stockCheckOnColorChange(color.color);">
+            <div class="Oval" [style.background]="color.colorHex"></div>
+            <!-- <div class="content_detail__description">{{color.colorName}}</div> -->
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="details__choose_storage">
+    <div class="details__choose_content">
+        <div class="details__choose_content_header">Storage</div>
+      <ul class="choose__content" [ngClass]="{'disableClass': cobpLoading}">
+        <li class="choose__content_detail_moon" *ngFor="let memory of memoryList">
+          <div *ngIf = "memory" class="storage__details" [ngClass]="{'is-selected':memorySelected === memory}" (click)="stockCheckOnMemoryChange(memory);">
+            <div class="storage__details__description">{{memory}}</div>
+          </div>
+        </li>
+        <!--<li class="choose__content_detail" *ngIf="deviceStock">
+          <div class="storage__details__description">
+            <p>{{deviceStock | titlecase}}</p>
+          </div>
+        </li>-->
+      </ul>
+    </div>
+  </div>
+  <ng-container>
+      <div class="limited_stock__container" *ngIf="(stock && stock.data.bundleSku === this.deviceDetailsStockResponse[0].sku)" [ngClass]="{'outstock': stockStatus.status === 'Out of Stock'}">
+          <img class="Limited-Stock-Icon" *ngIf="stockStatus.status === 2"
+            src="../../../../assets/img/svg/icons-layout/icon-instock.svg">
+          <img class="Limited-Stock-Icon" *ngIf="stockStatus.status === 3"
+            src="../../../../assets/img/svg/icons-layout/icon-outofstock.svg">
+          <p class="Limited-Stock" [@stockCheck]="stockStatus.status">{{stockStatus.message}}</p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopup">
+        <app-losing-supplementary-line-popup [popupType]='popuptype' (OnContinueSupplementaryPopup)="onContinueSwitchingColorOrMemoryTab($event);"
+          (OnLeaveSupplementaryPopup)="onCancellingonContinueSwitchingColorOrMemoryTab($event)"></app-losing-supplementary-line-popup>
+      </ng-container>

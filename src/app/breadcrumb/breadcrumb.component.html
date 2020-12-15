@@ -1,0 +1,46 @@
+<ng-container *ngIf="BreadcrumbInfo.length>0 && (isCSAgent === notCSAgent)">
+<div class="c-breadcrumb--default" data-css="c-breadcrumb">
+        <ol class="breadcrumb__list">
+          <ng-container *ngFor="let item of BreadcrumbInfo; let i=index">
+            <li *ngIf="item.IsFirst" class="breadcrumb__list-item is-first">
+                <span>
+                  <a href={{item.Alias}} (click)="ManageContentNavigation(item.Alias); defaultOnClick();" class="breadcrumb__link">{{item.Title}}</a>
+                </span>
+            </li>
+            <li *ngIf="!item.IsFirst && !item.IsLast" class="breadcrumb__list-item">
+              <span>
+                <a (click)="ManageContentNavigation(item.Alias); defaultOnClick();" href={{item.Alias}} class="breadcrumb__link">{{item.Title}}</a>
+              </span>
+            </li>          
+            <li *ngIf="item.IsLast" class="breadcrumb__list-item">
+              <span>{{item.Title}}</span>
+            </li>
+          </ng-container>
+        </ol>
+</div>
+</ng-container>
+
+
+
+<!-- Breadcrumb Static Response -->
+<ng-container *ngIf="data!=null && (isCSAgent === notCSAgent)">
+  <div class="c-breadcrumb--default" data-css="c-breadcrumb">
+          <ol class="breadcrumb__list">
+            <ng-container *ngFor="let item of data">
+              <li *ngIf="item.isFirst" class="breadcrumb__list-item is-first">
+                  <span>
+                    <a href={{item.Alias}} (click)="ManageContentNavigation(item.Alias); defaultOnClick();" class="breadcrumb__link">{{item.isFirst}}</a>
+                  </span>
+              </li>
+              <li *ngIf="item.isContent" class="breadcrumb__list-item">
+                <span>
+                  <a (click)="ManageContentNavigation(item.Alias); defaultOnClick();" href={{item.Alias}} class="breadcrumb__link">{{item.isContent}}</a>
+                </span>
+              </li>          
+              <li *ngIf="item.isLast" class="breadcrumb__list-item">
+                <span>{{item.isLast}}</span>
+              </li>
+            </ng-container>
+          </ol>
+  </div>
+</ng-container>

@@ -1,0 +1,206 @@
+[
+    {
+      "tabname": "Celcom Xpax Prepaid Pack",
+      "tabTitle": null,
+      "tabSubtitle": null,
+      "tabData": {
+        "name": "Celcom Xpax Prepaid Pack",
+        "PlanName": "Celcom Xpax Prepaid Pack",
+        "sku": "Xpax",
+        "material_code": "20012526",
+        "url_key": "xpax",
+        "order_plan_bundle": null,
+        "ngn_part_number": null,
+        "order_service_bundle": null,
+        "order_plan_component": "",
+        "PlanMonthlyPay": "10.0000",
+        "OneTimePayment": "10.0000",
+        "contract": "24 months contract",
+        "offer": "<p>FREE 10GB Facebook, Instagram and Games Walla™<br>FREE 1GB basic Internet every month<br>RM6.00 preloaded credit<br>Calls at 30sen/min & SMS at 15sen/SMS</p>",
+        "referrer_data": null,
+        "data_limit": null,
+        "monthlyPlan": "10.0000",
+        "monthly_plan": "10.0000",
+        "is_saleable": null,
+        "speed_limit": null,
+        "plan_title": "Celcom Xpax Prepaid Pack",
+        "plan_subtitle": "Celcom Xpax Prepaid Pack",
+        "BackgroundColor": null,
+        "upfront_installment": null,
+        "IndicatorClass": null,
+        "ProductText": null,
+        "KeyFiguresText": null,
+        "KeyText": "RM10",
+        "product_text": null,
+        "key_figures_text": null,
+        "key_text": "RM10",
+        "BuynowLink": "/plans/Xpax",
+        "BuynowText": "Buy now",
+        "knowMoreLink": "/plans/Xpax",
+        "knowMoreText": "Learn more",
+        "upper_age_limit": null,
+        "lower_age_limit": null,
+        "banner_image": null,
+        "mobile_image": null,
+        "is_xpax": false,
+        "MobileDescription": null,
+        "product_type": null,
+        "footNote": null,
+        "TableInfo": "",
+        "image_url": "/media/catalog/product/3/1/312x175.png",
+        "small_image_url": "/media/catalog/product/3/1/312x175.png",
+        "supplementary_data": "",
+        "addons": [],
+        "is_campaign_mviva": false,
+        "campaign_mviva": {
+          "desktop_content": "<p>Title of banner</p>",
+          "mobile_content": "<p>Title of banner</p>",
+          "device_bundle": "0",
+          "easyphone": "0",
+          "targeted_plan": [
+            "xpax"
+          ],
+          "no_upfront_payment": false,
+          "related_campaigns": "0",
+          "purchase_type": [
+            "newline",
+            "cobp",
+            "mnp"
+          ],
+          "is_moon_campaign": "0",
+          "summary_message": "Body of Banner",
+          "optional_easyphone_auto_billing": "1",
+          "can_buy_supplementary_lines": "0"
+        },
+        "campaign_mviva_invalid": null,
+        "analytics_key_addtocart": {
+          "fb_add_cart_id": null,
+          "google_add_cart_id": null,
+          "twitter_add_cart_id": null,
+          "fb_learn_more_id": null,
+          "google_learn_more_id": null,
+          "twitter_learn_more_id": null,
+          "fb_buy_now_id": null,
+          "google_buy_now_id": null,
+          "twitter_buy_now_id": null
+        },
+        "telco_day": null,
+        "is_premium_plan": false,
+        "bill_type": 0,
+        "prepaid_campaign": {
+          "campaign_code": "mobileLegendCampaign",
+          "banner_image": "/assets/img/Drop_3/headerbanner-reload.png",
+          "banner_title": "HeaderHeaderHeader",
+          "banner_subtitle": "Lorem ipsum dolor sit amete sit melius quot scripserit. Aliquid constituto cu vix, populo vis ne, ponderum imperdiet ius in. ",
+          "purchase_type": ["newline", "mnp"]
+        },
+        "internet_passes": [
+          {
+            "category_tabs": [
+              { "name": "Monthly" },
+              { "name": "Weekly" },
+              { "name": "Daily" },
+              { "name": "Unlimited Weekly" },
+              { "name": "Unlimited Monthly" }
+            ],
+            "items" : [ 
+              {
+                "name": "Unlimited",
+                "sku": "unlimited-internet-rm12-weekly",
+                "is_default": "1",
+                "price": "12.0000",
+                "key_text": "RM12",
+                "offer": "<span>Unlimited Internet</span><br/><span>Unlimited Calls</span><br/><span>Free 3GB hotspot</span><br/>",
+                "category_tab": "Weekly",
+                "promo_badge": {
+                  "promotion_badge_background_color": "#EE3E80",
+                  "promotion_badge_text": "New",
+                  "promotion_badge_text_color": "#ffffff"
+                }
+              },
+              {
+                "name": "15GB",
+                "sku": "15gb-internet-pass",
+                "is_default": "0",
+                "price": "79.0000",
+                "key_text": "RM79",
+                "offer": "<span>Free 15GB Video Walla<sup>TM</sup></span><br/><span>Free Unlimited late night Youtube (1am to 7am)</span>",
+                "category_tab": "Monthly",
+                "promo_badge": null
+              },
+              {
+                "name": "10GB",
+                "sku": "10gb-internet-pass",
+                "is_default": "0",
+                "price": "50.0000",
+                "key_text": "RM50",
+                "offer": "<span>Free Unlimited late</br></span><span>night YouTube</br></span>(1am to 7am)",
+                "category_tab": "Monthly",
+                "promo_badge": {
+                  "promotion_badge_background_color": "#FJKL80",
+                  "promotion_badge_text": "Exclusive",
+                  "promotion_badge_text_color": "#ffffff"
+                }
+              },
+              {
+                "name": "5GB",
+                "sku": "5gb-internet-pass",
+                "is_default": "0",
+                "price": "30.0000",
+                "key_text": "RM30",
+                "offer": "<span>Free Unlimited late</br></span><span>night YouTube</br></span>(1am to 7am)",
+                "category_tab": "Monthly",
+                "promo_badge": null
+              }
+            ]
+          }
+        ],
+        "credit_reload": [
+          {
+            "name": "RM10",
+            "sku": "RM10-Credit-Reload",
+            "is_default": "0",
+            "price": "10.0000",
+            "validity": "7 days"
+          },
+          {
+            "name": "RM30",
+            "sku": "RM30-Credit-Reload",
+            "is_default": "0",
+            "price": "30.0000",
+            "validity": "30 days"
+          },
+          {
+            "name": "RM50",
+            "sku": "RM50-Credit-Reload",
+            "is_default": "1",
+            "price": "50.0000",
+            "validity": "30 days"
+          },
+          {
+            "name": "RM100",
+            "sku": "RM100-Credit-Reload",
+            "is_default": "0",
+            "price": "100.0000",
+            "validity": "300 days"
+          }
+        ],
+        "prepaid_pack": {
+          "name": "Xpax Limited Edition Plan",
+          "sku": "Xpax-Limited-Edition-Plan",
+          "is_default": "1",
+          "price": "22.0000",
+          "key_text": "RM12",
+          "offer": "<p>FREE 10GB Facebook, Instagram and Games Walla™<br>FREE 1GB basic Internet every month<br>RM6.00 preloaded credit<br>Calls at 30sen/min & SMS at 15sen/SMS</p>"
+        }
+      },
+      "promotion_text": null,
+      "promotion_badge": null,
+      "auto_bill_type_of_purchase": {
+        "NL": "0",
+        "COBP": "0",
+        "MNP": "0"
+      },
+      "passport": false
+    }
+  ]

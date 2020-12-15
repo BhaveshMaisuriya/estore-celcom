@@ -1,0 +1,51 @@
+<section class="u-section sectionize is-bg-color-grey is-zindex-0">
+  <div class="section__inner" id="neptune-container">
+    <div class="section__content is-container">
+      <div class="details__choose_number">
+        <div class="details__choose_content">
+          <div class="section_index_container"><span class="section_index">2</span></div>
+          <div class="details__choose_content_header">Buy Device Option</div>
+        </div>
+      </div>
+      <div data-js-module="accordion choose__number__accordian" class="tabspace" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+        <div class="tab is-tabs-equal-height">
+          <div [ngClass]="{'mobile-buy-device': isEasyPhone && !isPromotion}" class="mobile-buy-device">
+            <div *ngIf="(isEasyPhone && !isPromotion) || (is_campaign_mviva_Flag && is_easyPhone_Enable_Flag)" class="select-dtls Easyphone tablinks" data-js-item="accordion-btn-tabs"
+              [ngClass]="{'is-selected' : (deviceFlow === 'easyPhone'), 'disableClass': cobpLoading}" (click)='onSwitchingTab("easyPhone")'>
+              <div class="Easyphone_only" style="padding: 9px 0" *ngIf="is_campaign_mviva_Flag && is_easyPhone_Enable_Flag">
+                <div class="Easyphone__Details">EasyPhone™ Own
+                </div>
+              </div>
+	            <div class="Easyphone_only" style="padding: 9px 0" *ngIf="(isEasyPhoneOwn$ | async) && !(isEasyPhoneRent$ | async) && (!is_campaign_mviva_Flag)">
+                <div class="Easyphone__Details">EasyPhone™ Own
+                </div>
+              </div>
+              <div class="Easyphone_only" *ngIf="(isEasyPhoneOwn$ | async) && (isEasyPhoneRent$ | async) && (!is_campaign_mviva_Flag)">
+                <div class="Easyphone__Details">EasyPhone™ <p class="ownRent">Own or Rent</p>
+                </div>
+               
+              </div>
+            </div>
+            <div *ngIf="!is_campaign_mviva_Flag" class="select-dtls Device-bundle tablinks" data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : ((deviceFlow === 'deviceBundle') || isPromotion), 'disableClass': cobpLoading}"
+              (click)='onSwitchingTab("deviceBundle");'>
+              <div class="Device-bundle__Details">Device Bundle</div>
+            </div>
+            <div *ngIf="is_campaign_mviva_Flag && is_deviceBundle_Enable_Flag" class="select-dtls Device-bundle tablinks" data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : ((deviceFlow === 'deviceBundle') || isPromotion), 'disableClass': cobpLoading}"
+              (click)='onSwitchingTab("deviceBundle");'>
+              <div class="Device-bundle__Details">Device Bundle</div>
+            </div>
+          </div>
+          <div *ngIf='!preOrder && !isPromotion && !isMviva && !isDealer && !isEnterprise' class="select-dtls device-only tablinks"
+            [ngClass]="{'is-selected' : ((deviceFlow === 'deviceOnly' || confirmDeviceFlow) && deviceFlow !== 'easyPhone' && deviceFlow !== 'deviceBundle'), 'disableClass': cobpLoading}"
+            (click)='onSwitchingTab("deviceOnly");'>
+            <div class="device-only__Details">Device only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopup">
+  <app-losing-supplementary-line-popup [popupType]='popupType' (OnContinueSupplementaryPopup)="onContinueSwitchingPurchaseTypeTab($event);"
+    (OnLeaveSupplementaryPopup)="onCancellingSwitchingPurchaseTypeTab($event)"></app-losing-supplementary-line-popup>
+</ng-container>

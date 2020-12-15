@@ -1,0 +1,94 @@
+[
+  {
+    "tabname": "Celcom Xpax Prepaid Pack",
+    "tabTitle": null,
+    "tabSubtitle": null,
+    "tabData": {
+      "name": "Celcom Xpax Prepaid Pack",
+      "PlanName": "Celcom Xpax Prepaid Pack",
+      "sku": "Xpax",
+      "url_key": "xpax",
+      "order_plan_bundle": null,
+      "ngn_part_number": null,
+      "order_service_bundle": null,
+      "order_plan_component": "",
+      "PlanMonthlyPay": "10.0000",
+      "OneTimePayment": "10.0000",
+      "contract": "24 months contract",
+      "offer": "<p>FREE 10GB Facebook, Instagram and Games Walla™️<br>FREE 1GB basic Internet every month<br>RM6.00 preloaded credit<br>Calls at 30sen/min & SMS at 15sen/SMS</p>",
+      "data_limit": null,
+      "monthlyPlan": "10.0000",
+      "monthly_plan": "10.0000",
+      "is_saleable": null,
+      "speed_limit": null,
+      "plan_title": "Celcom Xpax Prepaid Pack",
+      "plan_subtitle": "Celcom Xpax Prepaid Pack",
+      "BackgroundColor": null,
+      "upfront_installment": null,
+      "IndicatorClass": null,
+      "ProductText": null,
+      "KeyFiguresText": null,
+      "KeyText": "RM10",
+      "product_text": null,
+      "key_figures_text": null,
+      "key_text": "RM10",
+      "BuynowLink": "/plans/Xpax",
+      "BuynowText": "Buy now",
+      "knowMoreLink": "/plans/Xpax",
+      "knowMoreText": "Learn more",
+      "upper_age_limit": null,
+      "lower_age_limit": null,
+      "banner_image": null,
+      "mobile_image": null,
+      "is_xpax": false,
+      "MobileDescription": null,
+      "product_type": null,
+      "footNote": null,
+      "TableInfo": "",
+      "image_url": "/media/catalog/product",
+      "small_image_url": "/media/catalog/product",
+      "supplementary_data": "",
+      "addons": [
+      ],
+      "is_campaign_mviva": true,
+      "campaign_mviva": {
+        "desktop_content": "<div style=\"color: white; font-size: 16px;\"><strong class=\"mb-4\" style=\"font-size: 20px;\">LazadaXpax</strong></div>",
+        "mobile_content": "<div style=\"color: white; font-size: 16px;\"><strong class=\"mb-4\" style=\"font-size: 20px;\">LazadaXpax</strong></div>",
+        "device_bundle": "0",
+        "easyphone": "0",
+        "targeted_plan": [
+          "xpax"
+        ],
+        "no_upfront_payment": false,
+        "related_campaigns": "0",
+        "purchase_type": [
+          "newline"
+        ],
+        "is_moon_campaign": "0",
+        "summary_message": null,
+        "optional_easyphone_auto_billing": "0",
+        "can_buy_supplementary_lines": "0"
+      },
+      "campaign_mviva_invalid": null,
+      "analytics_key_addtocart": {
+        "fb_add_cart_id": null,
+        "google_add_cart_id": null,
+        "twitter_add_cart_id": null,
+        "fb_learn_more_id": null,
+        "google_learn_more_id": null,
+        "twitter_learn_more_id": null,
+        "fb_buy_now_id": null,
+        "google_buy_now_id": null,
+        "twitter_buy_now_id": null
+      },
+      "telco_day": null,
+      "is_premium_plan": false,
+      "bill_type": 0
+    },
+    "auto_bill_type_of_purchase": {
+      "NL": "0",
+      "COBP": "0",
+      "MNP": "0"
+    }
+  }
+]

@@ -1,0 +1,1175 @@
+<div class="footer_fix" [hidden]="!loading">
+  <app-page-loader></app-page-loader>
+  </div>
+<div [hidden]="loading">
+  <section *ngIf="paymentData && paymentData.returnCode == '1' && (oderType == 'device' || oderType == 'plan' || oderType == 'device_plan'  || oderType == 'cs_agent') && !orderCreateFailure">
+    <!-- <div class="c-breadcrumb--default" data-css="c-breadcrumb" id="c-breadcrumb--default" *ngIf="oderType == 'device' || oderType == 'plan' || oderType == 'device_plan'">
+      <ol class="breadcrumb__list">
+        <li class="breadcrumb__list-item is-first">
+          <span *ngIf="UserLoginName !== 'GUEST'">
+            <a class="breadcrumb__link" href="/store/viewmyprofile">My profile</a>
+          </span>
+          <span *ngIf="UserLoginName == 'GUEST'">
+            <a class="breadcrumb__link" [ngClass]="(UserLoginName == 'GUEST')?'is-disabled':'true'">My profile</a>
+          </span>
+        </li>
+        <li class="breadcrumb__list-item is-my-order-breadcrumb" *ngIf="UserLoginName !== 'GUEST'">
+          <a class="breadcrumb__link" href="/store/account/order-history">My Orders</a>
+        </li>
+        <li class="breadcrumb__list-item is-my-order-breadcrumb" *ngIf="UserLoginName == 'GUEST'">
+          <a class="breadcrumb__link" [ngClass]="(UserLoginName == 'GUEST')?'is-disabled':'true'">My Orders</a>
+        </li>
+        <li class="breadcrumb__list-item">
+          <span *ngIf="!mnpOrder && (oderType == 'device_plan' || oderType == 'plan' || oderType == 'plan')">Order/Invoice
+            Number</span>
+          <span *ngIf="mnpOrder && mnpOrderDetails && mnpOrderDetails.orderId">Order/Invoice Number</span>
+        </li>
+      </ol>
+    </div> -->
+
+    <section *ngIf="!isCSAgent && !isDealer" class="u-section compare_mask payment-confirmation-checkout_mask is-bg-grey">
+      <div class="section__border is-top">
+        <div class="section__border-container">
+          <svg height="100%" preserveAspectRatio="none" viewBox="0 378.568 612 34.863" width="100%"></svg>
+        </div>
+      </div>
+      <div class="section__inner is-vertical-center is-relative-mobile">
+        <div class="section__content is-container">
+          <div class="o-hero-banner">
+            <div class="u-grid-row is-collapsed">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12">
+                <div class="hero-banner__item is-mobile-centered is-padding-top-20 is-padding-bottom-20 padding-class">
+                  <div class="" data-css="">
+                    <div class="">
+                      <p class="Reload-Now" *ngIf="mnpFlow || !errorMessage">Thank you for your order</p>
+                      <p class="error" *ngIf="!mnpFlow && errorMessage">{{errorMessage}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="!isCSAgent && !isDealer" class="u-section is-bg-grey">
+      <div class="section__inner">
+        <div class="section__content is-container">
+          <div class="">
+            <div class="my-order-num-padding">
+              <span class="is-font-bold">Order ID </span>
+              <span class="is-font-bold order-span"># {{transactionDetails.transactOrderId}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *ngIf="isCSAgent || isDealer" class="u-section agent-order-heading is-bg-grey">
+      <div class="section__inner">
+        <div class="section__content is-container">
+          <div class="">
+            <div class="my-order-num-padding">
+              <div class="title">Order Received </div>
+              <div class="cust-info">
+                Customer Name: {{personalDetails?.displayFullname ||
+                checkoutData?.customer?.customer_full_name || (personalDetails?.displayFirstname + " " +
+                personalDetails?.displayLastname)}}
+              </div>
+              <div class="is-font-bold order-id">Order ID #{{orderId}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="step-1" class="u-section tabcontent">
+      <div class="section__inner">
+        <div class="section__content is-text-align-center">
+          <!--    Personal Details Section Start      -->
+          <section class="u-section has-section-padding has-border has_bg_color">
+            <div class="section__inner">
+              <div class="section__content is-container">
+                <div class="u-grid-row is-collapsed is-equal-height checkout__grid-row">
+                  <!---->
+                  <!---->
+                  <!-- <div class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+                    <div class="u-grid-row is-collapsed is-equal-height">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                        <div class="img_personal">
+                          <img src="./assets/img/Drop_3/status-info.png">
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!---->
+                  <div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-11 is-equal-height">
+                    <div class="u-grid-row is-collapsed is-equal-height orderSummaryContainer">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_title">
+                          <p>Order Status</p>
+                          <p class="checkout-title-inner">Processing Within Celcom</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_phone">
+                          <p>Purchase Date & Time</p>
+                          <p class="checkout-title-inner">{{ currDate }}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="chekout_mail">
+                          <p>Total Payment</p>
+                          <p class="checkout-title-inner">RM{{ paymentData.totalAmount | number : '1.2-2'}}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-justify-content-left"></div>
+                    </div>
+                  </div>
+                  <!---->
+                </div>
+                <div class="u-grid-row is-collapsed is-equal-height checkout__grid-row view-order-grid">
+                  <!---->
+                  <!-- <div class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+                    <div class="u-grid-row is-collapsed is-equal-height">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                        <div class="img_personal">
+                          <img src="./assets/img/icon/personal_details.svg">
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!---->
+                  <div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-11 is-equal-height">
+                    <div class="u-grid-row is-collapsed is-equal-height orderSummaryContainer" *ngIf="personalDetails && billingAddress">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_title">
+                          <p>Name</p>
+                          <!-- <p>{{userInfo.outputCPResp.salutation}} {{userInfo.outputCPResp.contactFirstName}} {{userInfo.outputCPResp.contactLastName}}</p> -->
+                          <p class="checkout-title-inner" *ngIf="!isPrepaid">{{personalDetails?.displaySalutation}} {{personalDetails?.displayFullname ||
+                            checkoutData?.customer?.customer_full_name || (personalDetails?.displayFirstname + " " +
+                            personalDetails?.displayLastname)}}</p>
+                            <p class="checkout-title-inner" *ngIf="isPrepaid">{{prepaidName ? prepaidName : ""}}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_phone">
+                          <!-- {{userPhoneNo}} -->
+                          <p>Contact Number</p>
+                          <p class="checkout-title-inner">{{billingAddress.telephone}}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_title">
+                          <p>Email</p>
+                          <!-- <p>{{userInfo.outputCPResp.salutation}} {{userInfo.outputCPResp.contactFirstName}} {{userInfo.outputCPResp.contactLastName}}</p> -->
+                          <p class="checkout-title-inner">{{billingAddress.email}}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+                        <div class="checkout_edit">
+                          <p>
+                            <a href="" hidden>Edit</a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!---->
+                </div>
+                <div [ngClass]="{'hide-deliveryMethod': isEsim === true }" class="u-grid-row is-collapsed is-equal-height checkout_row">
+                  <!---->
+                  <!-- <div class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height">
+                    <div class="u-grid-row is-collapsed is-equal-height">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                        <div class="img_personal" *ngIf="deliveryType == 'Midnight Delivery'">
+                          <img src="./assets/img/late-night.svg">
+                        </div>
+                        <div class="img_personal" *ngIf="deliveryType == 'Standard Delivery'">
+                          <img src="./assets/img/delivery.svg">
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!---->
+                  <div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-11 is-equal-height">
+                    <div class="u-grid-row is-collapsed is-equal-height orderSummaryContainer">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="chekout_mail">
+                          <!-- <p>{{userInfo.outputCPResp.contactEmail}}</p> -->
+                          <!-- <p>{{billingAddress.email}}</p> -->
+                          <div class="checkout_billing_address" *ngIf="billingAddress">
+                            <p class="billing_address">Billing Address</p>
+                            <p *ngIf="isPrepaid">None</p>
+                            <div *ngIf="!isPrepaid">
+                            <p class="billing-caps">{{billingAddress?.billing_unit_number}}</p>
+                            <p class="billing-caps">{{billingAddress?.address_line_1}}</p>
+                            <p class="billing-caps">{{billingAddress?.address_line_2}}</p>
+                            <p class="billing-caps">{{billingAddress?.postcode}} {{billingAddress?.city}} </p>
+                            <p class="billing-caps">{{billingAddress?.region}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-4 is-equal-height is-justify-content-left">
+                        <div class="checkout_shipping_address" *ngIf="shippingAddress && !(isPlanOnly && isCobp)">
+                          <p class="shipping_address">Shipping Address</p>
+                          <p class="billing-caps">{{shippingAddress?.shipping_unit_number}}</p>
+                          <p class="billing-caps">{{shippingAddress?.address_line_1}}</p>
+                          <p class="billing-caps">{{shippingAddress?.address_line_2}}</p>
+                          <p class="billing-caps">{{shippingAddress?.postcode}} {{shippingAddress?.city}}</p>
+                          <p class="billing-caps">{{shippingAddress?.region}}</p>
+                        </div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+                        <div class="checkout_edit">
+                          <p>
+                            <a href="" hidden>Edit</a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="isEsim" class="u-grid-row is-collapsed is-equal-height view-order-grid-esim">
+                  <!---->
+                  <div class="u-grid-col is-col-mobile-p-2 is-col-tablet-p-1 is-equal-height is-justify-content-left">
+                    <div class="u-grid-row is-collapsed is-equal-height">
+                      <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                        <div class="img_personal esim-align">
+                          <img src="../../../../assets/img/esimEmail.svg">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!---->
+                  <div class="u-grid-col is-col-mobile-p-10 is-col-tablet-p-11 is-equal-height">
+                    <div class="u-grid-row is-collapsed is-equal-height" *ngIf="personalDetails && billingAddress">
+                      <div class="u-grid-col is-col-mobile-p-12 is-equal-height is-justify-content-left">
+                        <div class="checkout_title">
+                          <p class="esim-font">eSIM Activation</p>
+                          <p class="esim-sub-font">An email is sent to your mailbox for eSIM QR code. Please refer to the instruction in the email for activation.</p>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <!---->
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="u-section view-order-padding" *ngIf="cart != null">
+      <div class="is-text-align-center checkout-order-summary">Order Summary</div>
+      <div class="section__inner" *ngFor="let item of cart.items">
+        <div class="section__content shop-cart-background is-container" *ngIf="item.selectedProduct.orderDevice &&  item.selectedProduct.orderSummaryStorage != null && !isPrepaid">
+          <div class="u-grid-row">
+            <div class="u-grid-row" [ngClass]="{'moon_summary':item.selectedProduct.is_moon,'bottom-border':!comboDeviceDetails}">
+              <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+                <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!item.selectedProduct.selectedImageList">
+                <img class="shop-cart-samsung" src="{{item.selectedProduct.selectedImageList[0]}}" *ngIf="item.selectedProduct.selectedImageList">
+              </div> -->
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer shop-cart-grid-content">
+                <div class="shop-cart-color-storage margin_device_flow">
+                  <!-- <div *ngIf="isEasyPhone" class="is-text-bold item-bot16">{{easyPhoneLabel}}</div> -->
+                  <div *ngIf="isPreorder == true" class="is-text-bold item-bot16">Pre-Order</div>
+                  <div class="item-bot16" *ngIf="!!comboDeviceDetails">
+                    <div class="is-text-bold">Device Combo</div>
+                    <div class="shop-cart-grid-left shop-cart-grid-left-product">
+                      {{ deviceComboType }} <br>
+                    </div>
+                    <div class="shop-cart-grid-right shop-cart-val item-bot16">RM{{ (item.selectedProduct.orderDevicePrice ? item.selectedProduct.orderDevicePrice : 0.00) | number : '1.2-2'}}</div>
+                  </div>
+                  <div class="item-bot16" [ngClass]="{'is-text-bold':isPreorder == true}">
+                    <div class="device-title label-text is-text-bold">{{!!comboDeviceDetails ? "Device 1" : "Device"}}</div>
+                    <div class="shop-cart-grid-left shop-cart-grid-left-product">
+                      {{ item.selectedProduct.orderDeviceName }} <br>
+                        <!-- <span *ngIf="item.selectedProduct.contract">{{easyPhoneLabel}}</span> -->
+                        <span>{{ isEasyPhone ? "Easyphone" : "Device Bundle" }}</span><br>
+                        <span *ngIf="item.selectedProduct.contract">({{ item.selectedProduct.contract }})</span>
+                      </div>
+                    <div class="shop-cart-grid-right shop-cart-val item-bot16" *ngIf="!comboDeviceDetails">RM{{ (item.selectedProduct.orderDevicePrice ? item.selectedProduct.orderDevicePrice : 0.00) | number : '1.2-2'}}</div>
+                  </div>
+                  <!-- <div class="summary-grid-content upfront_device_main" *ngIf ="isEasyPhone && deviceUpfront!= null">
+                    <div class="plan-applies">{{deviceUpfront}}</div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+            <ng-container *ngIf="!!comboDeviceDetails">
+              <div class="u-grid-row bottom-border">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer shop-cart-grid-content">
+                  <div class="shop-cart-color-storage margin_device_flow">
+                    <div *ngIf="isPreorder == true" class="is-text-bold item-bot16">Pre-Order</div>
+                    <div class="item-bot16" [ngClass]="{'is-text-bold':isPreorder == true}">
+                      <div class="is-text-bold">Device 2</div>
+                      <div class="shop-cart-grid-left shop-cart-grid-left-product">
+                        {{ comboDeviceDetails?.orderDeviceName }} <br>
+                        <!-- <span *ngIf="item.selectedProduct.contract">{{easyPhoneLabel}}</span> -->
+                        <span>{{ isEasyPhone ? "Easyphone" : "Device Bundle" }}</span><br>
+                        <span *ngIf="item.selectedProduct.contract">({{ item.selectedProduct.contract }})</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+              <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!item.selectedProduct.plan_image_url">
+              <img class="shop-cart-samsung" src="{{item.selectedProduct.plan_image_url}}" *ngIf="item.selectedProduct.plan_image_url">
+            </div> -->
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer">
+              <div class="shop-cart-grid-content">
+                <!-- <div *ngIf="isEasyPhone" class="is-text-bold item-bot16">{{easyPhoneLabel}}</div> -->
+                <!-- <div class="item-bot16" [ngClass]="{'is-text-bold':isPreorder == true}">
+                      <b>
+                        <div class="shop-cart-grid-left shop-cart-grid-left-product device-name">
+                          {{ item.selectedProduct.orderDeviceName }} <span *ngIf="item.selectedProduct.contract">({{item?.selectedProduct?.contract}})</span>
+                        </div>
+                      </b>
+                      <div class="shop-cart-grid-right device-price">RM{{ ( item.selectedProduct.orderDevicePrice ?
+                        (item.selectedProduct.orderDevicePrice) : 0.00 ) |
+                        number : '1.2-2'}}</div>
+                    </div> -->
+                  <!-- <div class="summary-grid-content upfront_device_main" *ngIf="isEasyPhone && deviceUpfront!= null">
+                    <div class="plan-applies upfront_device">{{deviceUpfront}}</div>
+                  </div> -->
+                  <div class="is-text-bold" *ngIf="item.selectedProduct?.selectedPlanDetails?.name && isProjectMoon && !orderDetails.is_star">Plan</div>
+                  <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct?.selectedPlanDetails?.name && isProjectMoon && !orderDetails.is_star">
+                      <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct.selectedPlanDetails.name}}</div>
+                      <div *ngIf="orderOneTimePay" class="gold-cart-grid-right mnp-sim-right moon-plan-price">RM{{ (orderOneTimePay ? orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+                  </div>
+                  <div class="is-text-bold" *ngIf="item.selectedProduct?.selected_pass_details?.name && isProjectMoon && !orderDetails.is_star">Pass</div>
+                  <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct?.selected_pass_details?.name && isProjectMoon && !orderDetails.is_star">
+                      <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                  </div>
+                  <div class="is-text-bold" *ngIf="orderDetails && orderDetails.is_star">Plan</div>
+                  <div class="gold-cart-grid-content" *ngIf="orderDetails && orderDetails.is_star">
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct.selectedPlanDetails.name">
+                        <div class="gold-cart-grid-left  moon_plan" [innerHtml]="planData.name | safeHtml"></div>
+                        <div class="gold-cart-grid-right mnp-sim-right moon-plan-price float-none-text-center" *ngIf="!isDeviceBundle()">RM{{ (planData.pass_details.monthly_plan ? planData.pass_details.monthly_plan : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div class="is-text-bold" *ngIf="item.selectedProduct?.selected_pass_details && !planData.sub_pass_details">Pass</div>
+                    <div class="gold-cart-grid-content item-bot16" *ngIf= "item.selectedProduct?.selected_pass_details && !planData.sub_pass_details">
+                      <div class="gold-cart-grid-left moon_plan">{{passDetails.name}}</div>
+                      <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{passDetails.monthly_plan | number : '1.2-2' }}</div>
+                    </div>
+                    <div class="is-text-bold" *ngIf="item.selectedProduct?.selected_pass_details && planData.sub_pass_details">Pass</div>
+                    <div class="gold-cart-grid-content item-bot16 item-top166" *ngIf="item.selectedProduct?.selected_pass_details && planData.sub_pass_details">
+                      <div class="gold-cart-grid-left  moon_plan">{{planData.sub_pass_details.name}}</div>
+                      <div class="gold-cart-grid-right mnp-sim-right plan-name float-none-text-center" *ngIf="!isDeviceBundle()">RM{{planData.sub_pass_details.monthly_plan | number : '1.2-2' }}</div>
+                    </div>
+                    <div class="summary-grid-content item-bot16 item-top16" *ngIf="isEasyPhone && planUpfront!=null">
+                      <div class="plan-applies">{{planUpfront}} </div>
+                    </div>
+                </div>
+                <!-- easy phone rent and own text -->
+                <!-- easy phone rent and own text -->
+              </div>
+              <!--easy phone realted upfront start-->
+              <!--easy phone realted upfront end-->
+              <div class="shop-cart-grid-content shop-cart-content-inner item-bot16"
+                *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && !isEasyPhone && !isProjectMoon">
+                Selected Plan:
+                <span>
+                  <b>{{ item.selectedProduct.selectedPlanDetails.name }}
+                    <span *ngIf="!item.selectedProduct.contract">
+                      ({{item?.selectedProduct?.selectedPlanDetails?.terms_and_condition?.contract_terms?.desc}})</span>
+                    <span *ngIf="item.selectedProduct.contract"> ({{item?.selectedProduct?.contract}})</span>
+                  </b>
+                  <!-- <div class="item-bot16" *ngIf="suppData?.length > 0">
+                    {{suppData.length}} X Supplementary Line(s):{{suppData[suppData.length -1].name}}
+                  </div> -->
+                </span>
+                <!-- <div
+                  *ngIf="item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && suppData?.length > 0">
+                  <div class="display__block is-font-bold">{{suppData.length}} X Supplementary Line(s)</div>
+                </div> -->
+              </div>
+              <!--easy phone realted upfront start-->
+              <div *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && isEasyPhone && !isProjectMoon">
+                <div class="plan-applies is-font-bold price_left" [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></div><span class="is-text-bold"> Pass</span>
+                <div class="price_right" *ngIf="orderOneTimePay!=null">RM{{(orderOneTimePay? (orderOneTimePay) : 0.00)
+                  | number : '1.2-2'}}</div>
+              </div>
+              <!--easy phone realted upfront end-->
+
+              <!-- Purposfully commented considering only device flow -->
+              <div class="shop-cart-grid-content monthly-charges item-bot16" *ngIf="item.selectedProduct.orderNumberType != 'KeepNumber' && item.selectedProduct.orderPhoneNo && isProjectMoon && !isEsim">
+                <span class="is-text-bold">New Line (Principal): <br /></span>
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+
+              <div class="shop-cart-grid-content monthly-charges item-bot16" *ngIf="item.selectedProduct.orderNumberType == 'KeepNumber' && item.selectedProduct.orderPhoneNo && isProjectMoon && !isEsim">
+                <span class="is-text-bold">Upgrade Plan/Change Pass:<br /></span>
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <div class="shop-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo  && !isEasyPhone && !isProjectMoon && !isEsim">
+                <span class="is-text-bold">New Line (Principal): <br /></span>
+                <span class="new_line">{{item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <div class="shop-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo && isEasyPhone && !isProjectMoon && !isEsim">
+                <span class="is-text-bold">New Line (Principal): <br /></span>
+                <span class="new_line">{{item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+
+              <div
+                class="shop-cart-grid-content monthly-charges item-bot8"
+                *ngIf="item.selectedProduct.orderMonthlyPay  && !isEasyPhone && !isEsim && TYcart?.is_star_internet_share === '1' && !!TYcart?.internet_share"
+              >
+                <span class="is-text-bold" [innerHTML]="TYcart?.internet_share?.label | safeHtml"></span><br>
+                <span>RM{{ (TYcart?.internet_share?.monthly_price || 0) | number : '1.2-2'}}</span>
+              </div>
+              <!--monthly charges for easy phone start-->
+              <div class="shop-cart-grid-content item-bot16 monthly_charges_easyp" *ngIf="isEasyPhone && !isEsim">
+                <div class="is-text-bold">Monthly Charges:</div>
+                <span> RM{{(EasyPhoneMonthlyCharges ? (EasyPhoneMonthlyCharges) : 0.00) | number : '1.2-2'}}</span>
+                <div class="is-text-bold" *ngIf="deviceMonthlyCharge!=null">Phone: RM{{(deviceMonthlyCharge? (deviceMonthlyCharge) : 0.00) | number : '1.2-2'}}</div>
+                <div class="is-text-bold" *ngIf="planMonthlyCharge!=null">Plan: RM{{(planMonthlyCharge? (planMonthlyCharge) : 0.00) | number : '1.2-2'}}</div>
+              </div>
+
+              <div class="shop-cart-grid-content monthly-charges item-bot16" *ngIf="item.selectedProduct.orderMonthlyPay  && !isEasyPhone && !isEsim">
+                <span class="is-text-bold">Monthly Charges <br /></span>
+                <span class="value-text">RM{{ (item.selectedProduct.orderMonthlyPayTotal ? (item.selectedProduct.orderMonthlyPayTotal) : 0.00) | number : '1.2-2'}}</span>
+              </div>
+
+              <div class="shop-cart-grid-content item-bot16" *ngIf="item.deviceUpfrontPenalty">
+                <div class="shop-cart-grid-left up-front-payment payment-bundle">Device Penalty
+                </div>
+                <div class="shop-cart-grid-right payment-bundle-price">RM{{ (item.deviceUpfrontPenalty ? item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+              </div>
+              <!--monthly charges for easy phone end-->
+              <div class="monthly-charges device-bundle" *ngIf="isEsim">
+                eSIM Charges: <span class="is-text-bold"> RM{{
+                    RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                    item.selectedProduct.orderMonthlyPayTotal :
+                    0.00) | number : '1.2-2'}}</span>
+              </div>
+              <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+              <div class="item-bot16 item-top16" *ngIf="isEsim">
+                  New Line (Principal):<br> <span class="is-text-bold new_line">{{
+                      item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <div class="item-bot8" *ngIf="isEsim">
+                  Type of SIM: <div class="is-text-bold item-top3">{{ simType }} to eSIM</div>
+              </div>
+              <div class="item-bot16 campaign_mviva" *ngIf="campaignMviva && campaignMvivaMessage && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName">
+                <div class="shop-cart-grid-left campaign_mviva_message">{{ campaignMvivaMessage }}</div>
+              </div>
+              <div class="shop-cart-grid-content item-bot16" *ngIf="!campaign100Days && item.selectedProduct.orderOneTimePay && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && !isEsim">
+                <div class="shop-cart-grid-left up-front-payment">
+                  <span>Upfront Payment</span><br>
+                  <span class="to-be-rebate new-line" *ngIf="!isUpfrontInstallment">(To be rebated in first bill)</span>
+                  <span class="to-be-rebate new-line" *ngIf="isUpfrontInstallment">(To be rebated over {{upfrontInstallment}} months)</span>
+                  <br *ngIf="additionalInfo"/>
+                    <div class="shop-cart-grid-left up-front-payment additional-info" *ngIf="additionalInfo">{{additionalInfo}} </div></div>
+                <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderOneTimePay ?
+                  (item.selectedProduct.orderOneTimePay) : 0.00) | number
+                  : '1.2-2'}}</div>
+              </div>
+              <div class="shop-cart-grid-content item-bot18" *ngIf="campaign100Days && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone">
+                <div class="shop-cart-grid-left up-front-payment is-text-bold">Upfront Payment Waiver (Guna Celcom)</div>
+                <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderOneTimePay ?
+                  (item.selectedProduct.orderOneTimePay) : 0.00) | number
+                  : '1.2-2'}}</div>
+                <div>
+                  <span class="up-front-payment new_line waiver-top-gap bottom-gap">You're eligible! Upfront payment has been waived.</span>
+                </div>
+              </div>
+              <div *ngIf="hasAutobilling && !IsDeviceOnly()" class="shop-cart-grid-content"><span class="is-font-bold new_line bottom-gap">Mandatory Autobilling</span></div>
+              <div class="upfront-display item-bot18 free-shop-width" *ngIf="addOn && addOnLabel">
+                <div class="shop-cart-grid-left">{{addOnLabel}}</div>
+              </div>
+              <div class="free_sim_text item-bot18" *ngIf="isPreorder === true && !isEasyPhone">*Free SIM card delivery</div>
+            </div>
+          </div>
+          <!-- The below code has to iterate -->
+          <div *ngIf="suppData.length > 0">
+            <div *ngFor="let item of suppData, let i=index">
+              <div class="u-grid-row has-border-top">
+                <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                  <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                </div> -->
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer">
+                  <div class="supplementary-lines shop-cart-grid-content">
+                    <div class="summary-grid-content item-bot16">
+                      <div class="new-number">
+                        <span class="new-supple-line is-text-bold">Supplementary line {{i+1}}</span><br>
+                        <span>{{item.number}}</span>
+                      </div>
+                    </div>
+                    <div class="summary-grid-content item-bot16">
+                      <div class="new-number">
+                        <span class="new-supple-line is-text-bold"> Monthly Charges</span><br>
+                          RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}
+                        </div>
+                    </div>
+                    <div class="summary-grid-content item-bot16">
+                      <div class="new-number">{{item.name}}</div>
+                    </div>
+                    <ng-container >
+                      <div class="summary-grid-content item-bot16 upfront-display">
+                        <div class="new-number">Upfront Payment </div>
+                        <span class="to-be-rebate" *ngIf="isUpfrontInstallment">(To be rebated in first bill)</span>
+                        <!-- <span class="to-be-rebate" *ngIf="isUpfrontInstallment">(To be rebated over {{upfrontInstallment}} months)</span> -->
+                      </div>
+                      <span class="new-supple-right is-text-bold">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                    </ng-container>
+                    <div class="summary-grid-content item-bot16" *ngIf="supplementaryDataLabel">
+                      <div class="new-number" [innerHTML]="supplementaryDataLabel | safeHtml"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isPreorder && freeGiftInfo.gift_image!=null && freeGiftInfo.gift_message!=null" class="u-grid-row preorder_gift_info">
+            <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+              <img class="shop-cart-samsung" src="{{freeGiftInfo.gift_image}}">
+            </div> -->
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer">
+              <div class="item-bot16 shop-cart-grid-content">
+                <div class="pre-order-gift-left">
+                  <p>Pre-Order FREE Gift:</p>
+                  <p>{{freeGiftInfo.gift_message}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="u-grid-row device_sub_total">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+              <div class="shop-cart-grid-content">
+                <div class="shop-cart-grid-left is-font-bold">Total</div>
+                <div class="shop-cart-grid-right is-font-bold" *ngIf = "cart">RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number : '1.2-2'}}*</div>
+              </div>
+            </div>
+          </div> -->
+          <section class="u-section checkout-total-cost" *ngIf="cart && cart.items && cart.items.length > 0">
+            <div class="section__inner">
+                <div class="shopping_total__list">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                  
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total__cost">Total</div>
+                  
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                      <div class="total__cost_value">RM{{ (cart.itemsTotal ? cart.itemsTotal : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <ng-container *ngIf="(!isCobp || isDeviceBundle()) && checkoutData">
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost">Delivery Charges</div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost_value">RM{{ (delivery_type_selected?.charges || 0.00) | number : '1.2-2' }} </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <ng-container *ngFor="let tax of taxs">
+                    <div class="u-grid-row is-collapsed is-equal-height">
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                        <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+                      </div>
+                    </div>
+                  </ng-container>
+                <ng-container>
+                  <div class="u-grid-row is-collapsed is-equal-height" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst">Voucher Code</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                      <div class="total_gst_value">-RM{{ cart.rebateAmount | number : '1.2-2'}}</div>
+                    </div>
+                  </div>
+                </ng-container>
+                  <!-- <div class="u-grid-row is-collapsed is-equal-height">
+
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                      <div class="total_gst">Rounding Adjustment</div>
+
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+                      <div class="total_gst_value">RM{{ cart.roundOffAdjustment | number : '1.2-2'}}</div>
+
+                    </div>
+                  </div> -->
+                </div>
+                <div class="shopping_total__list grand-bg">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                    <div class="grand__total">
+                      Total Payment Made
+                      </div>
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+                    <div class="grand__total_value">RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="section__content gold-cart-background is-container" *ngIf="item.selectedProduct.orderPlanName && item.selectedProduct.orderSummaryStorage == null && !isPrepaid">
+          <div class="{{ item?.selectedProduct?.selectedPlanDetails?.IndicatorClass }}"></div>
+          <div class="u-grid-row gold-cart-padding">
+            <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 cart-gold-center">
+              <img class="gold-cart-benji" *ngIf="planImage" src="{{planImage}}">
+            </div> -->
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer shop-cart-grid-content">
+              <div class="is-text-bold item-bot8 plan-p-b-0" *ngIf="!isProjectMoon">Plan</div>
+              <div class="gold-cart-grid-content  item-bot16" *ngIf="!isProjectMoon">
+                <!-- Enclosed contract terms with a Plan Only condition as part of CEO-515 -->
+                <div class="gold-cart-grid-left is-text-bold">
+                  <span [innerHTML]="item?.selectedProduct?.selectedPlanDetails?.name | safeHtml"></span>
+                  <span *ngIf="!isPlanOnly"> ({{orderDetails?.plan_data?.contract_terms?.desc}})</span>
+                </div>
+                <div class="gold-cart-grid-right mnp-sim-right" *ngIf="item.selectedProduct.orderNumberType == 'SwitchToCelcom'">RM
+                  {{ ((item.price && item.quantity) ? (item.price * item.quantity) : 0.00) | number : '1.2-2' }}</div>
+              </div>
+              <div class="is-text-bold item-bot8 plan-p-b-0" *ngIf="isProjectMoon && !orderDetails.is_star">Plan</div>
+              <div class="gold-cart-grid-content" *ngIf="isProjectMoon && !orderDetails.is_star">
+                  <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct.selectedPlanDetails.name">
+                      <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct.selectedPlanDetails.name}}</div>
+                      <div *ngIf="orderOneTimePay" class="gold-cart-grid-right mnp-sim-right moon-plan-price">RM{{ (orderOneTimePay ? orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+                  </div>
+                  <div class="is-text-bold item-bot8 pass-line-height plan-p-b-0" *ngIf="item.selectedProduct?.selected_pass_details?.name">Pass</div>
+                  <div class="gold-cart-grid-content item-bot16" *ngIf= "item.selectedProduct?.selected_pass_details?.name">
+                      <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                  </div>
+              </div>
+              <div class="is-text-bold item-bot8 plan-p-b-0 " *ngIf="orderDetails.is_star">Plan</div>
+              <div class="gold-cart-grid-content" *ngIf="orderDetails.is_star">
+                <div class="gold-cart-grid-content item-bot16 padding-btm-mega" *ngIf="item.selectedProduct.selectedPlanDetails.name">
+                    <div class="gold-cart-grid-left is-text-bold moon_plan" [innerHtml]="planData.name | safeHtml"></div>
+                    <!-- Use this if you want to display Base + Pass -->
+                    <!-- <div class="gold-cart-grid-left is-text-bold moon_plan" [innerHtml]="planData.name + ' ' + (passDetails?.name || '') | safeHtml"></div> -->
+                    <!-- <div class="gold-cart-grid-right mnp-sim-right moon-plan-price">RM{{ (planData.orderMontlyPay ? planData.orderMontlyPay : 0.00) | number : '1.2-2'}}</div> -->
+                </div>
+                <div class="is-text-bold item-bot8" *ngIf="item.selectedProduct?.selected_pass_details && !planData.sub_pass_details">Pass</div>
+                <div class="gold-cart-grid-content item-bot16" *ngIf= "item.selectedProduct?.selected_pass_details && !planData.sub_pass_details">
+                    <!-- Use this if you want to display Base + Pass -->
+                    <!-- <div class="gold-cart-grid-left is-text-bold moon_plan">No Pass</div> -->
+                    <div class="gold-cart-grid-left is-text-bold moon_plan">{{passDetails?.name}}</div>
+                    <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{passDetails.monthly_plan | number : '1.2-2' }}</div> -->
+                </div>
+                <div class="is-text-bold item-bot8 plan-p-b-0" *ngIf="item.selectedProduct?.selected_pass_details && planData.sub_pass_details">Pass</div>
+                <div class="gold-cart-grid-content item-bot16 pass-line-height" *ngIf= "item.selectedProduct?.selected_pass_details && planData.sub_pass_details">
+                  <div class="gold-cart-grid-left is-text-bold moon_plan">{{planData.sub_pass_details.name}}</div>
+                  <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{planData.sub_pass_details.monthly_plan | number : '1.2-2' }}</div> -->
+                </div>
+            </div>
+            <div class="gold-cart-content-inner">
+              <div class="item-bot16" *ngIf="item.selectedProduct.orderNumberType == 'SwitchToCelcom' && item.selectedProduct.orderPhoneNo && !isEsim && !isFamilyLine">
+                New Line (Principal): <br><span class="is-text-bold ">{{item.selectedProduct.orderPhoneNo}}</span>
+              </div>
+              <div class="item-bot16" *ngIf="item.selectedProduct.orderNumberType == 'KeepNumber' && item.selectedProduct.orderPhoneNo && !isEsim && !isFamilyLine">
+                Upgrade Plan/Change Pass <br><span class="is-text-bold ">{{item.selectedProduct.orderPhoneNo}}</span>
+              </div>
+              <div class="item-bot16 monthly-charges" *ngIf="item.selectedProduct.orderNumberType != 'SwitchToCelcom' && item.selectedProduct.orderNumberType != 'KeepNumber' && item.selectedProduct.orderPhoneNo && suppData && (suppData.length == 0) && isGoldenNumberSelected == 0 && !isEsim && !isFamilyLine">
+                New Line (Principal): <br><span class="is-text-bold ">{{ item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <div class="item-bot16" *ngIf="item.selectedProduct.orderNumberType != 'SwitchToCelcom' && item.selectedProduct.orderNumberType != 'KeepNumber' && item.selectedProduct.orderPhoneNo && suppData && (suppData.length > 0) && isGoldenNumberSelected == 0 && !isEsim && !isFamilyLine">
+                New Line (Principal): <br><span class="is-text-bold ">{{ item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+
+              <!-- * Family Line Principle Number # start -->
+              <div class="item-bot16" *ngIf="isFamilyLine">
+                Principal Line: <br><span class="is-text-bold ">{{ item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <!-- * Family Line Principle Number # end -->
+
+              <div class="item-bot16" *ngIf="item.selectedProduct.orderNumberType != 'SwitchToCelcom' && item.selectedProduct.orderNumberType != 'KeepNumber' && item.selectedProduct.orderPhoneNo && suppData && (suppData.length == 0) && isGoldenNumberSelected == 1 && !isEsim && !isFamilyLine">
+                <div>New Line (Principal): </div>
+              <div class="golden-number-content">VIP</div>
+              <div><span class="is-text-bold new_line">{{ item.selectedProduct.orderPhoneNo }}</span></div>
+              </div>
+              <div class="monthly-charges item-bot16 monthly-charges-desktop-display" *ngIf="item.selectedProduct.orderMonthlyPay && !isEsim && !isFamilyLine">
+                Monthly Charges: <span class="is-text-bold">RM{{ (item.selectedProduct.orderMonthlyPayTotal ?
+                  (item.selectedProduct.orderMonthlyPayTotal) : 0.00) | number : '1.2-2'}}</span>
+              </div>
+              <div class="monthly-charges item-bot16 monthly-charges-desktop-display" *ngIf="item.selectedProduct.orderMonthlyPay && !isEsim && !isFamilyLine && !!lifeStyleVoucherDetails">
+                {{ lifeStyleVoucherDetails?.lifestyle_contract_label}} <span class="is-text-bold"> {{ lifeStyleVoucherDetails?.lifestyle_contract}} months contract </span>
+              </div>
+              <div
+                *ngIf="TYcart?.is_star_internet_share === '1' && !!TYcart?.internet_share"
+                class="item-bot16"
+              >
+                <div class="is-text-bold " [innerHTML]="TYcart?.internet_share?.label | safeHtml"></div>
+                <div class="new_line">RM{{ (TYcart?.internet_share?.monthly_price || 0) | number : '1.2-2'}}</div>
+              </div>
+            </div>
+            <div *ngIf="!!lifeStyleVoucherDetails" class="gold-cart-grid-content-upfront item-bot16">
+              <div class="gold-cart-grid-left up-front-payment to-be-rebate-display">Upfront Payment
+                <span class=" to-be-rebate new-line is-text-bold"> Plan + Lifestyle Voucher</span>
+                <span class="to-be-rebate new-line">(To be rebated in next 10 months' bill)</span>
+              </div>
+              <div class="gold-cart-grid-right upfront-payment-price">
+                RM{{ (lifeStyleVoucherDetails.lifestyle_upfront ? lifeStyleVoucherDetails.lifestyle_upfront : 0.00) | number : '1.2-2'}}
+              </div>
+            </div>
+              <div class="item-bot16" *ngIf="item.deviceUpfrontPenalty">
+                <div class="shop-cart-grid-left up-front-payment payment-bundle">{{ orderDetails?.lifestyle_penalty ? 'Processing Fee' : 'Device Penalty' }}
+                </div>
+                <div class="shop-cart-grid-right payment-bundle-price">RM{{ (item.deviceUpfrontPenalty ? item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+              </div>
+              <div *ngIf="item.selectedProduct.orderOneTimePay && item.selectedProduct.orderNumberType != 'KeepNumber' && item.selectedProduct.orderNumberType != 'SwitchToCelcom' &&  !item.selectedProduct.orderDeviceName && !isEsim && !isFamilyLine && !lifeStyleVoucherDetails"
+                class="gold-cart-grid-content-upfront item-bot16">
+                <div class="gold-cart-grid-left up-front-payment to-be-rebate-display">Upfront Payment
+                  <span class="to-be-rebate new-line" *ngIf="!isUpfrontInstallment">(To be rebated in first bill)</span>
+                  <span class="to-be-rebate new-line" *ngIf="isUpfrontInstallment">(To be rebated over {{upfrontInstallment}} months)</span>
+                </div>
+                <div class="gold-cart-grid-right upfront-payment-price">RM{{ (item.selectedProduct.orderMonthlyPayTotal && !isLegacyPlan(item) ?
+                  (item.selectedProduct.orderMonthlyPayTotal) : 0.00) | number : '1.2-2'}}</div>
+              </div>
+              <div class="gold-cart-content-inner" *ngIf="campaignMviva && campaignMvivaMessage && !item.selectedProduct.orderDeviceName">
+                <div class="item-bot16">{{ campaignMvivaMessage }}</div>
+              </div>
+              <div *ngIf="item.selectedProduct.orderOneTimePay && item.selectedProduct.orderNumberType == 'KeepNumber' && !item.selectedProduct.orderDeviceName && !isEsim"
+                class="gold-cart-grid-content item-bot16">
+                <div class="gold-cart-grid-left up-front-payment">Upfront Payment
+                  <span class="to-be-rebate new-line" *ngIf="!isUpfrontInstallment">(To be rebated in first bill)</span>
+                  <span class="to-be-rebate new-line" *ngIf="isUpfrontInstallment">(To be rebated over {{upfrontInstallment}} months)</span>
+                </div>
+                <div class="gold-cart-grid-right" *ngIf="!campaignOmni || campaignOmni?.upfront_payment">RM{{ (item.price ? (item.price) : 0.00) | number : '1.2-2'}}</div>
+              </div>
+              <div *ngIf="campaignOmni?.rebate_frequency">
+                <div class="shop-cart-grid-left up-front-payment">
+                  Rebate <span class="text-danger">-RM{{ (campaignOmni.rebate_amount || 0) |  number : '1.2-2' }}</span> &times; {{ campaignOmni.rebate_frequency }} months
+                  <span class="to-be-rebate new-line"> (To be deducted in the next bill)</span>
+                </div>
+              </div>
+              <div class="shop-cart-grid-content monthly-charges device-bundle" *ngIf="isEsim">
+                  eSIM Charges: <span class="is-text-bold"> RM{{
+                      RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                      item.selectedProduct.orderMonthlyPayTotal :
+                      0.00) | number : '1.2-2'}}</span>
+              </div>
+              <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+              <div class="shop-cart-grid-content item-bot16 item-top16" *ngIf=" isEsim">
+                New Line (Principal): <br><span class="is-text-bold new_line">{{
+                      item.selectedProduct.orderPhoneNo }}</span>
+              </div>
+              <div class="shop-cart-grid-content item-bot8" *ngIf="isEsim">
+                  Type of SIM: <div class="is-text-bold item-top3">{{ simType }} to eSIM</div>
+              </div>
+              <!-- mnp code start -->
+              <div *ngIf="item.selectedProduct.orderNumberType == 'SwitchToCelcom'" class="mnp-subscription-charges">Subscription
+                charges will be added in your first billing cycle</div>
+              <div *ngIf="item.selectedProduct.orderNumberType == 'SwitchToCelcom'" class="mnp-cart-grid-content item-bot16">
+                <div class="gold-cart-grid-left mnp-sim-left">*Free SIM card delivery</div>
+                <div class="gold-cart-grid-right mnp-sim-right">RM0.00</div>
+              </div>
+              <div *ngIf = "hasAutobilling && !IsDeviceOnly()"><span class="is-font-bold new_line bottom-gap">Mandatory Autobilling</span></div>
+              <div *ngIf="addOn && addOnLabel">
+                <div class="shop-cart-grid-left up-front-payment add-ons-msg">{{addOnLabel}}</div>
+              </div>
+              <div class="shop-cart-grid-content item-bot16 campaign_mviva" *ngIf="telcoDay && telcoDayMessage && !item.selectedProduct.orderDeviceName">
+                <div class="shop-cart-grid-left campaign_mviva_message">{{ telcoDayMessage }}</div>
+              </div>
+              <!-- mnp code end -->
+            </div>
+          </div>
+          <div *ngIf="suppData.length > 0">
+            <div *ngFor="let item of suppData, let i=index">
+              <div class="u-grid-row has-border-top">
+                <!-- <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                  <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                </div> -->
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer supply-box-p-0">
+                  <div class="supplementary-lines supply-padding-top">
+                    <div class="summary-grid-content item-bot16 payment-supply-cont-text">
+                      <div class="new-number"><span class="new-supple-line">Supplementary line {{i+1}}: <b>{{item.number}}</b></span></div>
+                    </div>
+                    <div class="summary-grid-content item-bot16 payment-supply-cont-text">
+                      <div class="new-number ">Monthly Charges: <b class="monthly-charges-supply">RM{{(item.price ? (item.price) :
+                          0.00) | number : '1.2-2'}}</b></div>
+                    </div>
+                    <div class="summary-grid-content item-bot16 payment-supply-cont-text" *ngIf="!isFamilyLine">
+                      <div class="new-number">{{item.name}}</div>
+                    </div>
+                    <div class="summary-grid-content item-bot16 payment-supply-cont-text">
+                      <div class="new-number">Upfront Payment
+                        <span class="to-be-rebate new-line monthly-charges-supply" *ngIf="!isUpfrontInstallment">(To be rebated in first bill)</span>
+                        <span class="to-be-rebate new-line" *ngIf="isUpfrontInstallment">(To be rebated over {{upfrontInstallment}} months)</span>
+                        <ng-container *ngIf="isMnp || familyLineNoUpfront; else showTotalUpfont">
+                          <span class="new-supple-right upfront-payment-price upfront-price-p-0">RM0.00</span>
+                        </ng-container>
+                        <ng-template #showTotalUpfont>
+                          <span class="new-supple-right upfront-payment-price upfront-price-p-0">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                        </ng-template>
+                      </div>
+                    </div>
+                    <div class="summary-grid-content item-bot16 payment-supply-cont-text" *ngIf="supplementaryDataLabel">
+                      <div class="new-number" [innerHTML]="supplementaryDataLabel | safeHtml"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <section class="u-section checkout-total-cost" *ngIf="cart && cart.items && cart.items.length > 0">
+            <div class="section__inner">
+                <div class="shopping_total__list">
+                  <div class="u-grid-row is-collapsed is-equal-height thank-u-total-bold">
+
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total__cost">Total</div>
+
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                      <div class="total__cost_value">RM{{ (cart.itemsTotal ? cart.itemsTotal : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <ng-container *ngIf="(!isCobp || isDeviceBundle()) && checkoutData">
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost">Delivery Charges</div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost_value">RM{{ (delivery_type_selected?.charges || 0.00) | number : '1.2-2' }}</div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <ng-container *ngFor="let tax of taxs">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                      <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container>
+                  <div class="u-grid-row is-collapsed is-equal-height" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst">Voucher Code</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                      <div class="total_gst_value">-RM{{ cart.rebateAmount | number : '1.2-2'}}</div>
+                    </div>
+                  </div>
+                </ng-container>
+                  <!-- <div class="u-grid-row is-collapsed is-equal-height">
+
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                      <div class="total_gst">Rounding Adjustment</div>
+
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+                      <div class="total_gst_value">RM{{ cart.roundOffAdjustment | number : '1.2-2'}}</div>
+
+                    </div>
+                  </div> -->
+                </div>
+                <div class="shopping_total__list grand-bg">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                    <div class="grand__total">
+                      Total Payment Made
+                      </div>
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+                    <div class="grand__total_value">RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- <div class="u-grid-row device_sub_total">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+              <div class="gold-cart-grid-content-total">
+                <div class="gold-cart-grid-left is-text-bold">Total</div>
+                <div class="gold-cart-grid-right is-text-bold" *ngIf = "cart">RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number : '1.2-2'}}*
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="section__content gold-cart-background is-container prepaid" *ngIf="isPrepaid">
+          <div class="u-grid-row gold-cart-padding">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer shop-cart-grid-content">
+              <div class="is-text-bold item-bot8">Plan</div>
+              <div class="gold-cart-grid-content-upfront item-bot16">
+                <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.orderPlanName}}</div>
+                <div class="gold-cart-grid-right float-none-text-center">
+                  RM{{ (mnpFlow ? 0 : item.selectedProduct.orderMonthlyPay) | number : '1.2-2' }}
+                </div>
+              </div>
+              <!-- Dynamic sim changes starts -->
+              <ng-container *ngIf="item?.selectedProduct?.internet_pass_details">
+                <div class="is-text-bold item-bot8">Internet Pass</div>
+                <div class="gold-cart-grid-content-upfront item-bot16">
+                  <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.internet_pass_details.name}}</div>
+                  <div class="gold-cart-grid-right float-none-text-center">RM{{ item.selectedProduct.internet_pass_details.monthly_plan | number : '1.2-2'}}</div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="item?.selectedProduct?.credit_reload_details">
+                <div class="is-text-bold item-bot8">Reload</div>
+                <div class="gold-cart-grid-content-upfront item-bot16">
+                  <div class="gold-cart-grid-left up-front-payment">Credit Reload {{item.selectedProduct.credit_reload_details.name}}</div>
+                  <div class="gold-cart-grid-right float-none-text-center">RM{{ item.selectedProduct.credit_reload_details.monthly_plan | number : '1.2-2'}}</div>
+                </div>
+              </ng-container>
+              <!-- Dynamic sim changes end -->
+              <div class="is-text-bold item-bot8">New Number</div>
+              <div class="gold-cart-grid-content-upfront item-bot16">
+                <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.orderPhoneNo}}</div>
+              </div>
+            </div>
+          </div>
+          <section class="u-section checkout-total-cost">
+            <div class="section__inner">
+                <div class="shopping_total__list">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total__cost">Sub Total</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total__cost_value">RM{{ (cart.itemsTotal ? cart.itemsTotal : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <!-- display delivery charge for prepaid pack -->
+                    <div 
+                      *ngIf="isPrepaid || isPrepaidPack"
+                      style="width: 100%; margin-top: 10px;"
+                    >
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost">Delivery Charges</div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost_value">RM{{ (delivery_type_selected?.charges || 0.00) | number : '1.2-2' }}</div>
+                      </div>
+                    </div><!-- /.delivery charge for prepaid pack -->
+
+                  </div>
+
+                  <ng-container *ngFor="let tax of taxs">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                  </div>
+                </ng-container>
+                <ng-container>
+                  <div class="u-grid-row is-collapsed is-equal-height" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst">Voucher Code</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                      <div class="total_gst_value">-RM{{ cart.rebateAmount | number : '1.2-2'}}</div>
+                    </div>
+                  </div>
+                </ng-container>
+                </div>
+                <div class="shopping_total__list grand-bg">
+                  <div class="u-grid-row is-collapsed is-equal-height">
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                    <div class="grand__total">
+                      Total Paid
+                      </div>
+                  </div>
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                    <div class="grand__total_value">RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="u-section view-order-payment-total">
+      <div class="section__inner">
+        <div class="section__content is-container">
+          <div class="shopping_total">Payment Summary</div>
+          <div class="shopping_total__list">
+            <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                <div class="total__cost">Total</div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="userInfo != 'null' || GuestInfo != 'null'">
+                <div class="total__cost_value">RM{{(cart.itemsTotal ? cart.itemsTotal : 0.00) | number : '1.2-2'}}</div>
+              </div>
+            </div>
+            <ng-container *ngFor="let tax of taxs">
+              <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                  <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+                </div>
+                <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="userInfo != 'null' || GuestInfo != 'null'">
+                  <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+              <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+
+                <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+                  <div class="total_gst">Rebate</div>
+
+                </div>
+                <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+                  <div class="total_gst_value">-RM{{ cart.rebateAmount | number : '1.2-2'}}</div>
+
+                </div>
+              </div>
+            </ng-container>
+            <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                <div class="total_gst">Rounding Adjustment</div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="userInfo != 'null' || GuestInfo != 'null'">
+                <div class="total_gst_value">RM{{ cart.roundOffAdjustment | number : '1.2-2'}}</div>
+              </div>
+            </div>
+            <div class="u-grid-row is-collapsed is-equal-height">
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                <div class="grand__total">Grand Total</div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="userInfo != 'null' || GuestInfo != 'null'">
+                <div class="grand__total_value">RM{{ (cart.grossTotal? RoundingOff2Number(cart.grossTotal) : 0.00) |
+                  number : '1.2-2'}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section id="note" class="u-section tabcontent active" *ngIf="!isPrepaid">
+      <div class="section__inner">
+        <div class="section__content is-container">
+            <!-- <div *ngIf="isNewbie && newbieMessage" class="section__content shop-newbie-background is-container">
+                <img class="newbie-image" src="../../../../assets/img/icon/voucher-gift.svg">
+                <div class="newbie-text">{{ newbieMessage }}</div>
+            </div> -->
+          <div class="note__content checkout-note">
+            <div class="note__content__inner checkout-note-inner">NOTE:</div>
+            <ul class="note__details checkout-note-details">
+              <li class="note__details__description" *ngIf ="isMnp === false && isCobp === false">
+                For Switch to Celcom purchase, please call Celcom Customer Service at 1111 to activate your SIM card within 24 hours.
+              </li>
+              <li class="note__details__description">For new customers, a new 3in1 SIM card will be delivered to you.</li>
+              <li class="note__details__description">For existing Celcom subscribers who are using an old SIM type,
+                 Celcom will provide a new 3in1 SIM together with your purchase.</li>
+              <li class="note__details__description">For eSIM replacement, your existing physical SIM/ eSIM will be deactivated immediately upon successful submission.</li>
+              <li class="note__details__description">For eSIM replacement, please make sure you have an active WiFi/hotspot connection upon scanning your new eSIM QR code.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <ng-container *ngIf="isPrepaid">
+    <section id="note" class="u-section tabcontent active">
+      <div class="section__inner">
+        <div class="section__content is-container">
+          <div class="note__content checkout-note">
+            <div class="note__content__inner checkout-note-inner">NOTE:</div>
+            <ul class="note__details checkout-note-details">
+              <li class="note__details__description">Only users 12 years old and above are eligible for this purchase</li>
+              <li class="note__details__description">Each user may only register up to 5 prepaid numbers</li>
+              <li class="note__details__description">Once the starter pack is successfully delivered, user will need to perform self-registration via Celcom Life</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="note" class="u-section tabcontent active">
+      <div class="section__inner bg-youtube">
+        <div class="section__content is-container">
+          <p class="registration-text">How to Self-Register via Celcom Life App</p>
+          <iframe
+            class="youtube"
+            width="723"
+            height="407"
+            src="https://www.youtube.com/embed/D72yZghyQvY"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+  </section>
+
+  <app-error-page *ngIf="redirectBackToCart"></app-error-page>
+
+  <!-- Error in order -->
+  <section class="u-section background-image-login" *ngIf="((orderCreateFailure || (paymentData && (paymentData.returnCode !== '1' || !paymentData.orderStatus)) || redirectToCart))&& !redirectBackToCart">
+    <div class="section__inner">
+      <div class="section__content">
+        <div class="">
+          <picture class="c-picture--slider is-full-width-image" data-css="c-picture">
+            <img class="dispMob" src="../assets/img/Drop_3/lineart-mob.jpg" media="(max-width: 767px)">
+            <img class="dispDesk" src="../assets/img/Drop_3/lineart.jpg" media="(min-width: 768px)">
+            <!--<img class="picture__image" src="../assets/img/Drop_3/lineart.png" alt="Banner">-->
+          </picture>
+          <div class="hero-banner__container is-vertical-center is-mobile-absolute-top -uh-oh-3-top">
+            <div class="hero-banner__content is-container">
+              <div class="u-grid-row is-collapsed">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-col-desktop-l-6">
+                  <div class="hero-banner__item">
+                    <div class="-uh-oh-3-main">
+                      <div class="-uh-oh-3" *ngIf="orderCreateFailure && !MagentoOrderDetailsError">Uh-Oh. Your order
+                        was unsuccessful.</div>
+                      <p class="Error-Page-not-foun" *ngIf="orderCreateFailure && !MagentoOrderDetailsError">Please
+                        call our customer service at 1111 for further assistance.</p>
+                      <p class="Payment-Reference-ID" *ngIf="orderCreateFailure && !MagentoOrderDetailsError && paymentData.referId!==null">Payment
+                        Reference ID: {{ paymentData.referId }}</p>
+                      <div class="-uh-oh-3" *ngIf="!orderCreateFailure  && !MagentoOrderDetailsError">Uh-Oh. Your
+                        payment was unsuccessful.</div>
+                      <p class="Error-Page-not-foun" *ngIf="!orderCreateFailure && !MagentoOrderDetailsError">There was
+                        a problem processing your transaction. Please try again later.</p>
+                      <div class="-uh-oh-3" *ngIf="orderCreateFailure && MagentoOrderDetailsError">Uh-Oh. Be right
+                        back, maintenance is in progress.</div>
+                      <p class="Error-Page-not-foun" *ngIf="orderCreateFailure && MagentoOrderDetailsError">Sorry for
+                        the inconvenience, we're giving our system a little update. Please try again later.</p>
+                      <div class="-uh-oh-3-Rectangle-3">
+                        <a class="c-cta--default login-default-button -uh-oh-3-button " href="/" data-css="c-cta">
+                          <span class="cta__content">Back to Home</span>
+                          <span class="cta__icon icon is-icon-arrow"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Error in order -->
+</div>
+
+<app-notification-error *ngIf="sessionInvalid" [IsSessionInValid]="sessionInvalid"></app-notification-error>
+<app-notification-error *ngIf="cancelPayment" [data]="cancelPaymentData"></app-notification-error>
+
+<app-claw-gamification
+  *ngIf="showGamification"
+  [payload] = "gamificationPayload"
+></app-claw-gamification>
+<app-tnps-popup [autoShow]="false" [data]="tnpsData" #tnpsPopup></app-tnps-popup>

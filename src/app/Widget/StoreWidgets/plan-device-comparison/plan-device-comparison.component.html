@@ -1,0 +1,141 @@
+<section class="u-section device-compare-padding">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="u-grid-row is-collapsed is-equal-height device-container" >
+        <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 is-equal-height is-justify-content-left device-compare" *ngFor="let item of productListDetails" >
+          <div class="plan-comparison__list__item accordian__content full__view">
+            <div class="plan-comparison__list__item__header__level-name">
+              <a (click) = "removeCompareProduct(item.items.basic_details)"  class="plan-comparison__list__item__header__iconimg__right cross__image"><img src="../assets/img/store/shopcart-remove.svg"></a>
+            </div>
+            <div class="plan-comparison__list__item__header__level-name Rectangle-11">
+              <img class="compare__samsung__img Bitmap" src = "{{item.items.basic_details.main_image}}"/>
+            </div>
+            <div class="plan-comparison__list__item__header__level-name">
+              <h4 class="plan-comparison__list__item__headeing__nameh4 Samsung-Galaxy-S8">{{ item.items.basic_details.name }}</h4>
+            </div>
+            <div class="plan-comparision-subcontent">
+              <ul class="listing_type_text compare__padding">
+                <li class="listing__type__text__details compare__none">
+                  <span class="">
+                    <span class="boldtext">RM{{ item.devicePrice | number : '1.2-2' }}</span></span>
+                </li>
+                <li class="compare__none">
+                  	<span class="plan-comparison__list__item__content__detail__description" [innerHtml]="item.items.basic_details.default_plan"></span>
+                </li>
+              </ul>
+            </div>
+            <div class="compare__btn__center">
+              <a class="c-cta--default compare__btn__center comp_add_to_cart" data-css="c-cta" (click)="addDeviceToCart(item)" href="/device-detail/{{ item.items.basic_details.sku }}">
+                Buy now
+                <i class="cta__icon icon is-icon-arrow"></i>
+              </a>
+            </div>
+            <!--<div class="align_button compare__btn__center">
+              <a class="link" href="/device-detail/{{ item.items.basic_details.sku }}">View More
+                <i class="icon is-icon-arrow"></i>
+              </a>
+            </div>-->
+          </div>
+        </div>
+               <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 is-equal-height is-justify-content-left" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">
+          <div class="plan-comparison__list__item accordian__content full__view">
+            <div class="plan-comparison__list__item__header__level-name compare__btn__center">
+                <a class="link" href="/store/devices">
+                  <img class="compare__plus__icon" src="../assets/img/store/icon/add_to_compare.svg">
+                  </a>
+            </div>
+            <div class="plan-comparison__list__item__header__level-name">
+              <h4 class="plan-comparison__list__item__headeing__nameh4 Add-More-Mobile">Add another item</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-section compare-details-padding">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <div class="compare__description">
+        <div class="compare__description__header">RRP</div>
+          <div class="u-grid-row">
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{(item.items.basic_details.rrp_rm_strick_price ? item.items.basic_details.rrp_rm_strick_price : 0) | number : '1.2-2'}}</div>
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">OS Version</div>
+        <div class="u-grid-row">
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.more_details.specification.operating_system}}</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+        </div>
+        <div class="compare__description__header">Available Colour</div>
+        <div class="u-grid-row">
+          <div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">
+            <p *ngFor="let color of item.colorList"  class="Available__Color__forphone_HexValue" [style.background]= "color">   
+            </p>
+        </div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+        </div>  
+        </div>
+        
+        <div class="compare__description__header">Dimension</div>
+        <div class="u-grid-row">
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.dimension}}</div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+        </div>
+        <div class="compare__description__header">Weight</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{(item.items.basic_details.weight ? item.items.basic_details.weight : 0.00) | number : '1.2-2'}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">Storage</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">
+              <div class="storage__details__description" *ngFor="let storage of item.storageList;">{{storage}}</div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">Screen Size</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.more_details.specification.screen_size}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+           </div>
+        <div class="compare__description__header">Camera</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.more_details.specification.camera}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+           </div>
+           <div class="compare__description__header">NFC</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.nfcToShow}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+           </div>
+        <div class="compare__description__header">Processor</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.chip_processor}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">Splash water dust resistant</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.splash_water_dust_resistant}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">Talktime</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.talk_time}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+           </div>
+        <div class="compare__description__header">Standby time</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.standby_time}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+        <div class="compare__description__header">Sim Type</div>
+        <div class="u-grid-row">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngFor="let item of productListDetails">{{item.items.basic_details.sim_type}}</div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-4 compare__description__content" *ngIf="this.productList && this.productList.noOfProds && (this.productList.noOfProds.length < this.maxDeviceNumber)">-</div>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>

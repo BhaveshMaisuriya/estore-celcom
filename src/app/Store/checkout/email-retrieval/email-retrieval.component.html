@@ -1,0 +1,94 @@
+<div class="emailMethodContainer">
+  <div class="emailMethodSubContainer">
+    <form #formEmail="ngForm">
+      <div class="email-retrieve-header">The following information is missing. Please update to proceed.</div>
+      <div class="u-grid-row is-collapsed is-equal-height" *ngIf='salutationRetrieval'>
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height is-container-margin-left">
+          <div class="choose_form_group">
+            <label>Salutation
+              <span class="new-add_require">*</span>
+            </label>
+          </div>
+          <div class="choose_form_group">
+            <select class="choose_form_control" id="salutation" name="salutation" ngModel required #salutation="ngModel"
+              [ngClass]="{'errorborder':!salutation.valid && salutation.touched}" [(ngModel)]="enterSaluation" (change)='selectSalutation(salutation)' (blur)="selectSalutation(salutation)">
+              <option disabled="" selected="" value="">Choose salutation</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Miss">Miss</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Dr.">Dr.</option>
+            </select>
+          </div>
+          <div class="error" *ngIf="(!salutation.valid && salutation.touched)">
+              <span class="warning-icon chooseAddress-error-align">
+                  <img src="../assets/img/ThresholdAlertNotification.svg">
+              </span>
+            <span class="text-danger">{{errorMessage.salutationMissing}}</span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="u-grid-row is-collapsed is-equal-height" *ngIf='emailRetrieval'>
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height is-container-margin-left">
+          <div class="choose_form_group">
+            <label>Email Address
+              <span class="new-add_require">*</span>
+            </label>
+          </div>
+          <div class="choose_form_group">
+            <input class="choose_form_control" maxlength="50" type="text" placeholder="Email Address" id="contactEmail" name="contactEmail" [(ngModel)]="enterEmail"
+              ngModel required #contactEmail="ngModel" (keyup)="emailMatchCheck($event)" (touchend)="emailMatchCheck($event)" (blur)="emailMatchCheck($event)"
+              [ngClass]="{'errorborder':!contactEmail.valid && contactEmail.touched}" />
+          </div>
+          <!-- <div class="error" *ngIf="!contactEmail.valid && contactEmail.touched">
+            <span class="text-danger" [hidden]="!contactEmail.hasError('required')">Please enter email address </span>
+            <span class="text-danger" [hidden]="!contactEmail.hasError('pattern')">Please enter a valid email address</span>
+            <span class="warning-icon">
+              <img src="../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div> -->
+          <div class="error" *ngIf="invalidEmail">
+              <span class="warning-icon chooseAddress-error-align">
+                  <img src="../assets/img/ThresholdAlertNotification.svg">
+                </span>
+            <span class="text-danger">{{errorMessageDisplay}} </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height is-right-container-margin is-mobile-container">
+          <div class="choose_form_group">
+            <label>Re-enter Email Address
+              <span class="new-add_require">*</span>
+            </label>
+          </div>
+          <div class="choose_form_group">
+            <input class="choose_form_control" maxlength="50" type="text" onselectstart="return false" onpaste="return false;" onCopy="return false"
+              onCut="return false" autocomplete=off (keyup)="reEnterEmailMatchCheck($event)" (touchend)="reEnterEmailMatchCheck($event)" (blur)="reEnterEmailMatchCheck($event)" (drop)="onDrop($event)"
+              placeholder="Re-enter Email Address" id="reEntercontactEmail" name="reEntercontactEmail" [(ngModel)]="confirmEmail"
+              ngModel required #reEntercontactEmail="ngModel" [ngClass]="{'errorborder':!reEntercontactEmail.valid && reEntercontactEmail.touched}" />
+          </div>
+          <!-- <div class="error" *ngIf="(!reEntercontactEmail.valid && reEntercontactEmail.touched) && !showMisMatchEmail">
+            <span class="text-danger" *ngIf="reEntercontactEmail.hasError('required') && !showMisMatchEmail">Please
+              reenter email address </span>
+            <span class="text-danger" *ngIf="reEntercontactEmail.hasError('pattern') && !showMisMatchEmail">Please
+              reenter a valid email address</span>
+            <span class="text-danger" *ngIf='showMisMatchEmail'>Email and confirm Email do not match</span>
+            <span class="warning-icon">
+              <img src="../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <div class="clearfix"></div>
+          </div> -->
+          <div class="error" *ngIf="invalidConfirmEmail">
+            <span class="warning-icon chooseAddress-error-align">
+                  <img src="../assets/img/ThresholdAlertNotification.svg">
+            </span>
+            <span class="text-danger">{{errorConfirmMessageDisplay}} </span>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

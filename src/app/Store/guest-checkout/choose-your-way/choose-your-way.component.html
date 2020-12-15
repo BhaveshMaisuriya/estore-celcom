@@ -1,0 +1,29 @@
+<div id="guest-choose-way" class="guest-choose-model">
+	<div class="guest-modal-content">
+		<section class="u-section" id="more_details">
+			<div class="section__inner">
+				<div class="section__content">
+					<div class="guest-dtl-features-box">
+						<a (click)="guestCloseModal()">
+							<img class="shop-cart-close" src="../assets/img/Drop_3/icon/remove.svg">
+						</a>
+						<div class="guest-features-box-dtls">
+							<h3 class="Choose-your-way-in">Login</h3>
+							<p class="What-would-you-like">Are you an existing Celcom customer? </p>
+							<div class="guest-connect-login-now">
+								<button class="c-cta--default yes-default-button" data-css="c-cta" (click)="redirectLogin('guest')">
+									<span class="cta__content">No, register now</span>
+								</button>
+							</div>
+							<div class="guest-connect-login-now">
+								<button class="c-cta--default no-default-button" data-css="c-cta" (click)="redirectLogin()">
+									<span class="cta__content">Yes, proceed login</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

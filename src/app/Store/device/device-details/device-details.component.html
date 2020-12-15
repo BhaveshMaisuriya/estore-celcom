@@ -1,0 +1,165 @@
+<!-- <app-breadcrumb-component *ngIf="isCSAgentDealer === notCSAgent" [data]='breadcrumbResponse'></app-breadcrumb-component> -->
+<div class="footer_fix" [hidden]="!loading">
+<app-page-loader></app-page-loader>
+</div>
+<section class="u-section odd" id="section_1" [hidden]="loading" *ngIf="DeviceDetailsResponse!=null">
+  <div class="section__content is-container">
+    <div class="details__choose_number">
+      <div class="details__choose_content">
+        <div class="section_index_container"><span class="section_index">1</span></div>
+        <div class="details__choose_content_header">Select Device Specification</div>
+      </div>
+    </div>
+  </div>
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="o-hero-banner o-hero-device">
+        <div class="u-grid-row is-collapsed is-equal-height">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 device_details_grid">
+            <ng-container *ngIf="IsInitializeSlider">
+              <app-device-slider-component [data]="SliderImageList"></app-device-slider-component>
+            </ng-container>
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-tablet-value device_details_grid">
+            <div class="is-padding-2 details__mobile_center">
+              <!--<h1 class="detail_samsung_galaxy is-desktop-hidden">{{DeviceDetailsResponse.name }}</h1>-->
+              <!-- pre order tag and estimation delivery tag start-->
+              <div *ngIf="DeviceDetailsResponse.preorder">
+                <div [innerHtml]="DeviceDetailsResponse.pre_order_data.preorder_hat| safeHtml"></div>
+              </div>
+              <div class="campaign-container" *ngIf="isMviva && editDeviceObj && editDeviceObj.mvivaBannerDesktop && editDeviceObj.mvivaBannerMobile">
+                <div class="desktop" [innerHtml]="editDeviceObj.mvivaBannerDesktop | safeHtml"></div>
+                <div class="mobile" [innerHtml]="editDeviceObj.mvivaBannerMobile | safeHtml"></div>
+              </div>
+              <div class="mviva-margin" *ngIf="isMviva && DeviceDetailsResponse.stock_indicator_text && DeviceDetailsResponse.stock_indicator_text.length > 0">
+
+              </div>
+                  <div class="new_stock_details"
+                    *ngIf="DeviceDetailsResponse.stock_indicator_text &&
+                     DeviceDetailsResponse.stock_indicator_text.length > 0 && !isMviva &&
+                     agentType !== 'dealer'"
+                  >
+                    <div class="new_stock_details_icon">
+                  <img class="new_stock_details_img" src="{{DeviceDetailsResponse.stock_indicator_image}}">
+                </div>
+                <div class="new_stock_details_text" [innerHtml]="DeviceDetailsResponse.stock_indicator_text | safeHtml">
+                </div>
+              </div>
+              <!-- pre order tag and estmation delivery tag end-->
+              <h1 class="detail_samsung_galaxy">{{DeviceDetailsResponse.name}}</h1>
+              <div class="details-plan">
+                <div class="details-plan__content">
+                  <ul class="plan__content__wrapper">
+                    <li class="plan__content-detail" *ngIf = "isProjectStar !== true">From
+                      <span *ngIf="!isEasyPhone && !buyNoPlan" class="plan__content-detail__description">RM{{ (deviceOnlyPriceForBundle ? deviceOnlyPriceForBundle : 0.00) | number : '1.2-2'}}</span>
+                      <span *ngIf="isEasyPhone && isRentClicked">
+                        <span class="plan__content-detail__description"> RM{{ (rentPrice ? (rentPrice) : 0.00) | number : '1.2-2' }} </span>/month with EasyPhone™ Rent
+                      </span>
+                      <span *ngIf="isEasyPhone && isOwnClicked">
+                        <span class="plan__content-detail__description"> RM{{ (ownPrice ? (ownPrice) : 0.00) | number : '1.2-2' }} </span>/month with EasyPhone™ Own
+                      </span>
+                      <span *ngIf="isEasyPhone && isBundleClicked && !buyNoPlan">
+                        <span class="plan__content-detail__description"> RM{{ (deviceOnlyPriceForBundle ? (deviceOnlyPriceForBundle) : 0.00) | number : '1.2-2' }} </span>with Device Bundle
+                      </span>
+                      <span *ngIf="isEasyPhone && buyNoPlan">
+                        <span class="plan__content-detail__description"> RM{{ (DeviceDetailsResponse.price ? (DeviceDetailsResponse.price) : 0.00) | number : '1.2-2' }} </span>
+                      </span>
+                      <span *ngIf="!isEasyPhone && buyNoPlan">
+                        <span class="plan__content-detail__description"> RM{{ (DeviceDetailsResponse.price ? (DeviceDetailsResponse.price) : 0.00) | number : '1.2-2' }} </span>
+                      </span>
+                    </li>
+                    <li *ngIf="!buyNoPlan && isProjectStar !== true" class="plan__content-detail" [ngClass]="{'is-easyPhone' : isEasyPhone}">RRP
+                      <span class="has-line-through">RM{{ (DeviceDetailsResponse.rrpPrice ? DeviceDetailsResponse.rrpPrice : 0.00) | number : '1.2-2'}}</span>
+                    </li>
+                    <!--Below pricing only for project star -->
+                    <li *ngIf="isProjectStar === true" class="plan__content-detail" [ngClass]="{'is-easyPhone' : isEasyPhone}">RRP
+                      <span >RM{{ (DeviceDetailsResponse.rrpPrice ? DeviceDetailsResponse.rrpPrice : 0.00) | number : '1.2-2'}}</span>
+                    </li>
+                  </ul>
+                  <!-- <div class="plan__delivary">Estimated Delivery : <span>{{DeviceDetailsResponse.estimated_delivery}}</span></div> -->
+                  <div class="checkout_pad">
+                    <div class="teaser__link checkout_link" *ngFor="let item of DeviceDetailsRelatedProducts">
+                      <a class="c-link--default device_detail_link_style" data-css="c-link" href="{{item.campaign_url ? item.campaign_url : '/device-detail/'+item.sku}}">
+                        <span class="link__icon icon is-icon-arrow device_detail_arrow-heading"></span>
+                        <span class="link__content device_detail_link">Check out {{item.name}}</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <app-devicedetails-color-storage-component (SelectedColor)="OnSelectedColor($event);" (SelectedStorage)="OnSelectedStorage($event);"
+                *ngIf="DeviceDetailsFullResponse" [data]="DeviceDetailsFullResponse" [selectedProd]="editDeviceObj" [SelectionAferLogin]="keepCelcomNumObj" (saleablePlanArrayToTransfer)='saleablePlanArrayToTransfer($event);'></app-devicedetails-color-storage-component>
+              <div class="limited_stock__container" *ngIf="stock" [ngClass]="{'outstock': stockStatus.status === 'Out of Stock'}">
+                <img class="Limited-Stock-Icon"  *ngIf="stockStatus.status === 2" src="../../../../assets/img/svg/icons-layout/icon-instock.svg">
+                <img class="Limited-Stock-Icon"  *ngIf="stockStatus.status === 3" src="../../../../assets/img/svg/icons-layout/icon-outofstock.svg">
+                <p class="Limited-Stock" [@stockCheck]="stockStatus.status">{{stockStatus.message}}</p>
+              </div>
+              <div class="teaser__link" id="moreDetailsD">
+                <a class="c-link--default reframe_anchor_arrow" data-css="c-link" (click)="MoreDetailsClick();">
+                  <span class="link__icon icon is-icon-arrow-down" [ngClass]="{'is-arrow-active':is_icon_active}"></span>
+                  <span class="link__content">More details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <device-details-more-details [@slideInOut]="IsInitializeMoreDetails" [data]="DeviceDetailsFullResponse"></device-details-more-details>
+      </div>
+    </div>
+  </div>
+</section>
+<app-device-flow  *ngIf='DeviceDetailsResponse' [data]="DeviceDetailsResponse" [isPromotion]="isLifestyle" [isEasyPhone]='DeviceDetailsResponse.isEasyPhoneDevice' [confirmDeviceFlow]='confirmDeviceFlow' [SelectionAferLogin]="keepCelcomNumObj" (cobpEligibilityData)="onCobpEligibilityData($event);"></app-device-flow>
+<!-- <device-details-terms-condition *ngIf="isInitializeTermsAndConditions" (CloseTermsAndConditionsPopup)="OnCloseTermsAndConditionsPopup($event);" [data]="DeviceDetailsFullResponse.terms_and_condition"></device-details-terms-condition>
+<device-details-more-details *ngIf="IsInitializeMoreDetails" (CloseMoreDetailsPopup)="OnCloseMoreDetails($event);" [data]="DeviceDetailsFullResponse"></device-details-more-details> -->
+<app-devicedetails-plans-section-component id="section_2" class="even" *ngIf="DeviceDetailsFullResponse && InitializePlanComponent" (cobpEligibilityData)="onCobpEligibilityData($event);"
+  (ReInitializeChooseNumberComponent)="onReInitializeChooseNumberComponent($event)" (supplimentaryDataToTransfer)='supplimentaryDataToTransfer($event)'
+  [cobpEligibility]="cobpEligibility" [eligiblePlanArray]="eligiblePlanArray" [isPromotion]="isLifestyle" [promotionPlan]="urlParamPlanSku"
+  [addOnData]="lifestyleAddOnData" [eligiblePlanOwnArray]="eligiblePlanOwnArray" [eligiblePlanRentArray]="eligiblePlanRentArray"
+  [data]="DeviceDetailsFullResponse" [selectedProd]="editDeviceObj" [SelectionAferLogin]="keepCelcomNumObj" (DeviceOnlyFlow)="DeviceOnlyFlow($event)"
+  (publishPrincipleLineClicked)='publishPrincipleLineClicked($event)'>
+</app-devicedetails-plans-section-component>
+<app-device-details-choose-number id="section_3" class="add" *ngIf="selectedPlan && isInitializeChooseNumber" (mnpEligibilityCheckPlanPurchase)="OnMnpEligibilityPlanPurchase($event);"
+  (cOBPEligibilityCheckBundle)="onCOBPEligibilityCheckBundle($event);" [isPromotion]="isLifestyle" [selectedProd]="editDeviceObj"
+  [data]="DeviceDetailsFullResponse"  [SelectionAferLogin]="keepCelcomNumObj" [data]="DeviceDetailsResponse" [typeOfPurchaseTabSelection]="typeOfPurchaseTabSelection"
+  [supplimentaryData]='supplimentaryData' [isPrincipleClicked]='principleNumber' [saleablePlanArray] = 'saleablePlanArray'>
+</app-device-details-choose-number>
+<app-devicedetails-summary-section-component id="section_4" class="even"
+  *ngIf="DeviceDetailsFullResponse"
+  [isPromotion]="isLifestyle"
+  [data]="DeviceDetailsFullResponse"
+  [selectedProd]="editDeviceObj"
+  [productToRemoveFromCart]="editProduct"
+  [isProjectStar]="isProjectStar"></app-devicedetails-summary-section-component>
+<app-sticky-summary
+  *ngIf="DeviceDetailsFullResponse"
+  [isProjectStar]="isProjectStar"
+  [data]="DeviceDetailsFullResponse"
+  [selectedProd]="editDeviceObj"
+  [SelectionAferLogin]="keepCelcomNumObj"
+  [productToRemoveFromCart]="editProduct"
+  [mnpCheckPlanPurchase]="mnpCheckPlanPurchase"></app-sticky-summary>
+<app-DetailBannerTextLeft style="width:100%" *ngIf="isInitializeDetailBannerLeft" [data]="dataForDetailBannerTextLeft"></app-DetailBannerTextLeft>
+<ng-container *ngIf="IsDisplayMvivaPopup">
+  <age-eligibility-popup-component
+    [EligibilityPopupType]="EligibilityPopupType"
+    (OnContinue)="OnContinueEligibilityCheck($event);">
+  </age-eligibility-popup-component>
+</ng-container>
+<footer-component *ngIf="isCSAgentDealer === notCSAgent"></footer-component>
+<!-- <app-agent-footer *ngIf="isCSAgentDealer === csAgent"></app-agent-footer> -->
+<!--lifestyle popup-->
+<ng-container *ngIf="isDisplayPromotionalLifeStyle">
+  <age-eligibility-popup-component
+    [DisplayPromotionalLifeStyle]="isDisplayPromotionalLifeStyle"
+    [promotionType]= "device"
+    (OnContinue)="onContinueDisplay($event)">
+  </age-eligibility-popup-component>
+</ng-container>
+<ng-container *ngIf="IsDisplayDealerPopup">
+    <age-eligibility-popup-component
+        [EligibilityPopupType]="DealerPopupType"
+        (OnContinue)="OnContinueDealerCheck($event);">
+    </age-eligibility-popup-component>
+</ng-container>
+
+<app-notification-error *ngIf="showPopup" [data]="popupData"></app-notification-error>

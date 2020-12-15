@@ -1,0 +1,31 @@
+<div class="banner-container" *ngIf="omni && omni?.campaign_title">
+  <div class="campaign-contents">
+    <div class="campaign-title" [innerHtml]="(omni.campaign_title || '') | safeHtml"></div>
+    <div class="campaign-description" [innerHtml]="(omni.campaign_desc || '') | safeHtml"></div>
+    <div class="campaign-offer" [innerHtml]="(omni?.banner_info?.promotion_text_banner || '') | safeHtml"></div>
+    <!-- Old implementation -->
+    <!-- <div class="campaign-offer">
+      <div class="campaign-offer-plan" *ngIf="omni.rebate_frequency">
+        Monthly Rebate RM{{ omni.rebate_amount | number : '1.2-2' }} For {{ omni.rebate_frequency }} months
+      </div>
+      <div class="campaign-offer-device" *ngIf="omni.device_disc_amt">
+        <div class="device">
+          <small>Get</small>
+          <ng-container *ngIf="(+omni.device_bundle_price || 0) == 0; else omniDeviceNotFree">
+            Free Device
+          </ng-container>
+          <ng-template #omniDeviceNotFree>
+            RM{{ (+omni.device_bundle_price || 0) | number : '1.2-2' }}
+          </ng-template>
+        </div>
+        <div class="save">
+          Save RM{{ (+omni.device_disc_amt || 0) | number : '1.2-2' }}
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="campaign-image">
+    <img class="desk-img" src="/assets/img/banners/CLMBanner_DeskImage.png" alt="">
+    <img class="mob-img" src="/assets/img/banners/CLMBanner_MobImage.png" alt="">
+  </div>
+</div>

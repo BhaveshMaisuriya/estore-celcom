@@ -1,0 +1,197 @@
+<div class="cobp">
+  <form [formGroup]="myForm" autocomplete="off">
+
+    <p class="personal-det-txt">Enter your personal details for verification.</p>
+      <div class="row m-0">
+        <div class="col-lg-6 celcom-box">
+          <app-estore-input
+          label="Your Celcom Number"
+          [inputType]="'phone'"
+          [success]="!showNotEligibleInfo && isAvailableAccountDetail"
+          placeholder="0191234567"
+          formControlName="phone"
+          [readonly]="inputPhoneDisabled">
+          </app-estore-input>
+        </div>
+      </div>
+      <div class="row m-0" *ngIf = "enableNRICAuthentication">
+        <div class="col-lg-6 celcom-box mt-2">
+          <app-estore-input
+          label="Your NRIC Number for verification"
+          [inputType]="'nric'"
+          [success]="myForm?.controls?.nric?.valid"
+          placeholder="888888888888"
+          formControlName="nric"
+          [readonly]="inputNricDisabled"
+          >
+          </app-estore-input>
+        </div>
+      </div>
+      <p *ngIf="showChangeNumber" class="mt-2"><a (click)="changeNumber();" class="change-number-txt">
+        Change this number
+      </a></p>
+      <div *ngIf="enableMCotpBox">
+        <p>Enter your OTP sent to <strong>{{userPhoneNumber}}</strong>.</p>
+          <app-new-otp-input #otpFormInput *ngIf="enableMCotpBox" [showLabel]="false"></app-new-otp-input>
+          <div class="row mt-2" *ngIf="generalError && step == 2">
+            <div class="col general-error">
+                <span class="text-danger">
+                    {{ generalError }}
+                </span>
+            </div>
+          </div>
+          <div class="row" id="expiry-text">
+              <div class="col">
+                  OTP expires in
+                  <span
+                      class="count-down" [ngClass]="{'count-down-end': otpCounter === 0}"
+                  >{{ otpCounter | formatTime }}</span>
+              </div><!-- /.col -->
+        </div><!-- /.row -->
+        <p class="otp-size-color"><a (click)="onClickResendOTP();" [ngClass]="{'disabled': resendLinkDisabled}">
+          Send new OTP
+          </a>
+        </p>
+      </div>
+<ng-container *ngIf = "!loggedInUser">
+    <ng-container *ngIf="step == 1; else step2">
+      <button
+        [disabled]="!myForm?.controls?.phone?.valid || (enableNRICAuthentication && !myForm?.controls?.nric?.valid) || loading"
+        class="btn btn-rounded" (click)="verifyPrincipalNumber()">
+        <span *ngIf="loading" class="btn-loader">
+          <span class="spin-loader"></span>
+        </span>
+      Submit
+  </button>
+    </ng-container>
+    <ng-template #step2>
+      <button
+        [disabled]="!otpForm?.otpForm.valid || loading || otpExpired"
+        class="btn btn-rounded" (click)="verifyPrincipalNumber()">
+        <span *ngIf="loading" class="btn-loader">
+          <span class="spin-loader"></span>
+        </span>
+      Submit
+    </button>
+    </ng-template>
+</ng-container>
+
+
+  <app-page-loader *ngIf="loading"></app-page-loader>
+
+  <ng-container *ngIf = "!showNotEligibleInfo && isAvailableAccountDetail">
+    <h5 class="account-details-title">Yay! Your account is verified.</h5>
+  </ng-container>
+
+  <div class="container" *ngIf = "isAvailableAccountDetail">
+    <div class="row mt-4">
+      <div class="col-lg-6 account-details-card">
+          <p class="m-0">Your Account Details</p>
+          <hr class="horizontal-border">
+          <div class="row account-details-desc">
+            <div class="col-lg-6 col-6">
+              <p class="mb-8">Principal Number</p>
+              <p class="m-0">Plan Name</p>
+            </div>
+            <div class="col-lg-6 col-6 p-normal">
+              <p class="mb-8">{{accntDet?.principal_number}}</p>
+              <p class="m-0">{{accntDet?.plan_subscribed_to}}</p>
+            </div>
+          </div>
+          <ng-container *ngIf = "showSupplimentaryInfo">
+          <div class="row account-details-desc mt-8">
+            <ng-container *ngFor="let item of accntDet?.supplementary_info?.supplementary_lines; let i = index">
+              <p class="col-lg-6 col-6 m-0 px-0 mt-8">Supplementary Line {{i+1}}</p>
+              <p class="col-lg-6 col-6 m-0 pl-0 p-normal mt-8">{{item}}</p>
+            </ng-container>
+          </div>
+          <div class="row account-details-desc">
+            <div class="col-lg-6 col-6">
+              <p class="mt-8">Plan Name</p>
+            </div>
+            <div class="col-lg-6 col-6 p-normal">
+              <p class="mt-8">{{accntDet?.supplementary_info?.supplementary_plan_name}}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row mt-estore-1" *ngIf="!!device_combo && !isEasyPhone && !cobpFlowMsg">
+      <div class="col p-0">
+        <app-cobp-number-chooser
+          (onSelectComboNumber)="selectDeviceComboNumber($event)"
+          [principalNumber]="userPhoneNumber"
+          [deviceComboNumber]="device_combo_number"
+          [contract_name]="planApiResponse?.items?.combo_type"
+          [supplementaryData]="suppData"
+          [suppNumbers]="accntDet?.supplementary_info?.supplementary_lines"></app-cobp-number-chooser>
+      </div>
+    </div>
+  </div>
+
+
+</form>
+
+  <ng-container *ngIf = "showDeviceUpfrontPenality && !showNotEligibleInfo" >
+    <div class="row agree">
+      <div class="col-lg-1 col-1 checkbox-container">
+        <app-estore-checkbox [ngModel]="deviceUpfrontCondition" [value]="deviceUpfrontCondition"
+            (ngModelChange)="changeCheckedValue($event)">
+            >
+          </app-estore-checkbox>
+      </div>
+    <div class="col-lg-11 col-11 checkbox-label-txt">
+      <p class="tenure-txt">You have remaining tenure of {{contractLengthYears}} year(s) {{contractLengthMonths}} month(s) in your {{ lifeStyleMessage?.existing_lifestyle_contract ? 'lifestyle' : 'device' }} contract.</p>
+      <p class="cancellation-fee">I agree to be charged with <strong>RM{{ (deviceUpfrontPenalty ? deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</strong> Cancellation Fee.</p>
+    </div>
+  </div>
+</ng-container>
+
+
+<div class="row agree" *ngIf="showSupplimentaryInfo && !showNotEligibleInfo && !device_combo">
+  <div class="col-lg-1 col-1 checkbox-container">
+    <mat-icon aria-hidden="false" class="done-icon">done</mat-icon>
+  </div>
+  <div class="col-lg-11 col-11 pr-0 checkbox-label-txt">
+    <p class="tenure-txt">Upon submission, both principal and supplementary lines will be subscibing to new plans below:</p>
+    <p class="cancellation-fee mb-2">Principal line: <span [innerHTML]="basePlan?.name | safeHtml"></span><span>{{plan?.name}}</span></p>
+    <p class="cancellation-fee">Supplementary line(s): <span class="p-normal">{{accntDet?.supplementary_info?.supplementary_plan_name}}</span></p>
+  </div>
+</div>
+
+<div class="lifestyle-not-elgible" *ngIf="isLifeStyleNotElgible">
+  <div class="warning-sign">
+    <mat-icon svgIcon="estore-exclamation-triangle"></mat-icon>
+  </div>
+  <div class="warning-text">
+    <div>{{lifeStyleMessage?.title}}</div>
+    <div>{{lifeStyleMessage?.message}}</div>
+  </div>
+</div>
+
+<div class="row m-0" *ngIf="checkoutEnable && !showNotEligibleInfo">
+  <div class="col-lg-6 p-0">
+    <div class="chekout-without-supplymentary">
+      <img class="" src="assets/img/checkout_arrow.svg" alt="checkout-img"/>
+      <p>Click <strong>“Checkout”</strong> to complete your order</p>
+    </div>
+  </div>
+</div>
+
+<div class="cobp-error-block" *ngIf="showNotEligibleInfo && cobpFlowMsg">
+  <div>
+    <mat-icon svgIcon="estore-times-block"></mat-icon>
+  </div>
+  <div>{{cobpFlowMsg}}</div>
+</div>
+
+  <app-cobp-instructions
+    *ngIf="!!cobpInstructions && showNotEligibleInfo" 
+    [data]="cobpInstructions"
+  >
+  </app-cobp-instructions>
+
+<div class="warning-container" *ngIf="cobpWarningMsg && !cobpFlowMsg">
+  <img class="warning_img" src="assets/img/warning_icon.svg" alt="warning image">
+  <div class="warning-msg">{{cobpWarningMsg}}</div>
+</div>

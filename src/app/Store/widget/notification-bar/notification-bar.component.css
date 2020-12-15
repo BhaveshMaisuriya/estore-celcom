@@ -1,0 +1,52 @@
+.b-notification{
+    background-color: #229b9c;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    width: 100%;
+}
+.b-notification .b-notification__close{
+    float: right;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    color: #fff;
+    margin: 2% 5% 0 0;
+}
+.b-notification .b-notification__text{
+  font-family: Lato;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.29;
+  letter-spacing: normal;
+  text-align: left;
+  color:#fff;
+  padding:25px 0 25px 44px;
+  margin:0;
+}
+.upgrade_tick_mark{
+    width: 24px;
+    margin-left: 14px;
+    vertical-align: middle;
+    margin-right: 14px;
+}
+
+.icon {
+    line-height: 2;
+}
+#b-notification.has-margin{
+    margin-bottom: 78px;
+}
+
+@media(max-width:767px){
+    .b-notification .b-notification__close{
+        margin-top: 14.5%;
+        margin-right: 10%;
+    }
+    .b-notification .b-notification__text {
+        text-align: center;
+        padding: 53px 25px 31px 25px;
+    }
+}

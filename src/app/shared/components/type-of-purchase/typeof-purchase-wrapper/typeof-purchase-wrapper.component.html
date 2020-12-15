@@ -1,0 +1,51 @@
+<ng-template #activebox>
+    <div class="checkbox-container">
+        <mat-icon style="width: 28px; height: 28px; color: #009bdf;" svgIcon="estore-check"></mat-icon>
+    </div><!-- /.collapse-button -->
+</ng-template>
+<ng-template #roundbox>
+    <div class="round-button btn-rounded"></div>
+</ng-template>
+
+<div class="top_container" *ngIf="showOptions">
+    <div class="card" *ngIf="newline" [ngClass]="{
+        selected: typeOfPurchaseOptions.newline === selectedType,
+        disabled: disabled
+    }" (click)="selectedItem('newline');">
+        <div class="typeOfPurchaseDesc">
+            <div>{{typeOfPurchaseOptions.newline}}</div>
+            <ng-container *ngTemplateOutlet="(typeOfPurchaseOptions.newline === selectedType) ? activebox : roundbox"></ng-container>
+        </div>
+    </div>
+    <div class="card" *ngIf="cobp" [ngClass]="{
+        selected: typeOfPurchaseOptions.cobp === selectedType,
+        disabled: disabled
+    }" (click)="selectedItem('cobp');">
+        <div class="typeOfPurchaseDesc">
+            <div>{{typeOfPurchaseOptions.cobp}}</div>
+            <ng-container *ngTemplateOutlet="(typeOfPurchaseOptions.cobp === selectedType) ? activebox : roundbox"></ng-container>
+        </div>
+    </div>
+    <div class="card" *ngIf="mnp" [ngClass]="{
+        selected: typeOfPurchaseOptions.mnp === selectedType,
+        disabled: disabled
+    }" (click)="selectedItem('mnp');">
+        <div class="typeOfPurchaseDesc">
+            <div>{{typeOfPurchaseOptions.mnp}}</div>
+            <ng-container *ngTemplateOutlet="(typeOfPurchaseOptions.mnp === selectedType) ? activebox : roundbox"></ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="!customChildren">
+  <app-new-line-wrapper
+    *ngIf="selectedType === typeOfPurchaseOptions.newline"
+  ></app-new-line-wrapper>
+  <app-cobp-wrapper
+    (onAfterEligibilityCheck)="onComponentEvent('onAfterEligibilityCheck', $event)"
+    *ngIf="selectedType === typeOfPurchaseOptions.cobp || !showOptions"
+  ></app-cobp-wrapper>
+  <app-mnp-wrapper
+    *ngIf="selectedType === typeOfPurchaseOptions.mnp"
+  ></app-mnp-wrapper>
+</ng-container>

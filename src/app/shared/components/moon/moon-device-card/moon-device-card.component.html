@@ -1,0 +1,68 @@
+<ng-template #defaultCheckBtn>
+  <div class="checkbox-container">
+    <mat-icon *ngIf="selected; else roundbox" class="success-icon" matSuffix svgIcon="estore-check"
+      style="width: 28px; height: 28px; color: #009bdf;"></mat-icon>
+    <ng-template #roundbox>
+      <div class="roundBox"></div>
+    </ng-template>
+  </div><!-- /.collapse-button -->
+</ng-template>
+
+<div class="device-container" [ngClass]="{
+  'is-selected': selected,
+  'is-loading': isLoading,
+  'is-disabled': isDisabled
+}">
+  <div class="device-section" matRipple [matRippleDisabled]="isLoading" (click)="selectDevice()">
+    <div class="device-image">
+      <img *ngIf="image || product?.main_image" [src]="image || product?.main_image" alt="Product">
+    </div>
+    <div class="device-info">
+      <div class="device-name">
+        <div class="title" [title]="product?.name">{{ product?.name }}</div>
+        <ng-container *ngTemplateOutlet="defaultCheckBtn"></ng-container>
+      </div>
+      <div class="rrp_price">
+        RRP RM{{ +(product?.rrp_rm_strick_price || 0.00) | number : '1.2-2'}}
+      </div>
+      <ng-container *ngIf="selectedVariant?.prices?.device_price; else invalidPricing">
+        <div class="pricing">
+          <small>Now</small>
+          RM{{ +(selectedVariant?.prices?.device_price || 0.00) | number : '1.2-2'}}
+        </div>
+      </ng-container>
+      <ng-template #invalidPricing>
+        <div class="mt-estore-1 text-danger">Invalid pricing config!</div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="variant-section">
+    Select Device Specification
+    <ng-container *ngIf="product?.associated_device_product as products; else noProducts">
+      <div class="mt-estore-1">
+        <app-device-color-storage-picker 
+          [isLoading]="false"
+          [selectedProduct]="selectedVariant"
+          [productList]="product?.associated_device_product"
+          (onSelectProduct)="selectedVariant = $event">
+        </app-device-color-storage-picker>
+      </div>
+      <div class="stock-indicator mt-estore-1" [ngClass]="{'is-in-stock': isInStock, 'is-loading': isLoading}">
+        <ng-container *ngIf="isLoading; else stockReady">
+          Loading...
+        </ng-container>
+        <ng-template #stockReady>
+          <mat-icon 
+            [svgIcon]="isInStock ? 'estore-check' : 'estore-times'">
+          </mat-icon>
+          <span>{{ isInStock ? 'In Stock' : 'Out of Stock'}}</span>
+        </ng-template>
+      </div>
+    </ng-container>
+    <ng-template #noProducts>
+      <div class="mt-estore-1">
+        <span class="text-danger">No available products!</span>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div id="myModal" class="modal" >
+  <div class="modal-content">
+		<div class="top-message">Your new website experience is in progress. We'll be at 100% soon
+		</div>
+	<div *ngIf="!IsSuccess">
+	<form id="myModal">
+		<span class="close" (click)="Close();">&times;</span>
+		<!-- <h4 class="star-rating__title">You are now leaving the beta site. How did we shine? Please rate us.</h4> -->
+
+		<div class="c-star-rating" data-css="c-star-rating">
+				<div class="c-star-rating__description">Redirecting you to the current Celcom site.<br>
+					By the way, what do you think of the new us?
+				</div>
+			
+				<div class="c-star-rating__stars" id="starRating" data-rate="ratingValue">		
+					<!-- <span>{{ratingValue}}</span>
+					<input type="text" name="Rating" placeholder="Name" ng-model="ratingValue"/> -->
+					<ng-container *ngFor="let star of stars; let index = index;">
+							<i class="icon is-icon-star star-{{index+1}}" 
+							(mouseenter)="setActiveIndex(index)" 
+							(mouseleave)="removeActiveIndex()" 
+							(click)="selectIndex(index)"></i>	
+					</ng-container>
+				</div>
+			
+				<div  class="star-rating__cta">			
+					<a class="c-cta--default is-mobile-hidden sc-rating" [ngClass]="{disabled : !isSelected}"  (click)="isSelected && handleFormSubmit();" data-css="c-cta" href="javascript:void(0);">						
+							<span class="cta__content">Submit</span>
+							<span class="cta__icon icon is-icon-arrow"></span>					
+					</a> 
+				</div>
+			</div>
+
+		<input name="ratingValue" maxlength="1500" type="hidden" required [(ngModel)]="ratingValue">
+
+
+		<!-- <div *ngIf="!(ratingValue >= 3) && (ratingValue != 0) && ratingValue !== undefined" class="star-rating__comment-container"> -->
+				<div *ngIf="ratingValue !== undefined" class="star-rating__comment-container">
+			<p>Beta to better? You bet. But we'll need your feedback to get there.</p>
+			<textarea name="ratingComment" [(ngModel)]="ratingComment" cols="40" rows="4"></textarea>
+		</div>
+
+		<a href="{{OldwebSiteUrl}}" (click)="Close();" class="star-rating__link sc_rating_nothanks">No thanks</a>
+
+	</form>
+	</div>
+	<div *ngIf="IsSuccess">
+		<h4 class="star-rating__title">Thank you for your feedback.</h4>
+		<p class="star-rating__description">You will now be directed to your destination page.</p>		
+		<a href="{{OldwebSiteUrl}}" class="star-rating__link is-underline">Taking too long? Take me there now</a>
+	</div>
+  </div>
+</div>
+
+
+
+

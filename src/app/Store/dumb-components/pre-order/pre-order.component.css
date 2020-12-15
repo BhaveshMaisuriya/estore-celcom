@@ -1,0 +1,38 @@
+.preorder__box__layout {
+	width: 100%;
+	z-index: 1;
+}
+.preorder__box {
+	width: 100%;
+	height: 59px;
+	background-color: #eb005b;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	text-align: center;
+	margin: auto;
+}
+.cart-space {
+	align-items: flex-end;
+}
+.Pre__Order {
+  font: normal normal 14px Lato;
+	font-stretch: normal;
+	line-height: 1.86;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+	margin: auto;
+	padding-top: 8px;
+}
+.pre__Order__estimation {
+	margin: 0;
+	font-family: Lato;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #fff;
+}

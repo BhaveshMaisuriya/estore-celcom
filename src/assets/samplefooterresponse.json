@@ -1,0 +1,253 @@
+[
+    {
+        "title": "Why Celcom",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-50",
+        "below": [
+            {
+                "title": "Check Coverage",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-50"
+            },
+            {
+                "title": "Switch Now",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-49"
+            },
+            {
+                "title": "Coverage Map",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+               "weight": "-48"
+            },
+            {
+                "title": "Excellent Services",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-47"
+            },
+            {
+                "title": "Reward Catalogue",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-46"
+            },
+            {
+                "title": "Speed Demo",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-45"
+            },
+            {
+                "title": "Youtube Check up",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-44"
+            }
+        ]
+    },
+    {
+        "title": "About Us",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-49",
+        "below": [
+            {
+                "title": "Overview",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-50"
+            },
+            {
+                "title": "Governance",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-49"
+            },
+            {
+                "title": "Company & Associates",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-48"
+            },
+            {
+                "title": "Reference Access",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-47"
+            },
+            {
+                "title": "Media Release",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-46"
+            },
+            {
+                "title": "Awards",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-45"
+            },
+            {
+                "title": "Career",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-44"
+            }
+        ]
+    },
+    {
+        "title": "Support",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-48",
+        "below": [
+            {
+                "title": "FAQ",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-50"
+            },
+            {
+                "title": "Community",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-49"
+            },
+            {
+                "title": "Network Outrage",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-48"
+            },
+            {
+                "title": "Check Coverage",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-47"
+            }
+        ]
+    },
+    {
+        "title": "Legal",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-46",
+        "below": [
+            {
+                "title": "Privacy policy",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-50"
+            },
+            {
+                "title": "Terms & Conditions",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-49"
+            },
+            {
+                "title": "Fair Usage Policy",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-48"
+            },
+            {
+                "title": "Disclaimer",
+                "uri": "node",
+                "alias": "node",
+                "absolute": "http://10.0.15.10/node",
+                "external": false,
+                "weight": "-47"
+            }
+        ]
+	},
+	{
+        "title": "Other",
+        "uri": "node",
+        "alias": "node",
+        "absolute": "http://10.0.15.10/node",
+        "external": false,
+        "weight": "-46",
+        "below": [
+            {
+				"title": "Axiata Group",
+				"uri": "node",
+				"alias": "node",
+				"absolute": "http://10.0.15.10/node",
+				"external": false,
+				"weight": "0"
+			},
+			{
+				"title": "Contact Us",
+				"uri": "node",
+				"alias": "node",
+				"absolute": "http://10.0.15.10/node",
+				"external": false,
+				"weight": "0"
+			},
+			{
+				"title": "Store Locator",
+				"uri": "node",
+				"alias": "node",
+				"absolute": "http://10.0.15.10/node",
+				"external": false,
+				"weight": "0"
+			}
+        ]
+    }
+]
+

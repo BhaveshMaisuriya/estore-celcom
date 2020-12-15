@@ -1,0 +1,140 @@
+<div class="game-check-background" *ngIf="isGameEnabled">
+  <div class="game-check-container">
+    <div>
+      <h4>One Step Away From Winning Prizes!</h4>
+      <p class="personal-det-txt">Please fill in customer information</p>
+      <form [formGroup]="eligibilityForm" class="my-form" (ngSubmit)="handleSubmit()" autocomplete="off">
+        <div class="row">
+          <div class="col-md-12 nric-box">
+            <app-estore-input
+              label="Celcom Mobile Number"
+              [inputType]="'phone'"
+              [success]="eligibilityForm?.controls?.msdn?.valid"
+              placeholder="Celcom Mobile Number"
+              formControlName="msdn"
+              [disabled]="isCustomerEligible"
+              (keydown)="hideEligibilityMessage()"
+            ></app-estore-input>
+
+            <app-estore-input
+              label="NRIC Number"
+              [inputType]="'nric'"
+              [success]="eligibilityForm?.controls?.nric?.valid"
+              placeholder="NRIC Number"
+              formControlName="nric"
+              [disabled]="isCustomerEligible"
+              (keydown)="hideEligibilityMessage()"
+            ></app-estore-input>
+
+            <app-estore-input
+              label="SIEBEL Order ID"
+              [inputType]="'text'"
+              [success]="eligibilityForm?.controls?.orderId?.valid"
+              placeholder="SIEBEL Order ID"
+              formControlName="orderId"
+              [disabled]="isCustomerEligible"
+              (keydown)="hideEligibilityMessage()"
+              minlength="6"
+              maxlength="15"
+            ></app-estore-input>
+          </div>
+        </div>
+        <button
+          *ngIf="!isCustomerEligible"
+          [disabled]="enableSubmit()"
+          class="btn btn-primary btn-rounded"
+          type="submit"
+          >
+          <span *ngIf="loading" class="btn-loader">
+            <span class="spin-loader"></span>
+          </span>
+          Submit
+        </button>
+      </form>
+      <!-- Eligibility message starts -->
+      <div class="container" 
+        *ngIf="showEligibleMessage"
+        >
+        <div class="row">
+          <div class="col-md-12 cust-info-verify"
+            [ngClass]="
+            isCustomerEligible
+              ? 'eligible'
+              : 'not-eligible'"
+            >
+            <span *ngIf="isCustomerEligible">
+              <mat-icon class="icon" svgIcon="estore-check"></mat-icon>
+              <span>Customer information verified!</span>
+            </span>
+
+            <span *ngIf="!isCustomerEligible">
+              <mat-icon class="icon" svgIcon="estore-times"></mat-icon>
+              <span>{{ errorMessage }}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- Eligibility message ends -->
+    </div>
+    <!-- Customer information starts -->
+    <div *ngIf="isCustomerEligible">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-12 personal-info-card">
+            <p class="m-0">Personal Information</p>
+            <hr class="horizontal-border">
+            <div class="row personal-info">
+              <div class="col-lg-5 col-5 p-0">
+                <p class="m-0">Name</p>
+              </div>
+              <div class="col-lg-7 col-7 p-normal p-0">
+                <p class="m-0">{{ eligibleCustomer.name }}</p>
+              </div>
+            </div>
+            <div class="row personal-info">
+              <div class="col-lg-5 col-5 p-0">
+                <p class="m-0">Email</p>
+              </div>
+              <div class="col-lg-7 col-7 p-normal p-0">
+                <p class="m-0">{{ eligibleCustomer.email }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="gamification-check-buttons">
+        <button class="btn btn-rounded"  (click)="resetAll()">Reset All</button>
+        <button class="btn btn-rounded btn-primary" (click)="proceedGamification()">
+        Proceed to Gamification
+        </button>
+      </div>
+
+    </div>
+  <!-- Customer information ends -->
+  </div>
+</div>
+
+<app-claw-gamification
+  *ngIf="showGamification"
+  [payload] = "gamificationPayload"
+></app-claw-gamification>
+
+<app-agent-footer class="footer-fix" *ngIf="!loading"></app-agent-footer>
+
+<app-modal 
+  id="gamification-error-popup" 
+  [rounded]="true" [autoShow]="false" 
+  [closeBtn]="false" [position]="'center'"
+>
+  <div class="modal-container">
+    <p>Please login as a dealer to proceed</p>
+    <button
+      class="btn btn-rounded btn-primary"
+      (click)="closeErrorPopup()"
+      [routerLink]="['/store/dealerlogin']"
+    >
+      Login
+    </button>
+  </div>
+</app-modal>

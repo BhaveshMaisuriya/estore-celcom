@@ -1,0 +1,32 @@
+<section [ngStyle]="{'background-image': 'url(' + HeroBannerImgClickResponse.BackgroundImage + ')'}" class="u-section {{HeroBannerImgClickResponse.BackgroundColor}} is-padding-top-100 is-padding-bottom-100" *ngIf="HeroBannerImgClickResponse != null" [attr.data-analytics-region]="HeroBannerImgClickResponse.BannerAlt">
+    <div class="section__inner">
+      <div class="section__content is-container">
+        <div class="o-hero-banner">
+          <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-col-tablet-p-offset-3 is-equal-height">
+              <div class="hero-banner__item">
+                <div class="c-teaser--default is-text-align-center is-white-text" data-css="c-teaser">
+                  <div class="teaser__picture">
+                    <a class="c-link--default" data-css="c-link" (click)="ManageContentNavigation(HeroBannerImgClickResponse.ButtonLink)" >
+                        <picture class="c-picture--slider is-full-width-image" data-css="c-picture" [ngClass]="{'hide': BannerTextPresent == true}">
+                          <!--[if IE 9]><audio><![endif]-->
+                          <source srcset="{{HeroBannerImgClickResponse.MobileImage}}" media="(max-width: 767px)">
+                          <source srcset="{{HeroBannerImgClickResponse.BannerImage}}" media="(min-width: 768px)">
+                          <!--[if IE 9]></audio><![endif]-->
+                          <img class="picture__image" src="{{HeroBannerImgClickResponse.BannerImage}}" alt="{{HeroBannerImgClickResponse.BannerAlt}}">   
+                        </picture>
+                        <span class="hero-banner-img-link" [ngClass]="{'show': BannerTextPresent == true}">{{ HeroBannerImgClickResponse.BannerText }}</span>
+                    </a>
+                  </div>
+                  <div class="teaser__link">
+                    <a class="c-link--default is-big-link is-text-white" data-css="c-link" (click)="ManageContentNavigation(HeroBannerImgClickResponse.ButtonLink)">
+                      <span class="link__icon icon is-icon-arrow"></span> <span class="link__content">{{HeroBannerImgClickResponse.ButtonText}}</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,115 @@
+[
+    {
+        "penaltyCheck": {
+            "status": true,
+            "endDate": null,
+            "productPromotionPartNumber": "PB12070",
+            "isActiveContract": false,
+            "productPromotionId": "1-XYUNQP",
+            "exception": false,
+            "current_plan": "PB12070",
+            "eligible_contract_extend": false,
+            "device_upfront_penalty": 4000
+        },
+        "openOrder": {
+            "status": true,
+            "exception": false,
+            "outputOpenOrderValidationResp": {
+                "Error_spcMessage": "",
+                "OrderStatus": "",
+                "orderNumber": "",
+                "serialNumber": "0132087679",
+                "openOrderFlag": "N",
+                "outletId": "",
+                "OrderId": "",
+                "Error_spcCode": ""
+            },
+            "message": null
+        },
+        "blackList": {
+            "blacklistChkResponse": {
+                "blacklistIndicator": "No"
+            },
+            "blacklistIndicator": "No",
+            "status": true,
+            "exception": false,
+            "response": "",
+            "message": ""
+        },
+        "productEligibility": {
+            "status": true,
+            "message": "Plan is eligible for this user",
+            "exception": false,
+            "plan": 0,
+            "process_type": "upgrade"
+        },
+        "customer_eligibility": {
+            "status": true,
+            "exception": false,
+            "message": ""
+        },
+        "golden_number_note": {
+            "status": true,
+            "message": ""
+        },
+        "callBaring": {
+            "status": true,
+            "exception": false,
+            "response": "",
+            "message": ""
+        },
+        "account_validation": {
+            "status": true,
+            "message": "",
+            "exception": false
+        },
+        "contract_check": {
+            "status": true,
+            "message": "",
+            "exception": false,
+            "autopayment": "N",
+            "customer_since": "20190712_112205"
+        },
+        "upfront_payment_check": {
+            "status": true,
+            "message": "Congratulation! You\u2019re eligible for a waiver for your upfront payment.",
+            "plan": "5",
+            "exception": false
+        },
+        "duration_check": {
+            "status": true,
+            "message": "You are eligible for EasyPhone with 3 month of device upfront payment",
+            "device": "3",
+            "exception": false
+        },
+        "plan_upgrade": {
+            "status": true,
+            "message": "Eligible plan",
+            "exception": false,
+            "is_same": false
+        },
+        "star_eligibility": {
+            "status": true,
+            "message": "Plan is eligible",
+            "response": {
+                "notAllowed": 0,
+                "plan": 0,
+                "pass": 0,
+                "penalty": 0,
+                "upfront": 0,
+                "device": 0,
+                "is_same": 0,
+                "same_pass": 0,
+                "same_plan_type": 0,
+                "plan_los": 19.033333333333,
+                "device_contract": 0,
+                "pass_contract": 0,
+                "pass_exist": true,
+                "device_exist": true
+            },
+            "change_itemtype": 0,
+            "is_ultra": 1
+        },
+        "validated_id": "50794"
+    }
+]

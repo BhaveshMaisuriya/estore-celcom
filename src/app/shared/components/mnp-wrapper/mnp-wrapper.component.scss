@@ -1,0 +1,209 @@
+.principal-number {
+    max-width: 328px;
+    padding: 0;
+}
+
+.mnp-row {
+    margin: 6px 0 0 0;
+    justify-content: space-between;
+
+    > div {
+        &:first-of-type {
+            @media(max-width: 768px)
+            {
+                margin-bottom: 6px;
+            }
+        }
+    }
+}
+
+.checkout-plus-terms {
+    margin: 0;
+    color: #333333;
+    font-size: 14px;
+
+    .mat-checkbox-layout {
+        color: #333333 !important;
+        font-size: 14px;
+    }
+
+    .confirm-criteria {
+        padding-left: 48px;
+        margin: 11px 0 24px 0;
+
+        a {
+            font-weight: bold;
+        }
+    }
+}
+.plan-info {
+    width: 427px;
+    height: 50px;
+    opacity: 0.2;
+    border-radius: 4px;
+    background-color: #007cb3;
+    span {
+        width: 379px;
+        height: 17px;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: var(--black-two);
+   }
+}
+.notes {
+    width: 670px;
+    // height: 120px;
+    background-color: #f3f3f3;
+    margin: 40px 0;
+    padding: 16px 18px 16px 16px;
+    .note__content__inner {
+        width: 65px;
+        height: 20px;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        color: var(--black);
+   }
+    .note__details {
+        width: 636px;
+        height: 60px;
+        font-family: Lato;
+        font-size: 14px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        color: var(--black);
+   }
+}
+.change-principal-number {
+    // width: 125px;
+    height: 17px;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #009bdf;
+    cursor: pointer;
+    text-decoration: underline;
+    margin: 16px 0 24px 0;
+}
+.eligible-message {
+    max-width: 468px;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #00c871;
+    margin: 0;
+}
+
+.port-types {
+    display: flex;
+    margin: 24px 0 40px 0;
+
+    @media (max-width:576px) {
+        display: grid;
+    }
+
+    & button {
+        width: 229px;
+        padding: 8px 0 7px 0;
+        border: 1px solid #009bdf;
+
+        &:first-of-type {
+        margin-right: 16px;
+        
+            @media (max-width: 576px) {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+.chekout-without-supplymentary {
+    max-width: 317px;
+    border-radius: 2px;
+    background-color: #cce5f0;
+    padding: 15px 0;
+    color: #333333;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    margin-top: 24px;
+
+    img {
+        margin: 0 16px;
+    }
+
+    p {
+        margin: 0;
+        margin-top: 2px;
+        margin-bottom: 1px;
+    }
+}
+
+.mnp-msg {
+    font-size: 14px;
+    margin: 24px 0;
+    color: #333333;
+}
+
+.check-eligibility {
+    button {
+        width: 185px;
+        padding: 8px 0 9px 0;
+        background-color: #009bdf;
+        color: #ffffff;
+    }
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.login {
+    max-width: 328px;
+    margin-top: 16px;
+}
+
+.back-btn {
+    width: 72px;
+    padding: 6px 16px 7px;
+    margin-top: 24px;
+}
+
+.supp-lines {
+    p {
+        color: #333333;
+        font-size: 14px;
+        margin: 0;
+        margin-top: 24px;
+    }
+    
+}
+
+.principal-number-info {
+    margin-top: -15px;
+}

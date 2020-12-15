@@ -1,0 +1,1826 @@
+<app-page-loader [hidden]="!loading"></app-page-loader>
+<div [hidden]="loading">
+  <div class="container-fluid"  id="step-1">
+    <div class="row checkout-row">
+      <div class="col">
+        <div class="container checkout-container mt-estore-4 mb-estore-2" >
+          <div class="row" *ngIf="checkoutData">
+            <div class="col-lg-12">
+              <div class="personal-info-title">
+                <img alt="User Icon" src="assets/img/svg/user-account-img.svg">
+                <h5>Personal Information</h5>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row personal-info-content mt-estore-2" *ngIf="checkoutData">
+            <div class="col-lg-4 col-sm-4">
+              <div class="cust-info-column mb-estore-1" *ngIf="OldGuestUser == 'YES'">
+                <p>Name</p>
+                <p>{{personalDetails.displayFullname}}</p>
+              </div>
+              <div class="cust-info-column mb-estore-1" *ngIf="OldGuestUser == 'NO'">
+                <p>Name</p>
+                <p>{{personalDetails.displayFirstname}} {{personalDetails.displayLastname}}</p>
+              </div>
+              <div class="cust-info-column">
+                <p>Email</p>
+                <p>{{personalDetails.displayEmail || 'None'}}</p>
+              </div>
+  
+              <!--
+                Update Email Block # start
+                if (agentType === 'dealer')
+                  Dealer - Customer update email
+                if (!personalDetails.displayEmail)
+                  update email
+              -->
+              <!-- Dealer - Customer update email # start -->
+              <div class="mb-estore-s-1" *ngIf="agentType === 'dealer'">
+                <div class="o2o-update-email-info-subtext">
+                  The order confirmation will be sent to this email.
+                  Please make sure email address above is active and valid.
+                  Otherwise, click below to update your email address.
+                </div>
+                <a (click)="toggleO2oEditEmail()" class="o2o-update-email-text ">
+                  Update email
+                  &nbsp;
+                  <em
+                    class="cta__icon icon is-icon-arrow arrow-down-icon"
+                    [ngClass]="{ up: o2oDealerCustomerData.editing }"
+                  ></em>
+                </a>
+              </div>
+              <!-- Dealer - Customer update email # end -->
+  
+              <!--  update email # start -->
+              <div class="o2o-update-email-text" *ngIf="(!personalDetails.displayEmail  || showEmailLink) && agentType !== 'dealer'">
+                <a (click)="toggleEditEmail();" >
+                  <span class="mr-3">Edit</span>
+                  <em
+                    class="cta__icon icon is-icon-arrow arrow-down-icon"
+                    [ngClass]="{ up: updateEmailData.editing }"
+                  ></em>
+                </a>
+              </div>
+              <!-- update email # end -->
+              <!-- Update Email Block # end -->
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <div class="cust-info-column">
+                <p>Contact Number</p>
+                <p>{{personalDetails.displayContactNumber ? personalDetails.displayContactNumber : "None"}}</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4" *ngIf="billingAddress">
+              <div class="cust-info-column">
+                <p class="m-0">Billing Address</p>
+                <p class="m-0" *ngIf="isPrepaid">None</p>
+                <div *ngIf="!isPrepaid">
+                  <p class="m-0 p-normal font-size-16">{{billingAddress?.billing_unit_number}}</p>
+                  <p class="m-0">{{billingAddress?.address_line_1}}</p>
+                  <p *ngIf="billingAddress.address_line_2" class="m-0">{{billingAddress.address_line_2}}</p>
+                  <p class="m-0">{{billingAddress?.postcode}} {{billingAddress?.city}}</p>
+                  <p class="m-0">{{billingAddress?.region}}</p>
+                </div>
+              </div>
+              
+              <div class="o2o-update-email-text" *ngIf="!isPrepaid && this.cSAgentOrderId === ''">
+                <a (click)="editShippingAddress('top');toggleExpandTop();">
+                  <span class="mr-3">Edit</span>
+                  <em class="cta__icon icon is-icon-arrow arrow-down-icon" [ngClass]="{ up: isExpandedTop }"></em>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+        </div><!--container-->
+      </div><!--col-->  
+    </div><!--row-->  
+    <!-- Edit Address # start --> 
+    <div class="row editBillingAddressContainer">
+      <div class="col">
+        <div class="container edit-billing-container" style="max-width: 625px;" *ngIf="showEditBillingAddress">
+          <div class="row" >
+            <div class="col-lg-12">
+              <form (ngSubmit)="onSubmitEditBilling(form)" #form="ngForm">
+                <div class="arrow-down"></div>
+                  <div class="choose_new_add edit_billing_form">
+                    <div class="choose_new_add-form">
+                      <div class="choose_form_group">
+                        <p class="choose_shipping_add_title">Edit Billing Address</p>
+                      </div>
+                      <div class="choose_form_group">
+                        <label style="padding-top:10px;display:inline-block">Address
+                          <span class="new-add_require">*</span>
+                        </label>
+                      </div>
+                      <div class="u-grid-row is-collapsed is-equal-height">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                          <div class="choose_form_group">
+                            <input class="choose_form_control address_group" type="text" placeholder="Home/Lot/Unit" id="address" name="address"
+                              [(ngModel)]="addr" [pattern]="formPattern.address" required
+                              #address="ngModel" maxlength="15" (keypress)="addressUnitValidation($event)" (touchend)="addressUnitValidation($event)"
+                              [ngClass]="{'errorborder':!address.valid && address.touched}" />
+                            <div class="error" *ngIf="!address.valid && address.touched">
+                              <span class="text-danger" [hidden]="!address.hasError('required')">{{errForm.ADDRESS_MSG}}</span>
+                              <span class="text-danger" [hidden]="!address.hasError('pattern')">{{errForm.VALID_ADDRESS_MSG}}</span>
+                              <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                          <div class="choose_form_group">
+                            <input class="choose_form_control address_group" type="text" placeholder="Address Line 1" id="addressLine1"
+                              name="addressLine1" [(ngModel)]="addrline1" [pattern]="formPattern.addressLine"
+                              required #addressLine1="ngModel" maxlength="100" (keypress)="addressUnitValidation($event)"
+                              (touchend)="addressUnitValidation($event)" [ngClass]="{'errorborder':!addressLine1.valid && addressLine1.touched}" />
+                            <div class="error" *ngIf="!addressLine1.valid && addressLine1.touched">
+                              <span class="text-danger" [hidden]="!addressLine1.hasError('required')">{{ formHelperText.addressLine.req }}</span>
+                              <span class="text-danger" [hidden]="!addressLine1.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                              <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                            <div class="choose_form_group address_group">
+                              <input class="choose_form_control address_group" type="text" placeholder="Address Line 2 (Optional)" id="addressLine2"
+                                name="addressLine2" [(ngModel)]="addrline2" [pattern]="formPattern.addressLine"
+                                #addressLine2="ngModel" maxlength="100" (keypress)="addressUnitValidation($event)"
+                                (touchend)="addressUnitValidation($event)" [ngClass]="{'errorborder':!addressLine2.valid}" />
+                              <div class="error" *ngIf="!addressLine2.valid">
+                                <span class="text-danger" [hidden]="!addressLine2.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                                <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                                <div class="clearfix"></div>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                          <div class="choose_form_group address_group">
+                            <input class="choose_form_control address_group" type="text" placeholder="Postcode" id="postalCode" name="postalCode"
+                              [(ngModel)]="postCode" required #postalCode="ngModel" pattern="[0-9]{5}"
+                              maxlength="5" (keypress)="postalCodeValidation($event)" (touchend)="postalCodeValidation($event)"
+                              [ngClass]="{'errorborder':!postalCode.valid && postalCode.touched}" />
+                            <div class="error" *ngIf="!postalCode.valid && postalCode.touched">
+                              <span class="text-danger" [hidden]="!postalCode.hasError('required')">{{errForm.POSTAL_MSG}}</span>
+                              <span class="text-danger" [hidden]="!postalCode.hasError('pattern')">{{errForm.VALID_POSTAL_MSG}}</span>
+                              <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                          <div class="choose_form_group address_group">
+                            <input class="choose_form_control address_group" type="text" placeholder="City" id="city" name="city"
+                              [(ngModel)]="cities" required #city="ngModel" pattern="[a-zA-Z\s]+" maxlength="30" (keypress)="cityValidation($event)"
+                              (touchend)="cityValidation($event)" [ngClass]="{'errorborder':!city.valid && city.touched}" />
+                            <div class="error" *ngIf="!city.valid && city.touched">
+                              <span class="text-danger" [hidden]="!city.hasError('required')">{{errForm.CITY_MSG}}</span>
+                              <span class="text-danger" [hidden]="!city.hasError('pattern')">{{errForm.VALID_CITY_MSG}}</span>
+                              <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="stateContainer" class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                          <div class="choose_form_group address_group" *ngIf="countryDetails">
+                            <select class="choose_form_control address_group" id="state" name="state"
+                              ngModel [(ngModel)]="states" required #state="ngModel" [ngClass]="{'errorborder':!state.valid && state.touched}">
+                              <option disabled selected value>State</option>
+                              <option *ngFor="let st of countryDetails.available_regions" [value]="st.id"> {{st.name}} </option>
+                            </select>
+                            <div class="error" *ngIf="!state.valid && state.touched">
+                              <span class="text-danger" [hidden]="!state.hasError('required')">{{errForm.STATE_MSG}}</span>
+                              <span class="warning-icon"><img src="../assets/img/ThresholdAlertNotification.svg"></span>
+                              <div class="clearfix"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="choose_form_group"><span class="new-add_require">*</span><span class="mandatory_text">Mandatory Fields</span></div>
+                      <div class="is-text-align-center buttonContainer">
+                        <button class="c-cta--default proceed_anchor" data-css="c-cta" type="submit">Update</button><br><br>
+                        <a class="proceed_anchor" (click)="onCancelEditBillingAddress()" >Cancel</a>
+                      </div>
+                    </div>
+                  </div>
+              </form>
+            </div>
+  
+          </div>
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row--> 
+    <!-- Edit Address # end -->
+  
+    <!-- Dealer portal edit email id # start -->
+    <div class="row editBillingAddressContainer">
+      <div class="col">
+        <div class="container">
+          <app-edit-details-wrapper
+            [visible]="o2oDealerCustomerData.editing || updateEmailData.editing"
+            [title]="o2oDealerCustomerData.editing ? 'Edit Confirmation Email' : undefined"
+          >
+          <form
+            *ngIf="o2oDealerCustomerData.editing"
+            (ngSubmit)="updateO2oCustomerEmail()"
+          >
+            <input
+              [ngClass]="{
+                'choose_form_control': true,
+                'errorborder': false
+              }"
+              [(ngModel)]="o2oDealerCustomerData.value"
+              id="o2oCustomerEmail"
+              name="o2oCustomerEmail"
+              placeholder="email@example.com"
+            />
+            <div class="is-text-align-center buttonContainer">
+              <button
+                class="c-cta--default proceed_anchor"
+                data-css="c-cta"
+                type="submit"
+              >Update</button>
+              <br><br>
+              <a
+                class="proceed_anchor"
+                (click)="onO2oUpdateEmailCancel()"
+                (click)="toggleEditEmail()"
+  
+              >Cancel</a>
+            </div>
+          </form>
+          <form
+            (ngSubmit)="updateEmail()"
+            *ngIf="updateEmailData.editing"
+          >
+            <img src="../../../../assets/img/warning-orange.png" alt="warning" class="update-email-img" />
+            <p class="update-email-title email-title-m">The following information is missing!</p>
+            <p class="note-text"><strong>Note:</strong> This is a one-time update. Please make sure your information is correct.</p>
+            <div class="o2o-update-email-form">
+              <p>Email
+                <span class="new-add_require">*</span>
+              </p>
+              <input class="form-email-width" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+              maxlength="50" type="email" [(ngModel)]="updateEmailData.emaildata" id="emaildata" name="emaildata" placeholder="email@example.com" required #emaildata="ngModel"
+                [ngClass]="{
+                  'choose_form_control': true,
+                  'errorborder': false
+                }"
+              />
+                <div class="error" *ngIf="!emaildata.valid && emaildata.touched">
+                <span class="text-danger" [hidden]="!emaildata.hasError('required')">Please enter email address </span>
+                <span class="text-danger" [hidden]="!emaildata.hasError('pattern')">Please enter a valid email address</span>
+                <span class="warning-icon">
+                  <img src="../assets/img/ThresholdAlertNotification.svg">
+                </span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="is-text-align-center buttonContainer">
+              <button
+                class="c-cta--default proceed_anchor"
+                data-css="c-cta"
+                type="submit" [disabled]="!emaildata.valid"
+              >Update</button>
+              <br><br>
+              <a
+                class="proceed_anchor"
+                (click)="onO2oUpdateEmailCancel()"
+                (click)="toggleEditEmail()"
+  
+              >Cancel</a>
+            </div>
+          </form>
+          </app-edit-details-wrapper>
+        </div>
+      </div>
+    </div>  
+
+    <!-- Dealer portal edit email id # end -->
+    <div class="section__inner editBillingAddressContainer">
+  
+    </div>
+    
+    <div class="row checkout-row pb-estore-4" *ngIf="isDeviceBundleFlow || !isCobp">
+      <div class="col">
+        <div class="container checkout-container">
+          <div class="row delivery-info-title">
+            <div class="col-lg-12">
+              <div class="personal-info-title pt-estore-2" [ngClass]="{
+                'flag-top':!(
+                  showEditBillingAddress ||
+                  updateEmailData.editing ||
+                  o2oDealerCustomerData.editing||
+                  !(isDeviceBundleFlow || !isCobp)
+                )
+              }">
+                <img alt="Shipping Image" src="assets/img/svg/delivery-img.svg">
+                <h5>Delivery Details</h5>
+              </div>
+            </div>
+          </div>
+  
+          <!--summarize delivery details-->
+          <div
+            *ngIf="isDeliveryTypeSelected && !editDeliveryMethod"
+            class="row personal-info-content mt-estore-2"
+          >
+            <div class="col-lg-4 col-sm-4" *ngIf="shippingAddress">
+              <div class="cust-info-column">
+                <p>Delivery Address</p>
+                <p *ngIf="isSameAddress() && !isPrepaid">Same as Billing Address</p>
+                <div *ngIf="!isSameAddress() || isPrepaid">
+                  <p class="m-0 p-normal font-size-16">{{shippingAddress?.shipping_unit_number}}</p>
+                  <p class="m-0">{{shippingAddress?.address_line_1}}</p>
+                  <p *ngIf="shippingAddress.address_line_2" class="m-0">{{shippingAddress.address_line_2}}</p>
+                  <p class="m-0">{{shippingAddress?.postcode}} {{shippingAddress?.city}}</p>
+                  <p class="m-0">{{shippingAddress?.region}}</p>
+                </div>
+              </div>
+  
+              <div class="o2o-update-email-text mb-estore-s-1" *ngIf = "this.cSAgentOrderId === ''">
+                <a (click)="editShippingAddress('bottom');toggleExpandBottom();">
+                  <span class="mr-3">Edit</span>
+                  <em class="cta__icon icon is-icon-arrow arrow-down-icon" [ngClass]="{ up: isExpandedBottom }"></em>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4" >
+              <div class="cust-info-column" *ngIf="selectedDeliveryMethod?.code === 'EXP'">
+                <p>Alternate Contact Number</p>
+                <p>{{personalDetails.displayAlternateContactNumber}}</p>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+              <div class="cust-info-column mb-estore-1">
+                <p>Delivery Method</p>
+                <p [innerHtml]="selectedDeliveryMethod?.label | safeHtml"></p>
+              </div>
+
+              <div class="cust-info-column font-size-14">
+                <ng-container *ngIf="selectedDeliveryMethod?.code === 'standard'">
+                  <p>Estimated Delivery Time</p>
+                  <ul class="mt-3 pl-estore-1 mb-2">
+                    <li class="p-normal">Peninsular Malaysia (3 to 7 working days)</li>
+                    <li class="p-normal">East Malaysia (5 to 14 working days)</li>
+                  </ul>
+                </ng-container>
+                <ng-container *ngIf="selectedDeliveryMethod?.code === 'EXP'">
+                  <p>Estimated Delivery Time</p>
+                  <p>Order placed on working days,</p>
+                  <ul class="mt-3 pl-estore-1 mb-2">
+                    <li class="p-normal">Receive parcel on the same day if the order received 
+                      before 11am.
+                    </li>
+                    <li class="p-normal">Receive parcel the next working day if the order 
+                      received after 11am.
+                    </li>
+                  </ul>
+                  <p class="mt-3 m-0">(Order placed on weekends and public holidays will be 
+                    delivered in the next working day)
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <!--summarize delivery details-->
+
+          <ng-container *ngIf="!isDeliveryTypeSelected || editDeliveryMethod">
+            <a #deliveryMethodAnchor class="anchor"></a><!-- /.anchor -->
+            <div class="row choose-delivery-method">
+              <div class="col-lg-12">
+                <p class="choose-delivery-text">Choose Delivery Method</p>
+
+                <div class="delivery-options">
+                  <ng-container *ngFor="let dM of deliveryMethods">
+                    <input 
+                      type="radio" name="deliveryMethod" 
+                      id="radio_{{ dM.code }}" value="{{ dM.value }}"
+                      [checked]="dM.value === selectedDeliveryMethod.value"
+                      (change)="selectDeliveryMethod(dM)"
+                    /> 
+                        <label for="radio_{{ dM.code }}" [innerHtml]="dM.label | safeHtml"></label>
+                  </ng-container>
+                </div>
+
+              </div>
+            </div>
+    
+            <!--standard delivery-->
+            <div 
+              *ngIf="selectedDeliveryMethod?.code === 'standard' || selectedDeliveryMethod?.code === 'midnight'">
+              <!-- Delivery Notes -->
+              <div 
+                *ngIf="selectedDeliveryMethod?.code === 'midnight'; else stdAddressNotes "
+                class="row standard-delivery-row mt-estore-1 m-0">
+                <div class="col-lg-12 p-0">
+                  <p class="m-0">Midnight Delivery</p>
+                </div>
+                <ul class="m-0 pl-estore-1 mt-estore-1">
+                  <li class="mb-2 m-0">For midnight delivery option, you will be notified via SMS or phone call the day before delivery if your order is eligible for midnight delivery.</li>
+                  <li class="mb-2">No change of delivery address will be allowed during the pre-order period.</li>
+                  <li class="mb-2">Midnight delivery order will be delivered between <strong>12am to 3am</strong> on the device launch date. Please ensure that you are available during the mentioned time frame to receive the parcel. </li>
+                  <li class="mb-2">Your presence with ID is required at the address provided for midnight delivery.</li>
+                  <li class="mb-2">In the event that your parcel is not delivered through midnight delivery, the parcel will be delivered on the next available working day to the address provided.</li>
+                  <li>Terms and conditions apply.</li>
+                </ul>
+              </div>
+              <ng-template #stdAddressNotes>
+                <div class="row standard-delivery-row mt-estore-1 m-0">
+                  <div class="col-lg-12 p-0">
+                    <p class="m-0">Standard Delivery</p>
+                    <p class="m-0 mt-1 mb-estore-1">Charges:
+                      <span class="p-normal">RM{{ (standardDeliveryCharge || 0) | number : '1.2-2' }}</span>
+                    </p>
+                  </div>
+                  <ul class="m-0 pl-estore-1">
+                    <li class="mb-2 m-0">Peninsular Malaysia (3 to 7 working days)</li>
+                    <li>East Malaysia (5 to 14 working days)</li>
+                  </ul>
+                </div>
+              </ng-template>
+              <!-- Delivery Notes -->
+              <div class="row choose-delivery-address">
+                <a #deliveryAddressAnchor class="anchor"></a>
+                <div class="col-lg-12">
+                  <p class="choose-delivery-text">Choose Delivery Address</p>
+
+                  <div class="delivery-options">
+                    <ng-container *ngFor="let dA of deliverAddress">
+                      <input 
+                        type="radio" name="deliverAddress" 
+                        id="radio_{{ dA.value }}" value="{{ dA.value }}"
+                        [checked]="dA.value === selectedDeliverAddress"
+                        (change)="selectDeliverAddress(dA.value)"
+                      /> 
+                      <label for="radio_{{ dA.value }}">{{ dA.name }}</label>
+                    </ng-container>
+                  </div>
+
+                  <div class="adddr-not-select-err-msg mt-3" *ngIf="addressErrorMsg!=''">
+                    <mat-icon class="mr-3">error</mat-icon>
+                    <span>
+                    {{ addressErrorMsg }}
+                    </span>
+                  </div>
+
+                </div>
+              </div>
+    
+              <!-- deliver to billing address-->
+              <div 
+                *ngIf="selectedDeliverAddress === 'billing'"
+                class="row standard-billing-address mt-estore-2 m-0"
+              >
+                <div class="col-lg-12 p-0">
+                  <p class="mt-0">Billing Address</p>
+                  <p class="m-0">
+                    {{ billingAddress?.billing_unit_number }},<br>
+                    {{ billingAddress?.address_line_1 }},<br>
+                    <ng-container *ngIf="billingAddress?.address_line_2">
+                      {{ billingAddress.address_line_2 }},<br>
+                    </ng-container>
+                    {{ billingAddress?.postcode }} {{ billingAddress?.city }}<br>
+                    {{ billingAddress?.region }}
+                  </p>
+                </div>
+              </div>
+
+              <div *ngIf="selectedDeliverAddress === 'different' && defaultSelectedDifferentAddress && !editStdAddress"
+                class="row standard-billing-address mt-estore-2 m-0">
+                <div class="col-lg-12 p-0">
+                  <p class="mt-0">Different Delivery Address</p>
+                  <p class="m-0">
+                    {{shippingAddress?.shipping_unit_number}},<br>
+                    {{shippingAddress?.address_line_1}},<br>
+                    <ng-container *ngIf="billingAddress?.address_line_2">
+                      {{shippingAddress.address_line_2}}<br>
+                    </ng-container>
+                    {{shippingAddress?.postcode}} {{shippingAddress?.city}}<br>
+                    {{shippingAddress?.region}}
+                  </p>
+                </div>
+                <div class="o2o-update-email-text" *ngIf="!isPrepaid && this.cSAgentOrderId === ''">
+                  <a (click)="toggleExpandTop();">
+                    <span class="mr-3">Edit</span>
+                    <em class="cta__icon icon is-icon-arrow arrow-down-icon" [ngClass]="{ up: isExpandedTop }"></em>
+                  </a>
+                </div>
+              </div>
+              <br>
+              
+              <!--end deliver to billing address--> 
+              <div
+                *ngIf="selectedDeliverAddress === 'different' && editStdAddress"
+                  class="row premium-delivery-second-row m-0"
+              >
+                <div class="col-lg-12 p-0">
+                  <form 
+                    [formGroup]="standardAddress" class="premium-delivery-address" 
+                    (ngSubmit)="updateAddress(standardAddress)" autocomplete="off"
+                  >
+                    <div class="row m-0">
+                      <div class="col-lg-12 mb-estore-1 p-0">
+                        <label *ngIf="editStdAddress">Edit Different Delivery Address</label>
+                        <label *ngIf="!editStdAddress">Enter a new delivery address</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 1"
+                          maxlength="100"
+                          formControlName="addressLine1"
+                          [success]="standardAddress?.controls?.addressLine1?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 2"
+                          formControlName="addressLine2"
+                          maxlength="100"
+                          [success]="standardAddress?.controls?.addressLine2?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 3"
+                          formControlName="addressLine3"
+                          maxlength="100"
+                          placeholder="Address Line 3 (Optional)"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Postcode"
+                          formControlName="postcode"
+                          digitOnly="true" maxlength="5" minlength="5"
+                          [success]="standardAddress?.controls?.postcode?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="City"
+                          formControlName="city"
+                          [success]="standardAddress?.controls?.city?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          inputType="select"
+                          label="State"
+                          formControlName="state"
+                          [options]="availableRegions"
+                        ></app-estore-input>
+                      </div>
+                    </div>
+                    <button class="btn btn-rounded btn-primary">
+                      Update
+                    </button>
+                    <div class="adddr-not-select-err-msg mt-estore-1" *ngIf="differentAddressErrorMsg!=''">
+                      <mat-icon class="mr-3">error</mat-icon>
+                      <span>
+                      {{ differentAddressErrorMsg }}
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              
+              <!--end Deliver to different address-->
+            </div>
+            <!--end standard delivery-->
+    
+            <!--Premium Delivery-->
+            <div *ngIf="selectedDeliveryMethod?.code === 'EXP'">
+              <div class="row premium-delivery-first-row mt-estore-1 m-0">
+                <div class="col">
+                  <div class="row">
+                    <div class="col-lg-12 p-0 premium-delivery-title">
+                      <p class="m-0" [innerHtml]="selectedDeliveryMethod.label | safeHtml"></p>
+                      <p class="m-0 mt-1">
+                        Charges:
+                        <span
+                          *ngIf="isPremiumDeliveryAvailable"
+                          class="p-normal"
+                        >
+                          RM{{ areaCoveredPDCharge | number : '1.2-2' }}
+                        </span>
+                        
+                        <span
+                          *ngIf="!isPremiumDeliveryAvailable"
+                          class="p-normal"
+                        >
+                          RM{{ (premiumDeliveryCharge || 0) | number : '1.2-2' }}
+                        </span>
+                      </p>
+                    </div>
+    
+                    <div class="col-lg-12 p-0 order-placed-content">
+                      <p class="mt-estore-1 mb-3">
+                        Introducing <span [innerHtml]="selectedDeliveryMethod.name | safeHtml"></span>, the new express delivery service from Celcom. For order placed on working days,</p>
+                      <ul class="m-0 pl-4">
+                        <li class="mb-2">Receive parcel on the same day if the order is placed before 11am.</li>
+                        <li>Receive parcel the next working day if the order is placed after 11am.</li>
+                      </ul>
+                      <p class="mb-0">(Order placed on weekends and Public Holidays will be delivered on the next working day.)</p>
+                      
+                    </div>
+    
+                    <div class="col-lg-12 postcode-check p-0">
+                      <div class="row mt-estore-2">
+                        <div class="col-lg-12">
+                          <p class="mt-0">Enter your postcode to check if your area is covered.</p>
+
+                          <div class="input-wrapper">
+                            <mat-icon>search</mat-icon>
+                            <input 
+                              type="text" class="form-control"
+                              [(ngModel)]="checkPostCode"
+                              digitOnly="true" maxlength="5"
+                              placeholder="Postcode"
+                              onfocus="this.placeholder=''"
+                              onblur="this.placeholder='Postcode'"
+                              (keydown)="showEligibleMessage = ''"
+                            />
+                            <button
+                              (click)="checkPremiumDeliveryAvailability()"
+                              class="btn btn-rounded btn-primary"
+                            >
+                              Check
+                            </button>
+                          </div>
+                          <a #deliveryAddressAnchor class="anchor"></a>
+                          <!-- Eligibility message starts -->
+                          <ng-container *ngIf="showEligibleMessage !== ''">
+                            <h6 class="mt-estore-2 mb-3"
+                            [ngClass]="isPremiumDeliveryAvailable ? 'm-0':'error-msg'"
+                          >
+                            {{ showEligibleMessage }}
+                          </h6>
+
+                          <div class="delivery-error-msg" *ngIf="!isPremiumDeliveryAvailable">
+                            <img class="mr-3" src="assets/img/warning_icon.svg">
+                            <p class="m-0">Premium Delivery is limited to Kuala Lumpur and certain Selangor areas only.</p>
+                          </div>
+
+                          </ng-container>
+                          <!-- Eligibility message ends -->
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>        
+              </div>
+    
+              <div
+                *ngIf="isPremiumDeliveryAvailable"
+                class="row premium-delivery-second-row m-0"
+              >
+                <div class="col-lg-12 p-0">
+                  <form 
+                    [formGroup]="premiumAddress" class="premium-delivery-address" 
+                    (ngSubmit)="updateAddress(premiumAddress)" autocomplete="off"
+                  >
+                    <div class="row m-0">
+                      <div class="col-lg-12 mb-estore-1 p-0">
+                        <label>Enter Delivery Address</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 1"
+                          maxlength="100"
+                          formControlName="addressLine1"
+                          [success]="premiumAddress?.controls?.addressLine1?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 2"
+                          formControlName="addressLine2"
+                          maxlength="100"
+                          [success]="premiumAddress?.controls?.addressLine2?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Address Line 3"
+                          formControlName="addressLine3"
+                          maxlength="100"
+                          placeholder="Address Line 3 (Optional)"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="City"
+                          formControlName="city"
+                          [success]="premiumAddress?.controls?.city?.valid"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12 disable-textbox">
+                        <app-estore-input
+                          label="Postcode"
+                          formControlName="postcode"
+                          [disabled]="true" [readonly]="true"
+                        ></app-estore-input>
+                      </div>
+                      <div class="col-lg-6 col-sm-12 disable-select">
+                        <app-estore-input
+                          inputType="select"
+                          label="State"
+                          formControlName="state"
+                          [options]="availableRegions"
+                          [disabled]="true" [readonly]="true"
+                        ></app-estore-input>
+                      </div>
+                    </div>
+                    <!-- Alternate details -->
+                    <div class="row m-0">
+                      <div class="col-lg-12 mb-estore-1 p-0">
+                        <label>Add Alternate Contact Number (Optional)</label>
+                        <p class="alternate-subtitle">Provide an alternate contact number that the courier company can use to contact you in case you cannot 
+                          by reach by your primary number.</p>
+                      </div>
+                      <div class="col-lg-6 col-sm-12">
+                        <app-estore-input
+                          label="Alternate Contact Number"
+                          formControlName="alternateContact"
+                          [digitOnly]="true"
+                          maxlength="12"
+                        ></app-estore-input>
+                      </div>
+      
+                    </div>
+                    <!-- Alternate details -->
+                    <button class="btn btn-rounded btn-primary">Update</button>
+                    <div class="adddr-not-select-err-msg mt-estore-1" *ngIf="premiumAddressErrorMsg!=''">
+                      <mat-icon class="mr-3">error</mat-icon>
+                      <span>
+                      {{ premiumAddressErrorMsg }}
+                      </span>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!--end Premium Delivery-->
+          </ng-container>
+  
+        </div><!--container-->
+      </div><!--col-->
+    </div><!--row-->  
+    
+    <div class="row editBillingAddressContainer">
+      <div class="col">
+        <app-select-delivery-method *ngIf='showEditDelivery' [billingAddressData]='billingAddress' [cartmineData]='checkoutData'></app-select-delivery-method>
+      </div>
+    </div>
+  <section class="u-section" *ngIf="cart != null">
+    <div class="is-text-bold is-text-align-center checkout-order-summary">Order Summary</div>
+    <div class="section__inner" *ngFor="let item of cart.items">
+      <div class="section__content shop-cart-background is-container" *ngIf="item.selectedProduct.orderSummaryStorage!=null && !isPrepaid">
+        <div class="u-grid-row has-border-bottom" [ngClass]="{'moon_summary':item.selectedProduct.is_moon, 'has-border-bottom':!comboDeviceDetails}">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+            <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!item.selectedProduct.selectedImageList">
+            <img class="shop-cart-samsung" src="{{item.selectedProduct.selectedImageList[0]}}" *ngIf="item.selectedProduct.selectedImageList">
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+            <div class="shop-cart-grid-content shop-cart-color-storage margin_device_flow">
+              <div class="shop-cart-grid-content item-bot16" *ngIf="!!comboDeviceDetails">
+                <div class="device-title label-text">Device Combo</div>
+                <div class="shop-cart-grid-left shop-cart-grid-left-product value-text">
+                  {{deviceComboType}} <br>
+                </div>
+                <div class="shop-cart-grid-right shop-cart-val amount-val">RM{{ (item.selectedProduct.orderDevicePrice ? item.selectedProduct.orderDevicePrice : 0.00) | number : '1.2-2'}}</div>
+              </div>
+              <!-- <div *ngIf="isEasyPhone" class="is-text-bold item-bot16">{{easyPhoneLabel}}</div> -->
+              <div *ngIf="isPreorder == true" class="is-text-bold item-bot16">Pre-Order</div>
+              <div class="shop-cart-grid-content item-bot16" [ngClass]="{'is-text-bold':isPreorder == true}">
+                <div class="device-title label-text">{{!!comboDeviceDetails ? "Device 1" : "Device"}}
+                </div>
+                <div class="shop-cart-grid-left shop-cart-grid-left-product value-text">
+                  {{ item.selectedProduct.orderDeviceName }} <br>
+                    <span *ngIf="item.selectedProduct.contract && !IsDeviceOnly()">{{ isEasyPhone ? "Easyphone" : "Device Bundle" }}</span><br>
+                    <span *ngIf="item.selectedProduct.contract && !IsDeviceOnly()">({{ item.selectedProduct.contract }})</span>
+                </div>
+                <div class="shop-cart-grid-right shop-cart-val amount-val" *ngIf="!comboDeviceDetails">RM{{ (item.selectedProduct.orderDevicePrice ? item.selectedProduct.orderDevicePrice : 0.00) | number : '1.2-2'}}</div>
+              </div>
+            </div>
+            <!-- <div class="summary-grid-content upfront_device_main" *ngIf ="isEasyPhone && deviceUpfront!= null">
+              <div class="plan-applies">{{deviceUpfront}}</div>
+          </div> -->
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-mobile-float-right-2 margin_device_flow ">
+            <div class="img_personal">
+              <p>
+                <a class="c-link--default" data-css="c-link" (click)="goTo('device');">
+                  <span class="link__content deviceEditIcon edit-pencil-icon"><img src="./assets/img/icon/Edit.svg"></span>
+                </a>
+              </p>
+            </div>
+        </div>
+        </div>
+        <div class="u-grid-row has-border-bottom" *ngIf="comboDeviceDetails">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+            <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!comboDeviceDetails.selectedImageList">
+            <img class="shop-cart-samsung" src="{{comboDeviceDetails.selectedImageList[0]}}" *ngIf="comboDeviceDetails.selectedImageList">
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+            <div class="shop-cart-grid-content shop-cart-color-storage margin_device_flow">
+              <div class="shop-cart-grid-content item-bot16">
+                <div class="device-title label-text">Device 2</div>
+                <div class="shop-cart-grid-left shop-cart-grid-left-product value-text">
+                  {{ comboDeviceDetails.orderDeviceName }} <br>
+                  <span>{{ isEasyPhone ? "Easyphone" : "Device Bundle" }}</span><br>
+                  <span *ngIf="item.selectedProduct.contract">({{ item.selectedProduct.contract }})</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="u-grid-row" [ngClass]="{'moon_summary':item.selectedProduct.is_moon}" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name">
+          <!-- <span (click)="removeCartItem(item)"><img class="shop-cart-close" src="../assets/img/store/close_icon.svg"></span> -->
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+            <!-- <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!item.selectedProduct.plan_image_url"> -->
+            <img class="shop-cart-samsung" src="{{item.selectedProduct.plan_image_url}}" *ngIf="item.selectedProduct.plan_image_url">
+          </div>
+          <div class="shop-cart-grid-content shop-cart-color-storage margin_device_flow">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+            <!--easy phone realted upfront end-->
+            <div class="shop-cart-content-inner" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && !isEasyPhone">
+              <div *ngIf="!item.selectedProduct.is_star">
+                <span>
+                  <div class="device-title label-text">Plan</div>
+                    <div class="value-text item-bot16">
+                      <span [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></span>
+                      <span *ngIf="!item.selectedProduct.contract"> ({{item?.selectedProduct?.selectedPlanDetails?.terms_and_condition?.contract_terms?.desc}})</span>
+                      <!-- <span class="contract_align" *ngIf="item.selectedProduct.contract"> ({{item?.selectedProduct?.contract}})</span> -->
+                    </div>
+                    <!-- <div class="item-bot16" *ngIf= "suppData?.length > 0">
+                      <span class="label-text">{{suppData.length}} X Supplementary Line(s)</span><br/>
+                      <span class="value-text">{{suppData[suppData.length -1].name}}</span>
+                  </div> -->
+                </span>
+              </div>
+              <div *ngIf="item.selectedProduct.is_star">
+                  <span>
+                    <div class="device-title label-text">Plan</div>
+                    <div class="item-bot16">
+                      <div class="value-text">
+                        <span [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></span>
+                        <span *ngIf="!item.selectedProduct.contract">({{item.selectedProduct?.selectedPlanDetails?.terms_and_condition?.contract_terms?.desc}})</span>
+                        <!-- <span *ngIf="item.selectedProduct.contract"> ({{item.selectedProduct.contract}})</span> -->
+                      </div>
+                    </div>
+                    <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name" *ngIf="!isDeviceBundle()">RM{{ item.selectedProduct.selectedPlanDetails.monthly_plan | number : '1.2-2' }}</div> -->
+                    <section class="moon_section" *ngIf="item?.selectedProduct?.selected_pass_details && !item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                      <div class="gold-cart-grid-content">
+                        <div class="device-title">Pass</div>
+                          <div class="gold-cart-grid-left moon_plan is-font-bold" [innerHtml]="item.selectedProduct?.selected_pass_details?.name | safeHtml"></div>
+                          <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+                      </div>
+                    </section>
+                    <section class="moon_section" *ngIf="item?.selectedProduct?.selected_pass_details && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                      <div class="device-title">Pass</div>
+                      <div class="gold-cart-grid-content ">
+                          <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                          <div class="gold-cart-grid-right mnp-sim-right plan-name amount-val" *ngIf="!isDeviceBundle()">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div>
+                      </div>
+                    </section>
+                    <!-- <div class="gold-cart-grid-content monthly-charges item-bot16" *ngIf="suppData?.length > 0">
+                      <span class="label-text">{{suppData.length}} X Supplementary Line(s)</span><br />
+                      <span class="value-text">{{suppData[suppData.length -1].name}}</span>
+                    </div> -->
+                  </span>
+              </div>
+              <!-- <div *ngIf="item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && suppData?.length > 0">
+               <div class="display__block is-font-bold">{{suppData.length}} X Supplementary Line(s)</div> 
+            </div> -->
+              <!-- <div *ngIf="item.selectedProduct.orderPhoneNo">Selected Number: <b>{{ item.selectedProduct.orderPhoneNo }}</b></div> -->
+            </div>
+             <!--easy phone realted upfront start-->
+             <div class="value-text" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && isEasyPhone">
+              <div class="device-title label-text">Plan</div>
+              <div class="plan-applies price_left" [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></div>
+              <!-- <div class="price_right" *ngIf="orderOneTimePay!=null">RM{{(orderOneTimePay? (orderOneTimePay) : 0.00) | number : '1.2-2'}}</div> -->
+           </div>
+          <section class="moon_section" *ngIf="isEasyPhone && item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && !item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+            <div class="device-title item-top16">Pass</div>
+            <div class="gold-cart-grid-content">
+                <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+            </div>
+          </section>
+          <section class="moon_section" *ngIf="isEasyPhone && item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+            <div class="device-title item-top16">Pass</div>
+            <div class="gold-cart-grid-content">
+                <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+            </div>
+          </section>
+          <div class="summary-grid-content item-bot16 item-top16" *ngIf="isEasyPhone && planUpfront!=null">
+            <div class="plan-applies">{{planUpfront}}
+            <div class="price_right amount-val" *ngIf="orderOneTimePay!=null">RM{{(orderOneTimePay? (orderOneTimePay) : 0.00) | number : '1.2-2'}}</div>
+          </div>
+          </div>
+             <!--easy phone realted upfront end here new section-->
+            <div class="is-font-bold item-top16 item-bot16" *ngIf="mnpFlow && !isCobp && item.selectedProduct.orderPhoneNo && !isEasyPhone && !isEsim">
+              New Line (Principal):
+              <span class="new_line">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+            </div>
+            <div *ngIf="item.selectedProduct && !item.selectedProduct.is_star && item.selectedProduct.selected_pass_details">
+              <span>
+                <div class="device-title label-text">Pass</div>
+                  <div class="value-text">
+                    <span>{{item.selectedProduct?.selected_pass_details?.name}}</span>
+                  </div>
+              </span>
+            </div>
+            <div class="shop-cart-grid-content item-bot16" *ngIf="!mnpFlow && isCobp && item.selectedProduct.orderPhoneNo && !isEasyPhone && !isEsim">
+              <span class="label-text">Upgrade Plan/Change Pass<br></span>
+              <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+            </div>
+            <div class="shop-cart-grid-content item-top16 item-bot16 monthly-charges_summary" *ngIf="!mnpFlow && !isCobp && item.selectedProduct.orderPhoneNo && !isEasyPhone && !isEsim">
+              <span class="label-text"> New Line (Principal Line) <br></span>
+              <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter }}</span>
+            </div>
+            <div class="shop-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo && isEasyPhone && !isEsim">
+              <!-- <div class="item-bot16 device-bundle" *ngIf="item.selectedProduct.orderPhoneNo"> -->
+              <span class="label-text">  Upgrade Plan (Principal Line) <br></span>
+              <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter }}</span>
+              </div>
+              <div class="shop-cart-grid-content monthly-charges device-bundle" *ngIf="isEsim">
+                  <span class="label-text">eSIM Charges</span> <br />
+                  <span class="value-text">
+                     RM{{
+                      RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                      item.selectedProduct.orderMonthlyPayTotal :
+                      0.00) | number : '1.2-2'}}
+                  </span>
+              </div>
+              <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+              <div class="shop-cart-grid-content item-bot16 item-top16" *ngIf=" isEsim">
+                <span class="label-text"> Mobile Number <br></span>
+                <span class="value-text">{{
+                      item.selectedProduct.orderPhoneNo }}
+                </span>
+              </div>
+              <div class="shop-cart-grid-content" *ngIf="isEsim">
+                <span class="label-text">Type of SIM</span><br />
+                <span class="value-text item-top3">{{ simType }} to eSIM</span>
+              </div>
+
+            <div class="shop-cart-grid-content monthly-charges item-bot16 monthly-charges_summary pt-0" *ngIf="item.selectedProduct.orderMonthlyPay && !isEasyPhone && !isEsim">
+              <span class="label-text"> Monthly Charges <br /></span>
+              <span class="value-text">
+                 RM{{ (item.selectedProduct.orderMonthlyPayTotal ? item.selectedProduct.orderMonthlyPayTotal : 0.00) | number : '1.2-2'}} <br />
+              </span>
+              <!-- <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderMonthlyPay ? item.selectedProduct.orderMonthlyPay : 0.00) | number : '1.2-2'}}</div> -->
+            </div>
+            <div
+              *ngIf="item.selectedProduct.orderMonthlyPay && !isEasyPhone && !isEsim && checkoutData?.is_star_internet_share === '1' && !!internetShare"
+              class="item-bot16 order-sum-cont-text"
+            >
+              <span 
+                class="label-text"
+                [innerHTML]="internetShare?.label | safeHtml"
+              >
+              </span><br />
+              <span class="value-text">RM{{ (internetShare?.monthly_price || 0) | number : '1.2-2'}}</span>
+            </div>
+            <!--monthly charges for easy phone start here new secton-->
+            <div class="item-bot16 monthly_charges_easyp" *ngIf="isEasyPhone && !isEsim">
+              <div class="label-text">Monthly Charges</div>
+              <div class="value-text"> RM{{(easyPhoneMonthlyCharges? (easyPhoneMonthlyCharges) : 0.00) | number : '1.2-2'}}</div>
+              <div class="label-text" *ngIf="deviceMonthlyCharge!=null">Phone: RM{{(deviceMonthlyCharge? (deviceMonthlyCharge) : 0.00) | number : '1.2-2'}}</div>
+              <div class="label-text" *ngIf="planMonthlyCharge!=null">Plan: RM{{(planMonthlyCharge? (planMonthlyCharge) : 0.00) | number : '1.2-2'}}</div>
+          </div>
+          <div class="shop-cart-grid-content item-bot16" *ngIf="item.deviceUpfrontPenalty">
+            <div class="shop-cart-grid-left up-front-payment payment-bundle">Device Penalty
+            </div>
+            <div class="shop-cart-grid-right payment-bundle-price amount-val">RM{{ (item.deviceUpfrontPenalty ? item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+          </div>
+            <!--monthly charges for easy phone end here new section-->
+            <div class="shop-cart-grid-content item-bot16 campaign_mviva" *ngIf="item.is_campaign_mviva && item.campaign_mviva_message && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEsim">
+              <div class="shop-cart-grid-left campaign_mviva_message">{{ item.campaign_mviva_message }}</div>
+            </div>
+            <div class="shop-cart-grid-content item-bot16" *ngIf="!item.campaign100_days && item.selectedProduct.orderOneTimePay >= 0 && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && !isEsim">
+              <div class="shop-cart-grid-left up-front-payment payment-bundle to-be-upfront" *ngIf="!isUpfrontInstallment">Upfront payment
+                <span class="to-be-rebate"> (To be rebated in first bill)</span><br *ngIf="additionalInfo"/>
+                <div class="shop-cart-grid-left up-front-payment additional-info" *ngIf="additionalInfo">{{additionalInfo}} </div>
+              </div>
+              <div class="shop-cart-grid-left up-front-payment payment-bundle to-be-upfront" *ngIf="isUpfrontInstallment">Upfront payment
+                <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span><br *ngIf="additionalInfo"/>
+                <div class="shop-cart-grid-left up-front-payment additional-info" *ngIf="additionalInfo">{{additionalInfo}} </div>
+              </div>
+              <div class="shop-cart-grid-right payment-bundle-price amount-val">RM{{ (item.selectedProduct.orderOneTimePay >= 0 ? item.selectedProduct.orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+            </div>
+            <div class="shop-cart-grid-content" *ngIf="item.campaign100_days && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && !isEsim" >
+              <div class="shop-cart-grid-left up-front-payment is-text-bold">Upfront Payment Waiver (Guna Celcom)</div>
+              <div class="shop-cart-grid-right payment-bundle-price amount-val">RM{{ (item.selectedProduct.orderOneTimePay ? item.selectedProduct.orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+              <div>
+                <span class="up-front-payment new_line waiver-top-gap bottom-gap">You're eligible! Upfront payment has been waived.</span>
+              </div>
+            </div>
+            <!-- here new section -->
+            <div class="free_sim_text item-bot18 telco_day" *ngIf="isPreorder == true && !isEasyPhone">*Free SIM card delivery</div>
+            <div class="gold-cart-grid-content" *ngIf="item.has_add_ons && item.add_on_label">
+              <div class="item-bot32 add-ons-msg">{{item.add_on_label}}</div>
+            </div>
+            <div *ngIf = "hasAutoBilling && !IsDeviceOnly()"><span class="is-font-bold new_line new_line bottom-gap auto-billing item-top16">Mandatory Autobilling</span></div>
+          </div>
+          </div>
+          </div>
+        <!-- The below code has to iterate -->
+        <div *ngIf="suppData && suppData.length > 0">
+          <div *ngFor="let item of suppData, let i=index">
+            <div class="u-grid-row has-border-top">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center mt-5 mb-4">
+                <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                <div class="supplementary-lines">
+                  <div class="summary-grid-content order-sum-cont-text">
+                    <div class="new-number">
+                      <span class="label-text">Supplementary line {{i+1}}</span><br />
+                      <span class="value-text">{{item.number}}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="summary-grid-content order-sum-cont-text" *ngIf="!isEsim">
+                    <div class="new-number">
+                      <span class="label-text">Monthly Charges</span><br />
+                      <span class="value-text">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                    </div>
+                  </div>
+                  <div class="summary-grid-content order-sum-cont-text">
+                    <div class="new-number">{{item.name}}</div>
+                  </div>
+                  <div class="summary-grid-content item-bot8 order-sum-cont-text" *ngIf="!isEsim">
+                    <div class="new-number upfront-display new-margin to-be-upfront" *ngIf="isUpfrontInstallment">Upfront payment
+                      <span class="to-be-rebate new-line"> (To be rebated in first bill)</span>
+                    </div>
+                    <!-- <div class="new-number upfront-display new-margin to-be-upfront sub-total-price-m " *ngIf="isUpfrontInstallment">Upfront payment
+                      <span class="to-be-rebate new-line"> (To be rebated over {{upfrontInstallment}} months)</span>
+                    </div> -->
+                    <span class="new-supple-right is-font-bold upfront-price-float upfront-display-shop">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                  </div>
+                  <div class="summary-grid-content item-bot order-sum-cont-text" *ngIf="supplementaryDataLabel">
+                    <div class="new-number" [innerHTML]="supplementaryDataLabel | safeHtml"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- pre order git image info start -->
+        <div *ngIf="isPreorder == true && freeGiftInfo.gift_image!=null && freeGiftInfo.gift_message!=null" class="u-grid-row preorder_gift_info">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+            <img class="shop-cart-samsung" src="{{freeGiftInfo.gift_image}}">
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+            <div class="shop-cart-grid-content item-bot16">
+              <div class="pre-order-gift-left">
+                <p>Pre-Order FREE Gift:</p>
+                <p>{{freeGiftInfo.gift_message}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!---sub total-->
+        <div class="u-grid-row device_sub_total">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7"
+            [ngClass]="{'mb-estore-1': (isDeliveryTypeSelected && !editDeliveryMethod && (isDeviceBundleFlow || !isCobp)) || selectedBillingAddress}">
+            <div class="shop-cart-grid-content device_sub_total_one">
+              <div class="shop-cart-grid-left is-font-bold sub-total-divLeft">Sub Total</div>
+              <div class="shop-cart-grid-right is-font-bold sub-total-price-divright" *ngIf="cart">
+                RM{{(item.itemTotal ? item.itemTotal : 0.00) | number : '1.2-2'}}
+              </div>
+            </div>
+          </div>
+
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7"
+            *ngIf="(isDeliveryTypeSelected && !editDeliveryMethod && (isDeviceBundleFlow || !isCobp)) || selectedBillingAddress">
+            <div class="shop-cart-grid-content device_sub_total_one">
+              <div class="shop-cart-grid-left is-font-bold sub-total-divLeft">Delivery Charges</div>
+              <div class="shop-cart-grid-right is-font-bold sub-total-price-divright" *ngIf="cart">
+                RM{{( (selectedDeliveryMethod?.code === 'EXP' && premiumDeliveryCharge) ? premiumDeliveryCharge : 0.00) | number : '1.2-2'}}
+              </div>
+            </div>
+          </div>
+        
+        </div>
+        <!---sub total-->
+
+         <!---taxes-->
+         <!-- ? Not in Design -->
+         <!-- <ng-container *ngFor="let tax of taxs">
+           <div class="u-grid-row is-collapsed is-equal-height">
+             <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+               <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+                <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+              </div>
+            </div>
+        </ng-container> -->
+        <!---taxes-->
+
+        <!--voucher-->
+        <ng-container>
+          <div class="u-grid-row device_sub_total" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+              <div class="shop-cart-grid-content device_sub_total_one">
+                <div class="shop-cart-grid-left is-font-bold">Voucher Code</div>
+                <div class="shop-cart-grid-right is-font-bold" *ngIf="checkoutData">
+                  -RM{{ cart.rebateAmount | number : '1.2-2'}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!--voucher-->
+
+        <!-- Total Payment -->
+        <div class="u-grid-row device_sub_total shopping_total__list grand-bg">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+            <div class="shop-cart-grid-content device_sub_total_one">
+              <div class="shop-cart-grid-left is-font-bold sub-total-divLeft"> Total Payment Due</div>
+              <div class="shop-cart-grid-right is-font-bold sub-total-price-divright"  *ngIf="checkoutData">
+                RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Total Payment -->
+
+        <!-- <div class="shopping_total__list grand-bg">
+          <div class="u-grid-row is-collapsed is-equal-height  is-col-tablet-p-offset-13">
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+
+            <div class="grand__total">
+              Total Payment Due
+              </div>
+          </div>
+          <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+
+            <div class="grand__total_value">RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}</div>
+          </div>
+          </div>
+        </div> -->
+        <!--pre order gift info image end-->
+
+
+
+      </div>
+
+      <!-- Display of only plan in shopping cart coming from plan purchase page -->
+      <div class="section__content gold-cart-background is-container" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.orderSummaryStorage == null && !isPrepaid">
+        <div class="{{ item?.selectedProduct?.selectedPlanDetails?.IndicatorClass }}"></div>
+        <!-- <span (click)="removeCartItem(item)"><img class="shop-cart-close" src="../assets/img/store/shopcart-remove.svg"></span> -->
+        <div class="u-grid-row gold-cart-padding">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 cart-gold-center">
+            <img class="gold-cart-benji pb-4 img-margin" src="{{item?.selectedProduct?.plan_image_url}}">
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+            <div class="gold-cart-grid-content item-bot16 order-sum-cont-text"  *ngIf="!item.selectedProduct.is_star">
+              <span class="label-text">Plan</span><br />
+              <span class="value-text" [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></span>
+
+              <div class="gold-cart-grid-right mnp-sim-right plan-name upfront-display-shop upfront-price-float sub-total-price-m" *ngIf="mnpFlow">RM{{ ((item.price && item.quantity) ? (item.price * item.quantity) : 0.00) | number : '1.2-2' }}</div>
+            </div>
+            <!-- If Project Star -->
+            <div class="gold-cart-grid-content item-bot16 order-sum-cont-text" *ngIf="item.selectedProduct.is_star">
+              <div class="label-text">Plan</div>
+              <div class="gold-cart-grid-left value-text" [innerHtml]="item?.selectedProduct?.selectedPlanDetails?.name | safeHtml"></div>
+              <!-- Use this if you want to display Base + Pass -->
+              <!-- <div class="gold-cart-grid-left value-text" [innerHtml]="item?.selectedProduct?.selectedPlanDetails?.name +
+                (item.selectedProduct?.is_star ? (' ' + item.selectedProduct?.selected_pass_details?.name) : '') | safeHtml"></div> -->
+              <div class="gold-cart-grid-right mnp-sim-right" *ngIf="isEasyPhone">RM{{ item.selectedProduct.selectedPlanDetails.monthly_plan | number : '1.2-2' }}</div>
+            </div>
+            <!-- #region No Pass -->
+            <section class="moon_section star-no-pass mb-4" *ngIf="item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && !item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+              <div class="device-title">Pass</div>
+              <div class="gold-cart-grid-content">
+                  <!-- Use this if you want to display Base + Pass -->
+                  <!-- <div class="gold-cart-grid-left moon_plan">No Pass</div> -->
+                  <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+              </div>
+            </section>
+            <!-- #endregion -->
+            <section class="moon_section order-sum-cont-text" *ngIf="item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+              <div class="label-text">Pass</div>
+                <div class="gold-cart-grid-content item-bot16">
+                    <div class="gold-cart-grid-left moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                    <div class="gold-cart-grid-right mnp-sim-right" *ngIf="isEasyPhone">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div>
+                </div>
+            </section>
+            <div class="gold-cart-grid-content item-bot16 is-text-bold order-sum-cont-text" *ngIf="!item.selectedProduct.is_star && item.selectedProduct.orderMonthlyPay >= 0 && !item.selectedProduct.orderDeviceName && item.selectedProduct.selected_pass_details && item.selectedProduct.selected_pass_details.name">
+              <div class="label-text">Pass</div>
+              <div class="value-text">{{item.selectedProduct.selected_pass_details.name}}</div>
+            </div>
+            <div class="item-bot16 order-sum-cont-text" *ngIf="mnpFlow && item.selectedProduct.orderPhoneNo && !isEsim">
+              <span class="label-text">New Line (Principal Line) <br></span>
+              <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+            </div>
+            <!-- ? Duplicate code -->
+            <!-- <div class="gold-cart-grid-content item-bot16 order-sum-cont-text" *ngIf="item.selectedProduct.orderMonthlyPay && !item.selectedProduct.orderDeviceName && !isEsim">
+              <span class="label-text">Monthly Charges<br></span>
+              <span class="value-text">RM{{ (item.selectedProduct.orderMonthlyPayTotal ? item.selectedProduct.orderMonthlyPayTotal : 0.00) | number : '1.2-2'}}</span>
+            </div> -->
+            <div class="item-bot16 order-sum-cont-text" *ngIf="!mnpFlow && isCobp && item.selectedProduct.orderPhoneNo && !isEsim">
+              <span class="label-text">Upgrade Plan/Change Pass<br></span>
+              <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+            </div>
+            <div class="gold-cart-content-inner newline-principal-cont-w">
+              <div class="item-bot16 monthly-charges order-sum-cont-text" *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !isCobp && suppData && (suppData.length == 0) && isGoldenNumberSelected == 0 && !isEsim">
+                <span class="label-text">New Line (Principal Line)<br></span>
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+              </div>
+              <div class="gold-cart-grid-content " *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !isCobp && suppData && (suppData.length == 0) && isGoldenNumberSelected == 1 && !isEsim">
+                <span class="label-text">New Line (Principal Line) </span>
+                <span class="golden-number-content">VIP</span><br />
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter }}</span>
+
+              </div>
+              <div class="item-bot16 order-sum-cont-text" *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !isCobp && suppData && (suppData.length > 0) && isGoldenNumberSelected == 0 && !isEsim && !isFamilyLine">
+                <span class="label-text">New Line (Principal Line)</span><br />
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+              </div>
+
+              <!-- * Family Line Principle number # start -->
+              <div class="item-bot16 order-sum-cont-text" *ngIf="isFamilyLine">
+                <span class="label-text">Principal Line</span><br />
+                <span class="value-text">{{ item.selectedProduct.orderPhoneNo | numberStandardFilter}}</span>
+              </div>
+              <!-- * Family Line Principle number # end -->
+
+            </div>
+            <div class="gold-cart-grid-content item-bot16 order-sum-cont-text" *ngIf="item.selectedProduct.orderMonthlyPay && !item.selectedProduct.orderDeviceName && !isEsim && !isFamilyLine">
+              <span class="label-text">Monthly Charges<br></span>
+              <span class="value-text">RM{{ (item.selectedProduct.orderMonthlyPayTotal ? item.selectedProduct.orderMonthlyPayTotal : 0.00) | number : '1.2-2'}}</span>
+            </div>
+            <div class="gold-cart-grid-content item-bot16 order-sum-cont-text"
+              *ngIf="item.selectedProduct.orderMonthlyPay && !item.selectedProduct.orderDeviceName && !isEsim && !isFamilyLine && !!lifeStyleVoucherDetails">
+              <span class="label-text">{{ lifeStyleVoucherDetails?.lifestyle_contract_label}}<br></span>
+              <span class="value-text">{{ lifeStyleVoucherDetails?.lifestyle_contract}} Months Contract</span>
+            </div>
+            <div 
+              *ngIf="checkoutData?.is_star_internet_share === '1' && !!internetShare" 
+              class="item-bot16 order-sum-cont-text"
+            >
+              <span
+                class="label-text"
+                [innerHTML]="internetShare?.label | safeHtml"
+              >
+              </span><br />
+              <span class="value-text">RM{{ (internetShare?.monthly_price || 0) | number : '1.2-2'}}</span>
+            </div>
+            <div class="shop-cart-grid-content monthly-charges device-bundle" *ngIf="isEsim">
+                <span class="label-text">eSIM Charges</span><br />
+                <span class="value-text"> RM{{
+                    RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                    item.selectedProduct.orderMonthlyPayTotal :
+                    0.00) | number : '1.2-2'}}
+                </span>
+            </div>
+            <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+            <div class="shop-cart-grid-content item-bot16 item-top16" *ngIf=" isEsim">
+                <span class="label-text">Mobile Number</span><br />
+                <span class="value-text">{{
+                    item.selectedProduct.orderPhoneNo }}</span>
+            </div>
+            <div class="shop-cart-grid-content" *ngIf="isEsim">
+              <span class="label-text">Type of SIM</span><br />
+              <span class="value-text">{{ simType }} to eSIM</span>
+            </div>
+
+            <div
+              *ngIf="
+                item.selectedProduct.orderMonthlyPay &&
+                !mnpFlow && !isCobp &&
+                !item.selectedProduct.orderDeviceName && !isEsim && !isFamilyLine && !lifeStyleVoucherDetails
+              "
+              class="gold-cart-grid-content-upfront order-sum-cont-text"
+            >
+              <div
+                class="gold-cart-grid-left up-front-payment to-be-upfront"
+                *ngIf="!isUpfrontInstallment"
+              >Upfront Payment
+                <span class="to-be-rebate to-be-rebate-margin-top"> (To be rebated in first bill)</span>
+              </div>
+              <div
+                class="gold-cart-grid-left up-front-payment to-be-upfront"
+                *ngIf="isUpfrontInstallment"
+              >Upfront Payment
+                <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+              </div>
+              <div
+                class="gold-cart-grid-right is-font-bold upfront-price-float"
+              >
+              RM{{
+                (item.selectedProduct.orderMonthlyPayTotal && !isLegacyPlan(item) ? item.selectedProduct.orderMonthlyPayTotal : 0.00)
+                  | number : '1.2-2'
+                }}
+              </div>
+            </div>
+            <div class="shop-cart-grid-content item-top16 campaign_mviva" *ngIf="item.is_campaign_mviva && item.campaign_mviva_message && !item.selectedProduct.orderDeviceName">
+              <div class="shop-cart-grid-left campaign_mviva_message">{{ item.campaign_mviva_message }}</div>
+            </div>
+            <div class="shop-cart-grid-content item-bot16" *ngIf="item.deviceUpfrontPenalty">
+              <div class="shop-cart-grid-left up-front-payment payment-bundle">{{ item.lifestylePenalty ? 'Processing Fee' : 'Device Penalty' }}
+              </div>
+              <div class="shop-cart-grid-right payment-bundle-price">RM{{ (item.deviceUpfrontPenalty ? item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+            </div>
+            <div *ngIf="item.selectedProduct.orderMonthlyPay >= 0 && !mnpFlow && isCobp && !item.selectedProduct.orderDeviceName && !isEsim && !lifeStyleVoucherDetails" class="gold-cart-grid-content-upfront order-sum-cont-text">
+              <div class="gold-cart-grid-left up-front-payment to-be-upfront" *ngIf="!isUpfrontInstallment">Upfront Payment<br>
+                <span class="to-be-rebate"> (To be rebated in first bill)</span>
+              </div>
+              <div class="gold-cart-grid-left up-front-payment to-be-upfront" *ngIf="isUpfrontInstallment">Upfront Payment
+                <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+              </div>
+              <div class="gold-cart-grid-right is-font-bold upfront-price-float" *ngIf="!campaignOmni || campaignOmni?.upfront_payment">RM{{ (item.price ? item.price : 0.00) | number : '1.2-2'}}</div>
+            </div>
+            <div *ngIf="lifeStyleVoucherDetails" class="gold-cart-grid-content-upfront order-sum-cont-text">
+              <div class="gold-cart-grid-left up-front-payment to-be-upfront lifestyle-voucher-details">Upfront Payment
+                <span class="to-be-rebate to-be-rebate-margin-top lifestyle-description"> Plan + Lifestyle Voucher</span>
+                <span class="to-be-rebate to-be-rebate-margin-top">(To be rebated in next 10 months' bill)</span>
+              </div>
+              <div class="gold-cart-grid-right is-font-bold upfront-price-float">
+                RM{{ (lifeStyleVoucherDetails.lifestyle_upfront ? lifeStyleVoucherDetails.lifestyle_upfront : 0.00) | number : '1.2-2'}}
+              </div>
+            </div>
+            <div *ngIf="campaignOmni?.rebate_frequency" class="mt-estore-1 gold-cart-grid-content-upfront order-sum-cont-text">
+              <div class="gold-cart-grid-left up-front-payment to-be-upfront">
+                Rebate <span class="text-danger">-RM{{ (campaignOmni.rebate_amount || 0) |  number : '1.2-2' }}</span> &times; {{ campaignOmni.rebate_frequency }} months
+                <span class="to-be-rebate"> (To be deducted in the next bill)</span>
+              </div>
+            </div>
+            <div *ngIf="mnpFlow" class="mnp-subscription-charges upfront_device_main order-sum-cont-text">Subscription charges will be added in your first billing cycle</div>
+            <div  class="mnp-cart-grid-content telco_day_mnp order-sum-cont-text" *ngIf="mnpFlow">
+              <div class="gold-cart-grid-left mnp-sim-left">*Free SIM card delivery</div>
+              <div class="gold-cart-grid-right mnp-sim-right upfront-price-float upfront-display-shop">RM0.00</div>
+            </div>
+            <div *ngIf = "hasAutoBilling && !IsDeviceOnly()"><span class="label-text new_line new_line bottom-gap item-top16 order-sum-cont-text">Mandatory Autobilling</span></div>
+            <div class="gold-cart-grid-content add-ons" *ngIf="item.has_add_ons && item.add_on_label">
+              <div class="up-front-payment add-ons-msg">{{item.add_on_label}}</div>
+            </div>
+            <div class="shop-cart-grid-content item-bot16 campaign_mviva telco_day" *ngIf="item.is_telco_day && item.telco_day_message && !item.selectedProduct.orderDeviceName">
+              <div class="shop-cart-grid-left campaign_mviva_message">{{ item.telco_day_message }}</div>
+            </div>
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-mobile-float-right-2 pen-margin">
+            <div class="img_personal">
+              <p>
+                <a class="c-link--default" data-css="c-link" (click)="goTo('plan')">
+                  <span class="link__content"><img src="./assets/img/icon/Edit.svg"></span>
+                </a>
+              </p>
+            </div>
+        </div>
+          </div>
+          <div *ngIf="suppData && suppData.length > 0">
+            <div *ngFor="let item of suppData, let i=index">
+              <div class="u-grid-row has-border-top">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center mt-5 mb-4">
+                  <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                  <div class="supplementary-lines">
+                    <div class="summary-grid-content item-bot order-sum-cont-text">
+                      <div class="new-number">
+                        <span class="label-text">Supplementary line {{i+1}}</span><br />
+                        <span class="value-text">{{item.number}}</span>
+                      </div>
+                    </div>
+                    <div class="summary-grid-content item-bot order-sum-cont-text" *ngIf="!isEsim">
+                      <span class="label-text">Monthly Charges</span><br />
+                      <span class="value-text">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                    </div>
+                    <div class="summary-grid-content item-bot order-sum-cont-text" *ngIf="!isFamilyLine">
+                      <div class="new-number">{{item.name}}</div>
+                    </div>
+                    <div class="summary-grid-content item-bot order-sum-cont-text" *ngIf="!isEsim">
+                      <div class="gold-cart-grid-content-upfront" *ngIf="!isUpfrontInstallment">
+                        <div class="gold-cart-grid-left up-front-payment to-be-upfront">
+                          Upfront payment
+                          <span class="to-be-rebate"> (To be rebated in first bill)</span>
+                        </div>
+                        <ng-container *ngIf="cart.familyLineNoUpfront || cart.isMnp; else showTotalUpfont">
+                          <span class="gold-cart-grid-right is-font-bold upfront-price-float">RM0.00</span>
+                        </ng-container>
+                        <ng-template #showTotalUpfont>
+                          <span class="gold-cart-grid-right is-font-bold upfront-price-float">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                        </ng-template>
+                      </div>
+                      <div class="gold-cart-grid-content-upfront" *ngIf="isUpfrontInstallment">
+                        <div class="gold-cart-grid-left up-front-payment to-be-upfront">
+                          Upfront payment
+                          <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+                        </div>
+                        <span class="gold-cart-grid-right is-font-bold">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                      </div>
+                    </div>
+                    <div class="summary-grid-content item-bot order-sum-cont-text" *ngIf="supplementaryDataLabel">
+                      <div class="new-number" [innerHTML]="supplementaryDataLabel | safeHtml"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-grid-row device_sub_total">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7"
+              [ngClass]="{'mb-estore-1': (isDeliveryTypeSelected && !editDeliveryMethod && (isDeviceBundleFlow || !isCobp)) || selectedBillingAddress}">
+              <div class="gold-cart-grid-content-total">
+                <div class="gold-cart-grid-left is-text-bold">Sub Total</div>
+                <div class="gold-cart-grid-right is-text-bold sub-total-price-m" *ngIf="cart">
+                  RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number : '1.2-2'}}</div>
+              </div>
+            </div>
+          
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7"
+            *ngIf="(isDeliveryTypeSelected && !editDeliveryMethod && (isDeviceBundleFlow || !isCobp)) || selectedBillingAddress">
+              <div class="gold-cart-grid-content-total">
+                <div class="gold-cart-grid-left is-text-bold">Delivery Charges</div>
+                <div class="gold-cart-grid-right is-text-bold sub-total-price-m" *ngIf="cart">
+                  RM{{( (selectedDeliveryMethod?.code === 'EXP' && premiumDeliveryCharge) ? premiumDeliveryCharge : 0.00) | number : '1.2-2'}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--voucher-->
+          <ng-container>
+            <div class="u-grid-row" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+                <div class="shop-cart-grid-content device_sub_total_one">
+                  <div class="shop-cart-grid-left is-font-bold">Voucher Code</div>
+                  <div class="shop-cart-grid-right is-font-bold" *ngIf="checkoutData">
+                    -RM{{ cart.rebateAmount | number : '1.2-2'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!--voucher-->
+
+          <!-- Total Payment -->
+          <div class="u-grid-row shopping_total__list grand-bg">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+              <div class="shop-cart-grid-content device_sub_total_one  total-payment-txt-align">
+                <div class="shop-cart-grid-left is-font-bold total-payment-txt-display"> Total Payment Due</div>
+                <div class="shop-cart-grid-right is-font-bold total-payment-price-width"  *ngIf="checkoutData">
+                  RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Total Payment -->
+        </div>
+
+        <div class="section__content gold-cart-background is-container prepaid" *ngIf="isPrepaid">
+          <div class="u-grid-row gold-cart-padding">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 cart-gold-center">
+              <img class="gold-cart-benji-prepaid" src="{{item?.selectedProduct?.plan_image_url}}">
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7 thankYouPageContainer shop-cart-grid-content">
+              <div class="is-text-bold item-bot8">Plan</div>
+              <div class="gold-cart-grid-content-upfront item-bot16">
+                <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.orderPlanName}}</div>
+                <div class="gold-cart-grid-right float-none-m-right-d">
+                  RM{{ (mnpFlow ? 0 : item.selectedProduct.orderMonthlyPay) | number : '1.2-2'}}
+                </div>
+              </div>
+              <!-- Dynamic sim changes starts -->
+              <ng-container *ngIf="item?.selectedProduct?.internet_pass_details">
+                <div class="is-text-bold item-bot8">Internet Pass</div>
+                <div class="gold-cart-grid-content-upfront item-bot16">
+                  <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.internet_pass_details.name}}</div>
+                  <div class="gold-cart-grid-right float-none-m-right-d">RM{{ item.selectedProduct.internet_pass_details.monthly_plan | number : '1.2-2'}}</div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="item?.selectedProduct?.credit_reload_details">
+                <div class="is-text-bold item-bot8">Reload</div>  
+                <div class="gold-cart-grid-content-upfront item-bot16">
+                  <div class="gold-cart-grid-left up-front-payment">Credit Reload {{item.selectedProduct.credit_reload_details.name}}</div>
+                  <div class="gold-cart-grid-right float-none-m-right-d">RM{{ item.selectedProduct.credit_reload_details.monthly_plan | number : '1.2-2'}}</div>
+                </div>
+              </ng-container>
+              <!-- Dynamic sim changes end -->
+              <div class="is-text-bold item-bot8">New Number</div>
+              <div class="gold-cart-grid-content-upfront item-bot16">
+                <div class="gold-cart-grid-left up-front-payment">{{item.selectedProduct.orderPhoneNo}}</div>
+              </div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-1 is-equal-height is-mobile-float-right-2">
+              <div class="img_personal">
+                <p>
+                  <a class="c-link--default" data-css="c-link" (click)="goTo('plan')">
+                    <span class="link__content"><img src="./assets/img/icon/Edit.svg"></span>
+                  </a>
+                </p>
+              </div>
+          </div>
+          </div>
+          <section class="u-section">
+            <div class="section__inner">
+              <div class="u-grid-row device_sub_total">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+                  <div class="gold-cart-grid-content-total">
+                    <div class="gold-cart-grid-left is-text-bold">Sub Total</div>
+                    <div class="gold-cart-grid-right is-text-bold" *ngIf = "cart">RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number : '1.2-2'}}</div>
+                  </div>
+
+                  <div *ngIf="isPrepaid || isPrepaidPack"
+                    class="gold-cart-grid-content-total" 
+                    style="margin-top: 10px;"
+                  >
+                    <div class="shop-cart-grid-left is-font-bold sub-total-divLeft">Delivery Charges</div>
+                    <div class="shop-cart-grid-right is-font-bold sub-total-price-divright">
+                      <ng-container *ngIf="selectedDeliveryMethod?.code === 'standard'">
+                        RM{{ (standardDeliveryCharge || 0) | number : '1.2-2' }}
+                      </ng-container>
+                      <ng-container *ngIf="selectedDeliveryMethod?.code === 'EXP'">
+                        RM{{ (premiumDeliveryCharge || 0) | number : '1.2-2' }}
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                <ng-container>
+                  <div class="u-grid-row device_sub_total" *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+                    <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+                      <div class="shop-cart-grid-content device_sub_total_one">
+                        <div class="shop-cart-grid-left is-font-bold">Voucher Code</div>
+                        <div class="shop-cart-grid-right is-font-bold" *ngIf="checkoutData">
+                          -RM{{ cart.rebateAmount | number : '1.2-2'}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <!--voucher-->
+
+                <!-- Total Payment -->
+                <div class="u-grid-row device_sub_total shopping_total__list grand-bg">
+                  <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+                    <div class="shop-cart-grid-content device_sub_total_one">
+                      <div class="shop-cart-grid-left is-font-bold sub-total-divLeft"> Total Payment Due</div>
+                      <div class="shop-cart-grid-right is-font-bold sub-total-price-divright"  *ngIf="checkoutData">
+                        RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Payment -->
+            </div>
+          </section>
+        </div>
+
+        <!-- The below code has to iterate -->
+        <!-- <div *ngIf="suppData && suppData.length > 0">
+          <div *ngFor="let item of suppData, let i=index">
+            <div class="u-grid-row has-border-top">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                <div class="supplementary-lines">
+                  <div class="summary-grid-content item-bot">
+                    <div class="new-number">
+                      <span>Supplementary line {{i+1}}:
+                        <b class="suppl-number">{{item.number}}</b>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="summary-grid-content item-bot" *ngIf="!isEsim">
+                    <div class="new-number">Monthly Charges:
+                      <b>RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</b>
+                    </div>
+                  </div>
+                  <div class="summary-grid-content item-bot">
+                    <div class="new-number">{{item.name}}</div>
+                  </div>
+                  <div class="summary-grid-content item-bot" *ngIf="!isEsim">
+                    <div class="new-number" *ngIf="!isUpfrontInstallment">Upfront payment
+                      <span class="to-be-rebate"> (To be rebated in first bill)</span>
+                      <span class="new-supple-right">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                    </div>
+                    <div class="new-number" *ngIf="isUpfrontInstallment">Upfront payment
+                      <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+                      <span class="new-supple-right">RM{{(item.price ? (item.price) : 0.00) | number : '1.2-2'}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- <div class="u-grid-row device_sub_total">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+            <div class="gold-cart-grid-content-total">
+              <div class="gold-cart-grid-left is-text-bold">Sub Total</div>
+              <div class="gold-cart-grid-right is-text-bold" *ngIf = "cart">RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number : '1.2-2'}}</div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+  </section>
+
+  <section class="u-section choose_shipping_section" *ngIf="cart && cart.items && cart.items.length > 0">
+    <div class="section__content">
+        <div class="is-container voucher-container">
+          <app-voucher
+            [data]="checkoutData"
+            [isThirdPartyOrder]="isThirdPartyOrder.flag"
+            (voucherApplied)="onVoucherApplied()"
+            (voucherRemoved)="onVoucherRemoved()"
+          ></app-voucher>
+        </div>
+    </div>
+</section>
+
+  <section class="u-section checkout-total-cost" *ngIf="cart && cart.items && cart.items.length > 0">
+    <div class="section__inner">
+      <div class="section__content is-container">
+        <!-- <div class="shopping_total">Total Payment Due</div> -->
+        <div class="shopping_total__list">
+          <!-- <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+              <div class="total__cost">Total</div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+              <div class="total__cost_value">RM{{ (cart.itemsTotal ? cart.itemsTotal : 0.00) | number : '1.2-2'}}</div>
+            </div>
+          </div> -->
+
+          <ng-container *ngFor="let tax of taxs">
+          <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+              <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+              <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+            </div>
+          </div>
+        </ng-container>
+
+          <!-- <div class="u-grid-row is-collapsed is-equal-height">
+
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+              <div class="total_gst">Rounding Adjustment</div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+              <div class="total_gst_value">RM{{ cart.roundOffAdjustment | number : '1.2-2'}}</div>
+            </div>
+          </div> -->
+        </div>
+        <!-- <div class="shopping_total__list grand-bg">
+           <div class="u-grid-row is-collapsed is-equal-height">
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+              <div class="grand__total">Total Payment Due</div>
+            </div>
+            <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6" *ngIf="checkoutData">
+              <div class="grand__total_value">RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}</div>
+            </div>
+          </div>
+          <div class="u-grid-row shopping_total__list grand-bg">
+            <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+              <div class="shop-cart-grid-content device_sub_total_one">
+                <div class="shop-cart-grid-left is-font-bold"> Total Payment Due</div>
+                <div class="shop-cart-grid-right is-font-bold"  *ngIf="checkoutData">
+                  RM{{ ( cart.grossTotal ? RoundingOff2Number(cart.grossTotal) : 0.00 ) | number : '1.2-2'}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </section>
+  <!-- <app-note-section *ngIf = "cart && cart.items && cart.items.length > 0 && !isBroadband" [cartNoteCheck]="cart && cart.items && cart.items.length > 0"></app-note-section>
+  <app-note-section *ngIf = 'cart && cart.items && cart.items.length > 0 && isBroadband' [bBNoteCheck]="cart && cart.items && cart.items.length > 0"></app-note-section> -->
+
+  <section class="section__inner" *ngIf="isBillTypeOptional && !cSAgentOrderId">
+    <div class="section__content checkbox-section is-container-note">
+     <div class="subs">Subscribe to Auto - Billing for easier payment</div>
+     <div class="note"><b>Note:</b> Only Credit Card is allowed</div>
+     <div>
+      <label class="container">
+        <input type="checkbox" class="checkbox-subscribe" (click) = "recordOptedBillingType('checked')">
+        <span class="checkmark"></span>
+        <span class="subscribe-text">Subscribe</span>
+      </label>
+     </div>
+    </div>
+  </section>
+
+  <section class="u-section chekout-terms-section">
+    <div class="section__inner">
+      <div class="section__content is-container">
+        <div class="is-text-align-center">
+          <button
+            *ngIf="!isZeroPaymentFlow() && agentType !== 'dealer'"
+            class="c-cta--default"
+            data-css="c-cta"
+            (click)="paymentGateway()"
+            [disabled]="isProceed2PayDisable || isOutOfStock || disableProceedToPay"
+          >Proceed to Payment
+            <i class="cta__icon icon is-icon-arrow"></i>
+          </button>
+          <button
+            *ngIf="isZeroPaymentFlow() && agentType !== 'dealer' && isDeviceBundleFlow"
+            class="c-cta--default"
+            data-css="c-cta"
+            (click)="paymentGateway()"
+            [disabled]="isProceed2PayDisable || isOutOfStock || disableProceedToPay"
+          >Proceed to payment
+            <i class="cta__icon icon is-icon-arrow"></i>
+          </button>
+          <button
+            *ngIf="agentType !== 'dealer' && isZeroPaymentFlow() && !isDeviceBundleFlow"
+            class="c-cta--default"
+            data-css="c-cta"
+            (click)="paymentGateway()"
+            [disabled]="
+              isProceed2PayDisable || isOutOfStock || disableProceedToPay ||
+              (isThirdPartyOrder.flag && isThirdPartyOrder.btnDisabled)
+            "
+          >Confirm to Proceed
+            <i class="cta__icon icon is-icon-arrow"></i>
+          </button>
+
+          <!-- Dealer Payment button # start -->
+          <div *ngIf="agentType === 'dealer'" class="dealer-payment-btn-container">
+            <button
+              class="c-cta--default dealer-payment-btn"
+              data-css="c-cta"
+              (click)="paymentGateway({prePayment: true})"
+              [disabled]="isProceed2PayDisable || isOutOfStock || disableProceedToPay || isPrepaid"
+            >Self-payment by Customer</button>
+            <button
+              class="c-cta--default dealer-payment-btn"
+              data-css="c-cta"
+              (click)="paymentGateway()"
+              [disabled]="isProceed2PayDisable || isOutOfStock || disableProceedToPay"
+            >Payment by Dealer</button>
+          </div>
+
+          <!-- Dealer Payment button # end -->
+
+          <div class="acceptance-terms-conds"  *ngIf="agentType === 'dealer'">
+            <strong>Note:</strong> Select ‘Self-Payment by Customer’ if the customer wants to make payment on their <br />
+             own. Select ‘Payment by Dealer’ if the customer allows you to assist them to make payment.
+          </div>
+
+          <div class="acceptance-terms-conds"
+               *ngIf="agentType === 'dealer'; else massJourneyTnC"
+          >
+            By proceeding to payment, you agree to be bound by our
+            <a
+              data-css="c-link"
+              target="_blank"
+              href="https://www.celcom.com.my/legal/terms-and-conditions/general#general-celcom-online-shop"
+            >
+              <span class="accptance-conditions">Terms &amp; Conditions</span>
+            </a>
+            and
+            <a class="c-link" target="_blank" href="https://www.celcom.com.my/legal/privacy-matters">
+              <span class="accptance-conditions">Privacy Notice.</span>
+            </a>
+          </div>
+          <ng-template #massJourneyTnC>
+            <div class="acceptance-terms-conds">
+              By proceeding to payment, you agree to be bound by our 
+              <a
+                data-css="c-link"
+                target="_blank"
+                href="https://www.celcom.com.my/legal/terms-and-conditions/general#general-celcom-online-shop"
+              >
+                <span class="accptance-conditions">Terms &amp; Conditions</span>
+              </a>
+              and
+              <a class="c-link" target="_blank" href="https://www.celcom.com.my/legal/privacy-matters">
+                <span class="accptance-conditions">Privacy Notice.</span>
+              </a>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+</div>
+<app-notification-error *ngIf="sessionInvalid" [IsSessionInValid]="sessionInvalid"></app-notification-error>
+<app-notification-error *ngIf="errorCreateOrder" [data]="errorCreateOrderData"></app-notification-error>
+<app-notification-error *ngIf =  "errorStockNotAvail" [data]=  "errorMessage"></app-notification-error>
+<app-notification-error *ngIf="o2oDealerCustomerData.error" [data]="o2oDealerCustomerData.error"></app-notification-error>
+<app-notification-error *ngIf="popUpAnnouncement && !loading && !sessionInvalid && !errorStockNotAvail" [data]="announcementData"></app-notification-error>
+<ng-container *ngIf="IsDisplayIdlePopup">
+  <session-timeout-popup-component (OnContinueMySession)="redirectShopDetails($event);" [data]="cartItemUnreservation"></session-timeout-popup-component>
+</ng-container>

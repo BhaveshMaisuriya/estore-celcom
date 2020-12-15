@@ -1,0 +1,180 @@
+[{
+	"key": "63adfb80-a0a2-48d5-a01b-afb870659696",
+	"title": "Personal",
+	"uri": "node",
+	"alias": "node",
+	"external": true,
+	"absolute": "http:\/\/celcomk.com\/node",
+	"weight": "-50",
+	"expanded": false,
+	"enabled": true,
+	"uuid": "",
+	"options": {
+		"query": []
+	},
+	"below": [{
+			"key": "da70ebd9-6a90-4dbf-89c6-93d4b2c2d9e8",
+			"title": "Prepaid",
+			"uri": "node",
+			"alias": "node",
+			"external": true,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-50",
+			"expanded": true,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "d07823ed-324a-4fbe-9a0b-d6cbbf7e10de",
+			"title": "Postpaid",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-49",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		 {
+			"key": "77fcf83a-2db5-4479-ad56-8040850854f3",
+			"title": "Devices",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-48",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "c2295d06-b8d1-4e61-ac01-556b40e59256",
+			"title": "Broadband",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-47",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		 {
+			"key": "375801d8-3926-484c-ac09-1a8866694060",
+			"title": "Services",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-46",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		}]
+}, {
+	"key": "9840c1c0-84a4-4f98-9842-752c1a5fa804",
+	"title": "Business",
+	"uri": "node",
+	"alias": "node",
+	"external": false,
+	"absolute": "http:\/\/celcomk.com\/node",
+	"weight": "-49",
+	"expanded": false,
+	"enabled": true,
+	"uuid": "",
+	"options": {
+		"query": []
+	},
+	"below": 
+		[{
+			"key": "cdff6c7d-e26c-4d97-aace-aa3ebb2e4725",
+			"title": "SME",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-50",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "a9641f42-cf37-48ab-a077-75b0dc915eb6",
+			"title": "Enterprise",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-49",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "95b6abae-ae23-48da-a041-f109beb08895",
+			"title": "Devices",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-48",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "799c8799-d8f8-469a-99d5-01ca0b81a3ea",
+			"title": "International Services",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-47",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		},
+		{
+			"key": "16dc428e-ff6a-412e-9dfc-1ceb409ece72",
+			"title": "Register Interest",
+			"uri": "node",
+			"alias": "node",
+			"external": false,
+			"absolute": "http:\/\/celcomk.com\/node",
+			"weight": "-46",
+			"expanded": false,
+			"enabled": true,
+			"uuid": "",
+			"options": {
+				"query": []
+			}
+		}]	
+}]

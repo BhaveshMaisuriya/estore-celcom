@@ -1,0 +1,374 @@
+<section id="new-address" class="u-section has-section-padding-bottom tab_address_content">
+  <div class="section__inner">
+    <div class="section__content is-container">
+      <form #personalForm="ngForm" (ngSubmit)="onSubmit(personalForm)">
+        <div class="choose_new_add">
+          <div class="choose_new_add-form">
+            <div class="doc-title">Personal Information</div>
+            <div class="u-grid-row is-collapsed is-equal-height">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Salutation
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <select class="guest-choose-form-control salutation-control" id="salutation" name="salutation" [(ngModel)]="formDataValue.salutation" required #salutation="ngModel"
+                    [ngClass]="{'errorborder':!salutation.valid && salutation.touched}">
+                    <option disabled="" selected="" value="">Select a salutation</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Dr">Dr</option>
+                  </select>
+                  <div class="error salutation-control" *ngIf="!salutation.valid && salutation.touched">
+                      <span class="warning-icon">
+                          <img src="../assets/img/ThresholdAlertNotification.svg">
+                        </span>
+                    <span class="text-danger" [hidden]="!salutation.hasError('required')">Please select salutation</span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Full name (As per IC)
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text" [readOnly]="isEnterprise() || flags.isFormDisabled" type="text" placeholder="" id="name" name="name" [(ngModel)]="formDataValue.name" required #name="ngModel"
+                    [pattern]="formPattern.name" maxlength="50" [ngClass]="{'errorborder':!name.valid && name.touched, 'input_disable': isEnterprise() || flags.isFormDisabled}"
+                  />
+                  <div class="error"  *ngIf="!name.valid && name.touched">
+                    <span class="text-danger" [hidden]="!name.hasError('required')">{{ formHelperText.name.req }}</span>
+                    <span class="text-danger" [hidden]="!name.hasError('pattern')">{{ formHelperText.name.invalid }}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Gender
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <select class="guest-choose-form-control" id="gender" name="gender" [(ngModel)]="formDataValue.gender" required #gender="ngModel" [ngClass]="{'errorborder':!gender.valid && gender.touched}">
+                    <option disabled="" selected="" value="">Choose gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                  <div class="error" *ngIf="!gender.valid && gender.touched">
+                    <span class="text-danger" [hidden]="!gender.hasError('required')">Please choose Gender</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-grid-row is-collapsed is-equal-height">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Primary Contact Number
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text numeric-textbox" [maxlength]="12" pattern="[0-9]{11,}" type="tel" placeholder="01XXXXXXXX" id="contactMobileNum" name="contactMobileNum"
+                    ngModel required #contactMobileNum="ngModel" (keydown) = "restrictOnlyNum($event, 'contactMobileNum')" (keyup)="MobileNumber($event)" (touchend)="MobileNumber($event)" [ngClass]="{'errorborder':(!this.invalidmobNumber && !contactMobileNum.valid && contactMobileNum.touched)}"
+                    [(ngModel)]="mobNum">
+                  <div class="error" *ngIf="!this.invalidmobNumber && !contactMobileNum.valid && contactMobileNum.touched">
+                    <span class="text-danger" [hidden]="!contactMobileNum.hasError('required')">Please enter contact number </span>
+                    <span class="warning-icon" [hidden]="!contactMobileNum.hasError('required')">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="error" *ngIf="this.invalidmobNumber == true">
+                    <span class="text-danger">Please enter a Valid Contact number </span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Secondary Contact Number</label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text numeric-textbox"
+                  [maxlength]="12"
+                   pattern="[0-9]{11,}"
+                   type="tel"
+                   placeholder="01XXXXXXXX"
+                   id="alternateMsisdn"
+                   name="alternateMsisdn"
+                   ngModel
+                   #alternateMsisdn="ngModel"
+                   (keydown) = "restrictOnlyNum($event, 'alternateMsisdn')"
+                   (keyup)="MobileNumberAlternate($event)" (touchend)="MobileNumberAlternate($event)"
+                   [ngClass]="{'errorborder':(!this.invalidAlternateMsisdn && !alternateMsisdn.valid && alternateMsisdn.touched)}"
+                   [(ngModel)]="altMobNum">
+                  <div class="error" *ngIf="!this.invalidAlternateMsisdn && !alternateMsisdn.valid && alternateMsisdn.touched">
+                    <span class="text-danger" [hidden]="!alternateMsisdn.hasError('required')">Please enter contact number </span>
+                    <span class="warning-icon" [hidden]="!alternateMsisdn.hasError('required')">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="error" *ngIf="this.invalidAlternateMsisdn == true">
+                    <span class="text-danger">Please enter a Valid Contact number </span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Email Address
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text" pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                    maxlength="50" type="email" placeholder="" id="contactEmail" name="contactEmail" [readOnly]="isEnterprise()" [(ngModel)]="userEmail" required #contactEmail="ngModel"
+                    [ngClass]="{'errorborder':!contactEmail.valid && contactEmail.touched}">
+                  <div class="error" *ngIf="!contactEmail.valid && contactEmail.touched">
+                    <span class="text-danger" [hidden]="!contactEmail.hasError('required')">Please enter email address </span>
+                    <span class="text-danger" [hidden]="!contactEmail.hasError('pattern')">Please enter a valid email address</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>Preferred Contact Method
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <select class="guest-choose-form-control" id="preferredContactMethod" name="preferredContactMethod" [(ngModel)]="formDataValue.preferredContactMethod" required #preferredContactMethod="ngModel"
+                    [ngClass]="{'errorborder':!preferredContactMethod.valid && preferredContactMethod.touched}">
+                    <option disabled="" selected="" value="">Choose</option>
+                    <option value="Email">Email</option>
+                    <option value="Call">Phone Call</option>
+                  </select>
+                  <div class="error" *ngIf="!preferredContactMethod.valid && preferredContactMethod.touched">
+                    <span class="text-danger error-mobile-choose" [hidden]="!preferredContactMethod.hasError('required')">Please select preferred contact method </span>
+                    <span class="warning-icon error-mobile-choose-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-grid-row is-collapsed is-equal-height">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>ID Type
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input disabled="" class="guest-choose-form-control-text input_disable" type="text" placeholder="" id="" name="" value={{customerIdTypeValue}}>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <label>ID Number
+                    <span class="new-add_require">*</span>
+                  </label>
+                </div>
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text input_disable" type="text" placeholder="" id="customerIdNumber" name="customerIdNumber"
+                    [(ngModel)]="customerIdNo" readonly required #customerIdNumber="ngModel"
+                    [ngClass]="{'errorborder':!customerIdNumber.valid && customerIdNumber.touched}">
+                  <div class="error" *ngIf="!customerIdNumber.valid && customerIdNumber.touched">
+                    <span class="text-danger" [hidden]="customerIdNumber.hasError('required')">Please enter ID number </span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <h3 class="guest-choose-form-billing-header">Billing Address <span class="new-add_require">*</span></h3>
+                </div>
+              </div>
+            </div>
+            <div class="u-grid-row is-collapsed is-equal-height">
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text" type="text" placeholder="Unit Number" maxlength="15" id="buildingName"
+                    name="buildingName"  [(ngModel)]="formDataValue.buildingName" #buildingName="ngModel" [pattern]="formPattern.address" [ngClass]="{'errorborder':!buildingName.valid && buildingName.touched, 'input_disable': flags.isBillingAddressDisabled}"
+                    (keydown)="addressUnitValidation($event)" (keyup)="addressUnitValidation($event)"
+                    (touchend)="addressUnitValidation($event)" [(ngModel)]="unitHouseNumber"
+                      [readOnly]="flags.isBillingAddressDisabled"
+                  />
+                  <div class="error" *ngIf="!buildingName.valid && buildingName.touched">
+                    <span class="text-danger" [hidden]="!buildingName.hasError('required')">{{modelLabels.ADDRESS_MSG}}</span>
+                    <span class="text-danger" [hidden]="!buildingName.hasError('pattern')">{{modelLabels.VALID_ADDRESS_MSG}}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text address-line" type="text" placeholder="Address Line 1" maxlength="{{homeStreetTxtBoxMaxLength}}"
+                    id="streetAddressLine1" name="streetAddressLine1" [(ngModel)]="formDataValue.streetAddressLine1" required #streetAddressLine1="ngModel"
+                    [pattern]="formPattern.addressLine"
+                    [ngClass]="{'errorborder':!streetAddressLine1.valid && streetAddressLine1.touched, 'input_disable': flags.isBillingAddressDisabled}"
+                    (keydown)="addressLine1Validation($event)" (keyup)="addressLine1Validation($event)" (touchend)="addressLine1Validation($event)"
+                    [(ngModel)]="addressline1"
+                    [readOnly]="flags.isBillingAddressDisabled"
+                  />
+                  <div class="error" *ngIf="!streetAddressLine1.valid && streetAddressLine1.touched">
+                    <span class="text-danger" [hidden]="!streetAddressLine1.hasError('required')">{{ formHelperText.addressLine.req }}</span>
+                    <span class="text-danger" [hidden]="!streetAddressLine1.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-12 is-equal-height">
+                  <div class="guest-choose-form-group">
+                    <input class="guest-choose-form-control-text address-line" type="text" placeholder="Address Line 2 (Optional)" maxlength="{{homeStreetTxtBoxMaxLength}}"
+                      id="streetAddressLine2" name="streetAddressLine2" [(ngModel)]="formDataValue.streetAddressLine2" #streetAddressLine2="ngModel"
+                      [pattern]="formPattern.addressLine"
+                      [ngClass]="{'errorborder':!streetAddressLine2.valid, 'input_disable': flags.isBillingAddressDisabled}"
+                      (keydown)="addressLine2Validation($event)" (keyup)="addressLine2Validation($event)" (touchend)="addressLine2Validation($event)"
+                      [(ngModel)]="addressline2"
+                        [readOnly]="flags.isBillingAddressDisabled"
+                    />
+                    <div class="error" *ngIf="!streetAddressLine2.valid">
+                      <span class="text-danger" [hidden]="!streetAddressLine2.hasError('pattern')">{{ formHelperText.addressLine.invalid }}</span>
+                      <span class="warning-icon">
+                        <img src="../assets/img/ThresholdAlertNotification.svg">
+                      </span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text numeric-textbox" type="tel" pattern="[0-9]{5}" placeholder="Postcode" id="postalCode"
+                    name="postalCode" [(ngModel)]="formDataValue.postalCode" required #postalCode="ngModel" maxlength="5" (keydown) = "restrictOnlyNum($event, 'postalCode')" (keyup)="postalCodeValidation($event)"
+                    [ngClass]="{'errorborder':!postalCode.valid && postalCode.touched, 'input_disable': flags.isBillingAddressDisabled}"
+                    [(ngModel)]="postCode"
+                      [readOnly]="flags.isBillingAddressDisabled"
+                  >
+                  <div class="error" *ngIf="!postalCode.valid && postalCode.touched && !isPostalInValid">
+                    <span class="text-danger" [hidden]="!postalCode.hasError('required')">{{modelLabels.POSTAL_MSG}}</span>
+                    <span class="text-danger" [hidden]="!postalCode.hasError('pattern')">{{modelLabels.VALID_POSTAL_MSG}}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="error" *ngIf="isPostalInValid">
+                    <span class="text-danger" >{{modelLabels.VALID_POSTAL_MSG}}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <input class="guest-choose-form-control-text" type="text" placeholder="City" id="city"
+                    pattern="[a-zA-Z\s]+" name="city" [(ngModel)]="formDataValue.city" required #city="ngModel" (keypress)="cityValidation($event)" (touchend)="cityValidation($event)"
+                    maxlength="{{cityTxtBoxMaxLenth}}" [ngClass]="{'errorborder':!city.valid && city.touched, 'input_disable': flags.isBillingAddressDisabled}"
+                      [readOnly]="flags.isBillingAddressDisabled"
+                  >
+                  <div class="error" *ngIf="!city.valid && city.touched">
+                    <span class="text-danger" [hidden]="!city.hasError('required')">{{modelLabels.CITY_MSG}}</span>
+                    <span class="text-danger" [hidden]="!city.hasError('pattern')">{{modelLabels.VALID_CITY_MSG}}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-equal-height">
+                <div class="guest-choose-form-group">
+                  <select class="guest-choose-form-control" id="state" name="state" [(ngModel)]="formDataValue.state" required #state="ngModel"
+                    [ngClass]="{'errorborder':!state.valid && state.touched}"
+                  >
+                    <option disabled="" selected="" value="">State </option>
+                    <option *ngFor="let st of states?.available_regions" [ngValue]="st"> {{st.name}} </option>
+                  </select>
+                  <div class="error" *ngIf="!state.valid && state.touched">
+                    <span class="text-danger" [hidden]="!state.hasError('required')">{{modelLabels.STATE_MSG}}</span>
+                    <span class="warning-icon">
+                      <img src="../assets/img/ThresholdAlertNotification.svg">
+                    </span>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="checkout-plus-terms">
+          <label class="check_container guest-checkbox">
+            <span class="checkout-i-agree"> I agree to save my personal information and I agree with the </span>
+            <a class="c-link--default" data-css="c-link" target="_blank" href="https://www.celcom.com.my/legal/terms-and-conditions">
+              <span class="link__content">Terms &amp; Conditions</span>
+            </a>
+            and
+            <a class="c-link--default" data-css="c-link" target="_blank" href="https://www.celcom.com.my/legal/privacy-matters">
+              <span class="link__content">Privacy Notice.</span>
+            </a>
+            <input type="checkbox" id="agree" name="agree" ngModel required #agree="ngModel">
+            <span class="checkmark"></span>
+          </label>
+          <div class="error" *ngIf="!agree.valid && agree.touched">
+            <span class="text-danger" *ngIf="agree.hasError('required')">
+              <span class="warning-icon">
+                <img src="../assets/img/ThresholdAlertNotification.svg">
+              </span>
+              Please select the box above to proceed
+            </span>
+          </div>
+        </div>
+        <div class="guest-continue">
+          <button type="submit" class="c-cta--default guest-default-button" data-css="c-cta">
+            <span class="cta__content">Continue</span>
+            <span class="cta__icon icon is-icon-arrow"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<app-notification-error *ngIf="formSubmitError" [IsSessionInValid]="sessionInvalid" [data]="formSubmitErrorData"></app-notification-error>
+<app-notification-error *ngIf="sessionInvalid" [IsSessionInValid]="sessionInvalid"></app-notification-error>
+<ng-container *ngIf="IsDisplayIdlePopup">
+  <session-timeout-popup-component (OnContinueMySession)="redirectShopDetails($event);" [data]="cartItemUnreservation"></session-timeout-popup-component>
+</ng-container>

@@ -1,0 +1,447 @@
+/*CSS for Plans start */
+.u_section {
+    padding: 40px 26px 40px 7%;
+}
+.dev-dtl-plan-heading {
+  display: -webkit-box;
+}
+.footer_fix {
+  min-height: 1000px;
+}
+.desktop {
+  display: block;
+}
+.mobile {
+  display: none;
+}
+.section_name {
+  margin-top: 13px;
+  margin-bottom: 16px;
+  margin-left: 10px;
+  font: normal bold 18px Lato;
+  color: #333;
+}
+.__plan_text {
+  margin-top: -5px;
+  margin-bottom: 16px;
+  padding-left: 5.3%;
+  font-size: 14px;
+  line-height: 2.21;
+}
+.base_plan_box {
+    margin-left: 35px;
+    margin-top: 15px;
+    width: 373px;
+    max-width: 373px;
+    height: 177px;
+    background-color: #009ade;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+}
+.plan_main {
+  padding: 0;
+  margin: 0;
+}
+.plan__name_main {
+    float: left;
+    font: normal 100 24px/1.33 Lato;
+    color: #fff;
+    position: relative;
+    bottom: 5px;
+}
+.plan__gb {
+  float: right;
+  font: normal normal 24px/1 Lato;
+  color: #fff;
+}
+.text_styling , .condition_styling {
+    font-size: 14px;
+    line-height: 1.29;
+    color: #fff;
+    padding: 0;
+}
+.condition_styling {
+  padding: 0;
+  margin: 0;
+}
+.add_on_font {
+    font-size: 24px;
+    font-weight: bold;
+    float: left;
+    margin-bottom: 5px;
+}
+.gb_font {
+    font-size: 24px;
+    margin: 0;
+    float: right;
+}
+
+.base_plan__price {
+    font-size: 28px;
+    line-height: 1.71;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+.plans__row {
+  display: -webkit-box;
+  min-height: 230px;
+  margin-top: -16px;
+}
+
+.plans-size-up__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-gap: 25px;
+  margin: 0 10px 0 50px;
+}
+
+.__plus_icon {
+  margin: 92% 40px 0 40px;
+  width: 40px;
+  height: 40px;
+}
+.is_full_width {
+  width: 100%;
+}
+
+.monthly_charges {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.71;
+}
+.monthly_charges_pass_s {
+    font-size: 14px;
+    font-weight: normal;
+}
+.pass_s {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 273px;
+  border-radius: 8px;
+  border: solid 1px #cccccc;
+  background-color: white;
+  transition: all 500ms cubic-bezier(0, .5, .5, 1);
+}
+.pass_s_selected {
+  color: #fff;
+  background-color: #009ade;
+}
+.card-padding {
+  padding: 21px 21px 0 21px;
+}
+.reward_text {
+  font-size: 11px;
+  margin-bottom: 35px;
+}
+.pass_s__price {
+    font-size: 28px;
+    line-height: 1.71;
+    margin-bottom: 0;
+}
+.add_pass {
+    height: 56px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    cursor: pointer;
+    display: flex;
+}
+.videoWalla {
+    float: left;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: -2px;
+    line-height: 18px;
+    width: 101%;
+}
+
+.image_in_center {
+  margin: auto 10px auto 41%;
+  height: 17px;
+}
+.remove-btn-m {
+  margin: auto 10px auto 8%;
+}
+.add_pass_m {
+  color: #fff;
+  background: #009ade;
+  height: 60px;
+  text-align: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.added_icon {
+  margin-top: 7.5%;
+  margin-left: 28px;
+}
+.added_text {
+  font-size: 16px;
+  position: relative;
+  top: 18px;
+  right: 30px;
+}
+.selection_text {
+  padding-left: 4.3%;
+  padding-top: 2.5%;
+  color: #333;
+}
+.remove_pass , .remove_pass_m{
+  font-size: 14px;
+  text-decoration: underline;
+  margin-top: 15px;
+  color: #d0021b;
+  cursor: pointer;
+  margin-left: -12%;
+  text-align: center;
+}
+._no_margin {
+  margin: 0;
+}
+._has_margin {
+  margin-top: 5px;
+}
+.pass_m_margin {
+  position: relative;
+  left: 20px;
+}
+.remove_pass_m {
+  margin-left: 50%;
+}
+.border_after {
+  border-bottom: 1px solid #dbdbdb;
+  margin-right: 20%;
+}
+.add__button_text {
+    color: #009ade;
+    font-size: 16px;
+    margin: auto -40px;
+  }
+
+.remove__button_text {
+  margin: auto 0;
+  color: white;
+}
+.selected_plan_details {
+  padding-top: 3%;
+}
+/*mobile responsive Start*/
+@media (max-width: 768px) {
+  .selection_text {
+      padding: 3% 6.5%;
+      line-height: 1.4;
+  }
+  .plans__row {
+      display: block;
+  }
+  .u_section {
+      padding: 40px 5% 0 5%;
+  }
+  .__plan_text {
+      padding-left: 0;
+      line-height: 1.5;
+      margin-top: 16px;
+      margin-bottom: 24px;
+  }
+  .base_plan_box {
+      margin-left: 0;
+      width: 100%;
+      height: auto;
+  }
+  .base_plan__price {
+      padding: 0 18px 20px;
+  }
+  .__plus_icon {
+      margin-top: 0;
+      margin-left: 42%;
+      margin-bottom: 3%;
+  }
+  div.selected_plan_details{
+      padding-top: 0;
+  }
+  ._has_margin {
+      margin-bottom: 20px;
+  }
+  .add__button_text {
+      top: 22px;
+  }
+  .is_full_width {
+      width: 100%;
+  }
+  .plans__row {
+      height: auto;
+      margin-top: 0;
+  }
+  .added_icon {
+      margin-top: 7%;
+  }
+  .remove_pass {
+      margin-left: 0;
+      position: relative;
+      bottom: 5px;
+  }
+  .border_after {
+      margin-right: 5%;
+  }
+  .condition_styling {
+      margin-top: 7%;
+  }
+  ._no_margin {
+      margin-top: 10px;
+  }
+  .desktop {
+      display: none;
+  }
+  .mobile {
+      display: block;
+  }
+    .u_section {
+        padding: 40px 5% 0 5%;
+    }
+    .__plan_text {
+        padding-left: 0;
+        line-height: 1.5;
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
+    .base_plan_box {
+        margin-left: 0;
+        width: 100%;
+        height: auto;
+    }
+    .base_plan__price {
+        padding: 0 18px 20px;
+    }
+    .__plus_icon_container {
+      flex-direction: row;
+      margin: 40px 0 0 0;
+    }
+    .__plus_icon {
+        margin-top: 0;
+    }
+
+    div.selected_plan_details{
+        padding-top: 0;
+    }
+    ._has_margin {
+        margin-bottom: 20px;
+    }
+    .add__button_text {
+        top: 22px;
+    }
+    .is_full_width {
+        width: 100%;
+    }
+    .plans__row {
+        /* height: auto; */
+        margin-top: 0;
+    }
+    .added_icon {
+        margin-top: 7%;
+    }
+    .remove_pass {
+        margin-left: 0;
+        position: relative;
+        bottom: 5px;
+    }
+    .border_after {
+        margin-right: 5%;
+    }
+    .condition_styling {
+        margin-top: 7%;
+    }
+    ._no_margin {
+        margin-top: 10px;
+    }
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+}
+@media only screen and (max-width: 767px) {
+	.footer_fix {
+		min-height: 500px;
+  }
+}
+
+/*mobile responsive End*/
+
+/*CSS for Plans End */
+
+/*CSS for devices Start*/
+
+._moon_devices_has_padding {
+  padding: 0 5% 0 12%;
+}
+@media only screen and (max-width: 767px) {
+.footer_fix {
+  min-height: 500px;
+  }
+  ._moon_devices_has_padding {
+      padding: 0 2%;
+  }
+}
+
+/*CSS for devices End*/
+
+@media (max-width: 576px) {
+	.base_plan_box {
+        width: 70%;
+        margin-bottom: 40px;
+        max-width: 300px;
+        min-height: 125px!important;
+        margin-left: 30px!important;
+    }
+    .base_plan__price {
+        padding-left: 0!important;
+        padding-bottom: 0!important;
+        max-height:39px;
+        font-size:28px;
+    }
+    .condition_styling {
+        margin-top: 0;
+        font-size:16px;
+        margin-bottom: 0;
+    }
+
+    .plans__row{
+      min-height: 0px!important;
+    }
+    .section_name {
+      font: normal bold 20px Lato;
+      margin-bottom: 0!important;
+    }
+    .__plan_text {
+      padding-left: 67px!important;
+      margin-top:0px!important;
+    }
+    .plans-size-up__row {
+      margin: 0 10px 0 5px;
+    }
+    .image_in_center {
+      margin: auto 10px auto 7%;
+    }
+    .xl-text-m {
+      margin-bottom: 0!important;
+    }
+
+    .clm-container {
+      margin: 0 !important;
+    }
+}
+
+.clm-container {
+  max-width: 673px;
+  padding: 16px;
+  background: rgb(121,54,128);
+  background: linear-gradient(90deg, rgba(121,54,128,1) 0%, rgba(0,154,222,1) 100%);
+  color: #fff;
+  margin: 40px 0 0 7%;
+  word-break: break-word;
+}

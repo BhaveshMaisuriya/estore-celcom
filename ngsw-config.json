@@ -1,0 +1,96 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/media/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "shop celcom header footer",
+      "urls": ["/api/**"],
+      "cacheConfig": {
+        "maxSize": 1000,
+        "maxAge": "3h",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "shop celcom device catelouge",
+      "urls": [
+        "/rest/V1/banner/desktop",
+        "/rest/V1/filterOptions/5",
+        "/rest/V1/devicelist/6",
+        "/rest/V1/filter/**"
+      ],
+      "cacheConfig": {
+        "maxSize": 1000,
+        "maxAge": "3h",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "shop celcom device details and Homewirless",
+      "urls": [
+        "/rest/V1/devicedetails/**",
+        "/rest/V1/broadband-device-details/home-wireless"
+      ],
+      "cacheConfig": {
+        "maxSize": 1000,
+        "maxAge": "3h",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "shop celcom plan details and esim",
+      "urls": [
+        "/rest/V1/planproductview/**",
+        "/rest/V1/planproductlist/4/0",
+        "/rest/V1/project-moon-details/xp-lite",
+        "/rest/V1/ultraplanproductview/mega",
+        "/rest/V1/esimplanview/esim"
+      ],
+      "cacheConfig": {
+        "maxSize": 1000,
+        "maxAge": "3h",
+        "strategy": "performance"
+      }
+    },
+    {
+      "name": "shop celcom ignore caching",
+      "urls": [
+        "/store/checkout/orderconfirmation",
+        "/clearCache",
+        "/ngsw.json"
+      ],
+      "cacheConfig": {
+        "maxSize": 0,
+        "maxAge": "0u",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}

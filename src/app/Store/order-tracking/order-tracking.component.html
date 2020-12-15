@@ -1,0 +1,95 @@
+<main class="r-main" id="main">
+	<!-- Guest Checkout Login Section Start   -->
+	<section class="u-section background-image-guest">
+		<div class="section__inner">
+			<div class="section__content">
+				<div class="">
+					<div class="c-picture--slider is-full-width-image" data-css="c-picture">
+						<img class="dispMob" src="../assets/img/hero_banner_image_mob.png">
+						<img class="dispDesk" src="../assets/img/hero_banner_image.png">
+					</div>
+					<div class="hero-banner__container is-vertical-center is-mobile-absolute-top guest-login-top">
+						<div class="hero-banner__content is-container">
+							<div class="u-grid-row is-collapsed">
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+									<form #trackOrderForm="ngForm" (ngSubmit)="onSubmit(trackOrderForm)">
+										<div class="hero-banner__item">
+											<div class="box-shadow-guest">
+												<div class="guest-mobile-width">
+													<div class="guest-dsk">Track My Order</div>
+													<p class="guest-dsk-heading">Please input your details</p>
+												</div>
+												<div class="has-margin-bottom_1">
+													<div class="box-shadow-guest-content">
+														<p class="guest-heading">Enter your Order ID<span class="required-field">*</span>
+														</p>
+														<div class="mobile-form-group">
+															<input class="form-control id-number" name="orderIDFromUrl" id="orderIDFromUrl" type="text" placeholder="eg: 123456789"
+															 required [(ngModel)]="orderIDFromUrl" (keyup)="validationForOrderNumber(orderIDFromUrl)" (change)="validationForOrderNumber(orderIDFromUrl)">
+															<div class="error"> <span class="text-danger login-error" *ngIf="customOrderMessage">
+																	<div class="warning-icon-login">
+																	</div>
+																	<div class="clearfix"></div>
+																</span>
+															</div>
+															<div class="error" *ngIf="customOrderMessage">
+																<span class="text-danger">{{customOrderMsg}}</span>
+																<span class="warning-icon"></span>
+																<div class="clearfix"></div>
+															</div>
+														</div>
+													</div>
+													<div class="box-shadow-guest-content">
+														<p class="guest-heading">Enter Your ID Number<span class="required-field">*</span>
+														</p>
+														<div class="mobile-form-group">
+															<input class="form-control id-number" maxlength="12" id="IDnumber" name="IDnumber" type="text"
+															 placeholder="e.g. 850222074666" required [(ngModel)]="IDnumber" (keyup)="validationForIdType(IDnumber)"
+															 (change)="validationForIdType(IDnumber)">
+															<div class="error"> <span class="text-danger login-error" *ngIf="customMessage">
+																	<div class="warning-icon-login">
+																	</div>
+																	<div class="clearfix"></div>
+																</span>
+															</div>
+															<div class="error" *ngIf="customMessage">
+																<span class="text-danger">{{customMsg}}</span>
+																<span class="warning-icon"></span>
+																<div class="clearfix"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="proceed-guest">
+													<button type="submit" [disabled]="trackOrderForm.invalid || this.customMessage" class="c-cta--default login-default-button"
+													 data-css="c-cta"> <span class="cta__content">Proceed</span>
+														<span class="cta__icon icon is-icon-arrow"></span>
+													</button>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+									<div class="guest-already_member is-text-align-center">
+										<div class="guest-mobile-width">
+											<p class="already_member">Already a member?</p>
+										</div>
+										<div class="button-block__cta guest-login-link is-text-align-center">
+											<button class="c-cta--border" data-css="c-cta" title="Link Title" (click)="existingUserRedirection()"> <span
+												 class="cta__content">Login Now</span> <span class="cta__icon icon is-icon-arrow"></span>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Guest Checkout Login Section End   -->
+</main>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>

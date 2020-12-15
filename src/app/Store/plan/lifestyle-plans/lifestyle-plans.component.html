@@ -1,0 +1,20 @@
+<div class="addons-container is-container">
+    <div class="addons-heading">
+      {{addOnDataObj?.addons?.title}}
+    </div>
+    <ng-container *ngIf="addOnDataObj.addons.items">
+      <!-- <ng-container *ngIf="addOnDataObj.addons.items">
+        <div *ngFor="let item of addOnDataObj.addons.items"> -->
+      <div *ngFor="let item of addOnDataObj.addons.items">
+        <div class="addons-signup addon-item-header" [innerHtml]="item?.header">
+        </div>
+        <div>
+          <label class="check_container">
+            <input type="checkbox" id="addOnCheck" name="IsTermsCheck" (click)="termsCheck($event);" [disabled]="deactivateAddon" [checked]="this.addOnSelectionData.isSelected"/>
+            <span [ngClass]="{'termscheck-disabled':deactivateAddon}" class="checkmark"></span>
+            </label>
+          <span class="sign-up-free addon-item-title">{{item?.title}} </span>
+        </div>
+      </div>
+    </ng-container>
+  </div>

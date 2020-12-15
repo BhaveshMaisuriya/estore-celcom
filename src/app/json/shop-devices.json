@@ -1,0 +1,1557 @@
+[
+    {
+        "featureTabs": [
+            {
+                "name": "Phone",
+                "priority": "2",
+                "key": "phone"
+            },
+            {
+                "name": "Device Combo",
+                "priority": "3",
+                "key": "device-combo"
+            }
+        ],
+        "tabs": [
+            {
+                "name": "Latest Devices",
+                "priority": "1",
+                "key": "latest-deals",
+                "featurekey": "phone"
+            },
+            {
+                "name": "Samsung",
+                "priority": "2",
+                "key": "samsung",
+                "featurekey": "phone"
+            },
+            {
+                "name": "iPhone",
+                "priority": "3",
+                "key": "iphone",
+                "featurekey": "phone"
+            },
+            {
+                "name": "Huawei",
+                "priority": "4",
+                "key": "huawei",
+                "featurekey": "phone"
+            },
+            {
+                "name": "Others",
+                "priority": "5",
+                "key": "others",
+                "featurekey": "phone"
+            },
+            {
+                "name": "Phone + Phone",
+                "priority": "1",
+                "key": "phone-combo",
+                "featurekey": "device-combo"
+            },
+            {
+                "name": "Phone + Accessories",
+                "priority": "2",
+                "key": "phone-accesories",
+                "featurekey": "device-combo"
+            }
+        ],
+        "plans": [
+            {
+                "name": "Celcom Mega",
+                "priority": "1",
+                "key": "celcom-mega",
+                "tabKey": [
+                    "latest-deals",
+                    "samsung",
+                    "iphone",
+                    "huawei",
+                    "others"
+                ]
+            },
+            {
+                "name": "XP Lite",
+                "priority": "2",
+                "key": "xp-lite",
+                "tabKey": [
+                    "latest-deals",
+                    "samsung",
+                    "iphone",
+                    "huawei",
+                    "others"
+                ]
+            },
+            {
+                "name": "Celcom InternetGO",
+                "priority": "3",
+                "key": "first-blue",
+                "tabKey": [
+                    "latest-deals",
+                    "huawei"
+                ]
+            },
+            {
+                "name": "Celcom MEGA\u2122 Lightning XL",
+                "priority": "1",
+                "key": "Ultra-GB-XL-Pass",
+                "tabKey": [
+                    "phone-combo",
+                    "phone-accesories"
+                ]
+            },
+            {
+                "name": "Celcom MEGA\u2122 Lightning L",
+                "priority": "2",
+                "key": "Ultra-GB-L-Pass",
+                "tabKey": [
+                    "phone-combo",
+                    "phone-accesories"
+                ]
+            },
+            {
+                "name": "Celcom MEGA\u2122 Lightning M",
+                "priority": "3",
+                "key": "Ultra-GB-M-Pass",
+                "tabKey": [
+                    "phone-combo",
+                    "phone-accesories"
+                ]
+            }
+        ],
+        "items": [
+            {
+                "id": "279",
+                "name": "Vivo V9",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "3",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "3",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Vivo-V9",
+                "operating_system": "13",
+                "brand": "18",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,320.00",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900-black-front_1.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "1",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "13 Oct 2020",
+                    "preorder_to_date": "31 Oct 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "105",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "292",
+                "name": "Huawei P20",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "5",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Huawei",
+                        "priority": "1",
+                        "key": "huawei"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Huawei-P20",
+                "operating_system": null,
+                "brand": "16",
+                "mostpopular": "0",
+                "price": 1000,
+                "bundle_price": 2200,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,000.00",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900_5_23.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "01 Jul 2020",
+                    "preorder_to_date": "31 Aug 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "NEW",
+                    "promotion_label": "From RM0"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "400",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "Online Exclusive",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "520",
+                "name": "Realme C2",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "0",
+                        "key": "latest-deals"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Realme-C2",
+                "operating_system": "13",
+                "brand": "88",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "449.00",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900_24.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER",
+                    "preorder_from_date_text": "",
+                    "preorder_to_date_text": "",
+                    "preorder_from_date": "",
+                    "preorder_to_date": "",
+                    "preorder_end_flag": 0
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "3.3 SALE",
+                    "promotion_label": "5 days only!"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "532",
+                "name": "Samsung Galaxy Note10",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "1",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Samsung",
+                        "priority": "1",
+                        "key": "samsung"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Samsung-Galaxy-Note-10",
+                "operating_system": "13",
+                "brand": "15",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "3,699.00",
+                "image": "\/media\/catalog\/productno_selection",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "1",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "08 Aug 2019",
+                    "preorder_to_date": "21 Aug 2019",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "100K Free Phone",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "540",
+                "name": "Vivo S1",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "8",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "1",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Vivo-S1",
+                "operating_system": "13",
+                "brand": "18",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,099.00",
+                "image": "\/media\/catalog\/product\/d\/i\/diamond-black-front-view_2.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER",
+                    "preorder_from_date_text": "",
+                    "preorder_to_date_text": "",
+                    "preorder_from_date": "",
+                    "preorder_to_date": "",
+                    "preorder_end_flag": 0
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "50% OFF JUMBO SALE",
+                    "promotion_label": "FREE Shipping"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "Pre-order",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "550",
+                "name": "iPhone XR",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "6",
+                        "key": "latest-deals"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "iPhone-XR-10-10",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "3,599.00",
+                "image": "\/media\/catalog\/product\/0\/2\/02._position_2_sgmy_pdp-images_11_a_iphone_11_b_2_1.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "1",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "05 May 2020",
+                    "preorder_to_date": "31 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "10.10 Offer",
+                    "promotion_label": "Get Freebies worth RM159"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "<i> Lifestyle revamp previleges<i\/>",
+                "lifestyle_hat_text2": "<b> FREE Roaming in 9 ASEAN countries for 12 months<b\/>",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": "65",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "602",
+                "name": "Samsung Galaxy A51",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "2",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Samsung",
+                        "priority": "0",
+                        "key": "samsung"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Samsung-Galaxy-A51",
+                "operating_system": "13",
+                "brand": "15",
+                "mostpopular": "0",
+                "price": 3608,
+                "bundle_price": 5008,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,599.00",
+                "image": "\/media\/catalog\/product\/s\/m\/sm_a515_galaxya51_black_front_1_2.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "18 May 2020",
+                    "preorder_to_date": "18 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": "",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "615",
+                "name": "Vivo Y50",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "0",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "0",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Vivo-Y50",
+                "operating_system": "13",
+                "brand": "18",
+                "mostpopular": "0",
+                "price": 0,
+                "bundle_price": 450,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,099.00",
+                "image": "\/media\/catalog\/product",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "18 May 2020",
+                    "preorder_to_date": "18 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "621",
+                "name": "OPPO Reno 4",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "0",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "0",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "oppo-reno4",
+                "operating_system": "13",
+                "brand": "17",
+                "mostpopular": "0",
+                "price": 0,
+                "bundle_price": 1500,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,699.00",
+                "image": "\/media\/catalog\/product\/f\/r\/front_75.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "1",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "11 Aug 2020",
+                    "preorder_to_date": "28 Aug 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "Pre-order",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "205-xp-lite",
+                "name": "Oppo F5",
+                "plan_tab": [
+                    "xp-lite"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "0",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "0",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Oppo-F5",
+                "operating_system": "13",
+                "brand": "17",
+                "mostpopular": "1",
+                "price": 148,
+                "bundle_price": 498,
+                "base_plan": "xp-b-plan",
+                "base_plan_title": "XP Lite\u2122",
+                "default_plan": "L Pass",
+                "default_plan_sku": "xp-l-pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,224.53",
+                "image": "\/media\/catalog\/product\/f\/r\/front_1_7.png",
+                "full_width_banner": null,
+                "pre_order_data": null,
+                "discount_promotion_data": null,
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": "2000",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "279-xp-lite",
+                "name": "Vivo V9",
+                "plan_tab": [
+                    "xp-lite"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "2",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Others",
+                        "priority": "0",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Vivo-V9",
+                "operating_system": "13",
+                "brand": "18",
+                "mostpopular": "0",
+                "price": 333,
+                "bundle_price": 777,
+                "base_plan": "xp-b-plan",
+                "base_plan_title": "XP Lite\u2122",
+                "default_plan": "L Pass",
+                "default_plan_sku": "xp-l-pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,320.00",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900-black-front_1.png",
+                "full_width_banner": null,
+                "pre_order_data": null,
+                "discount_promotion_data": null,
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": "105",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "613",
+                "name": "Huawei P20 - FB",
+                "plan_tab": [
+                    "first-blue"
+                ],
+                "categories": [
+                    {
+                        "name": "Latest Devices",
+                        "priority": "0",
+                        "key": "latest-deals"
+                    },
+                    {
+                        "name": "Huawei",
+                        "priority": "0",
+                        "key": "huawei"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Huawei-P20-FB",
+                "operating_system": null,
+                "brand": "16",
+                "mostpopular": "0",
+                "price": 1000,
+                "bundle_price": 2200,
+                "base_plan": "cmp",
+                "base_plan_title": "Customised Plans",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "45.0000",
+                "device_min_price": "1,000.00",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900_5_23_3.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "01 Jul 2020",
+                    "preorder_to_date": "31 Aug 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "NEW",
+                    "promotion_label": "From RM0"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "400",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "Online Exclusive",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "533",
+                "name": "Samsung Galaxy Note10+",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Samsung",
+                        "priority": "1",
+                        "key": "samsung"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Samsung-Galaxy-Note-10-Plus",
+                "operating_system": "13",
+                "brand": "15",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "4,199.00",
+                "image": "\/media\/catalog\/product\/f\/r\/front_pen_10.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "1",
+                    "preorder_text": "PRE-ORDER",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "04 Feb 2020",
+                    "preorder_to_date": "14 Feb 2030",
+                    "preorder_end_flag": 0
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "169",
+                "name": "Huawei Mate 10",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Huawei",
+                        "priority": "1",
+                        "key": "huawei"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Huawei-Mate-10",
+                "operating_system": "13",
+                "brand": "16",
+                "mostpopular": "0",
+                "price": 1638,
+                "bundle_price": 1738,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning XL",
+                "default_plan_sku": "Ultra-GB-XL-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "2,169.00",
+                "image": "\/media\/catalog\/product\/f\/r\/front_66.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER",
+                    "preorder_from_date_text": "",
+                    "preorder_to_date_text": "",
+                    "preorder_from_date": "",
+                    "preorder_to_date": "",
+                    "preorder_end_flag": 0
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": true,
+                "is_rent": true,
+                "price_start_from": "105",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "205",
+                "name": "Oppo F5",
+                "plan_tab": [
+                    "celcom-mega"
+                ],
+                "categories": [
+                    {
+                        "name": "Others",
+                        "priority": "0",
+                        "key": "others"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "",
+                    "items": []
+                },
+                "sku": "Oppo-F5",
+                "operating_system": "13",
+                "brand": "17",
+                "mostpopular": "1",
+                "price": 1678,
+                "bundle_price": 2178,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "1,224.53",
+                "image": "\/media\/catalog\/product\/f\/r\/front_1_7.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "01 Jan 2019",
+                    "preorder_to_date": "03 Jan 2019",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": "Guna Celcom Promotion",
+                    "promotion_label": "Free Device"
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": null,
+                "lifestyle_hat_text2": null,
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "2000",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "628",
+                "name": "iPhone X Phone Combo",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass",
+                    "Ultra-GB-M-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Phone",
+                    "items": [
+                        {
+                            "name": "Huawei P20- PB",
+                            "image": "\/media\/catalog\/product\/9\/0\/900x900_5_23_5.png",
+                            "sku": "Huawei-P20-PB",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        },
+                        {
+                            "name": "Samsung Galaxy Note10 -PB",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_91.png",
+                            "sku": "Samsung-Galaxy-Note-10-PB",
+                            "is_default": false,
+                            "Ultra-GB-L-Pass":"150",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "iPhone-x-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 100,
+                "bundle_price": 201,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "7,069.00",
+                "image": "\/media\/catalog\/product\/i\/p\/iphone_11_b_2_1.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "01 May 2020",
+                    "preorder_to_date": "13 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "648",
+                "name": "Oppo A12 Phone Combo",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Phone",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A51",
+                            "image": "\/media\/catalog\/product",
+                            "sku": "Samsung-Galaxy-A51-8GB-256GB- PB",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        },
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "is_default": false,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "oppo-A12-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 200,
+                "bundle_price": 400,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "529.00",
+                "image": "\/media\/catalog\/product",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "18 May 2020",
+                    "preorder_to_date": "18 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "651",
+                "name": "Vivo Y50 pc",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Phone",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "vivo-y50-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 499,
+                "bundle_price": 998,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "1,099.00",
+                "image": "\/media\/catalog\/product",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "18 May 2020",
+                    "preorder_to_date": "18 May 2020",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": [
+                    {
+                        "promotion_badge_text": "New Phone",
+                        "promotion_badge_text_color": "#ffffff",
+                        "promotion_badge_background_color": "#c40d42"
+                    }
+                ]
+            },
+            {
+                "id": "668",
+                "name": "Vivo  Phone Combo",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Phone",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        },
+                        {
+                            "name": "Samsung-Galaxy-A51",
+                            "image": "\/media\/catalog\/product",
+                            "sku": "Samsung-Galaxy-A51-8GB-256GB- PB",
+                            "is_default": false,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "vivo-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 499,
+                "bundle_price": 998,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "1,099.00",
+                "image": "\/media\/catalog\/product",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "20 Feb 2011",
+                    "preorder_to_date": "20 Mar 2011",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "669",
+                "name": "Vivo V7+ 64GB Gold ",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Accessories",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "simple_sku": "samsunggalaxya1132gbblk-PS",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "vv7plusgld64GB-PC",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 1678,
+                "bundle_price": 2178,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "1,319.81",
+                "image": "\/media\/catalog\/product\/9\/0\/900x900_19_2.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "20 Feb 2011",
+                    "preorder_to_date": "20 Mar 2011",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "671",
+                "name": "Samsung Galaxy A51 Phone Combo",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Accessories",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "simple_sku": "samsunggalaxya1132gbblk-PS",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "samsunggalaxya51128gbwhite-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 4348,
+                "bundle_price": 5448,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "1,399.00",
+                "image": "\/media\/catalog\/product\/f\/r\/front_90_4.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "20 Feb 2011",
+                    "preorder_to_date": "20 Mar 2011",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "672",
+                "name": "OPPO Reno 4 Pro Phone Combo",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Phone",
+                        "priority": "0",
+                        "key": "phone-combo"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Accessories",
+                    "items": [
+                        {
+                            "name": "Samsung-Galaxy-A11",
+                            "image": "\/media\/catalog\/product\/f\/r\/front_pen_7_1.png",
+                            "sku": "Samsung-Galaxy-A11-PB",
+                            "simple_sku": "samsunggalaxya1132gbblk-PS",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100"
+                            
+                        }
+                    ]
+                },
+                "sku": "OPPO Reno 4 Pro-pc",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 1508,
+                "bundle_price": 2108,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "68.0000",
+                "device_min_price": "2,399.00",
+                "image": "\/media\/catalog\/product\/f\/r\/front_90_4_1.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "20 Feb 2011",
+                    "preorder_to_date": "20 Mar 2011",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": false,
+                "is_rent": false,
+                "price_start_from": 0,
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            },
+            {
+                "id": "658",
+                "name": "iPhone 11",
+                "plan_tab": [
+                    "Ultra-GB-L-Pass",
+                    "Ultra-GB-M-Pass"
+                ],
+                "categories": [
+                    {
+                        "name": "Phone + Accessories",
+                        "priority": "0",
+                        "key": "phone-accesories"
+                    }
+                ],
+                "device_combo_data": {
+                    "combo_type": "Phone + Accessories",
+                    "items": [
+                        {
+                            "name": "Apple Watch SE",
+                            "image": "\/media\/catalog\/product\/g\/o\/goldse_5__1_2.jpg",
+                            "sku": "apple-watch-se-AB",
+                            "is_default": true,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        },
+                        {
+                            "name": "Apple Watch Series 6",
+                            "image": "\/media\/catalog\/product\/g\/o\/goldse_5__1_2_1.jpg",
+                            "sku": "apple-watch-series6-AB",
+                            "is_default": false,
+                            "Ultra-GB-L-Pass":"100",
+                            "Ultra-GB-M-Pass": "200",
+                            "Ultra-GB-XL-Pass":"300"
+                        }
+                    ]
+                },
+                "sku": "iphone-11-watchse-dcb",
+                "operating_system": "12",
+                "brand": "14",
+                "mostpopular": "0",
+                "price": 1568,
+                "bundle_price": 2668,
+                "base_plan": "mega",
+                "base_plan_title": "MEGA\u2122",
+                "default_plan": "Lightning L",
+                "default_plan_sku": "Ultra-GB-L-Pass",
+                "plan_min_price": "18.0000",
+                "device_min_price": "3,399.00",
+                "image": "\/media\/catalog\/product\/i\/p\/iphone_11_b_2.png",
+                "full_width_banner": null,
+                "pre_order_data": {
+                    "is_preorder": "0",
+                    "preorder_text": "PRE-ORDER ENDED",
+                    "preorder_from_date_text": "From",
+                    "preorder_to_date_text": "to",
+                    "preorder_from_date": "20 Sep 2019",
+                    "preorder_to_date": "23 Sep 2019",
+                    "preorder_end_flag": 1
+                },
+                "discount_promotion_data": {
+                    "discount_price_label": null,
+                    "promotion_label": null
+                },
+                "is_lifestyle": 0,
+                "lifestyle_hat_text1": "0",
+                "lifestyle_hat_text2": "0",
+                "is_easy_phone": true,
+                "is_rent": false,
+                "price_start_from": "153",
+                "is_premium_plan": false,
+                "visibility": true,
+                "promotion_badge": []
+            }
+        ],
+        "meta": [
+            {
+                "meta_title": "Home page",
+                "meta_keywords": "Shop estore home ",
+                "meta_description": "home page device "
+            }
+        ]
+    }
+]

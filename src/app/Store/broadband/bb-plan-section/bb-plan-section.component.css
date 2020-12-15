@@ -1,0 +1,215 @@
+.u-grid-row.is-equal-height {
+  margin-bottom: 40px;
+}
+.is-container {
+  max-width: 87%;
+}
+.is-margin {
+  margin: 0 9px 0 0;
+  border: 1px solid #ccc;
+  border-top: 0;
+  border-radius: 8px;
+}
+.is-top-margin {
+  margin-top: 12px;
+  align-items: baseline;
+}
+.plan__name_detail {
+  display: inline-block;
+  width: 100%;
+}
+.rent_desc {
+  width: 100%;
+  color: #666;
+  margin-bottom: 0;
+}
+.rent_desc strong {
+  font-size: 13px;
+  font-weight: 100;
+}
+.broadband_plan__details {
+  border-radius: 8px 8px 0 0;
+  background-color: #e6e6e6;
+  cursor: pointer;
+  margin-left: -1px;
+  width: 101%;
+  margin-bottom: 5px;
+}
+.plan__details__description {
+  text-align: center;
+  /*margin-top: 16.6px;*/
+  font-size: 14px;
+  padding: 23px 22px 17px 21px;
+}
+
+.plan__details__description p {
+  margin: 0;
+}
+
+.data-plan-msg {
+  font: normal normal 14px Lato;
+  font-stretch: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+  text-align: center;
+  padding: 16px 0 13px 0;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.plan-border-top {
+  border-top: 1px solid #ccc;
+  margin-top: 0;
+}
+
+/* .plan-container-border {
+  border: 1px solid #ccc;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+} */
+
+.data-plan-msg-select {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 140px;
+  height: 30px;
+  padding: 0;
+  font: 14px Lato;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.selection-tick {
+  height: 18px;
+  width: 18px;
+  padding-right: 16px;
+}
+
+.is-selectedPlan {
+  pointer-events: none;
+  cursor: not-allowed;
+  border-radius: 8px 8px 0 0;
+  background-color: #009ade;
+  color: #fff;
+}
+
+.is-selected {
+  pointer-events: none;
+  cursor: not-allowed;
+  border: solid 1px #009ade;
+  border-radius: 8px;
+  background-color: #009ade;
+  color: #fff;
+}
+
+.select-text {
+  padding: 5%;
+}
+
+.font-class {
+  font-family: Lato;
+  font-size: 24px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: var(--black);
+  padding-top: 8px;
+}
+
+.details__plan_header {
+  height: 22px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  padding-bottom: 5px;
+  display: inline;
+}
+
+@media (max-width:768px) {
+  .is-supplimentary-col-tablet-p-2  {
+    width: calc(95% - 30px);
+  }
+  .is-mobile-margin {
+    margin-top: 9px;
+  }
+  .details__plan_header {
+    text-align:center;
+    margin-bottom: 32px;
+  }
+  .section__content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .is-supplimentary-col-tablet-p-2 {
+    width: 240px;
+    min-height: 352px;
+    background-color: #fff;
+  }
+}
+@media (max-width: 768px) {
+  .is-supplimentary-col-tablet-p-2  {
+    width:100%;
+  }
+  .u-grid-row.is-equal-height {
+    margin-left: 5px;
+    margin-right: -10px;
+
+  }
+  .details__plan_content {
+    margin-left: 15px;
+    width: 100%;
+  }
+}
+
+@media (max-width:320px) {
+  .is-supplimentary-col-tablet-p-2 {
+    width: calc(50% - 30px);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .plan__name_detail {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2%;
+  }
+
+  .broadband_plan__details {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+  .broadband_plan__details {
+    width: 101.8px;
+  }
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .broadband_plan__details {
+      width: auto;
+    }
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .is-supplimentary-col-tablet-p-2  {
+      width: calc(100% - 30px);
+      margin-left: 10px;
+    }
+}

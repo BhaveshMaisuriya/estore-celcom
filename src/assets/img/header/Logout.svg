@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Atoms/Icons_#333/Interface/Logout</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M39.8286,6 C41.4856,6 42.8286,7.343 42.8286,9 L42.8286,39 C42.8286,40.657 41.4856,42 39.8286,42 L9.8286,42 C8.1716,42 6.8286,40.657 6.8286,39 L6.8286,30 L10.8286,34 L10.8286,38 L38.8286,38 L38.8286,10 L10.8286,10 L10.8286,14 L6.8286,18 L6.8286,9 C6.8286,7.343 8.1716,6 9.8286,6 L39.8286,6 Z M14.415,13.5859 L17.243,16.4139 L11.658,21.9999 L32.829,21.9999 L32.829,25.9999 L11.656,25.9999 L17.242,31.5859 L14.414,34.4139 L4,24.0009 L14.415,13.5859 Z" id="path-1"></path>
+    </defs>
+    <g id="Atoms/Icons_#333/Interface/Logout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#333333" xlink:href="#path-1"></use>
+    </g>
+</svg>

@@ -1,0 +1,554 @@
+<app-compare-hero-banner [data]='{"Title":"Shopping Cart","SubTitle":""}'></app-compare-hero-banner>
+<section class="u-section has-section-padding has-border" *ngIf="(cart == null ||(cart.items && cart.items.length == 0)) || showCartEmpty">
+    <div class="section__inner">
+        <div class="empty_cart_design">
+            <img src="../assets/img/Drop_3/fill-image.png">
+        </div>
+        <div class="cart_text_center">
+            <p>Hmm.... your cart is empty.</p>
+            <p>Start shopping now!</p>
+        </div>
+        <div class="shop_options">
+            <div class="shop__div plansMargin">
+                <a class="c-track-order-plain" (click)="redirectShop('plans')">Shop Plans</a>
+            </div>
+            <div class="shop__div deviceMargin">
+                <a class="c-track-order-plain is_selected" (click)="redirectShop('devices')">Shop Devices</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="u-section has-section-padding has-border shop-cart-padding" *ngIf="cart && cart.items && cart.items.length > 0">
+    <div class="section__inner" *ngFor="let item of cart.items ; let i = index">
+        <div *ngIf="isNewbie && newbieMessage" class="section__content shop-newbie-background is-container">
+            <img class="newbie-image" src="../../../../assets/img/icon/voucher-gift.svg">
+            <div class="newbie-text">{{ newbieMessage }}</div>
+        </div>
+        <div class="section__content shop-cart-background is-container" *ngIf="item.selectedProduct.orderSummaryStorage != null">
+            <span *ngIf="showEditDelete" (click)="removeCartItem(item)"><img class="shop-cart-close" src="../assets/img/store/shopcart-remove.svg"></span>
+            <span><a class="edit-cart" (click)="editableProduct(i)">Edit</a></span>
+            <div class="u-grid-row">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+                    <img class="shop-cart-samsung" src="../assets/img/store/image_device.png" *ngIf="!item.selectedProduct.selectedImageList">
+                    <img class="shop-cart-samsung" src="{{item.selectedProduct.selectedImageList[0]}}" *ngIf="item.selectedProduct.selectedImageList">
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                    <div class="shop-cart-grid-content margin_device_flow">
+                        <!-- easy phone rent and own text -->
+                        <div *ngIf="isEasyPhone" class="is-text-bold item-bot16">{{easyPhoneLabel}}</div>
+                        <!-- easy phone rent and own text -->
+                        <div *ngIf="isPreorder == true" class="is-text-bold item-bot16 padding-class">Pre-Order</div>
+                        <div class="shop-cart-grid-content item-bot16" [ngClass]="{'is-text-bold':isPreorder == true, 'name-padding':isEasyPhone}">
+                            <b>
+                                <div class="shop-cart-grid-left shop-cart-grid-left-product">
+                                    {{ item.selectedProduct.orderDeviceName }} <span *ngIf="item.selectedProduct.contract">({{item.selectedProduct.contract}})</span>
+                                    <!-- <p class="shop-cart-storage-color">{{ item.selectedProduct.orderSummaryColor }} {{ item.selectedProduct.orderSummaryStorage }}</p> -->
+                                </div>
+                            </b>
+                            <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderDevicePrice?
+                                item.selectedProduct.orderDevicePrice : 0.00) | number : '1.2-2' }}</div>
+                        </div>
+                    </div>
+                    <div class="summary-grid-content upfront_device_main" *ngIf="isEasyPhone && deviceUpfront!= null">
+                        <div class="plan-applies upfront_device">{{deviceUpfront}}</div>
+                    </div>
+                    <div class="shop-cart-grid-content" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && !isEasyPhone">
+                        <div *ngIf="!item.selectedProduct.is_star">
+                            <span>
+                                <div class="item-bot16">
+                                    <b>
+                                        <span [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></span>
+                                        <span *ngIf="!item.selectedProduct.contract">({{item.selectedProduct?.selectedPlanDetails?.terms_and_condition?.contract_terms?.desc}})</span>
+                                        <!-- <span *ngIf="item.selectedProduct.contract"> ({{item.selectedProduct.contract}})</span> -->
+                                    </b>
+                                </div>
+                                <div class="gold-cart-grid-content monthly-charges item-bot16" *ngIf="suppData?.length > 0">
+                                    {{suppData.length}} X Supplementary Line(s):{{suppData[suppData.length -1].name}}
+                                </div>
+                            </span>
+                        </div>
+                        <div *ngIf="item.selectedProduct.is_star">
+                            <span>
+                                <div class="item-bot16">
+                                    <b>
+                                        <span [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></span>
+                                        <span *ngIf="!item.selectedProduct.contract">({{item.selectedProduct?.selectedPlanDetails?.terms_and_condition?.contract_terms?.desc}})</span>
+                                        <!-- <span *ngIf="item.selectedProduct.contract"> ({{item.selectedProduct.contract}})</span> -->
+                                    </b>
+                                </div>
+                                <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ item.selectedProduct.selectedPlanDetails.monthly_plan | number : '1.2-2' }}</div> -->
+                                <section class="moon_section1" *ngIf="item?.selectedProduct?.selected_pass_details && !item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                                    <div class="gold-cart-grid-content item-bot16">
+                                        <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                                        <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+                                    </div>
+                                </section>
+                                <section class="moon_section1" *ngIf="item?.selectedProduct?.selected_pass_details && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                                    <div class="gold-cart-grid-content item-bot16">
+                                        <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                                        <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+                                    </div>
+                                </section>
+                                <div class="gold-cart-grid-content monthly-charges item-bot16" *ngIf="suppData?.length > 0">
+                                    {{suppData.length}} X Supplementary Line(s):{{suppData[suppData.length -1].name}}
+                                </div>
+                            </span>
+                        </div>
+                        <div *ngIf="item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && suppData?.length > 0">
+                            <div class="display__block is-font-bold">{{suppData.length}} X Supplementary Line(s)</div>
+                        </div>
+                        <!-- <div *ngIf="item.selectedProduct.orderPhoneNo">Selected Number: <b>{{ item.selectedProduct.orderPhoneNo }}</b></div> -->
+                    </div>
+                    <!--easy phone realted upfront start-->
+                    <div class="" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.selectedPlanDetails.name && isEasyPhone">
+                        <div class="plan-applies is-font-bold price_left" [innerHtml]="item.selectedProduct.selectedPlanDetails.name | safeHtml"></div><span class="is-text-bold"> Pass</span>
+                        <div class="price_right" *ngIf="orderOneTimePay!=null">RM{{(orderOneTimePay? (orderOneTimePay)
+                            : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="isEasyPhone && item.selectedProduct?.selected_pass_details?.name && !item.selectedProduct.is_star">
+                        <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                    </div>
+                    <div class="gold-cart-grid-content item-top16" *ngIf="isEasyPhone && item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                        <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                        <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div>
+                    </div>
+                    <div class="summary-grid-content item-bot16" *ngIf="isEasyPhone && planUpfront!=null">
+                        <div class="plan-applies">{{planUpfront}} </div>
+                    </div>
+                    <div class="shop-cart-grid-content monthly-charges device-bundle" *ngIf="isEsim">
+                        eSIM Charges: <span class="is-text-bold"> RM{{
+                            RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                            item.selectedProduct.orderMonthlyPayTotal :
+                            0.00) | number : '1.2-2'}}</span>
+                    </div>
+                    <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+                    <div class="shop-cart-grid-content item-bot16 item-top16" *ngIf=" isEsim">
+                        Mobile Number:&nbsp; <span class="is-text-bold">{{
+                            item.selectedProduct.orderPhoneNo }}</span>
+                    </div>
+                    <div class="shop-cart-grid-content" *ngIf="isEsim">
+                        Type of SIM: <div class="is-text-bold item-top3">{{ simType }} to eSIM</div>
+                    </div>
+                    <!--easy phone realted upfront end-->
+                    <div class="shop-cart-grid-content monthly-charges item-bot16 device-bundle" *ngIf="item.selectedProduct.orderMonthlyPayTotal && !isEasyPhone && !isEsim">
+                        Monthly Charges: <span class="is-text-bold"> RM{{
+                            RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                            item.selectedProduct.orderMonthlyPayTotal :
+                            0.00) | number : '1.2-2'}}</span>
+                        <!-- <div class="shop-cart-grid-right">RM {{(item.selectedProduct.orderMonthlyPay ? item.selectedProduct.orderMonthlyPay : 0.00) | number : '1.2-2'}}</div> -->
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="cobpFlow && item.selectedProduct.orderPhoneNo && !isEasyPhone && !isEsim">
+                        Mobile Number (Principal Line):&nbsp; <span class="is-text-bold">{{
+                            item.selectedProduct.orderPhoneNo}}</span>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16 new_line" *ngIf="!cobpFlow && item.selectedProduct.orderPhoneNo && !isEsim">
+                        <!-- <div class="item-bot16 device-bundle" *ngIf="item.selectedProduct.orderPhoneNo"> -->
+                        Mobile Number (Principal Line):&nbsp; <span class="is-text-bold"> {{
+                            item.selectedProduct.orderPhoneNo }}</span>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo && isEasyPhone && !isEsim">
+                        <!-- <div class="item-bot16 device-bundle" *ngIf="item.selectedProduct.orderPhoneNo"> -->
+                        Mobile Number (Principal Line):&nbsp; <span class="is-text-bold">{{
+                            item.selectedProduct.orderPhoneNo }}</span>
+                    </div>
+                    <div class="item-bot16 monthly_charges_easyp" *ngIf="isEasyPhone && !isEsim">
+                        <div class="is-font-bold">Monthly Charges: <b> RM{{(EasyPhoneMonthlyCharges?
+                                (EasyPhoneMonthlyCharges) : 0.00) | number : '1.2-2'}}</b></div>
+                        <div *ngIf="deviceMonthlyCharge!=null">Phone: RM{{(deviceMonthlyCharge? (deviceMonthlyCharge)
+                            : 0.00) | number : '1.2-2'}}</div>
+                        <div *ngIf="planMonthlyCharge!=null">Plan: RM{{(planMonthlyCharge? (planMonthlyCharge) : 0.00)
+                            | number : '1.2-2'}}</div>
+                    </div>
+
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="(item.deviceUpfrontPenalty) && (cobpFlow || isEasyPhone)">
+                        <div class="shop-cart-grid-left up-front-payment is-font-bold">Device Penalty</div>
+                        <div class="shop-cart-grid-right">RM{{ (item.deviceUpfrontPenalty ?
+                            item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16 campaign_mviva" *ngIf="item.is_campaign_mviva && item.campaign_mviva_message && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName">
+                        <div class="shop-cart-grid-left campaign_mviva_message">{{ item.campaign_mviva_message }}</div>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="!item.campaign100_days && item.selectedProduct.orderOneTimePay >=0 && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && !isEsim">
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment<span class="to-be-rebate">(To be rebated in first bill)</span><br *ngIf="additionalInfo">
+                            <div class="shop-cart-grid-left up-front-payment additional-info" *ngIf="additionalInfo">{{additionalInfo}}
+                            </div>
+                        </div>
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment<span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span><br *ngIf="additionalInfo">
+                            <div class="shop-cart-grid-left up-front-payment additional-info" *ngIf="additionalInfo">{{additionalInfo}}
+                            </div>
+                        </div>
+                        <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderOneTimePay >= 0 ?
+                            item.selectedProduct.orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="item.campaign100_days && item.selectedProduct.orderPlan && item.selectedProduct.orderDeviceName && !isEasyPhone && !isEsim">
+                        <div class="shop-cart-grid-left up-front-payment is-text-bold">Upfront Payment Waiver (Guna
+                            Celcom)</div>
+                        <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderOneTimePay ?
+                            item.selectedProduct.orderOneTimePay : 0.00) | number : '1.2-2'}}</div>
+                        <div>
+                            <span class="up-front-payment new_line waiver-top-gap">You're eligible! Upfront payment has been waived.</span>
+                        </div>
+                    </div>
+                    <div class="free_sim_text item-bottom16" *ngIf="isPreorder == true && !cobpFlow && !isEasyPhone">Free SIM card
+                        delivery</div>
+                        <div class="auto-billing" *ngIf="hasAutoBilling && !IsDeviceOnly()"><span class="shop-cart-grid-content is-font-bold item-bot16 up-front-payment">Mandatory Autobilling</span></div>
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="item.has_add_ons && item.add_on_label">
+                        <div class="up-front-payment add-ons-msg">{{item.add_on_label}}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The below code has to iterate -->
+            <div *ngIf="suppData?.length > 0">
+                <div *ngFor="let item of suppData, let i=index">
+                    <div class="u-grid-row has-border-top">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                            <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                            <div class="supplementary-lines">
+                                <div class="item-bot16">
+                                    <div class="new-number"><span class="new-supple-line">Supplementary line {{i+1}}:
+                                            <b>{{item.number}}</b></span></div>
+                                </div>
+                                <div class="item-bot16" *ngIf="!isEsim">
+                                    <div class="new-number">Monthly Charges: <b class="">RM{{(item.price ?
+                                            (item.price) : 0.00) | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="item-bot16">
+                                    <div class="new-number">{{item.name}}</div>
+                                </div>
+                                <div class="item-bot16">
+                                    <div class="new-number new-number-container new-container-bottom upfront-display" *ngIf="!isUpfrontInstallment">Upfront
+                                        Payment <span class="to-be-rebate"> (To be rebated in first bill)</span>
+                                    </div>
+                                    <div class="new-number new-number-container new-container-bottom upfront-display" *ngIf="isUpfrontInstallment">Upfront
+                                        Payment <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+                                    </div>
+                                    <span class="new-supple-right">RM{{(item.price ? (item.price) : 0.00) | number :
+                                        '1.2-2'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- pre order git image info start -->
+            <div *ngIf="isPreorder == true && freeGiftInfo.gift_image!=null && freeGiftInfo.gift_message!=null" class="u-grid-row preorder_gift_info">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 shop-cart-center">
+                    <img class="shop-cart-samsung" src="{{freeGiftInfo.gift_image}}">
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                    <div class="shop-cart-grid-content item-bot16">
+                        <div class="pre-order-gift-left">
+                            <p>Pre-Order FREE Gift:</p>
+                            <p>{{freeGiftInfo.gift_message}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--pre order gift info image end-->
+
+            <div class="u-grid-row device_sub_total">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-7">
+                    <div class="shop-cart-grid-content-total">
+                        <div class="shop-cart-grid-left is-font-bold">Total</div>
+                        <div class="shop-cart-grid-right is-font-bold" *ngIf ="cart">RM{{(item.itemTotal ? (item.itemTotal) : 0.00) | number :
+                            '1.2-2' }}*<p class="gst-include">*SST not included</p></div>
+                    </div>
+                    <div class="shop-cart-grid-content shop-cart-edit">
+                        <div class="shop-cart-grid-left">
+                            <div class="teaser__link" *ngIf="item.skuBundle && showEditDelete">
+                                <!-- <a class="c-link--default shop-cart-link-style" data-css="c-link">
+                                    <span class="link__icon icon is-icon-arrow shop-cart-arrow"></span>
+                                    <span class="link__content device_detail_link" (click)="editableProduct(i)">Edit</span>
+                                </a> -->
+
+                            </div>
+                            <div class="teaser__link" *ngIf="!item.skuBundle && showEditDelete">
+                                <!-- <a class="c-link--default shop-cart-link-style" data-css="c-link">
+                                    <span class="link__icon icon is-icon-arrow shop-cart-arrow"></span>
+                                    <span class="link__content device_detail_link" (click)="editableProduct(i)">Edit</span>
+                                </a> -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Display of only plan in shopping cart coming from plan purchase page -->
+        <div class="section__content gold-cart-background is-container" *ngIf="item.selectedProduct.selectedPlanDetails && item.selectedProduct.orderSummaryStorage == null">
+            <div class="{{ item?.selectedProduct?.selectedPlanDetails?.IndicatorClass }}"></div>
+            <span *ngIf="showEditDelete" (click)="removeCartItem(item)"><img class="shop-cart-close" src="../assets/img/store/shopcart-remove.svg"></span>
+            <span> <a class="edit-cart" (click)="editableProduct(i)">Edit</a></span>
+            <div class="u-grid-row gold-cart-padding" [ngClass]="{'moon_cart_padding':item.selectedProduct.is_moon}">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 cart-gold-center">
+                    <img class="gold-cart-benji" src="{{item?.selectedProduct?.plan_image_url}}">
+                </div>
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                    <!-- Moon flow cart -->
+
+                    <!-- Moon flow cart-->
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="!item.selectedProduct.is_star">
+                        <!-- Removed contract terms as part of CEO-515 -->
+                        <div class="gold-cart-grid-left is-text-bold plan-name" [innerHtml]="item?.selectedProduct?.selectedPlanDetails?.name | safeHtml"></div>
+                        <div class="gold-cart-grid-right mnp-sim-right plan-name" *ngIf="mnpFlow">RM{{ ((item.price &&
+                            item.quantity) ? (item.price * item.quantity) : 0.00) | number : '1.2-2' }}</div>
+                    </div>
+                    <section class="moon_section1" *ngIf="item?.selectedProduct?.selected_pass_details && !item.selectedProduct.is_star">
+                        <div class="gold-cart-grid-content item-bot16">
+                            <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                        </div>
+                    </section>
+                    <!-- If Project Star -->
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct.is_star">
+                        <!-- Removed contract terms as part of CEO-515 -->
+                        <div class="gold-cart-grid-left is-text-bold plan-name" [innerHtml]="item?.selectedProduct?.selectedPlanDetails?.name | safeHtml"></div>
+                        <!-- <div class="gold-cart-grid-right" *ngIf="item?.selectedProduct?.orderNumberType == 'KeepNumber'">RM{{ item.selectedProduct.orderMonthlyPay | number : '1.2-2' }}</div> -->
+                        <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ item.selectedProduct.selectedPlanDetails.monthly_plan | number : '1.2-2' }}</div> -->
+                    </div>
+                    <section class="moon_section1" *ngIf="item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && !item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                        <div class="gold-cart-grid-content item-bot16">
+                            <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.name}}</div>
+                            <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+                        </div>
+                    </section>
+                    <section class="moon_section1" *ngIf="item?.selectedProduct?.selected_pass_details && item.selectedProduct.is_star && item?.selectedProduct.selected_pass_details.selected_associated_pass_details">
+                        <div class="gold-cart-grid-content item-bot16">
+                            <div class="gold-cart-grid-left is-text-bold moon_plan">{{item.selectedProduct?.selected_pass_details?.selected_associated_pass_details.name}}</div>
+                            <!-- <div class="gold-cart-grid-right" *ngIf="item?.selectedProduct?.orderNumberType == 'KeepNumber'">RM{{ item?.selectedProduct?.selected_pass_details?.selected_associated_pass_details?.monthly_plan | number : '1.2-2' }}</div> -->
+                            <!-- <div class="gold-cart-grid-right mnp-sim-right plan-name">RM{{ (item.selectedProduct.selected_pass_details.selected_associated_pass_details.monthly_plan) | number : '1.2-2' }}</div> -->
+                        </div>
+                    </section>
+
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="mnpFlow && !cobpFlow && item.selectedProduct.orderPhoneNo && !isEsim">
+                        Mobile Number (Principal Line):&nbsp; <span class="is-text-bold">{{
+                            item.selectedProduct.orderPhoneNo}}</span>
+                    </div>
+                    <div *ngIf="item.selectedProduct.orderMonthlyPay && !item.selectedProduct.orderDeviceName && !isEsim" class="gold-cart-grid-content monthly-charges item-bot16">
+                        Monthly Charges: <span class="is-text-bold ">RM{{
+                            (item.selectedProduct.orderMonthlyPayTotal ? item.selectedProduct.orderMonthlyPayTotal :
+                            0.00) |
+                            number : '1.2-2'}}</span>
+                    </div>
+                    <div class="gold-cart-grid-content item-bot16" *ngIf="cobpFlow && item.selectedProduct.orderPhoneNo && !isEsim">
+                        Mobile Number (Principal Line):&nbsp; <span class="is-text-bold ">{{
+                            item.selectedProduct.orderPhoneNo}}</span>
+                    </div>
+                    <div class="gold-cart-content-inner">
+
+                        <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !cobpFlow && suppData && (suppData.length == 0) && isGoldenNumberSelected == 1 && !isEsim">
+                            <div>Mobile Number (Principal Line): </div>
+                            <div class="golden-number-content">VIP</div>
+                            <div><span class="golden-number-content">
+                                {{item.selectedProduct.orderPhoneNo }}</span></div>
+
+                        </div>
+                        <div class="gold-cart-grid-content item-bot16 monthly-charges" *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !cobpFlow && suppData && (suppData.length == 0) && isGoldenNumberSelected == 0 && !isEsim">
+                            Mobile Number (Principal Line):&nbsp;<span class="is-text-bold">{{
+                                item.selectedProduct.orderPhoneNo }}</span>
+                        </div>
+                        <div class="gold-cart-grid-content item-bot16" *ngIf="item.selectedProduct.orderPhoneNo && !mnpFlow && !cobpFlow && suppData && (suppData.length > 0) && isGoldenNumberSelected == 0 && !isEsim">
+                            Mobile Number (Principal Line):&nbsp; <span class="is-text-bold">{{
+                                item.selectedProduct.orderPhoneNo }}</span>
+                        </div>
+                    </div>
+                    <div class="shop-cart-grid-content monthly-charges device-bundle" *ngIf="isEsim">
+                        eSIM Charges: <span class="is-text-bold"> RM{{
+                            RoundingOff(item.selectedProduct.orderMonthlyPayTotal ?
+                            item.selectedProduct.orderMonthlyPayTotal :
+                            0.00) | number : '1.2-2'}}</span>
+                    </div>
+                    <span class="item-bot16" *ngIf="isEsim">(Will be charged in the next bill)</span>
+                    <div class="shop-cart-grid-content item-bot16 item-top16" *ngIf=" isEsim">
+                        Mobile Number:&nbsp; <span class="is-text-bold">{{
+                            item.selectedProduct.orderPhoneNo }}</span>
+                    </div>
+                    <div class="shop-cart-grid-content" *ngIf="isEsim">
+                        Type of SIM: <div class="is-text-bold item-top3">{{ simType }} to eSIM</div>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16" *ngIf="item.deviceUpfrontPenalty && (cobpFlow || isEasyPhone)">
+                        <div class="shop-cart-grid-left up-front-payment is-font-bold">Device Penalty</div>
+                        <div class="shop-cart-grid-right">RM{{ (item.deviceUpfrontPenalty ?
+                            item.deviceUpfrontPenalty : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div *ngIf="item.selectedProduct.orderOneTimePay && !mnpFlow && !cobpFlow && !item.selectedProduct.orderDeviceName && !isEsim"
+                        class="shop-cart-grid-content">
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                        <div class="shop-cart-grid-right">RM{{ (item.selectedProduct.orderMonthlyPayTotal ?
+                            item.selectedProduct.orderMonthlyPayTotal : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+
+                    <div *ngIf="item.selectedProduct.orderOneTimePay !== null && !mnpFlow && cobpFlow && !item.selectedProduct.orderDeviceName && !isEsim"
+                        class="shop-cart-grid-content">
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="!isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated in first bill)</span></div>
+                        <div class="shop-cart-grid-left up-front-payment" *ngIf="isUpfrontInstallment">Upfront Payment <span class="to-be-rebate">(To be rebated over {{upfrontInstallment}} months)</span></div>
+                        <div class="shop-cart-grid-right">RM{{ (item.price ? item.price : 0.00) | number : '1.2-2'}}</div>
+                    </div>
+                    <div class="shop-cart-grid-content up-front-payment item-top16" *ngIf="item.is_campaign_mviva && item.campaign_mviva_message">
+                        <div class="shop-cart-grid-left campaign_mviva_message">{{ item.campaign_mviva_message }}</div>
+                    </div>
+                    <div *ngIf="mnpFlow && !cobpFlow" class="mnp-subscription-charges">Subscription charges will be
+                        added in your first billing cycle</div>
+                    <div *ngIf="mnpFlow && !cobpFlow" class="mnp-cart-grid-content">
+                        <div class="gold-cart-grid-left mnp-sim-left">*Free SIM card delivery</div>
+                        <div class="gold-cart-grid-right mnp-sim-right">RM0.00</div>
+                    </div>
+
+                    <div *ngIf="hasAutoBilling && !IsDeviceOnly()"><span class="shop-cart-grid-content is-font-bold item-bot16 up-front-payment">Mandatory Autobilling</span></div>
+                    <div class="gold-cart-grid-content add-ons" *ngIf="item.has_add_ons && item.add_on_label">
+                        <div class="up-front-payment add-ons-msg">{{item.add_on_label}}</div>
+                    </div>
+                    <div class="shop-cart-grid-content item-bot16 campaign_mviva telco_day" *ngIf="item.is_telco_day && item.telco_day_message && !item.selectedProduct.orderDeviceName">
+                        <div class="shop-cart-grid-left campaign_mviva_message">{{ item.telco_day_message }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The below code has to iterate -->
+            <div *ngIf="suppData.length > 0">
+                <div *ngFor="let item of suppData, let i=index">
+                    <div class="u-grid-row has-border-top">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 summary-center">
+                            <img class="supplementary-line-icon" src="/assets/img/Drop_3/icon/supplementary-line-icon-new.svg">
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-7">
+                            <div class="supplementary-lines">
+                                <div class="item-bot16">
+                                    <div class="new-number"><span class="new-supple-line">Supplementary line {{i+1}}:
+                                            <b>{{item.number}}</b></span></div>
+                                </div>
+                                <div class="item-bot16" *ngIf="!isEsim">
+                                    <div class="new-number">Monthly Charges: <b class="">RM{{(item.price ?
+                                            (item.price) : 0.00) | number : '1.2-2'}}</b></div>
+                                </div>
+                                <div class="item-bot16">
+                                    <div class="new-number">{{item.name}}</div>
+                                </div>
+                                <div class="item-bot16">
+                                    <div class="new-number new-number-container new-container-bottom upfront-display" *ngIf="!isUpfrontInstallment">Upfront
+                                        Payment <span class="to-be-rebate"> (To be rebated in first bill)</span>
+                                    </div>
+                                    <div class="new-number new-number-container new-container-bottom upfront-display" *ngIf="isUpfrontInstallment">Upfront
+                                        Payment <span class="to-be-rebate"> (To be rebated over {{upfrontInstallment}} months)</span>
+                                    </div>
+                                    <span class="new-supple-right">RM{{(item.price ? (item.price) : 0.00) | number :
+                                        '1.2-2'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="device_sub_total u-grid-row" [ngClass]="{'device_sub_total_moon': item.selectedProduct.is_moon}">
+                <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-offset-3 is-col-tablet-p-9">
+                    <div class="gold-cart-grid-content-total">
+                        <div class="gold-cart-grid-left is-text-bold">Total</div>
+                        <div class="gold-cart-grid-right is-text-bold" *ngIf ="cart">RM{{(item.itemTotal ?
+                            (item.itemTotal) : 0.00) | number : '1.2-2'}}* <p class="gst-include">*SST not included</p></div>
+                    </div>
+                    <div class="gold-cart-grid-content">
+                        <div class="gold-cart-grid-left">
+                            <div class="teaser__link" *ngIf="item.skuBundle && showEditDelete">
+                                <!-- <a class="c-link--default gold-cart-link-style" data-css="c-link"> <span class="link__icon icon is-icon-arrow gold-cart-arrow"></span>
+                                    <span class="link__content device_detail_link" (click)="editableProduct(i)">Edit</span>
+                                </a> -->
+                            </div>
+                            <div class="teaser__link" *ngIf="!item.skuBundle && showEditDelete">
+                                <!-- <a class="c-link--default gold-cart-link-style" data-css="c-link"> <span class="link__icon icon is-icon-arrow gold-cart-arrow"></span>
+                                    <span class="link__content device_detail_link" (click)="editableProduct(i)">Edit</span>
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Voucher Code Start-->
+<section class="u-section choose_shipping_section" *ngIf="cart && cart.items && cart.items.length > 0">
+    <div class="section__content">
+        <div class="is-bg-color-grey is-container voucher-container">
+                <app-voucher [data]="cartResponse"></app-voucher>
+        </div>
+    </div>
+</section>
+<!--Voucher Code End-->
+<section class="u-section shop-cart-total-padding" *ngIf="cart && cart.items && cart.items.length > 0">
+    <div class="section__inner">
+        <div class="section__content is-container">
+            <div class="shopping_total">Total Cost</div>
+            <div class="shopping_total__list">
+                <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost">Total</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total__cost_value">RM{{(cart.itemsTotal ? cart.itemsTotal : 0.00) | number :
+                            '1.2-2' }}</div>
+                    </div>
+                </div>
+                <ng-container *ngFor="let tax of taxs">
+                    <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                        <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                            <div class="total_gst">{{ tax.percent ? tax.percent : 0 }}% {{ tax.name.toUpperCase() }}</div>
+                        </div>
+                        <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                            <div class="total_gst_value">RM{{ (tax.amount ? tax.amount : 0.00) | number : '1.2-2'}}</div>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="cart.rebateAmount && cart.rebateAmount !== '0.0000'">
+                    <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total_gst">Rebate</div>
+                      </div>
+                      <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total_gst_value">-RM{{ cart.rebateAmount | number : '1.2-2'}}</div>
+                      </div>
+                    </div>
+                </ng-container>
+                <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total_gst">Rounding Adjustment</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="total_gst_value">RM{{ (cart?.roundOffAdjustment)? cart.roundOffAdjustment : 0.00 |
+                            number : '1.2-2'}}</div>
+                    </div>
+                </div>
+                <div class="u-grid-row is-collapsed is-equal-height has-border__bottom">
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="grand__total">Grand Total</div>
+                    </div>
+                    <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-6">
+                        <div class="grand__total_value">RM{{(cart.grossTotal? RoundingOff(cart.grossTotal) : 0.00)|
+                            number : '1.2-2'}}</div>
+                    </div>
+                </div>
+                <div class="is-text-align-center shop-cart-checkout">
+                    <a class="c-cta--default" data-css="c-cta" (click)="callCheckoutRemarketScript();redirectCheckout();">Checkout<i
+                            class="cta__icon icon is-icon-arrow"></i></a>
+                    <p>
+                        <a class="c-link--default" data-css="c-link" href="/store/devices">
+                            <span class="link__icon icon is-icon-arrow"></span>
+                            <span class="link__content shop-cart-content-inner">Continue Shopping</span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-notification-error *ngIf="sessionInvalid" [IsSessionInValid]="sessionInvalid"></app-notification-error>
+<app-notification-bar *ngIf="notification"></app-notification-bar>
+<ng-container *ngIf="IsDisplayIdlePopup">
+    <session-timeout-popup-component (OnContinueMySession)="redirectShopDetails($event);" [data]="cartItemUnreservation"></session-timeout-popup-component>
+</ng-container>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>

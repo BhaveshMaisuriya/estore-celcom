@@ -1,0 +1,37 @@
+<ng-container  *ngIf="DetailBannerTextLeftResponse!=null">
+<section class="u-section {{DetailBannerTextLeftResponse.BackgroundColor}}" *ngIf="DetailBannerTextLeftResponse != null">
+  <div class="section__inner is-absolute-top" [ngClass]="{'xpax-detail-left-wrapper': IsXpax == true}">
+    <div class="section__content is-container">
+      <div class="o-hero-banner">
+        <div class="u-grid-row is-collapsed">
+          <div class="u-grid-col is-col-mobile-p-12">
+            <div class="hero-banner__item">
+              <div class="c-teaser--default" data-css="c-teaser">
+                <h1 class="teaser__headline" [innerHtml]="DetailBannerTextLeftResponse.Title"></h1>
+                <p class="teaser__copy" [innerHtml]="DetailBannerTextLeftResponse.SubTitle"></p>
+                <div class="teaser__cta" *ngIf="DetailBannerTextLeftResponse.ButtonText!=''">
+                    <a class="c-cta--default" data-css="c-cta" (click)="ManageContentNavigation(DetailBannerTextLeftResponse.ButtonLink);defaultOnClick();" href="{{DetailBannerTextLeftResponse.ButtonLink}}">
+                       <span class="cta__content" [innerHtml]="DetailBannerTextLeftResponse.ButtonText"></span>
+                        <span class="cta__icon icon is-icon-arrow"></span>
+                        </a>		
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section__media-container">
+    <div class="section__media">
+      <div class="c-picture--default
+    is-full-width-image" data-css="c-picture">
+        <!--[if IE 9]><audio><![endif]-->
+        <source srcset="assets/img/Drop_3/lineart-mob.jpg" media="(max-width: 767px)">
+          <source srcset="assets/img/Drop_3/lineart.jpg" media="(min-width: 768px)">
+            <!--[if IE 9]></audio><![endif]--><img class="picture__image" src="assets/img/Drop_3/lineart.jpg" alt="{{DetailBannerTextLeftResponse.BannerAlt}}"> </div>
+    </div>
+  </div>
+</section>
+</ng-container>
+

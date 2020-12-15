@@ -1,0 +1,141 @@
+[
+    {
+        "tabname": "FIRST\u2122 Plans",
+        "tabtitle": "Celcom First\u2122 Plans",
+        "tabsubtitle": "Sign up for 12 months and get extra privileges",
+        "is_xpax": false,
+        "tabdata": {
+            "Items": [
+                {
+                    "name": "Sime Darby RM30 at 3GB",
+                    "sku": "P98-1",
+                    "url_key": "p-98b",
+                    "plan_part_number": "PB07080",
+                    "ngn_part_number": "PB07080",
+                    "BackgroundColor": "is-bg-color-black",
+                    "IndicatorClass": "is-level-gold",
+                    "ProductText": "Sime Darby RM30 at 3GB",
+                    "KeyFiguresText": null,
+                    "KeyText": "RM 30",
+                    "PlanMonthlyPay": "30.0000",
+                    "OneTimePayment": "30.0000",
+                    "TotalPay": "30.0000",
+                    "BuynowLink": "\/plans\/P98",
+                    "BuynowText": "Buy now",
+                    "knowMoreLink": "\/plans\/P98",
+                    "knowMoreText": "Learn more",
+                    "lowerAgeLimit": "18",
+                    "UpperAgeLimit": null,
+                    "MobileDescription": null,
+                    "contract": "24 months contract",
+                    "image_url": "\/media\/catalog\/product\/w\/f\/wf-jamie-20gb_2_1.png",
+                    "telco_day": {
+                        "status": false,
+                        "hat_text": "Special Offer. Enjoy RM 10 rebate on your device ",
+                        "message": "Congratulations! you have just earned a rebate of Rm 10 on your purchase.\r\n\r\n\r\n",
+                        "allowed_types": [
+                            "NEW_NUMBER",
+                            "MnpNum"
+                        ],
+                        "not_allowed_types": [
+                            "EXISTING_NUMBER"
+                        ],
+                        "eligible_message": "Rebate is only eligible for New registration, Switch to Celcom",
+                        "not_eligible_message": "Rebate is not eligible for Upgrade Plan"
+                    },
+                    "is_premium_plan": false,
+                    "analytics_key_addtocart": {
+                        "fb_add_cart_id": "CelcomGold_AddToCart",
+                        "google_add_cart_id": "jVEeCPPqlZcBENjpoqMD",
+                        "twitter_add_cart_id": "nzukk",
+                        "fb_learn_more_id": "CelcomGold_LearnMore",
+                        "google_learn_more_id": "HbTxCPeDiZcBENjpoqMD",
+                        "twitter_learn_more_id": "nzuk9",
+                        "fb_buy_now_id": "CelcomGold_BuyNow",
+                        "google_buy_now_id": "ueEyCMCxiJcBENjpoqMD",
+                        "twitter_buy_now_id": "nzujy"
+                    },
+                    "bill_type": 0,
+                    "PlanName": "Sime Darby RM30 at 3GB",
+                    "PlanSku": "P98-1",
+                    "IsMnp": false,
+                    "PlanOnlyComponentToShow": true,
+                    "is_xpax": false,
+                    "addons": [],
+                    "TableInfo": []
+                },
+                {
+                    "name": "Sime Darby RM40 at 20GB",
+                    "sku": "P98",
+                    "url_key": "p-98",
+                    "plan_part_number": "PB07080",
+                    "ngn_part_number": "PB07080",
+                    "BackgroundColor": "is-bg-color-black",
+                    "IndicatorClass": "is-level-gold",
+                    "ProductText": "Sime Darby RM40 at 20GB",
+                    "KeyFiguresText": null,
+                    "KeyText": "RM 40",
+                    "PlanMonthlyPay": "40.0000",
+                    "OneTimePayment": "0.0000",
+                    "TotalPay": "0.0000",
+                    "BuynowLink": "\/plans\/P98",
+                    "BuynowText": "Buy now",
+                    "knowMoreLink": "\/plans\/P98",
+                    "knowMoreText": "Learn more",
+                    "lowerAgeLimit": "18",
+                    "UpperAgeLimit": null,
+                    "MobileDescription": null,
+                    "contract": "24 months contract",
+                    "image_url": "\/media\/catalog\/product\/w\/f\/wf-jamie-20gb_2.png",
+                    "telco_day": {
+                        "status": false,
+                        "hat_text": "Special Offer. Enjoy RM 10 rebate on your device ",
+                        "message": "Congratulations! you have just earned a rebate of Rm 10 on your purchase.\r\n\r\n\r\n",
+                        "allowed_types": [
+                            "NEW_NUMBER",
+                            "MnpNum"
+                        ],
+                        "not_allowed_types": [
+                            "EXISTING_NUMBER"
+                        ],
+                        "eligible_message": "Rebate is only eligible for New registration, Switch to Celcom",
+                        "not_eligible_message": "Rebate is not eligible for Upgrade Plan"
+                    },
+                    "is_premium_plan": false,
+                    "analytics_key_addtocart": {
+                        "fb_add_cart_id": "CelcomGold_AddToCart",
+                        "google_add_cart_id": "jVEeCPPqlZcBENjpoqMD",
+                        "twitter_add_cart_id": "nzukk",
+                        "fb_learn_more_id": "CelcomGold_LearnMore",
+                        "google_learn_more_id": "HbTxCPeDiZcBENjpoqMD",
+                        "twitter_learn_more_id": "nzuk9",
+                        "fb_buy_now_id": "CelcomGold_BuyNow",
+                        "google_buy_now_id": "ueEyCMCxiJcBENjpoqMD",
+                        "twitter_buy_now_id": "nzujy"
+                    },
+                    "bill_type": 0,
+                    "PlanName": "Sime Darby RM40 at 20GB",
+                    "PlanSku": "P98",
+                    "IsMnp": false,
+                    "PlanOnlyComponentToShow": true,
+                    "is_xpax": false,
+                    "addons": [],
+                    "TableInfo": []
+                }
+            ],
+            "StatusMessage": "SUCCESS",
+            "Status": "200"
+        }
+    },
+    {
+        "tabname": "Xpax\u2122 Plans",
+        "tabtitle": "Triple quota for more #LagiAwesome moments",
+        "tabsubtitle": "Get three times the quota on Weekly and Monthly Internet Plans to do more! Limited time only, subscribe now!",
+        "is_xpax": true,
+        "tabdata": {
+            "Items": [],
+            "StatusMessage": "SUCCESS",
+            "Status": "200"
+        }
+    }
+]

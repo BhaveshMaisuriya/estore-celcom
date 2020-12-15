@@ -1,0 +1,24 @@
+<div class="slider-container">
+        <div class="c-slider--default details-slider-default" data-css="c-slider" data-js-module="slider" data-js-options="{&quot;autoPlayInterval&quot;:8000,&quot;infinite&quot;:true,&quot;autoPlay&quot;:true}"
+         style="max-width: none;text-align:center;">
+            <div class="slider__content">
+                <div class="slider__list-wrapper slider-list-wrapper slider-ol-width" data-js-item="slider-wrapper">
+                    <div class="slider__list" data-js-item="slider-ribbon">
+                        <div class="slider__item is-cloned" data-js-item="slider-item" *ngFor="let item of SliderList">
+                            <img src="{{item}}" [alt]="item">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider__pagination-wrapper" data-js-item="slider-pagination">
+                <ol class="slider__pagination-list" data-js-item="slider-pagination-list">										
+                </ol>
+            </div>
+            <div class="slider__controls-wrapper" data-js-item="slider" *ngIf="SliderList.length>1">
+                <a class="slider__control is-previous is-details-previous" data-js-item="slider-prev">	<i class="icon is-icon-arrow is-arrow-prev"></i>
+                            </a>
+                <a class="slider__control is-next is-details-next" data-js-item="slider-next">	<i class="icon is-icon-arrow is-arrow-next"></i>
+                            </a>
+            </div>
+        </div>
+    </div>

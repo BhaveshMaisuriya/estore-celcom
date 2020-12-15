@@ -1,0 +1,231 @@
+.deliveryMethodAlign {
+	text-align: center;
+	margin-top: -8px;
+}
+.deliveryTab ul {
+	width: 100%;
+	border: 0px !important;
+}
+.deliveryMethodContainer {
+	background-color: #f3f3f3;
+	margin: 0;
+	padding-bottom: 50px;
+}
+.deliveryMethodContainer .full-width {
+	width: 100%;
+}
+.deliveryMethodContainer .full-width .blue-arrow {
+	display:flex;
+	justify-content: center;
+	background-color:#def5f3;
+	transform:rotate(45deg); 
+	width: 50px;
+	height: 50px;
+}
+.deliveryMethodSubContainer {
+	width: 705px;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+	/* padding: 24px; */
+	height: auto
+}
+.deliveryTab ul li {
+  width: 50%;
+  font: normal 14px Lato;
+	text-align: center;
+	padding: 0 0 16px 0 !important;
+}
+.arrow-down {
+	width: 0;
+    height: 0;
+    margin-left: 48%;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 25px solid #def5f3;
+}
+.tabs__tab.active[_ngcontent-c2] {
+	background-color: white !important;
+	color: #009ade !important;
+}
+body {
+	font-family: 300 16px 'Roboto', sans-serif;
+}
+.container {
+	width: 75%;
+	margin: 3rem auto;
+}
+h2 {
+  color: #345F90;
+  font: 24px 'Lato-Regular';
+	line-height: 1.25;
+	margin: 0 20px;
+}
+.tab-slider--nav {
+	width: 100%;
+	float: left;
+}
+.tab-slider--tabs {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	width: 100%;
+}
+.tab-slider--tabs:after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	-webkit-transition: all 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
+}
+.tab-slider--tabs.slide:after {
+	left: 50%;
+}
+.tab-slider--trigger {
+	font-size: 14px;
+	line-height: 1;
+	font-weight: normal;
+	color: #000;
+	text-align: center;
+	padding: 24px 0 16px;
+	position: relative;
+	z-index: 2;
+	cursor: default;
+	float: left;
+	-webkit-transition: color 250ms ease-in-out;
+	transition: color 250ms ease-in-out;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border-bottom: 3px solid #c6c5c5;
+	background-color: #fff;
+	width: 50%;
+	height: 40px;
+}
+.tab-slider--trigger.active {
+	color: #009ade;
+	border-bottom: 3px solid #009ade !important;
+}
+.is-active {
+	color: #009ade;
+	border-bottom: 3px solid #009ade !important;
+}
+.is-standard-delivery {
+	width: 100% !important;
+}
+.tab-slider--body {
+	margin-bottom: 20px;
+	background-color: #f7f7f7;
+	padding-bottom: 3px;
+}
+.deliveryIcon {
+	height: 32px;
+	width: 32px;
+	position: relative;
+	top: -10px;
+	vertical-align: bottom;
+}
+.is-standard-delivery-icon {
+	height: 32px;
+	width: 32px;
+	position: relative;
+	top: -10px;
+	vertical-align: bottom;
+	cursor: default;
+}
+.addressContainer {
+	color: #000;
+	font: 14px 'Lato-Regular';	
+	background-color: #fff;
+	margin-bottom: 20px;
+	width: 80%;
+	margin: 32px 10%;
+	padding: 24px 0px;
+	border-radius: 12px;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.gapDiv {
+	height: 67px;
+}
+.estimateDeliveryDiv {
+	display: flex;
+}
+.deliveryPlace {
+	margin-left: 27%;
+	font-family: Lato;
+	font-weight: bold;
+}
+.addressRadioContainer {
+	display: flex;
+	margin: 24px 0 0 21%;
+}
+.billingAddContainer {
+	width: 38%;
+}
+.addressRadioContainer label {
+  font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	color: #000;
+	color: var(--black);
+}
+.choose_billing_address {
+  padding-top: 30px;
+  font: normal normal 18px Lato;
+	font-stretch: normal;
+	line-height: 1.0;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	text-transform: capitalize;
+}
+.showBillingAddDiv {
+	text-align: center;
+	margin-top: 24px;
+	font: bold 16px "Lato-Bold";
+	line-height: 24px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid #ccc;
+}
+.contactNumDiv {
+	margin-top: 21px;
+	padding-left: 16px;
+}
+.contactNumDiv label {
+  font: bold 16px "Lato-Bold";
+	color: #000;
+}
+.redStar {
+	color: red;
+}
+.numberDiv {
+	padding-top: 16px;
+}
+.numberDiv input {
+	width: 378px;
+	height: 28px;
+	opacity: 0.5;
+	background-color: #f3f3f3;
+	border-bottom: 2px solid #ccc;
+	border-top: 0px;
+	border-left: 0px;
+}
+@media only screen and (max-width: 767px) {
+	.deliveryMethodSubContainer {
+		width: 90%;
+	}
+}

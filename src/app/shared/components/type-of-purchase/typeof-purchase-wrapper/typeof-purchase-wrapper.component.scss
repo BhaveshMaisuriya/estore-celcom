@@ -1,0 +1,62 @@
+.card {
+    position: relative;
+    display: grid;
+    max-width: 100%;
+    margin: 0;
+    // padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: black;
+    cursor: pointer;
+    background: white;
+    box-sizing: border-box;
+    font-size: 14px;
+    padding: 16px;
+
+    &.selected {
+        background: white !important;
+        border-width: 2px;
+        border-color: #009bdf !important;
+        color: black !important;
+    }
+
+    &.disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+}
+
+.top_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 152px);
+
+    @media (min-width: 600px) {
+        grid-template-columns: repeat(auto-fill, 156px);
+    }
+    
+    grid-column-gap: 16px;
+    grid-auto-rows: 64px;
+    grid-row-gap: 16px;
+}
+
+.typeOfPurchaseDesc{
+    display: grid;
+    grid-template-columns: 82px 28px;
+    grid-column-gap: 12px;
+    line-height: 16px;
+}
+
+.checkbox-container {
+    display: grid;
+    width: 28px;
+    height: 28px;
+}
+
+.round-button {
+    background: #f9faff;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    box-sizing: border-box;
+}

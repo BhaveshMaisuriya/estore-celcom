@@ -1,0 +1,133 @@
+.voucher_field {
+	opacity: 1;
+	height: 37.5px;
+    width: 100%;
+	z-index: 1;
+	outline: none;
+	padding: 0 15px;
+	border: .75px solid #ccc;
+    font-weight: normal;
+    background-color: #f3f3f3;
+}
+
+.voucher_field_box {
+    display: flex;
+    max-width: 360px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.has-border {
+    border: 1px solid #ccc;
+    padding: 40px;
+    margin: 20px 0;
+}
+
+.blue-arrow {
+    background-color: #009ADE;
+    height: 16px;
+    width: 20px;
+    padding: 11.5px;
+}
+._arrow {
+	z-index: 3;
+    position: relative;
+    cursor: pointer;
+    /* right: 5px; */
+}
+.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+  .is-bg-grey {
+    /* background-color: #f3f3f3; */
+    text-align: center;
+}
+input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+.voucher_text {
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: center;
+}
+
+.wrap_on_voucher {
+    padding-bottom: 0;
+    margin-top: 15px;
+    cursor: pointer;
+ }
+ .coupon_code {
+     font-size: 14px;
+     font-weight: bold;
+     color: #666;
+     bottom: 28px;
+     right: 80px;
+     position: relative;
+ }
+ .remove-x-blue {
+     left: 100px;
+     position: relative;
+     bottom: 44px;
+     color: #009ade;
+ }
+ .remove-x {
+    margin-right: 3px;
+    margin-top: 4px;
+ }
+ ._voucher_success {
+     color: #009190;
+     font-size: 16px;
+     margin-bottom: 0;
+     margin-top: -15px;
+ }
+ .image_float {
+     margin-left: -1.5%;
+     padding-right: 1%;
+ }
+ .invalid_coupon {
+     color: #f44236;
+     margin-bottom: 0;
+     margin-right: 0.5%;
+     width: 380px;
+     text-align: center;
+     margin: 10px auto 0;
+ }
+ .voucher_description {
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666666;
+ }
+ .caution-icon {
+    margin-top: 4px;
+    margin-right: 5px;
+ }
+ @media(max-width: 768px) {
+    .voucher_field {
+        width: 69%;
+    }
+    .is-bg-grey {
+        text-align: unset;
+    }
+    .remove-x-blue {
+        bottom: 40px;
+    }
+    .coupon_code {
+        left: 20px;
+        bottom: 21px;
+    }
+    .invalid_coupon {
+        width: 100%;
+    }
+    .caution-icon {
+        margin-top: 4px;
+     }
+     .image_float {
+        margin-left: 0;
+        padding-right: 2.5%;
+    }
+ }

@@ -1,0 +1,327 @@
+<section *ngIf="showContent" id="step3" class="type_of">
+  <section class="u-section sectionize is-bg-color-grey is-zindex-0" [ngClass]="{
+    'choose-number-normal-bg-color': isProjectStar === true ||
+     isProjectMoon , 'choose-number-grey-bg-color':(plan$ | async)?.associated_bundle_product?.length > 0
+  }">
+
+    <div class="section__inner">
+      <div class="section__content is-container">
+
+        <div class="details__choose_number">
+          <div class="details__choose_content number-m">
+            <div class="section_index_container">
+              <!-- TODO Check section number for other flows as well -->
+              <span *ngIf="isPlanURL && !isProjectStar && !(isLegacyPlan$ | async)" class="section_index">
+                {{ isProjectMoon && (plan$ | async)?.associated_bundle_product?.length > 0 ? 4 : 3 }}
+              </span>
+              <span *ngIf="isPlanURL && (isLegacyPlan$ | async)" class="section_index">2</span>
+              <span *ngIf="isProjectStar === true" class="section_index">3</span>
+              <span *ngIf="isDeviceURL && isDealer === false" class="section_index">4</span>
+              <span *ngIf="isDeviceURL && isDealer" class="section_index">4</span>
+              <!-- <span *ngIf="isDealer === true" class="section_index">2</span> -->
+            </div>
+            <div class="details__choose_content_header">Type of Purchase</div>
+          </div>
+        </div>
+        <div [ngClass]="{'isMoonFlow': isMoon}" class="tab-margin">
+        <div data-js-module="accordion choose__number__accordian" data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+          <div class="tab is-tabs-equal-height">
+            <!---->
+            <!---->
+            <div class="tablinks is-active note__tab" data-js-item="accordion-btn-tabs" (click)="openPage(event, 'note')">
+              <div class=""></div>
+            </div>
+            <div class="type_of_purchase">
+            <!-- <div class="select-dtls Get_New_Number tablinks" data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : (typeOfNumHighlight === 'NEW_NUMBER')  && isActive, 'pointerEve':(typeOfNumHighlight === 'NEW_NUMBER')}" (click)="getNewNumbers();_deviceDataService.publishUpdateStep(3);"> -->
+            <div *ngIf="(!isEasyPhone || isBundleClicked) && !easyphoneTabSelected && disableNewLineCobpSTen === false && isEnableNewLineTab" class="select-dtls Get_New_Number tablinks "
+              data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : (typeOfNumHighlight === 'NEW_NUMBER')  && isActive, 'pointerEve':(typeOfNumHighlight === 'NEW_NUMBER'), 'disableClass': (preorderEnded || cobpLoading)}"
+              (click)="onSwitchingPurchaseTypeTab('GetNewNumber');isMoon ?  _deviceDataService.publishUpdateStickyStep(3) : _deviceDataService.publishUpdateStep(3);">
+              <div class="Get_New_Number__Details">Get a new number </div>
+            </div>
+            <!---->
+            <!-- <div class="select-dtls Keep_celcom_Num tablinks" data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : (typeOfNumHighlight === 'EXISTING_NUMBER') && isActive, 'pointerEve':(typeOfNumHighlight === 'EXISTING_NUMBER'), 'disableClass':disableKeepNumber, 'hideButton':!HideButtonsForGuest()}" (click)="sameNumber();_deviceDataService.publishUpdateStep(3);"> -->
+              <div *ngIf="(!isPromotion) && isEnableCobpTab" class="select-dtls Keep_celcom_Num tablinks" data-js-item="accordion-btn-tabs"
+              [ngClass]="{'is-selected' : (typeOfNumHighlight === 'EXISTING_NUMBER') && isActive, 'pointerEve':(typeOfNumHighlight === 'EXISTING_NUMBER'),
+            'disableClass': (disableKeepNumber || preorderEnded || loading),'easyPhoneCOBP': ((isEasyPhone && isRentClicked ) || (isEasyPhone && isOwnClicked)),
+            'hideButton': hideTypeOfPurchaseCobp()}" (click)="onSwitchingPurchaseTypeTab('SameNumber');isMoon ?  _deviceDataService.publishUpdateStickyStep(3) : _deviceDataService.publishUpdateStep(3);">
+              <div class="Keep_celcom_Num__Details purchase-align-middle"> Upgrade Plan / Change Pass </div>
+            </div>
+            </div>
+            <div *ngIf="(!isRentClicked && !isOwnClicked) && !easyphoneTabSelected && isEnableMnpTab && isPlanPage && !isBundleClicked && selectedDeviceInfoForMoon === null"
+              class="Switch_celcom tablinks" data-js-item="accordion-btn-tabs" [ngClass]="{'is-selected' : (typeOfNumHighlight === 'MnpNum') && isActive,'pointerEve':(typeOfNumHighlight === 'MnpNum'),'is-active':SwitchToCelcom, 'disableClass': (preorderEnded || cobpLoading || loading), 'hideButton': hideTypeOfPurchaseMNP()}"
+              (click)="onSwitchingPurchaseTypeTab('ShowMNPBlock');isMoon ?  _deviceDataService.publishUpdateStickyStep(3) : _deviceDataService.publishUpdateStep(3);">
+              <div class="Switch_celcom__Details">Switch to Celcom</div>
+            </div>
+          </div>
+          <section id="note" class="u-section" *ngIf="((isBundleClicked || selectedDeviceInfoForMoon !== null)&& typeOfNumHighlight  !== 'NEW_NUMBER' && typeOfNumHighlight  !== 'EXISTING_NUMBER')">
+            <div class="section__inner">
+                <div class="note__content checkout-note">
+                  <div>To switch to Celcom, follow these guides and enjoy the best 4G network:</div>
+                  <ul class="note__details checkout-note-details">
+                      <li class="no_li_style">Step 1: Switch to a normal Celcom postpaid line <a href="https://www.celcom.com.my/personal/postpaid" target="_blank">here.</a></li>
+                      <li class="no_li_style">Step 2: Make sure you meet criterias below before submitting your request:
+                       <ul>
+                          <li class="note__details__description">You have settled all the bills with your current service provider.</li>
+                          <li class="note__details__description">No phone contract obligation with your current service provider.</li>
+                          <li class="note__details__description">The mobile number is registered under your name.</li>
+                       </ul>
+                      </li>
+                      <li class="no_li_style">Step 3: Once your SIM is on Celcom network, visit <a href="https://shop.celcom.com.my/store/devices" target="_blank">here</a> and purchase your device.</li>
+                  </ul>
+                </div>
+            </div>
+          </section>
+        </div>
+        <app-msisdn-input *ngIf="!isUserLoggedIn && typeOfNumHighlight === 'EXISTING_NUMBER'" [forceGrayBG]="(!isProjectMoon && ((isDevicePage() && isProjectStar) || (!isDevicePage() && isProjectStar))) || (isProjectMoon && (!(plan$ | async)?.associated_bundle_product || (plan$ | async)?.associated_bundle_product?.length === 0))" [forceWhiteBG]="isDevicePage() || isProjectMoon || (!isDevicePage() && !isProjectStar)" [pageType]="pageType"  (successfulLogin)="onSuccessfulLogin($event);"></app-msisdn-input>
+        <app-nric-input *ngIf="enableNRICAuthentication && typeOfNumber == 'EXISTING_NUMBER' && isUserLoggedIn" class="appNric section__content is-container" [pageType]="pageType"
+        (onNricVerification)="callOnNricVerification($event);">
+      </app-nric-input>
+        </div>
+        <div class="rebate-message" *ngIf="(typeOfNumHighlight === 'NEW_NUMBER' ||typeOfNumHighlight === 'EXISTING_NUMBER' || typeOfNumHighlight === 'MnpNum') && telcoDayRebate && telcoDayRebate.status && isPlanPage">
+            <div *ngIf="showEligibleRebate && !showNotEligibleRebate && telcoDayRebate && telcoDayRebate.eligible_message">
+              <img class="Limited-Stock-Icon" src="../../../../../assets/img/svg/icons-layout/icon-instock.svg">
+              <span class="telco-day">{{ telcoDayRebate.eligible_message }}</span>
+            </div>
+            <div *ngIf="showNotEligibleRebate && !showEligibleRebate && telcoDayRebate && telcoDayRebate.not_eligible_message">
+              <img class="Limited-Stock-Icon" src="../../../../../assets/img/svg/icons-layout/icon-outofstock.svg">
+              <span class="telco-day">{{ telcoDayRebate.not_eligible_message }}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tabs-align" *ngIf="isKardasianPlanSelected && typeOfNumHighlight === 'NEW_NUMBER'">
+    <div class="switch-tabs">
+    <div class="first-tab" [ngClass]="{'activeTab': numberCategory === 'GOLDEN'}" (click)="showPremiumTab('GOLDEN')">
+        <img *ngIf="numberCategory === 'GOLDEN'" src="../../../../../assets/img/vip-numbers.svg" alt="vip-numbers"
+          class="image-gap">
+        <img *ngIf="numberCategory !== 'GOLDEN'" src="../../../../../assets/img/inactive-vip.svg" alt="vip-numbers"
+          class="image-gap"><span class="vip-text">VIP Numbers</span> </div>
+      <div class="first-tab second-tab" [ngClass]="{'activeTab': numberCategory === 'NORMAL'}"
+        (click)="showPremiumTab('NORMAL')">
+        <span class="normal-text">Normal Numbers</span></div>
+      </div>
+      <div class="border-blue"></div>
+  </section>
+
+
+  <ng-container *ngIf="numberCategory === 'GOLDEN' && isKardasianPlanSelected">
+      <p class="golden-number-note" *ngIf="!loading">{{goldenPlanNote}}</p>
+        <div class="section__inner choose-number-padding" *ngIf="deviceNumberToDisplay != null && msisdn == null && displayNumList && !selectedNumber">
+            <div class="choose-number-fonts" [ngClass]="{'isChoose':isMoon , 'choose-number-golden': numberCategory === 'GOLDEN'}" >
+                Choose a new number</div>
+            <div class="section__content is-container">
+              <div class="search__number" [ngClass]="{'isMoonSearch':isMoon}">
+                <input class="search__number__input" type="text" name="search" maxlength="4" (keypress)="numberValidation($event);"
+                  (keydown)="numberKeyHandler($event)" placeholder="Search number (Min.2 - Max.4)" [(ngModel)]="searchNumber"
+                  [ngClass]="{'errorborder':this.errorExits ==  true , 'gray_inputField': isKardasianPlanSelected === true && typeOfNumHighlight === 'NEW_NUMBER'}" />
+                <span class="_arrow" (click)="searchNumbersForPattern();">
+                  <img class="blue-arrow" src="../../../../../assets/img/search_number_icon.svg">
+                </span>
+
+                <div class="error" *ngIf="this.errorExits && !this.noNumbersToDisplay">
+                  <span class="otp-error-heading">{{errorMessage.message}}</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="error" *ngIf="this.noNumbersToDisplay && !this.errorExists">
+                  <span class="otp-error-heading">{{errorMessage.noNumbersDisplay}}</span>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="error" *ngIf="this.retrieveNumbersAPI && !this.noNumbersToDisplay && !this.errorExists">
+                  <span class="otp-error-heading">{{errorMessage.apiError}}</span>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              </div>
+              </div>
+      <section id="login" [hidden]="loading" *ngIf="deviceNumberToDisplay != null && msisdn == null && displayNumList"
+        [hidden]="(isPrincipleNumSelected && (isPlanURL || isDeviceURL) && !selectedBlueXpax) || isRentClicked || isOwnClicked">
+        <div class="section__inner choose-number-padding">
+          <div class="section__content is-container">
+            <div class="u-grid-row numbers-device-detail" [ngClass]="{'isMoonMnp':isMoon}">
+
+              <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-3 is-col-desktop-2 is-margin-bottom-16" *ngFor="let number of deviceNumberToDisplay">
+                <div class="number__details" (click)="SelectNumber(number.number);isMoon ?  _deviceDataService.publishUpdateStickyStep(3) : _deviceDataService.publishUpdateStep(3);"
+                  [ngClass]="{'is-selected':(selectedNumber === number.number)&& isActive}">
+                  <div class="number__details__description">{{number.number}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="refresh-numbers noPagination" *ngIf="deviceNumberToDisplay != null" [ngClass]="{'refresh_center': isKardasianPlanSelected === true && typeOfNumHighlight === 'NEW_NUMBER'}">
+              <a href="javascript:void(0);" (click)="getRefreshNumbers();" class="noUnderline">Refresh numbers</a>
+            </div>
+
+            <!-- Supplimentary lines component -->
+        <!-- <app-supplementary-lines></app-supplementary-lines> -->
+
+        <!-- <div id="max-supplimentary-info" class="max-supplimentary-info-container">
+          <div class="max-supplimentary-image"><img src="./assets/img/notifications.svg" class="supplimentary-notification"></div>
+          <div class="supplimentary-notification-content">Have you exceeded your maximum number of supplementary lines?
+              Login now to check.</div>
+        </div> -->
+        <!-- <app-nric-input *ngIf="(enableNRICAuthentication && typeOfNumber == 'EXISTING_NUMBER') || (typeOfNumHighlight === 'NEW_NUMBER' && (selectedNumber && selectedNumber !== '') && !isUserLoggedIn && selectedBlueXpax)" class="appNric section__content is-container" [pageType]="pageType"
+        (onNricVerification)="callOnNricVerification($event);">
+        </app-nric-input> -->
+          </div>
+        </div>
+      </section>
+    </ng-container>
+  <ng-container *ngIf="numberCategory === 'NORMAL'">
+    <!-- <div class="teaser__headline" [ngStyle]="{'color':bule}" class="normal-number-align">This is normal Number</div> -->
+    <!-- <div class="choose-number-fonts is-bg-color-grey" [ngClass]="{'isChoose':isMoon}" *ngIf="deviceNumberToDisplay != null && msisdn == null && displayNumList && !selectedNumber && !loading">
+      Choose a new number</div> -->
+
+      <div class="section__inner choose-number-padding is-bg-color-grey" *ngIf="deviceNumberToDisplay != null && msisdn == null && displayNumList && !selectedNumber" [ngClass]="{'choose-number-normal-bg-color': isKardasianPlanSelected && typeOfNumHighlight === 'NEW_NUMBER' , 'choose-number-normal-bg-color': isProjectStar === true }">
+          <div class="choose-number-fonts" [ngClass]="{'isChoose':isMoon , 'choose-number-golden': numberCategory === 'GOLDEN'}">
+              Choose a new number</div>
+          <div class="section__content is-container">
+            <div class="search__number" [ngClass]="{'isMoonSearch':isMoon , 'noNumbersPattern': deviceNumberToDisplay.length ===0 }">
+              <input class="search__number__input" type="text" name="search" maxlength="4" (keypress)="numberValidation($event);"
+                (keydown)="numberKeyHandler($event)" placeholder="Search number (Min. 2 - Max. 4)" [(ngModel)]="searchNumber"
+                [ngClass]="{'errorborder':this.errorExits ==  true , 'bg-color-input': isKardasianPlanSelected && typeOfNumHighlight === 'NEW_NUMBER' , 'bg-color-input': isProjectStar === true }" />
+              <span class="_arrow" (click)="searchNumbersForPattern();">
+                <img class="blue-arrow" src="../../../../../assets/img/search_number_icon.svg">
+              </span>
+
+              <div class="error" *ngIf="this.errorExits && !this.noNumbersToDisplay">
+                <span class="otp-error-heading">{{errorMessage.message}}</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="error" *ngIf="this.noNumbersToDisplay && !this.errorExists">
+                <span class="otp-error-heading">{{errorMessage.noNumbersDisplay}}</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="error" *ngIf="this.retrieveNumbersAPI && !this.noNumbersToDisplay && !this.errorExists">
+                <span class="otp-error-heading">{{errorMessage.apiError}}</span>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            </div>
+            </div>
+    <section id="login" [hidden]="loading" *ngIf="deviceNumberToDisplay != null && msisdn == null && displayNumList"
+      [hidden]="(isPrincipleNumSelected && (isPlanURL || isDeviceURL) && !selectedBlueXpax) || isRentClicked || isOwnClicked">
+      <div class="section__inner choose-number-padding is-bg-color-grey" [ngClass]="{'choose-number-normal-bg-color': isKardasianPlanSelected && typeOfNumHighlight === 'NEW_NUMBER' , 'choose-number-normal-bg-color': isProjectStar === true }">
+        <div class="section__content is-container">
+          <div class="number-container">
+
+              <div class="margin_top_2" *ngIf="deviceNumberToDisplay.length > 0" [ngClass]="{'noPaginationChevrons' : pager.totalPages === 1}">
+                  <a href="javascript:void(0);" class="c-link--default" data-css="c-link" (click)="setPage(pager.currentPage - 1)">
+                    <span *ngIf="pager.currentPage === 1" class="link__content"><img class="disabled-chevron-left" src="../../../../../assets/img/disabled-left-chevron.svg"></span>
+                    <span *ngIf="pager.currentPage > 1" class="link__content"><img class="chevron" src="../../../../assets/img/moon-chevron-left.svg"></span>
+                  </a>
+                </div>
+
+                <div class="u-grid-row numbers-device-detail" [ngClass]="{'isMoonMnp':isMoon}">
+
+                  <div class="u-grid-col is-col-mobile-p-6 is-col-tablet-p-3 is-col-desktop-3 is-margin-bottom-16" *ngFor="let number of totalPageItems">
+                    <div class="number__details" (click)="SelectNumber(number.number);isMoon ?  _deviceDataService.publishUpdateStickyStep(3) : _deviceDataService.publishUpdateStep(3);"
+                      [ngClass]="{'is-selected':(selectedNumber === number.number)&& isActive}">
+                      <div class="number__details__description" [innerHTML]= "number.number | highlight: searchNumber"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="margin_bottom_2" *ngIf="deviceNumberToDisplay.length > 0" [ngClass]="{'noPaginationChevronright' : pager.totalPages === 1}">
+                    <a href="javascript:void(0);" class="c-link--default" data-css="c-link" (click)="setPage(pager.currentPage + 1)">
+                      <span *ngIf="pager.currentPage !== pager.totalPages" class="link__content"><img class="chevron" src="../../../../../assets/img/chevron-right.svg" /></span>
+                      <span *ngIf="pager.currentPage === pager.totalPages" class="link__content"><img class="disabled-chevron-right"
+                          src="../../../../../assets/img/disabled-left-chevron.svg"></span>
+                    </a>
+                </div>
+          </div>
+          <div class="pagination-numbers" *ngIf="deviceNumberToDisplay.length > 0">
+            <div *ngIf="pager.pages && pager.pages.length" class="align-number-refresh" [ngClass]="{'noPaginationRefreshTab' : pager.totalPages === 1}">
+              <ul *ngIf="pager.pages && pager.pages.length && pager.totalPages > 1 && deviceNumberToDisplay.length > 0" class="pagination">
+                <li class="marginleft-right page-number-design" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                  <a [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)">{{page}}</a>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="pager.currentPage === pager.totalPages" class="refresh-numbers" [ngClass]="{'noPagination' : pager.totalPages === 1}">
+              <a href="javascript:void(0);" (click)="getRefreshNumbers();" class="noUnderline">Refresh numbers</a>
+            </div>
+          </div>
+          <div *ngIf="deviceNumberToDisplay.length === 0" class="refresh-numbers" [ngClass]="{'noPagination' : pager.totalPages === 1}">
+            <a href="javascript:void(0);" (click)="getRefreshNumbers();" class="noUnderline">Refresh numbers</a>
+          </div>
+
+          <!-- Supplimentary lines component -->
+        <!-- <app-supplementary-lines></app-supplementary-lines> -->
+
+        <!-- <div id="max-supplimentary-info" class="max-supplimentary-info-container">
+          <div class="max-supplimentary-image"><img src="./assets/img/notifications.svg" class="supplimentary-notification"></div>
+          <div class="supplimentary-notification-content">Have you exceeded your maximum number of supplementary lines?
+              Login now to check.</div>
+        </div> -->
+        <!-- <app-nric-input *ngIf="(enableNRICAuthentication && typeOfNumber == 'EXISTING_NUMBER') || (typeOfNumHighlight === 'NEW_NUMBER' && (selectedNumber && selectedNumber !== '') && !isUserLoggedIn && selectedBlueXpax)" class="appNric section__content is-container" [pageType]="pageType"
+        (onNricVerification)="callOnNricVerification($event);">
+        </app-nric-input> -->
+
+        </div>
+      </div>
+    </section>
+  </ng-container>
+  <app-page-loader [hidden]="!loading"></app-page-loader>
+
+<!-- <div class="u-grid-col is-col-mobile-p-7 is-col-tablet-p-10 is-mobile-right" [hidden]="!isPrincipleNumSelected">
+    <div class="principal-line-no"><p>Principal Line</p><p>{{orderPhoneNo}}</p></div>
+    <div class="remove-val" (click)="removePrincipleLine()"><span class="remove-x">X</span>  Remove</div>
+  </div> -->
+  <div *ngIf="noOfSuppLinesToDelete<0 && isPlanURL">
+    <div class="alert-text is-container">Please remove at least
+      <span>{{0-noOfSuppLinesToDelete}}</span>line(s) to proceed.</div>
+  </div>
+  <div *ngIf="noOfLinesToDelete<0 && isDeviceURL">
+    <div class="alert-text is-container">Please remove at least
+      <span>{{0-noOfLinesToDelete}}</span>line(s) to proceed.</div>
+  </div>
+<div *ngIf="!loading" class="padded-section" [ngClass]="{'is-bg-color-grey': !isProjectStar && !isProjectMoon}">
+<section class="u-section sectionize-number-tabs principle-section" [ngClass]="{'is-bg-color-grey': !isProjectStar && !isProjectMoon}" *ngIf="(isPlanURL || isDeviceURL)"
+  [hidden]="!isPrincipleNumSelected">
+  <div class="section__content">
+    <div class="section__inner accordion_margin">
+      <div class="principal-line">
+        <div class="principal-line-icon">
+          <img src="../assets/img/Drop_3/icon/principal-line-icon-new.svg">
+        </div>
+        <div class="principal-line-no">
+          <p>Mobile Number (Principal Line)</p>
+          <p>{{selectedNumber}}</p>
+        </div>
+        <div class="remove-val remove-principal" (click)="onSwitchingPurchaseTypeTab('removePrincipleLine')">
+          <img class="remove-x imgWidth" src="../assets/img/Drop_3/icon/remove-white-icon.svg">
+          <span>Remove</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-supplementary-lines *ngIf="isEnterprise === false && isPrincipleNumSelected && isPlanURL && !isDeviceURL" [isMoon] = "isMoon" [internetShareOption] = "internetShareOption"
+  [addOnSelected]="addOnsSelected" [numselected]="selectedNumber" [isKardasianPlanSelected]="isKardasianPlanSelected"
+  [planDetailsObj] = "chosenPlan" [isSelectedBlueXpax] = "selectedBlueXpax" [isProjectStar] = "isProjectStar"
+  [skipSelection]="(mvivaCampaign$ | async)?.can_buy_supplementary_lines === '0'"
+  (removePrincipleLine)="removePrincipleLineAndReset()"
+></app-supplementary-lines>
+<app-device-supplementary-lines *ngIf="isEnterprise === false && isPrincipleNumSelected && isDeviceURL && !isPlanURL && supplimentaryData && !isMoon"
+  [addOnSelected]="addOnsSelected" [numselected]="selectedNumber" [supplimentaryData]='supplimentaryData'
+   [saleablePlanArray] = 'saleablePlanArray' [isProjectStar] = "isProjectStar" [isKardasianPlanSelected]="isKardasianPlanSelected">
+</app-device-supplementary-lines>
+</div><!-- /.padded-section -->
+<app-cobp *ngIf="!enableNRICAuthentication && typeOfNumber == 'EXISTING_NUMBER' && isUserLoggedIn" [data]="cobpData" [noteDataCMS]= "noteDataCMS" (cobpEligibilityCheckBundle)="cobpEligibilityCheckData($event)"
+  (cobpEligibilityCheckPlanPurchase)="cobPlanEligibility($event)"></app-cobp>
+<div class="padded-section">
+  <app-note-section [noteDataCMS]= "noteDataCMS" [noteCheck]="!mnpPreSelected && msisdn == null && DeviceDetailsNumberResponse==null && showContent && !ShowMNPBlock"></app-note-section>
+</div><!-- /.padded-section -->
+<app-switch-to-celcom-component [forceWhiteBG]="isDevicePage() || isMoon || (!isDevicePage() && !isProjectStar)" *ngIf="ShowMNPBlock && !displayMNPNote " [isMoon]="isMoon" [isProjectStar] = "isProjectStar" [entityData]="data" [hidden]="isRentClicked || isOwnClicked"
+  (mnpEligibilityCheck)="OnMnpEligibile($event);"></app-switch-to-celcom-component>
+</section>
+<app-notification-error *ngIf="maximumReservation" [data]="infoMaxLimit"></app-notification-error>
+<app-notification-error *ngIf="isPopUpBlacklist" [data]="infoBlacklisted"></app-notification-error>
+<ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopup">
+<app-losing-supplementary-line-popup [popupType]='popupType' (OnContinueSupplementaryPopup)="onContinueSwitchingPurchaseTypeTab($event);"
+  (OnLeaveSupplementaryPopup)="onCancellingSwitchingPurchaseTypeTab($event)"></app-losing-supplementary-line-popup>
+</ng-container>
+<ng-container *ngIf="IsDisplayUpsellPopup">
+<app-losing-supplementary-line-popup [popupType]='passPopupType' (OnContinueSupplementaryPopup)="onContinueUpsellPopup($event);"
+  (OnLeaveSupplementaryPopup)="onCancelUpsellPopup($event)"></app-losing-supplementary-line-popup>
+</ng-container>

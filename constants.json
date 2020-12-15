@@ -1,0 +1,18 @@
+{
+  "cacheUrls" : ["rest/V1/planproductlist", "rest/V1/planproductview", "rest/V1/devicelist", "rest/V1/filterOptions", "rest/V1/devicedetails",
+    "rest/V1/planproductlist?agenttype=dealer", "rest/V1/planproductview?agenttype=dealer", "rest/V1/devicelist?agenttype=dealer",
+    "rest/V1/filterOptions?agenttype=dealer", "rest/V1/devicedetails/:deviceId?agenttype=dealer", "rest/V1/planproductlist?agenttype=agent",
+    "rest/V1/planproductview?agenttype=agent", "rest/V1/devicelist?agenttype=agent", "rest/V1/filterOptions?agenttype=agent",
+    "rest/V1/devicedetails/:deviceId?agenttype=agent",
+    "rest/V1/shopdevices",
+    "rest/V1/multibanner/mobile",
+    "rest/V1/multibanner/desktop",
+    "rest/V1/questionRetrive",
+    "rest/V1/devicedetails-combo"
+  ],
+  "statusCodes" : [200, 201, 202, 203],
+  "redisKeyTTL" : 10800,
+  "redisPreOrderKeyTTL" : 60,
+  "sessionKeyExpire" : 1800,
+  "tokenKeyExpireTime" : 1800
+}

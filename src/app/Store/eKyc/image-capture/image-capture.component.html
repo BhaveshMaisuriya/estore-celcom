@@ -1,0 +1,20 @@
+<div class="container imageContainer">
+    <mat-icon (click)="handleClose()" class="close">close</mat-icon>
+    <div [hidden]="!isVideoPlaying">
+        <div class="greenBorder">
+            <video #video class="vid" [ngClass]="{'selfie': mode==='user'}" autoplay playsinline></video>
+        </div>
+        <div class="iconContainer text-center">
+            <mat-icon class="icon" (click)="capture()">photo_camera</mat-icon>
+        </div>
+    </div>
+    <div [hidden]="isVideoPlaying">
+        <div class="p-1">
+            <canvas #canvas class="vid" [ngClass]="{'selfie': mode==='user'}"></canvas>
+        </div>
+        <div class="iconContainer">
+            <mat-icon class="icon iconLeft" (click)="retake()">refresh</mat-icon>
+            <mat-icon class="icon iconRight" (click)="upload()">arrow_forward_ios</mat-icon>
+        </div>
+    </div>
+</div>

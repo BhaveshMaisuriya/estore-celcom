@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="180" height="180" viewBox="0 0 180 180">
+  <defs>
+    <filter id="bg" x="-8.514" y="-6.205" width="197.7" height="197.701" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Greencircle">
+      <rect width="180" height="180"/>
+    </clipPath>
+  </defs>
+  <g id="Greencircle" clip-path="url(#clip-Greencircle)">
+    <rect width="180" height="180" fill="#fff"/>
+    <g id="Base_Card" data-name="Base — Card" transform="translate(-1.014 -0.705)">
+      <g transform="matrix(1, 0, 0, 1, 1.01, 0.71)" filter="url(#bg)">
+        <path id="bg-2" data-name="bg" d="M91.35,0A91.35,91.35,0,1,1,0,91.35,91.35,91.35,0,0,1,91.35,0Z" transform="translate(-1.01 -0.71)" fill="#00b540"/>
+      </g>
+    </g>
+  </g>
+</svg>

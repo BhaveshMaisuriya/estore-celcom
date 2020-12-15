@@ -1,0 +1,42 @@
+<ngu-carousel #myCarousel [inputs]="carouselConfig" [dataSource]="data">
+  <div class="card-wrapper" *ngIf="!isLoading; else loadingEl">
+    <div *nguCarouselDef="let product;" class="item">
+      <app-moon-device-card
+        #deviceCard
+        [selected]="selectedBundleSku === product?.sku"
+        [selectedSKU]="selectedSku"
+        [product]="product"
+        [isDisabled]="hasInvalidPricing(deviceCard)"
+        (onSelectDevice)="selectDevice(product, $event)"
+        (onSelectVariant)="selectVariant(product, $event)"></app-moon-device-card>
+    </div>
+  </div>
+	<ul class="myPoint" NguCarouselPoint *ngIf="myCarousel?.pointNumbers?.length > 0">
+    <li NguCarouselPrev class="navBtn left" [ngClass]="{disabled: myCarousel.activePoint == 0}">
+      <div class="toggle-arrow"></div>
+    </li>
+    <ng-container *ngFor="let i of myCarousel.pointNumbers; let j = index">
+      <li 
+        [class.hidden]="!((j >= myCarousel.activePoint - 1 && j <= myCarousel.activePoint + 1) 
+          || (myCarousel.activePoint === 0 && j === 2)
+          || (myCarousel.activePoint === (myCarousel.pointNumbers.length - 1) && j === (myCarousel.activePoint - 2)))"
+        [class.active]="j==myCarousel.activePoint" 
+        (click)="myCarousel.moveTo(j)">
+        {{ j + 1 }}
+      </li>
+    </ng-container>
+    <li NguCarouselNext class="navBtn right" [ngClass]="{disabled: myCarousel.activePoint >= myCarousel?.pointNumbers?.length - 1 }">
+      <div class="toggle-arrow"></div>
+    </li>
+	</ul>
+</ngu-carousel>
+
+<ng-template #loadingEl>
+  <app-page-loader *ngIf="loadingType == 'spinner'"></app-page-loader>
+  <div *ngIf="loadingType == 'shimmer'" class="card-wrapper">
+    <div 
+      *ngFor="let plans of [1, 2]"
+      class="shimmer placeholder-card">
+    </div>
+  </div>
+</ng-template>

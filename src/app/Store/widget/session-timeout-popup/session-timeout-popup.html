@@ -1,0 +1,62 @@
+<div id="guest-choose-way" class="guest-choose-model">
+    <div class="guest-modal-content">
+        <section class="u-section" id="more_details">
+            <div class="section__inner">
+                <div class="section__content">
+                    <div class="guest-dtl-features-box">
+                        <div class="guest-features-box-dtls">
+                            <ng-container *ngIf="!data && !logout && !logoutPopup && !formSubmitted">
+                                <h3 class="Choose-your-way-in">Session Timeout</h3>
+                                <p class="What-would-you-like">Your session will expire in two minutes.</p>
+                                <div class="guest-connect-login-now">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="ContinueMySession()">
+                                        <span class="cta__content">Continue</span>
+                                        <span class="cta__icon icon is-icon-arrow"></span>
+                                    </button>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="data && !data.paymentDone">
+                                <h3 class="Choose-your-way-in">Oops, the item(s) in your cart has expired.</h3>
+                                <p class="What-would-you-like">The item(s) in your cart is no longer available and will
+                                    be removed. Please add another device or plan to your cart.</p>
+                                <div class="guest-connect-login-now">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="redirectItemSelection(data.itemdetails, data.cartItems)">
+                                        <span class="cta__content">OK</span>
+                                    </button>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="data && data.paymentDone">
+                                <h3 class="Choose-your-way-in">The payment has already been done.</h3>
+                                <p class="What-would-you-like">Please click on "OK" to proceed to the Home page.</p>
+                                <div class="guest-connect-login-now">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="redirectToHome()">
+                                        <span class="cta__content">OK</span>
+                                    </button>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="logout">
+                                <h3 class="Choose-your-way-in">You will be log out from this session.</h3>
+                                <p class="What-would-you-like">Please login again to do a new purchase. </p>
+                                <div class="guest-connect-login-now">
+                                    <button class="c-cta--default login-default-button" data-css="c-cta" (click)="callUserLogout()">
+                                        <span class="cta__content">OK</span>
+                                    </button>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="formSubmitted">
+                                    <h3 class="Choose-your-way-in">Thank you for your interest!</h3>
+                                    <p class="What-would-you-notif">An email notification will be sent to you.</p>
+                                    <p class="What-would-you-update">We will get in touch for any new updates.</p>
+                                    <div class="ok-gotit">
+                                        <button class="c-cta--default login-default-button" data-css="c-cta" (click)="redirectToHome()">
+                                            <span class="cta__content">OK, Got it!</span>
+                                        </button>
+                                    </div>
+                                </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

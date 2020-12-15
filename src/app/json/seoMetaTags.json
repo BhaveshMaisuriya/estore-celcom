@@ -1,0 +1,19 @@
+{
+    "seo": {
+        "title": "Plan Mega | Dynamic Title and Meta Tags Demo",
+        "metaTags": [
+            {
+                "property": "og:title", "content": "Plan Mega | Celcom"
+            },
+            {
+                "proprety": "og:description", "content": "Cool! You have done the OG."
+            },
+            {
+                "property": "og:image", "content": "https: //estore-celcom.herokuapp.com/assets/img/fb.png"
+            },
+            {
+                "property": "og:url", "content": "https: //estore-celcom.herokuapp.com/plans/mega"
+            }
+        ]
+    }
+}

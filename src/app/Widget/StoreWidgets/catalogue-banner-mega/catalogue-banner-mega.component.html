@@ -1,0 +1,69 @@
+<!-- <section class="u-section banner-mask" *ngIf="isCSAgent === notCSAgent">
+  <div class="section__border is-top">
+    <div class="section__border-container">
+      <svg height="100%" preserveAspectRatio="none" viewBox="0 378.568 612 34.863" width="100%"></svg>
+    </div>
+  </div>
+  <div class="section__inner is-vertical-center is-relative-mobile">
+    <div class="section__content is-container">
+      <div class="o-hero-banner">
+        <div class="u-grid-row is-collapsed">
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+            <div class="hero-banner__item is-mobile-centered is-padding-top-20 is-padding-bottom-20">
+              <div class="" data-css="">
+                <div class="">
+                  <p class="Reload-Now" *ngIf="!isPreOrder">{{ data.Title }}</p>
+                    <p class="Reload-Now black preorder" *ngIf="isPreOrder">Yours from <br/>RM92/month</p>
+                  <p class="subtitle" *ngIf="data.SubTitle && !isPreOrder">{{ data.SubTitle }}</p>
+                  <p class="subtitle black" *ngIf="isPreOrder">Enjoy it now with up to 100GB <br/>on Celcom Mobile Plan</p>
+                  <div class="teaser__cta campaign_cta" *ngIf="!isPreOrder">
+                    <a class="c-cta--default" data-css="c-cta" href="https://www.celcom.com.my/legal/terms-and-conditions/personal#personal-devices-entertainer-pass">
+                      <span class="cta__content">Learn More</span>
+                    </a>
+                  </div>
+                  <div class="teaser__cta campaign_cta" *ngIf="isPreOrder">
+                    <a class="c-cta--default" data-css="c-cta" href="https://shop.celcom.com.my/device-detail/Samsung-Galaxy-Note-10-Plus">
+                      <span class="cta__content">Buy now</span>
+                    </a>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6">
+            <div class="hero-banner__item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section__media-container banner-container" *ngIf="isPreOrder">
+    <div class="section__media">
+      <picture class="c-picture--default is-full-width-image" data-css="c-picture">
+        <img class="picture__image desktop" title="" src="../../../../assets/img/store/top_banner_image_preorder.jpg" alt="Top Banner Image">
+        <img class="picture__image mobile" title="" src="../../../../assets/img/store/top_banner_image_preorder_mobile.jpg" alt="Top Banner Image">
+      </picture>
+    </div>
+  </div>
+  <div class="section__media-container banner-container" *ngIf="!isPreOrder">
+    <div class="section__media">
+      <picture class="c-picture--default is-full-width-image" data-css="c-picture">
+        <img class="picture__image desktop" title="" src="../../../../assets/img/celcom-catalogue-banner.jpg" alt="Top Banner Image">
+        <img class="picture__image mobile" title="" src="../../../../assets/img/celcom-catalogue-banner_mobile.jpg" alt="Top Banner Image">
+      </picture>
+    </div>
+  </div>
+</section> -->
+<ngx-siema [options]="options">
+  <ngx-siema-slide *ngFor="let item of carousals">
+    <div class="container" [innerHTML]="item.html | safeHtml">
+    </div>
+  </ngx-siema-slide>
+</ngx-siema>
+<div class="banner-pagination">
+  <span *ngFor="let item of carousals">
+      <span class="banner-page" [ngClass]="{'active': item.active === true}" (click)="goTo(item)"></span>
+  </span>
+</div>
+

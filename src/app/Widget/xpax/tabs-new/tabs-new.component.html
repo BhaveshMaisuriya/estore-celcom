@@ -1,0 +1,6 @@
+<ul class="c-tabs table-tabs-head" [style.borderColor]="tabcolor">
+	<li class="tabs__tab text-center" *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.is-active]="tab.active" [style.color]="tabcolor">
+		<a [style.backgroundColor]="tab.active?tabcolor:''">{{tab.title}}</a>
+	</li>
+</ul>
+<ng-content></ng-content>

@@ -1,0 +1,80 @@
+.celcom_life_icon {
+    display: inline;
+    text-decoration: none;
+    padding: 5px 5px 5px 5px;
+}
+
+.celcom_life_icon_txt {
+    display: inline;
+    text-decoration: none;
+    padding-left: 16px;
+    font-size: 2rem;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 0.6px;
+    font-weight: bold;
+}
+
+.footer__sitemap__group-header {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    line-height: 1.25 !important;
+}
+
+@media (min-width: 767px) {
+    .headingLineDownload {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        width: 25px;
+        opacity: 0.25;
+        border-top: solid 1.5px #ffffff;
+    }
+}
+
+.CelcomVerticalAlign {
+    display: flex;
+    align-items: center;
+}
+
+.CelcomIconiAlign {
+    margin-right: 8px!important;
+    margin-left: 0px!important;
+    margin-top: 8px;
+}
+
+.footer__app-download {
+    float: none !important;
+    text-align: left;
+    border-bottom: none;
+}
+
+.footer__app-download {
+    margin-left: 0;
+    white-space: normal;
+    padding-bottom: 1rem;
+    width: 30rem;
+}
+
+@media (max-width: 767px) {
+    .border-line-thin {
+        margin-top: 16px;
+        width: 285px;
+        height: 0.1px;
+        opacity: 0.25;
+        border-top: solid 1px #ffffff;
+    }
+    .footer__app-download {
+        padding-top: 6px;
+        padding-bottom: 0px;
+    }
+    .headingLineDownload {
+        padding-top: 16px;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width: 991px) {
+    .footer__app-download {
+        padding: 0px 0px;
+    }
+}

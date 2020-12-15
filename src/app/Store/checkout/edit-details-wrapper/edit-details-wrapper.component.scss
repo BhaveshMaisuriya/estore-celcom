@@ -1,0 +1,35 @@
+  .edit-email-container {
+    max-width: 705px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    width: 100%;
+  }
+
+  .arrow-down {
+    width: 0;
+    height: 0;
+    margin-left: 45%;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #def5f3;
+  }
+
+  .inner-wrapper {
+    margin: 10px 0 0 0;
+    padding: 40px 0px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+  @media (max-width:576px) {
+    .inner-wrapper {
+      padding: 40px 24px!important;
+    }
+  }

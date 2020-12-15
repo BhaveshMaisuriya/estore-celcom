@@ -1,0 +1,47 @@
+<div class="color-storage-container" [ngClass]="{'is-loading': isLoading}">
+  <div class="each-section">
+
+    <div>
+      <span class="section-label">Colour: </span>
+      <span>{{ selectedProduct?.color }}</span>
+    </div>
+
+    <div class="items-list mt-estore-h">
+      <div
+        *ngFor="let color of colorsList"
+        class="color-box"
+        [ngClass]="{
+          'is-selected': selectedProduct?.color_hexa === color.hex
+        }"
+        (touchstart)="handleSelectColor($event, color)"
+        (mousedown)="handleSelectColor($event, color)"
+      >
+        <div class="inner" [style.background]="color.hex"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <ng-container *ngFor="let item of attributeList">
+    <div class="each-section mt-estore-2" *ngIf="item.list?.length > 0 && selectedProduct">
+      <div>
+        <span class="section-label">{{ item.label }}: </span>
+      </div>
+      <div class="items-list mt-estore-h">
+        <div
+          *ngFor="let value of item.list"
+          class="storage-box"
+          [ngClass]="{
+            'is-selected': selectedProduct[item.attribute] === value,
+            'is-disabled': !isAttributeAvailable(item.attribute, value)
+          }"
+          (touchstart)="isAttributeAvailable(item.attribute, value) ? handleSelectAttribute($event, item.attribute, value) : null"
+          (mousedown)="isAttributeAvailable(item.attribute, value) ? handleSelectAttribute($event, item.attribute, value) : null"
+        >
+          <div class="inner">{{ value }}</div>
+        </div>
+      </div>
+  
+    </div>
+  </ng-container>
+</div>

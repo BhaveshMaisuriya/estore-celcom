@@ -1,0 +1,370 @@
+body {
+    counter-reset: section;
+}
+
+.clm-container {
+  box-sizing: border-box;
+  padding: 16px;
+  margin-bottom: -50px;
+  background: rgb(121,54,128);
+  background: linear-gradient(90deg, rgba(121,54,128,1) 0%, rgba(0,154,222,1) 100%);
+  @media (max-width: 670px) {
+    margin: -4rem -2rem -5rem;
+    text-align: center;
+  }
+}
+
+.section-group {
+  @media (max-width: 768px) {
+    padding-top: 60px;
+  }
+}
+
+.card-wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 318px));
+  gap: 17px;
+  margin-bottom: 24px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.section-group {
+    position: relative;
+
+    div.section:nth-of-type(even) {
+        background: #F3F3F3;
+    }
+
+    div.section:nth-of-type(odd) {
+
+        + section.section {
+            .notes-container {
+                margin-top: -50px;
+            }
+        }
+    }
+
+    &.theme-material {
+        @media (max-width: 768px) {
+            padding-top: 60px;
+        }
+
+        .side-summary-container {
+            position: fixed;
+            right: 0;
+            z-index: 10;
+            top: 0;
+            width: 100%;
+
+            @media (min-width: 769px) {
+            position: absolute;
+            padding: 40px 40px 40px 0;
+            width: 376px;
+            bottom: 0;
+            }
+        }
+
+        .section {
+            padding: 5rem 2rem 5rem 2rem !important;
+            @media (min-width: 768px) {
+                padding: 5rem 5rem 40px 13rem !important;
+            }
+
+            .section-title {
+                line-height: 3rem !important;
+                margin-bottom: 20px;
+
+                &::before {
+                    width: 32px !important;
+                    height: 32px !important;
+                    background-color: #009bdf;
+                    font-size: 16px !important;
+                }
+                &.inactive::before {
+                    background-color: #666666 !important;
+                }
+            }
+            .section-content {
+                @media (min-width: 768px) {
+                    margin-left: -6rem !important;
+                }
+                max-width: 673px !important;
+                /* Ipad */
+                @media (min-width: 769px) and (max-width: 1185px) {
+                    max-width: calc(100vw - 500px) !important;
+                }
+                font-size: 14px;
+
+                &.dynamic-sim-content {
+                    max-width: 790px !important;
+                }
+            }
+            .campaign-container {
+                margin: -4rem -2rem -5rem;
+                max-width: 868px !important;
+                @media (min-width: 768px) {
+                    margin-left: -13rem !important;
+                    margin-right: -5rem;
+                }
+                @media (min-width: 769px) {
+                    margin-top: -5rem;
+                    margin-left: -8rem !important;
+                    margin-bottom: -5rem;
+                }
+                @media (min-width: 769px) and (max-width: 1280px) {
+                    max-width: calc(100vw - 500px) !important;
+                }
+            }
+        }
+    }
+
+    &.theme-xp-lite {
+        $xp-lite-color: #6a418f;
+        // .section-title::before {
+        //     background-color: $xp-lite-color;
+        // }
+        .summary-box {
+            background: $xp-lite-color;
+        }
+    }
+}
+
+/* Campaign Start */
+.clm-container {
+    box-sizing: border-box;
+    padding: 16px;
+    margin-bottom: -50px;
+    background: rgb(121,54,128);
+    background: linear-gradient(90deg, rgba(121,54,128,1) 0%, rgba(0,154,222,1) 100%);
+    @media (max-width: 670px) {
+        margin: -4rem -2rem -5rem;
+        text-align: center;
+    }
+}
+.campaign-buy-now {
+    margin-top: 40px;
+    padding: 16px;
+    background: #6a418f;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.19;
+    word-break: break-word;
+    .image {
+        img {
+            width: 40px;
+            height: 40px;
+            max-width: unset;
+        }
+        margin-right: 16px;
+    }
+    button {
+        width: 126px !important;
+        font-size: 16px;
+    }
+}
+/* Campaign End */
+
+.section {
+
+    padding: 5rem 3rem 5rem 3rem;
+    @media (min-width: 768px) {
+        padding: 5rem 5rem 5rem 13rem;
+    }
+    position: relative;
+
+    h1 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    &:not(.no-counter) {
+        counter-increment: section;
+    }
+
+    .section-title {
+        &::before {
+            content: counter(section);
+            width: 48px;
+            height: 48px;
+            border-radius: 3em;
+            background-color: #008c8d;
+            text-align: center;
+            color: white;
+            float: left;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        &.inactive::before {
+            background-color: #666666;
+        }
+        @media (min-width: 768px) {
+            margin-left: -6rem;
+        }
+        line-height: 4.5rem;
+        margin-bottom: 3rem;
+    }
+}
+.price {
+    font-size: 28px;
+}
+
+.bg-note {
+	background-color: #f3f3f3;
+}
+
+.note-title {
+    padding: 15px 0 0 10px;
+    margin-top: 32px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.note-details {
+	padding-bottom: 25px;
+}
+
+
+.top-margin {
+	margin: 32px -8px;
+}
+
+// #section3 .section-content {
+//     margin-left: -15px !important;
+// }
+
+.summary-box {
+    background: #007cb3;
+    color: white;
+    font-size: 14px;
+
+    .title {
+        line-height: 2.5rem;
+    }
+
+    .left-side {
+        .description {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    .right-side {
+        @media (min-width: 769px) {
+            text-align: right;
+        }
+        .pricetag {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    }
+}
+
+.principle-line {
+  width: 328px;
+  border-radius: 8px;
+  border: solid 1px #dadada;
+  background-color: #ffffff;
+  padding: 16px 0;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+
+  .principle-line-desc {
+    color: #333333;
+
+    span {
+      font-size: 12px;
+    }
+
+    p {
+      font-weight: bold;
+      margin: 6px 0 0;
+      font-size: 16px;
+    }
+  }
+
+  img
+  {
+    &:first-of-type {
+      padding: 0 16px;
+    }
+    &:last-of-type {
+      position: absolute;
+      right: 0;
+      width: 21px;
+      height: 20px;
+      margin-right: 16px;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+  }
+}
+
+.campaign_container {
+    padding: 40px;
+    width: 100%;
+    max-width: 615px;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    .promo-text {
+        max-width: 255px;
+        width: 100%;
+        background: #FFFFFF;
+        padding: 11px 24px 13px;
+        border-radius: 8px;
+        border: solid 1px#ccc;
+        background-color: #fff;
+        h5 {
+            margin: 0;
+            height: 24px;
+        }
+    }
+    .referal-text {
+        max-width: 868px;
+        width: 100%;
+    }
+
+}
+
+.referal-banner {
+    position: relative;
+    background-image: url("/assets/img/Drop_3/prepaid_xpax_referral_banner.jpg");
+    background-repeat: no-repeat;
+    height: 165px;
+    padding: 0px !important;
+}
+
+.insert-your-personal{
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.kycDetails{
+    max-width: calc(100vw - 600px) !important;
+    @media (min-width: 768px) {
+        margin-left: -6rem !important;
+    }
+    @media (max-width: 990px) {
+        max-width: 100% !important;
+    }
+}
+.prepaid-pricetag {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.footer-margin {
+    margin-top: 0;
+
+    @media (min-width: 600px) {
+        margin-top: 10em;
+        position: absolute;
+        width: 100%;
+    }
+}

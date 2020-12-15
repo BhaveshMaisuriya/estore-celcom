@@ -1,0 +1,223 @@
+.Rectangle-11 {
+	text-align: center;
+}
+.plan-comparision-sup {
+	font-size: 8px;
+	font-weight: bold;
+}
+.device-compare-padding {
+	padding: 40px 0;
+}
+.is-justify-content-left {
+	justify-content: left !important;
+}
+.accordian__content {
+	width: 300px;
+	height: 240px;
+	background-color: #f3f3f3 !important;
+}
+.full__view {
+	height: 407px;
+}
+.plan-comparison__list__item__header__iconimg__right {
+	width: 35px;
+	float: right;
+	padding: 10px;
+}
+.cross__image {
+	width: 24px;
+}
+.compare__samsung__img {
+	height: 150px;
+	margin: 3em 0 1em 1.5em;
+}
+.Bitmap {
+	margin-left: 2em;
+}
+.plan-comparison__list__item__headeing__nameh4 {
+	padding: 0;
+	font: 20px Lato;
+}
+.plan-comparison__list__item__headeing__nameh4>span {
+	display: block;
+}
+.compare__plus__icon {
+	width: 47.3px;
+	height: 93.1px;
+	margin: 5em 3em 3em;
+	margin-bottom: 32px;
+}
+.Samsung-Galaxy-S8 {
+	font-size: 18px;
+	text-align: center;
+	font-family: Lato;
+}
+.plan-comparision-subcontent {
+	text-align: center;
+}
+.listing_type_text {
+	line-height: 2em;
+	font-family: Lato;
+	font-size: 14px;
+}
+.compare__padding {
+	padding: 0 3em;
+	font: 14px Lato;
+}
+.compare__btn__center {
+	text-align: center;
+}
+.align_button {
+	padding: 20px;
+	line-height: 3em;
+}
+.align_button .link {
+	text-decoration: none;
+	color: #009ade;
+	font-family: LatoLatinWebBold, Arial, sans-serif-bold;
+	font-size: 1.4rem;
+}
+.listing__type__text__details {
+	border-bottom: 1px solid #ccc;
+}
+.compare__none {
+	list-style-type: none;
+}
+.boldtext {
+	font-size: 16px;
+	font-weight: bold;
+}
+.Add-More-Mobile {
+    font: normal normal 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #333333;
+}
+.compare-details-padding {
+	padding-bottom: 40px;
+}
+.Rectangle-11 {
+	text-align: center;
+}
+@media (max-width:768px) {
+	.Bitmap {
+		margin-left: 1em;
+	}
+	.compare__btn__center {
+		min-width: 10rem !important;
+		line-height: 1em;
+	}
+	.compare__samsung__img {
+		height: 100px;
+		margin: 2em 0em 1em 0.25em;
+	}
+	.Samsung-Galaxy-S8 {
+		width: 100%;
+		margin: auto;
+		font-size: 14px;
+		text-align: center;
+		font-family: Lato;
+		line-height: 1.5em;
+		word-wrap: break-word;
+		height: 31px;
+	}
+	.boldtext {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.comp_add_to_cart {
+		padding: 0 1rem;
+	}
+	.compare__padding {
+		padding: 0 5%;
+		font-size: 12px;
+		font-family: Lato;
+	}
+	.full__view {
+		height: 353px;
+		width: 140px;
+	}
+	.plan-comparison__list__item__header__iconimg__right {
+		padding: 15px 15px 0 0;
+	}
+}
+@media (min-width:769px) {
+	.Samsung-Galaxy-S8 {
+		width: 193px;
+		margin: auto;
+		font-family: Lato;
+	}
+}
+.compare__description {
+	line-height: 1.7em;
+}
+.compare__description__header {
+	border-bottom: 2px solid #ccc;
+	padding-left: 1.0em;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 10px;
+}
+.compare__description__content {
+	font-size: 14px;
+	margin-bottom: 48px;
+	margin-top: 15px;
+	margin-left: 26px;
+}
+.Available__Color1__forphone_1 {
+	width: 14px;
+	height: 14px;
+	border-radius: 100px;
+	display: inline-block;
+	margin: 5px;
+}
+.Available__Color__forphone_HexValue {
+	width: 14px;
+	height: 14px;
+	border-radius: 100px;
+	border: solid 1px #ccc;
+	display: inline-block;
+	margin: 5px;
+}
+@media (max-width:767px) {
+	.device-compare {
+		margin-top: 15px;
+	}
+}
+@media (max-width: 330px) and (min-width: 320px) {
+	.device-container {
+		margin-left: -10%;
+	}
+}
+@media (min-width: 331px) and (max-width: 345px) {
+	.device-container {
+		margin-left: -8%;
+	}
+}
+@media (min-width: 346px) and (max-width: 361px) {
+	.device-container {
+		margin-left: -6%;
+	}
+}
+@media (min-width: 362px) and (max-width: 375px) {
+	.device-container {
+		margin-left: -5%;
+	}
+}
+@media (min-width: 376px) and (max-width: 390px) {
+	.device-container {
+		margin-left: -4%;
+	}
+}
+@media (min-width: 391px) and (max-width: 405px) {
+	.device-container {
+		margin-left: -3%;
+	}
+}
+@media (min-width: 406px) and (max-width: 420px) {
+	.device-container {
+		margin-left: -2%;
+	}
+}

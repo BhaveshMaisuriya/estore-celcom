@@ -1,0 +1,20 @@
+<div class="footer_fix" [hidden]="!loading">
+  <app-page-loader></app-page-loader>
+</div>
+<ng-container [hidden]="loading">
+  <div class="header">
+    <span>eSIM Activation</span>
+    <p>Note: </p>
+    <ul>
+      <li>Your existing physical SIM/ eSIM will be deactivated immediately upon successful submission.</li>
+      <li>Please make sure you have an active WiFi/hotspot connection upon scanning your new eSIM QR code.</li>
+    </ul>
+  </div>
+  <app-esim-login id="section_1" class="move-up"></app-esim-login>
+  <app-esim-type-details id="section_2"></app-esim-type-details>
+  <app-esim-email-confirmation id="section_3"></app-esim-email-confirmation>
+  <app-esim-summary-section id="section_4"></app-esim-summary-section>
+  <app-esim-sticky-summary></app-esim-sticky-summary>
+</ng-container>
+<footer-component *ngIf="!isCSAgentDealer"></footer-component>
+<app-agent-footer *ngIf="isCSAgentDealer"></app-agent-footer>

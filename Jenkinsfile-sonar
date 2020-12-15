@@ -1,0 +1,23 @@
+pipeline {
+		 agent {
+				 label 'estore_node'
+	  }
+		stages{
+
+
+		stage('Static Code Review') {
+			when { anyOf { branch 'release/*' ; branch 'feature/sonar-security-fixes} }
+			steps {
+
+						withSonarQubeEnv('SonarQube'){
+						sh '''
+                        /opt/sonar/sonar-scanner/bin/sonar-scanner -X
+                        '''
+						}
+				  echo "Static Code Review Completed"
+
+				 }
+		}
+
+		}
+	}

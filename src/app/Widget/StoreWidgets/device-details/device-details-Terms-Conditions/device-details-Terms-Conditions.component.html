@@ -1,0 +1,49 @@
+<!--<a onclick="key_terms();">Click Here to open the modal</a>-->
+<div id="keyFeat_terms_Modal" class="device_details_modal">
+	<div class="device_details_modal-content">
+			<section class="u-section tnc___margin_top" id="terms_details">
+				<div class="section__inner">
+					<div class="section__content">
+						<div class="dev-dtl-features-box">
+							<div href="" (click)="closeTermsBox();"><img class="feature-box-close" src="../assets/img/Drop_3/icon/remove.svg"></div>
+							<div class="features-box-dtls">
+								<p class="features-box-heading">Terms & Condition</p>
+								<div class="features-box-tab">
+									<input id="terms-condns-box-tab-one" type="checkbox" name="tabs">
+									<label for="terms-condns-box-tab-one"><span>{{DeviceTermsResponse.plans.label}}</span>
+											</label>
+									<div class="features-box-tab-content">
+										<p  [innerHtml]="DeviceTermsResponse.plans.desc"></p>
+									</div>
+								</div>
+								<div class="features-box-tab">
+									<input id="terms-condns-box-tab-two" type="checkbox" name="tabs">
+									<label for="terms-condns-box-tab-two"><span>{{DeviceTermsResponse.contract_terms.label}}</span>
+											</label>
+									<div class="features-box-tab-content">
+										<p [innerHtml]="DeviceTermsResponse.contract_terms.desc"></p>
+									</div>
+								</div>
+								<div class="features-box-tab">
+									<input id="terms-condns-box-tab-three" type="checkbox" name="tabs">
+									<label for="terms-condns-box-tab-three"><span>{{DeviceTermsResponse.legal.label}}</span>
+											</label>
+									<div class="features-box-tab-content">
+										<p [innerHtml]="DeviceTermsResponse.legal.desc"></p>
+									</div>
+								</div>
+								<div class="features-box-tab">
+									<input id="terms-condns-box-tab-four" type="checkbox" name="tabs">
+									<label for="terms-condns-box-tab-four"><span>{{DeviceTermsResponse.cancellation.label}}</span>
+											</label>
+									<div class="features-box-tab-content">
+										<p [innerHtml]="DeviceTermsResponse.cancellation.desc"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</div>
+</div>

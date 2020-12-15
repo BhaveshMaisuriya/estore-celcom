@@ -1,0 +1,36 @@
+.tab-slider--body {
+	margin-bottom: 20px;
+	background-color: #fff;
+	padding: 24px 0 3px 0;
+}
+.midnightHeading {
+  font: normal normal 14px Lato;	
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	color: #000;
+}
+.midnightContent {
+	background-color: #e5f5fc;
+	margin: 0 16px;
+	width: 96.5%;
+	text-align: left;
+	font: 14px Lato;
+	line-height: 1.43;
+}
+.midnightContent ul {
+	margin: 0 18px 0 18px;
+	padding: 16px 16px;
+}
+.choose_shipping_add_title {
+	font: normal normal normal 20px/normal Lato;
+	letter-spacing: normal;
+	color:#000000;
+	padding: 12px 55px 12px 0px;
+	margin: 0;
+}
+@media (max-width:767px) {
+	.midnightContent {
+		width: 88%;
+	}
+}

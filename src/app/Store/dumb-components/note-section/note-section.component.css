@@ -1,0 +1,57 @@
+.note__content {
+	padding: 20px;
+	background-color: #f3f3f3;
+}
+.note__content__inner {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+}
+.note__content .note__details {
+    font: normal normal 14px/1.63 Lato;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: justify;
+	color: #000;
+	margin-bottom: 0;
+	padding-inline-start: 15px;
+	margin-block-start: 0.62em;
+}
+.u-section .section__inner{
+	position:relative;
+	z-index: -1;
+  }
+#note.active {
+	display: block;
+}
+.no-bullet {
+  list-style: none;
+}
+.push-right {
+  padding-left: 15px;
+}
+.no-ul {
+  padding-left: 0;
+}
+.tabcontent {
+	display: none;
+	padding: 32px 0;
+}
+.is-container {
+	max-width: 87%;
+}
+.is-zindex-0 {
+	z-index: 0;
+}
+.is-zindex {
+	z-index: -1;
+}
+.is-container-note {
+	position: relative;
+	max-width: 102.4rem;
+	margin: 0 auto;
+	padding: 0 2.5rem;
+}
+.note__details__description__homewireless {
+	padding-left: 10px;
+}

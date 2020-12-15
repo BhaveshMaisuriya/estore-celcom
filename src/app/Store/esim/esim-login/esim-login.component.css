@@ -1,0 +1,29 @@
+/*CSS for Plans start */
+.u_section {
+    padding: 30px 0 20px 3.5%;
+}
+.dev-dtl-plan-heading {
+    display: -webkit-box;
+}
+.footer_fix {
+    min-height: 1000px;
+}
+.section_name {
+    margin-top: 13px;
+    margin-bottom: 16px;
+    margin-left: 0;
+    font: normal bold 18px Lato;
+    color: #333;
+    display: inline-block;
+}
+.esim-sectionize {
+    position: relative;
+    right: 7px;
+}
+
+/*mobile responsive Start*/
+@media (max-width: 768px) {
+    .u_section {
+        padding: 40px 8% 7% 10%;
+    }
+}

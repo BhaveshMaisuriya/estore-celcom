@@ -1,0 +1,387 @@
+#gamification-popup .mdl-container {
+    padding: 12px 0 15px 0;
+    width: 1026px !important;
+    color: #333333;
+
+    @media (min-width: 600px) {
+        padding: 25px 0 !important;
+    }
+
+    .mdl-body {
+        @media (min-width: 600px) {
+            height: auto !important;
+            overflow: hidden !important;
+            max-height: 100% !important;
+        }
+    }
+
+    .mdl-close {
+        img {
+            width: auto !important;
+            height: auto !important;
+        }
+    }
+}
+
+.game-text {
+    text-align: center;
+
+    h5 {
+        font-weight: bold;
+        margin: 0;
+    
+        @media (min-width: 600px) {
+            font-size: 24px;
+        }
+    }
+    
+    p {
+        margin: 0 0 16px 0;
+
+        @media (min-width: 600px) {
+            font-size: 20px;
+        }
+
+        @media (min-width: 768px) {
+            margin: 0 0 50px 0;
+        }
+    }
+}
+
+.inner-container {
+    max-width: 844px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#rider-container {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 33%;
+    z-index: 5;
+}
+
+
+.close-icon {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+}
+
+.bg-img {
+    width: 100%;
+    padding-top: 21px;
+
+    @media (min-width: 768px) {
+        padding-top: 0;
+    }
+}
+
+
+.tap-me-btn {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    width: 18%;
+    top: 0;
+    left: 2%;
+
+    @media (min-width: 600px) {
+        width: 12%;
+        top: 15%;
+    }
+}
+
+.motorbike-img {
+    display: block;
+}
+
+.right-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 46%;
+
+    @media (min-width: 768px) {
+        width: 42%;
+    }
+}
+
+.winning-text {
+    font-size: 8px; 
+    line-height: 1.25;
+    margin: 8px 0; 
+
+    @media (min-width: 600px) {
+        font-size: 14px;
+        line-height: 1.21;
+        margin-bottom: 24px;
+    }
+}
+
+.dot {
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 88%;
+}
+
+.dot img:first-of-type {
+    width: 100%;
+}
+
+.promo-images {
+    top: 20%;
+    width: 45%;
+    position: absolute;
+}
+
+.ribbon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: -25%;
+
+    @media (min-width: 600px) {
+        margin-top: -26%;
+    }
+
+}
+
+.ribbon-img {
+    width: 100%;
+    position: relative;
+}
+
+
+.price {
+    color: #fff;
+    position: absolute;
+    top: 0;
+    font-size: 6px;
+    line-height: 1.17;
+    text-align: center;
+
+    @media (min-width: 600px) {
+        font-size: 12px;
+        line-height: 1.19;
+    }
+
+    @media (min-width: 992px) {
+        font-size: 16px !important;
+    } 
+}
+
+.promo-code {
+    font-size: 6px;
+    color: #333333;
+    text-align: center;
+    width: 100%;
+    margin: 2px auto 0; 
+    word-break: break-word;
+    line-height: 1.17;
+
+
+    @media (min-width: 992px) {
+        font-size: 14px !important;
+        margin: 4px auto 0;
+    }
+
+    @media (min-width: 600px) {
+        line-height: 1.21;
+    }
+
+    @media (min-width: 600px) {
+        font-size: 10px;
+    }
+}
+
+.voucher-container {
+    display: flex;
+    justify-content: center;
+}
+
+.voucher {
+    max-width: 5.5vw;
+    margin: 0 4px 6px;
+    min-width: 5.5vw;
+
+    @media (min-width: 600px) {
+        margin: 0 8px 0;
+    }
+
+    @media (min-width: 768px) {
+        margin: 0 8px 16px !important;
+    }
+
+    @media (max-width: 769px) {
+        margin: 0 8px 0;
+        max-width: 6vw;
+        min-width: 6vw;
+    }
+}
+
+.multi-clouds {
+    display: block;
+    position: absolute;
+    top: 12%;
+    animation: animatedBackground 45s linear infinite;
+    width: 36%;
+
+    @media (min-width: 600px) {
+        top: 0;
+    }
+}
+
+@keyframes animatedBackground {
+    from {
+        left: 80%;
+    }
+    to {
+        left: 5%;
+    }
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.modal-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0 0 0;
+    font-weight: bold;
+    line-height: 1.19;
+
+    button {
+        &:first-child {
+            border: none;
+            color: #009bdf;
+        }
+        
+        &:last-child {
+            width: 217px;
+        }
+    }
+}
+
+.voucher-title-text {
+    text-align: center;
+
+    h4 {
+        font-weight: bold;
+        margin: 0;
+    }
+
+    h5 {
+        margin-bottom: 30px;
+    }
+}
+
+.voucher-promo-code {
+    font-size: 20px;
+    line-height: 1.21;
+    margin: 8px auto 0;
+    word-break: break-word;
+}
+
+.voucher-code-box {
+    max-width: 210.2px;
+    padding: 0;
+
+    .voucher-dot {
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        .voucher-dot-image {
+            border-radius: 50%;
+        }
+    
+        .voucher-promo-images {
+            position: absolute;
+            top: 10%;
+            width: 50%;
+        }
+    }
+
+    .voucher-ribbon {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    
+        .voucher-ribbon-img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+    
+        .voucher-price {
+            font-size: 35px;
+            font-weight: bold;
+            line-height: 1.2;
+            color: #fff;
+            position: absolute;
+            bottom: 5px;
+        }
+    }
+}
+
+.explosion-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: max-content;
+}
+
+#explosion-container img {
+    max-width: unset;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    display: block;
+    width: 60%;
+    max-height: 350px;
+
+    @media (min-width: 600px) {
+        width: 40%;
+    }
+}
+
+.smoke{
+    position: absolute;
+    z-index: 9;
+    bottom: 0;
+    left: -5vw;
+    opacity: 0;
+    width: 8vw;
+}
+
+.bigsmoke{
+    position: absolute;
+    z-index: 9;
+    bottom: 20px;
+    left: -7vw;
+    opacity: 0;
+    width: 8vw;
+}
+
+.goToHome {
+    color: white !important;
+}
+
+.dealerText{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}

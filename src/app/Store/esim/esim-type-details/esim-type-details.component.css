@@ -1,0 +1,26 @@
+.details__choose_content_header {
+	font-size: 18px;
+	font-weight: bold;
+	display: inline;
+}
+.is-container {
+    max-width: 94%;
+}
+.esim_notes,
+.user_greetings {
+	display: block;
+    margin: 10px 0 20px 65px;
+}
+.esim_notes span,
+.user_greetings span {
+	font-weight: bold;
+}
+@media (max-width: 767px) {
+.esim_notes,
+.user_greetings {
+    margin: 10px 0 20px 0;
+}
+.is-container {
+    max-width: 83%;
+}
+}

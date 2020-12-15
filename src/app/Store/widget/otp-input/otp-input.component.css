@@ -1,0 +1,659 @@
+.celcom-number {
+    margin-bottom: 16px;
+}
+.remove-x {
+	margin-top: 1.2%;
+    margin-right: 4px;
+}
+.remove-align {
+    position: relative;
+    right: 7%;
+    cursor: pointer;
+    color: #009ade;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fastcheckout-msisdn {
+	margin-left: 25px !important;
+}
+
+.is-container {
+	position: relative;
+	max-width: 102.4rem;
+	margin: 0;
+}
+.mobile-connect-login-now {
+	padding-bottom: 34px;
+	text-align: right;
+}
+.mobile-connect-heading {
+	font-weight: bold;
+	font-size: 16px;
+	float: left;
+	margin-top: 20px;
+}
+.form-control {
+	border: none;
+	outline: 0;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ccc !important;
+    width: 34%;
+    height: 36px;
+	background-color: #f3f3f3;
+}
+
+.mobile-no-manadatory {
+	color: #d0011b;
+}
+.warning-icon-login {
+	display: table-cell;
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+}
+.error-span {
+	display: table;
+	width: 449px;
+}
+.box-shadow-login {
+	box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.2);
+	border: solid 1px #fff;
+	background-color: #fff;
+	border-radius: 3%;
+	float: left;
+    width: 100%;
+}
+.box-shadow-login-content {
+    display: grid;
+	padding-bottom: 23px;
+	/* margin-left: 0!important; */
+}
+.login-via-mobile-width {
+	width: 83%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.login-via-mobile {
+	font-size: 32px;
+	text-align: center;
+	margin-top: 24px;
+}
+.login-error {
+	font-size: 14px;
+	color: #d0021b;
+}
+.mobile-control:active, .mobile-control:focus {
+	border-bottom: solid 2px #009ade;
+}
+.errorborder {
+	border-bottom: solid 2px #d0021b !important;
+}
+.login-via-mobile-heading {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 0;
+	padding-top: 8px;
+}
+.moblie-form-group {
+	font-size: 16px;
+}
+.disable_resend,
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	pointer-events: none;
+}
+button[disabled] {
+	background-color: #009ade;
+}
+.login-msg {
+	margin-top: 2px;
+	font-size: 12px;
+    text-align: left;
+    color: #333;
+}
+/*login end*/
+
+/*model */
+
+.login-otp_modal2 {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+	visibility: hidden;
+}
+.login-otp_modal2-content {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+.login-otp-model2-close {
+	width: 19.3px;
+	float: right;
+	margin: 20px;
+}
+/* model*/
+
+/*terms and conditions start for login*/
+
+.login-terms-condts {
+	text-align: center;
+	padding-top: 55.8px;
+}
+.terms-condts-inner {
+	width: 85%;
+	margin: 0 auto;
+	font-size: 14px;
+}
+.terms-default-button {
+	min-width: 17rem;
+	cursor: pointer;
+}
+.settings-font-bold {
+	font-weight: bold;
+}
+.terms-i-agree {
+	margin-top: 24px;
+}
+.login-otp-model-box2 {
+	background-color: #fff;
+	padding-bottom: 32px;
+	border: 1px solid #fff;
+	width: 80%;
+	margin: 117px auto auto auto;
+}
+.conditions-header {
+	font-size: 24px;
+	margin-bottom: 24px;
+}
+.terms-and-conda-para {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 0px;
+}
+.login-default-button {
+	padding: 0 4em;
+}
+
+/*terms and conditions end for login*/
+
+@media (max-width: 768px) {
+	/*log in start*/
+	.login-error {
+		float: left;
+	}
+
+	/* login end */
+	/* terms and conditions start*/
+	.login-terms-condts {
+		width: 90%;
+		margin: 0 auto;
+		padding-top: 57px;
+	}
+	.terms-condts-inner {
+		width: 100%;
+	}
+	.terms-default-button {
+		min-width: 12rem !important;
+	}
+	.login-default-button {
+		padding: 0 4em;
+	}
+	.login-otp-model-box2 {
+		background-color: #fff;
+		padding-top: 0px;
+		padding-bottom: 32px;
+		border: 1px solid #fff;
+		margin: 50px auto auto auto;
+		width: 95%;
+	}
+	.login-otp-model-box2 a {
+		cursor: pointer;
+	}
+	.form-control {
+		width: 92%;
+	}
+	.remove-align {
+		float: right;
+		bottom: 57%;
+	}
+	.otp-control {
+		width: 16% !important;
+	}
+	.newLine-otp-length {
+		width: 21.3% !important;
+	}
+	.proceed-hw-login {
+		margin-top: 20px !important;
+		margin-left: 0 !important;
+	}
+	.newLine-otp {
+		margin-left: 7% !important;
+	}
+	/* terms and conditions end */
+
+	.fastcheckout-msisdn{
+		margin-left: 10px !important
+	}
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+	/* login start */
+	.login-top {
+		top: 29% !important;
+	}
+	/* login end */
+	.loader {
+		margin-left: 30px;
+	}
+	/* .otp-box-width {
+		width: 52px!important;
+	} */
+	.login-btn-padding {
+		padding:0 3em!important;
+	}
+
+
+}
+@media (max-width: 768px) and (min-width:767px) {
+	.login-top {
+		top: 38% !important;
+	}
+}
+@media(max-width: 767px) {
+	.error-span {
+		padding: 0 0 10px 0;
+		width: 100%;
+	}
+	.dispMob {
+		display: block;
+	}
+	.dispMobNric {
+		display: block;
+		margin-top: 38%;
+	}
+	.dispDesk {
+		display: none;
+	}
+	.login-top {
+		top: 45% !important;
+	}
+	.login-via-mobile {
+		font-size: 31px;
+	}
+}
+@media(min-width: 768px) {
+	.dispMob {
+		display: none;
+	}
+	.dispDesk {
+		display: block;
+	}
+}
+@media(max-width: 768px) {
+	.loader {
+		margin-left: 10px;
+	}
+	.login-msg {
+    text-align: left;
+	margin-left: 0;
+	line-height: 15px;
+	}
+	.login-top {
+		top: 0 !important;
+	 }
+	 /* .otp-shadow-login-width {
+		margin-left: 7% !important;
+	} */
+	.moblie-form-group-otp {
+		display: block !important;
+	}
+	.otp-connect-login-now {
+		margin-left: 0 !important;
+		text-align: left !important;
+	}
+	.home_wireless_otp {
+		margin-left: 0 !important;
+		margin-top: -6px !important;
+	}
+	.home_wireless_otp_error {
+		right: 7px !important;
+	}
+	.home_wireless_otp_error1 {
+		right: 7px !important;
+	}
+	.home_wireless_otp_error2 {
+		right: 7px !important;
+	}
+	div.cobp-otp {
+		margin-left: 0 !important;
+	}
+}
+
+.errorred input[type=text] {
+	border-bottom-color: red;
+}
+.errorred .otp-control:focus {
+	border-bottom-color: red !important;
+}
+.is-full-width-image {
+	padding-top: 5em;
+}
+.is-container {
+	position: relative;
+	max-width: 102.4rem;
+	margin: initial;
+}
+.otp-main-header {
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+.mobile-otp-num {
+	font-size: 16px;
+	font-weight: bold;
+}
+.mobile-no-manadatory {
+	color: #d0011b;
+}
+
+.login-default-button {
+	padding: 0 4em;
+	box-shadow: none !important;
+	border-radius: 280px;
+}
+.otp-control {
+	width: 72px;
+    height: 36px;
+    border: none;
+    border-bottom: 2px solid #ccc !important;
+    background-color: #f3f3f3;
+    box-shadow: none;
+    outline: none;
+    margin-right: 5px;
+}
+.moblie-form-group-otp {
+	display: flex;
+}
+.eligible-hw {
+    margin: 16px 0;
+    font-size: 14px;
+}
+.proceed-hw {
+     width: 200px;
+}
+.proceed-hw-login {
+    width: 130px;
+    margin-left: 10px;
+}
+.proceed-hw , .proceed-hw-login{
+    font-size: 16px;
+    height: 40px;
+    color: #fff;
+    background-color: #009ade;
+    border: none;
+    outline: none;
+}
+
+@media (max-width:320px) {
+	.moblie-form-group-otp input {
+		width: 33px !important;
+		height: 51px !important;
+	}
+	
+}
+
+@media (max-width:360px) {
+	.otp-error-heading{
+		margin-top: 20px !important;
+		margin-bottom: -12px !important;
+	}
+
+	.otp-expiry-login {
+		margin-top: 20px !important;
+	}
+}
+
+@media (min-width:321px) and (max-width:360px) {
+	.moblie-form-group-otp input {
+		width: 39px !important;
+		height: 58px !important;
+	}
+}
+
+@media (min-width:361px) and (max-width:768px) {
+	.moblie-form-group-otp input {
+		width: 41px !important;
+		height: 58px !important;
+	}
+}
+
+@media (min-width: 361px) and (max-width:768px) {
+	
+	.otp-error-heading{
+		margin-top: 8px !important;
+		margin-left: 8px !important;
+	}
+}
+
+@media (min-width:768px) {
+	
+	.otp-error-heading{
+		margin-top: 8px !important;
+		margin-left: 35px !important;
+	}
+}
+
+.moblie-form-group-otp input {
+	text-align: center;
+	min-width: 1em;
+	width: 48px;
+	height: 62px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #ffffff !important;
+	font-size: 32px;
+	color: #333333;
+	outline: none;
+}
+
+.otp-control:focus {
+	border-color: #009ade !important;
+}
+.errorborder {
+	border-bottom: 2px solid #d0021b !important;
+}
+.otp-expiry-login {
+	font-size: 12px;
+	color: #666666;
+	text-align: left;
+	margin-top: 8px;
+}
+
+.count-down {
+  color: #ff9700;
+  font-weight: bold;
+}
+
+.count-down.count-down-end {
+   color: #f44236;
+}
+
+
+.login-resend-otp {
+	margin-top: 5em;
+}
+.otp-num-time {
+	margin-top: 1em;
+	font-size: 18px;
+}
+.otp-sub-header {
+	font-size: 14px;
+	text-align: center;
+	padding-top: 8px;
+}
+.otp-link__content {
+	font-weight: bold;
+	font-size: 14px;
+}
+.after-otp-login-now {
+	margin-top: 0.5em;
+}
+.login-otp-model-box {
+    background-color: #fff;
+    padding: 10px 0 60px 0;
+	border: 1px solid #fff;
+	border-radius: 2%;
+}
+.otp-error-heading{
+	display: inline-block;
+    width: 93%;
+	text-align: justify;
+	word-spacing: -1px;
+}
+.caution-icon{
+	margin-top: 3px;
+}
+.otp-error {
+	font-size: 12px;
+	padding: 0 0 7px;
+	color: #d0021b;
+	display: flex;
+    align-items: flex-start;
+}
+.padding-on-top{
+	padding-top: 101.5px !important;
+}
+.otp-warning-icon {
+	float: right;
+	text-align: center;
+    width: 25px;
+}
+
+.otp__link {
+    margin: 10px 0 15px 0;
+}
+.otp__link a {
+	text-decoration: none;
+}
+.otp__link .is-icon-arrow {
+	margin-left: 12px;
+	font-weight: bold;
+}
+.otp-shadow-login {
+	box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.2);
+	border: solid 1px #fff;
+	padding-top: 30px;
+	border-radius: 3%;
+	background-color: #fff;
+}
+.login-top {
+	top: 22% !important;
+}
+.csagent .login-top {
+	top: 21% !important;
+}
+
+.otp-connect-login-now {
+	text-align: left;
+	margin-bottom: 15px;
+}
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	background-color: #009ade;
+}
+.home_wireless_otp {
+	margin-left: 62px;
+	margin-top: -9px;
+}
+.home_wireless_otp .box-shadow-login-content {
+	margin-left: auto;
+}
+.home_wireless_otp_error {
+	position: relative;
+	right: 34px;
+}
+.home_wireless_otp_error1 {
+	position: relative;
+	right: 37px;
+}
+.home_wireless_otp_error2 {
+	position: relative;
+	right: 37px;
+}
+.cobp-otp {
+	margin-left: 0;
+	margin-top: -30px;
+}
+.cobp-otp-box {
+	background-color: #fff;
+}
+.newLine-otp {
+	margin-left: 0;
+	position: relative;
+	bottom: 9px;
+}
+.newLine-otp-bg.nric-newLine-bg-star {
+	background-color: #fff;
+}
+
+.newLine-otp-bg {
+	background-color: #f3f3f3;
+    position: relative;
+    bottom: 20px;
+  margin-left: -2px;
+  padding-left: 2px;
+}
+.celcom-number-btm {
+   	bottom:22px!important;
+}
+.cobp-otp-nomargin {
+	margin-left: 40 !important;
+}
+.newLine-otp-length {
+	background-color: #fff;
+}
+.required-field {
+	font-size: 12px;
+	color: #d0021b;
+}
+@media only screen and (max-width:414px)
+{
+	.otp-control {
+		width: 18.3% !important;
+	}
+}
+@media only screen and (max-width:375px)
+{
+	.otp-control {
+		width: 18.3% !important;
+	}
+}
+
+button {
+	padding: 11px 0 10px;
+	font-size:14px;
+	background-color: #009ade;
+	color: #ffffff;
+	border-radius: 20px;
+	width: 125px;
+	box-sizing: border-box;
+	margin-top: 8px;
+}

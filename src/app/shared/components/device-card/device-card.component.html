@@ -1,0 +1,79 @@
+<!-- Full device No background-->
+<a
+  class="anchor-container"
+  role="button"
+  [routerLink]="routerLink"
+  [queryParams]="deviceQueryParams"
+  [attr.data-analytics-promo]="device?.name"
+>
+  <div class="card">
+    <div
+      class="row card-head"
+      [ngClass]="{'embedded-img': device.full_width_banner !== null}"
+      [ngStyle]="deviceFullBannerStyle"
+    >
+      <div class="col-sm-6 col-6">
+        <img
+          *ngIf="device.full_width_banner === null"
+          class="img-fluid"
+          width="140" height="140"
+          [src]="device.image"
+          alt="Card Image"
+        />
+      </div>
+      <!--col-sm-6 col-6-->
+      <div class="col-sm-6 col-6">
+        <ng-container *ngIf="device.promotion_badge !== null; else noBadge">
+          <div
+            *ngFor="let badge of device.promotion_badge"
+            class="badges"
+            [ngStyle]="{
+                'background-color': badge.promotion_badge_background_color,
+                'color': badge.promotion_badge_text_color
+              }"
+          >{{badge.promotion_badge_text}}</div>
+        </ng-container>
+
+        <ng-template #noBadge>
+          <div class="no-badge"></div>
+        </ng-template>
+
+        <p>{{device.name}}</p>
+        <p>RRP RM{{device.device_min_price}}</p>
+      </div>
+      <!--col-sm-6 col-6-->
+    </div>
+    <!--row card-head-->
+    <div class="row card-body">
+      <div class="col-sm-6 col-6">
+        <p class="main-text">EasyPhone™ Own</p>
+
+        <ng-container *ngIf="device.is_easy_phone; else noEasyPhone">
+          <p class="sub-text">From</p>
+          <p class="price">RM{{device.price_start_from}}</p>
+          <p class="sub-text">/month</p>
+        </ng-container>
+
+        <ng-template #noEasyPhone>
+          <p class="warn-text">Not Available</p>
+        </ng-template>
+
+      </div>
+      <!--col-sm-6 col-6-->
+      <div class="col-sm-6 col-6">
+        <p class="main-text">Device Bundle</p>
+        <p class="sub-text">From</p>
+        <p class="price">RM{{device.price}}</p>
+        <p class="sub-text">
+          with
+          <span *ngIf = "device.base_plan !== 'cmp'" [innerHTML]="device.base_plan_title"></span>
+          {{device.default_plan}}
+        </p>
+      </div>
+      <!--col-sm-6 col-6-->
+      <button class="btn btn-rounded btn-primary">Buy Now</button>
+    </div>
+    <!--row card-body-->
+  </div>
+  <!--col-md-4-->
+</a>

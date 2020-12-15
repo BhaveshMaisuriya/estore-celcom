@@ -1,0 +1,964 @@
+.switch_to_celcom_main .is-container {
+	max-width: 87%;
+}
+.switch_to_celcom_main .back_ground_color {
+	background-color: #e5f3f3;
+}
+.switch_to_celcom_main .img_personal {
+	margin-left: 30px;
+}
+.switch_to_celcom_main .mnp_edit {
+	margin-right: 37px;
+}
+/* switch to celcom  for mnp start*/
+
+.check-eligibility {
+	margin-top: 32px;
+}
+
+.general-message {
+	padding-top: 10px;
+}
+
+.general-error {
+	padding-top: 3px;
+	padding-right: 3px;
+}
+
+.general-danger {
+	color: #d0011b;
+}
+
+[data-css=c-cta] {
+	font-size: 14px;
+}
+button[disabled] {
+	cursor: not-allowed;
+	opacity: 0.65;
+	background-color: #009ade;
+}
+.details__choose_number {
+	margin-bottom: 20px;
+}
+.Get_New_Number {
+	display: inline-block;
+	width: 141px;
+	height: 62px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.Get_New_Number__Details {
+	width: 106px;
+	height: 30px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 1em auto;
+}
+.Keep_celcom_Num__Details {
+	width: 106px;
+	height: 29.5px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 1em auto;
+}
+.Switch_celcom {
+	display: inline-block;
+	width: 141px;
+	height: 62px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 1px #ccc;
+	cursor: pointer;
+	margin-left: 14px;
+}
+.Switch_celcom__Details {
+	width: 106px;
+	height: 29.5px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.29;
+	letter-spacing: normal;
+	text-align: center;
+	margin: 1em auto;
+}
+.isMoonFlow {
+	margin-left: 9% !important;
+}
+.choose-number-normal-bg-color {
+	background-color: #fff !important;
+}
+.Keep_celcom_Num {
+	display: inline-block;
+	width: 141px;
+	height: 62px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+	margin-left: 14px;
+}
+.choose__number__accordian .tab {
+	margin: 0;
+}
+.Get_New_Number.is-active, .Keep_celcom_Num.is-active, .Switch_celcom.is-active {
+	border: solid 1px #009ade !important;
+	border-radius: 8px;
+}
+.details__choose_content_header {
+	height: 22px;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 8px;
+}
+.choose__number {
+	padding: 0;
+}
+.content__number_detail {
+	margin: 10px 10px 10px 0;
+	display: inline-block;
+}
+.number__details {
+	width: 140px;
+	height: 46px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+	cursor: pointer;
+}
+.number__details:focus {
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+	border: solid 2px #009ade;
+	border-radius: 8px;
+	outline: none;
+}
+.number__details__description {
+	text-align: center;
+	margin: 1em;
+	font-size: 14px;
+}
+.My-Celcom-Number {
+	width: 294px;
+	height: 14px;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+}
+.Eligible-for-an-upgr {
+	height: 14px;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.17;
+	letter-spacing: normal;
+	text-align: left;
+	color: #008c8d;
+}
+.dev-dtl-number-select-unsucess {
+	padding-top: 20px;
+}
+.dev-dtl-number-select-unsucess p {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ec186a;
+	display: inline-block;
+}
+.number-select-unsuccess-dtls {
+	width: 140px;
+	height: 46px;
+	opacity: 0.5;
+	border-radius: 8px;
+	background-color: #fff;
+	border: solid 2px #ccc;
+}
+.number-select-dtls-description-num {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 3.33;
+	letter-spacing: normal;
+	text-align: center;
+}
+.unsucess-sorry {
+	width: 540px;
+	height: 67px;
+}
+.unsucess-sorry .unsucess-story-content {
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 0.43;
+	letter-spacing: normal;
+	text-align: left;
+	background-color: #f3f3f3;
+	padding: 6px;
+}
+.not_eligible {
+	font-size: 12px;
+	padding: 20px 0;
+	color: #ea005a;
+}
+.warning__eligible {
+	margin-left: 10px;
+}
+.choose__number__accordian .note__tab.is-active {
+	border: none;
+}
+.note__content {
+	padding: 20px;
+	background-color: #f3f3f3;
+}
+.note__content__inner {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: bold;
+}
+.note__content .note__details {
+	font-size: 14px;
+}
+.upgrade_tick_mark {
+	width: 12px;
+	margin-left: 14px;
+}
+input.search__number__input {
+	width: 70%;
+	height: 40px;
+	box-sizing: border-box;
+	border: none;
+	box-shadow: 0 2px #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+	background-color: #f3f3f3;
+	background-size: 20px;
+	background-position: right 10px bottom 10px;
+	background-repeat: no-repeat;
+	padding: 12px 40px 12px 20px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+input.search__number__input::after {
+	content: "";
+	clear: both;
+}
+/* Intially Note to be displayed*/
+
+#note.active {
+	display: block;
+}
+/* Style the tab content */
+
+.tabcontent {
+	/*display: none;*/
+	padding-bottom: 32px;
+}
+/* Fields of the MNP */
+
+#mnp-check-form {
+	display: none;
+}
+.choose_form_group {
+	margin-top: 13px;
+	width: 100%;
+}
+.choose_form_group label {
+	font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000;
+}
+.choose_form_group .new-add_require {
+	color: #d0021b;
+}
+.choose_form_group .error {
+	padding: 0 15% 0 6px;
+}
+.choose_form_group .error .text-danger {
+	color: #d0011b;
+}
+.choose_form_group .error .warning-icon {
+	width: 17px;
+	height: 15px;
+	float: right;
+}
+.choose_form_group .error {
+	display: inline-block;
+}
+.choose_form_group .warning-icon-login {
+	float: left;
+	padding-top: 3px;
+	padding-right: 3px;
+}
+.choose_form_group .error .warning-icon-login {
+	float: left;
+	padding-top: 3px;
+	padding-right: 3px;
+}
+.choose_form_group .error .clearfix {
+	clear: both;
+}
+.choose_form_control {
+	border: none;
+	outline: 0;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+	width: 400px;
+	height: 40px;
+	background-color: #f3f3f3;
+}
+.choose_form_control:active, .choose_form_control:focus {
+	border-bottom: solid 2px #009ade;
+}
+.choose_form_group>input[type=text], .choose_form_group>input[type=number] {
+	height: 30px;
+	font-size: 14px;
+}
+select.choose_form_control {
+	width: 410px;
+	color: #626262;
+}
+select.choose_form_control option {
+	background-color: #fff;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+	border: none !important;
+	padding: 10px;
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	margin: 0;
+}
+.checkout-plus-terms {
+	margin: 15px auto;
+}
+.checkout-square {
+	width: 12px;
+	height: 12px;
+	border: solid 2px #666666;
+	display: inline-block;
+}
+.checkout-i-agree {
+	font: normal normal 14px Lato;
+	display: inline;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: left;
+	margin-left: 32px;
+}
+.guest-checkbox>.c-link--default, .guest-checkbox>.c-link--default:hover {
+	font: normal bold 16px Lato;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: right;
+	color: #009ade;
+	text-decoration: underline;
+}
+.teaser__link {
+	margin-bottom: 1.5em;
+	margin-top: 1em;
+}
+.c-link--default, .c-link--default>.icon, .c-link--default:hover {
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	letter-spacing: normal;
+	text-align: right;
+	color: #009ade;
+	text-decoration: none;
+}
+.c-link .link__icon, [data-css=c-link] .link__icon {
+	line-height: 1.7;
+}
+/* for checkbox start*/
+
+/* The Check box container */
+
+.check_container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 1.5em;
+	font-size: 14px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* Hide the browser's default checkbox */
+
+input[type=checkbox], input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+	z-index: 100;
+	position: absolute;
+	width: 23px;
+	height: 33px;
+	opacity: 0;
+	left: 38px;
+	bottom: 136px;
+}
+.check_container input {
+	position: absolute;
+	opacity: 0;
+}
+/* Create a custom checkbox */
+
+.checkmark {
+	position: absolute;
+	height: 18px;
+	width: 17px;
+	background-color: #fff;
+	border: 2px solid #666;
+}
+/* On mouse-over, add a grey background color */
+
+.check_container:hover input~.checkmark {
+	background-color: #fff;
+}
+/* When the checkbox is checked, add a blue background */
+
+.check_container input:checked~.checkmark {
+	background-color: #2196F3;
+	border: none;
+	width: 20px;
+	height: 20px;
+}
+input:checked~.checkmark {
+	background-color: #2196F3;
+	border: none;
+	width: 20px;
+	height: 20px;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+/* Show the checkmark when checked */
+
+.check_container input:checked~.checkmark:after {
+	display: block;
+}
+input:checked~.checkmark:after {
+	display: block;
+}
+/* Style the checkmark/indicator */
+
+.check_container .checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 11px;
+	border: solid white;
+	color: white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 11px;
+	border: solid white;
+	color: white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+/* for checkbox end*/
+
+/*  Modal CSS Start  */
+
+.features-box-dtls {
+	width: 90%;
+	margin: auto;
+	padding-bottom: 34px;
+}
+/* Acordeon styles */
+
+.features-box-tab {
+	position: relative;
+	margin-bottom: 1px;
+	width: 100%;
+	color: #fff;
+	overflow: hidden;
+	background-color: #f4f4f4;
+	margin: 3px 0;
+}
+.switch_requirements_modal .switch_requirements_modal-content input {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+.switch_requirements_modal .switch_requirements_modal-content label {
+	position: relative;
+	display: block;
+	padding: 0 0 0 1em;
+	font-weight: bold;
+	line-height: 3;
+	cursor: pointer;
+	color: #009ade;
+}
+.features-box-tab-content {
+	max-height: 0;
+	overflow: hidden;
+	color: #000;
+	-webkit-transition: max-height .35s;
+	-o-transition: max-height .35s;
+	transition: max-height .35s;
+}
+.features-box-tab-content p {
+	margin: 1em;
+	line-height: 1.5;
+}
+/* :checked */
+
+input:checked~.features-box-tab-content {
+	max-height: 25em;
+}
+/* Icon */
+
+label::after {
+	font-family: cc-icons;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	width: 3em;
+	height: 3em;
+	line-height: 3;
+	text-align: center;
+	-webkit-transition: all .35s;
+	-o-transition: all .35s;
+	transition: all .35s;
+	transform: rotate(90deg);
+}
+input[type=checkbox]+label::after {
+	content: "\f103";
+	transform: rotate(90deg);
+}
+input[type=checkbox]:checked+label::after {
+	transform: rotate(270deg);
+}
+input[type=checkbox]:checked+label>span {
+	font-weight: bold;
+}
+.features-box-tab span {
+	color: #000;
+	object-fit: contain;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.13;
+	letter-spacing: normal;
+	text-align: left;
+}
+.switching-features-box {
+	background-color: #fff;
+}
+.features-box-heading {
+	font-size: 24px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: #000;
+	padding-top: 56px;
+}
+.content-sub-heading {
+	font-weight: bold;
+	font-size: 14px;
+}
+.content-sub-desc {
+	font-size: 14px;
+	font-weight: normal;
+}
+.feature-box-close {
+	width: 16px;
+	float: right;
+	margin: 20px;
+}
+.content-sub-desc-outer {
+	line-height: 0.3em;
+}
+.tnc___margin_top {
+	margin-top: 4em;
+}
+/*  switch_requirements_modal CSS Start  */
+
+.switch_requirements_modal {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.switch_requirements_modal-content {
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+	height: auto;
+}
+#switch_requirements_modal {
+	display: none;
+}
+.Switch-it-quick-and {
+	font: normal normal 18px Lato;
+	font-stretch: normal;
+	line-height: 1.72;
+	letter-spacing: normal;
+	text-align: left;
+	margin: 0;
+}
+/*  Modal CSS End  */
+
+.confirm-criteria {
+	padding-left: 31px;
+	font: normal normal 12px Lato;
+	font-stretch: normal;
+	line-height: 1.67;
+	letter-spacing: normal;
+	text-align: justify;
+	margin-left: 29px;
+}
+.mnp-link-terms {
+	text-decoration: underline;
+}
+.mnp-checkbox {
+	margin-bottom: 32px;
+}
+@media(max-width: 360px) {
+	input[type=checkbox], input[type=radio] {
+		box-sizing: border-box;
+		padding: 0;
+		z-index: 100;
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		opacity: 0;
+		left: 26px;
+		bottom: 215px;
+	}
+}
+@media(min-width:361px) and (max-width:425px) {
+	input[type=checkbox], input[type=radio] {
+		box-sizing: border-box;
+		padding: 0;
+		z-index: 100;
+		position: absolute;
+		width: 23px;
+		height: 33px;
+		left: 26px;
+		bottom: 176px;
+	}
+}
+@media(min-width:768px) and (max-width:768px) {
+	input[type=checkbox], input[type=radio] {
+		box-sizing: border-box;
+		padding: 0;
+		z-index: 100;
+		position: absolute;
+		width: 23px;
+		height: 33px;
+		left: 26px;
+		bottom: 135px;
+	}
+}
+@media(max-width: 767px) {
+	.Get_New_Number, .Keep_celcom_Num, .Switch_celcom {
+		width: 121px;
+		display: inline-block;
+	}
+	.Switch_celcom, .Keep_celcom_Num {
+		margin-left: 0;
+	}
+	.Switch_celcom {
+		margin-top: 8px;
+	}
+	.check-eligibility {
+		text-align: center;
+	}
+	.Switch-it-quick-and {
+		font: normal normal 16px Lato;
+		font-stretch: normal;
+		line-height: 1.25;
+		letter-spacing: normal;
+		text-align: left;
+	}
+	.mnp-choose-form-group-text {
+		width: 100%;
+	}
+	.mnp-submit-form {
+		text-align: center;
+	}
+	.mnp_detail_link_style {
+		margin-top: 20px;
+	}
+	.mnp_eligiblity {
+		padding-top: 0;
+		font-size: 14px;
+	}
+	.mnp_edit {
+		padding-top: 0;
+	}
+	.mnp-check-para {
+		font-size: 16px;
+	}
+	.mnp-check-subline {
+		margin-top: 14px;
+	}
+	.mnp-View-More {
+		margin-top: 18px;
+	}
+	.mnp-View-More .mnp-arrow {
+		line-height: 1.2;
+	}
+	.c-link .link__icon, [data-css=c-link] .link__icon {
+		line-height: 1.2 !important;
+	}
+}
+@media (max-width: 768px) {
+	.choose_form_control {
+		width: 97%;
+	}
+	select.choose_form_control {
+		width: 100%;
+	}
+	.tablink_content p {
+		width: 107px;
+		margin: auto;
+	}
+	.address-full-width {
+		width: 100%;
+		margin: 0;
+	}
+	.isMoonFlow {
+		margin-left: 0 !important;
+	}
+}
+/* check eligibility for mnp start*/
+
+.has_bg_color {
+	background-color: #008c8d;
+	;
+}
+.is-justify-content-left {
+	justify-content: left !important;
+}
+.img_personal {
+	width: 44px;
+	height: 44px;
+}
+.mnp_title {
+	font: normal normal 14px Lato;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #fff;
+}
+.mnp_title p, .mnp_eligiblity p, .mnp_edit p {
+	margin: 4px 0;
+}
+.mnp-phone-num {
+	font-weight: bold;
+	font-size: 16px;
+}
+.mnp_eligiblity {
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: left;
+	color: #fff;
+	padding-top: 10px;
+}
+.check-eligibility-mnp {
+	padding: 1em 5em;
+
+}
+.moon-check-eligibility-mnp{
+	padding: 20px;
+	width: calc(100% - 20px);
+}
+.mnp_edit {
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #fff;
+	padding-top: 10px;
+}
+.mnp_edit p a {
+	color: #fff;
+}
+.remove-x {
+	padding-right: 9px;
+}
+.mnp-submit-form {
+	margin-top: 22px;
+}
+.mnp-View-More {
+	margin-top: 25px;
+}
+.mnp-View-More .mnp-arrow {
+	line-height: 1.2;
+}
+.mnp_edit a {
+	text-decoration: none;
+	color: #009ade;
+}
+.mnp-choose-form-group {
+	margin: 11px 0px;
+	width: 100%;
+}
+.mnp-choose-form-group label {	
+	font: bold 16px Lato;
+}
+.mnp-choose-form-group-text {
+	border: none;
+	outline: 0;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ccc;
+	width: 400px;
+	height: 33px;
+	background-color: #f3f3f3;
+	font-size: 14px;
+}
+.mnp-check-para {
+	font: normal 18px Lato;
+	margin-top: 24px;
+}
+.mnp-check-subline {
+	font-size: 14px;
+	margin: 16px 0;
+}
+.mnp-check-sub-text1 {
+	font-weight: bold;
+}
+[data-css=c-cta] .cta__content {
+	text-align: left;
+	margin-left: 25px;
+	font-size: 14px;
+}
+[data-css=c-cta] .cta__icon {
+	margin-left: 4rem;
+	display: inline-block;
+	line-height: 4rem;
+	margin-right: 0em;
+}
+.mnp-link {
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: right;
+	color: #009ade;
+	text-decoration: none;
+}
+.mnp-button {
+	cursor: pointer !important;
+}
+.mnp_detail_link_style {
+	text-decoration: none !important;
+}
+.c-link .link__icon, [data-css=c-link] .link__icon {
+	float: right;
+	margin-left: 1.2rem;
+	line-height: 1.3;
+	font-size: 20px;
+	text-decoration: none;
+}
+.mnp-choose-form-group-text:active, .mnp-choose-form-group-text:focus {
+	border-bottom: solid 2px #009ade;
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	margin: 0;
+}
+.c-link .link__icon, [data-css=c-link] .link__icon {
+	line-height: 1.2 !important;
+}
+/* check eligibility for mnp end */
+
+.SwitchToCelcomContainer {
+	display: none;
+}
+@media (min-width: 769px) {
+	.switch-to-celcom {
+		margin-left: 9%;
+		margin-top: 0 !important;
+	}
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+@media(min-width:768px) {
+	.inline-mnp{
+		padding: 2em 4em 0;
+	}
+}
+.white-bg-controls .choose_form_control {
+	background: white !important;
+}

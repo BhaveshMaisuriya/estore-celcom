@@ -1,0 +1,143 @@
+<ng-container>
+  <div id="section_2" class="u_section sectionize">
+    <div class="section__content is-container">
+      <div class="section2 dev-dtl-plan-heading gearup">
+          <div class="section_index_container"><span class="section_index">3</span></div>
+          <h2 class="section_name">Gear Up</h2>
+      </div>
+      <p class="__plan_text">Select the right pricing option for you by adding a Pass to the base plan</p>
+      <!-- <div data-js-module="accordion" class="u-grid-row tabs-option2"
+      data-js-options="{&quot;context&quot;: &quot;tabs&quot;, &quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false, &quot;openIndex&quot;: 0, &quot;singleOpen&quot;: true, &quot;tabMode&quot;: true}">
+      <ul class="c-tabs table-tabs-head select_pricing_option">
+          <li class="tabs__tab text-center"  [ngClass]="{'is-active':isOwnClicked}" (click)="easyPhoneClicked('easyphone')">
+              <a class="is-default-cursor">EasyPhone™ Own</a>
+          </li>
+          <li class="tabs__tab text-center" [ngClass]="{'is-active':isDeviceBunbleClicked}" (click)="deviceBundleClicked('deviceBundle')">
+            <a class="is-default-cursor">Device Bundle</a>
+        </li>
+      </ul>
+      </div> -->
+      <p class="__plan_text mb-0">Select your brand new smartphone for the best experience</p>
+
+      </div>
+      <div class="headline _moon_devices_has_padding">
+        <button *ngIf="hideDevices" class="c-link--default reframe_anchor_arrow devices__link" data-css="c-link"
+          (click)="showDevices()">
+          <span class="link__icon icon is-icon-arrow-down"></span>
+          <span class="link__content">View Devices </span>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+<div *ngIf="!hideDevices" class="_moon_devices_has_padding">
+  <div  class="mobile_view">
+    <div class="single_device_mob">
+      <div class="controls-for-slider round prev-control" [attr.disabled]="currentPage === 1"
+        [ngClass]="{'disable-control' : currentPage === 1 }" (click)="previousClicked()">
+        <img class="chevron" src="../../../../assets/img/moon-chevron-left.svg" *ngIf="currentPage !== 1">
+        <img class="chevron chevron-height" src="../../../../../assets/img/disabled-left-chevron.svg" *ngIf="currentPage === 1">
+      </div>
+      <!-- <a class="controls-for-slider round prev-control" [disabled]="devicesToDisplay.length < 3" [ngClass]="{'disable-control' : devicesToDisplay.length < 3}" (click)="previousClicked()"><i class="icon is-icon-arrow is-arrow-prev"></i></a> -->
+      <div class="devices-for-pass-layout">
+        <div class="devices-for-pass">
+            <div id="{{ 'device-' + i }}" class="device-box" *ngFor="let item of devicesToDisplay,let i = index" >
+                <div class="gap-box">
+                    <section class="box">
+                        <ng-container class="sample">
+                          <div class="box-device">
+                            <div class="device_image_name">
+                              <div class="device_image">
+                                <img src="{{item.main_image}}" alt="deviceImage">
+                              </div>
+                              <div class="display_style">
+                                <div class="device-name-section">
+                                  {{item.name}}
+                                </div>
+                                <div class="device_details">
+                                  <ul class="plan__content__wrapper">
+                                    <li class="plan__content-detail">
+                                      <span class="plan__content-detail__description">RM {{item?.associated_device_product[item.selectedMemoryIndex]?.prices?.device_price | number:'1.2-2'}}</span>
+                                    </li>
+                                    <li class="plan__content-detail rrp_font">RRP
+                                      <span class="has-line-through"><del>RM {{item.rrp_rm_strick_price | number:'1.2-2'}}</del></span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="has-border-bottom"></div>
+                            <div class="stock-details">
+                              <div class="limited_stock__container">
+                                <app-moon-color-storage [data]="item" [editProduct]="editProduct" [SelectionAferLogin]="SelectionAferLogin"></app-moon-color-storage>
+                                <div [hidden]="bundleSku === item.sku" class="limited_stock__container"
+                                  *ngIf="stock && stockInfoOfDevice.length > 0"
+                                  [ngClass]="{'outstock': stockInfoOfDevice[i]?.stock === 'Out of Stock'}">
+                                  <img class="Limited-Stock-Icon" *ngIf="stockInfoOfDevice[i]?.stockStatus === 2"
+                                    src="../../../../assets/img/svg/icons-layout/icon-instock.svg">
+                                  <span class="stock_check">
+                                    <img class="Limited-Stock-Icon" *ngIf="stockInfoOfDevice[i]?.stockStatus === 3"
+                                      src="../../../../assets/img/svg/icons-layout/icon-outofstock.svg">
+                                    <p class="Limited-Stock" [@stockCheck]="stockInfoOfDevice[i]?.stockStatus">
+                                      {{stockInfoOfDevice[i]?.stockStatusMsg}}</p>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="add_button" [hidden]="item.sku === selectedDevice && stockInfoOfDevice[i]?.stockStatus !== 3" 
+                              [ngClass]="{'disable-add' : stockInfoOfDevice[i]?.stockStatus === 1}" 
+                              (click)="selectDevice(item, stockInfoOfDevice[i]?.stockStatus)">
+                              <img src="../../../../assets/img/add_icon.svg" alt="add" class="image_in_center">
+                              <span class="add__button_text">Add</span>
+                            </div>
+                          <div [hidden]="item.sku !== selectedDevice" [ngClass]="{'hide-btn' : stockInfoOfDevice[i]?.stockStatus === 3}" class="added_button">
+                            <img src="../../../../assets/img/added_icon.svg" alt="add" class="added_image_in_center">
+                            <span class="added__button_text">Added</span>
+                          </div>
+                    </div>
+                    </ng-container>
+                    <div *ngIf="notMviva" [hidden]="item.sku !== selectedDevice"  [ngClass]="{'hide-btn' : stockInfoOfDevice[i]?.stockStatus === 3}" class="remove_link" (click)="removeSelectedDevice()">Remove</div>
+                    <div class="limited_stock__container " *ngIf="stockInfoOfDevice[i]?.stockStatus === 3" [ngClass]="{'hide-btn' : !showOutOfStockErrorMsg}">
+                      <p class="Limited-Stock padding-top" [@stockCheck]="stockInfoOfDevice[i]?.stockStatus">
+                        Phone model cannot be added. Please choose a different model.
+                      </p>
+                      
+                    </div>
+                    </section>
+                </div>
+            </div>
+            <div id="{{ 'device-' + (devicesToDisplay.length+1) }}" class="device-box" *ngIf="isOddPage">
+              <div class="gap-box">
+                  <section class="box">
+                  </section>
+              </div>
+            </div>
+        </div>
+        <div class="page-button-container">
+            <ng-container *ngFor="let page of pages">
+                <span class="page-button" [ngClass]="{'active': page.selected==true}" *ngIf="page.view" (click)="LoadDevice(page.pageno)">{{page.pageno}}</span>
+            </ng-container>
+        </div>
+        <section class="center__link" *ngIf="!hideDevices && notMviva">
+          <div class="__dont_need_device" (click)="hideDeviceSection();_deviceDataService.publishUpdateStickyStep(2)">I don't need a device <span>
+           <img src="../../../../assets/img/up_chevron.svg" class="up_chevron"></span></div> 
+        </section>
+    </div>
+    
+    <div class="controls-for-slider round prev-control" [attr.disabled]="totalPage === currentPage"
+      [ngClass]="{'disable-control' : totalPage === currentPage }" (click)="nextClicked()">
+      <img src="../../../../assets/img/chevron-right.svg" class="chevron chevron-mobile" *ngIf="totalPage !== currentPage">
+      <img class="disabled-chevron-right chevron chevron-height" src="../../../../../assets/img/disabled-left-chevron.svg" *ngIf="totalPage === currentPage">
+    </div>
+  </div>
+  </div>
+</div>
+<!-- <section class="center__link">
+  <div>
+    <span class="page-button" [ngClass]="{'active': page.selected==true}" (click)="LoadDevice(page.pageno)" *ngFor="let page of pages">{{page.pageno}}</span>
+  </div>
+</section> -->
+
+<ng-container *ngIf="IsDispalySwitchingPurchaseTypeTabPopup">
+<app-losing-supplementary-line-popup [popupType]='popuptype' (OnContinueSupplementaryPopup)="onContinueSwitchingDeviceTab($event);"
+    (OnLeaveSupplementaryPopup)="onCancellingSwitchingDeviceTab($event)"></app-losing-supplementary-line-popup>
+</ng-container>

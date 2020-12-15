@@ -1,0 +1,56 @@
+<section *ngIf="HeroBanner!=null" class="u-section" [ngClass]="{'xpax-herobanner': IsXpax == true}" [attr.data-analytics-region]="dataAnalyticsRegion">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="o-hero-banner">
+        <div class="c-slider--default" data-css="c-slider" data-js-module="slider"
+        data-js-options="{&quot;autoPlayInterval&quot;:8000,&quot;infinite&quot;:true,&quot;autoPlay&quot;:true}"
+        style="max-width: none;">
+          <div class="slider__content">
+            <div class="slider__list-wrapper" data-js-item="slider-wrapper" style="width: 1423px;">
+              <div class="slider__list" data-js-item="slider-ribbon" style="width: 5692px; transition: left 0.6s ease 0s; left: -1423px;">
+                <div class="slider__item is-cloned" *ngFor="let item of HeroBanner"
+                data-js-item="slider-item" style="width: 1423px;">
+                  <div class="hero-banner__container is-vertical-center is-mobile-absolute-top {{ item.displayClass }}">
+                    <div class="hero-banner__content is-container  is-padding-top-20">
+                      <div class="u-grid-row is-collapsed">
+                        <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-6 is-col-desktop-l-5">
+                          <div class="hero-banner__item">
+                            <div class="c-teaser--default" data-css="c-teaser">
+                                <ng-container *ngIf="item.FreeTextTitle!=''">                                                         
+                                    <h1 class="teaser__headline" [ngClass]="{'herocarousel-xpax-title': IsXpax == true}" [innerHtml]="item.FreeTextTitle"
+                                    [ngStyle]="{'color':item.color}"></h1>
+                                </ng-container>
+                                <ng-container *ngIf="item.FreeTextTitle==''">                                                                                                        
+                                    <h1 class="teaser__headline" [ngClass]="{'herocarousel-xpax-title': IsXpax == true}" [innerHtml]="item.Title"
+                                    [ngStyle]="{'color':item.color}"></h1>
+                                </ng-container>
+                              <p class="teaser__copy" [ngClass]="{'herocarousel-xpax-content': IsXpax == true}" [ngStyle]="{'color':item.subtitleColor}">{{item.Subtitle}}</p>                              
+                              <!-- <div class="teaser__cta" *ngIf="item.ButtonText!=''">
+                                <a [ngClass]="{'jelly-button herobannerjelly': IsXpax == true}" class="c-cta--default" data-css="c-cta" (click)="ManageContentNavigation(item.ButtonLink);"
+                                href={{item.ButtonLink}}> <span class="cta__content">{{item.ButtonText}}</span>
+                                <span class="cta__icon icon is-icon-arrow"></span></a>
+                              </div> -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c-picture--slider is-full-width-image" data-css="c-picture">
+                    <!--[if IE 9]><audio><![endif]-->
+                    <img class="dispMob" src="{{item.MobileImage}}">
+                      <img class="dispDesk" src="{{item.BannerImage}}">
+                        <!--[if IE 9]></audio><![endif]-->                        </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slider__pagination-wrapper" data-js-item="slider-pagination">
+            <ol class="slider__pagination-list is-mobile-hidden" data-js-item="slider-pagination-list">
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,169 @@
+.Choose-your-way-in {
+	font-family: Lato;
+	font-size: 24px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.33;
+	letter-spacing: normal;
+	text-align: center;
+}
+
+.What-would-you-like {
+	font-family: Lato;
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.5;
+	letter-spacing: normal;
+	text-align: center;
+}
+
+.unbold {
+	font-weight: normal;	
+}
+
+.eligibility-modal-content {
+	margin: auto;
+	padding-top: 201px;
+	width: 45%;
+	height: auto;
+}
+.eligibility-modal-content .What-would-you-like{
+	width:97%;
+	margin:16px auto;
+}
+
+.guest-choose-model {
+	display: block;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.guest-box-close {
+	width: 16px;
+	float: right;
+	margin: 20px;
+}
+
+.guest-dtl-features-box {
+	background-color: #fff;
+}
+
+.guest-features-box-dtls {
+	width: 60%;
+	margin: auto;
+	padding-bottom: 40px;
+	padding-top: 40px;
+	text-align: center;
+}
+.c-cta--default {
+    min-width: 19rem;
+ }
+
+.guest-connect-login-now {
+	padding-bottom: 20px;
+	display: inline;
+	/*float: left;*/
+	cursor: pointer;
+}
+
+.guest-connect-login-now1 {
+	display: inline;
+	/*float: right;*/
+	cursor: pointer;
+}
+
+.guest-mobile-connect-login-now {
+	padding-bottom: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.shop-cart-close {
+	width: 24px;
+	height: 24px;
+	float: right;
+	padding-right: 15px;
+	padding-top: 15px;
+	cursor: pointer;
+  }
+  .guest-connect-login-now .login-default-button{
+	  margin-right: 29px;
+  }
+
+@media (max-width: 768px) {
+	.guest-features-box-dtls {
+		width: 79%;
+		margin: auto;
+		padding-bottom: 40px;
+		padding-top: 40px;
+	}
+	.eligibility-modal-content {
+		margin: auto;
+		padding-top: 73px;
+		width: 80%;
+		height: auto;
+	}
+	.guest-box-close {
+		width: 16px;
+		float: right;
+		margin: 12px;
+	}
+	.guest-connect-login-now {
+		text-align: center !important;
+		display: inherit;
+		float: none;
+	}
+	.guest-connect-login-now1 {
+		text-align: center !important;
+		display: inherit;
+		float: none;
+	}
+	.guest-connect-login-now .login-default-button{
+		margin-right: 0;
+	}
+	.eligibility-modal-content .What-would-you-like {
+		width: 96%;
+		margin: 16px auto;
+}
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+	.guest-features-box-dtls {
+		padding-bottom: 44px;
+	}
+	.guest-features-box-dtls {
+		width: 61%;
+		margin: auto;
+		padding-bottom: 132px;
+		padding-top: 40px;
+	}
+	.eligibility-modal-content .What-would-you-like {
+		width: 88%;
+		margin: 16px auto;
+}
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+	.guest-features-box-dtls {
+		width: 61%;
+		margin: auto;
+		padding-bottom: 132px;
+		padding-top: 40px;
+	}
+	.eligibility-modal-content {
+		margin: auto;
+		padding-top: 73px;
+		width: 58%;
+		height: auto;
+	}
+}

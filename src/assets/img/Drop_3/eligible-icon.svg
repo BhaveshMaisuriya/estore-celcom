@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="#FFF" fill-rule="evenodd">
+        <path fill-rule="nonzero" d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm0 22.123C6.418 22.123 1.877 17.582 1.877 12 1.877 6.418 6.418 1.877 12 1.877c5.582 0 10.123 4.541 10.123 10.123 0 5.582-4.54 10.123-10.123 10.123z"/>
+        <text font-family="Lato-Regular, Lato" font-size="18">
+            <tspan x="9.413" y="18">!</tspan>
+        </text>
+    </g>
+</svg>

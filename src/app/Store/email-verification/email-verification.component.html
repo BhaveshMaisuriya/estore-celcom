@@ -1,0 +1,7 @@
+
+<div class="api-success" *ngIf="onAPIResponse">
+        <h3 class="updateStatus">{{apiStatus}}</h3>
+        <p class="font16">Thank you for verifying your email.</p>
+        <p class="font16" *ngIf="apiSuccess">Please return to Celcom's website and click <strong>'I have validated my email.'</strong></p>
+        <p class="font16" *ngIf="!apiSuccess"> {{apiResponse}}</p>
+</div>

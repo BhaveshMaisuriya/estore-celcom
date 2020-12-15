@@ -1,0 +1,14 @@
+<svg id="Icon_Expressive_Info" data-name="Icon Expressive —  Info" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <rect id="Rectangle_1544" data-name="Rectangle 1544" width="80" height="80" fill="none"/>
+  <path id="Path_4482" data-name="Path 4482" d="M34.447,0H4.053A4.065,4.065,0,0,0,0,4.053V23.3a4.065,4.065,0,0,0,4.053,4.053h7.193a3.6,3.6,0,0,1,.912.405l7.193,5.066a.66.66,0,0,0,.912-.2V27.355H34.447A4.065,4.065,0,0,0,38.5,23.3V4.053A4.065,4.065,0,0,0,34.447,0Z" transform="translate(10 10)" fill="#82cdef"/>
+  <g id="Icon_Info_Enquiry" data-name="Icon — Info / Enquiry" transform="translate(26 26)">
+    <rect id="Rectangle_1528" data-name="Rectangle 1528" width="48" height="48" fill="#333" opacity="0"/>
+    <g id="Group_5015" data-name="Group 5015" transform="translate(3 3)">
+      <path id="Path_4269" data-name="Path 4269" d="M21,2A19,19,0,1,1,2,21,18.992,18.992,0,0,1,21,2m0-2A21,21,0,1,0,42,21,21,21,0,0,0,21,0Z" fill="#333"/>
+      <g id="Group_5014" data-name="Group 5014">
+        <path id="Path_4270" data-name="Path 4270" d="M21,33a.945.945,0,0,1-1-1V16a1,1,0,0,1,2,0V32A.945.945,0,0,1,21,33Z" fill="#333"/>
+        <path id="Path_4271" data-name="Path 4271" d="M21,13a.945.945,0,0,1-1-1V10a1,1,0,0,1,2,0v2A.945.945,0,0,1,21,13Z" fill="#333"/>
+      </g>
+    </g>
+  </g>
+</svg>

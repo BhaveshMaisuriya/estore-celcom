@@ -1,0 +1,68 @@
+<section class="u-section is-position-fixed"  [ngClass]= "{'csagent' : isCSAgent, 'customer': isCustomer}" id="sticky-cart">
+  <div class="section__inner">
+    <div class="section__content">
+      <div class="summary">
+        <div class="summary__sitemap" data-js-module="accordion"
+          data-js-options="{&quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false}">
+          <div class="summary__sitemap__group">
+            <div class="summary__header">
+              <a class="summary__sitemap__group-header is-container" data-js-item="accordion-btn" href="#group_0"></a>
+            </div>
+            <div class="u-grid-row order-summary-sticky">
+              <div aria-expanded="false" class="summary__sitemap__group-content" data-js-height="112"
+                data-js-item="accordion-content" id="group_0">
+                <div id='step1' class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 add-to-cart-row has-border-right"
+                  [ngClass]="[isStep1Active?'is-selected':'']" [@heroState]="step==1 ? 'is-selected' : ''"
+                  (click)="setEsimStickyTab(1);">
+                  <div class="add-to-cart">
+                    <p class="summary-plan">Mobile Number</p>
+                    <p class="summary-plan">{{ orderPhoneNo }}</p>
+                  </div>
+                </div>
+                <div id='step2' class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 add-to-cart-row has-border-right"
+                  [ngClass]="[isStep2Active?'is-selected':'']" [@heroState]="step==2 ? 'is-selected' : ''"
+                  (click)="setEsimStickyTab(2);">
+                  <div class="add-to-cart">
+                    <p class="summary-number">Type of eSIM</p>
+                    <p *ngIf="typeOfSIM" class="summary-number">{{typeOfSIM}} to eSIM</p>
+                  </div>
+                </div>
+                <div id='step3' class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 add-to-cart-row has-border-right"
+                  [ngClass]="[isStep3Active?'is-selected':'']" [@heroState]="step==3 ? 'is-selected' : ''" (click)="setEsimStickyTab(3)">
+                  <div class="add-to-cart">
+                    <p class="summary-number">Email Address</p>
+                    <p class="summary-number">{{orderEmailAddress}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="u-grid-col is-col-mobile-p-12 is-col-tablet-p-3 has-border-right-width add-to-cart-row"
+                [ngClass]="[isStep4Active?'is-selected':'']" [@heroState]="step==4 ? 'is-selected' : ''">
+                <div class="add-to-cart-summary">
+                  <div (click)="setEsimStickyTab(4);" class="summary-total">
+                    <div>Total</div>
+                    <div class="summary-tot-value" >RM{{ (orderTotalPay? (orderTotalPay) : 0.00) | number : '1.2-2'}}*</div>
+                  </div>
+                  <div class="add-to-cart-cta">
+                    <div class="plan-comparison__list__item__actions__primary">
+                    <!-- [ngClass]="{'is-disabled-next':isBtnDisabled || ToasterDisabled}" -->
+                      <button *ngIf="step!=4" class="c-cta--default summary__add_to_cart" data-css="c-cta"
+                        (click)="setEsimStickyTab(0)">
+                        Next<i class="cta__icon icon is-icon-arrow"></i>
+                      </button>
+                      <button *ngIf="step==4 || isInsideContainer" class="c-cta--default btn__add_to_cart" data-css="c-cta"
+                      [class.is-disabled-addToCart]="disableCartButton"
+                      (click)="addToCartHandler();">
+                        Add To Cart<i class="cta__icon icon is-icon-arrow"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-notification-error *ngIf="isApiError" [data]="apiErrorMessage"></app-notification-error>

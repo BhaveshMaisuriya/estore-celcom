@@ -1,0 +1,64 @@
+<footer class="r-footer" *ngIf="FooterNavigationInfo!=null && (isCSAgent === notCSAgent)" [attr.data-analytics-region]="dataAnalyticsRegion">
+    <section class="u-section is-bg-color-darkgrey">
+        <div class="footer__section__inner">
+            <div class="section__content is-container">
+                <div class="c-footer">
+                    <div class="footer__sitemap" data-js-module="accordion" data-js-options="{&quot;closeClass&quot;: &quot;&quot;, &quot;openClass&quot;: &quot;is-active&quot;, &quot;toggleContentVisibility&quot;: false}">
+                        <!-- start group -->
+                        <div class="footer__sitemap__group" *ngFor="let item of FooterNavigationInfo | slice:0:2 ;let i=index">
+                            <a *ngIf="!item.external && item.title != 'Legal' " [innerHtml]="item.title=='Other'?'':item.title" href="#group_{{i}}" class="footer__sitemap__group-header"
+                                data-js-item="accordion-btn">
+                            </a>
+                            <div *ngIf="!item.external && item.title != 'Legal' " class="headingLine"> </div>
+                            <a *ngIf="item.external" class="footer__sitemap__group-header" href="#group_i" data-js-item="accordion-btn">
+                                {{item.title}}
+                            </a>
+                            <div class="footer__sitemap__group-content" id="group_{{i}}" data-js-item="accordion-content" id="group_i" data-js-height="0"
+                                aria-expanded="false">
+                                <ng-container *ngFor="let itemChild of item.below">
+                                    <a *ngIf="item.external" class="footer__sitemap__group-header" href="{{itemChild.absolute_path}}" (click)="ManageContentNavigation(itemChild.absolute_path);defaultOnClick();"
+                                        href="" data-js-item="accordion-btn">
+                                        {{item.title}}
+                                    </a>
+                                    <a *ngIf="!item.external && item.title != 'Legal' " class="footer__link" href="{{itemChild.absolute_path}}" (click)="ManageContentNavigation(itemChild.absolute_path);defaultOnClick();">
+                                        {{itemChild.title }}
+                                    </a>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <!-- end group -->
+                        <ng-container *ngIf="FooterpostpaidApps && FooterpostpaidApps.postpaidAppsCheck == 1">
+                            <footer-download *ngIf="FooterContentInfo"></footer-download>
+                        </ng-container>
+                        <ng-container *ngIf="FooterpostpaidApps">
+                            <socialmedialinks-component class="tabMode" *ngIf="FooterContentInfo" [ngClass]="{'noDownload': FooterpostpaidApps.postpaidAppsCheck == 0}">
+                            </socialmedialinks-component>
+                        </ng-container>
+                    </div>
+                    <!-- start copyright -->
+                    <div class="clearfix"></div>
+                    <div class="border-line"></div>
+                    <div *ngIf="FooterContentInfo" class="bottomLinkAlign">
+                        <ng-container *ngFor="let item of FooterNavigationInfo">
+                            <ng-container *ngIf="item.title == 'Legal' ">
+                                <span class="bottomPadingRgt bottomPadingRgt{{i}}" *ngFor="let itemChild of item.below;let i=index">
+                                    <a *ngIf="item.external" class="footer__sitemap__group-header" href="{{itemChild.absolute_path}}" (click)="ManageContentNavigation(itemChild.absolute_path);defaultOnClick();"
+                                        href="" data-js-item="accordion-btn">
+                                        {{item.title}}
+                                    </a>
+                                    <a class="footer__link_bottom" *ngIf="!item.external" href="{{itemChild.absolute_path}}" (click)="ManageContentNavigation(itemChild.absolute_path);defaultOnClick();">
+                                        <span> {{itemChild.title }} </span>
+                                    </a>
+                                </span>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container>
+                            <span *ngIf="FooterCopyrightInfo != '' " class="copyright-text" [innerHtml]="FooterCopyrightInfo"></span>
+                        </ng-container>
+                    </div>
+                    <!-- end copyright -->
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>

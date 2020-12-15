@@ -1,0 +1,177 @@
+<div class="personal-details-form">
+  <form [formGroup]="personalDetails">
+
+    <div class="sub-section">
+      <h4>Personal Information</h4>
+      <div class="row">
+        <div class="col-md-6">
+          <app-estore-input
+            label="Salutation"
+            inputType="select"
+            appearance="standard"
+            formControlName="salutation"
+            [options]="salutationOptions"
+          ></app-estore-input>
+        </div>
+
+        <div class="col-md-6">
+          <app-estore-input
+            label="Full name (As per IC)"
+            appearance="standard"
+            formControlName="name"
+          ></app-estore-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <app-estore-input
+            label="Contact Number"
+            appearance="standard"
+            formControlName="primaryNumber"
+            placeholder="01XXXXXXXX"
+            inputType="phone"
+          ></app-estore-input>
+        </div>
+
+        <div class="col-md-6">
+          <app-estore-input
+            label="Email Address"
+            appearance="standard"
+            inputType="email"
+            formControlName="email"
+          ></app-estore-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <app-estore-input
+            label="ID Type"
+            inputType="select"
+            [options]="idTypeOptions"
+            appearance="standard"
+            formControlName="idType"
+          ></app-estore-input>
+        </div>
+
+        <div class="col-md-6">
+          <app-estore-input
+            label="ID Number"
+            appearance="standard"
+            formControlName="idNumber"
+          ></app-estore-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-section">
+      <h4>Delivery address</h4>
+      <div class="row">
+
+        <div class="col-md-12">
+          <app-estore-input
+            label="Home/Lot/Unit"
+            appearance="standard"
+            placeholder="Unit Number"
+            maxlength="15"
+            formControlName="building"
+          ></app-estore-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <app-estore-input
+            label="Address Line 1"
+            appearance="standard"
+            formControlName="addressOne"
+            maxlength="100"
+          ></app-estore-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <app-estore-input
+            label="Address Line 2"
+            appearance="standard"
+            formControlName="addressTwo"
+            maxlength="100"
+          ></app-estore-input>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <app-estore-input
+            label="Postcode"
+            appearance="standard"
+            placeholder="Postcode"
+            inputType="postcode"
+            formControlName="postCode"
+          ></app-estore-input>
+        </div>
+
+        <div class="col-md-6">
+          <app-estore-input
+            label="City"
+            appearance="standard"
+            formControlName="city"
+            maxlength="30"
+          ></app-estore-input>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <app-estore-input
+            inputType="select"
+            label="State"
+            appearance="standard"
+            formControlName="state"
+            [options]="states"
+          ></app-estore-input>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sub-section">
+
+      <div class="row">
+
+        <div class="col">
+          <h4>Add Alternate Contact Number</h4>
+          <p>
+            Provide an alternate contact number that the courier
+            company can use to contact you in case you cannot
+            be reached by your primary number.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <app-estore-input
+            label="Contact Number"
+            appearance="standard"
+            formControlName="secondaryNumber"
+            placeholder="01XXXXXXXX"
+            inputType="phone"
+          ></app-estore-input>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</div><!-- /.container -->

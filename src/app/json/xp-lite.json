@@ -1,0 +1,745 @@
+[
+  {
+    "name": "XP Lite\u2122",
+    "sku": "xp-lite",
+    "url_key": "xp-lite",
+    "base_plan": [
+      {
+        "name": "XP Lite\u2122",
+        "sku": "xp-b-plan",
+        "offer": "1GB High-Speed Internet<br \/>Unlimited Calls to all networks<br>",
+        "selected_offer_title": null,
+        "monthly_plan": "28.00",
+        "data_limit": "1",
+        "order_plan_bundle": "PB12828",
+        "segment": null,
+        "upfront_installment": null,
+        "contract": null,
+        "plan_name": "XP Lite\u2122",
+        "plan_title": "Base Plan",
+        "plan_subtitle": null,
+        "product_type": null,
+        "product_text": null,
+        "promotion_badge": [],
+        "promotion_text": null,
+        "promotion_terms": null,
+        "key_figures_text": null,
+        "key_text": "RM 28",
+        "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__1_1.png",
+        "device_allowed": null,
+        "selected_pass": false
+      }
+    ],
+    "pass_plan": [
+      {
+        "name": "L Pass",
+        "sku": "xp-l-pass",
+        "offer": "<br \/><strong>Unlimited HD YouTube<\/strong><br \/><strong>15GB High-speed Internet<\/strong><br \/>FREE* 1-hour Ultra Hour Pass\u2122 every day when you Stay On<br><br>",
+        "selected_offer_title": null,
+        "monthly_plan": "30.00",
+        "data_limit": "15",
+        "order_plan_bundle": "CPT12831",
+        "segment": null,
+        "upfront_installment": null,
+        "contract": null,
+        "plan_name": "L Pass",
+        "plan_title": null,
+        "plan_subtitle": null,
+        "product_type": null,
+        "product_text": null,
+        "promotion_badge": [],
+        "promotion_text": "<p><strong>Online Exclusive: Get a prize from Catch &amp; Win game for any new \/ port-in \/ Prepaid to Postpaid signup!<\/strong><\/p>",
+        "promotion_terms": null,
+        "key_figures_text": null,
+        "key_text": "RM30",
+        "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__2.png",
+        "device_allowed": "1",
+        "selected_pass": false,
+        "associated_bundle_product": [
+          {
+            "name": "Samsung Galaxy A11",
+            "sku": "Samsung-Galaxy-A11",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "108.00",
+            "most_popular": "0",
+            "rm": "0.00",
+            "rrp_rm_strick_price": "529.00",
+            "main_image": "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "GALAXY A11 32GB",
+            "order_brand": "SAMSUNG",
+            "segment": "10",
+            "default_selected_color": "Black",
+            "default_selected_memory": "32GB",
+            "stock_indicator_image": "\/media\/catalog\/productno_selection",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Samsung Galaxy A11 32GB Black",
+                "sku": "samsunggalaxya1132gbblk",
+                "rrp": "529.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Black",
+                "memory": "32GB",
+                "order_color": "BLK",
+                "order_category": "HP",
+                "color_hexa": "#000000",
+                "image": "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front_1.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front_1.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_back.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_lside.png"
+                ],
+                "order_model": "GALAXY A11 32GB",
+                "part_number": "MDR10179",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "250",
+                  "device_price": "199",
+                  "penalty_price": "400",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Samsung Galaxy A11 32GB Black",
+                "sku": "samsunggalaxya1132gbblk32",
+                "rrp": "529.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Black",
+                "memory": "32GB",
+                "order_color": "BLK",
+                "order_category": "HP",
+                "color_hexa": "#000000",
+                "image": "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front_1.png",
+                "desc": "32 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_front_1.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_back.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_black_lside.png"
+                ],
+                "order_model": "GALAXY A11 32GB",
+                "part_number": "MDR10179",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "32",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "32",
+                  "device_price": "32",
+                  "penalty_price": "400",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Samsung Galaxy A11 32GB White",
+                "sku": "samsunggalaxya1132gbwht",
+                "rrp": "529.00",
+                "discounted_device_rrp": "0.00",
+                "color": "White",
+                "memory": "32GB",
+                "order_color": "WHT",
+                "order_category": "HP",
+                "color_hexa": "#f2f2f2",
+                "image": "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_white_front.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_white_front.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_white_back.png",
+                  "\/media\/catalog\/product\/s\/m\/sm_115_galaxya11_white_lside.png"
+                ],
+                "order_model": "GALAXY A11 32GB",
+                "part_number": "MDR10179",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "250",
+                  "device_price": "199",
+                  "penalty_price": "400",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "name": "Vivo Y20",
+            "sku": "Vivo-Y20",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "68.00",
+            "most_popular": "0",
+            "rm": "0.00",
+            "rrp_rm_strick_price": "599.00",
+            "main_image": "\/media\/catalog\/product\/v\/i\/vivo_y20_back_white_1.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/v\/i\/vivo_y20_back_white_1.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "Y20 64GB",
+            "order_brand": "VIVO",
+            "segment": "10",
+            "default_selected_color": "Blue",
+            "default_selected_memory": "64GB",
+            "stock_indicator_image": "\/media\/catalog\/productno_selection",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Vivo Y20 64GB Blue",
+                "sku": "VivoY2064GBBlue",
+                "rrp": "599.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Blue",
+                "memory": "64GB",
+                "order_color": "BLU",
+                "order_category": "HP",
+                "color_hexa": "#023b63",
+                "image": "\/media\/catalog\/product\/v\/i\/vivo_y20_back.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_back.png",
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_front.png",
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_frontback.png"
+                ],
+                "order_model": "Y20 64GB",
+                "part_number": "MDR10203",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "142",
+                  "device_price": "358",
+                  "penalty_price": "200",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Vivo Y20 64GB White",
+                "sku": "VivoY2064GBWhite",
+                "rrp": "599.00",
+                "discounted_device_rrp": "0.00",
+                "color": "White",
+                "memory": "64GB",
+                "order_color": "WHT",
+                "order_category": "HP",
+                "color_hexa": "#f2f2f2",
+                "image": "\/media\/catalog\/product\/v\/i\/vivo_y20_back_white_2.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_back_white_2.png",
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_front_white.png",
+                  "\/media\/catalog\/product\/v\/i\/vivo_y20_frontback_white.png"
+                ],
+                "order_model": "Y20 64GB",
+                "part_number": "MDR10203",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "142",
+                  "device_price": "358",
+                  "penalty_price": "200",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "name": "Vivo Y15 2020",
+            "sku": "Vivo-Y15-2020",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "108.00",
+            "most_popular": "0",
+            "rm": "0.00",
+            "rrp_rm_strick_price": "599.00",
+            "main_image": "\/media\/catalog\/product\/f\/r\/front_31_2.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/f\/r\/front_31_2.png",
+              "\/media\/catalog\/product\/s\/t\/stock_indicator_image_new_4.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "Y15 2020 64GB",
+            "order_brand": "VIVO",
+            "segment": "10",
+            "default_selected_color": "Black",
+            "default_selected_memory": "64GB",
+            "stock_indicator_image": "\/media\/catalog\/product\/s\/t\/stock_indicator_image_new_4.png",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Vivo Y15 2020 64GB Black",
+                "sku": "VivoY15202064gbblack",
+                "rrp": "599.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Black",
+                "memory": "64GB",
+                "order_color": "BLK",
+                "order_category": "HP",
+                "color_hexa": "#000000",
+                "image": "\/media\/catalog\/product\/f\/r\/front_1_2_1.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/f\/r\/front_1_2_1.png",
+                  "\/media\/catalog\/product\/b\/a\/back_12_3.png",
+                  "\/media\/catalog\/product\/f\/r\/front_-back.png",
+                  "\/media\/catalog\/product\/n\/e\/new-vivo_2.png"
+                ],
+                "order_model": "Y15 2020 64GB",
+                "part_number": "MDR10138",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "140",
+                  "device_price": "359",
+                  "penalty_price": "240",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Vivo Y15 2020 64GB Red",
+                "sku": "VivoY15202064gbred",
+                "rrp": "599.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Red",
+                "memory": "64GB",
+                "order_color": "RED",
+                "order_category": "HP",
+                "color_hexa": "#db3030",
+                "image": "\/media\/catalog\/product\/f\/r\/front_31_1.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/f\/r\/front_31_1.png",
+                  "\/media\/catalog\/product\/b\/a\/back_14_2.png",
+                  "\/media\/catalog\/product\/f\/r\/front_back_1.png",
+                  "\/media\/catalog\/product\/n\/e\/new-vivo_3.png"
+                ],
+                "order_model": "Y15 2020 64GB",
+                "part_number": "MDR10138",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "140",
+                  "device_price": "359",
+                  "penalty_price": "240",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "name": "Oppo A12",
+            "sku": "Oppo-A12",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "108.00",
+            "most_popular": "0",
+            "rm": "0.00",
+            "rrp_rm_strick_price": "529.00",
+            "main_image": "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-front_rgb_1.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-front_rgb_1.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "A12 32GB",
+            "order_brand": "OPPO",
+            "segment": "10",
+            "default_selected_color": "Blue",
+            "default_selected_memory": "32GB",
+            "stock_indicator_image": "\/media\/catalog\/productno_selection",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Oppo A12 32GB Blue",
+                "sku": "oppoa1232gbblu",
+                "rrp": "529.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Blue",
+                "memory": "32GB",
+                "order_color": "BLU",
+                "order_category": "HP",
+                "color_hexa": "#023b63",
+                "image": "\/media\/catalog\/product\/o\/p\/oppo-a12_f.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/o\/p\/oppo-a12_f.png",
+                  "\/media\/catalog\/product\/o\/p\/oppo-a12-b.png",
+                  "\/media\/catalog\/product\/o\/p\/oppo-a12_s1_1.png",
+                  "\/media\/catalog\/product\/o\/p\/oppo-a12_s2_1.png"
+                ],
+                "order_model": "A12 32GB",
+                "part_number": "MDR10168",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "529",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Oppo A12 32GB Black",
+                "sku": "oppoa1232gbblk",
+                "rrp": "529.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Black",
+                "memory": "32GB",
+                "order_color": "BLK",
+                "order_category": "HP",
+                "color_hexa": "#000000",
+                "image": "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-front_rgb.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-front_rgb.png",
+                  "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-back_rgb.png",
+                  "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-sidepower_rgb.png",
+                  "\/media\/catalog\/product\/c\/o\/cola__product-images__black__-sidevol_rgb.png"
+                ],
+                "order_model": "A12 32GB",
+                "part_number": "MDR10168",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "529",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "name": "Samsung Galaxy A01",
+            "sku": "Samsung-Galaxy-A01",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "108.00",
+            "most_popular": "0",
+            "rm": "999.00",
+            "rrp_rm_strick_price": "399.00",
+            "main_image": "\/media\/catalog\/product\/s\/a\/samsung_a01_black_front_2.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/s\/a\/samsung_a01_black_front_2.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "A01 2GB 16GB",
+            "order_brand": "SAMSUNG",
+            "segment": "10",
+            "default_selected_color": "Black",
+            "default_selected_memory": "16GB",
+            "stock_indicator_image": "\/media\/catalog\/productno_selection",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Samsung Galaxy A01 Black",
+                "sku": "samsunggalaxya0116gbblack",
+                "rrp": "399.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Black",
+                "memory": "16GB",
+                "order_color": "BLK",
+                "order_category": "HP",
+                "color_hexa": "#000000",
+                "image": "\/media\/catalog\/product\/s\/a\/samsung_a01_black_front_1.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_black_front_1.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_black_back.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_black_side.png"
+                ],
+                "order_model": "A01 2GB 16GB",
+                "part_number": "MDR10163",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "449",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Samsung Galaxy A01 Blue",
+                "sku": "samsunggalaxya0116gbblue",
+                "rrp": "399.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Blue",
+                "memory": "16GB",
+                "order_color": "BLU",
+                "order_category": "HP",
+                "color_hexa": "#023b63",
+                "image": "\/media\/catalog\/product\/s\/a\/samsung_a01_blue_front.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_blue_front.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_blue_back.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_blue_side.png"
+                ],
+                "order_model": "A01 2GB 16GB",
+                "part_number": "MDR10163",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "449",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Samsung Galaxy A01 Red",
+                "sku": "samsunggalaxya0116gbred",
+                "rrp": "399.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Red",
+                "memory": "16GB",
+                "order_color": "RED",
+                "order_category": "HP",
+                "color_hexa": "#db3030",
+                "image": "\/media\/catalog\/product\/s\/a\/samsung_a01_red_front.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_red_front.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_red_back.png",
+                  "\/media\/catalog\/product\/s\/a\/samsung_a01_red_side.png"
+                ],
+                "order_model": "A01 2GB 16GB",
+                "part_number": "MDR10163",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "449",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "name": "Vivo Y11",
+            "sku": "vivo-y11",
+            "price": 0,
+            "quntity": null,
+            "order_monthly_pay": "108.00",
+            "most_popular": "0",
+            "rm": "0.00",
+            "rrp_rm_strick_price": "499.00",
+            "main_image": "\/media\/catalog\/product\/y\/1\/y11_front1-900px_2.png",
+            "sub_images": [
+              "\/media\/catalog\/product\/y\/1\/y11_front1-900px_2.png",
+              "\/media\/catalog\/product\/s\/t\/stock_indicator_image_badge_1_3.png"
+            ],
+            "dimension": null,
+            "weight": null,
+            "splash_water_dust_resistant": "0",
+            "stock": "Limited Stock",
+            "order_category": "HP",
+            "order_model": "Y11 32GB",
+            "order_brand": "VIVO",
+            "segment": "10",
+            "default_selected_color": "Red",
+            "default_selected_memory": "32GB",
+            "stock_indicator_image": "\/media\/catalog\/product\/s\/t\/stock_indicator_image_badge_1_3.png",
+            "stock_indicator_text": null,
+            "default_device_option": "deviceBundle",
+            "associated_device_product": [
+              {
+                "name": "Vivo Y11 32GB Agate Red",
+                "sku": "VivoY1132GBAgateRed",
+                "rrp": "499.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Red",
+                "memory": "32GB",
+                "order_color": "RED",
+                "order_category": "HP",
+                "color_hexa": "#db3030",
+                "image": "\/media\/catalog\/product\/y\/1\/y11_front1-900px_1.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/y\/1\/y11_front1-900px_1.png",
+                  "\/media\/catalog\/product\/y\/1\/y11_back-900px_1.png",
+                  "\/media\/catalog\/product\/y\/1\/y11_side2-900px_1.png",
+                  "\/media\/catalog\/product\/n\/e\/new-vivo_1_2.png"
+                ],
+                "order_model": "Y11 32GB",
+                "part_number": "MDR10121",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "499",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              },
+              {
+                "name": "Vivo Y11 32GB Mineral Blue",
+                "sku": "VivoY1132GBMineral Blue",
+                "rrp": "499.00",
+                "discounted_device_rrp": "0.00",
+                "color": "Blue",
+                "memory": "32GB",
+                "order_color": "BLU",
+                "order_category": "HP",
+                "color_hexa": "#023b63",
+                "image": "\/media\/catalog\/product\/y\/1\/y11-front1-900px.png",
+                "desc": "24 months contract",
+                "sub_images": [
+                  "\/media\/catalog\/product\/y\/1\/y11-front1-900px.png",
+                  "\/media\/catalog\/product\/y\/1\/y11-back-900px.png",
+                  "\/media\/catalog\/product\/y\/1\/y11-side2-900px.png",
+                  "\/media\/catalog\/product\/n\/e\/new-vivo_1_1.png"
+                ],
+                "order_model": "Y11 32GB",
+                "part_number": "MDR10121",
+                "product_type": "HP",
+                "new_customer": "0",
+                "segment": null,
+                "contract": "24",
+                "upfront_installment": "10",
+                "prices": {
+                  "upfront_price": "350",
+                  "device_price": "0",
+                  "penalty_price": "499",
+                  "supplementary_count": 0,
+                  "special_price": 0
+                }
+              }
+            ]
+          },
+          {
+            "status": false,
+            "message": "Requested product is disabled"
+          }
+        ]
+      },
+      {
+        "name": "M Pass",
+        "sku": "xp-m-pass",
+        "offer": "<br \/><strong>Unlimited YouTube<\/strong><br \/><strong>7GB High-speed Internet<\/strong><br \/>FREE* 1-hour Ultra Hour Pass\u2122 every day when you Stay On<br><br>",
+        "selected_offer_title": null,
+        "monthly_plan": "10.00",
+        "data_limit": "7",
+        "order_plan_bundle": "CPT12829",
+        "segment": null,
+        "upfront_installment": null,
+        "contract": null,
+        "plan_name": "M Pass",
+        "plan_title": null,
+        "plan_subtitle": null,
+        "product_type": null,
+        "product_text": null,
+        "promotion_badge": [
+          {
+            "promotion_badge_text": "Bestseller",
+            "promotion_badge_text_color": "#ffffff",
+            "promotion_badge_background_color": "#c40d42"
+          }
+        ],
+        "promotion_text": "<p><strong>Online Exclusive: Get a prize from Catch &amp; Win game for any new \/ port-in \/ Prepaid to Postpaid signup!<\/strong><\/p>",
+        "promotion_terms": null,
+        "key_figures_text": null,
+        "key_text": "RM 10",
+        "image_url": "\/media\/catalog\/product\/x\/p\/xp_lite_name-01_5__1_2.png",
+        "device_allowed": "0",
+        "selected_pass": false
+      }
+    ],
+    "upper_age_limit": "0",
+    "lower_age_limit": "1000",
+    "promotion_message": "Size up with L Pass to get more Internet and savings",
+    "type_purchse": {
+      "dealer": {
+        "newline": true,
+        "cobp": true,
+        "mnp": true,
+        "easyphone": true
+      }
+    },
+    "auto_bill_type_of_purchase": {
+      "NL": "0",
+      "COBP": "0",
+      "MNP": "0"
+    },
+    "notes": "<div class=\"note__content\">\r\n            <div class=\"note__content__inner\">NOTE:<\/div>\r\n            <ul class=\"note__details\">\r\n                <li class=\"note__details__description\">No change of delivery address is allowed after payment is made.<\/li>\r\n                <li class=\"note__details__description\">Upon successful change of plan, user will not be able to return to original plan.<\/li>\r\n                <li class=\"note__details__description\">Terms and conditions apply<\/li>\r\n            <\/ul>\r\n        <\/div>"
+  }
+]

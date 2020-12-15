@@ -1,0 +1,13 @@
+<svg width="28px" height="28px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M42.5888811,14.2477127 L20.0048811,36.8317127 L9.59088109,26.4177127 L12.4188811,23.5897127 L20.0048811,31.1757127 L40.3488811,10.8317127 C35.2908811,4.56371272 26.8508811,1.50071272 18.5688811,3.71971272 C7.36688109,6.72171272 0.718881087,18.2357127 3.72088109,29.4387127 C6.72288109,40.6417127 18.2368811,47.2897127 29.4408811,44.2877127 C40.6428811,41.2857127 47.2908811,29.7707127 44.2888811,18.5677127 C43.8788811,17.0357127 43.2958811,15.5977127 42.5888811,14.2477127" id="path-1"></path>
+    </defs>
+    <g id="Atoms/Icons_#333/Interface/Yes-Filled" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#009bdf" xlink:href="#path-1"></use>
+    </g>
+</svg>
