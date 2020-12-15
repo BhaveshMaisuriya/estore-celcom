@@ -28,18 +28,18 @@ if (redisConfig.length > 1) {
 /**
  * Connect to redis db
  */
-redisClientForDynamicData.on('connect', function () {
-  isRedisConnectedForDynamicData = true;
-  logger.info('connected to Redis DB For Dynamic Data.');
-  getMagentoOauthKeysOnLoad();
-});
+// redisClientForDynamicData.on('connect', function () {
+//   isRedisConnectedForDynamicData = true;
+//   logger.info('connected to Redis DB For Dynamic Data.');
+//   getMagentoOauthKeysOnLoad();
+// });
 /**
  * If connection failure
  */
-redisClientForDynamicData.on('error', function (err) {
-  isRedisConnectedForDynamicData = false;
-  logger.error('Redis Connection Error in connecting Dynamic Data DB: ' + err);
-});
+// redisClientForDynamicData.on('error', function (err) {
+//   isRedisConnectedForDynamicData = false;
+//   logger.error('Redis Connection Error in connecting Dynamic Data DB: ' + err);
+// });
 /**
  * Get all the required oauth keys while inititalizing node server
  */

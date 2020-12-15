@@ -26,17 +26,17 @@ if (redisConfig.length > 1) {
 /**
  * Connect to redis db
  */
-redisClient.on('connect', function () {
-  isRedisConnected = true;
-  console.log('connected to Redis DB');
-});
+// redisClient.on('connect', function () {
+//   isRedisConnected = true;
+//   console.log('connected to Redis DB');
+// });
 /**
  * If connection failure
  */
-redisClient.on('error', function (err) {
-  isRedisConnected = false;
-  console.log('Redis Connection Error: ' + err);
-});
+// redisClient.on('error', function (err) {
+//   isRedisConnected = false;
+//   console.log('Redis Connection Error: ' + err);
+// });
 
 export let isRequiredToCache = (url) => {
   const cachedUrls = (<any>constants).cacheUrls;
