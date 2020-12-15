@@ -1,4 +1,6 @@
+import * as env from "app/../../environment.json";
+
 export const environment = {
-  production: true,
-  appUrl: 'https://estore-celcom.herokuapp.com/'
+  ...(env['default'] || env),
+  isPWAEnabled: true
 };
